@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "weak pointer.md",
+                "file": "C++ OOP/C++ Inheritance II.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "weak pointer"
+              "title": "C++ Inheritance II"
             }
           }
         ],
@@ -195,6 +195,13 @@
   },
   "active": "667d12161973df59",
   "lastOpenFiles": [
+    "C++ OOP/C++ Inheritance I.md",
+    "C++ OOP/C++ Inheritance II.md",
+    "C++ OOP/C++ Casting.md",
+    "Build Systems/Makefiles (c++).md",
+    "Build Systems/Make Files (c).md",
+    "C Preprocessor/Client Headers.md",
+    "C Preprocessor/C Preprocessor.md",
     "HTTP.md",
     "Socket.md",
     "Socket API Client TCP Connection.md",
@@ -214,13 +221,6 @@
     "Virtual table.md",
     "weak pointer.md",
     "create socket.md",
-    "Finding IP Address.md",
-    "Datagram sockets.md",
-    "Steam sockets.md",
-    "Network Application Layer.md",
-    "Shared Pointer.md",
-    "Smart Pointer.md",
-    "Unique Pointer.md",
     "Untitled.canvas"
   ]
 }

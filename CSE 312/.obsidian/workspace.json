@@ -11,14 +11,10 @@
             "id": "7f68c25c28751f9e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "argmax.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "argmax"
+              "title": "New tab"
             }
           }
         ]
@@ -94,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "argmax.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +99,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for argmax"
+              "title": "Backlinks"
             }
           },
           {
@@ -113,12 +108,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "argmax.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from argmax"
+              "title": "Outgoing links"
             }
           },
           {
@@ -184,5 +178,40 @@
     }
   },
   "active": "811613a75e8ad2f2",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Counting and Combinatorics/symmetry of combination.md",
+    "Counting and Combinatorics/Permutation.md",
+    "Counting and Combinatorics/overcounting.md",
+    "Counting and Combinatorics/number of subsets formuka.md",
+    "Counting and Combinatorics/Complementary Counting.md",
+    "Counting and Combinatorics/Binomial Theorm.md",
+    "Statistical Inference/argmax.md",
+    "Statistical Inference/Central Limit Theorm.md",
+    "Statistical Inference/Confidence Intervals.md",
+    "Statistical Inference/Maximum Likelihood Estimation.md",
+    "Inequalities and Bounds/Chernoff Bound (Multiplicative).md",
+    "Inequalities and Bounds/Hoeffding's Inequality.md",
+    "Inequalities and Bounds/Chebyshev's Inequality.md",
+    "Inequalities and Bounds/Markov Inequality.md",
+    "Expectation and Variance/Standard Deviation.md",
+    "Expectation and Variance/Covariance.md",
+    "Expectation and Variance/Variance.md",
+    "Expectation and Variance/Linearity of Expectation.md",
+    "Expectation and Variance/Law of Total Expectation.md",
+    "Expectation and Variance/Joint Expectation.md",
+    "Expectation and Variance/Conditional Expectation.md",
+    "Expectation and Variance/Expectation.md",
+    "Distributions/Normal Random Variable.md",
+    "Distributions/Distrubution.md",
+    "Random Variables/Range.md",
+    "Random Variables/Support.md",
+    "Definitions",
+    "Statistical Inference",
+    "Inequalities and Bounds",
+    "Expectation and Variance",
+    "Distributions",
+    "Random Variables",
+    "Basic Probability",
+    "Counting and Combinatorics"
+  ]
 }
