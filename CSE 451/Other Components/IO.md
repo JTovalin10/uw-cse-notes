@@ -17,9 +17,9 @@ refers to the communication between the computer information processing stream a
 - Input (read): Data recieved by the system
 	- examples: typing on a keyboard, moving a mouse, a microphone recording audio, or reading from a file form the hard drive into memory
 - Output (Write): Data sent from the system
-	- example: displaying an image on a monitor, playing sound through speakers, printing a docyment, or saving data back to the HD
+	- example: displaying an image on a monitor, playing sound through speakers, printing a document, or saving data back to the HD
 # The speed gap problem
-- a modern CPU can execute billion of instructions per second
+- a modern CPU can execute billions of instructions per second
 - reading data from a harddrive or waiting for a user to press a key can take milliseconds (eternity for a CPU)
 Essentially I/O is incredibly slow compared to the CPU
 ## So what can we do
@@ -31,7 +31,7 @@ The OS cannot afford to let the CPU sit idle waiting for a file to load or a key
 3. **switch**
 	1. the OS performs a [[Context Switch]] and gives the CPU to a different process that is ready to run
 4. **interrupts**
-	1. when the I/O device finishes (the user pressed a key), it sends an eletrical signal (interrupt) to the CPU
+	1. when the I/O device finishes (the user pressed a key), it sends an electrical signal (interrupt) to the CPU
 5. **Wake up**
 	1. the OS moves the original process back to **Ready** so it can handle the new data
 # How the OS manages I/O

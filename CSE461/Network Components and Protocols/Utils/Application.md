@@ -1,5 +1,10 @@
- other names
-	- app or user
-- function
-	- uses the network
-	- example: skype, itunes, amazon
+# Other Names
+- app or user
+# Function
+- uses the network
+# Example
+- Skype, iTunes, Amazon
+
+# Related
+- [[Component Names]]
+- [[Host]]

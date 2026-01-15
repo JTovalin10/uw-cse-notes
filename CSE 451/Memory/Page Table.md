@@ -2,7 +2,7 @@
 A page table is a data structure responsible for translating **virtual memory** addresses into **physical memory** addresses
 
 # What does it do
-Every process (application) belives it has a huge chunk of contingous memory all to itself, usually starting at address 0
+Every process (application) believes it has a huge chunk of contiguous memory all to itself, usually starting at address 0
 - virtual memory
 	- the fake perfect view of memory the process sees
 - physical memory
@@ -21,10 +21,10 @@ When a process tries to access a variable the cpu cannot use that address direct
 1. VPN (virtual page number)
 	1. the index. it tells us which page of the book we are on
 	2. offset
-		1. the exact locaiton on that page
+		1. the exact location on that page
 ## The steps
 1. extract VPN
-	1. the hardware (memory mangement unit) akes the top bits of the virtual dddress to get the VPN
+	1. the hardware (memory management unit) takes the top bits of the virtual address to get the VPN
 	2. look up
 		1. it uses the VPN as an index to look inside the Page Table
 	3. find PFN
@@ -33,9 +33,9 @@ When a process tries to access a variable the cpu cannot use that address direct
 		1. it combines the PFN + original offset to create the final physical address
 # Where is it stored
 The page table is stored in memory (RAM)
-This creates a performance problem. to fetch one piece of data, the CPU actually has to do two memory lookus
+This creates a performance problem. To fetch one piece of data, the CPU actually has to do two memory lookups:
 1. one lookup to read the page table (to find where the data is)
-2. one loop up to read the actual data
+2. one lookup to read the actual data
 
 ## Solution
 To fix this slowness, the CPU uses a fast hardware cache called TLB or [[Translation Lookside Buffer]] which remembers recent translations
@@ -63,4 +63,4 @@ each single process has its own page table
 This is how memory protection works
 - Proc A page table points to PF 50
 - Proc B page table points to PF 90
-- there is no entry in Proc A table that points to frame 90. Therefore, it is physicall impossible for Proc A to touch Proc B memory
+- there is no entry in Proc A table that points to frame 90. Therefore, it is physically impossible for Proc A to touch Proc B memory

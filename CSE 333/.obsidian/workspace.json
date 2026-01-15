@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C++ OOP/C++ Inheritance II.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C++ Inheritance II"
+              "title": "README"
             }
           }
         ],
@@ -195,8 +195,14 @@
   },
   "active": "667d12161973df59",
   "lastOpenFiles": [
-    "C++ OOP/C++ Inheritance I.md",
+    "Smart Pointers/Unique Pointer.md",
+    "Smart Pointers/Smart Pointer.md",
+    "Smart Pointers/Shared Pointer.md",
+    "Smart Pointers/new.md",
+    "Smart Pointers/move.md",
+    "Smart Pointers/Delete.md",
     "C++ OOP/C++ Inheritance II.md",
+    "C++ OOP/C++ Inheritance I.md",
     "C++ OOP/C++ Casting.md",
     "Build Systems/Makefiles (c++).md",
     "Build Systems/Make Files (c).md",
@@ -215,12 +221,6 @@
     "Client-Side Networking.md",
     "Resolving DNS Names.md",
     "Server-Side Programming.md",
-    "Upcasting.md",
-    "Vector.md",
-    "Virtual Indentifier.md",
-    "Virtual table.md",
-    "weak pointer.md",
-    "create socket.md",
     "Untitled.canvas"
   ]
 }

@@ -8,6 +8,23 @@ It then gets unwrapped
 # Typical drawing for class
 ![[Screenshot 2026-01-09 at 1.04.24 PM.png]]
 
+# PDU Names at Each Layer
+Each layer has its own name for the data unit:
+| Layer | PDU Name |
+|-------|----------|
+| Application | Message/Data |
+| Transport | Segment (TCP) / Datagram (UDP) |
+| Network | Packet |
+| Link | Frame |
+| Physical | Bits |
+
+# Header vs Trailer
+- **Header**: added at the front of the payload (most common)
+- **Trailer**: added at the end (used by Link layer for error detection, e.g., CRC)
 
 
-# H
+
+# Related
+- [[Layering]]
+- [[Protocols and Layers]]
+- [[OSI Layers]]

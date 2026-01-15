@@ -1,6 +1,11 @@
- other name
-	- switch, node, hub, intermediate system
-- function
-	- relay messages between links
-- example
-	- access point, cable/DSL model
+# Other Names
+- switch, node, hub, intermediate system
+# Function
+- relay messages between links
+# Example
+- access point, cable/DSL modem
+
+# Related
+- [[Component Names]]
+- [[Host]]
+- [[Link]]

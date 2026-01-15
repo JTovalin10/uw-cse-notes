@@ -1,3 +1,8 @@
 - how can we send information across a link
-	- [[modulation]]
+	- [[Modulation]]
 [[Simple Rate Model]]
+
+# Related
+- [[Media]]
+- [[Signal]]
+- [[Link]]

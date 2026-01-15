@@ -6,6 +6,6 @@
 		- only in kernel mode
 		- [[CLI]]: disable interrupts
 		- [[STI]]: enables interrupts
-		- only applies to current PCU (on a multicore)
+		- only applies to current CPU (on a multicore)
 - If another device interrupts during interrupt off
-	- it raises a interrupt and when interrupt turns back on the interrupt handler sees it and takes i
+	- it raises an interrupt and when interrupts turn back on, the interrupt handler sees it and takes action

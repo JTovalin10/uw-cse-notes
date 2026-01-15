@@ -1,26 +1,26 @@
 this is a specialized hardware cache inside the CPU that fixes the biggest problem with page tables: **SLOWNESS**
 
-TLB acts as a *Cheat Sheet* for the [[Memory Management Unit]]. it remembers recent translations fso the CPU doesnt ahvhe to look them up in the slow page table every time
+TLB acts as a *Cheat Sheet* for the [[Memory Management Unit]]. It remembers recent translations so the CPU doesn't have to look them up in the slow page table every time
 # What exactly is it
 TLB is a tiny, ultra fast memory chip physically located inside inside the [[Memory Management Unit]]
 - it stores pairs
 	- Virtual Page Number | Physical Frame Number
 - it is associative
-	- the hardware searches the entire TLB in parallel (all at once) to find a match instatnly
+	- the hardware searches the entire TLB in parallel (all at once) to find a match instantly
 # How it works
 - when your process tries to access a virtual address
-	- check TLB: teh ahrdware checks the TLB first
+	- check TLB: the hardware checks the TLB first
 		- TLB hit
-			- if translation is found, the hardware extracts teh PFN instatnly
+			- if translation is found, the hardware extracts the PFN instantly
 		- TLB miss
 			- if not found then it needs to go into ram, read the page table, find the PFN, and insert into TLB for next time
 # Why is it so effective
 - TLB is tiny (32-128 entries)
 - works because of locality
 	- spatial 
-		- if you access a[0] you are likely to access a[1]. since they are on the same page the TLB alreayd has the translation ready
+		- if you access a[0] you are likely to access a[1]. since they are on the same page the TLB already has the translation ready
 	- temporal
-		- if you access a variable now, you will lokley access it again soon (loop). the translation is still in TLB cache
+		- if you access a variable now, you will likely access it again soon (loop). the translation is still in TLB cache
 #  Hardware vs. Software Management
 
 Who handles the "TLB Miss" (the slow path)?

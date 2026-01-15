@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "d752a9a4f653db57",
+        "id": "bd5c22675e2804d4",
         "type": "tabs",
         "children": [
           {
-            "id": "bd1afed5c04d3cca",
+            "id": "f3636c3e6877d4e0",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "Screenshots/Pasted image 20260114214204.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260114214204"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -180,8 +178,22 @@
   },
   "active": "ab07eb33c40b335d",
   "lastOpenFiles": [
+    "Kernel Abstraction/Interrupts.md.tmp.14310.1768461525020",
+    "Kernel Abstraction/Interrupts.md.tmp.14310.1768461523536",
+    "Processes/Process.md.tmp.14310.1768461504159",
+    "File Systems/File Systems.md.tmp.14310.1768461465639",
+    "Other Components/IO.md.tmp.14310.1768461464196",
+    "Other Components/IO.md.tmp.14310.1768461462747",
+    "Other Components/IO.md.tmp.14310.1768461461283",
+    "Processes/Execution Context.md.tmp.14310.1768461428130",
+    "Processes/Context Switch.md.tmp.14310.1768461426726",
+    "Processes/Context Switch.md.tmp.14310.1768461425329",
+    "Processes/Context Switch.md.tmp.14310.1768461423928",
+    "Intro/Operating System.md",
+    "2026-01-14.md",
+    "Screenshots/Pasted image 20260114214204.png",
+    "Components and Structures/Microkernels.md",
     "OS Architecture/OS Structure.md",
-    "OS Architecture/OS Structure.md.tmp.12830.1768456122557",
     "Kernel Abstraction/Trap Table.md",
     "Kernel Abstraction/Traps.md",
     "Processes/Stack Pointer.md",
@@ -194,7 +206,6 @@
     "OS Architecture/Hardware Abstraction Layer.md",
     "OS Architecture/Major OS Components.md",
     "OS Architecture/Microkernels.md",
-    "OS Architecture/OS Structure.md.tmp.12830.1768456013908",
     "File Systems/Secondary Storage.md",
     "File Systems/Directory.md",
     "File Systems/File.md",
@@ -204,25 +215,13 @@
     "Memory/Page Table.md",
     "Memory/Memory Management Unit.md",
     "Memory/Memory Management Information.md",
-    "Memory/Memory Management.md",
-    "Memory/Memory.md",
-    "Processes/Execution Context.md",
-    "Other Components",
-    "OS Architecture",
-    "File Systems",
-    "Memory",
-    "Processes",
-    "Screenshots/Pasted image 20260114214204.png",
     "Screenshots/Pasted image 20260114214043.png",
     "Screenshots/Pasted image 20260114213634.png",
     "Screenshots/Pasted image 20260114213758.png",
-    "Untitled",
     "Screenshots/Screenshot 2026-01-14 at 6.06.24 PM.png",
-    "I",
     "Screenshots/Screenshot 2026-01-14 at 4.52.41 PM.png",
     "Screenshots/Screenshot 2026-01-14 at 4.52.26 PM.png",
     "Screenshots/Screenshot 2026-01-14 at 4.51.51 PM.png",
-    "Components and Structures",
     "Screenshots/Screenshot 2026-01-05 at 4.21.13 PM.png",
     "Screenshots/Pasted image 20260105150945.png"
   ]

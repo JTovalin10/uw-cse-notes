@@ -1,4 +1,4 @@
-- triggered by unexcpetd program behavior or malicious behavior
+- triggered by unexpected program behavior or malicious behavior
 	- ability to correct and redo the instruction
 	- The kernel remembers program state and saves that and then runs the exception
 # examples

@@ -5,3 +5,8 @@
 ![[Screenshot 2026-01-09 at 1.00.40 PM.png]]
 # Protocols
 ![[Screenshot 2026-01-09 at 1.01.07 PM.png]]
+
+# Related
+- [[Layering]]
+- [[Encapsulation]]
+- [[OSI Layers]]

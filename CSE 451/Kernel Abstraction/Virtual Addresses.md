@@ -1,7 +1,7 @@
 # What is virtual addresses
 - translation done in hardware, using a table
 - table set up by os kernel
-- memory is broken into pages (typucally 4KB chunks)
+- memory is broken into pages (typically 4KB chunks)
 ![[Screenshot 2026-01-07 at 12.41.04 PM.png]]
 # How this fixes base and bounds
 **1. No More Fragmentation**
@@ -41,6 +41,6 @@ Process "needs" 1GB
 - Read/Write/Execute permissions
 - Present bit (in RAM or swapped to disk?)
 # Downside
-- memory overhead as page tables take sapce
+- memory overhead as page tables take space
 - TLB required for performance (caching page table lookups)
 - More complex hardware

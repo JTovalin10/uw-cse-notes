@@ -137,14 +137,10 @@
             "id": "9cd2ba2df840556c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Writing the implementation of a DS.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Writing the implementation of a DS"
+              "title": "New tab"
             }
           }
         ],

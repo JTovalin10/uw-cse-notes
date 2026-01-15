@@ -23,9 +23,9 @@ the trap is a doorway between [[Mode Switch]] where a process running in user mo
 		1. code calls printf which calls write. the process cannot write to the screen directly so it executes a trap to ask the OS to do it
 	2. Unintentional (exceptions/faults)
 		1. the process did something illegal or nonsensical
-			1. ex: divide by zero, access memory you down own (segfault), or executing an invalid instruction
+			1. ex: divide by zero, access memory you don't own (segfault), or executing an invalid instruction
 			2. result
-				1. the trap handler for these rrors usually kills the process
+				1. the trap handler for these errors usually kills the process
 # Trap vs [[Interrupts]]
 - trap
 	- caused by software

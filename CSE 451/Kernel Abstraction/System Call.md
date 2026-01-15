@@ -1,6 +1,6 @@
 request by program for kernel to do some operation on its behalf
 	- only limited # of very carefully coded entry points
-	- pushes everything to the stack, runs system call, os wakes up and takes a prameters off the stack, then executes instruction
+	- pushes everything to the stack, runs system call, OS wakes up and takes parameters off the stack, then executes instruction
 
 # Dealing with System calls
 - locate arguments

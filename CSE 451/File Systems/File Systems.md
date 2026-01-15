@@ -9,7 +9,7 @@
 - a [[File]] is the basic unit of long-term storage
 - A [[Directory]] is just a special kind of file
 - NOTE:
-	- sequential byte steam is only one possability
+	- sequential byte stream is only one possibility
 # Operations
 - the file system interface defines standard operations
 	- file (or dir) creation or deletion

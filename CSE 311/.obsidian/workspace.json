@@ -11,10 +11,14 @@
             "id": "3e6987edffd34309",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Part I - Mathematical Foundations/Predicates and Quantifiers/What is a Predicate.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "What is a Predicate"
             }
           }
         ]
@@ -178,16 +182,37 @@
   },
   "active": "3e6987edffd34309",
   "lastOpenFiles": [
-    "Type Erasure and Arrays.md",
-    "Boolean Algebra.md",
+    "Part I - Mathematical Foundations/Predicates and Quantifiers/Scope of Quantifiers.md",
+    "Part I - Mathematical Foundations/Predicates and Quantifiers/Translating Predicates with Quantifiers.md",
+    "Part IV - Software Engineering/Software Engineering/Types of tests.md",
+    "Part IV - Software Engineering/Software Engineering/Mutations in ADT.md",
+    "Part IV - Software Engineering/Java Programming/Generics.md",
+    "Part IV - Software Engineering/Java Programming/Conditionals.md",
+    "Part III - Software Specifications/Software Specifications/Stronger Assertions.md",
+    "Part III - Software Specifications/Software Specifications/Writing methods specs in java.md",
+    "Part III - Software Specifications/Definitions/Side Conditions.md",
+    "Part III - Software Specifications/Definitions/@modifies.md",
+    "Part III - Software Specifications/Definitions/@effects.md",
+    "Part III - Software Specifications/Software Specifications/Propositions.md",
+    "Part III - Software Specifications/Software Specifications/Pre and post conditions.md",
+    "Part III - Software Specifications/Software Specifications/Postcondition.md",
+    "Part III - Software Specifications/Software Specifications/Kinds of Specifications.md",
+    "Part III - Software Specifications/Software Specifications/Hoare Triples.md",
+    "Part III - Software Specifications/Software Specifications/Floyd Logic.md",
+    "Part II - Formal Reasoning/Automata and Languages/Strings.md",
+    "Part I - Mathematical Foundations/Logic/Logical Equivalence(s).md.tmp.14310.1768459849010",
+    "Part II - Formal Reasoning/Automata and Languages/Regular Expressions.md",
+    "Part II - Formal Reasoning/Number Theory/Extended Euclid.md",
+    "Part II - Formal Reasoning/Number Theory/Modulo.md",
+    "Part I - Mathematical Foundations/Functions/Functions on a Set of Strings.md",
+    "Part I - Mathematical Foundations/Functions/Abstract Function.md",
+    "Part I - Mathematical Foundations/Functions/Composition.md",
+    "Part IV - Software Engineering/Java Programming/Visualizing array Algorithms.md",
+    "Part IV - Software Engineering/Java Programming/Type Erasure and Arrays.md",
     "Screenshot 2025-11-28 at 12.33.46 AM.png",
     "Screenshot 2025-09-29 at 1.03.42 PM.png",
     "Screenshot 2025-10-01 at 3.02.45 PM.png",
     "Screenshot 2025-10-22 at 5.28.02 PM.png",
-    "Screenshots",
-    "Untitled.md",
-    "Untitled 3.md",
-    "Writing methods specs in java.md",
-    "@effects.md"
+    "Screenshots"
   ]
 }

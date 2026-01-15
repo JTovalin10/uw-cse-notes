@@ -10,9 +10,9 @@ if (virtual_addr >= bounds) { SEGFAULT; }
 ```
 ## problems with them
 1. internal fragmentation
-	1. process needs 7kb but os allcoates 8kb parition. 1kb is unused
+	1. process needs 7KB but OS allocates 8KB partition. 1KB is unused
 2. external fragmentation
-	1. free memory exists but is scattered in usuable chunks
+	1. free memory exists but is scattered in unusable chunks
 ```
 	   Memory: [Process A: 4KB][FREE: 2KB][Process B: 4KB][FREE: 2KB]
 New Process C needs 3KB → Can't fit despite 4KB total free
