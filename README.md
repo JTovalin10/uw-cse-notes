@@ -38,7 +38,7 @@ These courses contain notes from past quarters. They will be organized and refin
 
 ## Note
 
-This vault does not include all courses I have taken, but rather contains the most recent ones with available notes. The organization and completeness of notes varies by course, with current courses being the most up-to-date and structured.
+This vault does not include all courses I have taken, but rather contains the classes I found most helpful. The organization and completeness of notes varies by course, with current courses being the most up-to-date and structured. Disclaimer: I used claude code to organize my notes and break them down
 
 ---
 
