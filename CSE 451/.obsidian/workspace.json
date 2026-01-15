@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "35281768043a464b",
+        "id": "d752a9a4f653db57",
         "type": "tabs",
         "children": [
           {
-            "id": "03690ed2931f85cd",
+            "id": "dc40c864dff101a3",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Memory Management Unit.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Memory Management Unit"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "system calls",
+                "query": "memory management",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -176,44 +180,49 @@
       "bases:Create new base": false
     }
   },
-  "active": "ab07eb33c40b335d",
+  "active": "dc40c864dff101a3",
   "lastOpenFiles": [
-    "Components and Structures",
-    "Kernel Abstraction/Registers and Flags/STI.md",
-    "Kernel Abstraction/Virtual Addresses.md",
-    "Kernel Abstraction/Transparent Restartable Execution.md",
-    "Kernel Abstraction/System Call.md",
-    "Intro/Stack Segment.md",
-    "Intro/Simple Memory Protection.md",
-    "Screenshots/Screenshot 2026-01-05 at 4.21.13 PM.png",
-    "Intro/Referee.md",
-    "Kernel Abstraction/polling.md",
-    "Kernel Abstraction/Privilege Level.md",
-    "Intro/Policy.md",
-    "Screenshots/Pasted image 20260105150945.png",
-    "Intro/operating system.md",
-    "Screenshots/Pasted image 20260105151204.png",
-    "Kernel Abstraction/Mode Switch.md",
-    "Kernel Abstraction/Memory layout.md",
-    "Intro/Mechanism.md",
-    "Kernel Abstraction/Interrupt Handler.md",
-    "Kernel Abstraction/Interrupt Masking.md",
-    "Intro/Illusionist.md",
+    "README.md",
+    "Translation Lookside Buffer.md",
+    "Memory Management Unit.md",
+    "Memory Management.md",
+    "Page Table.md",
+    "Untitled.md",
+    "Components and Structures/States of a user process.md",
+    "Components and Structures/Process Operations.md",
+    "Components and Structures/Memory Management Information.md",
+    "Components and Structures/Process State.md",
+    "Components and Structures/Trap Table.md",
+    "Components and Structures/Process Control Block.md",
+    "Components and Structures/Context Switch.md",
+    "Components and Structures/Registers.md",
+    "Components and Structures/Machine State.md",
+    "Components and Structures/Process.md",
+    "Kernel Abstraction/Code Segment.md",
     "Kernel Abstraction/Registers and Flags/IF.md",
-    "Kernel Abstraction/Hardware Modes.md",
-    "Intro/Glue.md",
-    "Kernel Abstraction/Global Descriptor Table.md",
-    "Kernel Abstraction/Registers and Flags/General Protection Fault (GPF).md",
-    "Kernel Abstraction/Exceptions.md",
-    "Kernel Abstraction/Registers and Flags/CLI.md",
-    "Kernel Abstraction/Registers and Flags/EAX.md",
+    "Screenshots/Screenshot 2026-01-14 at 6.06.24 PM.png",
+    "Components and Structures/Traps.md",
+    "Components and Structures/Stack Pointer.md",
+    "Components and Structures/Program Counter.md",
+    "Components and Structures/Process Management.md",
+    "Components and Structures/Process Identification.md",
+    "Components and Structures/OS Structure.md",
+    "Components and Structures/Accounting Information.md",
+    "Kernel Abstraction/Mode Switch.md",
+    "I",
+    "Screenshots/Screenshot 2026-01-14 at 4.52.41 PM.png",
+    "Screenshots/Screenshot 2026-01-14 at 4.52.26 PM.png",
+    "Screenshots/Screenshot 2026-01-14 at 4.51.51 PM.png",
+    "Components and Structures",
+    "Screenshots/Screenshot 2026-01-05 at 4.21.13 PM.png",
+    "Screenshots/Pasted image 20260105150945.png",
+    "Screenshots/Pasted image 20260105151204.png",
     "Kernel Abstraction/Registers and Flags",
     "Intro",
     "Kernel Abstraction",
     "Screenshots",
     "Screenshots/Screenshot 2026-01-07 at 12.41.04 PM.png",
     "Screenshots/Screenshot 2026-01-07 at 12.40.08 PM.png",
-    "Screenshots/Screenshot 2026-01-07 at 12.01.34 PM.png",
-    "Screenshots/Screenshot 2026-01-07 at 12.00.18 PM.png"
+    "Screenshots/Screenshot 2026-01-07 at 12.01.34 PM.png"
   ]
 }

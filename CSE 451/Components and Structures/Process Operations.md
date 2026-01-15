@@ -1,0 +1,11 @@
+- the OS provides the following kinds operations on processes (the process abstraciton interface)
+	- create
+	- delete
+	- suspend
+	- resume
+	- clone
+		- a process
+	- inter-process communication
+	- inter-process synchronization
+	- create/delete a child process
+		- subprocess
