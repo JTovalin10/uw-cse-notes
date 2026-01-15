@@ -1,0 +1,6 @@
+- Formula: (Message (size in bits) / Rate (bits/second)) + Delay
+- Latency is the delay to send a message over a link
+	- transmission delay
+		- time to put M-bit message "on the wire"
+		- T-delay = M(bits) / Rate (bits/sec) = M/R seconds
+	- prop

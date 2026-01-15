@@ -1,0 +1,1 @@
+An alphabet $\sum$ is any finite set of characters

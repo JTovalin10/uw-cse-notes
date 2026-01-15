@@ -1,0 +1,3 @@
+- sequences means order matters, where if we are bound to {n,m,k} all ways to represent the sequence are distinct so {n,m,k} is not the same as {m,k,n}
+- distinct means you cant repeat elements
+- Size of a sequence is defined by [[Factorial]] where n = 

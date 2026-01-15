@@ -1,0 +1,24 @@
+- command
+	- gdb -e exploit0 -s ../targets/target0 -d ../target
+- Setting break points
+	- catch exec (Break when exec into new process)
+	- run (starts the program)
+	- break main (Setting breakpoint @ main)
+	- continue
+- useful GDB commands
+	- step \[s]: execute next source code line
+	- next \[n]: step over function
+	- stepi \[si]: execute next assembly instruction
+	- list: display source code
+	- disassemble \[disas]: - disassemble specified function
+	- info register : inspect current register values
+	- info frame : info about current stack frame
+	- print \[p] : inspect variable
+	- e.g., p &buf (the pointer) or  p buf (the value)
+	- examine memory (follow by / and format)
+		- 20 words in hex at address: x/20xw 0xbffffcd4
+		- Same as x/20x
+		- x /5i $eip (print 5 instructions at %eip)
+		- i for instruction
+		- x for hex
+	- 

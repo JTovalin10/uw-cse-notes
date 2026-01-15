@@ -1,0 +1,3 @@
+adds an API that allows applications to use the kernel. think print
+
+- Libraries, user interface widgets, ...

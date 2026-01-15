@@ -1,0 +1,6 @@
+- each javadoc comment includes
+	- an overview sentence
+		- the first sentence
+	- explanation of each parameter
+	- what is returned
+	- any exceptions thrown

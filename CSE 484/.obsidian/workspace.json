@@ -1,0 +1,192 @@
+{
+  "main": {
+    "id": "e7a467c358b8eb7f",
+    "type": "split",
+    "children": [
+      {
+        "id": "6323bb4a0781453b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0cda06461f73bf2b",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Screenshots/Screenshot 2025-12-02 at 4.59.06 PM.png"
+              },
+              "icon": "lucide-image",
+              "title": "Screenshot 2025-12-02 at 4.59.06 PM"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "98b4314ab040fd2c",
+    "type": "split",
+    "children": [
+      {
+        "id": "801e5e800ca79ce2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "72fcab0e1a7392d0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "202b5277055a8be5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2214c95090c87186",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "5ae6d9055888c515",
+    "type": "split",
+    "children": [
+      {
+        "id": "bc42c4acd1bba880",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "38a78ba90ca710ae",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Screenshots/Screenshot 2025-12-02 at 4.59.06 PM.png",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Screenshot 2025-12-02 at 4.59.06 PM"
+            }
+          },
+          {
+            "id": "5efd6fc9c23468d5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Screenshots/Screenshot 2025-12-02 at 4.59.06 PM.png",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Screenshot 2025-12-02 at 4.59.06 PM"
+            }
+          },
+          {
+            "id": "81b6acc2c2e54a0b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "844a97fd34538c2c",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "772d0076d4bb87a0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Screenshots/Screenshot 2025-12-02 at 4.59.06 PM.png",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Screenshot 2025-12-02 at 4.59.06 PM"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "72fcab0e1a7392d0",
+  "lastOpenFiles": [
+    "Screenshots/Screenshot 2025-12-02 at 4.21.47 PM.png",
+    "Screenshots/Screenshot 2025-10-22 at 3.57.07 PM.png",
+    "Screenshots/Screenshot 2025-10-10 at 9.06.20 PM.png",
+    "Anonymity in data.md",
+    "Screenshots"
+  ]
+}

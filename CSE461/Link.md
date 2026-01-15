@@ -1,0 +1,6 @@
+- other name
+	- channel
+- function
+	- connects nodes
+- example
+	- wires, wireless

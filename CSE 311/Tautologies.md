@@ -1,0 +1,4 @@
+- Tautology:  always true
+- Contradiction: always false
+- Contingency: true or false
+- [[Truth Tables]]

@@ -1,0 +1,5 @@
+- char - 1 byte
+- short - 2 bytes
+- int - 4 bytes
+- long long/double - 8 bytes
+- pointer - 4(32-bit) or 8 (64) bytes

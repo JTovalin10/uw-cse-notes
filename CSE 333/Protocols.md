@@ -1,0 +1,6 @@
+- set of rules governing the format and exchange of messages ina. computing system
+	- messages a client can exchange with a server
+		- what is the syntax of a message
+		- what do the messages mean
+		- what are legal replies to a message
+	- what sequence of messages are legal

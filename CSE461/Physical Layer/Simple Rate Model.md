@@ -1,0 +1,5 @@
+- Rate 
+	- in bits/second
+- delay
+	- in seconds, related to length
+- 

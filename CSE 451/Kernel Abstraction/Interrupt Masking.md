@@ -1,0 +1,11 @@
+- [[Interrupt Handler]] runs with interrupt off
+	- is re enabled when interrupt completes
+- OS kernel can also turn [[Interrupts]] off
+	- Eg. when determining the next process/thread to run
+	- on x86
+		- only in kernel mode
+		- [[CLI]]: disable interrupts
+		- [[STI]]: enables interrupts
+		- only applies to current PCU (on a multicore)
+- If another device interrupts during interrupt off
+	- it raises a interrupt and when interrupt turns back on the interrupt handler sees it and takes i

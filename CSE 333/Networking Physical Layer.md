@@ -1,0 +1,15 @@
+- Bits are transmitted over a radio or modulated onto a wire
+	- think of sin(x) graph
+	- physical layer specifies how bits are encoded at a signal level
+	- can be encodes as 
+		- 1
+			- +1v
+			- -1v
+		- 0 
+			- +0v
+			- -0v
+- NIC - network interface controller
+	- translate information between computers
+	- Has a 48bit hardware address
+		- Visible on hardware level
+	- Transmits data and looks for receiving data

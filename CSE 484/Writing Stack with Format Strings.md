@@ -1,0 +1,2 @@
+- %n - tells printf to write the number of characters that have been printed
+- 

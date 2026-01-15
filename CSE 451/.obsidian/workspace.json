@@ -1,0 +1,219 @@
+{
+  "main": {
+    "id": "f97f609518836f33",
+    "type": "split",
+    "children": [
+      {
+        "id": "35281768043a464b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "03690ed2931f85cd",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8fdcfc6436fb3a8e",
+    "type": "split",
+    "children": [
+      {
+        "id": "42411fd1898c58a4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ab07eb33c40b335d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "c02a8228318ef413",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "system calls",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "4dbc3463d581f833",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "868df9d5ef57709b",
+    "type": "split",
+    "children": [
+      {
+        "id": "2f3741d900c294fe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75baad5fc95cda9a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "74685285567e4740",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "4d93815a3788c3e0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a8548b354b99c60d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "891630301842da1f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "ab07eb33c40b335d",
+  "lastOpenFiles": [
+    "Components and Structures",
+    "Kernel Abstraction/Registers and Flags/STI.md",
+    "Kernel Abstraction/Virtual Addresses.md",
+    "Kernel Abstraction/Transparent Restartable Execution.md",
+    "Kernel Abstraction/System Call.md",
+    "Intro/Stack Segment.md",
+    "Intro/Simple Memory Protection.md",
+    "Screenshots/Screenshot 2026-01-05 at 4.21.13 PM.png",
+    "Intro/Referee.md",
+    "Kernel Abstraction/polling.md",
+    "Kernel Abstraction/Privilege Level.md",
+    "Intro/Policy.md",
+    "Screenshots/Pasted image 20260105150945.png",
+    "Intro/operating system.md",
+    "Screenshots/Pasted image 20260105151204.png",
+    "Kernel Abstraction/Mode Switch.md",
+    "Kernel Abstraction/Memory layout.md",
+    "Intro/Mechanism.md",
+    "Kernel Abstraction/Interrupt Handler.md",
+    "Kernel Abstraction/Interrupt Masking.md",
+    "Intro/Illusionist.md",
+    "Kernel Abstraction/Registers and Flags/IF.md",
+    "Kernel Abstraction/Hardware Modes.md",
+    "Intro/Glue.md",
+    "Kernel Abstraction/Global Descriptor Table.md",
+    "Kernel Abstraction/Registers and Flags/General Protection Fault (GPF).md",
+    "Kernel Abstraction/Exceptions.md",
+    "Kernel Abstraction/Registers and Flags/CLI.md",
+    "Kernel Abstraction/Registers and Flags/EAX.md",
+    "Kernel Abstraction/Registers and Flags",
+    "Intro",
+    "Kernel Abstraction",
+    "Screenshots",
+    "Screenshots/Screenshot 2026-01-07 at 12.41.04 PM.png",
+    "Screenshots/Screenshot 2026-01-07 at 12.40.08 PM.png",
+    "Screenshots/Screenshot 2026-01-07 at 12.01.34 PM.png",
+    "Screenshots/Screenshot 2026-01-07 at 12.00.18 PM.png"
+  ]
+}

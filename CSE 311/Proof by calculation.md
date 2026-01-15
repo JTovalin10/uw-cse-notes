@@ -1,0 +1,4 @@
+- proves an implication
+	-  fact to be shown is an equation or inequality
+- Uses known facts and definitions
+	- latter includes, e.g., the fact that len(nil) = 0

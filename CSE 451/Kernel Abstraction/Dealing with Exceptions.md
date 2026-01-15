@@ -1,0 +1,7 @@
+- OS can choose
+	- fix the program exception
+		- make an illegal memory address legal
+	- alert the program of the exception
+		- divide by zero
+	- terminate the program
+	- and more

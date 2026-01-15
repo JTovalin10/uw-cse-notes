@@ -1,0 +1,7 @@
+- declarative
+	- says what the answer looks like
+		- doesn't say how to calculate it
+		- up to us to ensure that it satisfied the spec
+- Imperative
+	- tells us how the answer is calculated
+		- lays out exact steps of how it was calculated

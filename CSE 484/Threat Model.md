@@ -1,0 +1,32 @@
+- Assets
+	- what are we trying to protect
+		- user data
+- adversaries
+	- who might try to attack and why
+		- foreign governments
+		- other companies
+		- hackers
+		- other users
+- vulnerabilities
+	- how might the system be weak
+		- code
+		- weak passwords
+		- social engineering
+		- insider threats (employees)
+- threats
+	- what actions might an adversary take to exploit vulnerabilities
+- risk
+	- how important are assets? how likely an exploit
+			- legal and ethical aspect
+				- legal ramifications
+				- company reputation
+				- personal information of customers
+			- how likely is a succesful attack
+				- how many resources would the adversary need to execuse the attack
+				- the attacker only needs to win in one place
+					- make multiple layers of defense
+# defense in depth
+- write code using tools and practices
+- limit employee access to data
+- enforce strong passwords
+- 
