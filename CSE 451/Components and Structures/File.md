@@ -1,0 +1,1 @@
+named collection of persistent information

@@ -1,3 +1,13 @@
+# Lecture
+- A big chunk of the OS kernel deals with I/O
+	- hundreds of thousands of lines in Windows, Unix, etc
+- The OS provides a standard interface between programs (user or system) and devices
+	- file system (disk), sockets (networks), frame buffer (video)
+- **Device drivers** are the routines that interact with specific devices types
+	- encapsulates device-specific knowledge
+		- eg how to initialize a device how to request I/O how to handle interrupts or errors
+		- example: SCSI device drivers, Ethernet card drivers, video card drivers, sound card drivers, ...
+
 # What is it
 I/O stands for **Input/Output**
 

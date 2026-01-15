@@ -13,15 +13,114 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Memory Management Unit.md",
+                "file": "Components and Structures/Memory Management Unit.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "Memory Management Unit"
             }
+          },
+          {
+            "id": "36a5c8d0b62c9698",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components and Structures/Secondary Storage.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Secondary Storage"
+            }
+          },
+          {
+            "id": "4feff3dd0531e49e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components and Structures/File Systems.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "File Systems"
+            }
+          },
+          {
+            "id": "ed6b4d4950ccd0f5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components and Structures/Protection.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Protection"
+            }
+          },
+          {
+            "id": "8cfd61497c2ec6e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components and Structures/Command Interpreter (shell).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Command Interpreter (shell)"
+            }
+          },
+          {
+            "id": "e0504dd018b9eae7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components and Structures/OS Structure 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "OS Structure 1"
+            }
+          },
+          {
+            "id": "8a78d5ad5c91f7f6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components and Structures/Hardware Abstraction Layer.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Hardware Abstraction Layer"
+            }
+          },
+          {
+            "id": "bd1afed5c04d3cca",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components and Structures/Microkernels.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Microkernels"
+            }
           }
-        ]
+        ],
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -53,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "memory management",
+                "query": "IO",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -180,35 +279,39 @@
       "bases:Create new base": false
     }
   },
-  "active": "dc40c864dff101a3",
+  "active": "ab07eb33c40b335d",
   "lastOpenFiles": [
+    "Screenshots/Pasted image 20260114214204.png",
+    "Components and Structures/Microkernels.md",
+    "Components and Structures/Hardware Abstraction Layer.md",
+    "Screenshots/Pasted image 20260114214043.png",
+    "Components and Structures/Protection.md",
+    "Components and Structures/File Systems.md",
+    "Screenshots/Pasted image 20260114213634.png",
+    "Components and Structures/OS Structure 1.md",
+    "Screenshots/Pasted image 20260114213758.png",
+    "Components and Structures/Command Interpreter (shell).md",
+    "Untitled",
+    "Components and Structures/Directory.md",
+    "Components and Structures/File.md",
+    "Components and Structures/Secondary Storage.md",
+    "Components and Structures/Memory Management Unit.md",
+    "Components and Structures/Translation Lookside Buffer.md",
+    "Components and Structures/Memory Management.md",
+    "Components and Structures/Page Table.md",
     "README.md",
-    "Translation Lookside Buffer.md",
-    "Memory Management Unit.md",
-    "Memory Management.md",
-    "Page Table.md",
-    "Untitled.md",
+    "Components and Structures/IO.md",
+    "Components and Structures/Execution Context.md",
+    "Components and Structures/Context Switch.md",
     "Components and Structures/States of a user process.md",
     "Components and Structures/Process Operations.md",
     "Components and Structures/Memory Management Information.md",
     "Components and Structures/Process State.md",
     "Components and Structures/Trap Table.md",
     "Components and Structures/Process Control Block.md",
-    "Components and Structures/Context Switch.md",
     "Components and Structures/Registers.md",
     "Components and Structures/Machine State.md",
-    "Components and Structures/Process.md",
-    "Kernel Abstraction/Code Segment.md",
-    "Kernel Abstraction/Registers and Flags/IF.md",
     "Screenshots/Screenshot 2026-01-14 at 6.06.24 PM.png",
-    "Components and Structures/Traps.md",
-    "Components and Structures/Stack Pointer.md",
-    "Components and Structures/Program Counter.md",
-    "Components and Structures/Process Management.md",
-    "Components and Structures/Process Identification.md",
-    "Components and Structures/OS Structure.md",
-    "Components and Structures/Accounting Information.md",
-    "Kernel Abstraction/Mode Switch.md",
     "I",
     "Screenshots/Screenshot 2026-01-14 at 4.52.41 PM.png",
     "Screenshots/Screenshot 2026-01-14 at 4.52.26 PM.png",
@@ -216,13 +319,9 @@
     "Components and Structures",
     "Screenshots/Screenshot 2026-01-05 at 4.21.13 PM.png",
     "Screenshots/Pasted image 20260105150945.png",
-    "Screenshots/Pasted image 20260105151204.png",
     "Kernel Abstraction/Registers and Flags",
     "Intro",
     "Kernel Abstraction",
-    "Screenshots",
-    "Screenshots/Screenshot 2026-01-07 at 12.41.04 PM.png",
-    "Screenshots/Screenshot 2026-01-07 at 12.40.08 PM.png",
-    "Screenshots/Screenshot 2026-01-07 at 12.01.34 PM.png"
+    "Screenshots"
   ]
 }

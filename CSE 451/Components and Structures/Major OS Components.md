@@ -1,9 +1,9 @@
 - [[Process]](es)/[[thread]](s)
 - [[Memory]]
 - [[I/O]]
-- [[secondary storage]]
+- [[Secondary Storage]]
 - [[file system]]
-- [[protection]]
+- [[Protection]]
 - [[shells]] (command interpreter or OS UI)
 - [[GUI]]
 - [[networking]]
