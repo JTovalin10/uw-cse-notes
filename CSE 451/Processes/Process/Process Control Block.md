@@ -5,7 +5,7 @@ Every single process running has its own unique PCB stored in kernel memory
 
 # What does it contain
 the PCB is a struct. each os varies but agrees on:
-- [[Process Identification]] (PID)
+- [[Process ID]] (PID)
 - [[Process State]]
 - [[Program Counter]]
 - [[Registers]]
@@ -14,6 +14,14 @@ the PCB is a struct. each os varies but agrees on:
 - [[IO]] Status information
 	- A list of I/O devices allocated to the process and a list of open files
 - [[Accounting Information]]
+## Lecture
+Lecture agrees on most of these but syas
+- [[Process ID]]
+- Pointer to parent proc
+- Execution State
+- [[Registers]]
+- Address Space info
+- pointer for state queues
 # Why is it important
 it makes **multitasking** possible
 
