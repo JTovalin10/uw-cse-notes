@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d752a9a4f653db57",
+        "id": "8e79b361eef22e5c",
         "type": "tabs",
         "children": [
           {
-            "id": "dc40c864dff101a3",
+            "id": "99d6b9d64e8f1394",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Kernel Abstraction/Modes/Privilege Level.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Privilege Level"
             }
           }
         ]
@@ -176,8 +180,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "ab07eb33c40b335d",
+  "active": "99d6b9d64e8f1394",
   "lastOpenFiles": [
+    "Kernel Abstraction/Modes/Privileged Instructions.md",
+    "Kernel Abstraction/Modes/Privilege Level.md",
+    "Kernel Abstraction/Modes/Hardware ModesComponents/Application Control.md",
+    "Kernel Abstraction/Modes/Mode Switch.md",
+    "Kernel Abstraction/Modes/Hardware Modes.md",
+    "Intro/Operating System.md",
+    "Intro/Policy.md",
+    "Intro/Mechanism.md",
+    "Intro/Illusionist.md",
+    "Intro/Glue.md",
+    "I/O.md",
+    "GUI.md",
     "Processes/Thread.md",
     "Processes/ProcessComponents/Process vs Thread.md",
     "Memory/Translation Lookside BufferComponents/TLB Structure.md",
@@ -195,21 +211,9 @@
     "Memory/Page TableComponents",
     "Memory/MemoryComponents/Address Space Contents.md",
     "Memory/MemoryComponents",
-    "Memory/Memory ManagementComponents/OS Memory Responsibilities.md",
-    "Memory/Memory ManagementComponents/Primary Memory.md",
     "Memory/Memory ManagementComponents",
-    "Memory/Memory Management UnitComponents/Why MMU is Important.md",
-    "Memory/Memory Management UnitComponents/MMU TLB and Page Tables.md",
-    "Memory/Memory Management UnitComponents/MMU Memory Protection.md",
-    "Memory/Memory Management UnitComponents/MMU Cache Control.md",
-    "Memory/Memory Management UnitComponents/MMU Address Translation.md",
     "Memory/Memory Management UnitComponents",
-    "Kernel Abstraction/Traps/TrapsComponents/Types of Traps.md",
-    "Kernel Abstraction/Traps/TrapsComponents/Trap vs Interrupt.md",
-    "Kernel Abstraction/Traps/TrapsComponents/How Traps Work.md",
     "Kernel Abstraction/Traps/TrapsComponents",
-    "Kernel Abstraction/Registers and Flags/Flags/EFLAGSComponents/Status Flags.md",
-    "Kernel Abstraction/Registers and Flags/Flags/EFLAGSComponents/Control Flags.md",
     "Kernel Abstraction/Registers and Flags/Flags/EFLAGSComponents",
     "Kernel Abstraction/Modes/Privilege LevelComponents",
     "Kernel Abstraction/Modes/Hardware ModesComponents",
