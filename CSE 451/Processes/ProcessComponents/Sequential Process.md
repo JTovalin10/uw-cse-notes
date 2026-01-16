@@ -1,0 +1,12 @@
+- procs are data structures
+	- dynamically allocated inside OS memory
+- the process is the OS's abstraction for execution
+	- A process is a program in execution
+- Simplest case: **Sequential Process**
+	- an address space
+	- a single thread of execution
+- A sequential process is
+	- the unit of execution
+	- the unit of scheduling
+	- the dynamic (active) execution context
+		-  vs. the program - static, just a bunch of bytes
