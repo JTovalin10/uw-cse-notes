@@ -3,7 +3,7 @@
 - table set up by os kernel
 - memory is broken into pages (typically 4KB chunks)
 ![[Screenshot 2026-01-07 at 12.41.04 PM.png]]
-# How this fixes base and bounds
+# How this fixes [[Base and Bounds]]
 **1. No More Fragmentation**
 
 - Allocate any free 4KB frame anywhere in physical memory
@@ -44,3 +44,11 @@ Process "needs" 1GB
 - memory overhead as page tables take space
 - TLB required for performance (caching page table lookups)
 - More complex hardware
+# Coding Example
+
+```c
+int main() {
+int x = 1;
+int* y = &x // this returns the virtual address
+}
+```
