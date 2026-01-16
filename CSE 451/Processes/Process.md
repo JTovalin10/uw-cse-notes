@@ -1,7 +1,7 @@
 The name for a process is called a [[Process ID]]
 
 # What is it
-[[Sequential Proyes cess And what is Proc]]
+[[Sequential Process And what is Proc]]
 
 [[Process Lifecycle Events]]
 
