@@ -1,0 +1,11 @@
+# Status Flags
+- Carry Flag (CF) (bit 0)
+	- set if arithmetic operation carried/borrowed
+- Zero Flag (ZF) (bit 6)
+	- set if the result was zero
+- Sign Flag (SF, bit 7)
+	- Set if result was negative (MSB = 1)
+- Overflow Flag (OF, bit 11)
+	- set if signed overflow occurred
+- Parity Flag (PF, bit 2)
+	- set if result has even number of bits

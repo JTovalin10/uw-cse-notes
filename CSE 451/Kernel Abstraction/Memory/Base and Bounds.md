@@ -8,27 +8,12 @@ ex:
 physical_addr = base + virtual_addr
 if (virtual_addr >= bounds) { SEGFAULT; }
 ```
+
 ## problems with them
-1. internal fragmentation
-	1. process needs 7KB but OS allocates 8KB partition. 1KB is unused
-2. external fragmentation
-	1. free memory exists but is scattered in unusable chunks
-```
-	   Memory: [Process A: 4KB][FREE: 2KB][Process B: 4KB][FREE: 2KB]
-New Process C needs 3KB → Can't fit despite 4KB total free
-```
-3. no sharing
-	1. cannot share common code/libraries between processes
-4. limited growth
-```
-	Process at base=1000, bounds=4KB
-Stack wants to grow down, heap wants to grow up
-→ Stuck with 4KB forever, can't expand
-```
-5. Relocation Nightmare
-	1. to defragent or make space you need to (expensive and creates system pauses)
-		1. pause the process
-		2. copy entire memory region
-		3. update base pointer
-		4. resume process
+1. [[Internal Fragmentation]]
+2. [[External Fragmentation]]
+3. [[No Sharing Problem]]
+4. [[Limited Growth]]
+5. [[Relocation Nightmare]]
+
 These are fixed with [[Virtual Addresses]]
