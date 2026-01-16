@@ -1,0 +1,7 @@
+- goal
+	- find network path from our system to a given remote host
+- core mechanism: Time-To-Live
+- sends out three packets per TTL increment
+	- 3 trails of data for each hop distance
+- each data point corresponds to the total RTT time
+- **not every router has to report back this information**
