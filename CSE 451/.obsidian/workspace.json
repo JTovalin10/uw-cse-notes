@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Kernel Abstraction/Modes/Privilege Level.md",
+                "file": "Synchronization/Synchronization.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Privilege Level"
+              "title": "Synchronization"
             }
           },
           {
@@ -192,6 +192,9 @@
   },
   "active": "99d6b9d64e8f1394",
   "lastOpenFiles": [
+    "Synchronization/Mutual Exclusion.md",
+    "Synchronization/Synchronization.md",
+    "Kernel Abstraction/Modes/Privilege Level.md",
     "Synchronization/Race Conditions/Race ConditionsComponents/Temporal Relations.md",
     "Synchronization/Race Conditions/Race ConditionsComponents/Interleaved Schedules.md",
     "Synchronization/Race Conditions/Race ConditionsComponents/Heisenbug.md",
@@ -212,11 +215,9 @@
     "Synchronization/Critical Sections/Critical SectionsComponents",
     "Synchronization/Critical Sections/Critical Sections.md",
     "Synchronization/Race Conditions",
-    "Synchronization/Mutual Exclusion.md",
     "Synchronization/Locks",
     "Synchronization/Critical Sections",
     "Synchronization",
-    "Synchronization.md",
     "Screenshots/Pasted image 20260117081754.png",
     "Screenshots/Pasted image 20260117080947.png",
     "Screenshots/Pasted image 20260117080515.png",
