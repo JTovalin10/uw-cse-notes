@@ -1,0 +1,2 @@
+- Single threaded applications are executed sequentially
+- Absent [[Synchronoization]], instructions executed by distinct threads must be considered unordered/simultaneous
