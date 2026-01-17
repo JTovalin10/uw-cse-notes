@@ -25,18 +25,13 @@
             "id": "6adfd328a00fe875",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Synchronization/Critical Sections/Critical Sections.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Critical Sections"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -195,35 +190,38 @@
       "bases:Create new base": false
     }
   },
-  "active": "6adfd328a00fe875",
+  "active": "99d6b9d64e8f1394",
   "lastOpenFiles": [
+    "Processes/Memory/Page Fault.md",
+    "Synchronization/Race Conditions/Race ConditionsComponents/Interleaved Schedules.md.tmp.10024.1768668131199",
+    "Synchronization/Locks/Locks.md",
+    "Synchronization/Race Conditions/Race ConditionsComponents/Temporal Relations.md.tmp.10024.1768668124586",
+    "Synchronization.md.tmp.10024.1768668111348",
+    "Synchronization/Locks/LocksComponents/Atomic.md",
+    "Synchronization/Critical Sections/Critical SectionsComponents/Disabling Interrupts.md",
+    "Synchronization/Critical Sections/Critical SectionsComponents/Spinlock.md.tmp.10024.1768668093079",
+    "Synchronization/Critical Sections/Critical SectionsComponents/Critical Section Patterns.md",
+    "Synchronization/Critical Sections/Critical Sections.md",
+    "Synchronization/Mutual Exclusion.md.tmp.10024.1768668075238",
+    "Synchronization/Locks/LocksComponents/Atomic.md.tmp.10024.1768668062621",
+    "Synchronization/Locks/Locks.md.tmp.10024.1768668050573",
+    "Synchronization/Critical Sections/Critical SectionsComponents/Critical Section Requirements.md",
+    "Synchronization/Race Conditions/Race Condition.md.tmp.10024.1768668038867",
+    "Synchronization/Critical Sections/Critical Sections.md.tmp.10024.1768668026886",
+    "Synchronization/Critical Sections/Critical SectionsComponents/Critical Section Patterns.md.tmp.10024.1768668012284",
     "Synchronization/Mutual Exclusion.md",
-    "Synchronization/Mutual Exclusion.md.tmp.8808.1768667675363",
-    "Synchronization/Race Conditions/Race ConditionsComponents/Temporal Relations.md.tmp.8808.1768667674915",
-    "Synchronization/Race Conditions/Race ConditionsComponents/Interleaved Schedules.md.tmp.8808.1768667674439",
-    "Synchronization/Race Conditions/Race Condition.md.tmp.8808.1768667674032",
-    "Synchronization/Locks/LocksComponents/Atomic.md.tmp.8808.1768667673646",
-    "Synchronization/Locks/Locks.md.tmp.8808.1768667673301",
-    "Synchronization/Critical Sections/Critical SectionsComponents/Spinlock.md.tmp.8808.1768667672979",
-    "Synchronization/Critical Sections/Critical Sections.md.tmp.8808.1768667672673",
     "Synchronization/Race Conditions/Race Condition.md",
     "Synchronization/Critical Sections/Critical SectionsComponents/Semaphores.md",
     "Synchronization/Critical Sections.md",
-    "Synchronization/Mutual Exclusion.md.tmp.8808.1768667426927",
     "Synchronization/Race Conditions/Race ConditionsComponents/Heisenbug.md",
-    "Synchronization/Race Conditions/Race ConditionsComponents/Heisenbug.md.tmp.8808.1768667416138",
     "Synchronization/Race Conditions/Race ConditionsComponents/Temporal Relations.md",
     "Synchronization/Race Conditions/Race ConditionsComponents/Interleaved Schedules.md",
     "Synchronization/Locks/LocksComponents/compare_and_swap.md",
     "Synchronization/Locks/LocksComponents/test_and_set.md",
-    "Synchronization/Locks/LocksComponents/Atomic.md",
-    "Synchronization/Locks/Locks.md",
     "Synchronization/Race Condition.md",
-    "Synchronization/Critical Sections/Critical SectionsComponents/Disabling Interrupts.md",
     "Synchronization/Critical Sections/Critical SectionsComponents/Messages.md",
     "Synchronization/Critical Sections/Critical SectionsComponents/Monitors.md",
     "Synchronization/Critical Sections/Critical SectionsComponents/Spinlock.md",
-    "Synchronization/Critical Sections/Critical Sections.md",
     "Synchronization.md",
     "README.md",
     "Screenshots/Pasted image 20260117081754.png",
@@ -233,8 +231,6 @@
     "Synchronization/Interleaved Schedules.md",
     "Synchronization/Locks.md",
     "Screenshots/Pasted image 20260117080515.png",
-    "Synchronization/Temporal Relations.md",
-    "Kernel Abstraction/Modes/Privilege Level.md",
     "Screenshots/Pasted image 20260116012004.png",
     "Screenshots/Pasted image 20260116005901.png",
     "Screenshots/Pasted image 20260116004349.png",
