@@ -1,72 +1,33 @@
+## Lecture Notes
+[[Semaphore Lecture Notes]]
+
 # Semaphores
 a synchronization primitive consisting of an integer counter and a queue of waiting threads
 
 introduced by Dijkstra in 1968
 
 The following operations are done **[[Atomic]]ally**
+
 ## Operations
-```c
-wait(S)    // also called P() or down()
-signal(S)  // also called V() or up()
-```
+[[Semaphore Operations]]
 
-### wait(S) / P() / down()
-```c
-void wait(semaphore *S) {
-    S->value--;
-    if (S->value < 0) {
-        // add this thread to S->waiting_queue
-        block();
-    }
-}
-```
-
-### signal(S) / V() / up()
-```c
-void signal(semaphore *S) {
-    S->value++;
-    if (S->value <= 0) {
-        // remove a thread T from S->waiting_queue
-        wakeup(T);
-    }
-}
-```
+## Blocking Behavior
+[[Semaphore Blocking Behavior]]
 
 ## Types
-### Binary Semaphore (Mutex)
-- value is 0 or 1
-- used for mutual exclusion
-- initialized to 1
-
-### Counting Semaphore
-- value can be any non-negative integer
-- used to control access to a resource with multiple instances
-- initialized to number of available resources
+[[Semaphore Types]]
 
 ## Usage Pattern for Mutual Exclusion
-```c
-semaphore mutex = 1;
-
-// Thread code
-wait(&mutex);
-// critical section
-signal(&mutex);
-```
+[[Semaphore Mutual Exclusion Pattern]]
 
 ## Advantages over Spinlocks
-- threads block instead of busy-waiting
-- does not waste CPU cycles
-- suitable for longer critical sections
+[[Semaphore Advantages]]
 
 ## Disadvantages
-- easy to make mistakes (forgetting to signal, wrong order)
-- no ownership - any thread can signal
-- deadlock prone if not careful
+[[Semaphore Disadvantages]]
 
-## Classic Problems Solved with Semaphores
-- Producer-Consumer (bounded buffer)
-- Readers-Writers
-- Dining Philosophers
+## Classic Problems
+[[Classic Problems Solved with Semaphores]]
 
 ## Related
 - [[Critical Sections]]

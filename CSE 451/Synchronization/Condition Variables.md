@@ -1,0 +1,11 @@
+# Operations
+- wait
+	- wait until some thread does a signal and release the associated lock, as an [[Atomic]] operation
+- signal
+	- if any threads are waiting, wake up one
+	- cannot proceed until lock re-acquired
+- signal() is not remembered
+	- a signal to a condition variable that has no threads waiting is a no-op
+- Qualitative use guideline
+	- you wait() when you cant proceed until some shared state changes
+	- you signal() when shared state changes from "bad" to "good"
