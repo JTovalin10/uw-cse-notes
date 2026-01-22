@@ -11,6 +11,8 @@ fork syscall
 		- returns the child's PID to the parent
 		- returns 0 to the child
 - fork() = "clone me"
+	- **complete copy**
+		- except PID
 # Calling fork
 1. creates a new address space
 2. initialize page tables with same mapping as the parent's

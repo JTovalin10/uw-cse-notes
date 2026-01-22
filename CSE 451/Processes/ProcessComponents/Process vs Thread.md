@@ -41,7 +41,7 @@ Even though processes have separate address spaces, they can share memory in spe
 - **Code/text segment** - if two processes run the same program (e.g., two terminals running bash), the instruction pages are mapped read-only and shared (same physical frames)
 - **Read-only static data** - constants and string literals can be shared since they never change
 - **Shared libraries** - code pages for libc, etc. are mapped read-only into multiple processes (same physical frames, different virtual addresses)
-- **Copy-on-write after [[Fork]]** - parent and child initially share all pages, only copied when one writes
+-  ** [[copy-on-write]] after [[Fork]]** - parent and child initially share all pages, only copied when one writes
 - **Explicit shared memory**:
 	- `mmap()` with `MAP_SHARED` - memory-mapped files or anonymous shared regions
 	- `shmget()`/`shmat()` - System V shared memory segments

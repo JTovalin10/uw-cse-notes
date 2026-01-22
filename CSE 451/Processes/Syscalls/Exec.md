@@ -7,3 +7,7 @@ int exec(char* prog, char* argv[]) { ... }
 3. initializes hardware context, args for new program
 4. places proc onto ready queue
 **does not create a new process**
+exec should never return
+
+LINK:
+exec function

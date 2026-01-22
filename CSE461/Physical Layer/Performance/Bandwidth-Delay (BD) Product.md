@@ -1,3 +1,4 @@
+The more bandwith, the more data can be transferred and further (think shouting vs whispering)
 # Formula
 $$BD = R \times D$$
 

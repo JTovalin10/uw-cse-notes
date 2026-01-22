@@ -1,6 +1,6 @@
 - procs are data structures
 	- dynamically allocated inside OS memory
-- the process is the OS's abstraction for execution
+- the [[Process]] is the OS's abstraction for execution
 	- A process is a program in execution
 - Simplest case: **Sequential Process**
 	- an address space

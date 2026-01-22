@@ -1,3 +1,4 @@
+shannon limit is for capacity (C), the maximum **lossless** information carrying rate of the channel
 # Shannon-Hartley Theorem
 $$C = B \log_2(1 + S/N) \text{ bits/sec}$$
 
