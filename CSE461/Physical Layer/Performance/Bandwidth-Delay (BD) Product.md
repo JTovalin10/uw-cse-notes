@@ -1,4 +1,4 @@
-The more bandwith, the more data can be transferred and further (think shouting vs whispering)
+The more [[Bandwidth]], the more data can be transmitted further (think shouting vs whispering)
 # Formula
 $$BD = R \times D$$
 
@@ -8,7 +8,7 @@ Where:
 - BD = bandwidth-delay product (bits)
 
 # What It Represents
-- The amount of data "in flight" on the link at any moment
+- **The amount of data "in flight" on the link at any moment**
 - Think of it as the "volume" of the pipe
 - Measured in bits (or messages/packets)
 

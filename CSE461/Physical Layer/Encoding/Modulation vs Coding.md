@@ -12,3 +12,4 @@ signal is sent directly on wire
 - [[Signal]]
 - [[Simple Rate Model]]
 - [[Nyquist Limit]]
+

@@ -7,8 +7,10 @@ For a **noiseless** channel with bandwidth B Hz:
 
 # Nyquist Limit Formula
 If there are V signal levels, the maximum bit rate is:
+Multi-level
 $$R = 2B \log_2 V \text{ bits/sec}$$
-
+binary
+$$R = 2B \text{bits/sec}$$
 Where:
 - B = bandwidth in Hz
 - V = number of signal levels

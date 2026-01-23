@@ -1,12 +1,15 @@
 # Variables
 - M = message size (bits)
 - R = rate (bits/sec)
-- D = propagation delay (seconds)
-- L = link length (meters)
-- C = speed of light ≈ $3 \times 10^8$ m/s
+- propagation delay (seconds)
+	- distance / speed of light
+- Transmit delay
+	- size / bandwidth
+- Queue
+	- ho long data has to wait until its their turn to be transmitted
 
 # Latency Formula
-$$\text{Latency} = \text{Transmission Delay} + \text{Propagation Delay} = \frac{M}{R} + D$$
+$$\text{Latency} = \text{Transmission Delay} + \text{Propagation Delay} + Queue$$
 
 ## Transmission Delay
 [[MessageLatencyComponents/Transmission Delay]]

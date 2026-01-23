@@ -1,0 +1,7 @@
+- estimate the probability
+	- 1st collision, wait 0 or 1 frame times
+	- 2nd collision, wait from 0 to 3 times
+	- 3rd collision, wait from 0 to 7 times
+- BEB doubles intervals for each successive collision
+	- quickly gets large enough to work
+	- very efficient in practice

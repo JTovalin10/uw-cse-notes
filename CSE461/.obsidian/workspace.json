@@ -4,81 +4,67 @@
     "type": "split",
     "children": [
       {
-        "id": "ef9d3ac221f66239",
+        "id": "15d60e2c135c4231",
         "type": "tabs",
         "children": [
           {
-            "id": "1c54548f0a35bdfa",
+            "id": "1ec6832c97d5fde6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Physical Layer/Performance/Bandwidth-Delay (BD) Product.md",
+                "file": "Physical Layer/Signals/Nyquist Limit.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Bandwidth-Delay (BD) Product"
+              "title": "Nyquist Limit"
             }
           },
           {
-            "id": "dd08805b9a9e316b",
+            "id": "1cfd99cd5e80ee54",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Link Layer/Error Detectin and Correction/Checksum.md",
+                "file": "Link Layer/Multiple Access/Carrier Sense Multiple Access (CSMA).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Checksum"
+              "title": "Carrier Sense Multiple Access (CSMA)"
             }
           },
           {
-            "id": "81584f63f0e68086",
+            "id": "eff2aea3bd58eb4a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Link Layer/Error Detectin and Correction/Error detection and correction.md",
+                "file": "Ethernet Frame Format.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Error detection and correction"
+              "title": "Ethernet Frame Format"
             }
           },
           {
-            "id": "4a90fe836f99fab1",
+            "id": "9deee26bfe335c59",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Link Layer/Error Detectin and Correction/Hamming Code.md",
+                "file": "Wireless complications.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hamming Code"
-            }
-          },
-          {
-            "id": "eaaed3b82c5a98fc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Link Layer/Retransmission/Retransmission.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Retransmission"
+              "title": "Wireless complications"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -110,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "checksu",
+                "query": "CSMA",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -240,52 +226,53 @@
       "bases:Create new base": false
     }
   },
-  "active": "eaaed3b82c5a98fc",
+  "active": "9deee26bfe335c59",
   "lastOpenFiles": [
-    "Link Layer/Error Detectin and Correction/Checksum.md",
-    "Link Layer/Error Detectin and Correction/Detection vs Correction.md",
-    "Screenshots/Screenshot 2026-01-22 at 2.41.33 PM.png",
-    "Screenshots/Screenshot 2026-01-22 at 2.42.50 PM.png",
-    "Screenshots/Screenshot 2026-01-22 at 2.41.39 PM.png",
-    "Link Layer/Error Detectin and Correction/Hamming Code.md",
-    "Screenshots/Screenshot 2026-01-22 at 2.39.08 PM.png",
-    "Screenshots/Screenshot 2026-01-22 at 2.37.43 PM.png",
-    "Link Layer/Error Detectin and Correction/Error detection and correction.md",
-    "Link Layer/Error Detectin and Correction/Cyclic Redundancy Check (CRC).md",
-    "Screenshots/Screenshot 2026-01-22 at 2.34.21 PM.png",
-    "Screenshots/Screenshot 2026-01-22 at 2.29.17 PM.png",
-    "Screenshots/Screenshot 2026-01-22 at 2.29.57 PM.png",
-    "Link Layer/Error Detectin and Correction/Link Layer.md",
-    "Link Layer/Error Detectin and Correction/Traceroute.md",
-    "Link Layer/Error Detectin and Correction/Using Error Codes.md",
-    "Screenshots/Screenshot 2026-01-21 at 1.16.54 PM.png",
-    "Physical Layer/Performance/Bandwidth-Delay (BD) Product.md",
-    "Physical Layer/Performance/Bandwidth-Delay Product.md",
-    "Physical Layer/Media/Wired Wireless Perspective.md",
-    "Physical Layer/Physical Layer.md",
-    "Physical Layer/Signals/Signal.md",
-    "Physical Layer/Signals/Shannon Capacity.md",
-    "Physical Layer/Signals/ShannonCapacityComponents/Shannon-Hartley Theorem.md",
-    "Physical Layer/Signals/ShannonCapacityComponents/Signal-to-Noise Ratio.md",
-    "Key Channel Properties.md",
-    "Physical Layer/Performance/Simple Link Model.md",
-    "Physical Layer/Performance/Message Latency.md",
-    "Physical Layer/Performance/Link.md",
-    "Physical Layer/Performance/Delay.md",
-    "Physical Layer/Media/Wires.md",
-    "Screenshots/Screenshot 2026-01-20 at 4.37.29 PM.png",
-    "Physical Layer/Signals/ShannonCapacityComponents",
+    "Ethernet Frame Format.md",
+    "Wireless complications.md",
+    "Screenshot 2026-01-22 at 4.13.04 PM.png",
+    "Link Layer/Multiple Access/Carrier Sense Multiple Access (CSMA).md",
+    "Binary Exponential Backoff (BEB).md",
     "Physical Layer/Signals/Nyquist Limit.md",
+    "Physical Layer/Encoding/Modulation vs Coding.md",
+    "Physical Layer/Encoding/Simple Rate Model.md",
+    "Screenshot 2026-01-22 at 3.43.00 PM.png",
+    "Physical Layer/Performance/Bandwidth-Delay (BD) Product.md",
+    "Physical Layer/Transmission Time.md",
+    "Link Layer/Retransmission/Stop-and-Wait.md",
+    "Link Layer/Multiple Access/Time Division Multiplexing (TDM).md",
+    "Link Layer/Multiple Access/Frequency Vision Multiplexing (FDM).md",
+    "Link Layer/Multiple Access/TDM vs. FDM.md",
+    "Link Layer/Multiple Access/ALOHA Protocol.md",
+    "Physical Layer/Performance/Message Latency.md",
+    "Physical Layer/Bandwidth.md",
+    "Screenshots/Screenshot 2026-01-22 at 3.34.26 PM.png",
+    "Link Layer/Multiple Access/Multiplexing Network Traffic.md",
+    "Screenshots/Screenshot 2026-01-22 at 3.29.20 PM.png",
+    "Link Layer/Multiple Access/Distributed (random) Access.md",
+    "Screenshots/Screenshot 2026-01-22 at 3.28.42 PM.png",
+    "Screenshots/Screenshot 2026-01-22 at 3.26.05 PM.png",
+    "Screenshots/Screenshot 2026-01-22 at 3.24.33 PM.png",
+    "Screenshots/Screenshot 2026-01-22 at 3.19.34 PM.png",
+    "Link Layer/Multiple Access",
+    "Link Layer/Retransmission/Automatic Repeat reQuest (ARQ).md",
+    "Screenshots/Screenshot 2026-01-22 at 3.07.59 PM.png",
+    "Link Layer/Retransmission/Sliding Window.md",
+    "Screenshots/Screenshot 2026-01-22 at 2.57.25 PM.png",
+    "Link Layer/Retransmission/Sequence Numbers.md",
+    "Link Layer/Retransmission/Context on Reliability.md",
+    "Link Layer/Retransmission/Retransmission.md",
+    "Link Layer/Error Detectin and Correction/Hamming Code.md",
+    "Link Layer/Error Detectin and Correction/Error detection and correction.md",
+    "Link Layer/Error Detectin and Correction/Checksum.md",
+    "Physical Layer/Signals/ShannonCapacityComponents",
     "Physical Layer/Signals",
-    "Physical Layer/Performance/RateComponents/Rate Units.md",
-    "Physical Layer/Performance/MessageLatencyComponents/Transmission Delay.md",
     "Physical Layer/Performance/RateComponents",
     "Physical Layer/Performance/MessageLatencyComponents",
     "Physical Layer/Performance",
     "Physical Layer/Media/WiresComponents",
     "Physical Layer/Media",
     "Physical Layer/Encoding/SimpleRateModelComponents",
-    "Physical Layer/Encoding",
-    "Link Layer/Framing/FrameComponents"
+    "Physical Layer/Encoding"
   ]
 }
