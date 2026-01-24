@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Link Layer/Multiple Access/Carrier Sense Multiple Access (CSMA).md",
+                "file": "Physical Layer/Performance/Message Latency.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Carrier Sense Multiple Access (CSMA)"
+              "title": "Message Latency"
             }
           }
         ],
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "CSMA",
+                "query": "propagation",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,7 +89,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -200,6 +201,15 @@
   },
   "active": "1cfd99cd5e80ee54",
   "lastOpenFiles": [
+    "RTT.md",
+    "Physical Layer/Performance/Bandwidth-Delay (BD) Product.md",
+    "Physical Layer/Signals/ShannonCapacityComponents/Shannon-Hartley Theorem.md",
+    "Physical Layer/Signals/Shannon Capacity.md",
+    "Physical Layer/Signals/Nyquist Limit.md",
+    "Physical Layer/Encoding/Modulation vs Coding.md",
+    "Computer Networks Textbook/Chapter 1/Performance/Performance.md",
+    "Link Layer/Multiple Access/Carrier Sense Multiple Access (CSMA).md",
+    "Physical Layer/Performance/Bandwidth-Delay Product.md",
     "Wireless complications.md",
     "Link Layer/Error Detection and Correction/Using Error Codes.md",
     "Link Layer/Error Detection and Correction/Traceroute.md",
@@ -227,10 +237,7 @@
     "Screenshots/Pasted image 20260123015114.png",
     "Screenshots/Pasted image 20260123014707.png",
     "Computer Networks Textbook/Chapter 1/Software/Software.md",
-    "Computer Networks Textbook/Chapter 1/Performance/Performance.md",
     "Computer Networks Textbook/Chapter 1/Requirements/Requirements.md",
-    "Computer Networks Textbook/Chapter 1/Architerture/Artchiterture.md",
-    "Computer Networks Textbook/Chapter 1/Applications/main.md",
     "Computer Networks Textbook/Chapter 1/Software",
     "Computer Networks Textbook/Chapter 1/Performance",
     "Computer Networks Textbook/Chapter 1/Requirements",
@@ -238,12 +245,6 @@
     "Computer Networks Textbook/Chapter 1/Applications",
     "Computer Networks Textbook/Chapter 1",
     "Computer Networks Textbook",
-    "Ethernet Frame Format.md",
-    "Link Layer/Multiple Access/Carrier Sense Multiple Access (CSMA).md",
-    "Binary Exponential Backoff (BEB).md",
-    "Physical Layer/Signals/Nyquist Limit.md",
-    "Physical Layer/Encoding/Modulation vs Coding.md",
-    "Physical Layer/Encoding/Simple Rate Model.md",
     "Link Layer/Multiple Access",
     "Physical Layer/Signals/ShannonCapacityComponents"
   ]

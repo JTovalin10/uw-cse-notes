@@ -1,0 +1,1 @@
+This is the time it takes for data on the wire to travel from src -> dest -> src. The textbook formula is: 2 * [[Propagation Delay]], however the more accurate and complicate one is 2 * [[Message Latency]]

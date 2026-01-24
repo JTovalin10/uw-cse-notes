@@ -18,10 +18,10 @@ Where:
 
 # Examples
 | Bandwidth | Levels (V) | Bits/symbol | Max Rate |
-|-----------|------------|-------------|----------|
-| 3 kHz | 2 | 1 | 6 Kbps |
-| 3 kHz | 4 | 2 | 12 Kbps |
-| 3 kHz | 16 | 4 | 24 Kbps |
+| --------- | ---------- | ----------- | -------- |
+| 3 kHz     | 2          | 1           | 6 Kbps   |
+| 3 kHz     | 4          | 2           | 12 Kbps  |
+| 3 kHz     | 16         | 3           | 24 Kbps  |
 
 # Key Insight
 - More signal levels = more bits per symbol = higher rate
