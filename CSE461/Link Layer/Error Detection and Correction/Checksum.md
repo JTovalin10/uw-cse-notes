@@ -2,6 +2,8 @@ Idea: sum up data in N-bit words
 	widely used in, e.g., TCP/IP/UDP
 ![[Screenshot 2026-01-21 at 11.30.48 AM.png]]
 stronger protection than [[Parity Bits]]
+
+The [[Hamming Distance]] is 2 with an error detection of <= 1 and error correction of 0
 # Internet
 ## What is it
 sum is defined in 1s complement arithmetic (must add carries). Its the negative sum

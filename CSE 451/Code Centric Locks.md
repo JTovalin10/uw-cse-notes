@@ -1,0 +1,1 @@
+classic critical sections where only one thread is allowed to execute a section of code at a time

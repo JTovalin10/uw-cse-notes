@@ -1,0 +1,3 @@
+- cant hear each other yet dont collide at shared receivers A and D
+- imporves performance through concurrency
+- ![[Screenshot 2026-01-26 at 3.45.49 PM.png]]
