@@ -1,14 +1,18 @@
 The more [[Bandwidth]], the more data can be transmitted further (think shouting vs whispering)
+
 # Formula
 $$BD = R \times D$$
 
 Where:
-- R = rate (bits/sec)
-- D = propagation delay (seconds)
+- B = [[Bandwidth]]
+- D = [[RTT]] (seconds)
 - BD = bandwidth-delay product (bits)
 
 # What It Represents
 - **The amount of data "in flight" on the link at any moment**
+	- this finds the max number of bytes that can be in the pipe at any given moment
+	- the width of the pipe and the length of the pipe can increase the number of water in the pipe at any given moment
+		- width impacts this as a backup may occur
 - Think of it as the "volume" of the pipe
 - Measured in bits (or messages/packets)
 

@@ -6,6 +6,7 @@ Where:
 - C = channel capacity (bits/sec)
 - B = bandwidth (Hz)
 - S/N = signal-to-noise ratio (linear, not dB)
+	- if in dB then you can convert it to S/N with $10^{n/10}$
 
 # Related
 - [[../Shannon Capacity|Shannon Capacity]]

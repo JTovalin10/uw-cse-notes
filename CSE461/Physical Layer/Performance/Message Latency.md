@@ -10,7 +10,10 @@
 
 # Latency Formula
 $$\text{Latency} = \text{Transmission Delay} + \text{Propagation Delay} + Queue$$
-
+It is important to note that you must account for any edge cases and this formula is just for one packet so you must multiple it by n
+- ACK set up
+- if the data is send continuously or you must wait for ACK
+- if you are sending m data at a time
 ## Transmission Delay
 [[MessageLatencyComponents/Transmission Delay]]
 
