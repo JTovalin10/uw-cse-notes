@@ -1,0 +1,1 @@
+logically (and possible physical) simultaneous operations for convenience/simplicity

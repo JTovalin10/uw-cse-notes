@@ -11,10 +11,14 @@
             "id": "8750eaa8202fe712",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Threads/What is a Process.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "What is a Process"
             }
           }
         ]
@@ -178,9 +182,24 @@
   },
   "active": "8750eaa8202fe712",
   "lastOpenFiles": [
+    "Threads/Value of Process Thread Separation.md",
+    "Threads/Threads Overview.md",
+    "Threads/Threads.md",
+    "Threads/The Big Picture.md",
+    "Threads/Key Idea.md",
+    "Threads/Address Space with Threads.md",
+    "Threads/Achieving Multithreading.md",
+    "Threads/Threads and Processes.md",
+    "Threads/What is a Process.md",
+    "Screenshots/address space with threads.png",
+    "parallelism.md",
+    "concurrency.md",
+    "Processes/Process.md",
+    "Processes/Data Centric Locks.md",
+    "Untitled.md",
+    "Threads",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Semantics Hoare vs Mesa.md",
-    "Data Centric Locks.md",
-    "Code Centric Locks.md",
+    "Processes/Code Centric Locks.md",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/Monitors.md",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Disadvantages.md",
     "Processes/Synchronization/Condition Variables.md",
@@ -191,21 +210,8 @@
     "copy-on-write.md",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents/Spinlock Use Cases.md",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents/Spinlock Implementation.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents/Spinlock Implementation Challenge.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents/Spinlock Disadvantages.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents/Spinlock Advantages.md",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents/Semaphore Types.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents/Semaphore Operations.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents/Semaphore Mutual Exclusion Pattern.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents/Semaphore Disadvantages.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents/Semaphore Lecture Notes.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents/Semaphore Blocking Behavior.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents/Semaphore Advantages.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents/Classic Problems Solved with Semaphores.md",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Structure.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Lecture Notes.md",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents",
     "Screenshots/Screenshot 2026-01-20 at 3.57.31 PM.png",
     "Screenshots/Screenshot 2026-01-20 at 3.53.03 PM.png",
@@ -218,11 +224,9 @@
     "Processes/Synchronization/Race Conditions",
     "Processes/Synchronization/Locks",
     "Processes/Synchronization/Critical Sections",
-    "Processes/Synchronization",
     "Screenshots/Pasted image 20260117081754.png",
     "Screenshots/Pasted image 20260117080947.png",
     "Screenshots/Pasted image 20260117080515.png",
-    "Screenshots/Pasted image 20260116012004.png",
-    "Screenshots/Pasted image 20260116005901.png"
+    "Screenshots/Pasted image 20260116012004.png"
   ]
 }
