@@ -12,4 +12,4 @@
 - [[Shannon Capacity]]
 - [[Wires]]
 - [[Fiber]]
-- [[Wireless]]
+- [[Physical Layer/Media/Wireless]]

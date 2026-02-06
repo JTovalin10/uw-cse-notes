@@ -1,2 +1,3 @@
 - cant hear each other (to coordinate) yet collide at B
 - we want to avoid the inefficiency of collision
+- solved by [[Multiple Access with Collision Avoidance]]

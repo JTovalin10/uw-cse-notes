@@ -1,16 +1,20 @@
-improve [[ALOHA Protocol]] by listening for activity before we send
+Improve [[ALOHA Protocol]] by listening for activity before we send ([[Carrier Sense]])
 - can do easily with wires, not wireless
+
 # Issues
 its still possible to listen and hear nothing when another node is sending because of delay
 
 it is a good defense against collision only when BD is small
 ![[Screenshot 2026-01-22 at 3.43.00 PM.png]]
-- everyone who collids needs to know it happened
-	- how long do we need to wait to know there wasnt a JAM
-	- time window in which a node may hear of a collision (transmission + jam) in 2D seconds
-		- Ompose a minimum frame length of 2D frames
-			- nodes cant finish before collision
-			- ethernet minimum frame is 64 bytes
+
+# CSMA/CD (with collision detection)
+if a collision is detected then abort the frame. This reduces the cost of collisions
+
+everyone who collides needs to know it happened. How long do we need to wait to know there wasn't a JAM?
+- Time window in which a node may hear of a collision (transmission + jam) = $2D$ seconds
+	- this means that it imposes a minimum frame length of 2D seconds
+	- Ethernet min frame is 64 bytes - also sets max network length (500m w/ coax, 100m w/ Twisted pair)
+
 # Persistence
 when a node is sending, the other node should wait until it is done, and send
 

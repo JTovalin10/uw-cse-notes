@@ -1,0 +1,4 @@
+- implements [[TDM vs. FDM]]
+- use one channel for coordination - random access w/[[Binary Exponential Backoff (BEB)|BEB]] (no [[Carrier Sense Multiple Access (CSMA)]], cant detect)
+- use other channels for traffic
+	- dedicated channel for QoS

@@ -1,3 +1,5 @@
 - cant hear each other yet dont collide at shared receivers A and D
 - imporves performance through concurrency
+- With no carrier sense it is able to be concurrent
+- with carieer sense it will see that B or C are busy so it wont send
 - ![[Screenshot 2026-01-26 at 3.45.49 PM.png]]

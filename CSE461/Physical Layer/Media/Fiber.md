@@ -13,5 +13,5 @@
 # Related
 - [[Media]]
 - [[Wires]]
-- [[Wireless]]
+- [[Physical Layer/Media/Wireless]]
 - [[Signals over Fiber]]

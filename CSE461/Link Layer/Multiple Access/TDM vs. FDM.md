@@ -17,4 +17,4 @@
 
 Links:
 [[Time Division Multiplexing (TDM)]]
-[[Frequency Vision Multiplexing (FDM)]]
+[[Frequency Division Multiplexing (FDM)]]

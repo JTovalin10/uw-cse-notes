@@ -1,4 +1,8 @@
-has address to identify the sender and receiver, CRC-32 for error detection; no ack or retransmission
-
-![[Screenshot 2026-01-22 at 4.13.04 PM.png]]
-
+# Classical
+- has addresses to identify the sender and receiver
+- CRC-32 for error detection; no ACKs or retransmission
+- start of frame identified with physical layer preamble
+- ![[Screenshot 2026-02-04 at 12.39.22 PM.png]]
+# Modern
+based on switched
+![[Screenshot 2026-02-04 at 12.41.42 PM.png]]

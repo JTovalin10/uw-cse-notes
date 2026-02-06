@@ -3,7 +3,7 @@
 	- Load varies greatly over time
 	- inefficient to always allocate users their ON needs with
 		- [[Time Division Multiplexing (TDM)]]
-		- [[Frequency Vision Multiplexing (FDM)]]
+		- [[Frequency Division Multiplexing (FDM)]]
 	- ![[Screenshot 2026-01-22 at 3.28.42 PM.png]]
 **Multiple Access**
 - schemes multiplex users according to demands - for gains of **statistical multiplexing**
@@ -21,4 +21,3 @@ We have two classes of multiple access algorithms in order to allow dynamic allo
 	1. pros: operates well under low loads, easy to set up, equality
 	2. neg: scaling is really hard
 	3. ex: wifi networks
-3. 

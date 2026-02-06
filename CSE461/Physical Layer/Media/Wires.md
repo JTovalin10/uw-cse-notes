@@ -16,4 +16,4 @@
 # Related
 - [[Media]]
 - [[Fiber]]
-- [[Wireless]]
+- [[Physical Layer/Media/Wireless]]

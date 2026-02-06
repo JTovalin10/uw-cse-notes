@@ -5,7 +5,7 @@
 - Common types:
 	- [[Wires]] (twisted pair, coaxial)
 	- [[Fiber]] (fiber optic cables)
-	- [[Wireless]] (radio, microwave, infrared)
+	- [[Physical Layer/Media/Wireless]] (radio, microwave, infrared)
 
 # Comparison of Media Types
 | Property | Wires | Fiber | Wireless |

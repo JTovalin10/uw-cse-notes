@@ -5,4 +5,4 @@ its difficult to re-synchronize after framing error
 	want a way to scan a start of frame
 ![[Screenshot 2026-01-20 at 4.25.07 PM.png]]
 # Alternatives
-[[Byte Stuffing]]]
+[[Byte Stuffing]]

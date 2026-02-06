@@ -6,7 +6,7 @@
 
 the gray area means there is a collision and it has to retransmit
 
-With slotted aloha we can avoid overlapping collision by creating slots which increases effiencey by 18%
+With slotted aloha we can avoid overlapping collision by creating slots which increases effiencey by 36%
 # Limitations
 simple, decentralized protocol that works well under low loads
 - not efficient under high loads
