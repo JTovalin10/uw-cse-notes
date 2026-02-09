@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "What is a Process"
             }
+          },
+          {
+            "id": "4484b76d67547aa5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Threads/Blocking IO Problem.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Blocking IO Problem"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -180,36 +195,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "8750eaa8202fe712",
+  "active": "4484b76d67547aa5",
   "lastOpenFiles": [
+    "Threads/Thread Levels.md",
+    "Threads/Blocking IO Problem.md",
+    "Memory/Memory Management Components/Memory Management Information.md",
+    "Memory/Memory Components/Accounting Information.md",
+    "Kernel Abstraction/Traps/Handle.md",
+    "Kernel Abstraction/Traps/System Call.md",
+    "Threads/Thread.md",
+    "Processes/Syscalls/exec vs fork.md",
+    "Processes/Syscalls/copy-on-write.md",
+    "Processes/Synchronization/Locks/Data Centric Locks.md",
+    "Processes/Synchronization/Locks/Code Centric Locks.md",
+    "File Systems/Components/File System Operations.md",
+    "Blocking I",
+    "Untitled.md",
+    "Threads/concurrency.md",
+    "Extra.md",
+    "Screenshots/Screenshot 2026-02-09 at 11.46.39 AM.png",
+    "Threads/Thread Levels/User vs Kernel Threads.md",
+    "Threads/Thread Levels/Scheduler Activations.md",
+    "Threads/Thread Levels/Blocking I∕O Problem.md",
+    "Threads/Thread Levels/User Threads.md",
+    "Threads/Thread Levels/Kernel Threads.md",
+    "Threads/Thread Levels",
+    "Screenshots/Screenshot 2026-02-09 at 11.45.36 AM.png",
+    "Screenshots/Screenshot 2026-02-09 at 11.38.59 AM.png",
+    "Screenshots/Screenshot 2026-02-09 at 11.38.55 AM.png",
+    "Screenshots/Screenshot 2026-02-09 at 11.37.22 AM.png",
+    "Threads/What is a Process.md",
     "Threads/Value of Process Thread Separation.md",
     "Threads/Threads Overview.md",
     "Threads/Threads.md",
     "Threads/The Big Picture.md",
     "Threads/Key Idea.md",
-    "Threads/Address Space with Threads.md",
-    "Threads/Achieving Multithreading.md",
-    "Threads/Threads and Processes.md",
-    "Threads/What is a Process.md",
     "Screenshots/address space with threads.png",
-    "parallelism.md",
-    "concurrency.md",
-    "Processes/Process.md",
-    "Processes/Data Centric Locks.md",
-    "Untitled.md",
     "Threads",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Semantics Hoare vs Mesa.md",
-    "Processes/Code Centric Locks.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/Monitors.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Disadvantages.md",
-    "Processes/Synchronization/Condition Variables.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Condition Variables.md",
-    "Processes/Synchronization/Bounded Buffer Problem.md",
-    "Processes/Synchronization/Synchronization.md",
-    "exec vs fork.md",
-    "copy-on-write.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents/Spinlock Use Cases.md",
-    "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents/Spinlock Implementation.md",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SpinlockComponents",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/SemaphoresComponents",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents/MonitorsComponents",
@@ -217,16 +239,9 @@
     "Screenshots/Screenshot 2026-01-20 at 3.53.03 PM.png",
     "Screenshots/Screenshot 2026-01-20 at 3.45.27 PM.png",
     "Screenshots/Screenshot 2026-01-20 at 3.43.23 PM.png",
-    "Screenshots/Screenshot 2026-01-20 at 3.41.05 PM.png",
     "Processes/Synchronization/Race Conditions/Race ConditionsComponents",
     "Processes/Synchronization/Locks/LocksComponents",
     "Processes/Synchronization/Critical Sections/Critical SectionsComponents",
-    "Processes/Synchronization/Race Conditions",
-    "Processes/Synchronization/Locks",
-    "Processes/Synchronization/Critical Sections",
-    "Screenshots/Pasted image 20260117081754.png",
-    "Screenshots/Pasted image 20260117080947.png",
-    "Screenshots/Pasted image 20260117080515.png",
-    "Screenshots/Pasted image 20260116012004.png"
+    "Processes/Synchronization/Race Conditions"
   ]
 }
