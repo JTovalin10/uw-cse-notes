@@ -3,6 +3,6 @@
 ## Examples
 - [[Program Counter]]
 - Registers
-- [[Virtual Addresses]]
+- [[Kernel Abstraction/Memory/Virtual Addresses]]
 - OS Resources
 	- if the process what writing to a file, the OS needs to remember which file was open and the current position of the "cursor" in that file (fd)

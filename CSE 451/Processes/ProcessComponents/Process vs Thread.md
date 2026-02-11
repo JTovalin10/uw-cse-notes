@@ -49,7 +49,7 @@ Even though processes have separate address spaces, they can share memory in spe
 
 **Key insight**: anything read-only can be safely shared between processes since no one can modify it.
 
-This is how [[Easy Sharing]] works with [[Virtual Addresses]] - multiple virtual pages can point to the same physical frame.
+This is how [[Easy Sharing]] works with [[Kernel Abstraction/Memory/Virtual Addresses]] - multiple virtual pages can point to the same physical frame.
 
 # When to use which
 - **Use processes when:**

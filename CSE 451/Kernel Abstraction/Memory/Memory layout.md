@@ -1,3 +1,3 @@
 [[Simple Memory Protection]]
 
-[[Virtual Addresses]]
+[[Kernel Abstraction/Memory/Virtual Addresses]]

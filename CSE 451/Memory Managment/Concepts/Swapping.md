@@ -1,0 +1,1 @@
+saves a program entire state to disk (including memory image), allows another program to run, and then the first program can be swapped back in and re-start right where it was

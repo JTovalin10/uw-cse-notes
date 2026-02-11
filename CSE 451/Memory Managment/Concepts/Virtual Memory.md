@@ -11,6 +11,7 @@ the memory allocated for each process is "virtual" where each process thinks the
 		- paging can be slow
 - protection
 	- virtual memory isolate from each other
+	- One process cannot name addresses visible to others; each process has its own isolated address space
 ## How can we achieve this
 - [[Memory Management Unit]]
 - [[Translation Lookside Buffer]]

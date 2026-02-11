@@ -1,7 +1,7 @@
 ## what is it
 - a hardware cache of recent virtual-to-physical address translations
 - part of the chip's memory management unit (MMU)
-- solves the performance problem of [[Virtual Addresses]]: without a TLB, every memory access requires walking the page table (extra memory accesses per instruction)
+- solves the performance problem of [[Kernel Abstraction/Memory/Virtual Addresses]]: without a TLB, every memory access requires walking the page table (extra memory accesses per instruction)
 - typically holds 32-256 entries
 
 ## how it works

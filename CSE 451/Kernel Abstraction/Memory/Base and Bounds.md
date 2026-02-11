@@ -16,4 +16,4 @@ if (virtual_addr >= bounds) { SEGFAULT; }
 4. [[Limited Growth]]
 5. [[Relocation Nightmare]]
 
-These are fixed with [[Virtual Addresses]]
+These are fixed with [[Kernel Abstraction/Memory/Virtual Addresses]]
