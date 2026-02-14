@@ -1,0 +1,1 @@
+A [[Multiplexing]] approach that shares the physical link over time, but data is transmitted from each flow **on demand** rather than during a predetermined slot. If only one flow has data, it gets the full link without waiting. Addresses the shortcomings of [[Synchronous Time-Division Multiplexing]] and [[Frequency-Division Multiplexing]].

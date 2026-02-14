@@ -1,0 +1,1 @@
+The upper portion of the 25-bit identifier in an ATM cell header. Groups multiple [[Virtual Circuit Identifier|VCIs]] into a single **virtual path** so switches can forward all circuits in the group by looking at only the VPI bits, reducing [[Forwarding Table|VC table]] size.

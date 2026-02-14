@@ -1,0 +1,1 @@
+A [[Multiplexing]] approach where each flow transmits over the physical link at a different frequency. Each flow gets its own dedicated band. Wastes capacity when a flow is idle since its frequency band goes unused.

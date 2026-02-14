@@ -1,0 +1,1 @@
+The background process of building and maintaining [[Forwarding Table]]s so that switches know where to send packets. Separate from **forwarding** (the actual act of sending a packet out the right port), routing is what figures out *which* port is right.

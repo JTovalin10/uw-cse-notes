@@ -1,26 +1,18 @@
 ## Intro
-network operators build global networks that span hundreds or thousands of kilometers connecting large routers.
+Network operators build global networks spanning hundreds or thousands of kilometers connecting large routers. Users encounter links mostly as a way to connect a computer to the existing internet — wired or wireless.
 
-Users encounter links mostly as a way to connect  a computer to existing internet.
-
-The links can be anywhere and wither wired or wireless
 ![[Pasted image 20260206191702.png]]
-This illustration shows the variety of end users and the ways they connect to the rest of the internet. The links look alike because the network architecture provides a common abstraction so the device doesn't have to care what sort of link its connected to, just that it has a link to the internet.
-## Link characteristics
-- medium
-	- copper wire
-		- [[Twisted Pair]]
-	- air/free space for wireless
-- frequency (Hz)
-	- the distance between pairs of adjacent maxima or minima - wavelength
-	- wavelength = (light in medium) / frequency
+This shows the variety of end users and how they connect. The network architecture provides a common abstraction so the device doesn't care what sort of link it's connected to, just that it has one.
+
+## Link Characteristics
+- **Medium** — copper wire ([[Twisted Pair]]), fiber, or air/free space (wireless)
+- **Frequency (Hz)** — the distance between adjacent maxima/minima is the **wavelength**
+	- wavelength = speed of light in medium / frequency
+
 ## Complications
-Electromagnetic waves span a range of frequencies however specific frequency bands are licensed for cellular networks. This makes things complicated as network operators have to support both legacy and new technologies which occupy different frequency bands. For example, old tech is 700-2400 MHz while new ones are at 6GHz
+Electromagnetic waves span a range of frequencies, but specific bands are **licensed** for cellular networks. Operators must support legacy and new technologies occupying different bands (e.g. old tech at 700–2400 MHz, new at 6 GHz).
 
 # Data
-we encode binary data into the signal we are sending. However this is a complex issue that can be split into two layers:
-1. modulation
-	1. varying frequencies, amplitudes, or phase of the signal to effect the transmission of information
-2. distance
-	1. the medium, has a distance and bandwidth that information can travel
-	2. known as last mile connections
+We encode binary data into the signal being sent. This splits into two layers:
+1. **Modulation** — varying frequency, amplitude, or phase of the signal to carry information
+2. **Distance** — the medium limits how far and at what bandwidth information can travel (known as **last mile** connections)

@@ -1,4 +1,4 @@
-applications all need a variety of use cases for networks, it is not a one size fits all
-- video steaming needs fast speed
-- streaming need a timely transfer of messages from sender to receiver
-- non streaming pages can be delievered in bits and pieces
+Applications have varied network requirements — it is not one-size-fits-all:
+- **Video streaming** — needs high sustained throughput
+- **Streaming** (audio/video) — needs timely transfer from sender to receiver
+- **Non-streaming** (web pages) — can be delivered in bits and pieces

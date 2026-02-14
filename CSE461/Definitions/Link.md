@@ -1,0 +1,1 @@
+A physical medium that directly connects two or more computers (nodes). Can be wired (copper, fiber) or wireless (radio). Links are limited in geographic distance and the number of nodes they can connect.

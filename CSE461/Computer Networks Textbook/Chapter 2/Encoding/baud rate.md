@@ -1,1 +1,1 @@
-the rate at which the signal changes
+See [[Baud Rate]].

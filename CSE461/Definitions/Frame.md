@@ -1,0 +1,1 @@
+The unit of data at the data link layer. A collection of bits grouped into a message that can be delivered to an end node. Includes a header (addressing, control info) and a payload, often with error detection (e.g. CRC) appended.

@@ -1,0 +1,1 @@
+A [[Multiplexing]] approach that divides time into equal-sized quanta and gives each flow a round-robin turn to send data over the physical link. Simple but wastes capacity when a flow has nothing to send during its slot.
