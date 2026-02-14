@@ -1,0 +1,1 @@
+A demanding page is a code/data page that is needed by a process to be loaded

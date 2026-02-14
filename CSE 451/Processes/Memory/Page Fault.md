@@ -1,1 +1,0 @@
-It is a hardware [[Exception]] that occurs when a running program tries to access a virtual page that is not currently present in physical RAM

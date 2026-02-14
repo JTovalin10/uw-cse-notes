@@ -1,6 +1,16 @@
 # Page Faults
 
-A **page fault** occurs when a requested page is not in physical memory (valid bit = 0).
+A **page fault** occurs when a requested page is not in physical memory (valid bit = 0). This means the page has been evicted or never loaded
+
+## What happens then
+- when the page is evicted, the OS set the PTE as invalid and noted the disk location of the page in a data strucrture
+- when a process tries to access the page, the invalid PTE will cause an exception (page fault) to be thrown
+	- can a single instrution have multiple faults
+- the OS will run the page fauklt hanlder in response
+	- hanlder uses the like a page data structure to lcoat ethe page on disk
+	- handler reads page into a physkical frame, update tPTE to point to it and to be vald
+	- OS restarts the failting process
+	- and more
 
 **Related:** [[Page Tables]], [[Virtual Memory]], [[Exceptions]]
 

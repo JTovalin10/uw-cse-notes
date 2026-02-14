@@ -1,0 +1,1 @@
+locations near recently references locations are likely to be referenced soon

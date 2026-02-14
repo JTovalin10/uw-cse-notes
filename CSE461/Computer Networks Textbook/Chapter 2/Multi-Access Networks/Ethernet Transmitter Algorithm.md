@@ -11,7 +11,7 @@ When the adaptor has a frame to send:
 
 ## Exponential Backoff
 
-- After a collision the adaptor picks a random *k* in `[0, 2^n − 1]` and waits *k × 51.2 µs*, where *n* is the number of collisions so far.
+- After a collision the adaptor picks a random *k* in `[0, 2^n − 1]` and waits *k × 51.2 µs*, where *n* is the number of collisions so far at the current packet (so this resets with every packet that is sent)is i.
 - *n* is capped (typically at 10), and the adaptor gives up after 16 failed attempts and reports a transmit error to the host.
 
 ![[Pasted image 20260208022712.png]]
