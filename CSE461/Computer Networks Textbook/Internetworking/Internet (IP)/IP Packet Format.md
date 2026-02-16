@@ -8,8 +8,8 @@
 - **TOS (Type of Service)**
 	- allows packets to be treated differently based on application needs
 - **Length**
-	- length of the [[Datagrams]] including header, counted in bytes rather than words (max is 65535 bytes)
-- **TTL (Time to Live)**
+	- length of the [[Datagram]] including header, counted in bytes rather than words (max is 65535 bytes)
+- **[[Time to Live (TTL)]]**
 	- catches packets that have been going around in routing loops and discards them so they don't keep using resources (default = 64)
 	- each hop decrements it by 1 and when it reaches 0 the packet is discarded
 - **Flags**
@@ -19,11 +19,11 @@
 	- when setting this it is always in 8-byte chunks, so divide n-bytes / 8
 - **Protocol**
 	- demultiplexing key that identifies the higher-level protocol to which this IP packet should be passed
-	- 6 = TCP
-	- 17 = UDP
+	- 6 = [[Transmission Control Protocol (TCP)|TCP]]
+	- 17 = [[User Datagram Protocol (UDP)|UDP]]
 - **[[Checksum]]**
 - **SourceAddr**
 - **DestinationAddr**
-	- this is key for [[Datagrams]] delivery where every packet contains the full address of its intended destination so that forwarding decisions can be made at each router
+	- this is key for [[Datagram]] delivery where every packet contains the full address of its intended destination so that forwarding decisions can be made at each router
 
 See also: [[IP Service Model]], [[IP Fragmentation and Reassembly]]

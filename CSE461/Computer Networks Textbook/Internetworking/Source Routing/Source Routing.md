@@ -12,7 +12,7 @@ The source host provides all network topology info needed to switch a packet acr
 - Header size is unbounded — must hold one entry per switch on the path, so no upper bound on header size
 
 ## Benefit
-Can be used in both [[Connectionless|datagram]] and [[Virtual Circuit]] networks.
+Can be used in both [[Connectionless|datagram]] and [[Virtual Circuit (VC)]] networks.
 
 ## Header Consumption
 Once the ordered port list is in the header, switches need a way to consume it. There are three approaches — rotation, stripping, and pointer — each with different tradeoffs for efficiency and whether the destination can reconstruct the return path. See [[Header Variations]].

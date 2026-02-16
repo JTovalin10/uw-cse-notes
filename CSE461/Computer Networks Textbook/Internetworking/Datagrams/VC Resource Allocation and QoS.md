@@ -6,7 +6,7 @@ Because VCs have an establishment phase, resources can be reserved at setup time
 
 This guarantees each node has the buffers it needs to queue packets for that circuit.
 
-## [[Quality of Service|QoS]]
+## [[Quality of Service (QoS)|QoS]]
 VCs can provide per-circuit **QoS guarantees**, such as:
 - Allocating a percentage of a link's bandwidth to a circuit
 - Bounding the maximum queuing delay for packets on a circuit

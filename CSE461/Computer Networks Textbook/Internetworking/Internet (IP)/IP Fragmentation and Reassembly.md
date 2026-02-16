@@ -4,7 +4,7 @@
 
 ### Solution
 Two options:
-1. Make all IP [[Datagrams]] small enough to fit inside one packet on any network
+1. Make all IP [[Datagram]]s small enough to fit inside one packet on any network
 2. Provide a means to fragment and reassemble packets that are too big
 
 We use the [[Maximum Transmission Unit (MTU)]] -- the largest IP datagram that can be carried in a frame.
@@ -24,7 +24,7 @@ We use the [[Maximum Transmission Unit (MTU)]] -- the largest IP datagram that c
 ![[Pasted image 20260215021005.png]]
 
 It is important to note:
-1. Each fragment is itself a self-contained IP [[Datagrams]] that is transmitted over a sequence of physical networks independently of other fragments
+1. Each fragment is itself a self-contained IP [[Datagram]]s that is transmitted over a sequence of physical networks independently of other fragments
 2. Each IP datagram is re-encapsulated for each physical network over which it travels
 
 ![[Pasted image 20260215021219.png]]

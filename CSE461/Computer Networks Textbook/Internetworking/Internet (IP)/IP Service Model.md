@@ -2,9 +2,9 @@
 The service model is the host-to-host service we want to provide for an internetwork. We want to make it undemanding enough that just about any network technology that might turn up in an internetwork would be able to provide the necessary service.
 
 ### Parts of the Service Model
-Sometimes called **best effort** as IP makes every effort to deliver [[Datagrams]] but makes no guarantees.
+Sometimes called **best effort** as IP makes every effort to deliver [[Datagram]]s but makes no guarantees.
 1. **Addressing scheme** - provides a way to identify all hosts in the internetwork
-2. **[[Datagrams]] model of data delivery**
+2. **[[Datagram]]s model of data delivery**
 
 ### Datagram Delivery
 This is fundamental to the Internet Protocol.

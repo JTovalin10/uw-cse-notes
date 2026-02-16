@@ -1,11 +1,11 @@
 ## Overview
-[[Virtual Circuit]] (VC) switching requires setting up a virtual connection from source to destination **before** any data is sent. This is a two-phase process: **connection setup** then **data transfer**.
+[[Virtual Circuit (VC)]] (VC) switching requires setting up a virtual connection from source to destination **before** any data is sent. This is a two-phase process: **connection setup** then **data transfer**.
 
 ![[Pasted image 20260214014920.png]]
 
 ## Connection State
 Each switch along the path maintains an entry in a **VC table** containing:
-- **[[Virtual Circuit Identifier|VCI]]** — uniquely identifies the connection at this switch; carried in packet headers
+- **[[Virtual Circuit Identifier (VCI)|VCI]]** — uniquely identifies the connection at this switch; carried in packet headers
 - **Incoming interface** — port on which packets for this VC arrive
 - **Outgoing interface** — port on which packets for this VC leave
 - **Outgoing VCI** — a potentially different VCI placed in the header for the next hop
@@ -34,7 +34,7 @@ Host A sends a **teardown message** to switch 1, which removes its table entry a
 - **Latency**: At least one RTT of delay before data can be sent (setup must complete first)
 - **Small per-packet overhead**: Data packets carry only a small VCI (not a full address), and VCI lookup is fast (table index, not key search)
 - **Fragile**: If a switch or link fails, the connection breaks — must tear down the old circuit and establish a new one
-- **[[Routing]] still needed**: Switches must know where to forward setup requests, which is essentially the same routing problem as datagrams
+- **[[CSE461/Definitions/Routing]] still needed**: Switches must know where to forward setup requests, which is essentially the same routing problem as datagrams
 
 ## Resource Allocation
-Because VCs have a setup phase, the network can reserve buffers and bandwidth per circuit at connection time — something datagrams can't easily do. This also enables per-circuit [[Quality of Service|QoS]] guarantees. See [[VC Resource Allocation and QoS]] for the details and a comparison table against datagrams.
+Because VCs have a setup phase, the network can reserve buffers and bandwidth per circuit at connection time — something datagrams can't easily do. This also enables per-circuit [[Quality of Service (QoS)|QoS]] guarantees. See [[VC Resource Allocation and QoS]] for the details and a comparison table against datagrams.
