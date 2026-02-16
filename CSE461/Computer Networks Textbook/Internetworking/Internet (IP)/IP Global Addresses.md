@@ -11,7 +11,19 @@ IP addresses must be **hierarchical**: they are made up of several parts that co
 ### Old Classes of IP
 All addresses are 32 bits long. This system has a lot of flexibility, allowing networks of vastly different sizes to be accommodated efficiently.
 
-Note: Claude, describe Class A, B, and C classes here as I didn't include how many hosts they can support and any other info.
+| Class | Leading Bits | Network Bits | Host Bits | # Networks | # Hosts per Network |
+|-------|-------------|-------------|----------|------------|-------------------|
+| A | 0 | 7 | 24 | 128 | 16,777,214 |
+| B | 10 | 14 | 16 | 16,384 | 65,534 |
+| C | 110 | 21 | 8 | 2,097,152 | 254 |
+
+- **Class A** (0.0.0.0 – 127.255.255.255): very few networks, each with a huge number of hosts. Intended for large organizations.
+- **Class B** (128.0.0.0 – 191.255.255.255): moderate number of networks, each supporting up to ~65K hosts. Intended for medium-to-large organizations.
+- **Class C** (192.0.0.0 – 223.255.255.255): large number of networks, each with up to 254 hosts. Intended for small organizations.
+
+Host counts subtract 2 from the theoretical max because the all-0s address identifies the network itself and the all-1s address is the broadcast address.
+
+This classful scheme was eventually replaced by [[Classless Interdomain Routing  (CIDR)]] because it wasted address space (e.g., a Class B network with 256 hosts wastes ~65K addresses).
 
 ![[Pasted image 20260215022012.png]]
 

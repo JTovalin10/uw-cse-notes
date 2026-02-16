@@ -13,7 +13,7 @@ To achieve scalability we must reduce the amount of information that is stored i
 	- it compares the network part of the destination address with the network part of each of its network interfaces
 	- hosts normally have only one interface; routers normally have two or more
 - If a match occurs, the destination is on the same physical network and the packet can be delivered directly
-- If no match, the node needs to forward the [[Datagrams]] to a router
+- If no match, the node needs to forward the [[Datagram]] to a router
 	- each node must choose the best router with a reasonable chance of getting the datagram closer to its destination
 	- this is called the **next hop router**
 	- the node consults its [[Forwarding Table]] to find this
