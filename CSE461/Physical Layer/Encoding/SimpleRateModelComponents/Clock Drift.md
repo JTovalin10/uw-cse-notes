@@ -17,7 +17,10 @@ Eventually, the receiver will look at the wire at the wrong time
 	- might count 99 zeros
 Because the signal line looks like one long, flat line of voltage, the receiver has no way to verify if it has counted the correct number of bits
 
+- a solution is to derive the clock from the signal itself (clock recovery), but this requires frequent transitions
+
 # Related
 - [[../Simple Rate Model|Simple Rate Model]]
 - [[Clock Recovery 4B5B]]
 - [[Baseline Wander]]
+- [[Non-Return to Zero (NRZ)]]
