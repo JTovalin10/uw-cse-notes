@@ -1,3 +1,3 @@
 - frames and ACKS must both carry sequence numbers for correctness
 - to distinguisg the current frame from the next one, a single bit (two numbers) is suffient
-	- called [[Stop-and-Wait]]
+	- called [[CSE461/Link Layer/Retransmission/Stop-and-Wait]]

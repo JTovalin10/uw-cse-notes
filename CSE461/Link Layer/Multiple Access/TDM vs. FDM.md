@@ -12,7 +12,7 @@
 	- suited for continuous traffic, fixed number of users
 - widely used in telecommunications 
 	- TV and radio stations (FDM)
-	- GSM (2G celluar) allocates calls using TDM 
+	- [[Global System for Mobile Communications (GSM)|GSM]] (2G cellular) allocates calls using TDM
 
 
 Links:

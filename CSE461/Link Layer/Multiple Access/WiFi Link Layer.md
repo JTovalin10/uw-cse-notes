@@ -4,7 +4,7 @@ frames are ACKed and retransmitted with [[Automatic Repeat reQuest (ARQ)]], as i
 
 funky addresses
 
-errors are detected with a 32-bit CRC
+errors are detected with a 32-bit [[Cyclic Redundancy Check (CRC)|CRC]]
 ![[Screenshot 2026-02-04 at 1.18.01 PM.png]]
 
 with multiple access it uses [[Binary Exponential Backoff (BEB)]]

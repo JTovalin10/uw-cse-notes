@@ -1,6 +1,6 @@
 # Classical
 - has addresses to identify the sender and receiver
-- CRC-32 for error detection; no ACKs or retransmission
+- [[Cyclic Redundancy Check (CRC)|CRC]]-32 for error detection; no [[Acknowledgment (ACK)|ACKs]] or retransmission
 - start of frame identified with physical layer preamble
 - ![[Screenshot 2026-02-04 at 12.39.22 PM.png]]
 # Modern

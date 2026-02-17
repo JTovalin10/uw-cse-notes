@@ -1,7 +1,7 @@
 # Spinlock
 a lock that uses [[Busy-Waiting]] (spinning) to wait for the lock to become available
 
-primitive, minimal semantics; used to build other synchronization primitives
+**primitive, minimal semantics; used to build other synchronization primitives**
 
 ## How it works
 [[Spinlock Implementation]]
@@ -23,3 +23,4 @@ primitive, minimal semantics; used to build other synchronization primitives
 - [[Atomic]]
 - [[Semaphores]]
 - [[Critical Sections]]
+- [[Starvation]]

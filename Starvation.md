@@ -1,0 +1,1 @@
+Starvation is when a thread/process is indefinitely prevented from making progress because it never gets access to a resource it needs (CPU time, a lock, etc.), even though the system isn't deadlocked.

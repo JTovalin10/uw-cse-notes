@@ -2,7 +2,7 @@ Cellular uses a license so it forces the carriers to use/make efficient protocol
 - Spectrum suddenly very very scare
 	- we cant waste all of its sending JAMS
 	- is licensed
-- we have QoS requirements
+- we have [[Quality of Service (QoS)|QoS]] requirements
 	- cant be as loose with expectations
 	- cant have traffic fail
 - we also have client/server

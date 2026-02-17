@@ -7,12 +7,12 @@
 
 # Limitations
 it allows only a single frame to be outstanding from the sender. The issue is that if we icnrease the Mbps it doesnt increase the throughput as much
-	good for LAN, not **efficient** for high BD
+	good for [[Local Area Network (LAN)|LAN]], not **efficient** for high BD
 ![[Screenshot 2026-01-22 at 3.07.59 PM.png]]
 
 Formula:
 $$
-\text{Frame/sec} = \frac{1}{T_{frame} + RTT}
+\text{Frame/sec} = \frac{1}{T_{frame} + \text{RTT}}
 $$
 where T_Frame is the transmission size
-frame is a packet wrapped with header/trailer info (MAC, error checking, etc)
+frame is a packet wrapped with header/trailer info ([[Media Access Control (MAC)|MAC]], error checking, etc)

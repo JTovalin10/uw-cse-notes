@@ -2,4 +2,4 @@ The **sender** specifies the full path (list of ports/switch IDs) in the packet 
 
 - No [[Forwarding Table]] needed — all routing decisions made by the source
 - Sender must have knowledge of the network topology
-- Less common than [[Connectionless]] or [[Virtual Circuit]] switching
+- Less common than [[Connectionless]] or [[Virtual Circuit (VC)]] switching

@@ -6,6 +6,6 @@ Switch forwards frames with a port/address table as follows:
 we may have a loop in the topology
 - creates redundancy in case of failure
 - may be a simple mistake
-We want LANS to just work
+We want [[Local Area Network (LAN)|LANs]] to just work
 - plug and play, it changes host itself
 - however loops are an issue we must consider

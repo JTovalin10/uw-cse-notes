@@ -1,7 +1,7 @@
 - often used when errors are common or must be corrected
 	- wifi and tcp
 - rules at sender and receiver
-	- receiver automatically acknowledges correct frames with an ACK
+	- receiver automatically acknowledges correct frames with an [[Acknowledgment (ACK)|ACK]]
 	- sender automatically resends after a timeout, until an ACK is received
 # Normal Operations
 no loss
@@ -25,7 +25,7 @@ no loss
 Timeouts should be:
 - not too big (link goes idle)
 - not too small (spurious resend)
-- fairly easy on a LAN
+- fairly easy on a [[Local Area Network (LAN)|LAN]]
 	- clear worst case, little variation
 - fairly difficult over the internet
 	- much variation, no obvious bound

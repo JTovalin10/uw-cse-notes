@@ -3,6 +3,6 @@
 - [[Context on Reliability]]
 - [[Automatic Repeat reQuest (ARQ)]]
 - [[Sequence Numbers]]
-- [[Stop-and-Wait]]
-- [[Sliding Window]]
+- [[CSE461/Link Layer/Retransmission/Stop-and-Wait]]
+- [[CSE461/Link Layer/Retransmission/Sliding Window]]
 - [[Transmission]]
