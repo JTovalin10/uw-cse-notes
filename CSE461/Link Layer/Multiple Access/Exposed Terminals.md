@@ -1,5 +1,7 @@
 - cant hear each other yet dont collide at shared receivers A and D
-- imporves performance through concurrency
+	- they dont collide, however when B or C sends to A or D (corresponding) the other will hear it and defer their own
+	- this decreases throughput
+- improves performance through concurrency
 - With no carrier sense it is able to be concurrent
-- with carieer sense it will see that B or C are busy so it wont send
+- with carrier sense it will see that B or C are busy so it wont send
 - ![[Screenshot 2026-01-26 at 3.45.49 PM.png]]
