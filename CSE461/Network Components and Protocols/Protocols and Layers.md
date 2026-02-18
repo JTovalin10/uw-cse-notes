@@ -46,7 +46,7 @@ The **Open Systems Interconnection** model defines a layered architecture. From 
 |---|---|---|
 | **Physical** | Bits | Transmits raw bits over a link |
 | **Data Link** | [[Frame]] | Collects bits into frames; implemented by [[Network Adaptor]]s and device drivers |
-| **Network** | Packet | Handles [[Routing]] among nodes in a packet-switched network |
+| **Network** | Packet | Handles [[CSE461/Network/Routing]] among nodes in a packet-switched network |
 | **Transport** | Message | Provides process-to-process channels (e.g. [[Transmission Control Protocol (TCP)|TCP]], [[User Datagram Protocol (UDP)|UDP]]) |
 
 ![[Pasted image 20260123022103.png]]

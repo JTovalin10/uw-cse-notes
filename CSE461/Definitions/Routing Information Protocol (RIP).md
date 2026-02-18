@@ -3,4 +3,4 @@ A distance-vector routing protocol. Routers send their distance vectors (cost to
 
 Uses hop count as the cost metric with a maximum of 15 hops (16 = infinity).
 
-See also: [[Routing]]
+See also: [[CSE461/Definitions/Routing]]

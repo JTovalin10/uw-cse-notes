@@ -1,9 +1,0 @@
-- [[Process]](es)/[[thread]](s)
-- [[Memory]]
-- [[IO]]
-- [[Secondary Storage]]
-- [[File Systems]]
-- [[Protection]]
-- [[Command Interpreter (shell)]]
-- [[GUI]]
-- [[networking]]

@@ -1,0 +1,5 @@
+ - value can be any non-negative integer
+- allowed up to N threads continue
+- sem is initialized to N (number of units available)
+- represents resources with many (identical) units available
+- allows thread to enter as long as more units are available

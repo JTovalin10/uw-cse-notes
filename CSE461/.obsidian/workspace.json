@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4a7faed2b9848a1e",
+        "id": "23ad5c7f8ae8b8c1",
         "type": "tabs",
         "children": [
           {
-            "id": "a65780f7aa3f63d5",
+            "id": "ff4949ea4691197d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Computer Networks Textbook/Chapter 2/Connecting to a network.md",
+                "file": "Network/internetworking/Internet Protocol (IP).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Connecting to a network"
+              "title": "Internet Protocol (IP)"
             }
           }
         ]
@@ -183,10 +183,35 @@
       "bases:Create new base": false
     }
   },
-  "active": "a65780f7aa3f63d5",
+  "active": "ff4949ea4691197d",
   "lastOpenFiles": [
-    "Computer Networks Textbook/Chapter 2/Technology landscape/Technology landscape.md",
+    "Network/internetworking/Internet Reference Model.md",
+    "Screenshot 2026-02-09 at 12.54.05 PM.png",
+    "Network/internetworking/Connecting Datagram and VC Networks.md",
+    "Screenshot 2026-02-09 at 12.53.21 PM.png",
+    "Network/internetworking/Internet Protocol (IP).md",
+    "Network/internetworking",
+    "Untitled.md",
+    "Network/Store and forward packet switching.md",
+    "Screenshots/Screenshot 2026-02-09 at 12.51.15 PM.png",
+    "Network/Datagrams vs virtual circuits.md",
+    "Network/Datagram model.md",
+    "Screenshots/Screenshot 2026-02-09 at 12.47.28 PM.png",
+    "Screenshots/Screenshot 2026-02-09 at 12.47.10 PM.png",
+    "Screenshots/Screenshot 2026-02-09 at 12.45.02 PM.png",
+    "Network/Network service models.md",
+    "Screenshots/Screenshot 2026-02-09 at 12.43.58 PM.png",
+    "Screenshots/Screenshot 2026-02-09 at 12.43.23 PM.png",
+    "Network/Network.md",
+    "Network/forwarding.md",
+    "Screenshots/Screenshot 2026-02-09 at 12.37.39 PM.png",
+    "Network/Routing.md",
+    "Screenshots/Screenshot 2026-02-09 at 12.37.28 PM.png",
+    "README.md",
+    "RTT.md",
     "Computer Networks Textbook/Chapter 2/Connecting to a network.md",
+    "Network",
+    "Computer Networks Textbook/Chapter 2/Technology landscape/Technology landscape.md",
     "Computer Networks Textbook/Chapter 2/Access Networks",
     "Computer Networks Textbook/Chapter 2/Wireless Networks",
     "Computer Networks Textbook/Chapter 2/Multi-Access Networks",
@@ -195,41 +220,15 @@
     "Computer Networks Textbook/Chapter 2/Framing",
     "Computer Networks Textbook/Chapter 2/Encoding",
     "Computer Networks Textbook/Chapter 2/Technology landscape",
-    "Computer Networks Textbook/Chapter 2",
-    "Screenshot 2026-02-06 at 1.10.29 PM.png",
-    "Screenshot 2026-02-06 at 1.09.10 PM.png",
-    "Screenshot 2026-02-06 at 1.07.52 PM.png",
-    "Screenshot 2026-02-06 at 1.06.45 PM.png",
     "Software Defined Networking.md",
     "SDN - Control and Data Plane.md",
     "Scaling the Link layer.md",
     "Spanning Tree Solution.md",
     "Spanning Tree Example.md",
-    "Screenshot 2026-02-06 at 12.58.57 PM.png",
-    "Screenshot 2026-02-06 at 12.58.50 PM.png",
-    "Screenshot 2026-02-06 at 12.53.53 PM.png",
-    "Screenshot 2026-02-06 at 12.53.34 PM.png",
     "Backwards Learning.md",
-    "Screenshot 2026-02-06 at 12.51.00 PM.png",
     "Switch Forwarding.md",
     "Switching.md",
-    "Screenshots/Screenshot 2026-02-06 at 12.43.04 PM.png",
     "Switch Ethernet.md",
-    "Network Components and Protocols/Wired vs Wireless.md",
-    "Untitled.md",
-    "GSM MAC.md",
-    "Centralized MAC (Celluar).md",
-    "WiFi or 92.11.md",
-    "Link Layer/Multiple Access/Multiple Access with Collision Avoidance.md",
-    "Link Layer/Multiple Access/Wireless complications.md",
-    "Carrier Sense.md",
-    "Link Layer/Multiple Access/ALOHA Protocol.md",
-    "Link Layer/Multiple Access/Binary Exponential Backoff (BEB).md",
-    "Link Layer/Multiple Access/Carrier Sense Multiple Access (CSMA).md",
-    "Link Layer/Multiple Access/hidden terminals.md",
-    "Link Layer/Multiple Access/Exposed Terminals.md",
-    "Physical Layer/Media/Wireless.md",
-    "Physical Layer/Media/Wired Wireless Perspective.md",
-    "Untitled 1.base"
+    "Network Components and Protocols/Wired vs Wireless.md"
   ]
 }

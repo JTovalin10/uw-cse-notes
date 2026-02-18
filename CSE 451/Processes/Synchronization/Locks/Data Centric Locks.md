@@ -1,1 +1,0 @@
-locks on shared data so only one thread can own the data at a time. This means multiple threads can be execitng the same code but on different data sets

@@ -1,0 +1,9 @@
+- An [[Operating System]] executes many kinds of activities
+	- user programs
+	- batch jobs or scripts
+	- system program
+		- print spoolers, name servers, file servers, network daemons
+- Each of these activities is encapsulated in a [[Process]]
+	- A process includes the [[Execution Context]]
+	- the OS's process module manages these processes
+		- creation, destruction, scheduling

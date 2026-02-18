@@ -1,0 +1,11 @@
+16-bit register that holds segment selector
+- Segment Selector is an index to the [[Global Descriptor Table]] or [[Local Descriptor Table]]
+	- Note that flat memory has made them obsolete but they are needed for backwards compatibility
+- tells the CPU what [[Privilege Level]] the code is running at
+- in old segmented memory
+	- defined where code could be fetched from
+	- base address: where code segment starts
+	- limit: how big the code is
+	- today
+		- base = 0
+		- limit = everything

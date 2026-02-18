@@ -1,0 +1,8 @@
+- a particular program that handles the interpretation of user commands and helps to manage processes
+	- user input may be from keyboard (cli), from script files, or from the mouse (GUI)
+	- allow users to launch and control new programs
+- on some systems, command interpreter may be a standard part of the OS
+- On others, it's just non-privileged code that provides an interface to the user
+	- bash, csh, tcsh, zsh on UNIX
+- on others, there may be no command language
+	- macos
