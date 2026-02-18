@@ -11,7 +11,7 @@ Routing is essentially a graph theory problem, as such we want to represent netw
 The basic problem of routing is to find the lowest-cost path between any two nodes, where the cost of a path equals the sum of the costs of all the edges that make up the path. It must use an algorithm that is scalable. For this there are two main classes of routing protocols:
 ### Distance-Vector ([[Routing Information Protocol (RIP)|RIP]])
 Also known as Bellman-Ford. Each node constructs a 1-D array containing the costs to all other nodes and distributes that vector to its immediate neighbors. It starts by assuming that each node knows the cost of the link to each of its directly connected neighbors. (A downed link has a cost of infinity.)
-![[Pasted image 20260215195240.png]]
+![[Pasted image 20260215199240.png]]
 
 The process of getting consistent routing info to all the nodes is called [[Convergence]].
 

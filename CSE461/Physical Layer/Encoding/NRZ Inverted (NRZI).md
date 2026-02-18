@@ -6,3 +6,4 @@ Solves consecutive 1s but **not** consecutive 0s.
 # Related
 - [[Non-Return to Zero (NRZ)]]
 - [[Manchester Encoding]]
+- [[Encoding]]

@@ -34,7 +34,7 @@ Host A sends a **teardown message** to switch 1, which removes its table entry a
 - **Latency**: At least one RTT of delay before data can be sent (setup must complete first)
 - **Small per-packet overhead**: Data packets carry only a small VCI (not a full address), and VCI lookup is fast (table index, not key search)
 - **Fragile**: If a switch or link fails, the connection breaks — must tear down the old circuit and establish a new one
-- **[[CSE461/Definitions/Routing]] still needed**: Switches must know where to forward setup requests, which is essentially the same routing problem as datagrams
+- **[[Routing]] still needed**: Switches must know where to forward setup requests, which is essentially the same routing problem as datagrams
 
 ## Resource Allocation
 Because VCs have a setup phase, the network can reserve buffers and bandwidth per circuit at connection time — something datagrams can't easily do. This also enables per-circuit [[Quality of Service (QoS)|QoS]] guarantees. See [[VC Resource Allocation and QoS]] for the details and a comparison table against datagrams.

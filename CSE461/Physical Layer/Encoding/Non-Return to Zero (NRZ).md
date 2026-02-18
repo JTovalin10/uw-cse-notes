@@ -1,4 +1,8 @@
 # Non-Return to Zero (NRZ)
+- let a high voltage (+V) represent a 1, and low voltage (-V) represent a 0
+- simplest encoding scheme
+
+## Textbook Notes
 The issue with encoding is long strings of 1s or 0s:
 
 - **Baseline wander** — the receiver keeps a running average of the signal to distinguish high from low. Too many consecutive 1s or 0s skews this average, making it harder to detect transitions.
@@ -7,3 +11,8 @@ The issue with encoding is long strings of 1s or 0s:
 # Solutions
 - [[NRZ Inverted (NRZI)]]
 - [[Manchester Encoding]]
+
+# Related
+- [[Encoding]]
+- [[Return to Zero (RZ)]]
+- [[Simple Rate Model]]

@@ -6,4 +6,4 @@ A widely used link-state routing protocol that adds to the basic link-state algo
 
 Uses [[Link-State Advertisement (LSA)|LSAs]] and Dijkstra's algorithm for route calculation.
 
-See also: [[CSE461/Computer Networks Textbook/Internetworking/Routing/Routing]]
+See also: [[Routing]]

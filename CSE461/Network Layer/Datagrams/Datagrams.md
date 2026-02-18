@@ -2,7 +2,7 @@
 Every packet contains enough info to enable any switch to decide how to get it to its destination.
 
 ## How It Works
-Every packet carries the complete destination address. Switches use a [[Forwarding Table]] to determine the next hop. While forwarding itself is straightforward, the hard part is [[CSE461/Definitions/Routing]] — building and maintaining those tables as the network scales.
+Every packet carries the complete destination address. Switches use a [[Forwarding Table]] to determine the next hop. While forwarding itself is straightforward, the hard part is [[Routing]] — building and maintaining those tables as the network scales.
 
 ![[Pasted image 20260214014134.png]]
 

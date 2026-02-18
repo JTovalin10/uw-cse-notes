@@ -5,6 +5,12 @@
 
 ![[Pasted image 20260114220330.png]]
 
+See also the individual encoding scheme pages:
+- [[Return to Zero (RZ)]]
+- [[Non-Return to Zero (NRZ)]]
+- [[NRZ Inverted (NRZI)]]
+- [[Manchester Encoding]]
+
 # Related
 - [[../Simple Rate Model|Simple Rate Model]]
 - [[Clock Recovery 4B5B]]

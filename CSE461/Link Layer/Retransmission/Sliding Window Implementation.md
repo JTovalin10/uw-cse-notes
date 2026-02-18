@@ -1,4 +1,4 @@
-C implementation of the [[CSE461/Computer Networks Textbook/Direct Links/Reliable Tranmission/Sliding Window]] protocol.
+C implementation of the [[Sliding Window]] protocol.
 
 ## Data Structures
 ```c
