@@ -1,4 +1,4 @@
-[[Switching]] collectively find a spanning tree for the topology
+[[Network Switch (Switching)]] collectively find a spanning tree for the topology
 - subset of links that is a tree (no loops) and reaches all switches
 - They switches forward as normal on the spanning tree 
 -  Broadcasts will go up to the root of the tree and down all the branches

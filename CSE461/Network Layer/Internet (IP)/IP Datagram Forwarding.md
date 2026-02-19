@@ -1,21 +1,23 @@
-## IP Datagram Forwarding
-To achieve scalability we must reduce the amount of information that is stored in each node and exchanged between nodes.
+To keep routing scalable, the amount of information stored and exchanged per node must be minimized. IP achieves this through hierarchical [[IP Address|addressing]] — routers track networks, not individual hosts.
 
-### Main Ideas
-1. Every IP datagram contains the IP address of the destination host.
-2. The network part of an IP address uniquely identifies a single physical network that is part of the larger Internet.
-3. All hosts and routers that share the same network part of their address are connected to the same physical network and can thus communicate with each other by sending frames over that network.
-4. Every physical network that is part of the Internet has at least one router that, by definition, is also connected to at least one other physical network; this router can exchange packets with hosts or routers on either network.
+## Key Principles
 
-### Algorithm
-- A datagram is sent from a source host to a destination host, possibly passing through several routers along the way
-- Any node (host or router) first checks whether it is connected to the same physical network as the destination
-	- it compares the network part of the destination address with the network part of each of its network interfaces
-	- hosts normally have only one interface; routers normally have two or more
-- If a match occurs, the destination is on the same physical network and the packet can be delivered directly
-- If no match, the node needs to forward the [[Datagram]] to a router
-	- each node must choose the best router with a reasonable chance of getting the datagram closer to its destination
-	- this is called the **next hop router**
-	- the node consults its [[Forwarding Table]] to find this
+1. Every IP datagram contains the full [[IP Address]] of the destination host.
+2. The network part of an IP address uniquely identifies a single physical network.
+3. All hosts and routers sharing the same network part are on the same physical network and can communicate directly.
+4. Every physical network has at least one [[Router]] also connected to another network, enabling inter-network packet exchange.
 
-See also: [[IP Global Addresses]], [[Subnetting]], [[Classless Interdomain Routing  (CIDR)]]
+## Forwarding Algorithm
+
+A datagram travels from source to destination through zero or more routers. At each hop, the node:
+
+1. Compares the network part of the destination address against the network part of each of its own interfaces
+	- Hosts typically have one interface; routers have two or more
+2. **Match found** → destination is on the same physical network, deliver directly
+3. **No match** → consult the [[Forwarding Table]] to find the [[Next Hop Router]] and forward there
+
+## Longest Prefix Match
+
+Forwarding table entries may have overlapping prefixes. For each packet, the router applies [[Longest Prefix Match]] — it selects the most specific entry (longest prefix) containing the destination address and forwards to the next hop for that entry.
+
+See also: [[IP Address]], [[Subnetting]], [[Classless Interdomain Routing (CIDR)]], [[Longest Prefix Match]], [[Next Hop Router]]

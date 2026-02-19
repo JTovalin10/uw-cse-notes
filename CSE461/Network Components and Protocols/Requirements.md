@@ -24,7 +24,7 @@ These links are limited in geographic distance and number of nodes.
 Connecting every node directly doesn't scale. Two solutions:
 1. **Switched network** — nodes attached to [[Switch]]es via point-to-point links
 	- **Circuit switched** — establishes a dedicated circuit from source to destination for a stream of bits
-	- **Packet switched** — uses store-and-forward: each node receives a complete packet, stores it, then forwards it to the next node. More effective than circuit switching.
+	- **Packet switched** — uses [[Store-and-Forward Packet Switching]] each node receives a complete packet, stores it, then forwards it to the next node. More effective than circuit switching.
 	- ![[Pasted image 20260123013134.png]]
 2. **Internetwork (internet)** — connects multiple networks using routers/gateways
 	- A **router/gateway** is a node connected to two or more networks, forwarding messages between them

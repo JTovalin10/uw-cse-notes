@@ -11,4 +11,4 @@ The header contains a [[Virtual Path Identifier (VPI)]] and [[Virtual Circuit Id
 The fixed cell size is what makes ATM fast — hardware can process identically-sized units in parallel. But it comes at a cost: [[Cell Tax]] means bandwidth is wasted whenever payloads don't fit neatly into 48 bytes.
 
 ## Context
-ATM is one of several [[Virtual Circuit (VC)]] technologies (along with X.25 and Frame Relay) that were largely replaced by the Internet's [[Connectionless]] model. See [[VC Resource Allocation and QoS]] for how VC networks handle resource guarantees compared to datagrams.
+ATM is one of several [[Virtual Circuit (VC)]] technologies (along with X.25 and Frame Relay) that were largely replaced by the Internet's [[Connectionless]] model. See [[Virtual Circuit Resource Allocation and QoS]] for how VC networks handle resource guarantees compared to datagrams.

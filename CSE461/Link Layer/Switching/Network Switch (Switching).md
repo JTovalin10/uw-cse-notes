@@ -22,6 +22,9 @@ The simplest way to interconnect them is to have bridges simply accept LAN frame
 
 ### Limitations and Solutions
 Switches do not scale well beyond tens of networks, which is why the [[Spanning Tree Algorithm]] only scales linearly. Furthermore, switches forward all broadcast frames since there is no way to impose hierarchy on a set of switches. This is addressed by [[Virtual LANs (VLANs)]].
+- dont scale to large networks
+- dont work across more than one link layer technology
+- dont give much traffic control
 
 ### Additional Context
 - [[L2 Switches]] — the devices used to build extended LANs
