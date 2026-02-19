@@ -1,3 +1,7 @@
+For backwards comptability between IPv4 and IPv6 we use IP tunneling
+it is where IPv6 packets are tunnel across IPv4 networks
+![[Pasted image 20260218212028.png]]
+this acts as a single link accross IPv4 netrwork
 ## IP Tunneling
 - A virtual point-to-point link between a pair of nodes that are actually separated by an arbitrary number of networks
 - The virtual link is created within the router at the entrance to the tunnel

@@ -19,4 +19,4 @@ SDN defines a standard interface between the control and data plane so they can 
 - The NOS takes on the burden of collecting network state (the hard part of distributed algorithms like link-state and distance-vector), freeing the app to focus on the routing logic
 - By centralizing this logic, the goal is a **globally optimized** solution
 
-See also: [[Software Switch]], [[Hardware Switch]], [[CSE461/Network/Routing]]
+See also: [[Network Operating System (NOS)]], [[Software Switch]], [[Hardware Switch]], [[Routing]]

@@ -1,5 +1,5 @@
 Idea: sum up data in N-bit words
-	widely used in, e.g., [[Transmission Control Protocol (TCP)|TCP]]/[[Internet Protocol (IP)|IP]]/[[User Datagram Protocol (UDP)|UDP]]
+	widely used in, e.g., [[Transmission Control Protocol (TCP)|TCP]]/[[CSE461/Definitions/Internet Protocol (IP)|IP]]/[[User Datagram Protocol (UDP)|UDP]]
 ![[Screenshot 2026-01-21 at 11.30.48 AM.png]]
 stronger protection than [[Parity Bits]]
 

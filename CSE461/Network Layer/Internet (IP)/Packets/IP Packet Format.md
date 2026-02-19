@@ -9,7 +9,7 @@
 	- allows packets to be treated differently based on application needs
 - **Length**
 	- length of the [[Datagram]] including header, counted in bytes rather than words (max is 65535 bytes)
-- **[[Time to Live (TTL)]]**
+- **[[CSE461/Definitions/Time to Live (TTL)]]**
 	- catches packets that have been going around in routing loops and discards them so they don't keep using resources (default = 64)
 	- each hop decrements it by 1 and when it reaches 0 the packet is discarded
 - **Flags**

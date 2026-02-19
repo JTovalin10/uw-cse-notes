@@ -1,0 +1,1 @@
+The unified network built from a collection of [[Physical Network|physical networks]] via [[Internetwork (IP)|internetworking]]. Hosts see a single logical network regardless of the underlying heterogeneous physical technologies.
