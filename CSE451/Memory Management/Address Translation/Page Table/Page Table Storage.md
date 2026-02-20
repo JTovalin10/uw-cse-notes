@@ -5,4 +5,4 @@ This creates a performance problem. To fetch one piece of data, the CPU actually
 2. one lookup to read the actual data
 
 ## Solution
-To fix this slowness, the CPU uses a fast hardware cache called TLB or [[Translation Lookaside Buffer]] which remembers recent translations
+To fix this slowness, the CPU uses a fast hardware cache called TLB or [[Translation Lookaside Buffer (TLB)]] which remembers recent translations

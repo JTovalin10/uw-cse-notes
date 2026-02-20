@@ -9,7 +9,7 @@ Not all pages of an address space need to reside in memory
 
 ## How it works
 1. process tries to access a virtual address
-2. the [[Translation Lookaside Buffer|TLB]] / [[Page Table]] is consulted for the translation
+2. the [[Translation Lookaside Buffer (TLB)|TLB]] / [[Page Table]] is consulted for the translation
 3. the valid bit in the [[Page Table Entries|PTE]] is checked
 	- if valid = 1 and present = 1 → normal access, no fault
 	- if valid = 1 and present = 0 → the page exists but is on disk → [[Page Fault]]

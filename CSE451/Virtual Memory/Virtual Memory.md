@@ -14,7 +14,7 @@ The memory allocated for each process is "virtual," where each process thinks it
 	- one process cannot name addresses visible to others; each process has its own isolated address space
 ## How can we achieve this
 - [[Memory Management Unit]]
-- [[Translation Lookaside Buffer]]
+- [[Translation Lookaside Buffer (TLB)]]
 - [[Page Table]]
 	- [[Page Fault]] handling
 - sometimes accompanied by [[swap space]] (swapping) or limited segmentation

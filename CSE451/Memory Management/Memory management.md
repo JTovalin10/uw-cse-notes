@@ -12,7 +12,7 @@
 
 ## Address Translation
 - [[Address Translation]] - mapping virtual page numbers to physical frame numbers via page tables
-- [[Translation Lookaside Buffer]] - hardware cache for fast virtual-to-physical lookups
+- [[Translation Lookaside Buffer (TLB)]] - hardware cache for fast virtual-to-physical lookups
 - [[Base and Bounds]] - base and limit registers for address protection
 
 ## Memory Models
@@ -23,6 +23,6 @@
 ## Tools
 - base and limit registers; [[Base and Bounds]]
 - swapping [[swap space]]
-- paging (page tables and [[Translation Lookaside Buffer]])
+- paging (page tables and [[Translation Lookaside Buffer (TLB)]])
 - segmentation (segment tables)
 - page faults => page fault handling => virtual memory

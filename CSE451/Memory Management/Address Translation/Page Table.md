@@ -8,3 +8,4 @@ A page table is a data structure responsible for translating **virtual memory** 
 - [[Page Table Storage]]
 - [[Page Table Entry Anatomy]]
 - [[Per-Process Page Tables]]
+- [[Page Table Structure Diagram]]
