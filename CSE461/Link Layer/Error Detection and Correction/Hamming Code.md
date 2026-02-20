@@ -1,3 +1,4 @@
+## Encode
 Gives us a method for constructing a code with a distance of 3
 - use $n = 2^k - k - 1$
 - put check bits in positions $p$ that are powers of 2, starting with position 1
