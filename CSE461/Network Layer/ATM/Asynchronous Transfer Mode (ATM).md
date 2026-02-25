@@ -12,3 +12,8 @@ The fixed cell size is what makes ATM fast — hardware can process identically-
 
 ## Context
 ATM is one of several [[Virtual Circuit (VC)]] technologies (along with X.25 and Frame Relay) that were largely replaced by the Internet's [[Connectionless]] model. See [[Virtual Circuit Resource Allocation and QoS]] for how VC networks handle resource guarantees compared to datagrams.
+
+## Packet vs Cell
+cells are fixed at 53 bytes whereas packets are variable size
+1. as cells are 53 bytes we can optimize hardware and switches for this
+2. they arrive at predictable intervals so we can increase QoS
