@@ -2,7 +2,7 @@
 
 **Page tables** are lookup tables that perform address translation from virtual to physical addresses.
 
-**Related:** [[CSE351/Memory Management/Virtual Memory]], [[CSE351/Memory Management/Paging]], [[TLB]], [[Page Faults]]
+**Related:** [[CSE351/Memory Management/Virtual Memory]], [[CSE351/Memory Management/Paging]], [[Translation Lookaside Buffer (TLB 351)]], [[Page Faults]]
 
 ---
 

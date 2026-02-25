@@ -51,7 +51,7 @@
 - [[CSE351/Memory Management/Paging]]
 - [[Page Tables]]
 - [[Page Faults]]
-- [[TLB]]
+- [[Translation Lookaside Buffer (TLB 351)]]
 
 ## System Programming
 - [[CSE351/System Programming/Exceptions]]

@@ -2,7 +2,7 @@
 
 **Virtual memory** provides each process with the illusion of a private address space, hiding actual physical RAM.
 
-**Related:** [[CSE484/Memory Exploits/Memory Layout]], [[Page Tables]], [[TLB]], [[Processes]]
+**Related:** [[CSE484/Memory Exploits/Memory Layout]], [[Page Tables]], [[Translation Lookaside Buffer (TLB 351)]], [[Processes]]
 
 ---
 

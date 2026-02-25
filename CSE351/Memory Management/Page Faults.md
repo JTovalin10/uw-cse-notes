@@ -59,7 +59,7 @@ Plus massive disk I/O penalty!
 - Memory access: ~100 cycles
 - Register access: ~1 cycle
 
-This is why we use [[TLB]] to minimize page table accesses.
+This is why we use [[Translation Lookaside Buffer (TLB 351)]] to minimize page table accesses.
 
 ---
 
@@ -71,4 +71,4 @@ This is why we use [[TLB]] to minimize page table accesses.
 | MMU | Performs address translation |
 | PTBR | Points to current process's page table |
 
-**Related:** [[TLB]], [[Context Switching]]
+**Related:** [[Translation Lookaside Buffer (TLB 351)]], [[Context Switching]]

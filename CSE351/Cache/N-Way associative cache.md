@@ -1,0 +1,1 @@
+Each memory address maps to one specific set, which contains N cache lines (called ways). The cache checks all N ways within the matched set to find the data. N is less than the total number of cache lines, making this a middle ground between direct-mapped and fully associative caches — it reduces conflict misses without requiring hardware comparators across every line.

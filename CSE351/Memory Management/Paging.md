@@ -2,7 +2,7 @@
 
 A **page** is a fixed-width unit of data transfer between memory levels.
 
-**Related:** [[CSE351/Memory Management/Virtual Memory]], [[Page Tables]], [[TLB]]
+**Related:** [[CSE351/Memory Management/Virtual Memory]], [[Page Tables]], [[Translation Lookaside Buffer (TLB 351)]]
 
 ---
 
