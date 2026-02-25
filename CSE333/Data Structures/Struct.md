@@ -31,3 +31,6 @@ In a 32-bit system it would pad to the nearest 4x byte
 ## 64-bit System
 In a 64-bit system it will pad to the nearest 8x byte
 [[Data Type Bytes]]
+
+## C++
+in c++ structs are also classes. The main difference is that they are private by default but we can also use the public/private keyword

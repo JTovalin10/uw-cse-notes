@@ -1,4 +1,6 @@
 ```c
+// returns 0 to the child process
+// returns the childs pid to the parent process
 pid_t fork(void);
 ```
 - creates a new process that is an exact clone of the current process

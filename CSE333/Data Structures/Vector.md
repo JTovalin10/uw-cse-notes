@@ -146,5 +146,3 @@ vector.reserve(n)   // reserve storage capacity for n elements
 vector.capacity()   // return current storage capacity
 vector.shrink_to_fit() // reduce memory usage by freeing unused memory
 ```
-
-Hope this helps complete your vector documentation!
