@@ -1,3 +1,18 @@
+ARP is the protocol responsible for resolving an **IPv4 L3 address to an L2 address**.
+
+## Layer Address Terminology
+
+| Layer | Name | Example |
+|---|---|---|
+| **L2** (Link Layer) | Hardware / MAC address | `00:1A:2B:3C:4D:5E` — 48-bit Ethernet address, identifies a NIC on a local network |
+| **L3** (Network Layer) | IP address | `192.168.1.1` — 32-bit IPv4 address, identifies a host across networks |
+
+When a packet is being delivered on a local network, the router knows the destination **L3 (IP) address**, but the hardware needs an **L2 (MAC) address** to actually put the frame on the wire. ARP bridges this gap by translating L3 → L2.
+
+> For IPv6, this role is filled by [[Neighbor Discovery Protocol (NDP)]] instead.
+
+---
+
 **Problem**: when forwarding a packet, how does a node know the link-layer address of the destination?
 
 A node knows the destination [[IP Address]], but to actually deliver a frame on a local network it needs the corresponding link-layer address (e.g., an Ethernet [[Media Access Control (MAC)|MAC]] address). ARP bridges this gap.

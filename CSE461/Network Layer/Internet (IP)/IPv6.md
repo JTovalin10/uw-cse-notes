@@ -12,7 +12,7 @@ uses 128-bits instead of IPv4's 32-bit.
 - IPSec by deafult
 - can use better features
 ![[Screenshot 2026-02-18 at 12.59.22 PM.png]]
-we still need [[Address Resolution Protocol (ARP)]] and [[CSE461/Network Layer/Internet (IP)/Dynamic Host Configuration Protocol (DHCP)]] but no longer need [[Network Address Translation (NAT) box]]
+we still need [[Neighbor Discovery Protocol (NDP)]] (replaces [[IP Address Resolution Protocol (ARP)|ARP]] for IPv6 address resolution) and [[Dynamic Host Configuration Protocol (DHCP)]] but no longer need [[Network Address Translation (NAT) box]]
 
 ## Translation
 IPv6 and IPv4 are fundamentally IPv4. We still need to support IPv4 so what we can do is:
