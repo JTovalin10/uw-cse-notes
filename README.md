@@ -36,6 +36,10 @@ These courses contain notes from past quarters. They will be organized and refin
 - **CSE 444** - Database Management *(notes coming soon)*
 - **CSE 484** - Computer Security
 
+## Viewing These Notes
+
+These notes are intended to be viewed with the [Obsidian](https://obsidian.md) app. Obsidian renders markdown with support for internal links, math equations (LaTeX), callouts, and other formatting used throughout this vault. Viewing the raw markdown files on GitHub or a plain text editor may not render correctly.
+
 ## Note
 
 This vault does not include all courses I have taken, but rather contains the classes I found most helpful. The organization and completeness of notes varies by course, with current courses being the most up-to-date and structured. Disclaimer: I used claude code to organize my notes and break them down
