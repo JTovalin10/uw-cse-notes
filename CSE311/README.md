@@ -1,24 +1,24 @@
-# CSE 331 - Software Design and Implementation
+# CSE 311 - Foundations of Computing I
 
 ## Course Overview
 
-> *Explores concepts and techniques for design and construction of reliable and maintainable software systems in modern high-level languages: specifications; program structure and design; program-correctness approaches, including testing; and event-driven programming (e.g., graphical user interface).*
+> *Explores the logical and mathematical foundations of computing including propositional and predicate logic, sets, relations, functions, induction, number theory, formal languages, and automata.*
 
-CSE 331 bridges mathematical foundations with practical software engineering, teaching you how to reason about program correctness and build robust, maintainable systems.
+CSE 311 builds the mathematical toolkit needed for computer science, covering discrete math, logic, and formal reasoning used throughout upper-division CS coursework.
 
 **Key Goals:**
-- Write software that is correct, easy to test, understand, and change
-- Use formal reasoning to verify program behavior
-- Apply abstraction principles to manage complexity
-- Design and implement Abstract Data Types (ADTs)
-- Build event-driven applications with graphical user interfaces
+- Reason precisely using propositional and predicate logic
+- Apply proof techniques including induction and strong induction
+- Understand discrete structures: sets, relations, functions, and trees
+- Work with number theory concepts relevant to computing
+- Analyze formal languages and automata
 
 ---
 
 ## Topics Covered
 
 ### Logic & Boolean Algebra
-Foundational propositional logic used throughout the course for reasoning about program behavior.
+Foundational propositional logic for constructing and evaluating logical arguments.
 - Truth tables and logical equivalences
 - DeMorgan's Laws
 - Tautologies and normal forms (CNF/DNF)
@@ -39,7 +39,7 @@ Mathematical structures for modeling data and relationships.
 - Connections between sets and logic
 
 ### Proof Techniques
-Formal methods for establishing correctness.
+Formal mathematical methods for proving statements about discrete structures.
 - Mathematical induction (base case, inductive step)
 - Strong induction
 - Structural induction (for recursive data types)
@@ -62,7 +62,7 @@ Formal definitions of common structures.
 Mapping and transformation concepts.
 - Function definitions and properties
 - Functions on lists and strings
-- Abstract functions (connecting implementation to specification)
+- Partial functions and totality
 - Function composition
 
 ### Automata and Languages
@@ -73,75 +73,28 @@ Formal language theory basics.
 
 ---
 
-## Software Engineering
-
-### Design Principles
-- **Abstraction**: Hiding implementation details behind clean interfaces
-- **Abstraction Barrier**: Separating implementer responsibilities from client expectations
-- **Specifications**: Precise descriptions of expected behavior
-
-### Abstract Data Types (ADTs)
-- Concrete state vs. abstract state
-- Representation invariants
-- Documenting ADT implementations
-- Types of operations (creators, observers, mutators)
-
-### Program Correctness
-- **Hoare Triples**: `{P} S {Q}` - precondition, code, postcondition
-- **Floyd Logic**: Reasoning about program states
-- Forward and backward reasoning
-- Weakest preconditions and strongest postconditions
-
-### Testing & Debugging
-- Types of tests (unit, integration, etc.)
-- Testing strategies
-- Debugging techniques
-- Mutation testing
-
-### Mutation & Side Effects
-- Local variable mutation
-- Mutations of arguments
-- Mutations in ADT implementations
-- The `@modifies` and `@effects` annotations
-
----
-
-## Java Programming
-
-Practical implementation of the theoretical concepts.
-- Pattern matching
-- Conditionals and loops (with correctness reasoning)
-- Subtypes and inheritance
-- Generics and generic methods
-- Wildcards
-- Type erasure and arrays
-
----
-
 ## Folder Structure
 
 ```
-CSE 331/
-├── Automata and Languages/
-├── Data Structures/
-├── Definitions/
-├── Functions/
-├── Java Programming/
-├── Logic/
-├── Number Theory/
-├── Predicates and Quantifiers/
-├── Proof Techniques/
-├── Screenshots/
-├── Sets and Relations/
-├── Software Engineering/
-└── Software Specifications/
+CSE311/
+├── Part I - Mathematical Foundations/
+│   ├── Data Structures/
+│   ├── Functions/
+│   ├── Logic/
+│   ├── Predicates and Quantifiers/
+│   └── Sets and Relations/
+├── Part II - Formal Reasoning/
+│   ├── Automata and Languages/
+│   ├── Number Theory/
+│   └── Proof Techniques/
+└── Screenshots/
 ```
 
 ---
 
 ## Key Takeaways
 
-1. **Specifications matter**: Good specs are precise and distinguish essential from incidental details
-2. **Abstraction is fundamental**: It enables managing complexity in large systems
-3. **Formal reasoning works**: Induction and Hoare logic provide tools to prove correctness
-4. **Design for change**: Code should be easy to understand, test, and modify
+1. **Logic is the foundation**: Precise logical reasoning underpins all of computer science
+2. **Induction is powerful**: Mathematical and structural induction are the primary tools for proving properties of recursive structures
+3. **Formal languages describe computation**: Regular expressions and automata define what machines can recognize
+4. **Discrete math is everywhere**: Number theory, sets, and relations appear throughout algorithms, cryptography, and systems
