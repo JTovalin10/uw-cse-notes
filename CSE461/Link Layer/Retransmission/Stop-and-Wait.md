@@ -15,6 +15,11 @@ $$
 \text{Frame/sec} = \frac{1}{T_{frame} + \text{RTT}}
 $$
 where T_Frame is the transmission size
+
+**Utilization (efficiency):**
+$$U = \frac{T_{frame}}{T_{frame} + \text{RTT}}$$
+- Fraction of time the sender is actually sending useful data
+- Low when RTT $\gg$ $T_{frame}$ (high BD links)
 frame is a packet wrapped with header/trailer info ([[Media Access Control (MAC)|MAC]], error checking, etc)
 
 ## Textbook Notes

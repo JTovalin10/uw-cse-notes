@@ -7,6 +7,13 @@
 	1. a user sends at a low rate all the time
 	2. better for analog systems
 ![[Screenshot 2026-01-22 at 3.26.05 PM.png]]
+
+# Throughput
+Both give the same per-user throughput — they just divide different resources:
+- **TDM**: divides **time** → full bandwidth $B$, used $1/N$ of the time
+- **FDM**: divides **frequency** → bandwidth $B/N$, used all the time
+
+$$\frac{1}{N} \cdot B\log_2\!\left(1+\frac{S}{N}\right) = \frac{B}{N}\log_2\!\left(1+\frac{S}{N}\right)$$
 # Usage
 - statically divide a resource (TDM)
 	- suited for continuous traffic, fixed number of users
