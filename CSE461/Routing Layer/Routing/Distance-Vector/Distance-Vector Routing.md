@@ -1,12 +1,14 @@
-Also known as **Bellman-Ford**. Each node constructs a 1-D array (distance vector) containing the costs to all other nodes and distributes that vector to its immediate neighbors.
+This is an simple early routing approach used in ARPANET and RIP. Today, link-state algorithms are typically used
+
+This is the distributed version of **Bellman-Ford**. Each node constructs a 1-D array (distance vector) containing the costs to all other nodes and distributes that vector to its immediate neighbors.
 
 Each node starts by knowing the cost of the link to each directly connected neighbor. A downed link has a cost of infinity.
 
-![[Pasted image 20260215199240.png]]
+![[Pasted image 20260215195240.png]]
 
 The process of getting consistent routing info to all nodes is called [[Convergence]].
 
-See also: [[Routing]], [[Routing Information Protocol (RIP)]]
+See also: [[CSE461/Network/Routing]], [[CSE461/Routing Layer/Routing/Distance-Vector/Routing Information Protocol (RIP)]]
 
 ## Sending Routing Updates
 
@@ -30,11 +32,28 @@ A cycle where nodes increment hop counts indefinitely and the network never stab
 
 ## Algorithm Steps
 
-1. Initialize the routing table with the cost to each directly connected neighbor (infinity for all others)
-2. Send the distance vector (list of `(destination, cost)` pairs) to all directly connected neighbors
+1. Initialize the routing table with the cost to each directly connected neighbor (infinity for all others and 0 for yourself)
+2. Send the distance vector (list of `(destination, cost)` pairs) to all directly connected neighbors periodically
 3. When receiving a distance vector from neighbor N:
 	1. For each destination D in the received vector:
 		1. Compute `new_cost = cost_to_N + N's_cost_to_D`
 		2. If `new_cost < current_cost_to_D`, update routing table: set cost to D = `new_cost`, set next hop = N
 4. If the routing table changed, send the updated distance vector to all neighbors
 5. Repeat from step 3 on each received update
+
+## Worst case
+the network is a straight line so if it is n nodes then it would take $n-1$ rounds/hops to converge
+
+## Dynamics
+- adding routes
+	- new travels one hop per exchange
+- removing routes
+	- when a node fails, no more exchanges, other nodes forget
+- various heuristics to address
+	- split horizon
+	- poison reverse
+	- none are very effective
+- but partitions (unreachable nodes in divided network) are a problem
+	- count to infinity scenario
+	- connection is disconnected
+![[Screenshot 2026-02-25 at 12.54.21 PM.png]]

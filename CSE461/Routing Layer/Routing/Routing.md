@@ -12,12 +12,12 @@ Routing is essentially a graph theory problem — we represent the network as a 
 
 ### [[Distance-Vector Routing]]
 - [[Distance-Vector Routing]] — Bellman-Ford, convergence, infinity problem
-- [[Routing Information Protocol (RIP)]] — distance-vector in practice (30s updates, 15-hop limit)
+- [[CSE461/Routing Layer/Routing/Distance-Vector/Routing Information Protocol (RIP)]] — distance-vector in practice (30s updates, 15-hop limit)
 
 ### Link State
 - [[Link State Routing]] — reliable flooding, LSPs
 - [[Route Calculation]] — Dijkstra's forward search algorithm
-- [[Open Shortest Path First (OSPF)]] — link-state in practice
+- [[CSE461/Routing Layer/Routing/Link State/Open Shortest Path First (OSPF)]] — link-state in practice
 
 ### Other
 - [[Routing Metrics]] — how link cost is measured

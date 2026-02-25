@@ -1,0 +1,1 @@
+how do we route inside of certain nodes (our domain). We dont want to flood other networks as we would need to pay them as well as we want to keep how we route a secret.

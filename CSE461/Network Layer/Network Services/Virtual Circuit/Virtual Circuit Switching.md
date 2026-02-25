@@ -26,4 +26,4 @@ VCIs have **link-local scope** — they only need to be unique per port per swit
 - **Latency**: At least one RTT of delay before data can be sent (setup must complete first)
 - **Small per-packet overhead**: Data packets carry only a small VCI (not a full address), and VCI lookup is fast (table index, not key search)
 - **Fragile**: If a switch or link fails, the connection breaks — must tear down the old circuit and establish a new one
-- **[[Routing]] still needed**: Switches must know where to forward setup requests, which is essentially the same routing problem as datagrams
+- **[[CSE461/Network/Routing]] still needed**: Switches must know where to forward setup requests, which is essentially the same routing problem as datagrams

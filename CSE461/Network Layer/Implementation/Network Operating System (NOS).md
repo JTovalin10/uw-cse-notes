@@ -6,4 +6,4 @@ The NOS layer in [[Software Defined Networks|SDN]] plays the same role a server 
 - The NOS takes on the burden of collecting distributed network state — the hard part of algorithms like link-state and distance-vector — so the app only needs to focus on the routing logic
 - Goal: a **globally optimized** solution by centralizing control
 
-See also: [[Software Defined Networks]], [[Routing]]
+See also: [[Software Defined Networks]], [[CSE461/Network/Routing]]

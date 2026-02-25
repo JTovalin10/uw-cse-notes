@@ -1,6 +1,6 @@
 How the cost of a link is measured affects which paths the routing algorithm prefers.
 
-See also: [[Routing]]
+See also: [[CSE461/Routing Layer/Routing/Routing]]
 
 ## Delay
 

@@ -6,7 +6,7 @@ Uses a **forward search** algorithm — a modification of Dijkstra's — maintai
 
 Each entry in either list has the form `(Destination, Cost, NextHop)`.
 
-See also: [[Link State Routing]], [[Routing]]
+See also: [[Link State Routing]], [[CSE461/Network/Routing]]
 
 ## Algorithm
 

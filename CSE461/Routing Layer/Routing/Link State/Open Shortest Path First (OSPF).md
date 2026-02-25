@@ -6,7 +6,7 @@ One of the most widely used [[Link State Routing|link-state]] routing protocols.
 
 ![[Pasted image 20260215204052.png]]
 
-See also: [[Link State Routing]], [[Route Calculation]], [[Routing]]
+See also: [[Link State Routing]], [[Route Calculation]], [[CSE461/Network/Routing]]
 
 ## Advertisements
 
