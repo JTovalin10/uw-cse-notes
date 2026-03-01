@@ -24,7 +24,7 @@ however needs buffer for multiple inputs to send to one output. It is important 
 
 ## Advantages of switches
 they have replaced the shared cable of classic ethernet
-- its more convenient to run wires to one location
+- it's more convenient to run wires to one location
 - more reliable as a wire cut is not a single point of failure that is hard to find
 switches offer scalable performance
 - 100 Mbps per port instead of 100 Mbps for all nodes of shared cable/hub

@@ -1,4 +1,4 @@
-This is an simple early routing approach used in ARPANET and RIP. Today, link-state algorithms are typically used
+This is a simple early routing approach used in ARPANET and RIP. Today, link-state algorithms are typically used
 
 This is the distributed version of **Bellman-Ford**. Each node constructs a 1-D array (distance vector) containing the costs to all other nodes and distributes that vector to its immediate neighbors.
 
@@ -8,7 +8,7 @@ Each node starts by knowing the cost of the link to each directly connected neig
 
 The process of getting consistent routing info to all nodes is called [[Convergence]].
 
-See also: [[CSE461/Network/Routing]], [[CSE461/Routing Layer/Routing/Distance-Vector/Routing Information Protocol (RIP)]]
+See also: [[CSE461/Foundations/Routing]], [[CSE461/Routing Layer/Routing/Distance-Vector/Routing Information Protocol (RIP)]]
 
 ## Sending Routing Updates
 
@@ -42,7 +42,7 @@ A cycle where nodes increment hop counts indefinitely and the network never stab
 5. Repeat from step 3 on each received update
 
 ## Worst case
-the network is a straight line so if it is n nodes then it would take $n-1$ rounds/hops to converge
+the network is a straight line so if there are n nodes then it would take $n-1$ rounds/hops to converge
 
 ## Dynamics
 - adding routes
@@ -56,4 +56,5 @@ the network is a straight line so if it is n nodes then it would take $n-1$ roun
 - but partitions (unreachable nodes in divided network) are a problem
 	- count to infinity scenario
 	- connection is disconnected
-![[Common AS relationships.png]]
+
+See also: [[AS Relationships and Policies]] for AS relationship diagram.

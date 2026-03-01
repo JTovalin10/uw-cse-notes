@@ -90,6 +90,6 @@ B and F detect the failure and flood new LSPs with G marked as ∞:
 2. node crashes and loses seq number
 3. network partitions then heals
 ### Strategy
-include age on LSp and forget old information that is not refreshed
+include age on LSP and forget old information that is not refreshed
 
-See also: [[CSE461/Network/Routing]], [[Route Calculation]], [[CSE461/Routing Layer/Routing/Link State/Open Shortest Path First (OSPF)]]
+See also: [[CSE461/Foundations/Routing]], [[Route Calculation]], [[CSE461/Routing Layer/Routing/Link State/Open Shortest Path First (OSPF)]]

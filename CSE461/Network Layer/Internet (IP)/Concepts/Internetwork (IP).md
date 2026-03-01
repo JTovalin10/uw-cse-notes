@@ -1,7 +1,7 @@
 An arbitrary collection of networks interconnected to provide host-to-host packet delivery. It hides differences in:
 - Service model
 - Addressing
-- Quality of service
+- [[Quality of Service (QoS)]]
 - Packet sizes
 - Security
 
@@ -26,17 +26,17 @@ An arbitrary collection of networks interconnected to provide host-to-host packe
 ## Topics
 
 ### [[IP Packets]]
-- [[IP Service Model]] — best-effort datagram delivery, "run over anything"
+- [[IP Service Model]] — best-effort [[Datagram]] delivery, "run over anything"
 - [[IP Packet Format]] — version, HLen, TOS, TTL, flags, offset, protocol, checksum, addresses
 - [[IP Fragmentation and Reassembly]] — handling packets too large for a network's [[Maximum Transmission Unit (MTU)|MTU]]
 
 ### [[IP Addressing]]
-- [[IP Global Addresses]] — hierarchical addressing, Class A/B/C
+- [[IP Global Addresses]] — hierarchical addressing, [[IP Address Classes (Classful Addressing)|Class A/B/C]]
 - [[Subnetting]] — subnet masks and subnet numbers
 - [[Classless Interdomain Routing (CIDR)]] — aggregate routes, longest prefix match
 
 ### Forwarding
-- [[IP Datagram Forwarding]] — forwarding algorithm, next hop router, [[Forwarding Table]]
+- [[IP Datagram Forwarding]] — forwarding algorithm, [[Next Hop Router]], [[Forwarding Table]]
 
 ### [[IP Protocols]]
 - [[IP Address Resolution Protocol (ARP)]] — translating IP to link-level addresses

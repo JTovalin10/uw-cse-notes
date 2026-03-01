@@ -4,8 +4,8 @@ The more [[Bandwidth]], the more data can be transmitted further (think shouting
 $$BD = R \times D$$
 
 Where:
-- B = [[Bandwidth]]
-- D = [[RTT]] (seconds)
+- R = link rate ([[Bandwidth]])
+- D = propagation delay (seconds); RTT ≈ 2D. See [[Round-Trip Time (RTT)]]
 - BD = bandwidth-delay product (bits)
 
 # What It Represents

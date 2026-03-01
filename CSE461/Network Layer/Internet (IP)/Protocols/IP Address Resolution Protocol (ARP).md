@@ -1,4 +1,4 @@
-ARP is the protocol responsible for resolving an **IPv4 L3 address to an L2 address**.
+[[Address Resolution Protocol (ARP)|ARP]] is the protocol responsible for resolving an **[[IPv4]] L3 address to an L2 address**.
 
 ## Layer Address Terminology
 
@@ -7,7 +7,7 @@ ARP is the protocol responsible for resolving an **IPv4 L3 address to an L2 addr
 | **L2** (Link Layer) | Hardware / MAC address | `00:1A:2B:3C:4D:5E` — 48-bit Ethernet address, identifies a NIC on a local network |
 | **L3** (Network Layer) | IP address | `192.168.1.1` — 32-bit IPv4 address, identifies a host across networks |
 
-When a packet is being delivered on a local network, the router knows the destination **L3 (IP) address**, but the hardware needs an **L2 (MAC) address** to actually put the frame on the wire. ARP bridges this gap by translating L3 → L2.
+When a packet is being delivered on a local network, the [[Router]] knows the destination **L3 ([[Internet Protocol (IP)|IP]]) address**, but the hardware needs an **L2 ([[Media Access Control (MAC)|MAC]]) address** to actually put the [[Frame]] on the wire. ARP bridges this gap by translating L3 → L2.
 
 > For IPv6, this role is filled by [[Neighbor Discovery Protocol (NDP)]] instead.
 
@@ -19,13 +19,13 @@ A node knows the destination [[IP Address]], but to actually deliver a frame on 
 
 ## Approaches
 
-1. **Encode the physical address in the IP address** — limited by address class bit widths, not practical
+1. **Encode the physical address in the IP address** — limited by [[IP Address Classes (Classful Addressing)|address class]] bit widths, not practical
 2. **Maintain a dynamic mapping table** — each host learns IP-to-link-layer mappings from the network at runtime. This is ARP.
 
 ## How ARP Works
 ARP is right on top of the link layer
 - no servers, just asks node with target IP to id itself
-- uses broadcase to reach all nodes
+- uses broadcast to reach all nodes
 
 ARP maintains a local **cache** of IP → link-layer address mappings. On a lookup:
 

@@ -1,4 +1,4 @@
-the controller has a birds eye view of all ports, it doesn't deal with data just tells data where to go
+The controller has a bird's-eye view of all ports, it doesn't deal with data just tells data where to go
 the controller just gives the switches the flow table that tells it where to send
 1. two different classes of programmability
 2. at controller
@@ -16,6 +16,6 @@ the controller just gives the switches the flow table that tells it where to sen
 ## Key outputs
 simplify network design and implementation
 - sorta, kinda pushed the complexity around to the controller
-however, this enables code reuse and libraries. Does standardize and simplify deployment of rules to switches, allow for fast operation.
+However, this enables code reuse and libraries. It does standardize and simplify deployment of rules to switches, allowing for fast operation.
 
 Part of [[SDN - Control and Data Plane]]

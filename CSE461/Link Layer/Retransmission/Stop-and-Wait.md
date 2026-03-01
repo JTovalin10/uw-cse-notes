@@ -1,13 +1,14 @@
 # Normal Case
 ![[Screenshot 2026-01-22 at 3.05.17 PM.png]]
-# Ack loss
+# ACK Loss
 ![[Screenshot 2026-01-22 at 3.05.28 PM.png]]
-# early timeout
+# Early Timeout
 ![[Screenshot 2026-01-22 at 3.05.48 PM.png]]
 
 # Limitations
-it allows only a single frame to be outstanding from the sender. The issue is that if we icnrease the Mbps it doesnt increase the throughput as much
-	good for [[Local Area Network (LAN)|LAN]], not **efficient** for high BD
+
+It allows only a single frame to be outstanding from the sender. The issue is that if we increase the Mbps it doesn't increase the throughput as much
+	good for [[Local Area Network (LAN)|LAN]], not **efficient** for high [[Bandwidth-Delay (BD) Product|BD]] (bandwidth-delay product)
 ![[Screenshot 2026-01-22 at 3.07.59 PM.png]]
 
 Formula:

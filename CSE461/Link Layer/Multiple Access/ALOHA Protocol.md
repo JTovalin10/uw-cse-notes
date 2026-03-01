@@ -6,7 +6,7 @@
 
 the gray area means there is a collision and it has to retransmit
 
-With slotted aloha we can avoid overlapping collision by creating slots which increases effiencey by 36%
+With slotted aloha we can avoid overlapping collision by creating slots which increases efficiency by 36%
 # Throughput
 Let $G$ = offered load (avg frames transmitted per slot), $S$ = throughput
 

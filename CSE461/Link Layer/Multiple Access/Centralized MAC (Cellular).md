@@ -1,10 +1,10 @@
-Cellular uses a license so it forces the carriers to use/make efficient protocols as its also expensive to use
-- Spectrum suddenly very very scare
-	- we cant waste all of its sending JAMS
+Cellular uses a license so it forces the carriers to use/make efficient protocols as it's also expensive to use
+- Spectrum is suddenly very scarce
+	- we can't waste all of it sending JAMS
 	- is licensed
 - we have [[Quality of Service (QoS)|QoS]] requirements
-	- cant be as loose with expectations
-	- cant have traffic fail
+	- can't be as loose with expectations
+	- can't have traffic fail
 - we also have client/server
 	- centralized control
 	- not peer-to-peer/decentralized

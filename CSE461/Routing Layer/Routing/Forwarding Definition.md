@@ -1,1 +1,1 @@
-the process of sending a packet
+The process of sending a packet

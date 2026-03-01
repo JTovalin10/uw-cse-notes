@@ -1,6 +1,11 @@
-## Classless Interdomain Routing (CIDR)
-An addressing scheme that removes the old Class A/B/C system and uses variable-length prefixes (e.g., `/24`) to allocate address space more efficiently. Creates **aggregate routes** so a single [[Forwarding Table]] entry can cover many networks.
+# Classless Interdomain Routing (CIDR)
 
-When prefixes overlap, the **longest prefix match** rule is used. Efficient lookup is done with a **Patricia tree**.
+Replaces [[IP Address Classes (Classful Addressing)|Class A/B/C]] with variable-length prefixes. One [[Forwarding Table]] entry can cover many networks.
 
-See also: [[Classless Interdomain Routing  (CIDR)]], [[Subnet]]
+## Key points
+
+- Variable-length prefixes (e.g., `/24`) — allocate address space efficiently
+- Overlapping prefixes → **longest prefix match** rule
+- Lookup: **Patricia tree** — a compact trie (radix tree) used for fast prefix lookup; supports longest-prefix match by searching from root to leaf
+
+See also: [[Subnet]], [[Forwarding Table]], [[Longest matching prefix]]

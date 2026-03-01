@@ -1,8 +1,16 @@
 # IPv6
+
+128-bit addresses; successor to [[IPv4]]. See [[Internet Protocol (IP)#Prefixes]] for prefix basics.
+
 ## History
-this came about as during the early 2000's we were running out of [[IPv4]] addresses--even with the current solutions it wasnt enough. Hence, we decided to increase the number of addresses from $2^{32}$ to $2^{128}$. It is important to note that it is also virtually impossible to achieve 100% address utilization efficeny so we may consume the entire address space before the $2^{32}$ addresses are used
-## Packet format
-uses 128-bits instead of IPv4's 32-bit and is simplier than it as it aimed to remove unnecessary functionality from the protocol.
+
+- Early 2000s: [[IPv4]] exhaustion — even with CIDR/NAT, not enough
+- Address space: $2^{32}$ → $2^{128}$
+- 100% utilization impossible — allocation inefficiency, reserved blocks, and sparse assignment mean space may exhaust before all addresses are used
+
+## IPv6 header
+
+128-bit addresses; simpler than IPv4 (removed unnecessary features).
 - features large addresses
 	- 128 bits most of header
 - new notation
@@ -11,70 +19,87 @@ uses 128-bits instead of IPv4's 32-bit and is simplier than it as it aimed to re
 - only public addresses
 	- no more [[Network Address Translation (NAT) box]]
 - streamlined header processing
-	- no more [[CSE461/Link Layer/Error Detection and Correction/Checksum]]
+	- no more [[Checksum]]
 - flow label to group packet
-- IPSec by deafult
-- can use better features
+- **IPSec by default** — built-in encryption and authentication for IPv6 packets
+- better fit with advanced features
 Fields:
 - version
-	- set to 6 for IPv6 so that header-processing software can immediatlery decide which header format to hlook for
-- Diff Serv/TrafficClass
-- flow label
-	- both FL and TC are qualityt of service issues
-- ppayload length
-	- the length of the packet excludi0ng the ehader (bytes)
-- nextheadr
-	- cleverly repalces both the IP optionand the protocl fields of IPv4. I foptions are required then they are carried in one or more special headerers following the IP header which is indeicated by the vlaue of NExtHEaDer fields if theer are no speciual headerrs then this is the demiux key idenfitying ht ehigh lvel protocl running over IP (TCP or UDP)
-- fragmentation is an optional heade
+	- set to 6 for IPv6 so that header-processing software can immediately decide which header format to look for
+- **Diff Serv/TrafficClass** — Differentiated Services field for [[Quality of Service (QoS)]]
+- **flow label** — groups packets for special handling (e.g., same path, QoS)
+- payload length
+	- the length of the packet excluding the header (bytes)
+- nextheader
+	- Replaces IP options + protocol fields of IPv4
+	- Options → extension headers (chained via NextHeader)
+	- If no options: demux key for [[Transmission Control Protocol (TCP)|TCP]]/[[User Datagram Protocol (UDP)|UDP]]
+- fragmentation is an optional header
 - hop limit
-	- [[CSE461/Network Layer/Internet (IP)/Packets/Time to Live (TTL)|Time to Live (TTL)]]
+	- [[Time to Live (TTL)]]
 - the rest of the header is taken up by source and destination address as each are 16 bytes or 128 bits each.
 ![[Screenshot 2026-02-18 at 12.59.22 PM.png]]
-optional header fields are better as the router doesnt need to parse the entire options fields. Ipv6 treats options as extension headers that must appear in a specifc order so each router can quiclly determine if any options are relevent to it.which is determined by looking at the nextheader field. this means that option processing is superior in IPv6 than Ipv4
+
+- Options as extension headers — fixed order; router checks NextHeader only when needed
+- Optional processing superior to IPv4 (no full parse of options)
 ![[IPv6 fragmentation extension header.png]]
 ## Translation
-IPv6 and IPv4 are fundamentally IPv4. We still need to support IPv4 so what we can do is:
-1. dual stack (speak IPv4 and 6)
-2. translators (convert packets)
-3. [[Tunneling]]
+
+IPv4 coexists with IPv6. Options:
+
+- **Dual stack** — speak both IPv4 and IPv6
+- **Translators** — convert packets
+- **[[IP Tunneling Overview|Tunneling]]** — encapsulate one in the other
+
 ## Downside
-due to 128 bit it increases the size of packets
+
+- 128-bit addresses increase packet size
 
 ## Addresses and Routing
-### address Space Allocation
-IPv6 is classless but uses leading bits to specify different uses of IPv6 addresses
-n. First, the entire functionality of IPv4’s three main address classes (A, B, and C) is contained inside the “everything else” range. Global Unicast Addresses, as we will see shortly, are a lot like classless IPv4 addresses, only much longer. These are the main ones of interest at this point, with over 99% of the total IPv6 address space available to this important form of address. (At the time of writing, IPv6 unicast addresses are being allocated from the block that begins `001`, with the remaining address space—about 87%—being reserved for future use.)
+### Address space allocation
+- [[Classless Interdomain Routing (CIDR)|Classless]]; leading bits specify use
+- **Global Unicast** — entire functionality of IPv4’s [[IP Address Classes (Classful Addressing)|three main address classes (A, B, and C)]] is contained inside the “everything else” range. Global Unicast Addresses, as we will see shortly, are a lot like [[Classless Interdomain Routing (CIDR)|classless]] [[IPv4]] addresses, only much longer. These are the main ones of interest at this point, with over 99% of the total IPv6 address space available to this important form of address. (At the time of writing, IPv6 unicast addresses are allocated from the block beginning `001` — the 3-bit prefix for global unicast; other leading bits reserve space for multicast, link-local, etc.)
 
-The multicast address space is (obviously) for multicast, thereby serving the same role as class D addresses in IPv4. Note that multicast addresses are easy to distinguish—they start with a byte of all 1s. We will see how these addresses are used in a later section.
+- **[[Multicast Overview|Multicast]]** — for multicast; same role as [[IP Address Classes (Classful Addressing)|Class D]] addresses in IPv4; multicast addrs easy to distinguish—start with byte of all 1s
 ![[Pasted image 20260228235824.png]]
-The idea behind link-local use addresses is to enable a host to construct an address that will work on the network to which it is connected without being concerned about the global uniqueness of the addres
-### Address Notation
-it uses the standard notation from IPv4 ```x:x:x:x:x:x:x:x``` where each x is a 16-bit piece of the address. However, with IPv6, we are allowed to comapct the address by comitting all the 0 fields
+- **Link-local** — host constructs address for local network; no global uniqueness needed
+### Address notation
+
+- Standard: `x:x:x:x:x:x:x:x` (each x = 16 bits)
+- Compact: omit leading zeros, collapse consecutive zero groups
 ```
 47CD:0000:0000:0000:0000:0000:A456:0124 -> 47CD::A456:0124
 ```
-If we have a IPv4 mapped to a IPv6 address we can dop the following:
+If we have an IPv4 address mapped to IPv6 we can do the following:
 ```
 128.96.33.81 -> ::FFFF:128.96.33.81
 ```
-where the alst 32 bits are written in IPv4 notation rather than a paiur of hexademcial numbers seperated by a colon. the leading double dolon indicates leading 0's
+- IPv4-mapped: last 32 bits in IPv4 notation; leading `::` = leading zeros
 ## Global Unicast addresses
-To understand how it works and how it provides scalability, it is helpful to define some new terms. We may think of a nontransit AS (i.e., a stub or multihomed AS) as a _subscriber_, and we may think of a transit AS as a _provider_. Furthermore, we may subdivide providers into _direct_ and _indirect_. The former are directly connected to subscribers. The latter primarily connect other providers, are not connected directly to subscribers, and are often known as _backbone_ _networks_.
+To understand how it works and how it provides scalability, it is helpful to define some new terms. We may think of a nontransit [[Autonomous System (AS)|AS]] (i.e., a stub or multihomed [[Autonomous System (AS)|AS]]) as a _subscriber_, and we may think of a transit [[Autonomous System (AS)|AS]] as a _provider_. Furthermore, we may subdivide providers into _direct_ and _indirect_. The former are directly connected to subscribers. The latter primarily connect other providers, are not connected directly to subscribers, and are often known as _backbone_ _networks_.
 
-TAs with CIDR, the goal of the IPv6 address allocation plan is to provide aggregation of routing information to reduce the burden on intradomain routers. Again, the key idea is to use an address prefix—a set of contiguous bits at the most significant end of the address—to aggregate reachability information to a large number of networks and even to a large number of autonomous systems. The main way to achieve this is to assign an address prefix to a direct provider and then for that direct provider to assign longer prefixes that begin with that prefix to its subscribers. Thus, a provider can advertise a single prefix for all of its subscribers.
+As with [[Classless Interdomain Routing (CIDR)|CIDR]], the goal of the IPv6 address allocation plan is to provide aggregation of [[Routing]] information to reduce the burden on intradomain routers. Again, the key idea is to use an address prefix—a set of contiguous bits at the most significant end of the address—to aggregate reachability information to a large number of networks and even to a large number of [[Autonomous System (AS)|autonomous systems]]. The main way to achieve this is to assign an address prefix to a direct provider and then for that direct provider to assign longer prefixes that begin with that prefix to its subscribers. Thus, a provider can advertise a single prefix for all of its subscribers.
 
-Of course, the drawback is that if a site decides to change providers, it will need to obtain a new address prefix and renumber all the nodes in the site. This could be a colossal undertaking, enough to dissuade most people from ever changing providers. For this reason, there is ongoing research on other addressing schemes, such as geographic addressing, in which a site’s address is a function of its location rather than the provider to which it attaches. At present, however, provider-based addressing is necessary to make routing work efficiently.
+**Provider-based addressing** means addresses encode the provider; the drawback: if a site changes providers, it must obtain a new prefix and **renumber** all nodes — a colossal undertaking that dissuades most from ever changing providers. For this reason, there is ongoing research on other addressing schemes, such as geographic addressing, in which a site’s address is a function of its location rather than the provider to which it attaches. At present, however, provider-based addressing is necessary to make routing work efficiently.
 
-IPv6 comes with a advantage over IPv4 when it comes to this as it does nto havea  large installed base of assigned addresses to fitr into its plans
+IPv6 comes with an advantage over [[IPv4]] when it comes to this as it does not have a large installed base of assigned addresses to fit into its plans
 ![[IPv6 provider-based unicast address.png]]
 
 ## Advanced Capabilities
 ### Autoconfiguration
-IPv4 has this but with [[CSE461/Network Layer/Internet (IP)/Protocols/Dynamic Host Configuration Protocol (DHCP)|Dynamic Host Configuration Protocol (DHCP)]]. IPv6 uses a stateless configuration where we want to do the following:
-1. obtain an interface ID that is unqiue on the link to which the host is attached
-2. obtain the correct address prefix for this subnet
-### Source-Directed-Routing
-one of IPv6 extension header is the routing header. Without this header the routing for IPv6 differs little from IPv4 under CIDR. this contrains a lsit of addresses that represent nodes or topological areas that the pacjket should visit en route to its detination. this providesd a way f implementing provider selection on a apcket-by-packet bvasis. This providers can choose cheaper or more reliable or better security. 
-anycast: to provide the ability to specify topologucal entitries rather than indivual nodess.
+
+IPv4 uses [[Dynamic Host Configuration Protocol (DHCP)]]; IPv6 has stateless config.
+
+- Obtain interface ID unique on the link
+- Obtain correct address prefix for this [[Subnet]]
+### [[Source Routing|Source-Directed-Routing]]
+
+Routing header extension. Without it, [[Routing]] like IPv4 under [[Classless Interdomain Routing (CIDR)|CIDR]].
+
+- Contains list of nodes/topological areas packet must visit
+- Provider selection per-packet (cheaper, more reliable, better security)
+- **Anycast** — specify topological entities rather than individual nodes
 ## Extra
-we still need [[Neighbor Discovery Protocol (NDP)]] (replaces [[IP Address Resolution Protocol (ARP)|ARP]] for IPv6 address resolution) and [[Dynamic Host Configuration Protocol (DHCP)]] but no longer need [[Network Address Translation (NAT) box]]
+
+- Still need: [[Neighbor Discovery Protocol (NDP)]] (replaces [[IP Address Resolution Protocol (ARP)|ARP]]), [[Dynamic Host Configuration Protocol (DHCP)]]
+- No longer need: [[Network Address Translation (NAT) box]]

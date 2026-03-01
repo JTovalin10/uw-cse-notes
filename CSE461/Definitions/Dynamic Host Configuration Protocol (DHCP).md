@@ -1,6 +1,10 @@
-## Dynamic Host Configuration Protocol (DHCP)
-A protocol that automatically assigns [[CSE461/Definitions/Internet Protocol (IP)|IP]] addresses to hosts from a pool of available addresses, minimizing the need for manual configuration.
+# Dynamic Host Configuration Protocol (DHCP)
 
-A newly booted host broadcasts a `DHCPDISCOVER` message; a DHCP server (or relay agent) responds with an available IP address, subnet mask, and default router.
+Assigns [[Internet Protocol (IP)|IP]] addresses to hosts from a pool — minimal manual config.
 
-See also: [[Dynamic Host Configuration Protocol (DHCP)]]
+## How it works
+
+- Newly booted host broadcasts `DHCPDISCOVER`
+- DHCP server (or relay agent) responds with: IP address, [[Subnet Mask]], default [[Router]]
+
+See also: [[IP Address Resolution Protocol (ARP)]], [[IP Global Addresses]]

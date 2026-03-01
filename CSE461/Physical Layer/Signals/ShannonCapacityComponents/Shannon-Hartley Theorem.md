@@ -1,4 +1,4 @@
-shannon limit is for capacity (C), the maximum **lossless** information carrying rate of the channel which assu,mes a noisy channel
+shannon limit is for capacity (C), the maximum **lossless** information carrying rate of the channel which assumes a noisy channel
 
 **this is the theoretical max regardless of signal levels or encoding scheme**
 # Shannon-Hartley Theorem

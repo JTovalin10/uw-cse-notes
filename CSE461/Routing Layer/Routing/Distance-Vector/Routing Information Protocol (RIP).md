@@ -11,4 +11,4 @@ Routers advertise the cost of reaching networks (not just other routers).
 - Uses **hop count** as the cost metric
 - Maximum of **15 hops** — a cost of 16 is treated as infinity (unreachable)
 
-See also: [[CSE461/Network/Routing]], [[Distance-Vector Routing]]
+See also: [[CSE461/Foundations/Routing]], [[Distance-Vector Routing]]

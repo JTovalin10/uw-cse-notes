@@ -13,6 +13,7 @@ The physical medium that propagates signals carrying bits of information:
 - [[Media/Wireless|Wireless]] - Radio, microwave, infrared
 - [[Media/Signals over Fiber|Signals over Fiber]] - Wavelength Division Multiplexing
 - [[Media/Wired Wireless Perspective|Wired vs Wireless]] - Design considerations
+- [[Types of Links]] - Simplex, Half-Duplex, Full-Duplex; [[Wired vs Wireless]], [[Wireless Links]]
 
 ### [[Performance/Simple Link Model|Performance]]
 Key metrics for characterizing links:

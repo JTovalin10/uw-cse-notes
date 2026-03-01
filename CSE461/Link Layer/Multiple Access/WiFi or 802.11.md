@@ -1,13 +1,11 @@
-clients get conectivity form a wired access point
+Clients get connectivity from a wired access point.
 
-its a multi access problem
+It's a multi-access problem.
 
-multi antennas increase data rate by:
-- each antenna increases data rate by x
-- it has to solve a linear equation however each antenna should be different
+**Multiple antennas** increase data rate via **[[Multiple Input Multiple Output (MIMO)|MIMO]]** — each antenna provides a spatial stream; the receiver solves a linear system to separate them. More antennas → more parallel streams → higher throughput.
 
 # Physical layer
-uses 20/40 MHz channels on ISM (unlicensed) bands
+uses 20/40 MHz channels on **ISM bands** (Industrial, Scientific, Medical — unlicensed radio bands)
 - 802/11b/g/n on 2.4 GHz
 - 802.11 a/n on 5 GHz
 
@@ -17,7 +15,7 @@ uses 20/40 MHz channels on ISM (unlicensed) bands
 - 802.11n uses multiple antennas ([[Multiple Input Multiple Output (MIMO)|MIMO]])
 
 # Link Layer
-Multiple access uses [[Carrier Sense Multiple Access (CSMA)]]; RTS/CA optional (only cares about avoiding collisions and [[Hidden Terminals]] problem)
+Multiple access uses [[Carrier Sense Multiple Access (CSMA)]]; **RTS/CTS** (Request to Send / Clear to Send) optional (only cares about avoiding collisions and [[Hidden Terminals]] problem)
 
 frames are ACKed and retransmitted with [[Automatic Repeat reQuest (ARQ)]], as it wants to mitigate any noise conflict
 

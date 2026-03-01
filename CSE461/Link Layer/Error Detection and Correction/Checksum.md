@@ -4,9 +4,9 @@ Idea: sum up data in N-bit words
 stronger protection than [[Parity Bits]]
 
 The [[Hamming Distance]] is 2 with an error detection of <= 1 and error correction of 0
-# Internet
+# Internet Checksum
 ## What is it
-sum is defined in 1s complement arithmetic (must add carries). Its the negative sum
+Sum is defined in **1's complement** arithmetic (wrap-around: add any carry back into the result). Checksum = **negative** of the sum — when valid, sum + checksum = all 1s.
 ## Sending
 1. arrange data in 16-bit words
 2. put zero in checksum position, add

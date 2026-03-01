@@ -1,16 +1,16 @@
 One of the most widely used [[Link State Routing|link-state]] routing protocols. OSPF builds on the basic link-state algorithm and adds:
 
 1. **Authentication of routing messages** — bad info from a single node can affect the whole network; authenticating messages ensures all participants can be trusted. Early versions used an 8-byte password; later versions added strong cryptographic authentication.
-2. **Additional hierarchy** — a domain can be partitioned into *areas*. Routers only need to know how to reach the right area, not every network within the domain. Reduces info stored and transmitted per node.
+2. **Additional hierarchy** — a domain can be partitioned into *areas*. [[Router|Routers]] only need to know how to reach the right area, not every network within the domain. Reduces info stored and transmitted per node. See [[Routing Areas (OSPF)]] for details.
 3. **Load balancing** — multiple equal-cost routes to the same destination share traffic evenly, making better use of available capacity.
 
 ![[Pasted image 20260215204052.png]]
 
-See also: [[Link State Routing]], [[Route Calculation]], [[CSE461/Network/Routing]]
+See also: [[Link State Routing]], [[Route Calculation]], [[Routing]]
 
 ## Advertisements
 
-A router generates two types of advertisements:
+A [[Router]] generates two types of advertisements:
 1. **Network advertisements** — the networks directly connected to the router
 2. **Link cost advertisements** — the cost of reaching a neighboring router over a link
 

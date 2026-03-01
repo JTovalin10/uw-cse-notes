@@ -4,9 +4,11 @@
 
 CSE 461 covers the fundamentals of computer networking. The course explores how data is transmitted across networks, from the physical layer up through application protocols, following the layered network model.
 
+**→ [[CSE461 Index]] — main index and navigation**
+
 ## Topics Covered
 
-### Network Components and Protocols
+### Foundations
 - Network component names: hosts, routers, applications
 - Types of links: wired vs wireless
 - Wireless link characteristics

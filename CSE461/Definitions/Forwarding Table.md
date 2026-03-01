@@ -1,3 +1,8 @@
-A table in a switch/router that maps destination addresses (or [[Virtual Circuit Identifier|VCI]]s) to output ports. Used to determine the next hop for each arriving packet.
+# Forwarding Table
 
-Built and maintained by a [[CSE461/Definitions/Routing]] algorithm running in the background.
+Maps destination addresses (or [[Virtual Circuit Identifier|VCI]]s) to output ports. Determines next hop per packet.
+
+## Key points
+
+- In switch/router
+- Built and maintained by [[Routing]] algorithm

@@ -15,7 +15,7 @@ We have two classes of multiple access algorithms in order to allow dynamic allo
 1. centralized: use a privilege "scheduler" to pick who gets to transmit and when
 	1. pros: scales well, usually efficient
 	2. cons: requires management, fairness
-		1. as long as you dont overload the network it works
+		1. as long as you don't overload the network it works
 	3. ex: cell networks
 2. [[Distributed (random) Access]]: have all participants "figure it out" through some mechanism, wifi uses this
 	1. pros: operates well under low loads, easy to set up, equality

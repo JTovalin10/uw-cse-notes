@@ -1,9 +1,9 @@
 
-- when a node wakes up for the first time it needs to know its IP
+- when a node wakes up for the first time it needs to know its [[Internet Protocol (IP)|IP]] address
 We want to shift this burden from users to IT folk
 ## Dynamic Host Configuration Protocol (DHCP)
 - IP addresses cannot be configured by a manufacturer since they don't know what network a device will end up on
-- The host needs to know its default router before it can start sending packets
+- The host needs to know its default [[Router]] before it can start sending packets
 - DHCP allows configuration without requiring a system admin to manually set up each host
 - A DHCP server maintains a **pool of available addresses** that it hands out to hosts on demand
 	- the admin only needs to allocate a range of IP addresses to each network
@@ -12,7 +12,7 @@ We want to shift this burden from users to IT folk
 
 ## How It Works
 ### Protocol stack
-it is a client-server application that uses UDP port 67, 68
+it is a client-server application that uses [[User Datagram Protocol (UDP)|UDP]] port 67, 68
 ### Algorithm
 How does a node send a message to DHCP server before its configured?
 1. A newly booted or attached host sends a `DHCPDISCOVER` message to `255.255.255.255` (IP broadcast address)
@@ -29,7 +29,7 @@ How does a node send a message to DHCP server before its configured?
 ![[Pasted image 20260215025159.png]]
 
 ## Other Parameters
-- network prefix
-- address of local router
+- network [[Subnet|prefix]]
+- address of local [[Router]]
 - DNS server, time server, etc
 See also: [[IP Address Resolution Protocol (ARP)]], [[IP Global Addresses]]

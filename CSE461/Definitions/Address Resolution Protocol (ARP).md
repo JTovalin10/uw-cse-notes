@@ -1,2 +1,11 @@
-A protocol that maps a network-layer address (e.g., an IP address) to a link-layer address (e.g., an Ethernet MAC address). When a host needs to send a packet to another host on the same network, it broadcasts an ARP request asking "who has this IP?" The host with that IP responds with its MAC address. Results are cached in an ARP table to avoid repeated broadcasts.
+# Address Resolution Protocol (ARP)
 
+Maps network-layer address (L3 [[Internet Protocol (IP)|IP]]) to link-layer address (L2 [[Media Access Control (MAC)|MAC]]).
+
+## How it works
+
+- Host needs to send → broadcasts ARP request: "who has this IP?"
+- Host with that IP replies with its MAC address
+- Results cached in ARP table to avoid repeated broadcasts
+
+See also: [[Neighbor Discovery Protocol (NDP)]], [[Dynamic Host Configuration Protocol (DHCP)]]

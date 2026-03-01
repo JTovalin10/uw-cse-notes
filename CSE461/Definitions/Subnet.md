@@ -1,6 +1,11 @@
-## Subnet
-A subdivision of an IP network. Subnetting takes the host portion of an IP address and splits it into a subnet part and a host part, allowing a single network address to be internally divided into multiple smaller networks.
+# Subnet
 
-A **subnet mask** defines which bits of the address identify the subnet vs. the host. For example, a /24 subnet mask (255.255.255.0) means the first 24 bits identify the network+subnet and the last 8 bits identify the host.
+Subdivision of an [[Internet Protocol (IP)|IP]] network. [[Subnetting]] splits the host portion of an [[IP Address]] into subnet part + host part.
+
+## Key points
+
+- **[[Subnet Mask]]** — defines which bits identify subnet vs. host
+- Example: /24 (255.255.255.0) → first 24 bits = network+subnet, last 8 = host
+- Single network address can be divided into multiple smaller networks
 
 See also: [[Subnetting]], [[Classless Interdomain Routing (CIDR)]]

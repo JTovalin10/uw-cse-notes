@@ -1,4 +1,4 @@
-In order to support multicasting, we must extend it across multiple networks using broadcasting and multicasting.
+In order to support multicasting across multiple networks, we use broadcasting and multicasting at the link layer. For IP-level multicast across the Internet, see [[Multicast Overview]].
 
 **Broadcast:** Each switch forwards a frame with a destination broadcast address out on each active (selected) port other than the one on which the frame was received.
 
