@@ -53,7 +53,7 @@ In the worst case (a linear chain of N nodes), an LSP must traverse **N − 1 ho
 | F        | 2      |
 
 ![[Pasted image 20260215203231.png]]
-![[Screenshot 2026-02-25 at 1.01.00 PM.png]]
+![[Address Prefix Assignments for IPv6.png]]
 
 ## Phase 2: Route Computation
 
@@ -61,7 +61,7 @@ After flooding, each node has the full topology by combining all received LSPs. 
 - Some replicated computation across nodes, but each finds its required routes directly
 - Compile the forwarding table from the resulting sink/source tree
 
-![[Screenshot 2026-02-25 at 1.05.10 PM.png]]
+![[BGP, IGP, and combined routing table.png]]
 
 ## Handling Changes
 
@@ -83,7 +83,7 @@ B and F detect the failure and flood new LSPs with G marked as ∞:
 | F        | 3      |          |        |
 | G        | ∞      |          |        |
 
-![[Screenshot 2026-02-25 at 1.05.24 PM.png]]
+![[Interdomain and Intradomain Routing.png]]
 
 ## Complications
 1. seq number reaches max or corrupted

@@ -43,4 +43,4 @@ NDP also handles:
 - **Stateless Address Autoconfiguration (SLAAC)** — hosts configure their own IPv6 address without DHCP
 - **Duplicate Address Detection (DAD)** — ensures no two hosts use the same IPv6 address
 
-See also: [[IP Address Resolution Protocol (ARP)]], [[IPv6]]
+See also: [[IP Address Resolution Protocol (ARP)]], [[CSE461/Network Layer/Internet (IP)/IPv6]]

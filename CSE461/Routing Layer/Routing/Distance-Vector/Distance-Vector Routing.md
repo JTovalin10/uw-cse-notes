@@ -56,4 +56,4 @@ the network is a straight line so if it is n nodes then it would take $n-1$ roun
 - but partitions (unreachable nodes in divided network) are a problem
 	- count to infinity scenario
 	- connection is disconnected
-![[Screenshot 2026-02-25 at 12.54.21 PM.png]]
+![[Common AS relationships.png]]
