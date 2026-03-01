@@ -16,6 +16,8 @@ Transfers messages (frames) over one or more connected links. Builds on the phys
 
 ## Key concepts
 
+- [[Store and forward packet switching]] — How packets move through switches
+- [[Layer Addresses (L(n))]] — L2, L3 addresses
 - [[Frame]] — Unit of data at link layer
 - [[Media Access Control (MAC)]] — Who gets to transmit
 - [[Backwards Learning]] — How switches learn addresses

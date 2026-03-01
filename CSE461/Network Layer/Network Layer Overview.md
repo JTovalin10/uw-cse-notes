@@ -5,6 +5,12 @@ Fixes scalability limits of the link layer. Provides:
 - **Heterogeneity** — IP for internetworking across different technologies
 - **Bandwidth control** — lowest-cost routing, QoS
 
+## Stack and service model
+
+- [[Layering]] — [[Protocols and Layers]] — [[Encapsulation (stack)]] — [[OSI Layers]]
+- [[Datagram model]] — [[Network service models]] — [[Datagrams vs virtual circuits]]
+- [[Network]] — [[Store and forward packet switching]] — [[Forwarding]]
+
 ## Subdirectories
 
 - [[Internet (IP)]] — IP protocol, addressing, packets, protocols, routers

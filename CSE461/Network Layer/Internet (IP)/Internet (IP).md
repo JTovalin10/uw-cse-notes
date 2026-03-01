@@ -5,6 +5,9 @@ IP interconnects networks into a single logical internetwork. Hides differences 
 ## Core topics
 
 - [[Internetwork (IP)]] — What an internetwork is
+- [[Internet Protocol (IP) overview]] — IP as narrow waist
+- [[Internet Reference Model]] — IP abstracts lower layers
+- [[Connecting Datagram and VC Networks]] — Mapping addresses to VCs
 - [[Host Networking]] — Host IP configuration (address, subnet mask, gateway, DNS)
 - [[IP Datagram Forwarding]] — How packets get routed
 - [[IP Packets]] — Format, fragmentation, MTU

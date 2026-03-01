@@ -8,13 +8,9 @@ CSE 461 covers the fundamentals of computer networking. The course explores how 
 
 ## Topics Covered
 
-### Foundations
-- Network component names: hosts, routers, applications
-- Types of links: wired vs wireless
-- Wireless link characteristics
-- Computer network names by scale (LAN, WAN, etc.)
-- Protocols and layering concepts
-- Encapsulation
+### Stack and concepts (see [[CSE461 Index#Stack and concepts]])
+- Layering, encapsulation, protocols, components
+- Network, internetwork, store-and-forward, datagrams vs VCs
 
 ### OSI Model Layers
 - Seven-layer OSI reference model

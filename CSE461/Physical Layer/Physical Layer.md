@@ -21,6 +21,7 @@ Key metrics for characterizing links:
 - [[Performance/Delay|Delay]] - Propagation time in seconds
 - [[Performance/Message Latency|Message Latency]] - Total time = transmission + propagation delay
 - [[Performance/Bandwidth-Delay (BD) Product|Bandwidth-Delay Product]] - Data "in flight"
+- [[Performance Cheat Sheet]] - Latency, throughput, utilization formulas
 - [[Performance/Link|Link]] - Channel connecting nodes
 
 ### [[Signals/Signal|Signals]]

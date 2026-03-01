@@ -29,6 +29,8 @@ Quick lookup for terms used across CSE461 notes.
 ## Concepts
 
 - [[Application]] — [[Host]] — [[Router]] — [[Link]] — network components
+- [[Computer Network Names by Scale]] — LAN, WAN, etc.
+- [[Requirements]] — [[Applications]] — [[Software]] — network requirements, app needs, socket API
 - [[Datagram]] — [[Connectionless]] — [[Encapsulation]]
 - [[Virtual Private Network (VPN)]] — [[Virtual Local Area Network (VLAN)]]
 - [[Switch]] — [[Switched Network]]
