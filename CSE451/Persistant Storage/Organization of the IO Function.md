@@ -1,0 +1,10 @@
+- Programmed I/O with polling:
+	- the processor issues an I/O command on behalf of a process
+	- the process bsuy waits for completion of the operation before proceeding
+- Interrupt-driven I/O
+	- the processor issues an I/O command and continues to execute
+	- The I/O module interrupts the processor when it has finished I/O
+	- The initiator process may be suspended pending the interrupt
+- Direct Memory Access (DMA)
+	- A DMA module controls exchange of data between I/O module and main memory
+	- the processor requests transfer of a block of data from DMA and is interrupted only after the entire block has been transferred

@@ -1,7 +1,7 @@
 - [[Process]](es)/[[Thread]](s)
 - [[Memory]]
 - [[IO]]
-- [[Secondary Storage]]
+- [[CSE451/File Systems/Storage/Secondary Storage]]
 - [[File Systems]]
 - [[Protection]]
 - [[Command Interpreter (shell)]]

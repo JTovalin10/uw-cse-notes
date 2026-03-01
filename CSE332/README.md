@@ -40,7 +40,6 @@ An ADT is a mathematical description of a data type that specifies behavior with
 #### Trees
 - **Binary Search Trees (BST)**: O(log n) average, O(n) worst case
 - **AVL Trees**: Self-balancing BST with height balance property
-- **B-Trees**: Balanced trees optimized for disk access
 
 #### Hash Tables
 - Hash functions and collision resolution

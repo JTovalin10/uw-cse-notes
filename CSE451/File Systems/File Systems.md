@@ -1,4 +1,4 @@
-[[Secondary Storage]] devices are crude and awkward
+[[CSE451/File Systems/Storage/Secondary Storage]] devices are crude and awkward
 
 # what is it
 - file system: a convenient abstraction
