@@ -6,6 +6,6 @@
 - access point, cable/DSL modem
 
 # Related
-- [[Network Overview#Components]]
+- [[CSE461 Index#Stack and concepts]]
 - [[Host]]
 - [[Link]]

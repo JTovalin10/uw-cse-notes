@@ -6,6 +6,6 @@
 - laptop, mobile device, desktop
 
 # Related
-- [[Network Overview#Components]]
+- [[CSE461 Index#Stack and concepts]]
 - [[Application]]
 - [[Router]]

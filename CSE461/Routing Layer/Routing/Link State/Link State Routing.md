@@ -92,4 +92,4 @@ B and F detect the failure and flood new LSPs with G marked as ∞:
 ### Strategy
 include age on LSP and forget old information that is not refreshed
 
-See also: [[CSE461/Foundations/Routing]], [[Route Calculation]], [[CSE461/Routing Layer/Routing/Link State/Open Shortest Path First (OSPF)]]
+See also: [[Routing]], [[Route Calculation]], [[CSE461/Routing Layer/Routing/Link State/Open Shortest Path First (OSPF)]]

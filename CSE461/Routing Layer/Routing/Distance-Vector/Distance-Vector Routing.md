@@ -8,7 +8,7 @@ Each node starts by knowing the cost of the link to each directly connected neig
 
 The process of getting consistent routing info to all nodes is called [[Convergence]].
 
-See also: [[CSE461/Foundations/Routing]], [[CSE461/Routing Layer/Routing/Distance-Vector/Routing Information Protocol (RIP)]]
+See also: [[Routing]], [[CSE461/Routing Layer/Routing/Distance-Vector/Routing Information Protocol (RIP)]]
 
 ## Sending Routing Updates
 

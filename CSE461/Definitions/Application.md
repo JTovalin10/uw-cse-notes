@@ -6,5 +6,5 @@
 - Skype, iTunes, Amazon
 
 # Related
-- [[Network Overview#Components]]
+- [[CSE461 Index#Stack and concepts]]
 - [[Host]]
