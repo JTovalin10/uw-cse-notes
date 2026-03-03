@@ -1,6 +1,6 @@
 - Programmed I/O with polling:
 	- the processor issues an I/O command on behalf of a process
-	- the process bsuy waits for completion of the operation before proceeding
+	- the process busy waits for completion of the operation before proceeding
 - Interrupt-driven I/O
 	- the processor issues an I/O command and continues to execute
 	- The I/O module interrupts the processor when it has finished I/O

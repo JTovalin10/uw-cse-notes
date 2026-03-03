@@ -1,5 +1,5 @@
 threads are **concurrent executions sharing an address space (and some OS resources)**
-- address spaces provide isolation (if you cant name it then you cant read or write to it)
+- address spaces provide isolation (if you can't name it, then you can't read or write to it)
 - communication between processes is expensive
 	- must go through the OS to move data from one address space to another
 	- typically done via pipes, sockets, shared memory regions (which require syscalls to set up), or message passing
