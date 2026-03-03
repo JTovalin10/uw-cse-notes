@@ -1,4 +1,4 @@
-## Union: The "Or" Type 🧺
+## Union: The "Or" Type 
 
 A **union** combines types by saying a value can be **one type _OR_ another**.
 
@@ -11,7 +11,7 @@ A **union** combines types by saying a value can be **one type _OR_ another**.
 
 ---
 
-## Tuple: The "Ordered Pair" Type ➡️
+## Tuple: The "Ordered Pair" Type 
 
 A **tuple** combines types into a **fixed-size, ordered list**. The position of each item is what identifies it.
 
@@ -24,7 +24,7 @@ A **tuple** combines types into a **fixed-size, ordered list**. The position of 
 
 ---
 
-## Record: The "Named Pair" Type 🏷️
+## Record: The "Named Pair" Type 
 
 A **record** also combines types, but each item is identified by a **name or label**, not its position.
 
