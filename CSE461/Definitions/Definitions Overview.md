@@ -11,7 +11,7 @@ Quick lookup for terms used across CSE461 notes.
 ## Protocols
 
 - [[Internet Control Message Protocol (ICMP)]] — [[Dynamic Host Configuration Protocol (DHCP)]]
-- [[Transmission Control Protocol (TCP)]] — [[User Datagram Protocol (UDP)]]
+- [[CSE461/Definitions/Transmission Control Protocol (TCP)]] — [[CSE461/Definitions/User Datagram Protocol (UDP)]]
 - [[Routing Information Protocol (RIP)]] — [[Open Shortest Path First (OSPF)]] — [[OSPF Area 0 (Backbone)]] — [[Area Border Router (ABR)]] — [[OSPF Virtual Link]] — [[iBGP and eBGP]]
 - [[Link-State Advertisement (LSA)]] — [[Link-State Packet (LSP)]]
 

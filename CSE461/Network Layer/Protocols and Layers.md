@@ -1,7 +1,10 @@
-- both are the main structuring method used to divide up network functionality
-	- each instance of a protocol talks virtually to its peer using the protocol
-	- Each instance of a protocol uses only the services of the lower layer
-# Protocol Stack
+# Protocols and Layers
+
+Layering and protocols are the main structuring methods used to divide up network functionality:
+- Each instance of a protocol talks virtually to its peer using the protocol
+- Each instance of a protocol uses only the services of the lower layer
+
+## Protocol Stack
 ![[Screenshot 2026-01-09 at 1.00.40 PM.png]]
 # Protocols
 ![[Screenshot 2026-01-09 at 1.01.07 PM.png]]
@@ -62,7 +65,7 @@ From bottom to top:
 1. **net (network layer)** — a wide variety of network protocols, implemented in hardware and software
 2. **IP** — the central layer; interconnects multiple networking technologies into a single logical internetwork
 3. **Transport layer** — two main protocols:
-	- **[[Transmission Control Protocol (TCP)|TCP]]** — reliable byte-stream channel
-	- **[[User Datagram Protocol (UDP)|UDP]]** — unreliable datagram delivery channel (faster than TCP)
+	- **[[CSE461/Definitions/Transmission Control Protocol (TCP)|TCP]]** — reliable byte-stream channel
+	- **[[CSE461/Definitions/User Datagram Protocol (UDP)|UDP]]** — unreliable datagram delivery channel (faster than TCP)
 	- Both are end-to-end (transport) protocols
 4. **Application layer** — HTTP, FTP, DNS, TFTP

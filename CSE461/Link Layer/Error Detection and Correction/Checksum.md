@@ -1,5 +1,5 @@
 Idea: sum up data in N-bit words
-	widely used in, e.g., [[Transmission Control Protocol (TCP)|TCP]]/[[CSE461/Definitions/Internet Protocol (IP)|IP]]/[[User Datagram Protocol (UDP)|UDP]]
+	widely used in, e.g., [[CSE461/Definitions/Transmission Control Protocol (TCP)|TCP]]/[[CSE461/Definitions/Internet Protocol (IP)|IP]]/[[CSE461/Definitions/User Datagram Protocol (UDP)|UDP]]
 ![[Screenshot 2026-01-21 at 11.30.48 AM.png]]
 stronger protection than [[Parity Bits]]
 
@@ -14,7 +14,7 @@ Sum is defined in **1's complement** arithmetic (wrap-around: add any carry back
 4. negate (complement) to get sum
 ![[Screenshot 2026-01-22 at 2.29.17 PM.png]]
 ## Receiving
-1. Arrange Data in 16-bit words
+1. Arrange data in 16-bit words
 2. checksum will be non-zero, add
 3. add any carryover back to get 16 bits
 4. negate the result and check it is 0

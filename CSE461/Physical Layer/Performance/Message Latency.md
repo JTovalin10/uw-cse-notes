@@ -1,16 +1,17 @@
-# Variables
-- M = message size (bits)
-- R = rate (bits/sec)
-- propagation delay (seconds)
-	- distance / speed of light
-- Transmit delay
-	- size / bandwidth
-- Queue
-	- How long data has to wait until it's their turn to be transmitted
+# Message Latency
 
-# Latency Formula
-$$\text{Latency} = \text{Transmission Delay} + \text{Propagation Delay} + Queue$$
-It is important to note that you must account for any edge cases and this formula is just for one packet so you must multiply it by n
+## Variables
+
+- **M** = message size (bits)
+- **R** = rate (bits/sec)
+- **Propagation delay** (seconds) — distance / speed of light
+- **Transmission delay** — size / bandwidth
+- **Queuing delay** — how long data has to wait until its turn to be transmitted
+
+## Latency Formula
+
+$$\text{Latency} = \text{Transmission Delay} + \text{Propagation Delay} + \text{Queuing Delay}$$
+**Note:** Account for edge cases; this formula is for one packet — multiply by n for multiple packets.
 - ACK set up
 - if the data is sent continuously or you must wait for ACK
 - if you are sending m data at a time

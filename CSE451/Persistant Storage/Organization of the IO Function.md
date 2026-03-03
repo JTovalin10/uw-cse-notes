@@ -7,4 +7,5 @@
 	- The initiator process may be suspended pending the interrupt
 - Direct Memory Access (DMA)
 	- A DMA module controls exchange of data between I/O module and main memory
+		- uses physical memory
 	- the processor requests transfer of a block of data from DMA and is interrupted only after the entire block has been transferred

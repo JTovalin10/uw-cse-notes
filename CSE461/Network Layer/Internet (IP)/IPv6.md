@@ -12,7 +12,7 @@
 
 128-bit addresses; simpler than IPv4 (removed unnecessary features).
 - features large addresses
-	- 128 bits most of header
+	- 128 bits for most of the header
 - new notation
 	- 8 groups of 4 hex digits (16 digits)
 	- omits leading zeros
@@ -30,14 +30,14 @@ Fields:
 - **flow label** — groups packets for special handling (e.g., same path, QoS)
 - payload length
 	- the length of the packet excluding the header (bytes)
-- nextheader
+- **Next Header**
 	- Replaces IP options + protocol fields of IPv4
 	- Options → extension headers (chained via NextHeader)
-	- If no options: demux key for [[Transmission Control Protocol (TCP)|TCP]]/[[User Datagram Protocol (UDP)|UDP]]
+	- If no options: demux key for [[CSE461/Definitions/Transmission Control Protocol (TCP)|TCP]]/[[CSE461/Definitions/User Datagram Protocol (UDP)|UDP]]
 - fragmentation is an optional header
 - hop limit
 	- [[Time to Live (TTL)]]
-- the rest of the header is taken up by source and destination address as each are 16 bytes or 128 bits each.
+- the rest of the header is taken up by source and destination addresses, as each is 16 bytes (128 bits).
 ![[Screenshot 2026-02-18 at 12.59.22 PM.png]]
 
 - Options as extension headers — fixed order; router checks NextHeader only when needed

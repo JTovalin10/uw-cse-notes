@@ -38,11 +38,11 @@ Upon link failures or policy changes, speakers need to cancel previously adverti
 
 ## Packet format
 
-To prevent loops, BGP must carry an [[Autonomous System (AS)|AS]] number that is unique so it can recognize itself. The AS number is 32 bits long and assigned by a central authority (e.g., IANA) to assure uniqueness.
+BGP update messages carry path vectors (lists of AS numbers) and other attributes. To prevent loops, each path must include a unique [[Autonomous System (AS)|AS]] number so a speaker can recognize itself and reject routes that would create a loop. The AS number is 32 bits long and assigned by a central authority (e.g., IANA) to assure uniqueness.
 
 ## BGP over TCP
 
-BGP runs on top of [[Transmission Control Protocol (TCP)|TCP]] so speakers can rely on reliability. If nothing has changed, a speaker only needs to send an occasional keepalive message so they know when a router dies.
+BGP runs on top of [[CSE461/Definitions/Transmission Control Protocol (TCP)|TCP]] so speakers can rely on reliability. If nothing has changed, a speaker only needs to send an occasional keepalive message so they know when a router dies.
 
 ## See also
 
