@@ -35,3 +35,6 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Major OS Components]] — [[OS Structure]]
 - [[Microkernels]] — [[Hardware Abstraction Layer]]
 - [[IO]] — [[Protection]] — [[Command Interpreter (shell)]]
+
+### Virtualization
+- [[Virtual Machine]]
