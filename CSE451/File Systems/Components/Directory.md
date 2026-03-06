@@ -1,1 +1,0 @@
-named file that contains names of other files and metadata about those files (e.g., file size)
