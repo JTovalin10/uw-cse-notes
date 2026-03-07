@@ -1,76 +1,67 @@
 # Transmission Control Protocol (TCP)
 
-TCP provides a **reliable, ordered byte stream** over a connection. Full-duplex: pair of byte streams, one in each direction.
+TCP provides a **reliable, ordered byte stream** over a connection. It is the workhorse of the Internet, used by everything from web browsers (HTTP) to file transfers.
 
-## Key features
+## Key Features
+- **Reliability**: Every byte is guaranteed to arrive via [[Acknowledgment (ACK)|ACKs]] and retransmissions.
+- **Ordering**: If packets arrive out of order, TCP buffers them and presents them to the app in the correct sequence.
+- **[[Flow Control]]**: Prevents a fast sender from overwhelming a slow receiver using an **Advertised Window**.
+- **[[Congestion Control]]**: Prevents the sender from overwhelming the *network* itself.
 
-- Byte stream delivery — sender writes bytes, receiver reads bytes
-- Connection via 3-way handshake
-- Bytes delivered once, reliably, in order
-- **Flow control** — matches sender rate to receiver capacity
-- **Congestion control** — matches sender rate to network capacity
-- Demultiplexing — multiple apps per host can have concurrent connections
+---
 
-**Flow vs congestion control:**
-- Flow control = end-to-end; prevents sender from over-running receiver
-- Congestion control = host–network; prevents overloading the network
+## Connection Lifecycle
 
-## Connection establishment
+### 1. Establishment (Three-Way Handshake)
+Before sending data, the two sides must "sync" up.
+1. **SYN**: Client sends a sequence number $x$.
+2. **SYN-ACK**: Server acknowledges $x$ and sends its own sequence number $y$.
+3. **ACK**: Client acknowledges $y$.
+- **Why randomly choose ISNs?** To prevent "off-path" attacks and avoid confusion from old, delayed packets from a previous connection "incarnation."
 
-Both sides must be ready before data transfer. Must agree on parameters (e.g., [[Maximum Transmission Unit (MTU)|MSS]]).
+### 2. Termination (The Four-Way Teardown)
+TCP is a "Symmetric" close. Both sides must independently close their half of the pipe.
+- **FIN**: "I have no more data to send."
+- **ACK**: "I got your request to close."
+- **TIME_WAIT**: The active closer stays in this state for $2 \times MSL$ (Maximum Segment Lifetime, typically 60s) to ensure the final ACK arrived and to let old packets clear the network.
 
-### Three-way handshake
+**State transitions:**
+- **Active Close**: `ESTABLISHED` → `FIN_WAIT_1` → `FIN_WAIT_2` → `TIME_WAIT` → `CLOSED`
+- **Passive Close**: `ESTABLISHED` → `CLOSE_WAIT` → `LAST_ACK` → `CLOSED`
 
-- Opens connections for data in both directions
-- Each side probes with a fresh Initial Sequence Number (ISN)
-	- Client sends SYN(x)
-	- Server replies SYN+ACK(y), ACK(x+1)
-	- Client sends ACK(y+1)
-- Robust against delayed duplicates — even worst-case delayed/duplicated segments are cleanly rejected
-- ISNs chosen at random to protect against old segments from prior connection incarnations
+---
 
-![[Three-Way Handshake.png]]
+## Congestion Control (The "Brain" of TCP)
+TCP doesn't know how fast the network is. It has to "probe" the network to find the limit. It uses the `CongestionWindow` (cwnd) to limit in-flight data.
 
-![Three-way handshake timeline](https://book.systemsapproach.org/_images/f05-06-9780123850591.png)
+### AIMD (Additive Increase, Multiplicative Decrease)
+- **Additive Increase**: For every successful RTT, `cwnd += 1 MSS`. 
+  - Implementation: `cwnd += MSS * (MSS / cwnd)` for every ACK.
+- **Multiplicative Decrease**: On loss, `cwnd = cwnd / 2` (but not less than 1 MSS).
+- **The Sawtooth**: This pattern of aggressive back-off ensures the Internet stays stable even under heavy load.
 
-### Connection release
+### Phases
+1. **Slow Start**: Used at the beginning or after a timeout. `cwnd` starts at 1 and doubles every RTT (exponential growth).
+2. **Congestion Avoidance**: Once `cwnd >= ssthresh`, switch to linear growth (+1 per RTT).
+3. **Fast Retransmit**: If the sender sees **3 duplicate ACKs**, it assumes a packet was lost and resends it *immediately* without waiting for a timeout.
+4. **Fast Recovery**: After a Fast Retransmit, `ssthresh = cwnd / 2`, then `cwnd = ssthresh` (instead of 1), and it resumes linear increase.
 
-- Orderly release; both sides shut down independently
-- Deliver all pending data, then hang up
-- Key problem: reliability while releasing
-- Symmetric close — each side closes its half
+### TCP CUBIC (Modern Default)
+Optimized for "Long-Fat Networks" (High [[Bandwidth]]-Delay Product).
+- **Formula**: $W(t) = C(t - K)^3 + W_{max}$
+- **Logic**: It grows fast initially, slows down near the old $W_{max}$ (plateau), and then probes aggressively for new capacity.
+- **Fairness**: Based on *time* since last loss rather than ACKs, making it fairer to flows with different RTTs.
 
-**Sequence:**
-1. Active side sends FIN(x), passive ACKs
-2. Passive side sends FIN(y), active ACKs
-3. FINs retransmitted if lost
+---
 
-Each FIN/ACK closes one direction of data transfer.
+## The TCP Segment
+The TCP header contains fields for:
+- **Sequence/ACK Numbers**: 32-bit fields for ordering and reliability.
+- **Flags**: `SYN`, `FIN`, `ACK`, `RST`, `PSH`, `URG`, and ECN bits (`ECE`/`CWR`).
+- **Options**: Including [[Maximum Transmission Unit (MTU)|MSS]] (usually 1460 bytes on Ethernet) and **Window Scaling** for large BDPs.
 
-![TCP connection release / state-transition diagram](https://book.systemsapproach.org/_images/f05-07-9780123850591.png)
-
-![[TCP Connection Release.png]]
-
-**State transitions (teardown):**
-- This side closes first: ESTABLISHED → FIN_WAIT_1 → FIN_WAIT_2 → TIME_WAIT → CLOSED
-- Other side closes first: ESTABLISHED → CLOSE_WAIT → LAST_ACK → CLOSED
-- Both close at once: ESTABLISHED → FIN_WAIT_1 → CLOSING → TIME_WAIT → CLOSED
-
-## TIME_WAIT state
-
-- Wait 2× MSL (typically 60 s) after sending final ACK before completing close
-- **Why:** ACK might be lost → FIN will be resent for orderly close; delayed FIN could otherwise interfere with a new connection reusing same ports
-
-## Detailed topics
-
-- [[TCP End-to-End Issues]] — differences from link-level sliding window
-- [[TCP Segment Format]] — header fields, demux key
-- [[TCP Sliding Window and Flow Control]] — buffers, advertised window, Nagle, silly window
-- [[TCP Adaptive Retransmission]] — RTT estimation, Karn/Partridge, Jacobson/Karels
-- [[TCP Extensions and Alternatives]] — SACK, window scaling, QUIC, SCTP
-
-## Related
-
-- [[User Datagram Protocol (UDP)]] — unreliable alternative
-- [[Sliding Window]] — TCP uses selective repeat
-- [[Flow Control]] — advertised window
+## Related Topics
+- [[User Datagram Protocol (UDP)]] — The unreliable, "fast" alternative.
+- [[Sliding Window Protocol]] — The general theory behind TCP's window.
+- [[Advanced Congestion Control]] — Modern versions of TCP like BBR and CUBIC.
+- [[Round-Trip Time (RTT)]] — Critical for setting timeouts and congestion rates.
