@@ -26,7 +26,7 @@
 Fields:
 - version
 	- set to 6 for IPv6 so that header-processing software can immediately decide which header format to look for
-- **Diff Serv/TrafficClass** — Differentiated Services field for [[Quality of Service (QoS)]]
+- **Diff Serv/TrafficClass** — Differentiated Services field for [[CSE461/Definitions/Quality of Service (QoS)]]
 - **flow label** — groups packets for special handling (e.g., same path, QoS)
 - payload length
 	- the length of the packet excluding the header (bytes)

@@ -35,4 +35,4 @@ Quick lookup for terms used across CSE461 notes.
 - [[Virtual Private Network (VPN)]] — [[Virtual Local Area Network (VLAN)]]
 - [[Switch]] — [[Switched Network]]
 - [[Convergence]] — [[Round-Trip Time (RTT)]]
-- [[Quality of Service (QoS)]] — [[Multiplexing]] — [[Statistical Multiplexing]]
+- [[CSE461/Definitions/Quality of Service (QoS)]] — [[Multiplexing]] — [[Statistical Multiplexing]]

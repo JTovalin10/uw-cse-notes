@@ -1,7 +1,7 @@
 An arbitrary collection of networks interconnected to provide host-to-host packet delivery. It hides differences in:
 - Service model
 - Addressing
-- [[Quality of Service (QoS)]]
+- [[CSE461/Definitions/Quality of Service (QoS)]]
 - Packet sizes
 - Security
 
