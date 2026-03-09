@@ -1,164 +1,102 @@
-scheduling ois a policy and the way we switch is a mechanism
+# Processor Scheduling: Policies and Mechanisms
+
+## Low-Level Primer: Policy vs. Mechanism
+In Operating System architecture, CPU management is strictly divided:
+*   **Policy (Scheduling)**: The high-level decision-making logic that determines *which* thread should run next and for *how long*.
+*   **Mechanism (Switching)**: The low-level **[[Context Switch]]** code that saves/restores registers, switches stacks, and updates the **[[TLB]]**.
+
 ## Classes of Schedulers
-- Batch
-	- throughput/utilization oriengted
-	- example: audit inter-bank funds transfers each night, Hadoop/MapReduce jobs
-- Interactive
-	- response time oriented
-	- ex: attu.cs
-- Real time
-	- deadline driven
-	- example: embedded systems
-- Parallel
-	- speedup-driven
-	- shared-space use of a 1000-processor machine for large simulations
+Schedulers are optimized for specific workload characteristics:
+
+| Class | Optimization Goal | Technical Examples |
+| :--- | :--- | :--- |
+| **Batch** | **Throughput** / **Utilization**. | Nightly bank audits, Hadoop/MapReduce jobs. |
+| **Interactive** | **Response Time**. | Shell servers (`attu.cs`), desktop environments. |
+| **Real-Time** | **Deadlines**. | Embedded flight controllers, medical devices. |
+| **Parallel** | **Speedup**. | 1000-processor machines for large simulations. |
+
 ## Levels of Scheduling Decisions
-- long term
-	- should a new job be initiated or should it be held
-		- typical of batch systems
-		- what might cause you to make a hold decision
-	- these typically take a lot of memory or take a long time to complete
-- medium term
-	- should a running program be temprarily marked as non-runnable (swapped out)
-	- we can swap it out and run it later
-- short term
-	- which thread should be given the CPU next and how long
-	- which I/O operation should be sent to the disk next
-	- on a multiprocessor
-		- shold we attempt to coordinate the running of threads from the same address space in some way
-		- should we worry about the cache state (processor affinity)
-			- multiple CPU's can potentially touch the same cache line
-## Goals
-### Performance
-- maximize CPU utilization
-- max throughput
-- minimize average response time (average time from submission of request to completion of response)
-- minimize average waiting time (average time from submission of request to start of execution)
-- minimize energy (joules per instruction) which can be subject to some constraint (fps or different)
+1.  **Long-Term Scheduling (Admission)**:
+    *   **Decision**: Should a new job be initiated or held in the job pool?
+    *   **Context**: Typical of batch systems. High memory/time requirements may trigger a "hold" decision to prevent overloading.
+2.  **Medium-Term Scheduling (Swapping)**:
+    *   **Decision**: Should a running program be temporarily marked as non-runnable and **swapped out** to disk?
+    *   **Goal**: Control the degree of multiprogramming and free up physical memory.
+3.  **Short-Term Scheduling (CPU Scheduling)**:
+    *   **Decision**: Which thread gets the CPU next and for what duration?
+    *   **Granular Decisions**: Which I/O operation to dispatch; **Processor Affinity** (considering cache state to avoid unnecessary cache misses on multi-processors).
+
+## Performance Goals and Metrics
+### Performance Metrics
+*   **Maximize CPU Utilization**: Keep the processor busy 100% of the time.
+*   **Maximize Throughput**: Complete the highest number of jobs per time unit.
+*   **Minimize Avg. Response Time**: Time from submission to first visual/data response.
+*   **Minimize Avg. Waiting Time**: Time spent sitting in the **Ready Queue**.
+*   **Minimize Energy**: Measured in **Joules per instruction** (crucial for battery-constrained environments).
+
 ### Fairness
-- no single definition of fair
-	- how to measure fair
-		- equal CPU consumption?
-	- fair per-user, per-processor, per-thread?
-	- what if one process is CPU bound and one is I/O bound
-- sometimes the goal is to be unfair
-	- favor some particular class of requests (priority system), but
-	- avoid starvation
-## When to assign
-- pre-emptive vs non-preemptive schedulers
-	- non-preemptive
-		- once you give somebody the green light, they've got it until they relinquish it
-			- I/O operation
-			- allocation of memory in a system without swapping
-	- preemptive
-		- you can re-visit a decision
-			- setting the timer allows you to preempt the CPU from a thread even if it doesnt relinquish it voluntariy
-			- if you dont mark a program as non-runnable, its memory resources will eventually be re-allocated to others
-		- reasignment always involved some overhread
-			- this doesnt contrbute to the goal fo the schediler
-## Laws
-- utilization law
-	- Utilization = throughput * average service requirement
-- little's law
-	- the better average response time implies fewer in system and vice versa
-	- averge number in system = throughput * average response time
-- Kleinrock's Conversevation Law for priority scheduling
-	- U_p us the utilization by priority level p and R_p is the time in the system of priortiy level p
-		- this means you cant improve the resonse time of one class of tasks by increasing the priority without hurting the response time of at least one other class
-$$
-\sum_p U_p * R_p = \text{constant}
-$$
-## Algorithms
-### FCFC/FIFO
-- First come first served / first in first out
-	- schedule as they come
-	- queue
-	- jobs are treated equally and no startvation
-- in the real world, when does it work well
-- what is its limitation
-- when does it work badly
-- Drawacks
-	- average response time can be lousy
-		- small requerst wait behind big ones
-	- may lead to poor utilization of other resouces
-		- if you send me on my way, i can keep another resource busy
-		- FCFS ay result in poor overlap of CPU and I/O activity
-			- CPU intenstive jobs precent an I/O int4esnive job from doing a small bit of computation, which prevents it from going back and keeping the I/O subsystem busy
-		- the more copies of the resource there are to be schedued, the less dramatic of the impact of occasional vert large jobs (so long as there is a single waiting line)
-### SPT/SJF
-- shortest processing time first / shortest job first
-	- choose the request with the smallest service requirement
-	- provably optimal with respect to average response time
-		- why do we care about probaly optimal
-	- drawbacks
-		- its non-preemtive
-		- SRPT is preemtive which accomdates arrivals
-	- what about starvation
-	- can you know the processing time of a request
-	- can you guess/approximation and how?
-### Round Robin
-- Use preemtiion to offset lack of information about executon times
-	- run them all
-- ready queue is treated as a circular FIFO queue
-- each request is given a time slice, called quantim
-	- request executes for duration of quantum, or until ot blcoks
-		- what singiies the end of a quantim
-	- time-divison multiplexing (time slicing)
-- great for timesharing
-	- no starvation
-- how is it an improvement over FCFS, SPT, and how is it an approximation to SPT
-- drawbacks
-	- what if all jobs are the exact same length
-		- what would be the schedule be
-	- whwat do you set the quantim to be
-		- there is no correct answer fot this
-			- too small, then context siwtch often
-			- if large, then response time degreades
-## Priority
-- assigns priortiy to requests
-	- choose request with highest priorty to run next
-		- if it,e use anotehr schedulign algorithm to break
-	- goal: non-fiarness (favor one group over another)
-- abstractly modeled (and sually implemented) as multiple priority queues
-	- put a ready request on the queue associated with its priorty
-- drawbacks
-	- how do you assign priorities
-	- starvation
-		- if there is an endless supply of high priority jobs, no-low priority jobs will ever be run
-	- inversion (really bad starvation)
-		- assume three threads: H, M, L
-		- low runs and acquires a resource
-		- high rpeemtns low and blocks on that resource
-		- medium becomes runnable and is CPU-bound
-		- low cant finish, and high is out of lock
-### History Does Matter
-- its been observred that worksloads tend to have increasing residual life
-	- if you did it before youre likely to do it again
-- this is exploited in practivce by using a olicy that diuscrimates against the old
-### Multi-level Feedback Queues
-- MLFQ:
-	- there is a hierarchy of queus based on priority
-	- new requests enter the highest priority queue
-	- each queue is scheduled Round Robin
-	- requests move between queues based on execution history
-	- lower priority queues may have longer quanta
-- Age threads over time (feedback)
-	- increase priority of function of accumalted wit time
-	- decrease priroty of accumulated processing time
+*   **Subjectivity**: No single definition of fair (per-user vs. per-thread).
+*   **Starvation**: The state where a runnable thread is perpetually bypassed. Schedulers must avoid this.
+*   **Intentional Unfairness**: **Priority Systems** favor specific classes of requests but must manage the risk of starvation.
+
+## Preemption vs. Non-Preemption
+*   **Non-Preemptive**: A thread holds the CPU until it voluntarily relinquishes it (e.g., I/O block or completion). This applies to I/O operations and memory allocation without swapping.
+*   **Preemptive**: The OS can forcibly take the CPU away from a thread.
+    *   **Timer Interrupt**: Allows preemption even if the thread does not yield.
+    *   **Context Switch Overhead**: Reassignment always costs cycles that do not contribute to job progress.
+
+## Fundamental Laws of Scheduling
+*   **Utilization Law**: $U = \text{Throughput} \times \text{Avg. Service Requirement}$.
+*   **Little's Law**: $\text{Avg. Number in System} = \text{Throughput} \times \text{Avg. Response Time}$. Better response time implies fewer jobs in the system.
+*   **Kleinrock's Conservation Law**: $\sum U_p \times R_p = \text{constant}$. Improving the response time ($R_p$) of one priority class requires degrading it for another.
+
+---
+
+## Scheduling Algorithms
+
+### 1. First-Come, First-Served (FCFS / FIFO)
+*   **Mechanism**: A simple queue where threads are processed in order of arrival.
+*   **Pros**: Simple, no starvation.
+*   **Drawbacks**: 
+    *   **Convoy Effect**: Short jobs stuck behind long jobs, leading to lousy average response times.
+    *   **Poor Utilization**: CPU-intensive jobs prevent I/O-intensive jobs from running, leaving the I/O subsystem idle.
+
+### 2. Shortest Processing Time (SPT / SJF)
+*   **Mechanism**: Choose the job with the smallest service requirement.
+*   **Optimality**: Provably optimal for minimizing **Average Response Time**.
+*   **Types**:
+    *   **SJF**: Non-preemptive.
+    *   **SRPT**: Preemptive; handles new arrivals with shorter remaining time.
+*   **The Prediction Problem**: Since the OS cannot know future burst times, it uses **Exponential Smoothing** to guess based on history.
+*   **Drawback**: High risk of **Starvation** for long jobs.
+
+### 3. Round Robin (RR)
+*   **Mechanism**: Each request gets a **Time Slice (Quantum)**. The queue is a circular FIFO.
+*   **Quantum ($q$) Size Problem**:
+    *   **Too Small**: High **Context Switch Overhead**.
+    *   **Too Large**: Response time degrades; behaves like **FCFS**.
+    *   **No Correct Answer**: Selection is a trade-off between switching cost and responsiveness.
+*   **Edge Case**: If all jobs are the same length, RR results in the worst possible average response time as all jobs finish at the end.
+
+### 4. Priority Scheduling
+*   **Mechanism**: Highest priority runs next. Implemented via multiple queues.
+*   **Priority Inversion**: A high-priority thread is blocked by a low-priority thread holding a resource, while a medium-priority thread hogs the CPU.
+
+### 5. Multi-Level Feedback Queues (MLFQ)
+*   **Logic**: Workloads have **Increasing Residual Life** (the longer it has run, the longer it will likely continue to run).
+*   **Mechanism**:
+    *   Hierarchy of queues with varying priority and quanta.
+    *   New threads enter the **Highest Priority** queue.
+    *   **Demotion**: Using an entire quantum causes a move to a lower queue.
+    *   **Promotion (Feedback)**: Age threads to prevent starvation by increasing priority over time.
+    *   **Quanta Scaling**: Lower priority queues often have **longer quanta** to handle compute-bound tasks efficiently.
+
 ![[MLFQ.png]]
-- compute bound threads
-	- dont move much
-- I/O intense threads
-	- give a big priority boost immeditaly
-## UNIX Scheduling
-- canconical scheduler is pretty much MLFQ
-- - 3-4 classes spanning ~170 priority levels
-	- timesharing: lowest 60 priorities
-	- system: middle 40 pri
-	- real-time: highest 60 pri
-- priority scheudling across queues, RR within
-	- process within highest priorty alwasy runs first
-	- processes with same prioty scheduled RR
-- processes dynamically change priotity
-	- increase voer time if process blocks before end of quantim
-	- decreases if process use entire quantum
+[Image: MLFQ hierarchy showing priority-based queue migration.]
+
+### 6. UNIX Scheduling (Canonical Implementation)
+*   **Structure**: ~170 priority levels across **Real-Time**, **System**, and **Time-Sharing** classes.
+*   **Mechanism**: Priority scheduling across queues, **Round Robin** within queues.
+*   **Dynamic Adjustment**:
+    *   **Increase Priority**: If a process blocks for I/O before its quantum ends.
+    *   **Decrease Priority**: If a process consumes its entire quantum (compute-bound).
