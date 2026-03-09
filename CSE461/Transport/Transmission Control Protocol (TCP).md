@@ -1,67 +1,86 @@
 # Transmission Control Protocol (TCP)
 
-TCP provides a **reliable, ordered byte stream** over a connection. It is the workhorse of the Internet, used by everything from web browsers (HTTP) to file transfers.
+**Transmission Control Protocol (TCP)** is a **Connection-Oriented**, **Reliable**, **Full-Duplex**, **Byte-Stream** transport protocol. It abstracts the underlying unreliable [[Datagram]] delivery of [[Internet Protocol (IP)]] into a logical bit-perfect pipe between two application processes. 
 
-## Key Features
-- **Reliability**: Every byte is guaranteed to arrive via [[Acknowledgment (ACK)|ACKs]] and retransmissions.
-- **Ordering**: If packets arrive out of order, TCP buffers them and presents them to the app in the correct sequence.
-- **[[Flow Control]]**: Prevents a fast sender from overwhelming a slow receiver using an **Advertised Window**.
-- **[[Congestion Control]]**: Prevents the sender from overwhelming the *network* itself.
+## Low-Level Primer: The Byte-Stream Model
+*   **Byte-Stream Abstraction**: Unlike [[User Datagram Protocol (UDP)]], which is message-oriented, TCP views data as an unstructured sequence of bytes. The receiver's OS buffers these bytes and delivers them to the application exactly as sent, though not necessarily in the same-sized "chunks" as the original `write()` calls.
+*   **Reliability through ARQ**: TCP uses **Positive Acknowledgment with Retransmission**. Every byte is assigned a **Sequence Number**. The receiver sends an **[[Acknowledgment (ACK)]]** indicating the *next* expected byte.
+*   **Transmission Control Block (TCB)**: The complex data structure maintained by the OS for every active TCP connection, storing sequence numbers, window sizes, timers, and state.
 
----
+## TCP Segment Format
+A TCP header is typically **20 bytes** (without options).
 
-## Connection Lifecycle
+| Field | Size | Purpose |
+| :--- | :--- | :--- |
+| **Source Port** | 16 Bits | Sending process identifier. |
+| **Dest Port** | 16 Bits | Receiving process identifier ([[Ports]]). |
+| **Sequence Number** | 32 Bits | The byte-stream index of the first data byte in this segment. |
+| **Acknowledgment Number** | 32 Bits | Valid if ACK flag is set. The **Next Expected Byte** from the peer. |
+| **Data Offset** | 4 Bits | Number of 32-bit words in the header (specifies where data begins). |
+| **Flags (Control Bits)** | 9 Bits | `SYN`, `ACK`, `FIN`, `RST`, `PSH`, `URG`, `ECE`, `CWR`. |
+| **Advertised Window** | 16 Bits | Used for **[[Flow Control]]**; tells sender how much buffer space is available. |
+| **Checksum** | 16 Bits | Covers header, payload, and the IP **Pseudo-Header**. |
+| **Urgent Pointer** | 16 Bits | Offset from sequence number for "urgent" data (rarely used). |
 
-### 1. Establishment (Three-Way Handshake)
-Before sending data, the two sides must "sync" up.
-1. **SYN**: Client sends a sequence number $x$.
-2. **SYN-ACK**: Server acknowledges $x$ and sends its own sequence number $y$.
-3. **ACK**: Client acknowledges $y$.
-- **Why randomly choose ISNs?** To prevent "off-path" attacks and avoid confusion from old, delayed packets from a previous connection "incarnation."
-
-### 2. Termination (The Four-Way Teardown)
-TCP is a "Symmetric" close. Both sides must independently close their half of the pipe.
-- **FIN**: "I have no more data to send."
-- **ACK**: "I got your request to close."
-- **TIME_WAIT**: The active closer stays in this state for $2 \times MSL$ (Maximum Segment Lifetime, typically 60s) to ensure the final ACK arrived and to let old packets clear the network.
-
-**State transitions:**
-- **Active Close**: `ESTABLISHED` → `FIN_WAIT_1` → `FIN_WAIT_2` → `TIME_WAIT` → `CLOSED`
-- **Passive Close**: `ESTABLISHED` → `CLOSE_WAIT` → `LAST_ACK` → `CLOSED`
-
----
-
-## Congestion Control (The "Brain" of TCP)
-TCP doesn't know how fast the network is. It has to "probe" the network to find the limit. It uses the `CongestionWindow` (cwnd) to limit in-flight data.
-
-### AIMD (Additive Increase, Multiplicative Decrease)
-- **Additive Increase**: For every successful RTT, `cwnd += 1 MSS`. 
-  - Implementation: `cwnd += MSS * (MSS / cwnd)` for every ACK.
-- **Multiplicative Decrease**: On loss, `cwnd = cwnd / 2` (but not less than 1 MSS).
-- **The Sawtooth**: This pattern of aggressive back-off ensures the Internet stays stable even under heavy load.
-
-### Phases
-1. **Slow Start**: Used at the beginning or after a timeout. `cwnd` starts at 1 and doubles every RTT (exponential growth).
-2. **Congestion Avoidance**: Once `cwnd >= ssthresh`, switch to linear growth (+1 per RTT).
-3. **Fast Retransmit**: If the sender sees **3 duplicate ACKs**, it assumes a packet was lost and resends it *immediately* without waiting for a timeout.
-4. **Fast Recovery**: After a Fast Retransmit, `ssthresh = cwnd / 2`, then `cwnd = ssthresh` (instead of 1), and it resumes linear increase.
-
-### TCP CUBIC (Modern Default)
-Optimized for "Long-Fat Networks" (High [[Bandwidth]]-Delay Product).
-- **Formula**: $W(t) = C(t - K)^3 + W_{max}$
-- **Logic**: It grows fast initially, slows down near the old $W_{max}$ (plateau), and then probes aggressively for new capacity.
-- **Fairness**: Based on *time* since last loss rather than ACKs, making it fairer to flows with different RTTs.
+### Common Flags
+*   **SYN**: Synchronize; used during connection establishment.
+*   **ACK**: Acknowledgment field is valid.
+*   **FIN**: Finish; sender has no more data.
+*   **RST**: Reset; abort the connection due to error or lack of state.
+*   **PSH**: Push; bypass receiver's buffer and deliver to app immediately.
 
 ---
 
-## The TCP Segment
-The TCP header contains fields for:
-- **Sequence/ACK Numbers**: 32-bit fields for ordering and reliability.
-- **Flags**: `SYN`, `FIN`, `ACK`, `RST`, `PSH`, `URG`, and ECN bits (`ECE`/`CWR`).
-- **Options**: Including [[Maximum Transmission Unit (MTU)|MSS]] (usually 1460 bytes on Ethernet) and **Window Scaling** for large BDPs.
+## Connection Management
 
-## Related Topics
-- [[User Datagram Protocol (UDP)]] — The unreliable, "fast" alternative.
-- [[Sliding Window Protocol]] — The general theory behind TCP's window.
-- [[Advanced Congestion Control]] — Modern versions of TCP like BBR and CUBIC.
-- [[Round-Trip Time (RTT)]] — Critical for setting timeouts and congestion rates.
+### The Three-Way Handshake (Establishment)
+Used to synchronize **Initial Sequence Numbers (ISNs)** and exchange options like **MSS**.
+1.  **Client → Server (SYN)**: Client chooses `ISN_c` and sends `SYN`.
+2.  **Server → Client (SYN-ACK)**: Server acknowledges `ISN_c` (`ACK = ISN_c + 1`) and chooses `ISN_s`.
+3.  **Client → Server (ACK)**: Client acknowledges `ISN_s` (`ACK = ISN_s + 1`). Data can now be attached.
+*   **ISN Randomization**: ISNs are chosen randomly to prevent "off-path" sequence prediction attacks and avoid collisions with delayed segments from previous connection incarnations.
+
+### Connection Termination (Four-Way Teardown)
+TCP supports **Half-Close** semantics; one side can stop sending while still receiving.
+1.  **A → B (FIN)**: Side A is done sending.
+2.  **B → A (ACK)**: Acknowledges FIN.
+3.  **B → A (FIN)**: Side B is done sending.
+4.  **A → B (ACK)**: Final acknowledgment.
+*   **TIME_WAIT State**: The active closer enters `TIME_WAIT` for $2 \times MSL$ (Maximum Segment Lifetime). This ensures the final ACK arrived at the peer and allows all "stray" segments to clear the network before the port is reused.
+
+---
+
+## Flow Control: The Sliding Window
+TCP prevents a fast sender from overwhelming a slow receiver using an **Advertised Window** ($Win$).
+*   **Flow Control Equation**: `LastByteSent - LastByteAcked <= AdvertisedWindow`
+*   **Zero Window Probing**: If the receiver advertises $Win=0$, the sender periodically sends a 1-byte **Window Probe** to check if buffer space has opened up.
+*   **Silly Window Syndrome**: Occurs when the receiver advertises tiny windows (e.g., 1 byte), causing massive overhead. 
+    *   **Receiver Solution (Clark's Algorithm)**: Don't advertise a window until it reaches $1/2$ the buffer size or $1 \times MSS$.
+    *   **Sender Solution (Nagle's Algorithm)**: Don't send tiny segments; buffer data until a full MSS is reached or an ACK arrives.
+
+---
+
+## Congestion Control
+TCP treats the network as a "black box" and probes for capacity using the **Congestion Window (cwnd)**. 
+*   **The Transmission Limit**: `Effective_Window = min(AdvertisedWindow, CongestionWindow)`
+
+### The Standard Phases (TCP Reno)
+1.  **Slow Start**: Start with $cwnd = 1 \text{ MSS}$. For every ACK received, $cwnd = cwnd + 1 \text{ MSS}$ (Exponential growth).
+2.  **Congestion Avoidance**: When $cwnd \ge ssthresh$, growth becomes linear: $cwnd = cwnd + 1 \text{ MSS}$ per **RTT**.
+3.  **Fast Retransmit**: If the sender receives **3 Duplicate ACKs**, it assumes the segment was lost and resends it *before* the timer expires.
+4.  **Fast Recovery**: After a Fast Retransmit, $ssthresh = cwnd / 2$ and $cwnd = ssthresh$. It skips Slow Start and resumes linear growth.
+
+### Retransmission Timeout (RTO) Calculation
+*   **Jacobson/Karels Algorithm**:
+    1.  `SampleRTT` = time between segment sent and ACK received.
+    2.  `EstimatedRTT = (1 - \alpha) \times EstimatedRTT + \alpha \times SampleRTT`
+    3.  `DevRTT = (1 - \beta) \times DevRTT + \beta \times |SampleRTT - EstimatedRTT|`
+    4.  `RTO = EstimatedRTT + 4 \times DevRTT`
+*   **Karn's Algorithm**: Never update `EstimatedRTT` based on segments that have been retransmitted, as it is impossible to know which transmission triggered the ACK.
+
+---
+
+## TCP Options & Extensions
+*   **MSS (Maximum Segment Size)**: Default is often 1460 bytes (Ethernet).
+*   **Window Scale**: Allows the 16-bit window field to be shifted left (up to 14 bits), enabling windows up to 1 GB for high **Bandwidth-Delay Product (BDP)** links.
+*   **SACK (Selective ACK)**: Allows receiver to specify multiple non-contiguous byte ranges received, enabling efficient recovery of multiple lost packets.

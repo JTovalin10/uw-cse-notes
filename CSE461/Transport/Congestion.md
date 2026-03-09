@@ -1,28 +1,80 @@
-# Congestion
+# Congestion Control & Resource Allocation
 
-Congestion is essentially a **traffic jam** for data. It occurs when too many packets are sent through a network node (like a [[Router]] or [[Switch]]) faster than they can be transmitted out. This leads to long queues, increased latency, and eventually packet loss.
+**Congestion** is a network-layer phenomenon that occurs when the aggregate demand for a resource (e.g., [[Link]] bandwidth or [[Router]] buffer space) exceeds its available capacity. Left unmanaged, it leads to **Congestion Collapse**, where throughput drops to near-zero as the network becomes saturated with retransmissions of dropped packets.
 
-## Why is it a problem?
-When a router's buffers overflow, it must drop packets. For a reliable protocol like [[Transmission Control Protocol (TCP)|TCP]], this triggers retransmissions. If the network is already overwhelmed, these retransmissions only add to the "jam," potentially leading to **Congestion Collapse**—a state where the network is so busy sending and re-sending data that almost no new data actually gets through.
+## Low-Level Primer: The Congestion Metric
+The performance of a congested network is typically evaluated using the **Power Curve**.
+*   **Throughput**: The rate at which data is successfully delivered to the destination.
+*   **Delay (Latency)**: The time taken for a packet to traverse the network, including processing, transmission, and [[Queuing]] delays.
+*   **The Power Metric**: Defined as $\text{Power} = \frac{\text{Throughput}}{\text{Delay}}$.
+    *   **Goal**: Network designers aim to operate at the "knee" of the curve, where throughput is maximized before queuing delays begin to grow exponentially.
 
-## Core Concepts
-- **[[Resource Allocation]]**: The high-level strategies the network uses to decide who gets to use the [[Link|link]] bandwidth and when.
-- **[[Queuing]]**: The actual mechanism inside a router that manages memory buffers for packets waiting to be sent.
-- **[[Round-Trip Time (RTT)]]**: A critical metric for congestion, as increasing RTT often signals that router buffers are starting to fill up.
+[Image: Power curve showing the relationship between throughput, delay, and the optimal operating point]
 
-## Measuring Performance
-- **Throughput**: How many bits per second are actually making it through.
-- **Delay (Latency)**: How long it takes for a packet to cross the network.
-- **[[Power]]**: A combined metric calculated as $Throughput / Delay$. Designers aim to operate at the "peak" of the power curve to maximize efficiency without causing long delays.
-- **[[Jain's Fairness Index]]**: A mathematical way to check if all users are getting a "fair" share of the network.
+---
 
-## The Taxonomy of Solutions
-Congestion can be handled in several ways:
-1. **[[Transmission Control Protocol (TCP)#Congestion Control|Host-Based (TCP)]]**: The endpoints slow down when they notice loss.
-2. **[[Advanced Congestion Control#Active Queue Management (AQM)|Router-Assisted (AQM)]]**: Routers drop packets early or "mark" them to warn hosts of incoming congestion (e.g., [[RED]], [[ECN]]).
-3. **[[Quality of Service (QoS)]]**: Reservations or priorities for specific types of traffic (e.g., video conferencing vs. background downloads).
+## The Mechanics of Congestion Control
+
+### ACK Clocking (Self-Clocking)
+TCP uses the arrival of [[Acknowledgment (ACK)|ACKs]] to trigger the transmission of new data, a process known as **ACK Clocking**.
+*   **Principle**: The rate at which ACKs return to the sender matches the rate at which packets can clear the bottleneck link.
+*   **Benefit**: It naturally "paces" the sender to the network's capacity, preventing massive bursts that would overflow router buffers.
+
+[Image: ACK clocking diagram showing how ACKs regulate the entry of new segments into the network]
+
+### Jain’s Fairness Index
+A mathematical measure used to determine if multiple flows are sharing a link equitably.
+$$\mathcal{J}(x_1, x_2, \dots, x_n) = \frac{(\sum_{i=1}^n x_i)^2}{n \sum_{i=1}^n x_i^2}$$
+*   **Range**: $1/n$ (worst case) to $1.0$ (perfectly fair).
+
+---
+
+## Router-Assisted Solutions: Active Queue Management (AQM)
+
+Standard routers use **Tail Drop** (discarding packets only when the buffer is $100\%$ full). AQM algorithms proactively manage queues to prevent synchronization and long delays.
+
+### 1. DECbit (Explicit Signaling)
+One of the first implementations of **Binary Feedback**.
+*   **Mechanism**: Routers monitor average queue length. If $\text{AvgQueue} \ge 1.0$, they set a **Congestion Experienced** bit in the packet header.
+*   **Host Reaction**: The source calculates the fraction of bits set in the last window.
+    *   If $< 50\%$: Increase window additively ($+1$).
+    *   If $\ge 50\%$: Decrease window multiplicatively ($\times 0.875$).
+
+### 2. RED (Random Early Detection)
+The industry-standard AQM algorithm. It drops packets *randomly* based on a weighted average of the queue length.
+*   **Algorithm Steps**:
+    1.  Calculate **Weighted Moving Average**: $\text{AvgLen} = (1 - w) \times \text{AvgLen} + w \times \text{SampleLen}$.
+    2.  If $\text{AvgLen} < \text{MinThreshold}$: No packets are dropped.
+    3.  If $\text{AvgLen} > \text{MaxThreshold}$: All packets are dropped (**Tail Drop**).
+    4.  If $\text{Min} \le \text{AvgLen} \le \text{Max}$: Drop packet with probability $P$.
+*   **Goal**: Prevent **Global Synchronization** (where all TCP flows back off simultaneously) and eliminate "lock-out" of new flows.
+
+### 3. ECN (Explicit Congestion Notification)
+The modern extension to [[Internet Protocol (IP)]] and [[Transmission Control Protocol (TCP)]].
+*   **Marking vs. Dropping**: Routers mark the **CE** (Congestion Encountered) bits in the IP header instead of dropping the packet.
+*   **TCP Feedback**:
+    1.  Receiver sees **CE** bit; sends ACK with **ECE** (ECN-Echo) flag.
+    2.  Sender halves its `cwnd` and sends next segment with **CWR** (Congestion Window Reduced) flag.
+
+---
+
+## Advanced Source-Based Algorithms
+
+Modern TCP variants use timing and bandwidth modeling rather than just packet loss.
+
+| Algorithm | Key Metric | Logic |
+| :--- | :--- | :--- |
+| **TCP Vegas** | RTT Delay | Measures `Diff = ExpectedRate - ActualRate`. If `Diff > Threshold`, it slows down *before* loss occurs. |
+| **TCP BBR** | Bandwidth/RTT | Models the **Bottleneck Bandwidth** and **Min RTT**. It paces packets at the estimated rate to prevent **Bufferbloat**. |
+| **DCTCP** | ECN Fraction | Used in Data Centers. It reduces `cwnd` proportionally to the fraction of marked packets ($\alpha$) rather than a fixed $50\%$ cut. |
+| **TCP CUBIC** | Time-based | Uses a cubic function to grow the window. It stays near the previous "best" rate for a long time and then probes aggressively. |
+
+### The Formula for TCP CUBIC
+$$W(t) = C(t - K)^3 + W_{max}$$
+*   $K$: The time at which the window reaches $W_{max}$.
+*   $W_{max}$: The window size at the last congestion event.
 
 ## Related Topics
-- [[Flow Control]] — Keeping a fast sender from overwhelming a slow *receiver* (distinct from congestion).
-- [[Forwarding]] — The act of moving packets through the network.
-- [[Multiplexing]] — How multiple flows share a single physical link.
+*   **[[Queuing]]**: The hardware implementation of packet buffers.
+*   **[[Resource Allocation]]**: The broader policy of link sharing.
+*   **[[Quality of Service (QoS)]]**: Providing differentiated service levels (e.g., priority for voice).

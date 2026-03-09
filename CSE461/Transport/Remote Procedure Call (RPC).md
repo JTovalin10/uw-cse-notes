@@ -1,102 +1,58 @@
 # Remote Procedure Call (RPC)
 
-A transport paradigm for **request/reply** message transactions: client sends a request, blocks until the server replies. Fits client/server applications better than raw [[User Datagram Protocol (UDP)|UDP]] (which lacks correlation) or [[Transmission Control Protocol (TCP)|TCP]] (which is byte-stream, not message-oriented).
+**Remote Procedure Call (RPC)** is a transport-layer paradigm that provides a **Procedural Abstraction** over network communication. It allows a process to invoke a function on a remote system as if it were a local call, hiding the complexities of message passing, data serialization, and network reliability.
 
-![Timeline for RPC](https://book.systemsapproach.org/_images/f05-13-9780123850591.png)
+## Low-Level Primer: The RPC Model
+*   **Request/Reply Paradigm**: RPC is fundamentally synchronous (though asynchronous versions exist). The client sends a request and **blocks** until the server returns a result.
+*   **Components of the RPC Stack**:
+    *   **Client Stub**: A local proxy for the remote function. It handles the **Marshalling** of arguments.
+    *   **Marshalling (Serialization)**: The process of packaging function arguments into a standardized, machine-independent binary format.
+    *   **Unmarshalling (Deserialization)**: Reconstructing the native data structures from the received binary stream.
+    *   **Transport Protocol**: The underlying delivery mechanism (usually [[User Datagram Protocol (UDP)]] or [[Transmission Control Protocol (TCP)]]).
 
-## RPC fundamentals
+[Image: Complete RPC mechanism showing stubs, marshallers, and the network transport]
 
-RPC is a mechanism, not a single protocol. Application calls a procedure without caring if it's local or remote; blocks until the call returns.
+## Addressing & Service Discovery
+*   **Program/Procedure Identifiers**: Procedures are typically identified by a tuple: `(Program Number, Version Number, Procedure Number)`.
+*   **Port Mapper / RPCBIND**: Since servers often bind to dynamic [[Ports]], they register their current port with a **Port Mapper** (typically on **Well-Known Port 111**). Clients query the Port Mapper to "bind" to the correct port for a specific service.
 
-**Two main challenges:**
-1. **Network** — limits message size, loses/reorders messages
-2. **Heterogeneity** — different machines have different data representations
+## Reliability & Semantics
+Because networks can lose or duplicate messages, RPC must define its failure semantics:
 
-**Two components:**
-1. **Protocol** — manages messages, deals with network limitations
-2. **Stub compiler** — packages arguments into request messages, unpacks return values
+| Semantic | Logic | Requirement |
+| :--- | :--- | :--- |
+| **At-Least-Once** | Client keeps retrying until it gets a reply. | Procedure must be **Idempotent** (safe to repeat). |
+| **At-Most-Once** | Server filters duplicates. If the reply is lost, the call fails or returns a cached result. | Requires server state to track **Transaction IDs (XIDs)**. |
+| **Exactly-Once** | The ideal; virtually impossible in the face of machine crashes and network partitions. | Usually approximated by high-level transaction logs. |
 
-**Flow:** Client → local stub → RPC protocol → server stub → server procedure → reply back
+### Message Matching
+*   **XID (Transaction ID)**: A unique identifier generated for each call. The reply must carry the same XID as the request.
+*   **Boot ID**: A value that changes every time a host reboots. Combined with the XID, it prevents a "delayed" request from a previous boot incarnation from being accepted as valid.
 
-![Complete RPC mechanism](https://book.systemsapproach.org/_images/f05-14-9780123850591.png)
+---
 
-## Identifiers in RPC
-
-### Procedure naming
-
-- **Flat** — unique integer (requires central coordination)
-- **Hierarchical** — program + procedure number (like file pathnames)
-
-### Request/reply matching
-
-- **Message ID** — reply carries same ID as request
-- **Boot ID** — avoids duplicate-ID confusion after client crash/reboot; combined with message ID for unique transaction ID
-
-## Overcoming network limitations
-
-### Reliability
-
-- Run over [[Transmission Control Protocol (TCP)|TCP]] (outsource reliability) or implement own ACKs/timeouts over [[User Datagram Protocol (UDP)|UDP]]
-- **Implicit ACK** — reply message acknowledges request; next request acknowledges prior reply (if transactions are sequential)
-- **Channels** — multiplex multiple request/reply transactions; each channel is sequential
-- **At-most-once semantics** — server recognizes duplicates, ignores them; requires state (e.g., sequence number per channel)
-- **Zero-or-more semantics** — simpler; OK if procedure is idempotent
-
-![Simple timeline for reliable RPC](https://book.systemsapproach.org/_images/f05-15-9780123850591.png)
-
-![Timeline with implicit acknowledgment](https://book.systemsapproach.org/_images/f05-16-9780123850591.png)
-
-- Client can send "Are you alive?" or server sends "I am still alive" to distinguish slow vs dead server
-
-### Fragmentation
-
-- RPC may implement its own fragmentation/reassembly (e.g., per-fragment ACK/NACK) for faster recovery than IP fragmentation
-
-## Synchronous vs asynchronous
-
-- **Synchronous** — `send` returns when reply received; RPC is usually synchronous
-- **Asynchronous** — `send` returns immediately; sender knows nothing about delivery
-
-## RPC implementations
+## RPC Implementations
 
 ### SunRPC (ONC RPC)
-
-![Protocol graph for SunRPC on UDP](https://book.systemsapproach.org/_images/f05-17-9780123850591.png)
-
-![SunRPC header formats](https://book.systemsapproach.org/_images/f05-18-9780123850591.png)
-
-- Two-tier IDs: 32-bit program number + 32-bit procedure number
-- **Port Mapper / RPCBIND** — well-known port 111; clients look up program → transport selector
-- **XID** (transaction ID) in request/reply; server doesn't remember XID after reply → no at-most-once guarantee
-- Relies on underlying transport for reliability and message size
+The foundation of **NFS** (Network File System).
+*   **XDR (External Data Representation)**: The canonical data format. It uses big-endian byte order and 4-byte alignment.
+*   **XID Persistence**: Standard SunRPC does not remember XIDs across reboots, potentially violating at-most-once semantics during crashes.
 
 ### DCE-RPC
+A more complex implementation used in Microsoft's **DCOM** and **Active Directory**.
+*   **Activity IDs**: Tracks a logical sequence of calls (a "channel") between a client and server.
+*   **Implicit ACKs**: The next request in a sequence serves as an ACK for the previous reply.
+*   **Fack (Fragment ACK)**: Selective acknowledgment for large RPC messages that have been fragmented across multiple UDP packets.
 
-![Typical DCE-RPC message exchange](https://book.systemsapproach.org/_images/f05-19-9780123850591.png)
+### gRPC (Modern Cloud RPC)
+Developed by Google for high-performance **[[Micro-services]]**.
+*   **Transport**: Runs exclusively over **HTTP/2** over **TLS**. 
+*   **Serialization**: Uses **Protocol Buffers ([[Protobufs]])**, a highly efficient, typed binary format.
+*   **Streaming**: Supports Unary (Request/Response), Server Streaming, Client Streaming, and Bidirectional Streaming.
+*   **Interface Definition Language (IDL)**: Uses `.proto` files to define service interfaces, which are then compiled into stubs for multiple languages (C++, Go, Python, etc.).
 
-![Fragmentation with selective acknowledgments](https://book.systemsapproach.org/_images/f05-20-9780123850591.png)
+[Image: gRPC stack showing HTTP/2 transport and Protocol Buffers]
 
-- **At-most-once** semantics (default)
-- **Activity** — logical channel; one transaction per activity at a time
-- **ActivityId** + **SequenceNum** — server tracks to detect duplicates
-- **Fragmentation** — selective ACK (Fack) for fragments; flow control via WindowSize
-- Client sends Request; server replies Response; client Acks; client may Ping, server replies Working
-
-### gRPC
-
-![Using RPC to invoke a scalable cloud service](https://book.systemsapproach.org/_images/Slide13.png)
-
-![gRPC stack](https://book.systemsapproach.org/_images/Slide21.png)
-
-- Designed for **cloud services** (scalable, load-balanced)
-- Runs on **HTTP/2** over **TLS** over [[Transmission Control Protocol (TCP)|TCP]]
-- Outsources: reliability, security, encoding, multiplexing
-- **Streaming** — simple RPC, server streaming, client streaming, bidirectional streaming
-- Uses **Protocol Buffers** for encoding
-
-## Related
-
-- [[User Datagram Protocol (UDP)]] — often used as substrate
-- [[Transmission Control Protocol (TCP)]] — alternative substrate
-- [[Ports]] — demultiplexing
-- [[Sliding Window]] — reliability mechanism
+## Overcoming Network Limitations
+*   **Implicit Acknowledgment**: To reduce traffic, the server treats the next request from the same client as an ACK for the previous response.
+*   **Periodic Pings**: If a server takes a long time to process a request, the client sends a "Ping" to verify the server is still alive; the server responds with a "Working" message.

@@ -1,73 +1,53 @@
 # User Datagram Protocol (UDP)
 
-UDP is a minimal transport protocol — essentially a glorified packet. Extends host-to-host delivery into process-to-process communication. Doesn't guarantee reliability, ordering, or byte streams. Faster than [[Transmission Control Protocol (TCP)|TCP]] because it skips connection setup and reliability overhead.
+The **User Datagram Protocol (UDP)** is a minimalist, **Connectionless** transport protocol that provides a "best-effort" delivery model. It is effectively a thin wrapper around [[Internet Protocol (IP)]], extending host-to-host delivery into **Process-to-Process** communication using [[Ports]].
 
-## Characteristics
+## Technical Characteristics
 
-- **Datagram delivery** — each send delivers one discrete message (up to 64 KB minus headers)
-- **No guarantees** — messages may be lost, reordered, or duplicated
-- **Connectionless** — no handshake; can send regardless of receiver or network state
-- **No flow/congestion control** — sender can blast packets at full rate
-- **Limited message size** — max payload ~65,507 bytes (65,535 − 8-byte UDP header − 20-byte IP header)
+*   **Unreliable Delivery**: UDP provides no guarantees for message arrival, ordering, or duplicate protection. Segments may be lost, reordered, or duplicated without notification.
+*   **Connectionless Nature**: No handshake is required before data transmission. Senders can transmit at any time without verifying receiver state.
+*   **Message-Oriented (Datagrams)**: Preserves application-level message boundaries. Each `send()` call results in exactly one UDP segment.
+*   **No Congestion/Flow Control**: UDP does not regulate transmission rates. Applications can transmit as fast as the network or hardware allows, often leading to packet loss at bottlenecks.
+*   **Maximum Payload**: Calculated as $65535 \text{ bytes (Max IP Packet)} - 8 \text{ bytes (UDP Header)} - 20 \text{ bytes (Min IP Header)} = 65507 \text{ bytes}$.
 
-If an application needs reliability, ordering, or byte streams, it must implement that itself (or use TCP).
+## UDP Header Structure
 
-## When to use UDP
+The UDP header is a fixed **8-byte** overhead added to every segment:
 
-- **Low latency** — no connection setup; first packet goes out immediately
-- **Real-time** — voice, video; late data is often useless, retransmit hurts more than helps
-- **Simple request–response** — one request, one reply; app can retry if needed
-- **Multicast/broadcast** — TCP is point-to-point only; UDP supports one-to-many
+| Field | Size | Function |
+| :--- | :--- | :--- |
+| **Source Port** | 16 Bits | Identifies the sending process (Optional; set to 0 if no reply is expected). |
+| **Dest Port** | 16 Bits | The demultiplexing key used to deliver the segment to the correct destination process. |
+| **Length** | 16 Bits | Total length of the UDP segment (Header + Payload) in bytes. |
+| **Checksum** | 16 Bits | A 16-bit 1's complement sum of the segment and a **Pseudo-Header**. |
 
-## Applications
+[Image: UDP header format showing the four 16-bit fields]
 
-- **DNS** — simple queries; small messages; retries are cheap
-- **DHCP** — bootstrap; client has no IP yet, uses broadcast
-- **Voice/Video (VoIP, RTP)** — real-time; prefer loss over delay
-- **RPC** — some RPC frameworks use UDP for fast, idempotent calls
-- **Gaming** — low latency; game state often overwrites stale data
-- **SNMP** — network management; periodic polls
+### Checksum & The Pseudo-Header
+To detect misdelivery (packets reaching the wrong host due to IP-layer corruption), the UDP checksum includes a **Pseudo-Header** containing fields from the IP header:
+*   **Source IP Address**
+*   **Destination IP Address**
+*   **Zero-Padding (8 bits)**
+*   **Protocol Number (17 for UDP)**
+*   **UDP Length**
 
-## Header
+**Calculation**: The checksum is the 16-bit 1's complement sum of all 16-bit words in the segment plus the pseudo-header.
+*   **IPv4**: Checksum is optional (set to 0 if unused).
+*   **IPv6**: Checksum is **Mandatory**.
 
-8 bytes total:
+## Use Cases & Applications
 
-| Field | Size | Purpose |
-|-------|------|---------|
-| Source port | 16 bits | Sender's port (optional; 0 if unused) |
-| Dest port | 16 bits | Receiver's port — demultiplexing key |
-| Length | 16 bits | UDP header + payload in bytes |
-| Checksum | 16 bits | Optional; 0 means "no checksum" |
+*   **Low Latency Requirement**: **VoIP**, **Streaming Media**, and **Online Gaming** prioritize immediate delivery over reliability. Late data is discarded by the application.
+*   **Simple Request-Response**: [[DNS]] and [[SNMP]] use UDP to avoid the overhead of [[Transmission Control Protocol (TCP)]] handshakes for single-packet queries.
+*   **Network Bootstrapping**: **DHCP** uses UDP because the client lacks an IP address and must rely on broadcast, which TCP does not support.
+*   **One-to-Many Delivery**: UDP supports **IP Multicast** and **Broadcast**, which are fundamentally incompatible with TCP's point-to-point connection model.
 
-![UDP header format](https://book.systemsapproach.org/_images/f05-01-9780123850591.png)
+## UDP vs. TCP Comparison
 
-![[UDP header.png]]
-
-**Checksum** (when used) covers UDP segment plus IP **pseudoheader** (src/dest IP, protocol, UDP length). Catches some corruption and misdelivery. IPv6 requires checksum; IPv4 allows zero for "no checksum."
-
-## Ports and demultiplexing
-
-- Processes identify each other via **ports** (abstract locator), not pids
-- Demux key: **(port, host)** pair
-- **Well-known ports** — servers use fixed, published ports (e.g., DNS 53, mail 25)
-- Client learns server port from well-known port or **port mapper** (well-known port that returns transport selector for a service)
-- Port implemented as message queue: arrivals appended; full queue → discard; no flow control
-
-![UDP message queue](https://book.systemsapproach.org/_images/f05-02-9780123850591.png)
-
-## UDP vs TCP
-
-| | UDP | TCP |
-|---|-----|-----|
-| Connection | None | 3-way handshake |
-| Delivery | Best-effort | Reliable, ordered |
-| Unit | Datagram | Byte stream |
-| Flow control | No | Yes |
-| Congestion control | No | Yes |
-| Overhead | Minimal | Higher |
-
-## Related
-
-- [[Transmission Control Protocol (TCP)]] — reliable alternative
-- [[Ports]] — demultiplexing
-- [[Datagram]] — connectionless delivery model
+| Feature | UDP | [[Transmission Control Protocol (TCP)\|TCP]] |
+| :--- | :--- | :--- |
+| **Reliability** | Best-effort | Reliable (ACKs/Retransmits) |
+| **Connection State** | Connectionless | Stateful (Handshake) |
+| **Data Stream** | Discrete Datagrams | Continuous Byte Stream |
+| **Overhead** | 8 Bytes | 20+ Bytes |
+| **Control** | None | Flow & Congestion Control |
