@@ -1,0 +1,7 @@
+- PLT is the key measure of web performance
+	- from click until user sees page
+	- small increase in PLT decreases sales
+- PLT depends on many factors
+	- structure of page/content
+	- HTTP (and TCP) protocol
+	- Network RTT and bandwidth

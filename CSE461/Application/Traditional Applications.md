@@ -1,6 +1,6 @@
 # Traditional Applications
 
-**Traditional Applications** operate primarily on the **Client/Server** and **Request/Reply** paradigms. They are fundamentally composed of two parts: the **Application Program** (the user-facing software, like a browser or mail client) and the **Application Protocol** (the standardized rules dictating how machines exchange data over the network, e.g., [[HTTP]], [[SMTP]]). 
+**Traditional Applications** operate primarily on the **Client/Server** and **Request/Reply** paradigms. They are fundamentally composed of two parts: the **Application Program** (the user-facing software, like a browser or mail client) and the **Application Protocol** (the standardized rules dictating how machines exchange data over the network, e.g., [[HTTP (CSE 333)]], [[SMTP]]). 
 
 ## Low-Level Primer: Formats and Transports
 *   **Application Protocol vs. Data Format**: The transport protocol (e.g., SMTP) manages *how* bytes are moved; a companion standard (e.g., [[MIME]], [[HTML]]) defines *what* those bytes mean.
@@ -51,7 +51,7 @@ The Web is a massive, distributed system of interlinked documents.
     *   **[[URL]] (Uniform Resource Locator)**: Specifies *how* to access a resource based on its location (e.g., `http://...`).
     *   **[[URN]] (Uniform Resource Name)**: Names a resource persistently regardless of its current location.
 
-### [[HTTP]] (HyperText Transfer Protocol)
+### [[HTTP (CSE 333)]] (HyperText Transfer Protocol)
 A stateless request/response protocol operating by default over **TCP Port 80** (or **443** for HTTPS).
 *   **Message Format**: 
     1. `START_LINE` (Request Line or Status Line)
@@ -100,6 +100,6 @@ Machine-to-machine application paradigms.
     *   **Extensible**: Heavily modularized with WS-* standards (WS-Security, WS-ReliableMessaging).
     [Image: SOAP message structure]
 *   **[[REST]] (Representational State Transfer)**: A **Data-Oriented**, stateless architecture.
-    *   Exposes entities as URIs and manipulates them strictly using standard [[HTTP]] methods (GET, POST, PUT, DELETE).
+    *   Exposes entities as URIs and manipulates them strictly using standard [[HTTP (CSE 333)]] methods (GET, POST, PUT, DELETE).
     *   Payload representations are typically passed via **[[JSON]]** or **[[XML]]**.
 *   **Cloud Native**: Modern infrastructure relying heavily on **[[Micro-services]]** communicating via high-performance binary RPCs (e.g., **[[gRPC]]** utilizing **[[Protobufs]]** for serialization) to achieve web-scale performance.

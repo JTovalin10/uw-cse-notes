@@ -1,0 +1,5 @@
+- timeouts are sufficiently long that the ACK clock wll ahve run dwn
+	- slow-start ramp up the ACK clock
+	- we lose track of this we lose sense of what is happening in the network
+		- we have to build it up or restart again (build up)
+- we need to detect loss before a timeout to get  to full AIMID

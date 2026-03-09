@@ -20,7 +20,7 @@ The 16-bit port space ($0$ to $65535$) is partitioned into three distinct ranges
 *   **Well-Known Ports (0–1023)**:
     *   Reserved for core system services and standardized protocols.
     *   Binding typically requires administrative/root privileges.
-    *   **Examples**: [[HTTP]] (80), [[HTTPS]] (443), [[DNS]] (53), [[SSH]] (22), [[SMTP]] (25).
+    *   **Examples**: [[HTTP (CSE 333)]] (80), [[HTTPS]] (443), [[DNS]] (53), [[SSH]] (22), [[SMTP]] (25).
 *   **Registered Ports (1024–49151)**:
     *   Used by specific user processes or applications (e.g., databases, game servers).
     *   Can be registered with IANA to avoid conflicts but do not require root privileges to bind.

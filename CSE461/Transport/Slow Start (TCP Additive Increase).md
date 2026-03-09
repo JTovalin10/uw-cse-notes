@@ -8,10 +8,11 @@
 	- fixed sliding window doesnt adapt and is rough on the netwoek
 	- additive increase with small bursts adapts cwnd gently to the network, but might take a long time to become efficient
 ## Slow Start Solution
+we exponentially increase the cwnd every RTT until a packet loss poccurs. this tells us the cwnd is too large. We switch to additive icnrease beforehand, and slowly addapt cwnd near right value
 - start by doubling cwnd every RTT
 	- exponential growth (2^n)
 	- start slow, quickly reach large values
-- the issue with AI is that if the payload is small then just an AI approach is poor. As slow-start has exp increase itmakes up for that
+- the issue with AI is that if the payload is small then just an AI approach is poor. As slow-start has exp increase it makes up for that
 - eventually packet loss will occur when the network is congested
 	- loss timeout tells us cwnd is too large
 	- next time, switch to AI beforehand
