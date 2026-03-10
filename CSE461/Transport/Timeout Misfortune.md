@@ -58,7 +58,7 @@ When a timeout is the *only* way a loss is detected:
 *   The **[[Congestion Window (cwnd)]]** is reset to **1 MSS**.
 *   The sender enters **Slow Start**.
 *   The throughput drops to near-zero until the "pipe" can be refilled.
-*   **Optimization**: Modern TCP uses **[[Fast Recovery (TCP Multiplicative Decrease)|Fast Retransmit]]** (3 duplicate ACKs) to repair losses *before* a timeout occurs, preserving the ACK clock.
+*   **Optimization**: Modern TCP uses **[[Transport Layer - TCP Congestion Control#3. Loss Detection and Recovery|Fast Retransmit]]** (3 duplicate ACKs) to repair losses *before* a timeout occurs, preserving the ACK clock.
 
 ---
 

@@ -1,7 +1,7 @@
 # Network-Side Congestion Control: Explicit Feedback and Queue Management
 
 ## Low-Level Primer: Congestion vs. Flow Control
-While **[[Flow Control]]** is a point-to-point mechanism to prevent a fast sender from overwhelming a slow receiver, **[[Congestion Control]]** is a network-wide effort to prevent a subset of senders from overwhelming the shared infrastructure (routers and links). Traditional TCP (e.g., Tahoe, Reno) is **Reactive**: it drives the network into a state of congestion (packet loss) and then recovers.
+While **[[Flow Control]]** is a point-to-point mechanism to prevent a fast sender from overwhelming a slow receiver, **[[Transport Layer - TCP Congestion Control|Congestion Control]]** is a network-wide effort to prevent a subset of senders from overwhelming the shared infrastructure (routers and links). Traditional TCP (e.g., Tahoe, Reno) is **Reactive**: it drives the network into a state of congestion (packet loss) and then recovers.
 
 **Network-Side Congestion Control** aims to move from reactive recovery to **Congestion Avoidance**. By involving the router in the signaling process, the network can provide explicit feedback before packet loss occurs, reducing both latency and retransmission overhead.
 
@@ -19,12 +19,12 @@ The network can signal congestion to the end-hosts through three primary mechani
 ---
 
 ## Explicit Congestion Notification (ECN)
-**ECN** is a protocol-level mechanism that allows routers to signal congestion without dropping packets. It requires support at the **[[IP Layer]]** and the **[[Transport Layer]]** (TCP).
+**ECN** is a protocol-level mechanism that allows routers to signal congestion without dropping packets. It requires support at the **[[Network Layer - Internetworking and IP|IP Layer]]** and the **[[Transport Layer - Transmission Control Protocol (TCP)|Transport Layer]]**.
 
 ### Technical Mechanics
-*   **IP Header Marking**: The router detects the onset of congestion (typically via a threshold in the buffer queue). Instead of dropping a packet, it sets the **CE (Congestion Experienced)** codepoint in the 2-bit ECN field of the **[[Internet Protocol (IP)]]** header.
-*   **Receiver Feedback**: When the receiver sees the CE mark, it notifies the sender by setting the **ECE (ECN-Echo)** flag in the **[[Transmission Control Protocol (TCP)]]** header of the next ACK.
-*   **Sender Response**: The sender receives the ECE flag and responds as if a packet loss had occurred (i.e., enters **[[Multiplicative Decrease]]**), reducing its congestion window (**cwnd**). It then sets the **CWR (Congestion Window Reduced)** flag in its next data packet to acknowledge the feedback.
+*   **IP Header Marking**: The router detects the onset of congestion (typically via a threshold in the buffer queue). Instead of dropping a packet, it sets the **CE (Congestion Experienced)** codepoint in the 2-bit ECN field of the **[[IPv4]]** or **[[IPv6]]** header.
+*   **Receiver Feedback**: When the receiver sees the CE mark, it notifies the sender by setting the **ECE (ECN-Echo)** flag in the **[[Transport Layer - Transmission Control Protocol (TCP)|TCP]]** header of the next ACK.
+*   **Sender Response**: The sender receives the ECE flag and responds as if a packet loss had occurred (i.e., enters **[[Multiplicative Decrease]]**), reducing its congestion window (**[[Congestion Window (cwnd)|cwnd]]**). It then sets the **CWR (Congestion Window Reduced)** flag in its next data packet to acknowledge the feedback.
 
 ### Critical Evaluation of ECN
 | Aspect | Detail |
