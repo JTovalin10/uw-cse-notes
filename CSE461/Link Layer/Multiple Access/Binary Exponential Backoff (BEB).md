@@ -1,7 +1,0 @@
-- estimate the probability, **randomly** choose $0 \text{ to n}$ as this prevents collisions from happening over and over again as it's unlikely that n people will get the same number; this uses $e^x$ which is rounded to the nearest integer.
-	- 1st collision, wait 0 or 1 frame times
-	- 2nd collision, wait from 0 to 3 times
-	- 3rd collision, wait from 0 to 7 times...
-- BEB **doubles** the backoff window per collision: 0–1, then 0–3, then 0–7, etc. (range = $2^n - 1$ after $n$ collisions)
-	- quickly gets large enough to work
-	- very efficient in practice

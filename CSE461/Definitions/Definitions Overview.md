@@ -15,6 +15,12 @@ Quick lookup for terms used across CSE461 notes.
 - [[Routing Information Protocol (RIP)]] — [[Open Shortest Path First (OSPF)]] — [[OSPF Area 0 (Backbone)]] — [[Area Border Router (ABR)]] — [[OSPF Virtual Link]] — [[iBGP and eBGP]]
 - [[Link-State Advertisement (LSA)]] — [[Link-State Packet (LSP)]]
 
+## Transport and Congestion
+
+- [[Congestion Window (cwnd)]] — [[Advertised Window (rwnd)]] — [[ssthresh]]
+- [[Acknowledgment (ACK)]] — [[Automatic Repeat Request (ARQ)]] — [[Sliding Window Protocol]]
+- [[Round-Trip Time (RTT)]] — [[Timeout Misfortune]]
+
 ## Link and physical
 
 - [[Media Access Control (MAC)]] — [[Carrier Sense Multiple Access (CSMA)]] — [[Binary Exponential Backoff (BEB)]]
@@ -34,5 +40,5 @@ Quick lookup for terms used across CSE461 notes.
 - [[Datagram]] — [[Connectionless]] — [[Encapsulation]]
 - [[Virtual Private Network (VPN)]] — [[Virtual Local Area Network (VLAN)]]
 - [[Switch]] — [[Switched Network]]
-- [[Convergence]] — [[Round-Trip Time (RTT)]]
+- [[Convergence]]
 - [[CSE461/Definitions/Quality of Service (QoS)]] — [[Multiplexing]] — [[Statistical Multiplexing]]

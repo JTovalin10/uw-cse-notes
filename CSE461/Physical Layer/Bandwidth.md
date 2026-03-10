@@ -1,5 +1,0 @@
-- the number of bits that can be transmitted over a period of time
-	- units of bits per second
-	- also used to refer to the frequency range of a signal
-- throughput
-	- the measured performance of a system (in bps)
