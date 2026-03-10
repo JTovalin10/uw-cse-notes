@@ -1,3 +1,0 @@
-Adds an API that allows applications to use the kernel (e.g., `print`).
-
-- Libraries, user interface widgets, ...

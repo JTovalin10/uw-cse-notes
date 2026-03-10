@@ -25,6 +25,27 @@ CSE 461 covers the fundamentals of computer networking. The course explores how 
 - Bandwidth and throughput
 
 ### Link Layer
-- Data link protocols
-- Framing and error detection
-- Media access control
+- [[Link Layer Overview]]
+- [[Link Layer - Coding and Modulation]]
+- [[Framing]]
+- [[Error Detection and Correction]]
+- [[Multiple Access Control]]
+- [[Switching and Bridges]]
+- [[Wireless Networks]]
+- [[Retransmission Strategies]]
+
+### Network Layer
+- [[IP Protocol]]
+- [[Routing Algorithms]]
+- [[Congestion Control]]
+- [[Network-Side Congestion Control]]
+
+### Transport Layer
+- [[Transmission Control Protocol (TCP)]]
+- [[User Datagram Protocol (UDP)]]
+- [[Flow Control]]
+- [[ACK Clocking]]
+- [[Timeout Misfortune]]
+- [[Congestion Control]]
+- [[Fast Recovery (TCP Multiplicative Decrease)]]
+- [[Slow Start (TCP Additive Increase)]]

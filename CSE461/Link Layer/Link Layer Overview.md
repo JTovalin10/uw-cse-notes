@@ -1,115 +1,63 @@
-# Link Layer & Framing
-
-The **Link Layer** (Layer 2) is responsible for the reliable transfer of messages (**Frames**) over one or more connected physical links. It builds upon the **Physical Layer** by organizing raw bitstreams into discrete units and managing media access.
+# Link Layer: Node-to-Node Delivery and Framing
 
 ## Low-Level Primer: The L2/L3 Duality
-The Link Layer provides node-to-node delivery, whereas the Network Layer provides host-to-host delivery.
+In the hierarchical network model, the **[[Link Layer]]** (Layer 2) is responsible for the reliable transfer of data units called **Frames** over a single physical or logical link. It operates below the **[[Network Layer]]** (Layer 3) and directly above the **[[Physical Layer]]**.
 
-*   **L2 Address (MAC Address)**: A 48-bit "flat" identifier (e.g., `00:1A:2B:3C:4D:5E`) used for delivery between directly connected nodes on a local network.
-*   **L3 Address (IP Address)**: A hierarchical identifier used for global routing across multiple networks.
-*   **The Invariant**: During traversal, the **L3 Address** remains constant, while the **L2 Address** changes at every hop as the frame is re-encapsulated for the next physical link.
-*   **Resolution Protocols**:
-    *   **ARP**: Resolves L3 (IPv4) → L2 (MAC).
-    *   **NDP**: Resolves L3 (IPv6) → L2 (MAC).
-
-[Image: Network-link-physical stack showing frame encapsulation]
+*   **L2 Address (MAC Address)**: A 48-bit, hardware-encoded "flat" identifier used for delivery between directly connected nodes (e.g., `00:1A:2B:3C:4D:5E`).
+*   **L3 Address (IP Address)**: A hierarchical identifier used for global routing across multiple network segments.
+*   **The Invariant Principle**: During a packet's journey, the **L3 Addresses** (Source and Destination IP) remain constant, while the **L2 Addresses** (Source and Destination MAC) are stripped and replaced at every router hop as the packet is re-encapsulated into a new frame.
 
 ---
 
-## Framing Methods
+## Framing: Defining Frame Boundaries
+Because the Physical Layer provides a continuous stream of bits, the Link Layer must "frame" this data into discrete packets using delimiters.
 
-Framing is the process of interpreting a physical-layer bitstream as a sequence of discrete frames.
+### 1. Byte-Oriented Protocols (Sentinel-Based)
+Frames are viewed as a sequence of bytes.
+*   **Method**: Uses special sentinel characters (e.g., `STX` for Start of Text, `ETX` for End of Text) to mark boundaries.
+*   **Byte Stuffing**: If a sentinel byte appears in the actual payload, it is escaped using a special **DLE (Data Link Escape)** character.
+*   **Protocols**: **PPP (Point-to-Point Protocol)**, **BISYNC**.
 
-### 1. Byte-Oriented Protocols (e.g., PPP)
-Frames are viewed as a collection of bytes.
-*   **Sentinel-Based**: Uses special characters to mark boundaries.
-    *   **SYN**: Start of synchronization.
-    *   **STX / ETX**: Start and End of text.
-    *   **Byte Stuffing**: If a sentinel appears in the data, it is escaped (e.g., using a backslash).
-*   **Byte Counting**: The header includes a field specifying the frame's length in bytes.
-    *   **Failure Mode**: If the count field is corrupted, the receiver loses frame synchronization until the next sentinel.
+### 2. Bit-Oriented Protocols (High-Level Data Link Control - HDLC)
+Frames are viewed as a sequence of bits, independent of byte boundaries.
+*   **Flag Sequence**: The pattern `01111110` marks both start and end.
+*   **Bit Stuffing**: To prevent data from being mistaken for a flag, the sender inserts a `0` after every five consecutive `1`s in the payload. The receiver removes the `0`.
 
-[Image: Example of byte-oriented frame structure with STX/ETX]
-
-### 2. Bit-Oriented Protocols (e.g., HDLC)
-Frames are viewed as a collection of bits, independent of byte boundaries.
-*   **Flag Sequence**: The distinguished bit pattern `01111110` marks both start and end.
-*   **Bit Stuffing**:
-    *   **Sender**: Inserts a `0` after every five consecutive `1`s in the payload.
-    *   **Receiver**: If five `1`s arrive:
-        *   Next bit `0`: Discard (it was stuffed).
-        *   Next bit `1`: Check the following bit. 
-            *   `0`: End of frame (`01111110`).
-            *   `1`: Error (`01111111`).
-
-[Image: HDLC frame format showing the flag sequence and bit stuffing]
-
-### 3. Clock-Based Framing (e.g., SONET)
-Used in high-speed fiber links.
-*   **Soft Synchronization**: Boundaries are determined by physical layer timing rather than stuffing.
-*   **STS-1 Frame**: 810 bytes (9 rows by 90 columns).
-*   **Scrambling**: Payload is XORed with a 127-bit pattern to ensure sufficient 0-to-1 transitions for clock recovery.
-*   **State Machine**: The receiver must see the sync pattern correctly $N$ times to achieve "lock" and $M$ misses to declare "out of sync."
-
-[Image: SONET STS-1 frame structure grid]
+[Image: HDLC frame format showing Flag, Address, Control, Payload, and CRC fields.]
 
 ---
 
-## Error Detection and Correction
-
-Due to thermal noise and interference, bits may be flipped.
+## Error Detection: Maintaining Data Integrity
+Physical links are noisy and prone to bit-flipping errors. The Link Layer uses redundancy to detect and sometimes correct these errors.
 
 ### 1. Cyclic Redundancy Check (CRC)
-The most powerful link-layer detection method, based on polynomial long division.
-*   **Mechanics**:
-    1.  Sender and receiver agree on a divisor polynomial $C(x)$ of degree $k$.
-    2.  Sender appends $k$ zeros to the message $M(x)$ and divides by $C(x)$ using **Modulo-2 Arithmetic**.
-    3.  The remainder is the CRC, which is appended to the message.
-*   **Properties**:
-    *   Detects all single and double-bit errors.
-    *   Detects all odd numbers of errors (if $(x+1)$ is a factor).
-    *   Detects any burst error shorter than $k$ bits.
+The most robust error detection mechanism, based on polynomial long division in GF(2).
+*   **Divisor Polynomial ($C(x)$)**: A fixed polynomial agreed upon by both sender and receiver.
+    *   **CRC-32**: $x^{32} + x^{26} + x^{23} + x^{22} + x^{16} + x^{12} + x^{11} + x^{10} + x^8 + x^7 + x^5 + x^4 + x^2 + x + 1$.
+*   **Detection Capabilities**: Detects all single and double-bit errors, any odd number of errors, and burst errors of length up to the degree of the polynomial.
 
-[Image: CRC polynomial long division example]
-
-### 2. Checksums and Parity
-*   **Internet Checksum**: 16-bit 1's complement sum of all words. Efficient but weak (fails to detect certain swapped-byte errors).
-*   **Parity Bit**: Single redundant bit to make the count of '1's even or odd. Detects single-bit errors only.
-*   **Two-Dimensional Parity**: Arranges bits in a grid; detects all 1, 2, and 3-bit errors and some 4-bit errors.
-
-[Image: 2D parity grid showing row and column parity bits]
-
-### 3. Hamming Code (Forward Error Correction)
-Used when the cost of retransmission is high (e.g., wireless or deep space).
-*   **Hamming Distance ($d$)**: The number of bit positions in which two codewords differ.
-*   **Error Detection**: Requires distance $d+1$ to detect $d$ errors.
-*   **Error Correction**: Requires distance $2d+1$ to correct $d$ errors.
+### 2. Internet Checksum
+*   **Mechanism**: Treats data as a sequence of 16-bit integers and computes their 1's complement sum.
+*   **Trade-off**: Computationally efficient (can be done in software) but mathematically weaker than CRC (e.g., cannot detect byte swaps).
 
 ---
 
-## Reliability & Retransmission (ARQ)
+## Reliability and Retransmission (ARQ)
+**Automatic Repeat Request (ARQ)** ensures reliable delivery even when frames are lost.
 
-To handle lost or corrupted frames, the link layer uses **Automatic Repeat Request (ARQ)** schemes.
+*   **Stop-and-Wait**: Sender transmits one frame and waits for an **ACK**. If the timer expires before an ACK arrives, the frame is retransmitted.
+*   **Sliding Window**: Allows multiple frames (up to the **Send Window Size - SWS**) to be in-flight before requiring an ACK.
+    *   **Go-Back-N**: Receiver discards all frames following a lost frame; sender must retransmit the entire window.
+    *   **Selective Repeat**: Receiver buffers out-of-order frames; sender only retransmits the missing frame.
 
-### 1. Stop-and-Wait
-The simplest reliability mechanism.
-*   **Mechanism**: Sender transmits one frame and waits for an **Acknowledgment (ACK)** before sending the next.
-*   **Duplicate Detection**: Uses a **1-bit Sequence Number** ($0$ or $1$) to distinguish between a new frame and a retransmission of the previous one.
-*   **Efficiency**: Very low on high **Bandwidth-Delay Product** links, as the pipe remains empty during the RTT.
-    *   **Utilization ($U$)**: $U = \frac{T_{trans}}{T_{trans} + RTT}$
+[Image: Comparison of Go-Back-N and Selective Repeat window mechanisms.]
 
-### 2. Sliding Window
-Generalizes Stop-and-Wait by allowing multiple frames to be "in flight."
-*   **SWS (Send Window Size)**: Max outstanding unacknowledged frames.
-*   **RWS (Receive Window Size)**: Max out-of-order frames the receiver will buffer.
-*   **Invariant**: $LFS - LAR \le SWS$ (Last Frame Sent - Last ACK Received).
-*   **Sequence Number Constraint**: To avoid ambiguity between new frames and delayed retransmissions, $SWS < \frac{\text{MaxSeqNum} + 1}{2}$ (when $RWS = SWS$).
+---
 
-### 3. Retransmission Strategies
-*   **Go-Back-N**: If a frame is lost, the sender retransmits **all** frames starting from the lost one. Receiver only buffers the next expected frame ($RWS=1$).
-*   **Selective Repeat**: Sender only retransmits the specific frames that were lost. Receiver buffers out-of-order frames ($RWS > 1$) to improve efficiency.
+## Multiple Access Control (MAC)
+When multiple nodes share a single medium (e.g., Ethernet or Wireless), the Link Layer must manage access to prevent collisions.
 
-## Related Topics
-*   **[[Internet Protocol (IP)]]**: The primary implementation of the Network Layer.
-*   **[[Forwarding Table]]**: The database used for local packet switching.
-*   **[[OSI Layers]]**: The full 7-layer theoretical model.
+*   **CSMA/CD (Carrier Sense Multiple Access with Collision Detection)**: Used in wired Ethernet. Listen before talking; stop and wait a random backoff time if a collision is detected.
+*   **CSMA/CA (Collision Avoidance)**: Used in Wi-Fi. Nodes use "Request to Send" (RTS) and "Clear to Send" (CTS) to avoid collisions in the presence of hidden terminals.
+
+[Image: Hidden Terminal Problem diagram.]

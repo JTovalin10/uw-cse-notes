@@ -5,8 +5,11 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 ## Quick navigation
 
 ### Intro
-- [[Operating System]] — [[Referee]] — [[Policy]] — [[Mechanism]]
-- [[Illusionist]] — [[Glue]] — [[Simple Memory Protection]]
+- [[Operating System]]
+- [[Operating System Roles]] — Referee, Illusionist, Glue
+- [[Mechanism]]
+- [[Policy]]
+- [[Simple Memory Protection]]
 
 ### Kernel abstraction
 - [[Traps]] — [[Interrupts]] — [[Exceptions]]
@@ -25,6 +28,7 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Translation Lookaside Buffer (TLB)]] — [[Page Table]]
 - [[Paged Virtual Memory]] — [[Page Fault]] — [[Page replacement]]
 - [[LRU Clock]] — [[Belady's Algorithm]]
+- [[How do we load a program]] — Loading, PLT, GOT
 
 ### Storage
 - [[Persistent Storage]] — [[Secondary Storage]] — [[HDD]] — [[SSD]]
