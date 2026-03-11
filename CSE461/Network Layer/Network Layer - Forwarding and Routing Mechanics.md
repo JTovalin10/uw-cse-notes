@@ -59,4 +59,4 @@ Tunneling allows one protocol to be encapsulated inside another, creating a "Vir
     *   **IPv6 over IPv4**: Moving IPv6 traffic through legacy routers.
     *   **Mobile IP**: Forwarding traffic from a home network to a mobile device's current location.
 
-[Image: Diagram of IP-in-IP encapsulation showing Inner and Outer headers]
+![[Screenshots/IP tunneling.png]]

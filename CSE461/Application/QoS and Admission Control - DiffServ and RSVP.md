@@ -10,7 +10,6 @@ The process of rejecting new calls if the network has insufficient bandwidth.
 *   **Off-Path Admission Control**: Managed by a central entity like a **SIP Proxy**. It "guesses" path conditions based on topology.
 *   **On-Path Admission Control**: Managed by routers along the actual data path using protocols like **RSVP**.
 
-![[Pasted image 202603061.16.55 PM.png]]
 *Figure: Admission control using a session control protocol*
 
 ---
@@ -29,7 +28,6 @@ A coordination mechanism used to ensure resources are guaranteed before a phone 
 2.  Reserve bandwidth via **RSVP**.
 3.  Proceed with the call only after **RESV** success.
 
-![[Pasted image 202603061.19.56 PM.png]]
 *Figure: Coordination of SIP signalling and RSVP resource reservation*
 
 ---

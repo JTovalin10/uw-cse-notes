@@ -66,4 +66,13 @@ A standard IPv4 header is **20 bytes** long.
 *   **Protocol**: Identifies the next layer (e.g., 6 for TCP, 17 for UDP).
 *   **Header Checksum**: Recalculated at every hop because the TTL changes.
 
-[Image: Bit-level diagram of the IPv4 header fields]
+![[Screenshots/IPv4 Packet Header.png]]
+
+
+![[Screenshots/internel, external translation table.png]]
+
+
+![[Screenshots/NAT (5).png]]
+
+
+![[Screenshots/NAT.png]]

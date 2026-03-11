@@ -19,10 +19,9 @@ Moves the responsibility of multicast tree construction from routers to the **En
     *   **Partition Repair**: Restoring connectivity if the mesh splits.
 *   **Optimization**: Nodes probe members to calculate utility (latency reduction) and prune high-cost links.
 
-![[Header Fields used in IP fragmentation.png]]
 *Figure: Alternative multicast trees (Unicast, IP Multicast, End System Multicast) mapped onto a physical topology*
 
-![[IP addressess (classes).png]]
+![[Screenshots/Route Aggregation with CIDR.png]]
 *Figure: Multicast tree embedded in a mesh overlay network*
 
 ### Resilient Overlay Networks (RON)
@@ -30,5 +29,5 @@ Moves the responsibility of multicast tree construction from routers to the **En
 *   **Path Quality Monitoring**: RON monitors **N × N** paths for latency, bandwidth, and loss.
 *   **Performance**: RON can recover from outages in less than 20 seconds, significantly faster than **BGP**.
 
-![[Route Aggregation with CIDR.png]]
+![[Screenshots/Effects of indendent parties(2).png]]
 *Figure: Triangle inequality failure showing indirect paths being faster than direct BGP paths*

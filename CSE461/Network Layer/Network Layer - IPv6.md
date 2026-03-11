@@ -54,4 +54,7 @@ A packet sent to an Anycast address is delivered to the **closest** member of a 
 *   **Tunneling**: Encapsulating IPv6 packets inside IPv4 packets to traverse legacy networks.
 *   **NAT64**: A translation box that maps IPv6 addresses to IPv4 addresses, allowing IPv6-only hosts to communicate with the legacy Internet.
 
-[Image: Comparison of IPv4 and IPv6 header structures]
+![[Screenshots/Ipv6 Fragmentaton extension header.png]]
+
+
+![[Screenshots/IPv6 provider-based unicast address.png]]

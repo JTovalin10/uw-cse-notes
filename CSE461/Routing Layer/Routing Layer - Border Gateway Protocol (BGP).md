@@ -52,4 +52,4 @@ BGP routing is driven by commercial agreements, not just technical optimality.
 *   **Withdrawals**: Negative advertisements used to cancel previously reachable routes.
 *   **Aggregation**: Summarizing many specific prefixes (e.g., `/24`) into a single larger prefix (e.g., `/16`) to keep the global routing table manageable (~1 million entries).
 
-[Image: BGP topology diagram showing eBGP between ASes and iBGP within ASes]
+![[Screenshots/Network Running GBP.png]]

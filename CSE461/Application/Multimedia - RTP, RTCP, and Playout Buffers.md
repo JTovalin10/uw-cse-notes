@@ -32,5 +32,4 @@
 *   **Expedited Forwarding (EF)**: Used for low-latency media streams.
 *   **Assured Forwarding (AF)**: Used for critical signaling traffic.
 
-![[Pasted image 202603061.01.13 PM.png]]
 *Figure: DiffServ applied to a VoIP application*

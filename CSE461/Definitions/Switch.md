@@ -4,3 +4,6 @@ A device that interconnects links to form a larger network. Multi-input/output â
 - Connected to each other and to hosts using point-to-point links
 - Adding new hosts doesn't necessarily reduce performance for existing hosts
 - More scalable than shared-media networks â€” can support multiple hosts at full speed
+
+
+![[Screenshots/Switch Buffer.png]]

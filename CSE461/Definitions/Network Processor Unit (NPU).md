@@ -3,3 +3,6 @@ A specialized processor with an architecture and instruction set optimized for p
 
 - Can be programmed to function as an L2 switch, L3 router, or both
 - Works with [[Static Random-Access Memory (SRAM)|SRAM]] and [[Ternary Content-Addressable Memory (TCAM)|TCAM]] for fast packet buffering and lookup
+
+
+![[Screenshots/Bare-metal switch using a network processing unit.png]]

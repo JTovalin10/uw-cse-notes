@@ -25,5 +25,4 @@ CDNs are overlays of Server Surrogates designed to bypass Internet bottlenecks: 
 *   **Network Proximity**: Minimizing the number of Autonomous System (AS) hops.
 *   **System Throughput**: Balancing load across surrogates.
 
-![[Router FIFO Queue.png]]
 *Figure: CDN architecture showing edge servers and origin server interaction*

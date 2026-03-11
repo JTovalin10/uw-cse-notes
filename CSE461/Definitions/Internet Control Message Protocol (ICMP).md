@@ -5,3 +5,6 @@ Examples:
 - **ICMP-redirect** — tells the source host there is a better route to the destination
 - **Destination unreachable** — the packet could not be delivered
 - **Time exceeded** — [[CSE461/Definitions/Time to Live (TTL)|TTL]] reached 0
+
+
+![[Screenshots/IP Header, ICMP Hedaer, ICMP data.png]]

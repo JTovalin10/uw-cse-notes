@@ -51,5 +51,8 @@ The Network Layer provides **Host-to-Host** delivery.
 3.  **Network Layer** adds an IP header creating a **Packet**.
 4.  **Link Layer** adds a frame header and trailer (e.g., Ethernet) creating a **Frame**.
 
-[Image: The Internet Hourglass Model showing IP as the common central layer]
-[Image: Diagram of headers being added at each layer of the stack]
+![[Screenshots/Header Fields used in IP fragmentation.png]]
+![[Screenshots/IP Datagram traversing the sequence of physical networks graphed.png]]
+
+
+![[Screenshots/Middleboxes.png]]

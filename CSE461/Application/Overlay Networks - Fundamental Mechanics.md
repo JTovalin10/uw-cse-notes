@@ -17,8 +17,6 @@
     1.  An **Underlying Address** (e.g., a 32-bit [[IPv4]] address).
     2.  An **Overlay Address** (e.g., a URL or a content-based hash).
 
-![[Source routing in a switched network.png]]
 *Figure: Overlay network layered on top of a physical network*
 
-![[three ways to handle headers for source routing.png]]
 *Figure: Overlay nodes tunneling through physical nodes, showing Inner (IHdr) and Outer (OHdr) header encapsulation*

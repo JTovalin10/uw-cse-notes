@@ -5,3 +5,6 @@ A control message sent by a receiver to confirm that data was successfully recei
 - **Routing** — ACKs for reliable [[Link-State Packet (LSP)|LSP]] flooding
 
 If an ACK is not received within a timeout, the sender retransmits.
+
+
+![[Screenshots/ACK Clocking.png]]

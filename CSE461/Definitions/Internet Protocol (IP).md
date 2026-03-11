@@ -19,7 +19,7 @@ Addresses allocated in blocks called **prefixes**.
 - Example: 128.13.9.9/16 → 128.13.0.0 to 128.13.255.255
 - /x means first x bits = network, rest = host
 
-![[Pasted image 20260218203454.png]]
+![[Screenshots/IP packet.png]]
 ![[Classful IP Addressing.png]]
 
 ### IPv4 header
@@ -42,7 +42,6 @@ See [[IPv6]]. 128-bit addresses; most of header is address. New notation:
 - Omit leading zeros; collapse consecutive zero groups
 - Example: 2001:0db8:0000:0000:0000:ff00:0042:8329 → 2001:db8::ff00:42:8329
 
-![[Pasted image 20260218211600.png]]
 
 ### Changes from IPv4
 

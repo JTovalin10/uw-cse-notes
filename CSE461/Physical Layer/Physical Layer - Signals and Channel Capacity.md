@@ -11,7 +11,7 @@ Every complex signal can be viewed as a sum of simple sine waves at different fr
 *   **Signal Bandwidth**: The difference between the highest and lowest frequencies contained in the signal.
 *   **Channel Bandwidth ($B$)**: The range of frequencies that the channel can transmit with minimal attenuation (measured in **Hz**).
 
-[Image: Graph showing a signal in the time domain vs. its frequency spectrum]
+![[Screenshots/discrete to continous noisy channels.png]]
 
 ---
 

@@ -14,7 +14,7 @@ The network can signal congestion to the end-hosts through three primary mechani
 2.  **Increased Delay**: Measured by end-hosts as an increase in **[[Round Trip Time (RTT)]]**. Used by algorithms like TCP Vegas.
 3.  **Explicit Signaling**: The router actively marks packets to indicate the onset of congestion.
 
-[Image: Feedback signals loop between sender, router queue, and receiver]
+![[Screenshots/Feedback signals.png]]
 
 ---
 
@@ -34,7 +34,7 @@ The network can signal congestion to the end-hosts through three primary mechani
 | **Disadvantage** | Requires a "full-stack" upgrade: both end-host OSs and every intermediate router must support ECN. |
 | **Disadvantage** | Risk of "liar" receivers who ignore CE marks to maintain high throughput (solved by ECN Nonces). |
 
-[Image: Packet marking and signaling flow in an ECN-enabled network]
+![[Screenshots/ECN.png]]
 
 ---
 
@@ -61,4 +61,4 @@ The router maintains an **Exponential Weighted Moving Average (EWMA)** of the qu
 | **RED** | Implicit (Random Loss before capacity) | Moderate (Prevents synchronization) | Good |
 | **ECN + RED** | Explicit (Marking instead of dropping) | **High** (Avoids loss entirely) | Excellent |
 
-[Image: Graph comparing queue occupancy and drop probability for Tail Drop vs. RED]
+![[Screenshots/Congestion Performance.png]]

@@ -33,7 +33,6 @@ Industry has shifted from "pull-based" SNMP to "push-based" **Streaming Telemetr
 *   A modeling language used to define the **Schema** for device state.
 *   Enables **Zero-Touch Management** where operators declare intent, and tools resolve per-device configuration.
 
-![[ATM Cell format at the UNI.png]]
 *Figure: Zero-touch management control loop via gNMI and YANG*
 
 ---

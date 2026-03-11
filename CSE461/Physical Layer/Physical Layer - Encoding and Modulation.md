@@ -29,7 +29,7 @@ A compromise used in 100 Mbps Ethernet.
 *   **Mechanism**: Maps every 4 bits of data into a 5-bit code chosen to ensure no more than one leading zero and no more than two trailing zeros.
 *   **Transmission**: The 5-bit patterns are sent using **NRZI**, ensuring enough transitions for the clock to stay locked without the 50% efficiency loss of Manchester.
 
-[Image: Waveform comparison of NRZ, Manchester, and 4B/5B encoding]
+![[Screenshots/Binary Padding 4,5.png]]
 
 ---
 

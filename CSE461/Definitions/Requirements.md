@@ -12,9 +12,8 @@
 At the lowest level, computers connect directly by a physical medium — a [[Link]]. The connected computers are called **nodes**.
 
 - **Point-to-point** — a link limited to a pair of nodes
-![[Pasted image 20260123012605.png]]
+![[Screenshots/Packet Loss.png]]
 - **Multi-access** — more than two nodes share a single link
-![[Pasted image 20260123012647.png]]
 	- Also called the **last mile** — connecting end users to the rest of the network
 	- **Wireless** networks (cell, Wi-Fi) are a subclass of multi-access
 
@@ -25,16 +24,13 @@ Connecting every node directly doesn't scale. Two solutions:
 1. **Switched network** — nodes attached to [[Switch]]es via point-to-point links
 	- **Circuit switched** — establishes a dedicated circuit from source to destination for a stream of bits
 	- **Packet switched** — uses [[Store and forward packet switching|store-and-forward]]. Each node receives a complete packet, stores it, then forwards it to the next node. More effective than circuit switching.
-	- ![[Pasted image 20260123013134.png]]
-2. **Internetwork (internet)** — connects multiple networks using routers/gateways
+	- 2. **Internetwork (internet)** — connects multiple networks using routers/gateways
 	- A **router/gateway** is a node connected to two or more networks, forwarding messages between them
 	- Each node is identified by an **address** — a byte string that uniquely identifies it
 
 # Cost-Effective Resource Sharing
 Networks use [[Multiplexing]] to share resources among multiple users, similar to timesharing a computer.
 
-![[Pasted image 20260123014203.png]]
-![[Pasted image 20260123014707.png]]
 
 Three main multiplexing approaches:
 - **[[Synchronous Time-Division Multiplexing]]** — divides time into equal quanta, each flow gets a round-robin turn
@@ -44,7 +40,6 @@ Three main multiplexing approaches:
 # Support for Common Services
 A network provides logical channels over which application processes communicate. Designing these channels means understanding common communication needs and building that functionality into the network.
 
-![[Pasted image 20260123015114.png]]
 
 ## Reliable Message Delivery
 Three general classes of failure:

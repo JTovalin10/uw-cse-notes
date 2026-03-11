@@ -1,4 +1,4 @@
 - call a flag six consecutive 1's
 - on transmit, after five 1's in the data, insert a 0
 - on receive, a 0 after five 1s is deleted
-![[Screenshot 2026-01-20 at 4.28.47 PM.png]]
+![[Screenshots/Binary Padding 4,5.png]]

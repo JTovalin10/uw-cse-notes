@@ -1,1 +1,4 @@
 The process where each protocol layer wraps data with its own header information. The layer above doesn't care about these headers, but they're needed for the network to function. Each layer adds its header on send and strips it on receive.
+
+
+![[Screenshots/Header.png]]

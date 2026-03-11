@@ -9,3 +9,12 @@
 - [[CSE461 Index#Stack and concepts]]
 - [[Host]]
 - [[Link]]
+
+
+![[Screenshots/Router and Switches internal buffering.png]]
+
+
+![[Screenshots/Router FIFO Queue.png]]
+
+
+![[Screenshots/Router Queue.png]]

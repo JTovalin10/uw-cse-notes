@@ -45,10 +45,13 @@ Switches exchange BPDUs every 2 seconds to maintain the tree. A BPDU contains:
 *   `Cost`: Distance to that root.
 *   `BridgeID`: The sender's ID.
 
-[Image: Diagram showing a physical mesh topology converted to a logical tree by blocking redundant links]
+![[Screenshots/a switch provides a star topology.png]]
 
 ---
 
 ## 4. Technical Performance
 *   **Parallelism**: A switch can handle multiple simultaneous transmissions (e.g., Port 1 to 2 and Port 3 to 4) without interference.
 *   **Buffering**: Switches must buffer frames when multiple inputs target the same output port. Sustained over-subscription leads to **Buffer Overflow** and frame loss.
+
+
+![[Screenshots/Bottleneck.png]]

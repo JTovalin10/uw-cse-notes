@@ -4,4 +4,4 @@
 - persistent connection alternative
 	- make 1 TCP connection to 1 server
 	- use it for multiple HTTP requests
-![[Persistent Connections.png]]
+![[Screenshots/Persistent Connections.png]]

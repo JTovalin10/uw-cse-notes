@@ -4,3 +4,6 @@ A networking technology that uses fixed-size **53-byte cells** (5-byte header + 
 The fixed cell size enables hardware-optimized switching but introduces **cell tax** — overhead from headers on small payloads.
 
 See also: [[CSE461/Network Layer/ATM/Asynchronous Transfer Mode (ATM)]]
+
+
+![[Screenshots/ATM Cell format at the UNI.png]]

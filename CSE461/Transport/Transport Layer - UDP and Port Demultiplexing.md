@@ -45,4 +45,4 @@ To uniquely identify a flow, the OS uses five fields:
 *   **Multicast/Broadcast**: UDP is compatible with one-to-many delivery, which TCP's connection model cannot support.
 *   **Control**: Applications that want to implement their own custom reliability (e.g., **[[QUIC]]**, **[[RTP]]**) use UDP as a substrate.
 
-[Image: Diagram of host demultiplexing incoming segments to different application queues based on port numbers]
+![[Screenshots/UDP header.png]]

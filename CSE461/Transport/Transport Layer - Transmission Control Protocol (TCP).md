@@ -64,4 +64,7 @@ Occurs when the receiver advertises tiny windows (e.g., 1 byte), causing high ov
 *   **Reordering**: IP packets may take different paths and arrive out of order. TCP uses the Receive Window to buffer out-of-order segments and reassembles them before delivery to the application.
 *   **Segment Lifetime**: TCP assumes packets have a finite **MSL** (typically 120s). The 32-bit sequence number space is large enough to prevent "wrap-around" within one MSL on most links.
 
-[Image: Relationship between TCP send/receive buffers and the sliding window pointers]
+![[Screenshots/TCP Connection Release.png]]
+
+
+![[Screenshots/Three-Way Handshake.png]]

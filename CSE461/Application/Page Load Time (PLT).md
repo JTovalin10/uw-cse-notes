@@ -27,7 +27,6 @@ The total load time is the sum of several discrete phases.
 ### 5. Resource Discovery and Fetching
 *   **Dependency Graph**: Browser parses HTML and discovers nested resources.
 
-![[IPv4 Packet Header.png]]
 *Figure: Sequence diagram showing DNS, TCP, TLS, and HTTP phases contributing to total PLT*
 
 ---
@@ -61,5 +60,4 @@ PLT is governed by the interaction between protocol mechanics and network constr
 ### Content Delivery Networks (CDN)
 *   **Benefit**: Drastically reduces **RTT** by shortening physical distance.
 
-![[IP Datagram traversing the sequence of physical networks graphed.png]]
 *Figure: Comparison of HTTP/1.1 Sequential, HTTP/1.1 Pipelined, and HTTP/2 Multiplexed request patterns*

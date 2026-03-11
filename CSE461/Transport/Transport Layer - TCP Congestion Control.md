@@ -15,7 +15,7 @@ $$\text{Effective Window} = \min(\text{Advertised Window}, \text{Congestion Wind
 *   **Additive Increase (AI)**: In the absence of loss, increase $cwnd$ by $1$ **MSS** per **RTT**. This gently probes for additional bandwidth.
 *   **Multiplicative Decrease (MD)**: Upon detecting congestion (packet loss), immediately cut $cwnd$ in half (e.g., $cwnd = cwnd / 2$). This rapidly reduces load to allow the bottleneck buffer to drain.
 
-[Image: The AIMD "Sawtooth" diagram showing cwnd vs. time]
+![[Screenshots/ToothSaw AIMD.png]]
 
 ---
 
@@ -66,3 +66,15 @@ To avoid the **[[Timeout Misfortune]]**, TCP uses the **Jacobson/Karels Algorith
 *   **ECN (Explicit Congestion Notification)**: Routers mark packets (CE bit in IP header) instead of dropping them. The receiver echoes this to the sender (ECE bit in TCP header), allowing the sender to perform MD without experiencing a loss.
 *   **TCP BBR**: A model-based algorithm that measures **Bottleneck Bandwidth** and **Min RTT** independently, avoiding the "bufferbloat" issues of loss-based Reno.
 *   **SACK (Selective ACK)**: Allows the receiver to acknowledge non-contiguous blocks of data, enabling the sender to retransmit only the specific gaps in a single RTT.
+
+
+![[Screenshots/AIMD.png]]
+
+
+![[Screenshots/Congestion Performance.png]]
+
+
+![[Screenshots/Slow Start + AIMD.png]]
+
+
+![[Screenshots/TCP Slow-Start.png]]

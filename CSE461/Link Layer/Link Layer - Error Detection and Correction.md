@@ -75,7 +75,6 @@ CRC can detect:
 *   Any odd number of errors (if $C(x)$ contains the factor $(x+1)$).
 *   Any burst error of length $L \le k$.
 
-![[Pasted image 20260207010035.png]]
 *Figure: Example of CRC polynomial division*
 
 ---

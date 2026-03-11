@@ -27,3 +27,6 @@ Obsolete [[IPv4]] addressing scheme (1981–1993) that divided the 32-bit addres
 - [[Classless Interdomain Routing (CIDR)]] — what replaced it
 - [[IPv4]] — 32-bit addressing
 - [[Multicast Addresses]] — Class D in use for multicast
+
+
+![[Screenshots/IP addressess (classes).png]]

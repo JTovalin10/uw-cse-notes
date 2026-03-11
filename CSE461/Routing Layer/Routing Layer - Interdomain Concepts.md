@@ -48,4 +48,7 @@ Each AS is assigned a unique identifier by a central authority (**IANA**).
 *   **Convergence and Stability**: BGP is slow to converge. A phenomenon called **Route Flapping** (a route repeatedly going up and down) can trigger thousands of updates worldwide, leading to instability (mitigated by **Route Dampening**).
 *   **Security**: BGP was designed without built-in authentication. **BGP Hijacking** occurs when an AS maliciously (or accidentally) advertises a prefix it doesn't own.
 
-[Image: Diagram of AS interconnections showing Stub, Multihomed, and Transit AS roles]
+![[Screenshots/Effects of indendent parties(2).png]]
+
+
+![[Screenshots/effects of indepdent parties.png]]

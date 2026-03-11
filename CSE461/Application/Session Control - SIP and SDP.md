@@ -29,7 +29,6 @@ An application-layer protocol (**Port 5060**) modeled after HTTP for initiating 
 *   `ACK`: Final handshake; allows media to flow **directly** between peers.
 *   `BYE`: Terminates the session.
 
-![[Pasted image 202603061.07.59 PM.png]]
 *Figure: Message flow for a basic SIP session*
 
 ---

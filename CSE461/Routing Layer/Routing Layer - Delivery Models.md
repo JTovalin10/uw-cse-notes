@@ -34,4 +34,4 @@ Modern routing supports multiple ways of delivering a packet to one or more reci
 *   **Benefit**: Provides automatic load balancing and high availability. If the closest node fails, routing protocols automatically redirect traffic to the next nearest member.
 *   **Usage**: DNS root servers, Content Delivery Networks (**[[CDN]]**).
 
-[Image: Comparison diagram showing packet flow for Unicast, Multicast, and Anycast]
+![[Screenshots/Casting.png]]

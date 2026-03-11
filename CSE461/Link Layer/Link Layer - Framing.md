@@ -39,7 +39,7 @@ To ensure the flag sequence never appears in the actual data, the protocol uses 
         *   If `0`: It is the **End-of-Frame Marker** (`01111110`).
         *   If `1`: It is an **Error** (`01111111`). Discard the frame and wait for the next flag.
 
-![[Pasted image 20260207002308.png]]
+![[Screenshots/FLAG ESC padding.png]]
 *Figure: HDLC frame structure with bit-stuffed payload*
 
 ---
@@ -69,7 +69,6 @@ Ethernet is the most dominant link-layer technology. It has evolved from a share
 | **Payload** | 46-1500 B | The data (e.g., an IP packet). Minimum size of 46B ensures collision detection works. |
 | **CRC** | 4 Bytes | A **[[Cyclic Redundancy Check (CRC)]]** for error detection. |
 
-![[Screenshot 2026-02-04 at 12.39.22 PM.png]]
 *Figure: Classical Ethernet frame format*
 
 ### Key Differences: Classical vs. Modern

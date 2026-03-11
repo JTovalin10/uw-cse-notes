@@ -40,7 +40,7 @@ To mitigate misfortune, TCP uses an adaptive algorithm that tracks both the mean
 
 **Result**: In a stable network with low variance, the timeout stays close to the RTT. In a jittery network, the $\phi \times \text{DevRTT}$ term "pushes" the timeout further out to avoid the **Early Timeout Misfortune**.
 
-[Image: Graph showing Sample RTT vs. the adaptive timeout envelope (EstimatedRTT + 4*DevRTT)]
+![[Screenshots/Example of Adaptive Timeout.png]]
 
 ---
 
@@ -71,4 +71,7 @@ When a timeout is the *only* way a loss is detected:
 | **Jacobson/Karels** | $\text{SRTT} + 4 \times \text{DevRTT}$ | Handles jitter/variance | Requires more state (tracking deviation) |
 | **Exponential Backoff**| $\text{RTO} = \text{RTO} \times 2$ | Prevents congestion collapse | High latency on persistent loss |
 
-[Image: Sequence diagram comparing a recovery via Fast Retransmit (ACK clock preserved) vs. Recovery via Timeout (ACK clock lost).]
+![[Screenshots/Fast Retransmit.png]]
+
+
+![[Screenshots/Example of RTT for retransmissions.png]]
