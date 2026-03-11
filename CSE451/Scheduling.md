@@ -94,9 +94,45 @@ Schedulers are optimized for specific workload characteristics:
 ![[MLFQ.png]]
 [Image: MLFQ hierarchy showing priority-based queue migration.]
 
-### 6. UNIX Scheduling (Canonical Implementation)
+### 6. UNIX Scheduling (Classical Implementation)
 *   **Structure**: ~170 priority levels across **Real-Time**, **System**, and **Time-Sharing** classes.
 *   **Mechanism**: Priority scheduling across queues, **Round Robin** within queues.
 *   **Dynamic Adjustment**:
     *   **Increase Priority**: If a process blocks for I/O before its quantum ends.
     *   **Decrease Priority**: If a process consumes its entire quantum (compute-bound).
+
+### 7. Completely Fair Scheduler (CFS) - Modern Linux Standard
+*   **Philosophy**: Give each process a fair share of the CPU time by simulating an "Ideal Multi-tasking Processor."
+*   **Mechanism**:
+    *   **vruntime (Virtual Runtime)**: Tracks how much CPU time a process has received. Processes with the lowest `vruntime` are prioritized.
+    *   **Red-Black Tree**: Instead of a traditional queue, CFS uses a Red-Black Tree (a self-balancing binary search tree) to store runnable processes, indexed by `vruntime`. This allows $O(\log N)$ time for both insertion and retrieval of the minimum element.
+*   **Niceness**: "Nice" values (ranging from -20 to 19) act as weight multipliers, affecting how fast `vruntime` accumulates. Higher priority (lower nice value) makes `vruntime` grow slower, granting more CPU time.
+
+---
+
+## Scheduling in the Multi-Core Era
+
+Scheduling becomes significantly more complex when multiple CPUs are available.
+
+### 1. Processor Affinity
+*   **Concept**: Keep a thread on the same processor to maximize **Cache Warmth**.
+*   **Soft Affinity**: The OS attempts to keep a thread on the same CPU but may move it to balance load.
+*   **Hard Affinity**: A thread is strictly pinned to a specific CPU or set of CPUs (e.g., via `sched_setaffinity` in Linux).
+
+### 2. Load Balancing
+*   **Push Migration**: A specific task (often a kernel thread) periodically checks the load on each processor and "pushes" threads from overloaded CPUs to idle ones.
+*   **Pull Migration**: An idle processor "pulls" a waiting task from a busy processor's queue.
+
+### 3. Hyperthreading (SMT)
+*   Two logical CPUs share the same physical execution core. The scheduler must be aware of this to avoid placing two compute-heavy threads on the same physical core, which would lead to resource contention.
+
+---
+
+## Related Concepts
+- [[Threads Overview]]
+- [[Starvation]]
+- [[Context Switch]]
+- [[Thread Levels]]
+- [[Process]]
+- [[CPUState]]
+- [[Interrupts]]

@@ -21,6 +21,8 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Process]] — [[Process vs Thread]] — [[Process vs Program]]
 - [[Fork]] — [[Exec]]
 - [[Threads Overview]] — [[Achieving Multithreading]]
+- [[Scheduling]] — [[Processor Scheduling]]
+- [[Deadlocks]] — [[The Four Coffman Conditions]]
 - [[Critical Sections]] — [[Semaphore Operations]] — [[Condition Variables]] — [[Locks]]
 
 ### Memory
@@ -42,3 +44,6 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 
 ### Virtualization
 - [[Virtual Machine]]
+
+### Security
+- [[Meltdown]] — [[Speculative Execution Vulnerability]] — [[KPTI]]
