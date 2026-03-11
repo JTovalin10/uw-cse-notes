@@ -1,0 +1,8 @@
+- locally determine if local copy is still valid
+	- based on expiry information such as "expires" header from server
+	- or use a heuristic to guess (cachable, fresly valud, not modified recently)
+	- content is then avaliable right away
+- revalidate copy with remove server
+	- based on tiemstamp of copy such as "last-modified" header from server
+	- or based on content of copy such as "ETag" header from server
+	- content is avaliable after 1 RTT

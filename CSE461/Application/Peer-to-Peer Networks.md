@@ -10,7 +10,7 @@
 *   **QID (Query Identifier)**: Used to cut off forwarding loops.
 *   **Reverse-Path Forwarding**: **QUERY RESPONSE** messages follow the exact reverse path, preserving requester anonymity.
 
-![[Pasted image 20260215025516.png]]
+![[an example of virtual private networks.png]]
 *Figure: Example topology of a Gnutella peer-to-peer network showing random mesh connectivity*
 
 ### Structured Overlays (Distributed Hash Tables - DHT)
@@ -22,13 +22,13 @@
     *   **Hop Complexity**: Bounded by $log_{2^b}(N)$.
 *   **Proximity Neighbor Selection**: Choosing routing table entries that are physically close to minimize latency.
 
-![[Pasted image 20260215025609.png]]
+![[A tunnel through an internetwork.png]]
 *Figure: Consistent hashing mapping nodes and objects onto a 128-bit unit circle*
 
-![[Pasted image 20260215210232.png]]
+![[General purpose processor used as a software switch.png]]
 *Figure: Object location process showing a message being forwarded through prefix-matching nodes*
 
-![[Pasted image 20260215210429.png]]
+![[Bare-metal switch using a network processing unit.png]]
 *Figure: Multi-row routing table for a Pastry node showing prefix matching by hex digit*
 
 ### BitTorrent
@@ -38,5 +38,5 @@ Specialized for high-bandwidth file distribution via massive replication.
 *   **Fairness (Tit-for-Tat)**: Choking/Unchoking based on performance.
 *   **Rare-First Selection**: Prioritizing the least available pieces.
 
-![[Pasted image 20260218183207.png]]
+![[Switch Buffer.png]]
 *Figure: BitTorrent swarm showing peers downloading pieces from multiple sources simultaneously*

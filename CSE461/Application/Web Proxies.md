@@ -1,0 +1,6 @@
+- place intermediary between pool of clients and external web servers
+	- benefit for clients include greater caching and security checking
+	- organizational access policies too
+- proxy caching
+	- client benefit from larger, shared cache
+	- benefits limited by secure / dynamic content, as well as "long tail"

@@ -2,6 +2,14 @@
 
 The **Domain Name System (DNS)** is a distributed, hierarchical database that translates human-readable **Domain Names** into routable **IP Addresses**. It is a fundamental **[[Infrastructure Applications|Infrastructure Application]]**.
 
+- names:
+	- higher level identifiers for resources
+- addresses
+	- lower level locators for resource
+	- muktuplt levels
+- resoultion (lookup)
+	- mapping a name to an address
+
 ---
 
 ## Low-Level Mechanics
@@ -26,7 +34,7 @@ The **Domain Name System (DNS)** is a distributed, hierarchical database that tr
 ### 3. Authoritative Name Servers
 *   Hold the actual **Resource Records** for a specific zone.
 
-![[Pasted image 20260214012918.png]]
+![[a switch provides a star topology.png]]
 *Figure: Example of a domain hierarchy visualized as a tree*
 
 ---
@@ -48,7 +56,7 @@ Data is stored as 5-tuples: **(Name, TTL, Type, Class, Value)**.
 2.  **Iterative Resolution**: The local server queries the Root, TLD, and Authoritative servers in sequence.
 3.  **Caching**: The results are stored locally for the duration of the **TTL**.
 
-![[Pasted image 20260214014920.png]]
+![[example of a virtual circuit network.png]]
 *Figure: Sequence of 10 steps showing the iterative resolution process*
 
 ---
