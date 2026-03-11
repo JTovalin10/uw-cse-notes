@@ -38,7 +38,52 @@ Strategies are broadly classified into three categories, each aiming to eliminat
 
 ![[Resource Allocation Deadlock.png]]
 [Image: Detailed diagram of resource contention leading to a deadlock.]
-
+### Prevention
+Applications must conform to behaviors guaranteed not to deadlock
+- eliminating hold and wait
+	- each thread obtains all resources at the beginning
+	- block until all are available
+		- drawbacks
+			- you may not know how many lock you need or which you need
+			- 
+- eliminating circular wait
+	- obtain the lock in ascending or descending order (assume each lock is numbered)
+	- resources are numbered
+	- each thread obtains resources in sequence order
+		- why does this work
+		- pros
+		- cons
+### Avoidance
+Less severe restrictions on program behavior
+- eliminating circular wait
+	- each thread states it maximum claim for every resource type
+	- system runs the **Banker's Algorithm** at each allocation request
+		- can someone make progress (at least 1)
+		- banker is very conservative
+		- if i were to allocate you that resource, and then everyone were to request their maximum claim for every resource, could I find a way to allocate remaining resources so that everyone finished?
+### Detect and Recover
+- every once in a while. check ot see if there's a deadlock
+	- how
+		- identify stuck threads
+		- look for cycles
+		- dont get spoofed
+- if so, elimate it
+	- how
+		- reboot?
+		- choose a victim to restart
+## Debugging Deadlocks
+in Windows there are four suspects:
+1. spinlock
+2. Semaphore
+3. Mutex (binary semaphore)
+4. EResource (Reader/Writer lock)
+### What's in our favor
+- once the system is deadlock, it doesn't go away. You can then walk through all the locks on the system and all the threads on the system and see what each thread owns and what it is waiting on
+- this requires the ability to identify the owner's of a lock. Having their return address when hey racquire the lock also helps
+- once you draw a graph. you have a deadlock
+- often the harder part is figuring out how to avoid the deadlock
+### What didn't work well
+- mutex levels. In theory they avoided deadlocks but in practice they were too cumbersome to use, and deadlocks were still possible when mixed with other kinds of locks.
 ## Graph Reduction and Formal Theorems
 **Graph Reduction** is an algorithmic process used to detect if a system state is deadlocked by simulating thread completion.
 
