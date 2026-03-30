@@ -1,0 +1,10 @@
+- recursive query
+	- nameserver completes resolution and returns the final answer
+	- filts -> local server name
+	- letsserver offload client burden (simple rsolver) for managabelity
+	- lets server cache over a pool of clients for ebtter performance
+- iterative query
+	- nameserver returns the answer or who to contact next for the answer
+	- local nameserver -> all others
+	- lets server "file and forget"
+	- easy to build high load servers

@@ -1,0 +1,7 @@
+- Root (dot) is served by 13 server names
+	- all nameservres need root IP addresses
+	- handled via configuration file (named.ca)
+- there are >250 distributed server instances
+	- highly reachable, reliable service
+	- most servers are reached by IP anycast
+	- servers are IPv4 and Ipv6 reachable

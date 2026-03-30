@@ -30,6 +30,26 @@ The order in which a router processes its buffer significantly impacts fairness 
 ### Fair Queuing (FQ)
 *   **Mechanism**: The router maintains a separate queue for each flow and services them in **Round-Robin** order.
 *   **Benefit**: Provides isolation. A "greedy" flow (e.g., UDP blast) only harms its own queue, not the queues of well-behaved TCP flows.
+* Issue: flows dont see uncontrolled delay/loss from others
+	* but differnet packet sizes lead to bandwidth imbalance
+		* might be significant 
+* round robin but approx bit-level fariness
+	* approx by cpmuting virtual finish line
+	* virtual clock ticks once for each bit sent from all flows
+	* send packets in order of their virtual finish lines, Finish(k)_F
+	* not perfect - dont reemt pacet beign transmitted
+		* - Arrive(j)$_F$ = arrival time of j-th packet of flow F
+		* length(j)$_F$ = length of j-th pacjet of flow F
+		* finish(j)$_F$ = max (Arrive(j)$_F$, Finish(j - 1)$_F$ + length (j)$_F$)
+	* we find the finish of each queue and order lowest-to-highest
+### Weighted Fair Queuing (WFQ)
+- WFQ is a useful generalization of fair queuing
+	- assign a weight, weight$_F$, to each flow
+	- higher weight gives more bandwidth, e.g., 2 is 2x bandwidth
+	- change computation of Finish(j)$_F$ to factor in Weight$_F$
+		- Arrive(j)$_F$ = arrival time of j-th packet of flow F
+		* length(j)$_F$ = length of j-th pacjet of flow F
+		* finish(j)$_F$ = max (Arrive(j)$_F$, Finish(j - 1)$_F$ + length (j)$_F$ / Weight$_F$)
 
 ---
 

@@ -1,0 +1,8 @@
+- resoultion latency should be low
+	- adds delay to web browsing
+- cache query/responses to answer future queries immeditaly
+	- incuding partial (iterative) answers
+	- responses carry a TTL for caching
+- flits.cs.vu.nl now resolves eng.washington.edu
+	- and prevous resolutions cut out most of the process
+- 

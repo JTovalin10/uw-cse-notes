@@ -1,0 +1,13 @@
+- query and response messages
+	- built on UDp messages, port 53
+	- ARQ for relaiblity; server is stateless
+	- messages linked by a 16-bit ID field
+- serverice reliablity via replocas
+	- run multiple nameserves for domain
+	- return the list; client use one answer
+	- Helps distributed laod too
+- security is a major issue
+	- comprimised redirects to wrong site
+	- not part of inital prootocl
+- DNSSEC (DNS Security Extensions)
+	- Long under deployment

@@ -1,0 +1,6 @@
+- local nameservers typically run by IT (enterpirse, ISP)
+	- but may be your host or AP
+	- or alt, google public DNS
+- client need to be able to contact thei rlocal nameservers
+	- typically configurec via DHCP
+- 
