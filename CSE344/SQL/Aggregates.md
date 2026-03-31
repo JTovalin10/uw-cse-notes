@@ -1,46 +1,53 @@
-## Actionable Results
-- AGG(attr) operates over all non-NULL values
+# SQL: Aggregates
+
+## Aggregate Functions
+- **AGG(attr)** operates over all non-[[NULL]] values
 	- AGG(DISTINCT attr) is also possible
-- with one exception
-	- COUNT(*) counts all rows, regardless of NULL value
+- With one exception:
+	- **COUNT(*)** counts all rows, regardless of NULL values
 1. COUNT
 2. SUM
-3. AVG(mean)
+3. AVG (mean)
 4. MAX
 5. MIN
 
-## Group BY
-- Group-by allows us to write a single query
-	- groups partition data based on matching column values, then applies the aggregation
+## GROUP BY
+- GROUP BY allows us to partition data based on matching column values, then apply an aggregation
 ```SQL
-SELECT Job, AVG(SALARY)
+SELECT Job, AVG(Salary)
 FROM Payroll
 GROUP BY Job;
 ```
-### Order of operations
+
+### Order of Operations
 1. Group tuples by value
-2. apply aggregation to each group
-### using groups when aggregating
-- groups partition data based on matching column values, then applies the aggregation
-- each group becomes a single row in the answer
+2. Apply aggregation to each group
+
+### Using Groups When Aggregating
+- Groups partition data based on matching column values, then apply an aggregation
+- Each group becomes a single row in the answer
 ![[Using Groups When Aggregating.png]]
+
 ### Retained Fields
-- fields used in the aggregation are retained
-	- all other fields are discared and canot appear in the SELECT clause
+- Fields used in the aggregation are retained
+	- all other fields are discarded and cannot appear in the SELECT clause
 ```SQL
 SELECT Job, AVG(Salary)
 FROM Payroll
 GROUP BY Job;
 ```
 ![[Group-By, Retained Fields.png]]
-## Having: filtering groups
-- sometimes we want to filter out entire groups based on that group's aggregated value(s)
-- we cannot state this in the where caluse
-	- where checks only one single record
-- instead we use HAVING
-	- HAVING cannot change the partitioning itself, nor the rows that were aggergated
-- we can also use aggregation function's in HAVING
-### WHERE VS HAVING
-- WHERE: filters tuples
-- HAVING: filters groups
+
+## HAVING: Filtering Groups
+- Sometimes we want to filter out entire groups based on that group's aggregated value(s)
+- We cannot state this in the WHERE clause
+	- WHERE checks only one single record
+- Instead, we use **HAVING**
+	- HAVING cannot change the partitioning itself, nor the rows that were aggregated
+- We can also use aggregation functions in HAVING
+
+### WHERE vs HAVING
+- **WHERE**: filters individual tuples (before grouping)
+- **HAVING**: filters entire groups (after grouping)
 	- cannot change the partitioning itself, nor the rows that are being aggregated
+- See also: [[Sub-Queries#WHERE/HAVING]] for using subqueries as filters

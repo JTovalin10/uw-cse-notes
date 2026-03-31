@@ -1,7 +1,11 @@
-- subqueries are queries inside other queries
-	- usually simplifies or factors out parts of the outer queries
-	- use case similar to helper functions
-Using a flat query we can do this to find the what person has the maximum salary
+# SQL: Sub-Queries
+
+- **Subqueries** are queries inside other queries
+	- usually simplify or factor out parts of the outer query
+	- use case is similar to helper functions
+
+## Motivation
+Using a flat query to find which person has the maximum salary:
 ```SQL
 SELECT P1.Name, MAX(P2.Salary)
 FROM Payroll AS P1, Payroll AS P2
@@ -9,50 +13,61 @@ WHERE P1.Job = P2.Job
 GROUP BY P1.Name, P1.Salary, P2.Job
 HAVING P1.Salary = MAX(P2.Salary)
 ```
-It is doing two oeprations in a single pass (calaculte per-group maximum usoing GROUP BY/Having, then join against outer table)
+This does two operations in a single pass (calculates the per-group maximum using [[Aggregates#GROUP BY|GROUP BY]]/[[Aggregates#HAVING Filtering Groups|HAVING]], then [[Joins#Self Joins|self-joins]] against the outer table)
 
-subquery allows us to comptue the maxima first, then perform the join in a single pass
+A subquery allows us to compute the maxima first, then perform the join separately:
 ```SQL
-SELECT P1.Name, P2.Salary
-FROM Payroll AS P1, 
-( SELECT P1.Job AS Job, MAX(P1.Salary) AS MaxSalary 
-FROM Payroll AS P1 
-GROUP BY P1.JOB) AS MP
-WHERE P1.Job = MP.Job AND P.Salary = MP.MaxSalary
+SELECT P1.Name, MP.MaxSalary
+FROM Payroll AS P1,
+	(SELECT P1.Job AS Job, MAX(P1.Salary) AS MaxSalary
+	 FROM Payroll AS P1
+	 GROUP BY P1.Job) AS MP
+WHERE P1.Job = MP.Job AND P1.Salary = MP.MaxSalary
 ```
-- if the SQL subquery returns exacetly one value, it can be use whenever we use a field
+
+## Key Rules
+- If a subquery returns exactly one value, it can be used wherever we use a field
 	- one value = one tuple with one attribute
-- otherwose, a SQL subquery can be thought as an extra table
-	- can name the table, its columns, etc
-- Can define subqueries with teh WITH clause, most commonly with subqueries in FROM
-	- makes subquery look more "table-like"
-	- But WITH is just syntactic sugar
-- they can go anywhere we use a table
-```SQL
-WITH MaxPaid AS ( 
-SELECT P1.Job AS Job, MAX(P1.Salary) AS MaxSalary 
-FROM Payroll AS P1 
-GROUP BY P1.JOB)
+- Otherwise, a subquery can be thought of as an extra table
+	- can name the table, its columns, etc.
 
-SELECT P1.Name, P2.Salary
+## WITH Clause
+- Can define subqueries with the **WITH** clause (most commonly with subqueries in FROM)
+	- makes the subquery look more "table-like"
+	- WITH is just syntactic sugar
+```SQL
+WITH MaxPaid AS (
+	SELECT P1.Job AS Job, MAX(P1.Salary) AS MaxSalary
+	FROM Payroll AS P1
+	GROUP BY P1.Job)
+
+SELECT P1.Name, MP.MaxSalary
 FROM Payroll AS P1, MaxPaid AS MP
-WHERE P1.Job = MP.Job AND P.Salary = MP.MaxSalary
+WHERE P1.Job = MP.Job AND P1.Salary = MP.MaxSalary
 ```
-### Subquery locations and mechanics
-#### FROM
+
+## Subquery Locations and Mechanics
+
+### FROM
 Subqueries can "cache" temporary results
-- subproblem taht cn be later used/joined
-- can make query reads more batural, because ca have "rows" and "columns", just like tables
-#### SELECT
-- must return a single value
-- can compute an associated/correlated value
-	- correlated means outer table is referenced in the subquery
-- the semantics of a correlated subquery are that the entire subqeury is redomputed for each tuple
+- subproblem that can be later used/joined
+- can make queries read more naturally, because subqueries have "rows" and "columns" just like tables
+
+### SELECT
+- Must return a single value
+- Can compute an associated/correlated value
+	- **correlated** means the outer table is referenced in the subquery
+- The semantics of a correlated subquery: the entire subquery is recomputed for each outer tuple
 	- if subqueries are helper methods, then a correlated subquery is a parameterized helper method
-#### WHERE/HAVING
+
+### WHERE/HAVING
 - Using subqueries in WHERE and HAVING allows us to use them to filter results
-- SQL Operators
-	- EXISTS / NOT EXISTS
-	- IN / NOT IN
-	- ANY / ALL
+- SQL Operators:
+	- **EXISTS** / **NOT EXISTS**
+	- **IN** / **NOT IN**
+	- **ANY** / **ALL**
 ![[Subquery Analogues to First-Order Logic.png]]
+
+## Related
+- [[Witnessing Problem]] — the main subquery pattern (argmax)
+- [[Decorrelation and Unnesting]] — monotonicity of subquery-free queries
