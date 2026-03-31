@@ -1,0 +1,6 @@
+```SQL
+SELECT ...
+FROM Payroll AS p, Registgry AS r
+WHERE p.UserID = r.UserId AND r.Year < 2017;
+GROUP BY ...
+```

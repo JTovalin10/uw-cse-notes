@@ -23,23 +23,6 @@ This Obsidian vault contains my personal notes for various Computer Science and 
 
 **CSE 452** - Distributed Systems
 - Notes are actively maintained and organized
-
-## Previous Courses
-
-These courses contain notes from past quarters. They will be organized and refined when time permits.
-
-- **CSE 311** - Foundations of Computing I
-- **CSE 312** - Foundations of Computing II
-- **CSE 331** - Software Design & Implementation
-- **CSE 332** - Data Structures and Parallelism
-- **CSE 333** - Systems Programming
-- **CSE 351** - The Hardware/Software Interface
-- **CSE 444** - Database Internals
-- **CSE 451** - Operating Systems
-- **CSE 452** - Distributed Systems
-- **CSE 461** - Computer Networks
-- **CSE 484** - Computer Security
-
 ## Viewing These Notes
 
 These notes are intended to be viewed with the [Obsidian](https://obsidian.md) app. Obsidian renders markdown with support for internal links, math equations (LaTeX), callouts, and other formatting used throughout this vault. Viewing the raw markdown files on GitHub or a plain text editor may not render correctly.
