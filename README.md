@@ -4,15 +4,18 @@ This Obsidian vault contains my personal notes for various Computer Science and 
 
 ## Course Schedule
 
-| Quarter         | Courses                                                                          |
-| --------------- | -------------------------------------------------------------------------------- |
-| **Spring 2026** | CSE 444 (Database Internals), CSE 452 (Distributed Systems)                      |
-| **Winter 2026** | CSE 451 (Operating Systems), CSE 461 (Computer Networks)                         |
-| **Autumn 2025** | CSE 331 (Software Design & Implementation), CSE 484 (Computer Security)          |
-| **Summer 2025** | CSE 312 (Foundations of Computing II), CSE 332 (Data Structures and Parallelism) |
-| **Spring 2025** | CSE 333 (Systems Programming), CSE 331 (Software Design & Implementation)        |
-| **Autumn 2024** | CSE 414 (Database Management) - *notes to be added later*                        |
-| **Summer 2024** | CSE 351 (The Hardware/Software Interface)                                        |
+| Quarter         | Courses                                                                                                                        |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Spring 2026** | CSE 444 (Database Internals), CSE 452 (Distributed Systems)                                                                    |
+| **Winter 2026** | CSE 451 (Operating Systems), CSE 461 (Computer Networks)                                                                       |
+| **Autumn 2025** | CSE 331 (Software Design & Implementation), CSE 484 (Computer Security)                                                        |
+| **Summer 2025** | CSE 312 (Foundations of Computing II), CSE 332 (Data Structures and Parallelism)                                               |
+| **Spring 2025** | CSE 333 (Systems Programming), CSE 331 (Software Design & Implementation), CSE 391(Software Tools) - *notes to be added later* |
+| **Autumn 2024** | CSE 344 (Database Management) CSE 154 (Web Development) - *notes to be added later*                                            |
+| **Summer 2024** | CSE 351 (The Hardware/Software Interface)                                                                                      |
+| Spring 2024     | CSE 123 (Computer Programming III) - *notes to be added later*                                                                 |
+| Winter 2024     | CSE 122 (Computer Programming II) - *notes to be added later*                                                                  |
+| Fall 2023       | CSE 121 (Computer Programming I) - *notes to be added later*                                                                   |
 
 *I may go back and add notes from CSE 121-123 (Java and OOP), CSE 154 (Web Programming), and CSE 391 (System and Software Tools).*
 

@@ -13,7 +13,7 @@ WHERE P1.Job = P2.Job
 GROUP BY P1.Name, P1.Salary, P2.Job
 HAVING P1.Salary = MAX(P2.Salary)
 ```
-This does two operations in a single pass (calculates the per-group maximum using [[Aggregates#GROUP BY|GROUP BY]]/[[Aggregates#HAVING Filtering Groups|HAVING]], then [[Joins#Self Joins|self-joins]] against the outer table)
+This does two operations in a single pass (calculates the per-group maximum using [[Aggregates#GROUP BY|GROUP BY]]/[[Aggregates#HAVING: Filtering Groups|HAVING]], then [[Self Joins|self-joins]] against the outer table)
 
 A subquery allows us to compute the maxima first, then perform the join separately:
 ```SQL
