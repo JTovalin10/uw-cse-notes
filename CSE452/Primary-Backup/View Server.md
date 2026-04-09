@@ -1,0 +1,1 @@
+matchmen server that checks if a server is dead. it can then swap a view primary or backup to another or contact idle pool

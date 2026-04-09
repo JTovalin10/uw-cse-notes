@@ -14,6 +14,7 @@ Advanced database systems: internals, query processing, storage, and distributed
 
 ### Data Storage
 - [[Data Storage and Buffer Management]] — page formats, record formats, LOB, heap file implementations, buffer pool eviction
+- [[CSE444/Data Storage, indexing, and buffer mgmt/Indexing|Indexes and File Organizations]] — heap file API, sorted files, clustered/unclustered indexes, dense/sparse indexes, overflow pages, B+ trees
 
 ### Query Evaluation
 *(notes in progress)*
