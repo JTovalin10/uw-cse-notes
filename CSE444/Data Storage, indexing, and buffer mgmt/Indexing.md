@@ -1,27 +1,6 @@
 # CSE444: Indexes and File Organizations
 
----
-
-## Buffer Manager (Review)
-
-- Brings pages in from disk and caches them in the **buffer pool**
-- **Eviction policies:**
-  - Random page (acceptable for labs)
-  - **Least-Recently Used (LRU)**
-  - The "clock" algorithm (approximates LRU)
-- Tracks which pages are **dirty** — a dirty page has unsaved changes not yet reflected on disk
-  - Implementation: each page has a **dirty bit**
-
-![[screenshots/Buffer Manager Image.png]]
-
-### Pushing Updates to Disk
-
-- When inserting or deleting a tuple, `HeapFile` modifies the in-memory page but does **not** immediately write it to disk
-- The buffer manager decides when to flush pages to disk (and when to read them)
-  - Cannot keep all pages in memory forever — flush only dirty pages when needed
-- When adding a new page to a file, `HeapFile` adds the page to disk and then reads it back through the buffer manager
-
-> See [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] for page formats, record formats, and heap file structure.
+> For buffer pool management and how pages are flushed to disk, see [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]].
 
 ---
 
@@ -140,19 +119,7 @@ An **index** is a separate file that enables fast access by a **search key** val
 
 ### B+ Tree
 
-A **B+ tree** is a balanced search tree optimized for disk-page access.
-
-**B-tree idea:**
-- One node = one page (one disk block)
-- Maximize branching factor (number of children per node) to minimize height
-- Keep tree height small to minimize the number of page reads
-
-**B+ tree additions:**
-- Keys are stored only at the **leaves** — internal nodes just guide search
-- **Leaves are linked** in a linked list, enabling efficient range queries
-- Each node access = one page read (expensive; the whole point is minimizing tree height)
-
-![[screenshots/B+ Tree example.png]]
+See [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree]] — the most widely used index structure in relational DBMSs; supports both point lookups and range scans efficiently.
 
 ---
 
@@ -171,6 +138,7 @@ A **B+ tree** is a balanced search tree optimized for disk-page access.
 
 ## Related
 
+- [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree]] — full details on the B+ tree index structure: degree, insertion, deletion, and optimizations
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats, record formats, heap file structure, and buffer pool management
 - [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — CSE344 coverage of clustered vs. unclustered design
 - [[CSE344/Database Design/Database Indices|Database Indices]] — index structures overview from CSE344
