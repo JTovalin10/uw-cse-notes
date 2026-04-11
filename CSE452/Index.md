@@ -9,6 +9,7 @@ Principles of building correct and fault-tolerant distributed systems.
 ### Foundations
 - [[CSE452/RPC/Introduction to DS|Introduction to Distributed Systems]] — what a DS is, why build one, fundamental challenges (coherence, partial failures, concurrency)
 - [[CSE452/RPC/Fault Model|Fault Model]] — catalog of failures to plan for: crashes, dropped/delayed/duplicate messages
+- [[CSE452/Time and Virtual Clocks|Time and Virtual Clocks]] — happens-before relation, concurrent events, stable vs. unstable invariants
 
 ### Remote Procedure Call
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — protocol definition, request/response mechanics, sequence numbers, at-least-once / at-most-once / exactly-once semantics
@@ -16,6 +17,7 @@ Principles of building correct and fault-tolerant distributed systems.
 ### Replication
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — the formal model: same commands in same order → same state on all replicas
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — primary orders requests, backup executes, view server tracks roles, state transfer, split brain
+- [[CSE452/Primary-Backup/View Server|View Server]] — single source of truth for current view; ping-based failure detection, view transitions, ACK requirement
 - [[CSE452/Primary-Backup/Six Rules of Primary Backup|Six Rules of Primary-Backup]] — the six correctness rules governing message ordering, view acceptance, and state transfer
 - [[CSE452/Primary-Backup/State Machine Replication (State Transfer)|State Transfer]] — copying full application state to a new backup, idempotence, and serialization with client requests
 - [[CSE452/Primary-Backup/Failover Protocol|Failover Protocol]] — detecting failure and transferring roles between nodes
