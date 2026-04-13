@@ -19,7 +19,8 @@ Advanced database systems: internals, query processing, storage, and distributed
 - [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree]] — balanced tree structure, degree/occupancy, insertion/deletion, practical performance, optimizations
 
 ### Query Evaluation
-*(notes in progress)*
+- [[CSE444/Query Evaluation/Query Execution & Algorithms|Query Execution]] — query processor pipeline, memory management, BP-tuples vs M-tuples
+- [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — cost parameters, hash join, nested loop join, page-at-a-time refinement
 
 ### Query Optimization
 *(notes in progress)*

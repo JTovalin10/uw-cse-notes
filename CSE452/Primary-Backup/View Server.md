@@ -117,4 +117,4 @@ All clients and replicas must learn about new primary and backup identities. Thi
 - [[CSE452/Primary-Backup/Six Rules of Primary Backup|Six Rules of Primary-Backup]] — the rules governing view acknowledgment and state transfer
 - [[CSE452/Primary-Backup/State Machine Replication (State Transfer)|State Transfer]] — mechanics of transferring state to a newly promoted backup
 - [[CSE452/Primary-Backup/Failover Protocol|Failover Protocol]] — failure detection that triggers view transitions
-- [[CSE452/Time and Virtual Clocks|Time and Virtual Clocks]] — invariants about view state and what is stable vs. unstable
+- [[Time and Virtual Clocks|Time and Virtual Clocks]] — invariants about view state and what is stable vs. unstable

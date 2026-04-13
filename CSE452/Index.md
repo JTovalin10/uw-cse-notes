@@ -9,7 +9,9 @@ Principles of building correct and fault-tolerant distributed systems.
 ### Foundations
 - [[CSE452/RPC/Introduction to DS|Introduction to Distributed Systems]] — what a DS is, why build one, fundamental challenges (coherence, partial failures, concurrency)
 - [[CSE452/RPC/Fault Model|Fault Model]] — catalog of failures to plan for: crashes, dropped/delayed/duplicate messages
-- [[CSE452/Time and Virtual Clocks|Time and Virtual Clocks]] — happens-before relation, concurrent events, stable vs. unstable invariants
+- [[CSE452/Clocks/Time and Virtual Clocks|Time and Virtual Clocks]] — happens-before relation, concurrent events, partial ordering of events
+- [[CSE452/Clocks/System State|System State]] — stable/unstable properties, invariants, and correctness proofs in primary-backup
+- [[CSE452/Clocks/Virtual + Vector Clocks|Virtual and Vector Clocks]] — Lamport clock algorithm, logical timestamps, clock condition
 
 ### Remote Procedure Call
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — protocol definition, request/response mechanics, sequence numbers, at-least-once / at-most-once / exactly-once semantics
