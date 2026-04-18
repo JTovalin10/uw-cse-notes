@@ -1,10 +1,19 @@
-$$
-\mid A \cup B \mid \quad = \quad  \mid A \mid + \mid B \mid - \mid A \cap B \mid
-$$
+# CSE 312: Principle of Inclusion-Exclusion (PIE)
 
-- for three or more the general formula is 
-$$
-\mid A \cup B \cup C \mid \quad = \quad \mid A\mid + \mid B \mid + \mid C\mid - \mid A \cap B \mid - \mid B \cap C\mid - \mid A \cap C\mid + \mid A\cap B \cap C\mid 
-$$
-we subtract each intersect individually, then add back the intersection of all sets
-[[Sum Rule]]
+The **Principle of Inclusion-Exclusion (PIE)** gives the size of a union of sets by alternately adding and subtracting intersection sizes.
+
+For two sets:
+
+$$|A \cup B| = |A| + |B| - |A \cap B|$$
+
+For three or more sets, the general formula is:
+
+$$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |A \cap C| + |A \cap B \cap C|$$
+
+We subtract each pairwise intersection individually, then add back the intersection of all sets, because those elements were subtracted too many times.
+
+## Related
+
+- [[Sum Rule]]
+- [[Complementary Counting]]
+- [[Possibilities with Restrictions]]

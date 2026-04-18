@@ -1,2 +1,9 @@
-this is the largest value within our equation based on argmax$_X$ where x is what we want to find. to find it we take the derivate of x and the solve x' = 0
-[[nax]]
+# CSE 312: Argmax
+
+#Definition **Argmax** is the value of $x$ that maximizes a given function $f(x)$. That is, $\text{argmax}_x\; f(x)$ returns the input $x$, not the maximum output value itself.
+
+To find the argmax, take the derivative of $f(x)$ with respect to $x$, then solve $f'(x) = 0$. Verify that the critical point is a maximum (not a minimum or saddle point).
+
+## Related
+
+[[Maximum Likelihood Estimation]]

@@ -1,37 +1,43 @@
-The likelihood of an event $E$ under a parameter $\theta$ is
-$$
-\mathcal{L}(E : \theta) = P(E; \theta)
-$$
-$P(E; \theta)$ means the probability of $X$, where to properly define the probability sapce we need to know the extra information ($\theta$).
+# CSE 312: Maximum Likelihood Estimation (MLE)
 
-$\mathcal{L}(X; \theta)$ the likelihood of event $X$, given that an experument was run with parameter $\theta$. Note that the likelihood doesnt sum up to 1 (all the time).
+The **likelihood** of an event $E$ under a parameter $\theta$ is:
 
-[[Argmax]]
+$$\mathcal{L}(E : \theta) = P(E; \theta)$$
 
-# Maximum Likelihood Estimator
-The max likelihood estimator of the parameter $\theta$ is
-$$
-\hat\theta = argmax_\theta \quad \mathcal{L}(E; \theta)
-$$
-While $\theta$ is a variable, $\hat\theta$ is a number
-A quick trick when multlying is taking the log as log(ab) = log(a) + log(b)
+$P(E; \theta)$ means the probability of $X$, where to properly define the probability space we need to know the extra information ($\theta$).
 
-# definition of likelihood
-For discrete variables
-$$
-\mathcal{L}(x; \theta) = \prod_{i=1}^n p_X(x_i; \theta)
-$$
+$\mathcal{L}(X; \theta)$ is the likelihood of event $X$, given that an experiment was run with parameter $\theta$. Note that the likelihood doesn't sum up to 1 (all the time).
 
-For continous random variables we use
-$$
-\mathcal{L}(x; \theta) = \prod_{i=1}^n f_X(x_i ; \theta)
-$$
+## Maximum Likelihood Estimator
 
-If you take the log (or natural log) of this, it turns from a product to summation
-We then have 
-$\hat p$ which is the data-based estimate of p which is:
-$$
-\hat p = \frac{n}{\sum_{i=1}^nx_i}
-$$
-# Unbiased
-this means that $\theta = E[\hat \theta]$ where the true value is equal to the estimated value
+The **maximum likelihood estimator** of the parameter $\theta$ is:
+
+$$\hat{\theta} = \text{argmax}_\theta \; \mathcal{L}(E; \theta)$$
+
+While $\theta$ is a variable, $\hat{\theta}$ is a number.
+
+A quick trick when multiplying is taking the log, since $\log(ab) = \log(a) + \log(b)$.
+
+## Definition of Likelihood
+
+For discrete variables:
+
+$$\mathcal{L}(x; \theta) = \prod_{i=1}^n p_X(x_i; \theta)$$
+
+For continuous random variables we use:
+
+$$\mathcal{L}(x; \theta) = \prod_{i=1}^n f_X(x_i ; \theta)$$
+
+If you take the log (or natural log) of this, it turns from a product to a summation.
+
+We then have $\hat{p}$, which is the data-based estimate of $p$:
+
+$$\hat{p} = \frac{n}{\sum_{i=1}^n x_i}$$
+
+## Unbiased
+
+An estimator is **unbiased** when $\theta = E[\hat{\theta}]$, meaning the true value equals the expected value of the estimate.
+
+## Related
+
+[[Argmax]] · [[Expectation]] · [[Discrete Random Variables]] · [[Continuous Random Variable]] · [[Confidence Intervals]]

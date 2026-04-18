@@ -1,8 +1,18 @@
-cannot happen at the same time
-- roll a single dice
-	- it lands on 2
-	- it lands on 3
-		- these cannot happen at the same time
-	- it lands on 2
-	- is even
-		- can happen at the same time
+# CSE 312: Mutual Exclusion
+
+#Definition **Mutually exclusive** events cannot occur at the same time — $P(A \cap B) = 0$.
+
+Cannot happen at the same time:
+- Roll a single die:
+	- It lands on 2
+	- It lands on 3
+		- These cannot happen at the same time
+	- It lands on 2
+	- Is even
+		- Can happen at the same time
+
+## Related
+
+- [[Independence]]
+- [[Union Bound]]
+- [[Principle of Inclusion-Exclusion]]
