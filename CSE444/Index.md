@@ -21,6 +21,13 @@ Advanced database systems: internals, query processing, storage, and distributed
 ### Query Evaluation
 - [[CSE444/Query Evaluation/Query Execution & Algorithms|Query Execution]] — query processor pipeline, memory management, BP-tuples vs M-tuples
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — cost parameters, hash join, nested loop join, page-at-a-time refinement
+- [[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]] — two-phase external sort; generates sorted runs then merges them
+- [[CSE444/Query Evaluation/Index-Based Algorithms|Index-Based Algorithms]] — using indexes to speed up selection and join
+- [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — simple O(B(R)·B(S)) join; page-at-a-time refinement reduces I/Os
+- [[CSE444/Query Evaluation/Hash Join|Hash Join]] — one-pass hash-based join; requires smaller relation fits in memory
+- [[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]] — one-pass sort-based join; requires both relations fit in memory
+- [[CSE444/Query Evaluation/Merge-Join|Merge-Join]] — two-pass sort-based join; handles relations up to $M^2$ pages
+- [[CSE444/Query Evaluation/Partitioned Hash Algorithms|Partitioned Hash Join]] — two-pass hash-based join (Grace join); partitions both relations into $M-1$ buckets
 
 ### Query Optimization
 *(notes in progress)*

@@ -4,11 +4,11 @@
 
 ## Message Flow Overview
 
-| Actor | Sends | Receives |
-|-------|-------|----------|
-| Client | Request to primary; `getview` to view server | View reply from view server |
-| Primary | Forward request to backup; ping to view server | Forward ACK from backup |
-| Backup | Forward ACK to primary; ping to view server | Forward request from primary |
+| Actor       | Sends                                                                  | Receives                      |
+| ----------- | ---------------------------------------------------------------------- | ----------------------------- |
+| Client      | Request to primary; `getview` to view server                           | View reply from view server   |
+| Primary     | Forward request to backup; ping to view server                         | Forward ACK from backup       |
+| Backup      | Forward ACK to primary; ping to view server                            | Forward request from primary  |
 | View Server | View reply to client; view to primary and backup; request to idle pool | Pings from primary and backup |
 
 ---
