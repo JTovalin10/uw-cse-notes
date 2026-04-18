@@ -1,12 +1,19 @@
-The set $\sum^*$ of strings over the alphabet $\sum$
-- Example: $\set{0,1}^*$ 
-	- 0, 1, 01, 10, 11, 000, 001, ...
-[[Strings]]
+# CSE 311: Set of Strings ($\Sigma^*$)
 
-$$\sum^*$$
-$$\text{Is defined as}$$
-$$\text{Basis: } \epsilon \in \sum^* \quad \text{Epsilon is the empty string ""}$$
-$$\text{Recursion: } w \in \sum^*, a \in \sum , \text{then } wa \in \sum^*$$
+The set $\Sigma^*$ of strings over the alphabet $\Sigma$ is defined recursively.
 
+- Example: $\{0,1\}^*$ contains all binary strings:
+	- $0, 1, 01, 10, 11, 000, 001, \ldots$
 
-[[Recursive Definition of Sets]]
+$$\Sigma^* \text{ is defined as:}$$
+$$\text{Basis: } \varepsilon \in \Sigma^* \quad (\varepsilon \text{ is the empty string "")}$$
+$$\text{Recursion: if } w \in \Sigma^* \text{ and } a \in \Sigma,\ \text{then } wa \in \Sigma^*$$
+
+The recursion says: take any existing string $w$ and append any character $a$ from the alphabet — the result $wa$ is also in $\Sigma^*$.
+
+## Related
+
+- [[Strings]]
+- [[Recursive Definition of Sets]]
+- [[Regular Expressions]]
+- [[Functions on a Set of Strings]]

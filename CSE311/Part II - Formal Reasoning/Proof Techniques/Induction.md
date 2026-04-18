@@ -1,26 +1,39 @@
-Formula
-- Let P(x) be ...
-- Base Case: P(m), where m is base case
-- Induction Hypothesis: Assume P(k) holds where x is a arbitrary k value
-- Induction Hypothesis: show work that P(k+1) holds
-- Conclusion: as k was an arbitrary value it holds that P(x) is true
+# CSE 311: Mathematical Induction
+
+**Mathematical induction** is a proof technique used to prove that a property $P(x)$ holds for all integers $x \geq m$.
+
+**Template:**
+- Let $P(x)$ be ...
+- **Base Case**: Prove $P(m)$, where $m$ is the base case value.
+- **Induction Hypothesis**: Assume $P(k)$ holds for some arbitrary integer $k \geq m$.
+- **Induction Step**: Show that $P(k+1)$ holds.
+- **Conclusion**: Since $k$ was an arbitrary value, $P(x)$ is true for all $x \geq m$.
+
 # Summation
-When doing summation induction you can do this with P(k+1)
+
+When doing induction on a summation, expand $P(k+1)$ by splitting off the last term:
 $$
-\sum _{i=0} ^{k+1} i \quad \Rightarrow \sum _{i=0} ^k i + (k+1)
+\sum_{i=0}^{k+1} i \quad \Rightarrow \sum_{i=0}^{k} i + (k+1)
 $$
+This allows you to apply the induction hypothesis to $\sum_{i=0}^{k} i$ and simplify.
+
 # Production
-When doing product induction you can do this with P(k+1)
+
+When doing induction on a product, expand $P(k+1)$ by splitting off the last factor:
 $$
-\prod _{i=0} ^{k+1} i \quad \Rightarrow \prod _{i=0} ^k i \quad \times (k+1) 
+\prod_{i=0}^{k+1} i \quad \Rightarrow \prod_{i=0}^{k} i \quad \times (k+1)
 $$
+This allows you to apply the induction hypothesis to $\prod_{i=0}^{k} i$ and simplify.
+
 # Equivalence Induction
-When doing equivalence you have to be more careful and do more work
-### Example: 
+
+When doing induction to prove an inequality or equivalence, more careful algebraic manipulation is required.
+
+### Example:
 
 $$ \text{Prove that for all integers } k \geq 4: k! > 2^k $$
 
-Base Case: P(4)
+**Base Case**: $P(4)$
 
 $$ 4! = 24 $$
 
@@ -30,11 +43,11 @@ $$ 24 > 16 $$
 
 $$ \text{Therefore, } P(4) \text{ is true.} $$
 
-induction Hypothesis
+**Induction Hypothesis**
 
 $$ \text{Assume } P(k) \text{ is true for some arbitrary } k \geq 4: k! > 2^k $$
 
-Induction Step: Prove P(k+1)
+**Induction Step**: Prove $P(k+1)$
 
 $$ \text{We need to show: } (k+1)! > 2^{(k+1)} $$
 
@@ -52,6 +65,12 @@ $$ \text{Since } k \geq 4, \text{ we know that } k+1 \geq 5, \text{ which is gre
 
 $$ \text{Therefore: } (k+1)! > 2^{(k+1)} $$
 
-Conclusion
+**Conclusion**
 
 $$ \text{Since } P(4) \text{ is true and } P(k) \Rightarrow P(k+1) \text{ for all } k \geq 4, \text{ by the principle of mathematical induction, } P(k) \text{ is true for all integers } k \geq 4. $$
+
+## Related
+
+- [[Strong Induction]]
+- [[Structural Induction]]
+- [[Formal Proofs]]

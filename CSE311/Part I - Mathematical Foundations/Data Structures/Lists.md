@@ -1,4 +1,16 @@
-x::L to mean cons(x,L)
+# CSE 311: Lists (Notation)
 
-nul = nil = []
-cons(3, nil) = 3::nil = [3]
+The `::` operator (read "cons") prepends an element to a list:
+
+$$x \mathbin{::} L \quad \text{means} \quad \text{cons}(x, L)$$
+
+**Examples:**
+
+- `nil` = `[]` (the empty list)
+- `cons(3, nil)` = `3::nil` = `[3]`
+
+## Related
+
+- [[List of Integers]]
+- [[Functions on Lists]]
+- [[Inductive Data Types]]
