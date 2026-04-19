@@ -1,4 +1,8 @@
-## **1. Exhaustive Testing (≤10 inputs)**
+# CSE331: Testing
+
+Examples illustrating the testing categories from [[Types of Tests]]. Each section below shows one principle with a small, complete JUnit example.
+
+## 1. Exhaustive Testing (≤ 10 inputs)
 
 ```java
 // Function that only accepts values 1-5
@@ -21,26 +25,26 @@ public void testGradeLevel() {
     assertEquals("Junior", gradeLevel(3));
     assertEquals("Senior", gradeLevel(4));
     assertEquals("Super Senior", gradeLevel(5));
-    // Don't test 0, 6, etc. - those are disallowed inputs
+    // Don't test 0, 6, etc. — those are disallowed inputs
 }
 ```
 
 ---
 
-## **2. Statement Coverage**
+## 2. Statement Coverage
 
 ```java
 public static int calculateDiscount(int age, boolean isMember) {
     int discount = 0;
-    
+
     if (age < 18) {
         discount = 10;  // This statement must execute
     }
-    
+
     if (isMember) {
         discount += 5;  // This statement must execute
     }
-    
+
     return discount;
 }
 
@@ -63,7 +67,7 @@ public void testAdultNonMember() {
 
 ---
 
-## **3. Branch Coverage**
+## 3. Branch Coverage
 
 ```java
 public static String checkTemperature(int temp) {
@@ -88,7 +92,7 @@ public void testColdTemperature() {
 
 ---
 
-## **4. Loop Coverage (0, 1, Many)**
+## 4. Loop Coverage (0, 1, Many)
 
 ```java
 public static int sumArray(int[] numbers) {
@@ -118,7 +122,7 @@ public void testMultipleElements() {
 
 ---
 
-## **5. Recursion Coverage (0, 1, Many recursive calls)**
+## 5. Recursion Coverage (0, 1, Many recursive calls)
 
 ```java
 public static int factorial(int n) {
@@ -148,7 +152,7 @@ public void testFactorialManyRecursions() {
 
 ---
 
-## **6. Boundary Testing**
+## 6. Boundary Testing
 
 ```java
 public static String ageCategory(int age) {
@@ -177,7 +181,7 @@ public void testBoundaryAt65() {
 
 ---
 
-## **7. Logical Operator Coverage (|| and &&)**
+## 7. Logical Operator Coverage (`||` and `&&`)
 
 ```java
 public static boolean canVote(int age, boolean isCitizen) {
@@ -235,7 +239,7 @@ public void testNeitherTrue() {
 
 ---
 
-## **8. Special Values Testing**
+## 8. Special Values Testing
 
 ```java
 public static int getLength(String str) {
@@ -264,14 +268,14 @@ public void testNormalString() {
 
 ---
 
-## **Complete Example: All Concepts Together**
+## Complete Example: All Concepts Together
 
 ```java
 public static List<Integer> filterPositive(List<Integer> numbers) {
     if (numbers == null) {
         return new ArrayList<>();
     }
-    
+
     List<Integer> result = new ArrayList<>();
     for (Integer num : numbers) {
         if (num != null && num > 0) {
@@ -299,31 +303,39 @@ public void testSinglePositive() {
 
 @Test
 public void testManyPositives() {
-    assertEquals(Arrays.asList(1, 2, 3), 
+    assertEquals(Arrays.asList(1, 2, 3),
                  filterPositive(Arrays.asList(1, 2, 3)));  // Loop: many iterations
 }
 
 @Test
 public void testMixedValues() {
-    assertEquals(Arrays.asList(5, 10), 
+    assertEquals(Arrays.asList(5, 10),
                  filterPositive(Arrays.asList(-3, 5, 0, 10, -1)));  // Branch coverage
 }
 
 @Test
 public void testWithNullElement() {
-    assertEquals(Arrays.asList(5), 
+    assertEquals(Arrays.asList(5),
                  filterPositive(Arrays.asList(null, 5, null)));  // Special value: null element
 }
 
 @Test
 public void testBoundaryAtZero() {
-    assertEquals(new ArrayList<>(), 
+    assertEquals(new ArrayList<>(),
                  filterPositive(Arrays.asList(0)));  // Boundary: 0 is not > 0
-    assertEquals(Arrays.asList(1), 
+    assertEquals(Arrays.asList(1),
                  filterPositive(Arrays.asList(1)));  // Boundary: 1 is > 0
 }
 ```
 
-This comprehensive example shows how to apply multiple testing principles to a single function!
+This comprehensive example shows how to apply multiple testing principles to a single function.
 
-***
+---
+
+## Related
+
+- [[Types of Tests]]
+- [[Debugging]]
+- [[Software Implementation]]
+- [[Pre and Post Conditions]]
+- [[CSE331/Part I - Software Specifications/Definitions/Exclusive and Exhaustive|Exclusive and Exhaustive]]
