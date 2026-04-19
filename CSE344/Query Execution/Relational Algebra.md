@@ -1,4 +1,4 @@
-# Query Execution: Relational Algebra
+# CSE344: Relational Algebra
 
 **Relational Algebra (RA)** is a set-at-a-time algebra for relations.
 - RA has a collection of operators
@@ -26,11 +26,16 @@
 
 ## Why Are Joins So Common in Relational Databases?
 
-- [[Normalization]] removes anomalies by splitting tables — joins reunite them at query time
-- The most common joins are equijoins and natural joins
+- [[CSE344/Database Design/Normalization|Normalization]] removes anomalies by splitting tables — joins reunite them at query time
+- The most common joins are **equijoins** and **natural joins**
 
 ## Related
+- [[RA Operators]] — full operator reference
+- [[SQL to RA Translation]] — how SQL queries compile into RA trees
+- [[RA Tree Transformations]] — rewriting plans into equivalent, cheaper ones
 - [[Cardinality Estimation]] — estimating the cost of RA query plans to choose among candidates
 - [[Physical Algorithms and Pipelining]] — how RA operators are physically implemented
-- [[CSE344/SQL/Sub-Queries]] — SQL subquery mechanics before RA translation
-- [[CSE344/SQL/Decorrelation and Unnesting]] — monotonicity and when subqueries can be rewritten
+- [[Pipelined Execution]] — streaming tuples through the tree via the iterator interface
+- [[CSE344/SQL/Basics|SQL Basics]] — the surface syntax translated into RA
+- [[CSE344/SQL/Sub-Queries|Sub-Queries]] — SQL subquery mechanics before RA translation
+- [[CSE344/SQL/Decorrelation and Unnesting|Decorrelation and Unnesting]] — monotonicity and when subqueries can be rewritten

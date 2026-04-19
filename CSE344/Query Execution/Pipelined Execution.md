@@ -1,4 +1,4 @@
-# Query Execution: Pipelined Execution
+# CSE344: Pipelined Execution
 
 ## Single Pass vs. Multi-Pass
 
@@ -36,5 +36,9 @@ I/O cost may be lower with pipelined execution:
 
 ## Related
 - [[External Memory Algorithms]] — the algorithms that execute within a pipeline stage
+- [[Main Memory Join Algorithms]] — in-memory operators pipelined via the iterator interface
 - [[Physical Algorithms and Pipelining]] — overview of physical operator types
+- [[Parallel Query Execution]] — pipelining interacts with the shared-nothing shuffle model
 - [[Relational Algebra]] — the logical operators implemented by the pipeline
+- [[Cardinality Estimation]] — memory availability affects whether a pipeline is single- or multi-pass
+- [[CSE344/Database Design/Disk Storage|Disk Storage]] — the disk I/O that pipelining tries to minimize

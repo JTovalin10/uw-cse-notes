@@ -1,4 +1,4 @@
-# Database Design: Integrity Constraints
+# CSE344: Integrity Constraints
 
 Integrity constraints let the DBMS enforce application-level rules on the data automatically, beyond what foreign keys alone can express.
 
@@ -59,5 +59,6 @@ CREATE TABLE Registry (
 
 ## Related
 - [[Entities, Relationships, and ER Diagrams]] — where constraints are identified during design
-- [[CSE344/SQL/Create Table]] — full SQL syntax for table creation including constraints
-- [[CSE344/SQL/NULL]] — how NULL interacts with CHECK constraints
+- [[Functional Dependencies (FDs)]] — FDs are another kind of constraint the schema must satisfy
+- [[CSE344/SQL/Create Table|Create Table]] — full SQL syntax for table creation including constraints
+- [[CSE344/SQL/NULL|NULL]] — how NULL interacts with CHECK constraints

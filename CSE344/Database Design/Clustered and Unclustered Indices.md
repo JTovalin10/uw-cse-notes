@@ -1,4 +1,4 @@
-# Database Design: Clustered and Unclustered Indices
+# CSE344: Clustered and Unclustered Indices
 
 ## Scans vs. Selections
 
@@ -51,3 +51,4 @@ An unclustered index's ordering differs from the on-disk tuple ordering.
 - [[Database Indices]] — creating indices and multi-attribute indices
 - [[Disk Storage]] — why physical ordering on disk matters for performance
 - [[External Memory Algorithms#Physical Selection Operators]] — cost formulas that depend on clustered vs. unclustered
+- [[Physical Design and Indices]] — overall physical-design context

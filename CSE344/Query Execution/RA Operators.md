@@ -1,4 +1,4 @@
-# Query Execution: RA Operators
+# CSE344: RA Operators
 
 All operators take one or two relations as input and return a new relation. See [[Relational Algebra]] for an overview of RA.
 
@@ -99,3 +99,10 @@ $$R(A, B) \ltimes S(B, C) \rightarrow T(A, B)$$
 - [[Relational Algebra]] — overview, query plan trees, and why joins are so common
 - [[SQL to RA Translation]] — how SQL operators map to these RA operators
 - [[RA Tree Transformations]] — rewriting rules using these operators
+- [[Physical Algorithms and Pipelining]] — how these logical operators are physically implemented
+- [[Main Memory Join Algorithms]] — specific implementations of the join operators
+- [[CSE344/SQL/Joins|Joins]] — the SQL syntax for join operators
+- [[CSE344/SQL/Outer Joins|Outer Joins]] — SQL-level outer join syntax
+- [[CSE344/SQL/Set Operations|Set Operations]] — SQL counterparts to union/intersection/difference
+- [[CSE344/SQL/Aggregates|Aggregates]] — SQL counterpart to grouping $\gamma$
+- [[CSE344/SQL/ORDER BY and DISTINCT|ORDER BY and DISTINCT]] — SQL counterparts to sorting $\tau$ and deduplication $\delta$

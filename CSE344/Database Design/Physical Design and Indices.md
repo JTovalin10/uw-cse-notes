@@ -1,4 +1,4 @@
-# Database Design: Physical Design and Indices
+# CSE344: Physical Design and Indices
 
 Physical design concerns how relations are stored on disk and how indices are built to speed up queries. This is separate from [[Normalization|logical design]] (schema design) and is hidden from SQL queries by [[Physical Data Independence|physical data independence]].
 
@@ -12,3 +12,4 @@ Physical design concerns how relations are stored on disk and how indices are bu
 - [[Physical Data Independence]] — why the physical layout is hidden from SQL queries
 - [[Normalization]] — logical design before physical design
 - [[External Memory Algorithms]] — query algorithms whose cost is measured in block I/Os
+- [[CSE451/Persistent Storage/Magnetic Disks|CSE451 Magnetic Disks]] — OS-level view of the disks these indices live on

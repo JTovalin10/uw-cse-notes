@@ -1,4 +1,4 @@
-# Database Design: Password Handling
+# CSE344: Password Handling
 
 ## Plaintext Storage
 
@@ -36,3 +36,7 @@ private PreparedStatement flightCapacityStmt;
 
 ## Related
 - [[Database Applications]] — context for where password handling applies
+- [[Multi-tier Architecture]] — credentials travel between tiers and must be protected in transit
+- [[CSE484/Cryptography/Hashing + Ciphertext Integrity|CSE484 Hashing + Ciphertext Integrity]] — deeper treatment of hash functions, preimage/collision resistance, and HMAC
+- [[CSE484/Cryptography/Cryptography|CSE484 Cryptography]] — cryptographic primitives used in authentication systems
+- [[CSE484/Security Fundamentals/Other types of attacks|CSE484 Other types of attacks]] — SQL injection and other input-validation attacks

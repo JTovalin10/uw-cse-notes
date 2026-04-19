@@ -1,4 +1,4 @@
-# Database Design: Database Applications
+# CSE344: Database Applications
 
 ## Interacting with the Database
 
@@ -16,5 +16,6 @@ A **database application** is an application written in a general-purpose progra
 	- e.g., verifies a user exists by querying the database, then charges their credit card and sends tracking info to UPS
 
 ## Related
-- [[Multi-tier Architercture]] — how database applications are deployed across tiers
+- [[Multi-tier Architecture]] — how database applications are deployed across tiers
 - [[Password Handling]] — securely handling user credentials in database applications
+- [[CSE344/SQL/Basics|SQL Basics]] — the SQL language these applications use to talk to the DBMS

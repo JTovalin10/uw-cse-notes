@@ -1,4 +1,4 @@
-# Query Execution: Parallel Query Execution
+# CSE344: Parallel Query Execution
 
 ## Parallelizing Data Management
 
@@ -110,5 +110,7 @@ See [[Parallel Join Algorithms]] for the full descriptions of:
 ## Related
 - [[Parallel Join Algorithms]] — detailed algorithms for parallel joins
 - [[Physical Algorithms and Pipelining]] — the single-node algorithms that each node runs locally
+- [[Pipelined Execution]] — how operators within a node stream tuples
 - [[Cardinality Estimation]] — skew directly affects cardinality estimates
-- [[Disk Storage]] — data layout choices interact with partitioning strategies
+- [[CSE344/Database Design/Disk Storage|Disk Storage]] — data layout choices interact with partitioning strategies
+- [[CSE451/Memory Management/Memory management|Memory Management]] — OS-level resource sharing that parallels shared-memory/shared-nothing architectures

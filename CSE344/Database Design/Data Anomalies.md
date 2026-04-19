@@ -1,4 +1,4 @@
-# Database Design: Data Anomalies
+# CSE344: Data Anomalies
 
 Data anomalies are problems that arise from poor relational schema design. They motivate [[Normalization|normalization]].
 

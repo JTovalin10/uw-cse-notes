@@ -1,4 +1,4 @@
-# Database Design: Closures and Keys
+# CSE344: Closures and Keys
 
 Closures and keys are the tools used to reason about [[Functional Dependencies (FDs)|functional dependencies]] and drive [[BCNF Decomposition|normalization]].
 

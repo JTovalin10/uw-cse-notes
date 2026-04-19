@@ -1,4 +1,4 @@
-# Database Design: Entities, Relationships, and ER Diagrams
+# CSE344: Entities, Relationships, and ER Diagrams
 
 **Database Design** (also called **Logical Design** or **Relational Schema Design**) organizes data by considering what data needs to be stored and the interrelationships of that data.
 
@@ -111,4 +111,5 @@ See [[Integrity Constraints]] for:
 ## Related
 - [[Integrity Constraints]] — enforcing application rules in the schema
 - [[Normalization]] — what to do when an ER design has anomalies
-- [[CSE344/SQL/Create Table]] — SQL syntax for creating the tables derived from ER diagrams
+- [[CSE344/SQL/Create Table|Create Table]] — SQL syntax for creating the tables derived from ER diagrams
+- [[CSE331/Part II - Software Engineering/Software Engineering/Abstract Data Type|CSE331 Abstract Data Type]] — the analogous "class spec vs implementation" idea in software design

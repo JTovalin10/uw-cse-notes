@@ -1,4 +1,4 @@
-# Database Design: Disk Storage
+# CSE344: Disk Storage
 
 Understanding disk storage is essential for understanding why [[Database Indices|indices]] exist and how [[External Memory Algorithms|external memory algorithms]] are costed.
 
@@ -49,3 +49,8 @@ Without indices, any query requires an $O(n)$ sequential scan over the entire ta
 - [[Database Indices]] — how indices speed up queries beyond a sequential scan
 - [[Clustered and Unclustered Indices]] — how the physical ordering of data on disk relates to index type
 - [[External Memory Algorithms]] — algorithms whose cost is measured in block I/Os
+- [[Physical Design and Indices]] — the broader physical-design context this fits into
+- [[CSE451/Persistent Storage/Magnetic Disks|CSE451 Magnetic Disks]] — OS-level view of HDD mechanics (seek, rotational latency, tracks, sectors)
+- [[CSE451/Persistent Storage/Flash Storage|CSE451 Flash Storage]] — SSD characteristics that change the cost model
+- [[CSE351/Cache/Spatial Locality|CSE351 Spatial Locality]] — why loading whole blocks at once pays off
+- [[CSE351/Cache/Temporal locality|CSE351 Temporal Locality]] — why caching recently-read blocks pays off

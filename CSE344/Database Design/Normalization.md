@@ -1,4 +1,4 @@
-# Database Design: Normalization
+# CSE344: Normalization
 
 Normalization is the process of restructuring a relational schema to eliminate [[Data Anomalies|data anomalies]] using [[Functional Dependencies (FDs)|functional dependencies]].
 

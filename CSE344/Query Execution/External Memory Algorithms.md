@@ -1,10 +1,10 @@
-# Query Execution: External Memory Algorithms
+# CSE344: External Memory Algorithms
 
-External memory algorithms assume data is on disk rather than in main memory. They are slower than [[Main Memory Join Algorithms|main memory algorithms]] but have no limitation on data size.
+**External memory algorithms** assume data is on disk rather than in main memory. They are slower than [[Main Memory Join Algorithms|main memory algorithms]] but have no limitation on data size.
 
 ## Introduction and Costing
 
-Data on disk is organized in blocks — see [[Disk Storage]].
+Data on disk is organized in **blocks** — see [[CSE344/Database Design/Disk Storage|Disk Storage]].
 - A file = collection of blocks
 - A relation = a file
 - Each block may contain multiple records
@@ -113,6 +113,11 @@ Not a general-purpose join, but useful as a helper when an index is already avai
 ## Related
 - [[Main Memory Join Algorithms]] — the in-memory versions of these algorithms
 - [[Pipelined Execution]] — how these algorithms compose in a full query plan
-- [[Disk Storage]] — block organization on disk that drives these I/O costs
-- [[Clustered and Unclustered Indices]] — how index type affects selection and join cost
+- [[Physical Algorithms and Pipelining]] — overview of physical operator classification
+- [[Parallel Join Algorithms]] — distributed extensions of these joins
 - [[Cardinality Estimation]] — how the optimizer chooses between these algorithms
+- [[CSE344/Database Design/Disk Storage|Disk Storage]] — block organization on disk that drives these I/O costs
+- [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how index type affects selection and join cost
+- [[CSE344/Database Design/Database Indices|Database Indices]] — index structures referenced by index-based join
+- [[CSE451/Persistent Storage/Magnetic Disks|Magnetic Disks]] — OS-level view of the disk I/O these algorithms minimize
+- [[CSE351/Cache/Spatial Locality|Spatial Locality]] — the block-level locality principle that makes these algorithms efficient

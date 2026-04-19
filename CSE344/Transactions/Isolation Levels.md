@@ -1,4 +1,4 @@
-# Transactions: Isolation Levels
+# CSE344: Isolation Levels
 
 **Serializable** — even conflict-serializable — is expensive to implement. SQL allows more efficient transaction implementations that are not fully serializable: **weak isolation levels**.
 
@@ -66,5 +66,7 @@ In commercial DBMSes:
 
 ## Related
 - [[Phantom Reads]] — the concurrency problem that separates Repeatable Read from Serializable
-- [[Atomic and isolated Transactions in SQL]] — strict 2PL as the mechanism underlying most isolation levels
+- [[Other Lock Modes and Lock Granularity]] — predicate locks used at the Serializable level
+- [[Atomic and Isolated Transactions in SQL]] — strict 2PL as the mechanism underlying most isolation levels
 - [[Isolation Transactions in SQL]] — conflict-serializability and why it matters
+- [[ACID Properties]] — weakening the I in ACID for performance

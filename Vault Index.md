@@ -296,7 +296,7 @@ Reference map of all files in the vault, organized by course and directory. Use 
 - [[Entities, Relationships, and ER Diagrams]] — entity-relationship modeling
 - [[Functional Dependencies (FDs)]] — attribute dependency relationships
 - [[Integrity Constraints]] — rules enforcing data validity
-- [[Multi-tier Architercture]] — typical 3-tier database architecture
+- [[Multi-tier Architecture]] — typical 3-tier database architecture
 - [[Normalization]] — database normalization forms (1NF–BCNF)
 - [[Password Handling]] — secure password storage in databases
 - [[Physical Design and Indices]] — choosing indices and storage structures

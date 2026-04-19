@@ -1,11 +1,11 @@
-# Transactions: Interleaving and Concurrency Control
+# CSE344: Interleaving and Concurrency Control
 
 **Concurrency control** is the process of deciding how to interleave operations from multiple transactions.
-- The **scheduler** (or concurrency control manager) is responsible for these decisions.
+- The **scheduler** (or **concurrency control manager**) is responsible for these decisions.
 
 ## Conflicts
 
-Conflicts are the root cause of incorrect behavior in concurrent transactions:
+**Conflicts** are the root cause of incorrect behavior in concurrent transactions:
 
 - **Dirty/Inconsistent Read** — Write-Read (WR) conflict
 	- An inconsistent read happens when data is read during an in-progress write
@@ -23,10 +23,12 @@ Conflicts are the root cause of incorrect behavior in concurrent transactions:
 - [[Isolation Transactions in SQL]] — conflict-serializability and how to verify it
 - [[Precedence Graphs]] — cycle detection to verify conflict-serializability
 - [[Atomic Transactions in SQL]] — how locks enforce atomicity
-- [[Atomic and isolated Transactions in SQL]] — 2PL for achieving both atomicity and isolation
+- [[Atomic and Isolated Transactions in SQL]] — 2PL for achieving both atomicity and isolation
 - [[Other Lock Modes and Lock Granularity]] — shared/exclusive locks and fine vs. coarse-grained locking
 - [[Phantom Reads]] — a concurrency problem not solved by standard 2PL
 - [[Isolation Levels]] — weaker isolation levels and their trade-offs
 
 ## Related
-- [[CSE451/Synchronization/Locks]] — OS-level perspective on locking and synchronization
+- [[CSE451/Processes/Synchronization/Locks/Locks|Locks (CSE451)]] — OS-level perspective on locking and synchronization
+- [[CSE451/Processes/Synchronization/Race Conditions/Race Condition|Race Conditions]] — the OS-level analog of transaction conflicts
+- [[CSE451/Processes/Synchronization/Synchronization|Synchronization]] — general concurrency control in OSes

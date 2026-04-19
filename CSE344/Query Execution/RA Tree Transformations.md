@@ -1,4 +1,4 @@
-# Query Execution: RA Tree Transformations
+# CSE344: RA Tree Transformations
 
 We can transform an RA tree into a semantically equivalent but structurally different tree to improve query performance — this is the core of **logical query optimization**.
 
@@ -28,3 +28,5 @@ In practice, the query optimizer uses heuristics and [[Cardinality Estimation|ca
 - [[RA Operators]] — the operators being rearranged
 - [[Cardinality Estimation]] — how the optimizer estimates the cost of candidate plans
 - [[SQL to RA Translation]] — where the initial tree comes from
+- [[Physical Algorithms and Pipelining]] — choosing physical operators for the rewritten tree
+- [[CSE344/SQL/Decorrelation and Unnesting|Decorrelation and Unnesting]] — SQL-level rewrites that expose more transformation opportunities

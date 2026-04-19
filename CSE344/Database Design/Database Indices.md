@@ -1,4 +1,4 @@
-# Database Design: Database Indices
+# CSE344: Database Indices
 
 ## What Is an Index?
 

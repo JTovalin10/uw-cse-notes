@@ -1,4 +1,4 @@
-# Query Execution: SQL to RA Translation
+# CSE344: SQL to RA Translation
 
 ## Query Plans
 
@@ -49,5 +49,9 @@ Subqueries in `FROM` translate naturally — each subquery becomes a named inter
 - [[Relational Algebra]] — RA overview and query plan trees
 - [[RA Operators]] — the full operator reference
 - [[RA Tree Transformations]] — optimizing the resulting plan
-- [[CSE344/SQL/Sub-Queries]] — the SQL subquery mechanics being translated
-- [[CSE344/SQL/Decorrelation and Unnesting]] — monotonicity and when subqueries can be unnested
+- [[Cardinality Estimation]] — costing the translated plan
+- [[CSE344/SQL/Basics|SQL Basics]] — the surface syntax being translated
+- [[CSE344/SQL/Sub-Queries|Sub-Queries]] — the SQL subquery mechanics being translated
+- [[CSE344/SQL/Decorrelation and Unnesting|Decorrelation and Unnesting]] — monotonicity and when subqueries can be unnested
+- [[CSE344/SQL/Joins|Joins]] — the SQL joins compiled to $\bowtie$
+- [[CSE344/SQL/Aggregates|Aggregates]] — the SQL aggregates compiled to $\gamma$

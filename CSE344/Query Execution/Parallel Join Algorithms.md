@@ -1,6 +1,6 @@
-# Query Execution: Parallel Join Algorithms
+# CSE344: Parallel Join Algorithms
 
-Parallel joins operate in the [[Parallel Query Execution#The Shared-Nothing Model|shared-nothing model]]. The core idea: shuffle related values onto the same node, then perform a local join.
+**Parallel joins** operate in the [[Parallel Query Execution#The Shared-Nothing Model|shared-nothing model]]. The core idea: shuffle related values onto the same node, then perform a local join.
 
 ## Partitioned Hash Join
 
@@ -59,3 +59,6 @@ A clever combination of partitioned hash join and broadcast join:
 - [[Parallel Query Execution]] — architecture, partitioning strategies, and partitioned selection/aggregation
 - [[Main Memory Join Algorithms]] — the local join algorithms that run within each node
 - [[External Memory Algorithms#GRACE Join (Partitioned Hash Join)]] — the single-node partitioned hash join
+- [[Physical Algorithms and Pipelining]] — overview of physical operator classification
+- [[Cardinality Estimation]] — skew directly affects cardinality estimates
+- [[CSE344/SQL/Joins|Joins]] — the SQL surface syntax compiled into these joins

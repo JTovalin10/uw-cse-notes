@@ -1,10 +1,10 @@
-# Query Execution: Cardinality Estimation
+# CSE344: Cardinality Estimation
 
 ## Logical Query Optimization
 
 ### Goal
 
-Equivalent query plans produce equal outputs — but some are far cheaper to execute. The less data circulating inside the tree, the less computation the RDBMS does. This includes reducing unnecessary columns or unnecessarily large intermediate results.
+Equivalent query plans produce equal outputs — but some are far cheaper to execute. The less data circulating inside the tree, the less computation the **RDBMS** does. This includes reducing unnecessary columns or unnecessarily large intermediate results.
 
 ![[Example Optimization 1.png]]
 
@@ -54,4 +54,8 @@ Cardinality estimates are approximations, but they allow the optimizer to compar
 
 ## Related
 - [[Relational Algebra]] — the query plans whose costs are being estimated
-- [[CSE344/Database Design/Physical Design and Indices]] — index structure affects cardinality and cost estimates
+- [[RA Tree Transformations]] — how the optimizer uses cardinality estimates to pick a plan
+- [[Physical Algorithms and Pipelining]] — cost estimates factor in the choice of physical operator
+- [[CSE344/Database Design/Physical Design and Indices|Physical Design and Indices]] — index structure affects cardinality and cost estimates
+- [[CSE344/Database Design/Database Indices|Database Indices]] — how clustered/unclustered indices change the cost formulas
+- [[CSE344/Database Design/Disk Storage|Disk Storage]] — block-level statistics that feed these estimates

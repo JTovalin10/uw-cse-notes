@@ -1,4 +1,4 @@
-# Database Design: BCNF Decomposition
+# CSE344: BCNF Decomposition
 
 BCNF decomposition is the algorithm for eliminating [[Data Anomalies|data anomalies]] by successively splitting a relation until it reaches [[Normalization#BCNF|Boyce-Codd Normal Form]].
 

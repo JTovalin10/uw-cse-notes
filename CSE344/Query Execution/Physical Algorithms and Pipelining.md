@@ -1,6 +1,6 @@
-# Query Execution: Physical Algorithms and Pipelining
+# CSE344: Physical Algorithms and Pipelining
 
-Physical operators are the concrete implementations of [[RA Operators|RA operators]] that the DBMS actually executes.
+**Physical operators** are the concrete implementations of [[RA Operators|RA operators]] that the DBMS actually executes.
 
 ## Physical Operator Classification
 
@@ -20,5 +20,9 @@ Physical operators come in two flavors:
 
 ## Related
 - [[Relational Algebra]] — the logical operators being physically implemented
+- [[RA Operators]] — logical operator reference
 - [[Cardinality Estimation]] — how the optimizer chooses between candidate physical plans
-- [[Disk Storage]] — how data is laid out on disk, which drives the I/O costs
+- [[Parallel Query Execution]] — how these single-node operators compose across machines
+- [[Parallel Join Algorithms]] — distributed join variants
+- [[CSE344/Database Design/Disk Storage|Disk Storage]] — how data is laid out on disk, which drives the I/O costs
+- [[CSE344/Database Design/Physical Design and Indices|Physical Design and Indices]] — physical storage decisions impacting operator costs

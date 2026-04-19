@@ -1,6 +1,6 @@
-# Query Execution: Main Memory Join Algorithms
+# CSE344: Main Memory Join Algorithms
 
-Main memory join algorithms assume the data fits entirely in main memory. These are the building blocks for [[External Memory Algorithms|external memory algorithms]].
+**Main memory join algorithms** assume the data fits entirely in main memory. These are the building blocks for [[External Memory Algorithms|external memory algorithms]].
 
 Consider:
 $$\text{Payroll} \bowtie_{\text{userid} = \text{userid}} \text{Registry}$$
@@ -8,6 +8,8 @@ $$\text{Payroll} \bowtie_{\text{userid} = \text{userid}} \text{Registry}$$
 Let $|\text{Payroll}| = m$ and $|\text{Registry}| = n$.
 
 ## Nested Loop Join
+
+The **nested loop join** is the simplest join algorithm — iterate over every tuple pair.
 
 ```python
 for x in Payroll:
@@ -19,6 +21,8 @@ for x in Payroll:
 Runtime: $O(mn)$
 
 ## Hash Join
+
+**Hash join** builds a hash table on one relation, then probes it with the other.
 
 ```python
 ht = new HashTable()
@@ -35,6 +39,8 @@ for y in Registry:
 - Worst case: $O(mn)$ (degenerate hash collisions)
 
 ## Merge Join
+
+**Merge join** sorts both inputs on the join key and merges them in a single pass.
 
 ```python
 sort(Payroll)
@@ -53,5 +59,8 @@ Merge join is particularly efficient when the input relations are already sorted
 
 ## Related
 - [[External Memory Algorithms]] — extensions of these algorithms when data doesn't fit in memory
+- [[Parallel Join Algorithms]] — distributed variants (partitioned hash join, broadcast join, skew join)
 - [[RA Operators#Join Operators]] — the logical join operators these algorithms implement
 - [[Physical Algorithms and Pipelining]] — overview of physical operator classification
+- [[Pipelined Execution]] — how these operators plug into the iterator interface
+- [[CSE344/SQL/Joins|Joins]] — the SQL surface syntax compiled into these joins

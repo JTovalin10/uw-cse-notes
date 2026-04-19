@@ -1,4 +1,4 @@
-# Database Design: Functional Dependencies (FDs)
+# CSE344: Functional Dependencies (FDs)
 
 A **Functional Dependency** $A_1, ..., A_m \rightarrow B_1, ..., B_n$ holds in relation $R$ if:
 $$
@@ -45,3 +45,7 @@ Some FDs logically imply other FDs.
 
 ## Related
 - [[Normalization]] — using FDs to normalize a schema into BCNF
+- [[Closures and Keys]] — computing $X^+$ and determining superkeys from FDs
+- [[BCNF Decomposition]] — the algorithm driven by FDs
+- [[Data Anomalies]] — the anomalies FDs help identify
+- [[Integrity Constraints]] — another way constraints are expressed in a schema
