@@ -1,14 +1,10 @@
-# Domain Name System (DNS)
+# CSE461: Domain Name System (DNS)
 
-The **Domain Name System (DNS)** is a distributed, hierarchical database that translates human-readable **Domain Names** into routable **IP Addresses**. It is a fundamental **[[Infrastructure Applications|Infrastructure Application]]**.
+The **Domain Name System (DNS)** is a distributed, hierarchical database that translates human-readable **domain names** into routable **IP addresses**. It is a fundamental infrastructure application of the Internet.
 
-- names:
-	- higher level identifiers for resources
-- addresses
-	- lower level locators for resource
-	- muktuplt levels
-- resoultion (lookup)
-	- mapping a name to an address
+- **Names** — higher-level identifiers for resources (e.g., `www.uw.edu`)
+- **Addresses** — lower-level locators for resources (e.g., `128.95.4.1`); can exist at multiple levels
+- **Resolution (lookup)** — the process of mapping a name to an address
 
 ---
 
@@ -25,7 +21,7 @@ The **Domain Name System (DNS)** is a distributed, hierarchical database that tr
 
 ### 1. Root Servers
 *   13 logical authorities at the top of the tree.
-*   Utilize **[[BGP Any-cast]]** to route requests to the nearest physical instance.
+*   Utilize **IP Anycast** ([[Routing Layer - Delivery Models#Anycast|anycast routing]]) to route requests to the nearest physical instance.
 
 ### 2. Top-Level Domains (TLDs)
 *   **gTLDs**: Generic domains like `.com`, `.edu`.
@@ -61,3 +57,11 @@ Data is stored as 5-tuples: **(Name, TTL, Type, Class, Value)**.
 
 ## Diagnostic Tools
 *   **`dig`**: Domain Information Groper. Use `dig +trace` to see the full iterative process.
+
+## Related
+- [[Local Nameservers]] — the resolver a client queries first
+- [[Root Nameservers]] — the top of the DNS hierarchy
+- [[Iterative vs Recursive Queries]] — resolution strategies
+- [[DNS protocol]] — wire format, UDP port 53, DNSSEC
+- [[Caching]] — how TTL-based caching reduces DNS lookup latency
+- [[Dynamic Host Configuration Protocol (DHCP)]] — also assigns addresses and configures the local nameserver

@@ -1,15 +1,24 @@
-- Often part of a device driver
-- **Non-blocking**, run to completion
-	- turn off all interrupts and work from start to end
-		- think concurrency in action where all expensive actions should be done without a mutex (creating shared or unique ptrs) and then acquiring a mutex lock
-	- Minimum necessary to allow device to take next interrupt
-	- Any waiting must be limited duration
-	- wake up other thread to do any real work
-		- Linux: semaphore
-	- rest of device driver runs as a kernel thread
+# CSE451: Interrupt Handler
 
-# End of interrupt handler
-- handler restores saved registers
-- atomically return to interrupted process/thread
-	- restore program counter, stack, status word/condition codes
-	- switch to user mode
+An **interrupt handler** (also called an **Interrupt Service Routine, ISR**) is the kernel code that executes when an interrupt fires. It is often part of a device driver.
+
+## Key Properties
+- **Non-blocking** — runs to completion with all interrupts turned off
+	- Any expensive actions should be done without a mutex; acquire the lock only for the critical update
+	- Minimum necessary work to allow the device to take the next interrupt
+	- Any waiting must be of limited duration
+- Wakes up another thread to do the real work
+	- Linux: uses a semaphore
+- The rest of the device driver runs as a kernel thread
+
+## End of Interrupt Handler
+1. Handler restores saved registers
+2. Atomically returns to the interrupted process/thread:
+	- Restores the program counter, stack, and status word/condition codes
+	- Switches back to user mode
+
+## Related
+- [[Interrupts]] — what triggers the handler
+- [[Interrupt Vector]] — the dispatch table that maps interrupts to handlers
+- [[Interrupt Masking]] — interrupts are disabled while the handler runs
+- [[Interrupt Stack]] — the stack the handler runs on

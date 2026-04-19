@@ -1,11 +1,3 @@
-**Extended Stack Pointer**
+See [[Pointer Registers#ESP — Extended Stack Pointer (32-bit)|Pointer Registers]] for full details.
 
-- Points to the **top of the stack** (current virtual position)
-- Automatically modified by `push` (decrements ESP) and `pop` (increments ESP)
-- Changes constantly during function execution as you push/pop values
-- **Callee-saved** - functions must restore ESP before returning
-
-**ESP vs EBP:**
-
-- **ESP**: Moves around (top of stack) - dynamic
-- **EBP**: Stays fixed (base of frame) - stable reference point
+**ESP** (Extended Stack Pointer) — points to the top of the stack; modified by push/pop.

@@ -1,4 +1,6 @@
-# MAC via Hashing
+# CSE484: Asymmetric Cryptography and Key Exchange
+
+## MAC via Hashing
 
 * A common (but naive) construction is `Tag = H(key || Message)`.
 * The security of such constructions depends on strong properties of the hash function $H$.
@@ -48,4 +50,12 @@
         * **Alice computes:** $S = B^a \pmod{p} = (g^b)^a \pmod{p} = g^{ab} \pmod{p}$.
         * **Bob computes:** $S = A^b \pmod{p} = (g^a)^b \pmod{p} = g^{ab} \pmod{p}$.
     * Both now share the same secret key $S$.
-* **Vulnerability:** This protocol **does not** protect from **Person-in-the-Middle (PITM)** attacks.
+* **Vulnerability:** This protocol **does not** protect against **Person-in-the-Middle (PITM)** attacks.
+
+## Related
+
+- [[Cryptography]] — symmetric encryption, block ciphers, and the key distribution problem
+- [[Hashing + Ciphertext Integrity]] — MACs and HMAC
+- [[Public Key Encryption + Digital Signatures]] — RSA and Schnorr signatures built on these hardness assumptions
+- [[CSE484/Policy and Access Control/Groups|Groups]] — mathematical foundation (cyclic groups, generators)
+- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — Diffie-Hellman is used in TLS for perfect forward secrecy

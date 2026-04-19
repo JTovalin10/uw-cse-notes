@@ -1,4 +1,6 @@
-# Applications of Public Key Cryptography
+# CSE484: Public Key Encryption and Digital Signatures
+
+## Applications of Public Key Cryptography
 
 -   Encryption for confidentiality
 -   Digital signatures for integrity
@@ -80,3 +82,11 @@ Bob ($pk_B, sk_B$) wants to sign a message $m$ and send it to Alice ($pk_A, sk_A
     * given positive integer $n$, find primes $p_1, \dots, p_k$ such that $n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}$
 * **If factoring is easy, then RSA problem is easy**
     * (knowing factors means you can compute $d$ = inverse of $e \mod (p-1)(q-1)$)
+
+## Related
+
+- [[Asymmetric Cryptography + key Exchange]] — Diffie-Hellman key exchange and hardness assumptions
+- [[Hashing + Ciphertext Integrity]] — hash functions used in signature constructions (Schnorr uses $H$)
+- [[Cryptography]] — symmetric encryption and the broader cryptographic ecosystem
+- [[CSE484/Policy and Access Control/Groups|Groups]] — group theory underlying RSA and Schnorr
+- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — where digital signatures are used for certificate verification

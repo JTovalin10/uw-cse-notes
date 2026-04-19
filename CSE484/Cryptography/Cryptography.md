@@ -1,3 +1,5 @@
+# CSE484: Cryptography
+
 ***
 
 ## Kerckhoff's Principle
@@ -197,4 +199,11 @@ An attacker is assumed to know the ciphertext and the encryption algorithm (Kerc
 * **CBC requires padding** the message to a length that is a multiple of the block size, whereas **CTR does not**.
     * (Handling padding securely can be tricky and lead to "padding oracle" attacks if not implemented carefully).
 * CTR does not require the inverse block cipher operation for decryption, which can be a small advantage (e.g., AES has a slightly different implementation for encryption and decryption).
-* 
+
+## Related
+
+- [[Hashing + Ciphertext Integrity]] — MACs, hash functions, and authenticated encryption
+- [[Asymmetric Cryptography + key Exchange]] — Diffie-Hellman key exchange and hardness assumptions
+- [[Public Key Encryption + Digital Signatures]] — RSA and Schnorr signatures
+- [[CSE484/Policy and Access Control/Targets for policy|Targets for Policy]] — CIA triad: confidentiality, integrity, availability
+- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — how symmetric and asymmetric crypto are combined in practice

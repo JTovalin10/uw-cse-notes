@@ -1,4 +1,4 @@
-# Operating System Roles: Referee, Illusionist, and Glue
+# CSE451: Operating System Roles
 
 ## Low-Level Primer: The Kernel's Three Primary Personas
 In the context of computer architecture, an **[[Operating System]]** acts as a layer of software that mediates between hardware and application software. To achieve its design goals of reliability, efficiency, and security, the kernel adopts three fundamental roles: the **Referee**, the **Illusionist**, and the **Glue**. Each role addresses a specific challenge of shared-resource management.
@@ -52,3 +52,11 @@ The **Glue** role provides a set of common, high-level abstractions and librarie
 | **Referee** | **Security & Fairness** | Dual-mode, Page Tables | System Crash, Data Theft |
 | **Illusionist** | **Simplicity & Scale** | Context Switching, VM | Complexity, Memory Limits |
 | **Glue** | **Interoperability** | Standard API (POSIX) | Fragmented, Incompatible Apps |
+
+## Related
+- [[Operating System]] — definition and design challenges
+- [[Hardware Modes]] — the dual-mode mechanism underlying the Referee role
+- [[CSE451/Kernel Abstraction/Memory/Virtual Addresses]] — the core illusion provided to processes
+- [[Context Switch]] — mechanism behind the virtual CPU illusion
+- [[System Call]] — standardized API that is the kernel's "glue"
+- [[Hardware Abstraction Layer]] — HAL as part of the Glue role

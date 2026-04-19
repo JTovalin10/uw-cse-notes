@@ -1,18 +1,21 @@
-high level:
+# CSE451: Mode Switch
 
-# Kernel to User
-1. new process/thread start
-	1. jump to first instruction in program/thread
-2. return from interrupt, exception, system call
-	1. resume suspended execution
-3. process/thread context switch
-	1. resume some other process
-4. user-level upcall (UNIX signal)
-	1. async notification to user program
-	2. - Example:
-	- user types control + c, it will call an interrupt and execute the code
+A **mode switch** is the transition between kernel mode and user mode (and vice versa).
 
-# User to Kernel
-- [[Interrupts]]
-- [[CSE351/System Programming/Exceptions]]
-- [[System Call]] (protected procedure call or a trap)
+## Kernel to User
+1. **New process/thread start** — jump to the first instruction in the program/thread
+2. **Return from interrupt, exception, or system call** — resume suspended execution
+3. **Process/thread context switch** — resume some other process
+4. **User-level upcall (UNIX signal)** — asynchronous notification to user program
+	- Example: user types Ctrl+C, which fires an interrupt and executes signal handler code
+
+## User to Kernel
+- [[Interrupts]] — hardware device signals the CPU
+- [[Exception]] — program causes a hardware error (e.g., segfault)
+- [[System Call]] — protected procedure call (trap) to request OS service
+
+## Related
+- [[Hardware Modes]] — the modes being switched between
+- [[Atomic Transfer of Control]] — the hardware mechanism for user-to-kernel transitions
+- [[Traps]] — the general mechanism for user-to-kernel transitions
+- [[Context Switch]] — switching between processes (not just modes)

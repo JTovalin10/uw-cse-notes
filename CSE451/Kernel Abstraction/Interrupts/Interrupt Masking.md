@@ -1,11 +1,21 @@
-- [[Interrupt Handler]] runs with interrupt off
-	- is re enabled when interrupt completes
-- OS kernel can also turn [[Interrupts]] off
-	- Eg. when determining the next process/thread to run
-	- on x86
-		- only in kernel mode
-		- [[CLI]]: disable interrupts
+# CSE451: Interrupt Masking
+
+**Interrupt masking** allows the OS to temporarily disable interrupt processing.
+
+- The [[Interrupt Handler]] runs with interrupts off; they are re-enabled when the handler completes
+- The OS kernel can also turn [[Interrupts]] off directly:
+	- Example: when determining the next process/thread to run
+	- On x86 this is only permitted in kernel mode:
+		- [[CLI]]: disables maskable interrupts
 		- [[STI]]: enables interrupts
-		- only applies to current CPU (on a multicore)
-- If another device interrupts during interrupt off
-	- it raises an interrupt and when interrupts turn back on, the interrupt handler sees it and takes action
+		- Only applies to the current CPU (on a multicore machine)
+
+## When Another Device Interrupts During Masking
+If another device raises an interrupt while interrupts are masked, the interrupt is latched. When interrupts are re-enabled, the handler sees it and takes action.
+
+## Related
+- [[Interrupts]] — the mechanism being masked
+- [[CLI]] — x86 instruction to disable interrupts
+- [[STI]] — x86 instruction to enable interrupts
+- [[IF]] — the interrupt flag bit in EFLAGS
+- [[Disabling Interrupts]] — using this as a synchronization mechanism

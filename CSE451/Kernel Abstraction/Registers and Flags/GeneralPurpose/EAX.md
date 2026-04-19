@@ -1,6 +1,3 @@
-Accumulator Register
-# what it does
-- Primary register for arithmetic operations
-- Holds **return values** from functions
-- Used for multiplication/division results
-- Often the "main" working register
+See [[General Purpose Registers#EAX — Accumulator Register|General Purpose Registers]] for full details.
+
+**EAX** (Accumulator Register) — primary register for arithmetic operations; holds function return values.

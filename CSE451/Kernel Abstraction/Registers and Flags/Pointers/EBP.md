@@ -1,6 +1,3 @@
-**Base Pointer / Frame Pointer**
+See [[Pointer Registers#EBP — Base Pointer / Frame Pointer (32-bit)|Pointer Registers]] for full details.
 
-- Points to **base of current stack frame**
-- Used to access local variables and function parameters
-- **Callee-saved** (must be preserved across function calls)
-- Makes debugging easier (stack traces)
+**EBP** (Base Pointer) — points to the base of the current stack frame; callee-saved.

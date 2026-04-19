@@ -1,7 +1,7 @@
-also # Content Distribution Networks (CDN)
+# CSE461: Content Distribution Networks (CDN)
 
 ## Overview
-CDNs are overlays of Server Surrogates designed to bypass Internet bottlenecks: First Mile, Last Mile, Server Overload, and Peering Point congestion.
+**Content Distribution Networks (CDNs)** are overlays of server surrogates designed to bypass Internet bottlenecks: First Mile congestion, Last Mile congestion, Server Overload, and Peering Point congestion.
 
 ---
 
@@ -26,3 +26,10 @@ CDNs are overlays of Server Surrogates designed to bypass Internet bottlenecks: 
 *   **System Throughput**: Balancing load across surrogates.
 
 *Figure: CDN architecture showing edge servers and origin server interaction*
+
+## Related
+- [[Web Caching]] — HTTP-level caching mechanics
+- [[Web Proxies]] — proxy architectures (CDNs act as reverse proxies)
+- [[Routing Layer - Delivery Models]] — anycast routing used by CDNs
+- [[Peer-to-Peer Networks]] — an alternative distribution model
+- [[Domain Name System (DNS)]] — DNS-based redirection is a core CDN mechanism

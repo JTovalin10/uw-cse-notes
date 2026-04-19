@@ -1,5 +1,3 @@
-**Destination Index**
+See [[General Purpose Registers#EDI — Destination Index|General Purpose Registers]] for full details.
 
-- **Destination pointer** for string/memory operations
-- Used in `movs`, `stos`, `scas` instructions
-- 1st function argument in x86-64 Linux calling convention
+**EDI** (Destination Index) — destination pointer for string operations; 1st function argument in x86-64 Linux.

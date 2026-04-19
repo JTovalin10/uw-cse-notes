@@ -1,6 +1,3 @@
-Base Register
+See [[General Purpose Registers#EBX — Base Register|General Purpose Registers]] for full details.
 
-- General-purpose register
-- **Callee-saved** (function must preserve it)
-- Often used to hold base addresses or pointers
-- Less commonly used in modern calling conventions
+**EBX** (Base Register) — general-purpose; callee-saved; often used to hold base addresses.

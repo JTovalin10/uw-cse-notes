@@ -1,4 +1,6 @@
-# Message Authentication Code (MAC)
+# CSE484: Hashing and Ciphertext Integrity
+
+## Message Authentication Code (MAC)
 
 * **MAC (sometimes called a tag):** A short piece of information used to authenticate a message.
 
@@ -54,3 +56,10 @@
 * If we want both **confidentiality** (encryption) and **integrity/authenticity** (MAC), we must combine an encryption scheme and a MAC.
 * This is called **Authenticated Encryption (AE)** or Authenticated Encryption with Associated Data (AEAD).
 * It is crucial to combine them in a secure way (e.g., "Encrypt-then-MAC"). Modern schemes like AES-GCM are designed to do both in one efficient operation.
+
+## Related
+
+- [[Cryptography]] — symmetric encryption, block ciphers, OTP
+- [[Asymmetric Cryptography + key Exchange]] — Diffie-Hellman and key exchange
+- [[Public Key Encryption + Digital Signatures]] — digital signatures also provide integrity
+- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — uses HMAC and AES-GCM for integrity in practice

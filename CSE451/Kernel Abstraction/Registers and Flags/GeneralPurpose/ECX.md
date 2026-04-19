@@ -1,6 +1,3 @@
-Counter Register
+See [[General Purpose Registers#ECX — Counter Register|General Purpose Registers]] for full details.
 
-- Used as a **loop counter** (e.g., in `loop` instruction)
-- Holds **shift/rotate counts**
-- 4th function argument in some calling conventions
-- Often used in string operations
+**ECX** (Counter Register) — loop counter, shift/rotate counts, 4th function argument.

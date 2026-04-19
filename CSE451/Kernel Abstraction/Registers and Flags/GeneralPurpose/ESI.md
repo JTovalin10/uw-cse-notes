@@ -1,5 +1,3 @@
-Source Index
+See [[General Purpose Registers#ESI — Source Index|General Purpose Registers]] for full details.
 
-- **Source pointer** for string/memory operations
-- Used in `movs`, `cmps`, `lods` instructions
-- 2nd function argument in x86-64 Linux calling convention
+**ESI** (Source Index) — source pointer for string operations; 2nd function argument in x86-64 Linux.
