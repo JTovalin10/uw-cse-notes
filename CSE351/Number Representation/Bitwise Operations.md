@@ -1,8 +1,6 @@
-# Bitwise Operations
+# CSE351: Bitwise Operations
 
-Bitwise operators manipulate individual bits of integral data types (`char`, `int`, `long`).
-
-**Related:** [[Binary and Hexadecimal]], [[Two's Complement]], [[Bit Shifting]]
+**Bitwise operators** manipulate individual bits of integral data types (`char`, `int`, `long`).
 
 ---
 
@@ -11,7 +9,7 @@ Bitwise operators manipulate individual bits of integral data types (`char`, `in
 ### AND (`&`)
 Sets result bit to `1` only if **both** input bits are `1`.
 
-**Use Case:** Masking/isolating specific bits
+**Use Case:** **Masking** or isolating specific bits.
 
 ```c
   01010101  (85)
@@ -23,7 +21,7 @@ Sets result bit to `1` only if **both** input bits are `1`.
 ### OR (`|`)
 Sets result bit to `1` if **at least one** input bit is `1`.
 
-**Use Case:** Setting/turning on specific bits
+**Use Case:** Setting or turning on specific bits.
 
 ```c
   01010101  (85)
@@ -35,7 +33,7 @@ Sets result bit to `1` if **at least one** input bit is `1`.
 ### XOR (`^`) - Exclusive OR
 Sets result bit to `1` if bits are **different**.
 
-**Use Case:** Toggling/flipping specific bits
+**Use Case:** Toggling or flipping specific bits.
 
 ```c
   01010101  (85)
@@ -60,7 +58,7 @@ Inverts all bits.
 | Bitwise | Logical | Difference |
 |---------|---------|------------|
 | `&` | `&&` | Bitwise operates on each bit; logical treats whole value as true/false |
-| `\|` | `\|\|` | Same as above |
+| `|` | `||` | Same as above |
 | `~` | `!` | Bitwise inverts bits; logical returns 0 or 1 |
 
 ### Logical Operators
@@ -74,4 +72,8 @@ int result = (5 || 0);  // result is 1 (true)
 int result = !0;        // result is 1 (true)
 ```
 
-**Related:** [[Condition Codes]]
+## Related
+- [[CSE351/Number Representation/Binary and Hexadecimal|Binary and Hexadecimal]]
+- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
+- [[CSE351/Number Representation/Bit Shifting|Bit Shifting]]
+- [[CSE351/x86-64 Assembly/Condition Codes|Condition Codes]]

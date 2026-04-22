@@ -1,19 +1,13 @@
-# Pointers
+# CSE351: Pointers
 
-Pointers are special variables that store a **memory address**. The size of a pointer depends on the system's architecture (8 bytes on 64-bit), not the type of data it points to.
-
-**Related:** [[Words and Memory]], [[Endianness]], [[Pointer Arithmetic]]
-
----
+A **pointer** is a special variable that stores a **memory address**. In a 64-bit architecture like x86-64, pointers are always 8 bytes in size, regardless of the data type they point to.
 
 ## Key Pointer Operators
 
 | Operator | Name | Description |
 |:--------:|:-----|:------------|
-| `&` | Address-of | Returns the memory address of a variable |
-| `*` | Dereference | Accesses the value at the address a pointer holds |
-
----
+| `&` | **Address-of** | Returns the memory address of a variable. |
+| `*` | **Dereference** | Accesses the value stored at the address a pointer holds. |
 
 ## Defining and Using Pointers
 
@@ -38,18 +32,37 @@ int main() {
 }
 ```
 
+The type a pointer points to determines:
+- How many bytes to read/write when dereferencing.
+- How **pointer arithmetic** scales operations.
+
 ---
 
-## Pointer Types
+## Pointer Arithmetic
 
-The type a pointer points to determines:
-- How many bytes to read/write when dereferencing
-- How [[Pointer Arithmetic]] scales operations
+Pointer arithmetic automatically scales operations by the size of the data type being pointed to. It treats memory as a sequence of "elements" rather than just raw bytes.
 
+### Adding an Integer to a Pointer
+Calculates the memory address of an element a certain number of places away.
+**Formula:** `New Address = Current Address + (Integer * sizeof(Data Type))`
+
+- **`int` Pointer (4 bytes)**: `p1 + 3` starting at `0x1000` becomes `0x1000 + (3 * 4) = 0x100c`.
+- **`char` Pointer (1 byte)**: `p1 + 3` starting at `0x1000` becomes `0x1000 + (3 * 1) = 0x1003`.
+
+### Subtracting Two Pointers
+Returns the **number of elements** between two addresses.
+**Formula:** `Element Difference = (Address2 - Address1) / sizeof(Data Type)`
+
+- **Example**: If `p1` is `0x1000` and `p2` is `0x1030` (48 bytes apart), the difference for `int` pointers is `48 / 4 = 12` elements.
+
+### Connection to Arrays
+The subscript operator `ar[i]` is syntactic sugar for pointer arithmetic:
 ```c
-int* ip;    // Points to int (4 bytes)
-char* cp;   // Points to char (1 byte)
-long* lp;   // Points to long (8 bytes)
+ar[i] == *(ar + i)
 ```
 
-**Related:** [[Arrays]], [[The Stack]], [[CSE484/Memory Exploits/Memory Layout]]
+## Related
+- [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory]]
+- [[CSE351/Memory Fundamentals/Endianness|Endianness]]
+- [[CSE351/Data Structures/Arrays|Arrays]]
+- [[CSE351/x86-64 Assembly/x86-64 Memory Operands|x86-64 Memory Operands]]

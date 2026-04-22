@@ -25,7 +25,9 @@ While often mapped to physical nodes, roles are distinct functional entities:
 - **Proposers**: Propose values by starting a new **Ballot** with a round number $r$. They first communicate with acceptors (1a message) to learn about any values from previous rounds.
 - **Acceptors**: Vote on proposals. A **Majority** (more than half) of acceptors must agree for a value to be chosen. They respond with a 1b message containing a summary of their previous votes.
 - **Learners**: Learn the final results by waiting for a majority of 2b messages in the same round.
-
+### Messages
+- 1a = prepare request for proposal and collects results for propose
+- 1b = prepare response
 ### Ballots (Rounds)
 - **Ballot Number**: A monotonically increasing identifier.
 - Each ballot has a proposed value, and acceptors vote to accept it.
@@ -36,6 +38,7 @@ While often mapped to physical nodes, roles are distinct functional entities:
 1. **Proposer**: Picks a round number $r$ and sends a **1a(r)** (Prepare) message to all acceptors.
 2. **Acceptor**: Responds with a **1b(r, summary)** (Promise) message.
    - The summary indicates if they have already voted in a previous round and, if so, what that value was.
+   - if they voted then they send back the highest numbered vote in the previous round (2b(r', v'))
 
 #### Phase 2 (Accept)
 1. **Proposer**: Waits for a majority of 1b messages.

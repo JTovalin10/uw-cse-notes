@@ -1,1 +1,0 @@
-A memory block can be placed in any cache line. The cache must compare the tag against all lines simultaneously (using parallel comparators) to determine if the data is present. This eliminates conflict misses and gives maximum flexibility in placement, but requires the most hardware and is typically only practical for small caches (e.g., TLBs).

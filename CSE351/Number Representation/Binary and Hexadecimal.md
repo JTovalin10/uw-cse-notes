@@ -1,16 +1,14 @@
-# Binary and Hexadecimal
+# CSE351: Binary and Hexadecimal
 
 ## Conversion to Decimal
 $$ \sum_{i=0}^n d \times b^i$$
 What this means is that we take the digit at position $i$ and multiply it by our current base to the power of the current index (working backwards from least significant digit).
 
-**Related:** [[Two's Complement]], [[Unsigned Integers]]
-
 ---
 
 ## Converting from Decimal to Binary
 
-To convert a decimal (base-10) number to binary (base-2), use the subtraction method:
+To convert a **decimal** (base-10) number to **binary** (base-2), use the subtraction method:
 
 1. **Find the largest power of 2** that is less than or equal to your target number
 2. **Place a '1'** in the corresponding position
@@ -46,6 +44,10 @@ To convert a decimal (base-10) number to binary (base-2), use the subtraction me
 | 14 | `0xE` |
 | 15 | `0xF` |
 
-Each hex digit corresponds to exactly 4 binary bits (a nibble).
+Each hex digit corresponds to exactly 4 binary bits (a **nibble**).
 
-**Related:** [[Bitwise Operations]], [[Memory and Addresses]]
+## Related
+- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
+- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
+- [[CSE351/Number Representation/Bitwise Operations|Bitwise Operations]]
+- [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory]]

@@ -1,8 +1,6 @@
-# Unsigned Integers
+# CSE351: Unsigned Integers
 
-Unsigned integers represent **non-negative numbers** (0 and positive). The bit pattern matches standard binary numerals stored in a fixed width.
-
-**Related:** [[Two's Complement]], [[Binary and Hexadecimal]], [[Overflow]]
+**Unsigned integers** represent **non-negative numbers** (0 and positive). The bit pattern matches standard binary numerals stored in a fixed width.
 
 ---
 
@@ -23,7 +21,7 @@ For $n$ bits: range is **$0$ to $2^n - 1$**
 
 ## Binary Arithmetic
 
-Addition and subtraction work like decimal, but **carry/borrow** happens at value **2** instead of 10.
+Addition and subtraction work like decimal, but **carry** or **borrow** happens at value **2** instead of 10.
 
 ### Example: Binary Addition (8-bit)
 
@@ -38,4 +36,8 @@ Adding `170 + 73 = 243`:
   11110011  (243)
 ```
 
-**Related:** [[Overflow]], [[Bit Shifting]]
+## Related
+- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
+- [[CSE351/Number Representation/Binary and Hexadecimal|Binary and Hexadecimal]]
+- [[CSE351/Number Representation/Overflow|Overflow]]
+- [[CSE351/Number Representation/Bit Shifting|Bit Shifting]]

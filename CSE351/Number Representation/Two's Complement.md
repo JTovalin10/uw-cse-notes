@@ -1,8 +1,6 @@
-# Two's Complement
+# CSE351: Two's Complement
 
-Two's Complement is the standard representation for **signed integers** in all modern computers, allowing both positive and negative numbers.
-
-**Related:** [[Unsigned Integers]], [[Binary and Hexadecimal]], [[Overflow]]
+**Two's Complement** is the standard representation for **signed integers** in all modern computers, allowing both positive and negative numbers.
 
 ---
 
@@ -55,4 +53,8 @@ For $n$ bits: **$-2^{n-1}$ to $2^{n-1} - 1$**
 3. Add one: `0b11001110`
 4. Verify: $-128 + 64 + 8 + 4 + 2 = -50$
 
-**Related:** [[Bitwise Operations]], [[Overflow]]
+## Related
+- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
+- [[CSE351/Number Representation/Binary and Hexadecimal|Binary and Hexadecimal]]
+- [[CSE351/Number Representation/Overflow|Overflow]]
+- [[CSE351/Number Representation/Bitwise Operations|Bitwise Operations]]
