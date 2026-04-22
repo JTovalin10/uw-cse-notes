@@ -46,7 +46,7 @@ A **page** holds records and is the unit of I/O between disk and memory.
 - **Adding a tuple**: find free space and claim it; update N (tuple count)
 - **Deleting a tuple**: difficult — records cannot be moved because RIDs contain the slot number; also cannot handle variable-length tuples
 
-![[Page Format Approach 1.png]]
+![[Screenshots/Page Format Approach 1.png]]
 
 ### Approach 2: Slot Directory
 - Sacrifice a small amount of space for a **slot directory** in the page header
@@ -56,7 +56,7 @@ A **page** holds records and is the unit of I/O between disk and memory.
 - slot directory grows left
 - slots grow right
 
-![[Page Format Approach 2.png]]
+![[Screenshots/Page Format Approach 2.png]]
 
 ---
 
@@ -67,13 +67,13 @@ A **page** holds records and is the unit of I/O between disk and memory.
 - The same byte length is used for every record in the relation
 - Simple to navigate: field offset = sum of preceding field lengths
 
-![[Record Formats.png]]
+![[Screenshots/Record Formats.png]]
 
 ### Variable-Length Records
 - Fields like `VARCHAR` can differ in length across records
 - Requires storing offsets or delimiters to locate each field within a record
 
-![[Variable length records.png]]
+![[Screenshots/Variable length records.png]]
 
 ---
 
@@ -90,7 +90,7 @@ A **page** holds records and is the unit of I/O between disk and memory.
 
 A **heap file** is an unordered collection of pages containing records. It is the simplest file organization.
 
-![[Heap File Implementations.png]]
+![[Screenshots/Heap File Implementations.png]]
 
 ---
 
@@ -106,7 +106,7 @@ The **buffer manager** sits between the storage layer and the rest of the DBMS. 
 - Tracks which pages are **dirty** — a dirty page has in-memory modifications not yet written back to disk
   - Each frame has a **dirty bit**; a dirty frame must be flushed before eviction
 
-![[screenshots/Buffer Manager Image.png]]
+![[Screenshots/Buffer Manager Image.png]]
 
 ### Pushing Updates to Disk
 

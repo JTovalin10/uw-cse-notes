@@ -22,7 +22,7 @@ Relational algebra has two flavors:
 
 Queries are built by composing **relational operators**, each of which takes one or two relation instances as arguments and returns one relation instance. Operators compose into **relational algebra expression trees**. Note that join takes exactly two inputs — joining 3+ relations requires multiple join operators.
 
-![[Five Basic Relational Operators.png]]
+![[Screenshots/Five Basic Relational Operators.png]]
 
 | Operator | Symbol | SQL Equivalent | Description |
 |----------|--------|---------------|-------------|
@@ -64,7 +64,7 @@ SQL maps to relational algebra in the following operator order (FROM and WHERE a
 5. **ORDER BY**
 6. **SELECT** (projection $\pi$)
 
-![[Basic SQL to RA Conversion.png]]
+![[Screenshots/Basic SQL to RA Conversion.png]]
 
 **Notation notes**:
 - $\gamma_{P.userId,\ P.name,\ count(*) \to cnt}$ means: group by those attributes and rename the count to `cnt`
@@ -73,8 +73,8 @@ SQL maps to relational algebra in the following operator order (FROM and WHERE a
 
 #### Examples
 
-![[Eng to SQL 1.png]]
-![[Eng to SQL 2.png]]
+![[Screenshots/Eng to SQL 1.png]]
+![[Screenshots/Eng to SQL 2.png]]
 
 ---
 
@@ -85,3 +85,4 @@ SQL maps to relational algebra in the following operator order (FROM and WHERE a
 - [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — CSE344 in-depth RA operator coverage
 - [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — detailed SQL-to-RA translation rules
 - [[CSE344/SQL/Joins|Joins]] — SQL join syntax and semantics
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/What is a Set|CSE311]] (Set Theory and Logic)

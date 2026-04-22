@@ -14,7 +14,7 @@ A **B+ tree** is a **balanced search tree** optimized for disk-page access. It i
 - **Leaves are linked** in a doubly-linked list, enabling efficient range scans
 - Each node access = one page read (which is expensive — the whole point is to minimize tree height)
 
-![[screenshots/B+ Tree example.png]]
+![[Screenshots/B+ Tree example.png]]
 
 ---
 
@@ -32,11 +32,11 @@ A **B+ tree** is a **balanced search tree** optimized for disk-page access. It i
 - Each **internal node** has $d \leq m \leq 2d$ keys (except the root, which may have fewer)
 - Each internal node with $m$ keys has $m + 1$ child pointers
 
-![[screenshots/B+ tree node pointers.png]]
+![[Screenshots/B+ tree node pointers.png]]
 
 - Each **leaf node** has $d \leq m \leq 2d$ key/pointer pairs
 
-![[screenshots/B+ tree leaf keys.png]]
+![[Screenshots/B+ tree leaf keys.png]]
 
 ### Computing $d$ for a Given Page Size
 
@@ -87,7 +87,7 @@ Cost: $O(\log_{2d} n)$ page reads.
    - For an internal node split: distribute keys; the middle key is pushed up (not kept in the children)
    - If the root splits, a **new root** is created with just one key
 
-![[screenshots/Insertion in a B+ tree.png]]
+![[Screenshots/Insertion in a B+ tree.png]]
 
 ### Deletion
 
@@ -101,8 +101,8 @@ Cost: $O(\log_{2d} n)$ page reads.
    - Remove the separator key from the parent
    - Repeat the algorithm on the parent (which may itself become underfull)
 
-![[screenshots/Deletion from a B+ Tree.png]]
-![[screenshots/Deletion from a B+ Tree 2.png]]
+![[Screenshots/Deletion from a B+ Tree.png]]
+![[Screenshots/Deletion from a B+ Tree 2.png]]
 
 ---
 
@@ -123,5 +123,6 @@ Cost: $O(\log_{2d} n)$ page reads.
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Indexing|Indexes and File Organizations]] — clustered/unclustered indexes, dense/sparse indexes, and how B+ trees fit into file organizations
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats and buffer pool management
 - [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture]] — how the storage manager and buffer manager use index structures
+- [[CSE332/README|CSE332]] (Balanced Trees)
 - [[CSE344/Database Design/Database Indices|Database Indices]] — CSE344 overview of index structures
 - [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — clustered vs. unclustered index design

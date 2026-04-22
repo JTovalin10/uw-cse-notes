@@ -16,7 +16,7 @@ We choose $k = M - 1$, giving each bucket size approximately:
 
 $$\frac{B(R)}{M - 1} \approx \frac{B(R)}{M}$$
 
-![[CSE444/screenshots/Partitioned Hash Algorithm.png]]
+![[CSE444/Screenshots/Partitioned Hash Algorithm.png]]
 
 ## Algorithm
 
@@ -28,19 +28,19 @@ $$\frac{B(R)}{M - 1} \approx \frac{B(R)}{M}$$
 
 $$\text{Cost} = 3(B(R) + B(S))$$
 
-Same asymptotic cost as [[CSE444/Query Evaluation/Merge-Join|merge-join]], but without requiring a sort — useful when data is not already sorted or when sorting is more expensive.
+Same asymptotic cost as [[CSE444/Query Evaluation/Sort-Merge Join|sort-merge join]], but without requiring a sort — useful when data is not already sorted or when sorting is more expensive.
 
 ## Example
 
-![[CSE444/screenshots/Partitioned Hash Join ex1.png]]
-![[CSE444/screenshots/Partitioned Hash-Join ex 2.png]]
-![[CSE444/screenshots/Partitoned hash-join 2.png]]
-![[CSE444/screenshots/Partitioned Hash-Join 4.png]]
-![[CSE444/screenshots/Partitioned Hash Join 6.png]]
+![[CSE444/Screenshots/Partitioned Hash Join ex1.png]]
+![[CSE444/Screenshots/Partitioned Hash-Join ex 2.png]]
+![[CSE444/Screenshots/Partitoned hash-join 2.png]]
+![[CSE444/Screenshots/Partitioned Hash-Join 4.png]]
+![[CSE444/Screenshots/Partitioned Hash Join 6.png]]
 
 ## Related
 
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — overview of all algorithm families and cost parameters
 - [[CSE444/Query Evaluation/Hash Join|Hash Join]] — the one-pass hash join used within each bucket pair
-- [[CSE444/Query Evaluation/Merge-Join|Merge-Join]] — alternative two-pass join algorithm using sorting
+- [[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]] — alternative two-pass join algorithm using sorting
 - [[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]] — the sort-based counterpart to partitioned hashing

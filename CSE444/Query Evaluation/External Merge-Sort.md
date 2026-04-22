@@ -36,7 +36,7 @@ Phase 1 produces sorted runs of length $M$; phase 2 merges them into a single so
 
 Each run has length $M$. There are $\lceil B(R) / M \rceil$ runs after phase 1.
 
-![[CSE444/screenshots/External Merge-Sort step 1.png]]
+![[CSE444/Screenshots/External Merge-Sort step 1.png]]
 
 ## Phase 2: Merge Runs
 
@@ -44,11 +44,11 @@ Merge $M - 1$ runs at a time into a single larger sorted run, using 1 buffer pag
 - Result: runs of length $M(M-1) \approx M^2$
 - If $B(R) \leq M^2$, the entire relation is sorted after one merge pass
 
-![[CSE444/screenshots/External Merge Sort phase 2.png]]
+![[CSE444/Screenshots/External Merge Sort phase 2.png]]
 
 ### Example
 
-![[CSE444/screenshots/External Merge-Sort phase 2 example.png]]
+![[CSE444/Screenshots/External Merge-Sort phase 2 example.png]]
 
 ## Related
 

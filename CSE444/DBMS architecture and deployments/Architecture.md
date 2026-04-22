@@ -2,7 +2,7 @@
 
 A DBMS has two major subsystems: the **Query Processor** (where queries are executed) and the **Storage Manager** (where data is stored).
 
-![[DBMS Architecture.png]]
+![[Screenshots/DBMS Architecture.png]]
 
 ---
 
@@ -54,7 +54,7 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
     - Operator implementation to use at each node
 
 #### Logical Query Plan
-![[Logical Query Plan.png]]
+![[Screenshots/Logical Query Plan.png]]
 
 #### Physical Query Plan
 - Logical query plan with extra annotations
@@ -63,7 +63,7 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
   - Bottom of tree = reading from disk
   - Use a file scan or use an index
 
-![[Physical Query Plan.png]]
+![[Screenshots/Physical Query Plan.png]]
 
 ### 4. Executor
 - Actually executes the physical plan and returns results
@@ -88,7 +88,7 @@ Every operator implements an iterator interface (e.g., `OPIterator.java` in the 
 
 Each operator holds a reference to its child operator and can call `child.open()`, `child.next()`, etc.
 
-![[Query Execution.png]]
+![[Screenshots/Query Execution.png]]
 
 ---
 
@@ -138,7 +138,7 @@ The optimizer chooses among these during **access path selection** when building
   - Each frame has a **dirty bit**
   - A dirty frame must be **flushed** to disk before it can be evicted (write-back)
 
-![[Buffer Manager.png]]
+![[Screenshots/Buffer Manager.png]]
 
 See [[Data Storage and Buffer Management]] for details on page formats, record layouts, and heap file organization.
 
@@ -151,3 +151,4 @@ See [[Data Storage and Buffer Management]] for details on page formats, record l
 - [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — translating SQL into relational algebra trees
 - [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — physical operator implementations
 - [[CSE344/Database Design/Database Indices|Database Indices]] — index structures used in access path selection
+- [[CSE451/OS Architecture/OS Structure|CSE451]] (OS Structure and Layers)

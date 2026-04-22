@@ -24,7 +24,7 @@ Note: indexes are fast for highly selective queries (small $\frac{1}{V(R,a)}$), 
 
 ### Example
 
-![[CSE444/screenshots/Index-based selection example.png]]
+![[CSE444/Screenshots/Index-based selection example.png]]
 
 ## Index Nested Loop Join
 

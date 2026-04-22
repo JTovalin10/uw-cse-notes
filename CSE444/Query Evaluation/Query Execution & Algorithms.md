@@ -32,7 +32,7 @@ A **BP-tuple** (buffer pool tuple) is a tuple descriptor that holds a pointer di
 
 When an operator constructs a BP-tuple, it references a tuple in the buffer pool and must **increment the pin count** of that page. The pin count is decremented when the descriptor is cleared, ensuring the page is not evicted while it is in use.
 
-![[CSE444/screenshots/BP-Tuples.png]]
+![[CSE444/Screenshots/BP-Tuples.png]]
 
 **Pros:**
 - No data copying — excellent performance since data is read in-place from the buffer pool
@@ -45,7 +45,7 @@ When an operator constructs a BP-tuple, it references a tuple in the buffer pool
 
 An **M-tuple** (memory tuple) is a tuple that is fully materialized — the actual data is copied out of the buffer pool and stored as a new allocation on the heap.
 
-![[CSE444/screenshots/M-Tuples.png]]
+![[CSE444/Screenshots/M-Tuples.png]]
 
 **Pros:**
 - No need to hold pages pinned in the buffer pool (only briefly pinned during the copy)

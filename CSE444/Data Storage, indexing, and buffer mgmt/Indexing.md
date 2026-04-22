@@ -30,7 +30,7 @@ Examples of attribute-based queries:
 - A heap file is **not sorted** on any attribute
 - Attribute-based queries require a full sequential scan
 
-![[screenshots/Searching in a Heap File.png]]
+![[Screenshots/Searching in a Heap File.png]]
 
 #### Sorted File (Sequential File)
 
@@ -46,7 +46,7 @@ CREATE CLUSTERED INDEX s_sid ON Student(sid);
 - Binary search is possible: $O(\log_2 n)$ cost
 - See [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]]
 
-![[screenshots/Sequential File.png]]
+![[Screenshots/Sequential File.png]]
 
 **Limitations of Sorted Files:**
 - The $\log_2 n$ binary search only applies to the indexed attribute
@@ -68,16 +68,16 @@ An **index** is a separate file that enables fast access by a **search key** val
 - `(k, list-of-RIDs)` — multiple pointers (when key is not unique)
 - The full record with key k — a **clustered (primary) index**
 
-![[screenshots/Indexes Image.png]]
+![[Screenshots/Indexes Image.png]]
 
 ### Clustered Index (Primary Index)
 
 - Records in the data file have the **same order** as in the index
 - **Dense index**: a `(key, RID)` pair for every record; each entry points to one specific record
-  - ![[screenshots/Dense Index.png]]
+  - ![[Screenshots/Dense Index.png]]
 - **Sparse index**: stores only a subset of `(key, RID)` pairs; each entry points to a page rather than a specific record
   - Only works on a clustered index (requires physical sorting)
-  - ![[screenshots/Sparse Index.png]]
+  - ![[Screenshots/Sparse Index.png]]
 
 ### Secondary Index (Unclustered Index)
 
@@ -86,7 +86,7 @@ An **index** is a separate file that enables fast access by a **search key** val
   - Cannot use the sparse index space optimization since the data is not physically sorted on the secondary key
 - Inserts and deletions are expensive — the index must be updated
 
-![[screenshots/Secondary Indexes.png]]
+![[Screenshots/Secondary Indexes.png]]
 
 ### Overflow Pages
 

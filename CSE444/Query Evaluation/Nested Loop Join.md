@@ -43,7 +43,7 @@ for each group of ceil(M-1) pages r in R do
             if t1 and t2 join then output(t1, t2)
 ```
 
-![[CSE444/screenshots/Block Memory Refinement.png]]
+![[CSE444/Screenshots/Block Memory Refinement.png]]
 
 ## Comparison
 

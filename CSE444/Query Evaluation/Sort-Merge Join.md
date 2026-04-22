@@ -1,30 +1,45 @@
 # CSE444: Sort-Merge Join
 
-**Sort-merge join** $R \bowtie S$ sorts both relations on the join attribute and then merges them in a single linear scan.
+**Sort-merge join** $R \bowtie S$ is a join algorithm that sorts both relations on the join attribute and then merges them in a linear scan. It can be implemented as either a one-pass or two-pass algorithm depending on available memory.
 
-## Algorithm
+## One-Pass Algorithm
 
-1. Scan $R$ and sort in main memory
-2. Scan $S$ and sort in main memory
-3. Merge $R$ and $S$ on the join attribute
+If both relations fit entirely in main memory ($B(R) + B(S) \leq M$), sort-merge join is a one-pass algorithm.
 
-## Cost
+1. Scan $R$ and sort in memory.
+2. Scan $S$ and sort in memory.
+3. Merge $R$ and $S$ on the join attribute.
 
 **Cost**: $B(R) + B(S)$
 
-This is a **one-pass algorithm** when $B(R) + B(S) \leq M$ — both tables must fit in memory simultaneously. In practice, this constraint is often not met, making sort-merge join a two-pass algorithm that depends on [[CSE444/Query Evaluation/External Merge-Sort|external merge-sort]] to pre-sort large relations.
+![[CSE444/Screenshots/Sort-Merge Join.png]]
 
-## Example
+## Two-Pass Algorithm (Sort-Merge Join)
 
-![[CSE444/screenshots/Sort-Merge Join.png]]
+When relations are too large to fit in memory, sort-merge join (often called **merge-join** in this context) uses **external merge-sort** to handle the data.
 
-1. Scan Patients and sort in memory
-2. Scan Insurance and sort in memory
-3. Merge Patients and Insurance on the join key
+1. **Step 1** — Generate initial sorted runs for both $R$ and $S$ using [[CSE444/Query Evaluation/External Merge-Sort|external merge-sort]].
+2. **Step 2** — Merge and join:
+   - Option A: Fully merge $R$ and $S$ to disk first, then join the sorted results.
+   - Option B: Merge the final sorted runs of $R$ and $S$ and perform the join simultaneously in a single pass.
+
+**Cost**: $3(B(R) + B(S))$
+
+This is feasible when $B(R) + B(S) \leq M^2$, which holds for most practical relation sizes given modern buffer pool sizes.
+
+![[CSE444/Screenshots/Merge Join.png]]
+
+### Two-Pass Example
+
+![[CSE444/Screenshots/Merge join example 1.png]]
+![[CSE444/Screenshots/Sort-Merge Join example 2.png]]
+![[CSE444/Screenshots/Merge Join Example 3.png]]
+
+---
 
 ## Related
 
-- [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — overview of all algorithm families
-- [[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]] — used when relations are too large to sort in memory
-- [[CSE444/Query Evaluation/Hash Join|Hash Join]] — alternative one-pass join algorithm
+- [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — overview of all algorithm families and cost parameters
+- [[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]] — the sorting primitive used for large relations
+- [[CSE444/Query Evaluation/Hash Join|Hash Join]] — alternative join algorithm (one-pass or two-pass)
 - [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — simpler but higher-cost alternative
