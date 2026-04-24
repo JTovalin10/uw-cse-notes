@@ -1,0 +1,431 @@
+CSE 332 Winter 2026
+Lecture 4: Algorithm Analysis
+and Priority Queues
+Nathan Brunelle
+http://www.cs.uw.edu/332
+
+Goals for Algorithm Analysis
+• Identify a function which maps the algorithm’s input size to a measure
+of resources used
+• Domain of the function: sizes of the input
+• Number of characters in a string, number of items in a list, number of pixels in an image
+
+• Codomain of the function: counts of resources used
+• Number of times the algorithm adds two numbers together, number times the algorithm
+does a > or < comparison, maximum number of bytes of memory the algorithm uses at
+any time
+
+• Important note: Make sure you know the “units” of your domain and
+codomain!
+• Domain = inputs to the function
+• Codomain = outputs to the function
+
+Comparing
+
+Comparing Running Times
+• Suppose I have these algorithms, all of which have the same
+input/output behavior:
+• Algorithm A’s worst case running time is 10𝑛 + 900
+• Algorithm B’s worst case running time is 100𝑛 − 50
+𝑛2
+• Algorithm C’s worst case running time is
+100
+
+• Which algorithm is best?
+
+𝑓(𝑛) = 𝑂(𝑔 𝑛 )
+𝑓(𝑛) = Θ(𝑔 𝑛 )
+𝑓(𝑛) = Ω(𝑔 𝑛 )
+
+Asymptotic Notation
+•𝑂 𝑔 𝑛
+• The set of functions with asymptotic behavior less than or equal to 𝑔 𝑛
+• Upper-bounded by a constant times 𝑔 for large enough values 𝑛
+• 𝑓 ∈ 𝑂 𝑔 𝑛 ≡ ∃𝑐 > 0. ∃𝑛0 > 0. ∀𝑛 ≥ 𝑛0 . 𝑓 𝑛 ≤ 𝑐 ⋅ 𝑔 𝑛
+
+• Ω(𝑔 𝑛 )
+
+• the set of functions with asymptotic behavior greater than or equal to 𝑔 𝑛
+• Lower-bounded by a constant times 𝑔 for large enough values 𝑛
+• 𝑓 ∈ Ω 𝑔 𝑛 ≡ ∃𝑐 > 0. ∃𝑛0 > 0. ∀𝑛 ≥ 𝑛0 . 𝑓 𝑛 ≥ 𝑐 ⋅ 𝑔 𝑛
+
+•Θ 𝑔 𝑛
+• “Tightly” within constant of 𝑔 for large 𝑛
+• Ω 𝑔 𝑛 ∩ 𝑂(𝑔 𝑛 )
+
+Asymptotic Notation Example
+• Show: 10𝑛 + 100 ∈ 𝑂 𝑛2
+• Technique: find values 𝑐 > 0 and 𝑛0 > 0 such that ∀𝑛 > 𝑛0 . 10𝑛 + 100 ≤ 𝑐 ⋅ 𝑛2
+• Scratch work:
+
+Asymptotic Notation Example
+• Show: 10𝑛 + 100 ∈ 𝑂 𝑛2
+• Technique: find values 𝑐 > 0 and 𝑛0 > 0 such that ∀𝑛 ≥ 𝑛0 . 10𝑛 + 100 ≤ 𝑐 ⋅ 𝑛2
+• Proof:
+
+Asymptotic Notation Example
+• Show: 13n2 − 50n ∈ Ω 𝑛2
+• Technique: find values 𝑐 > 0 and 𝑛0 > 0 such that ∀𝑛 ≥ 𝑛0 . 13𝑛2 − 50𝑛 ≥ 𝑐 ⋅ 𝑛2
+• Scratch work:
+
+Asymptotic Notation Example
+• Show: 13n2 − 50n ∈ Ω 𝑛2
+• Technique: find values 𝑐 > 0 and 𝑛0 > 0 such that ∀𝑛 ≥ 𝑛0 . 13𝑛2 − 50𝑛 ≥ 𝑐 ⋅ 𝑛2
+• Proof:
+
+Asymptotic Notation Example
+• Show: 𝑛2 ∉ 𝑂 𝑛
+
+Asymptotic Notation Example
+• To Show: 𝑛2 ∉ 𝑂 𝑛
+
+Proof by
+Contradiction!
+
+• Technique: Contradiction
+• Proof:
+Assume 𝑛2 ∈ 𝑂 𝑛 . Then ∃𝑐, 𝑛0 > 0 s. t. ∀𝑛 > 𝑛0 , 𝑛2 ≤ 𝑐𝑛
+Let us derive constant 𝑐. For all 𝑛 > 𝑛0 > 0, we know:
+𝑐𝑛 ≥ 𝑛2 ,
+𝑐 ≥ 𝑛.
+
+Since 𝑐 is lower bounded by 𝑛, 𝑐 cannot be a constant and make this
+True.
+Contradiction. Therefore 𝑛2 ∉ 𝑂 𝑛 .
+
+Gaining Intuition
+• When doing asymptotic analysis of functions:
+• If multiple expressions are added together, ignore all but the “biggest”
+• If 𝑓(𝑛) grows asymptotically faster than 𝑔(𝑛), then 𝑓 𝑛 + 𝑔 𝑛 ∈ Θ 𝑓 𝑛
+
+• Ignore all multiplicative constants
+• 𝑓 𝑛 +𝑐 ∈Θ 𝑓 𝑛
+
+for any constant 𝑐 ∈ ℝ
+
+• Ignore bases of logarithms
+• Do NOT ignore:
+• Non-multiplicative and non-additive constants (e.g. in exponents, bases of exponents)
+• Logarithms themselves
+
+• Examples:
+• 4𝑛 + 5
+• 0.5𝑛log 𝑛 + 2𝑛 + 7
+• 𝑛3 + 2𝑛 + 3𝑛
+• 𝑛log(10𝑛2 )
+
+More Examples
+• Is each of the following True or False?
+• 4 + 3𝑛 ∈ 𝑂(𝑛)
+• 𝑛 + 2 log 𝑛 ∈ 𝑂(log 𝑛)
+• log 𝑛 + 2 ∈ 𝑂(1)
+• 𝑛50 ∈ 𝑂(1.1𝑛 )
+• 3𝑛 ∈ Θ(2𝑛 )
+
+Common Categories
+• 𝑂(1)
+“constant”
+• 𝑂 log 𝑛 “logarithmic”
+•𝑂 𝑛
+“linear”
+• 𝑂 𝑛 log 𝑛 “log-linear”
+• 𝑂 𝑛2
+“quadratic”
+• 𝑂 𝑛3
+“cubic”
+• 𝑂 𝑛𝑘
+• 𝑂 𝑘𝑛
+
+“polynomial”
+“exponential”
+
+ADT: Queue
+• What is it?
+• A “First In First Out” (FIFO) collection of items
+
+• What Operations do we need?
+• Enqueue
+• Add a new item to the queue
+
+• Dequeue
+• Remove the “oldest” item from the queue
+
+• Is_empty
+• Indicate whether or not there are items still on the queue
+
+ADT: Priority Queue
+• What is it?
+
+• A collection of items and their “priorities”
+• Allows quick access/removal to the “top priority” thing
+
+• What Operations do we need?
+• insert(item, priority)
+
+• Add a new item to the PQ with indicated priority
+• Usually, smaller priority value means more important
+
+• extract
+
+• Remove and return the “top priority” item from the queue
+
+• Is_empty
+
+• Indicate whether or not there are items still on the queue
+
+• Note: the “priority” value can be any type/class so long as it’s comparable
+(i.e. you can use “<“ or “compareTo” with it)
+
+Priority Queue, example
+PriorityQueue PQ = new PriorityQueue();
+PQ.insert(5,5)
+PQ.insert(6,6)
+PQ.insert(1,1)
+PQ.insert(3,3)
+PQ.insert(8,8)
+Print(PQ.extract)
+Print(PQ.extract)
+Print(PQ.extract)
+Print(PQ.extract)
+Print(PQ.extract)
+
+Priority Queue, example
+PriorityQueue PQ = new PriorityQueue();
+PQ.insert(5,5)
+PQ.insert(6,6)
+PQ.insert(1,1)
+Print(PQ.extract)
+PQ.insert(3,3)
+Print(PQ.extract)
+Print(PQ.extract)
+PQ.insert(8,8)
+Print(PQ.extract)
+Print(PQ.extract)
+
+Applications?
+
+Thinking through implementations
+Data Structure
+
+Worst case time to insert
+
+Worst case time to extract
+
+Unsorted Array
+Unsorted Linked List
+Sorted Array
+Sorted Linked List
+Binary Search Tree
+
+For simplicity, Assume we know the maximum size of the PQ in advance
+(otherwise we’d do an amortized analysis, but get the same answers…)
+
+Thinking through implementations
+Data Structure
+
+Worst case time to insert
+
+Worst case time to extract
+
+Unsorted Array
+
+Θ(1)
+
+Θ(𝑛)
+
+Unsorted Linked List
+
+Θ(1)
+
+Θ(𝑛)
+
+Sorted Array
+
+Θ 𝑛
+
+Θ(1)
+
+Sorted Linked List
+
+Θ 𝑛
+
+Θ 1
+
+Binary Search Tree
+
+Θ 𝑛
+
+Θ 𝑛
+
+For simplicity, Assume we know the maximum size of the PQ in advance
+(otherwise we’d do an amortized analysis, but get the same answers…)
+
+Thinking through implementations
+Data Structure
+
+Worst case time to insert
+
+Worst case time to extract
+
+Unsorted Array
+
+Θ(1)
+
+Θ(𝑛)
+
+Unsorted Linked List
+
+Θ(1)
+
+Θ(𝑛)
+
+Sorted Array
+
+Θ 𝑛
+
+Θ(1)
+
+Sorted Linked List
+
+Θ 𝑛
+
+Θ 1
+
+Binary Search Tree
+
+Θ 𝑛
+
+Θ 𝑛
+
+Θ log 𝑛
+
+Θ log 𝑛
+
+Binary Heap
+
+For simplicity, Assume we know the maximum size of the PQ in advance
+(otherwise we’d do an amortized analysis, but get the same answers…)
+
+Trees for Heaps
+• Binary Trees:
+• The branching factor is 2
+• Every node has ≤ 2 children
+1
+
+• Complete Tree:
+• All “layers” are full, except the bottom
+• Bottom layer filled left-to-right
+4
+
+5
+
+2
+
+3
+7
+
+9
+
+5
+
+6
+
+Heap – Priority Queue Data Structure
+• Idea: We need to keep some ordering, but it doesn’t need to be
+entirely sorted
+• Θ(log 𝑛) worst case for extract and insert
+1
+2
+
+3
+4
+
+5
+
+7
+
+9
+
+5
+
+6
+
+Heap – Priority Queue Data Structure
+• Idea: We need to keep some ordering, but it doesn’t need to be
+entirely sorted
+• Θ(log 𝑛) worst case for extract and insert
+1
+
+1
+2
+
+3
+2
+
+4
+4
+
+5
+
+9
+
+8
+
+9
+
+7
+
+5
+
+5
+
+6
+
+3
+
+6
+7
+
+Challenge!
+• What is the maximum number of total nodes in a binary tree of
+height ℎ?
+• 2ℎ+1 − 1
+• Θ 2ℎ
+
+• If I have 𝑛 nodes in a binary tree, what is its minimum height?
+• Θ log 𝑛
+
+• Heap Idea:
+• If 𝑛 values are inserted into a complete tree, the height will be roughly log 𝑛
+• Ensure each insert and extract requires just one “trip” from root to leaf
+
+(Min) Heap Data Structure
+• Keep items in a complete binary tree
+• Maintain the “(Min) Heap Property” of the tree
+• Every node’s priority is ≤ its children’s priority
+
+1
+
+• Max Heap Property: every node’s priority is ≥ its children
+
+• Where is the min?
+• How do I insert?
+• How do I extract?
+• How to do it in Java?
+
+2
+
+3
+4
+
+5
+
+7
+
+9
+
+5
+
+6
+
+

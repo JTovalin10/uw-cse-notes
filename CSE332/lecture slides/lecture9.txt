@@ -1,0 +1,1140 @@
+CSE 332 Winter 2026
+Lecture 9: AVL Trees pt. 2
+Nathan Brunelle
+http://www.cs.uw.edu/332
+
+Dictionary (Map) ADT
+• Contents:
+• Sets of key+value pairs
+• Keys must be comparable
+
+• Operations:
+• insert(key, value)
+• Adds the (key,value) pair into the dictionary
+• If the key already has a value, overwrite the old value
+• Consequence: Keys cannot be repeated
+
+• find(key)
+• Returns the value associated with the given key
+
+• delete(key)
+• Remove the key (and its associated value)
+
+Naïve attempts
+Data Structure
+
+Time to insert
+
+Time to find
+
+Unsorted Array
+
+Θ(𝑛)
+
+Θ(𝑛)
+
+Θ(𝑛)
+
+Unsorted Linked List
+
+Θ(𝑛)
+
+Θ(𝑛)
+
+Θ(𝑛)
+
+Sorted Array
+
+Θ 𝑛
+
+Θ(log 𝑛)
+
+Θ(𝑛)
+
+Sorted Linked List
+
+Θ 𝑛
+
+Θ 𝑛
+
+Θ 𝑛
+
+Heap
+
+Θ(𝑛)
+
+Θ 𝑛
+
+Θ 𝑛
+
+Binary Search Tree
+
+Θ 𝑛
+
+Θ 𝑛
+
+Θ 𝑛
+
+Θ(log 𝑛)
+
+Θ(log 𝑛)
+
+Θ(log 𝑛)
+
+AVL Tree
+
+Time to delete
+
+7
+
+Binary Search Tree
+1
+
+• Binary Tree
+• Definition:
+
+10
+
+3
+
+0
+
+6
+
+2
+
+• Tree where each node has at most 2 children
+
+• Order Property
+• All keys in the left subtree are smaller than the root
+• All keys in the right subtree are larger than the root
+• Consequence: cannot have repeated values
+
+8
+
+16
+
+Improving the worst case
+• How can we get a better worst case running time?
+• Add rules about the shape of our BST
+
+• AVL Tree
+• A BST with some shape rules
+• Algorithms need to change to accommodate those
+
+AVL Tree
+• A Binary Search tree that maintains that the left and right subtrees of
+every node have heights that differ by at most one.
+• height of left subtree and height of right subtree off by at most 1
+• Not too weak (ensures trees are short)
+• Not too strong (works for any number of nodes)
+
+• Idea of AVL Tree:
+• When you insert/delete nodes, if tree is “out of balance” then modify the tree
+• Modification = “rotation”
+
+7
+
+Find Operation (Same as BST)
+find(key, root){
+if (root == Null){
+return Null;
+{
+if (key == root.key){
+return root.value;
+}
+if (key < root.key){
+return find(key, root.left);
+}
+if (key > root.key){
+return find(key, root.right);
+}
+return Null;
+}
+
+10
+
+3
+1
+0
+
+6
+
+16
+
+Inserting into an AVL Tree
+• Starts out the same way as BST:
+• “Find” where the new node should go
+• Put it in the right place (it will be a leaf)
+
+• Next check the balance
+• If the tree is still balanced, you’re done!
+• Otherwise we need to do rotations
+
+Insert Operation (for BST)
+
+7
+3
+
+10
+
+insert(key, value, root){
+6
+16
+root = insertHelper(key, value, root);
+1
+}
+0
+insertHelper(key, value, root){
+if(root == null)
+return new Node(key, value);
+if (root.key < key)
+root.right = insertHelper(key, value, root.right);
+else
+root.left = insertHelper(key, value, root.left);
+return root;
+}
+Note: Insert happens only at the leaves!
+
+Insert Example
+
+10
+
+9
+11
+
+3
+6
+
+1
+0
+
+2
+
+16
+
+7
+
+Insert Example
+Is the tree still balanced?
+
+Height=3
+9
+
+To confirm we only need to
+check nodes in the path from
+root to the new node
+Why? We assume the tree was
+balanced before the insert, so
+unchanged subtrees cannot be
+unbalanced.
+
+Height=1
+
+Height=2
+
+11
+
+3
+Height=0
+6
+
+1
+0
+
+2
+
+10
+
+7
+
+Height=0
+16
+
+Insert Example
+
+-1
+
+9
+11
+
+3
+6
+
+1
+0
+
+2
+
+16
+
+7
+
+Insert Example
+Not Balanced!
+Node 9 is the “problem node”
+Left and right children of node
+9 are different by 2.
+
+Height=4
+9
+
+Height=3
+
+Height=1
+11
+
+3
+
+Idea: “shorten” the left
+subtree, “lengthen” the right
+
+6
+
+1
+
+Height=1
+0
+Height=0
+-1
+
+Height=1
+
+Height=2
+
+Height=-1
+
+16
+
+Height=0
+2
+
+7
+
+Solution:
+Take the subtree starting with the problem node,
+“Rotate” that tree to the right
+
+Right Rotation
+Height=3
+
+9
+
+11
+
+3
+6
+
+1
+0
+-1
+
+Height=1
+
+2
+
+16
+
+7
+
+Balanced!
+3
+Height=2
+
+Height=2
+
+9
+
+1
+0
+-1
+
+2
+
+6
+
+11
+
+7
+
+16
+
+Right Rotation
+• We just inserted 𝑐, node 𝑎 is the deepest “problem” node
+• Make the left child the new root
+• Make the old root the right child of the new
+• Make the new root’s right subtree the old root’s left subtree
+ℎ+3
+ℎ+2
+
+𝑥
+
+𝑐
+
+𝑎
+ℎ
+
+𝑏
+ℎ+1
+
+ℎ+2
+ℎ+1
+
+𝑧
+
+ℎ
+
+𝑦
+
+Right
+Rotation
+
+ℎ+1
+
+𝑥
+𝑐
+
+𝑏
+ℎ
+
+𝑦
+
+𝑎
+ℎ
+
+𝑧
+
+Right Rotation - Implementation
+b=a.left
+a.left=b.right
+b.right=a
+
+Running time: Θ(1)
+
+return b
+ℎ+3
+ℎ+2
+
+𝑥
+
+𝑐
+
+𝑎
+ℎ
+
+𝑏
+ℎ+1
+
+ℎ+2
+ℎ+1
+
+𝑧
+
+ℎ
+
+𝑦
+
+Right
+Rotation
+
+ℎ+1
+
+𝑥
+𝑐
+
+𝑏
+ℎ
+
+𝑦
+
+𝑎
+ℎ
+
+𝑧
+
+Insert Example
+
+20
+
+9
+11
+
+3
+6
+
+1
+0
+
+2
+
+10
+
+16
+
+18
+
+Not Balanced! Multiple Problem Nodes
+Here, nodes 11 and 16 are
+problem nodes.
+
+9
+
+Height=2
+
+There may be multiple places
+where we can do a rotation to
+rebalance the tree, but the
+deepest problem node always
+works!
+
+Height=3
+11
+
+3
+
+Height=0
+6
+
+1
+
+10
+
+Height=2
+16
+
+Height=-1
+0
+
+2
+
+Height=1
+18
+
+Height=0
+
+Height=-1 20
+
+Left Rotation
+Solution:
+Take the subtree starting with the problem node,
+“Rotate” that tree to the left
+
+9
+
+11
+
+3
+6
+
+1
+
+10
+
+16
+Height=1
+
+0
+
+2
+
+Height=-1
+
+18
+20
+
+Balanced!
+9
+11
+
+3
+6
+
+1
+
+18
+
+10
+
+Height=0
+0
+
+2
+
+16
+
+Height=0
+20
+
+Left Rotation
+
+• We just inserted 𝑐, node 𝑎 is the deepest “problem” node
+• Make the right child the new root
+• Make the old root the left child of the new
+• Make the new root’s left subtree the old root’s right subtree
+ℎ+3
+ℎ
+
+𝑥
+
+ℎ+2
+
+𝑎
+ℎ+2
+
+ℎ+1
+
+𝑏
+
+ℎ
+
+ℎ+1
+
+𝑦
+
+𝑧
+
+Left
+Rotation
+
+𝑥
+𝑐
+
+ℎ+1
+
+𝑎
+ℎ
+
+𝑏
+𝑧
+
+ℎ
+
+𝑦
+
+𝑐
+
+Left Rotation (Implementation)
+b=a.right
+a.right=b.left
+b.left=a
+return b
+ℎ+3
+ℎ
+
+𝑥
+
+ℎ+2
+
+𝑎
+ℎ+2
+
+ℎ+1
+
+𝑏
+
+ℎ
+
+ℎ+1
+
+𝑦
+
+𝑧
+
+Left
+Rotation
+
+𝑥
+𝑐
+
+ℎ+1
+
+𝑎
+ℎ
+
+𝑏
+𝑧
+
+ℎ
+
+𝑦
+
+𝑐
+
+Insertion Story So Far
+• After insertion, update the heights of the node’s ancestors
+• Check for unbalance
+• If unbalanced then at the deepest unbalanced root:
+• If the left subtree was deeper then rotate right
+• If the right subtree was deeper then rotate left
+9
+
+5
+
+9
+Insert 7
+
+This is incomplete!
+There are some cases
+where this doesn’t work!
+5
+
+Right
+Rotation
+
+5
+7
+
+9
+7
+
+Insertion Story So Far
+• After insertion, update the heights of the node’s ancestors
+• Check for unbalance
+• If unbalanced then at the deepest unbalanced root:
+• Case LL: If we inserted in the left subtree of the left child then rotate right
+• Case RR: If we inserted in the right subtree of the right child then rotate left
+• Case LR: If we inserted into the right subtree of the left child then ???
+• Case RL: If we inserted into the left subtree of the right child then ???
+Cases LR and RL require 2
+rotations!
+
+Case LR
+• From deepest problem node:
+• Rotate left at the left child
+• Rotate right at the problem node
+
+9
+
+9
+
+5
+
+Insert 7
+
+9
+Rotate Left
+at 5
+
+5
+7
+
+7
+
+7
+
+Rotate
+Right at 9
+5
+
+5
+
+9
+
+Case LR in General
+• We just inserted 𝑑, node 𝑎 is the deepest “problem” node
+• Imbalance caused by inserting in the left child’s right subtree
+• Rotate left at the left child
+• Rotate right at the unbalanced node
+ℎ+3
+
+ℎ+3
+
+𝑎
+
+ℎ+2
+
+ℎ
+
+𝑏
+ℎ
+
+ℎ+2
+
+Rotate
+Left at 𝑏
+
+𝑐
+
+𝑏
+
+𝑧
+
+𝑐
+
+ℎ
+
+𝑤
+
+ℎ
+
+ℎ+1
+
+ℎ+1
+
+𝑥
+𝑑
+
+𝑦
+𝑑
+
+𝑤
+
+𝑥
+𝑑
+
+ℎ+2
+
+𝑎
+
+𝑦
+𝑑
+
+𝑧
+
+Rotate
+Right at 𝑎
+
+ℎ+1
+
+𝑐
+ℎ+1 𝑎
+
+𝑏
+ℎ
+
+𝑤
+
+ℎ
+
+𝑥
+𝑑
+
+𝑦
+𝑑
+
+𝑧
+
+b=a.left
+c=b.right
+b.right=c.left
+a.left=c.right
+c.right=a
+c.left=b
+return c
+
+Case LR Implementation
+
+ℎ+3
+
+ℎ+3
+
+𝑎
+
+ℎ+2
+
+ℎ
+
+𝑏
+ℎ
+
+ℎ+2
+
+Rotate
+Left at 𝑏
+
+𝑐
+
+𝑏
+
+𝑧
+
+𝑐
+
+ℎ
+
+𝑤
+
+ℎ
+
+ℎ+1
+
+ℎ+1
+
+𝑥
+𝑑
+
+𝑦
+𝑑
+
+𝑤
+
+𝑥
+𝑑
+
+ℎ+2
+
+𝑎
+
+𝑦
+𝑑
+
+𝑧
+
+Rotate
+Right at 𝑎
+
+ℎ+1
+
+𝑐
+ℎ+1 𝑎
+
+𝑏
+ℎ
+
+𝑤
+
+ℎ
+
+𝑥
+𝑑
+
+𝑦
+𝑑
+
+𝑧
+
+Case RL in General
+• We just inserted 𝑑, node 𝑎 is the deepest “problem” node
+• Imbalance caused by inserting in the right child’s left subtree
+• Rotate right at the right child
+• Rotate left at the unbalanced node
+ℎ+3
+
+𝑎
+
+ℎ+3 𝑎
+
+ℎ+2
+
+ℎ
+ℎ+1
+
+𝑥
+𝑑
+
+𝑏
+
+Rotate
+Right at 𝑏
+
+ℎ
+
+𝑐
+
+𝑤
+
+ℎ+2
+
+𝑦
+𝑑
+
+𝑧
+
+ℎ
+
+𝑤
+
+ℎ+2
+
+𝑥
+𝑑
+
+Rotate
+Left at 𝑎
+
+𝑐
+ℎ+1 𝑏
+
+ℎ+1
+
+ℎ+1 𝑏
+
+𝑎
+
+ℎ
+ℎ
+
+𝑦
+𝑑
+
+𝑐
+
+𝑤
+
+𝑧
+
+ℎ
+
+𝑥
+𝑑
+
+𝑦
+𝑑
+
+𝑧
+
+b=a.right
+c=b.left
+b.left=c.right
+a.right=c.left
+c.left=a
+c.right=b
+return c
+
+Case RL Implementation
+
+ℎ+3
+
+𝑎
+
+ℎ+3 𝑎
+
+ℎ+2
+
+ℎ
+ℎ+1
+
+𝑥
+𝑑
+
+𝑏
+
+Rotate
+Right at 𝑏
+
+ℎ
+
+𝑐
+
+𝑤
+
+ℎ+2
+
+𝑦
+𝑑
+
+𝑧
+
+ℎ
+
+𝑤
+
+ℎ+2
+
+𝑥
+𝑑
+
+Rotate
+Left at 𝑎
+
+𝑐
+ℎ+1 𝑏
+
+ℎ+1
+
+ℎ+1 𝑏
+
+𝑎
+
+ℎ
+ℎ
+
+𝑦
+𝑑
+
+𝑐
+
+𝑤
+
+𝑧
+
+ℎ
+
+𝑥
+𝑑
+
+𝑦
+𝑑
+
+𝑧
+
+Insert Summary
+• After a BST insertion, update the heights of the node’s ancestors
+• From leaf to root, check if each node is balanced
+• If a node is unbalanced then at the deepest unbalanced node:
+• Case LL: If we inserted in the left subtree of the left child then: rotate right
+• Case RR: If we inserted in the right subtree of the right child then: rotate left
+• Case LR: If we inserted into the right subtree of the left child then: rotate left at
+the left child and then rotate right at the root
+• Case RL: If we inserted into the left subtree of the right child then: rotate right at
+the right child and then rotate left at the root
+
+• Done after either reaching the root or applying one of the above cases
+
+Insert Operation (for AVL)
+insert(key, value, root){
+root = insertHelper(key, value, root);
+}
+insertHelper(key, value, root){
+if(root == null)
+return new Node(key, value);
+if (root.key < key)
+root.right = insertHelper(key, value, root.right);
+else
+root.left = insertHelper(key, value, root.left);
+if(isUnbalanced(root))
+root=rotate(root);
+return root;
+}
+
+Delete Summary
+• Tldr: same cases, reverse direction of rotation, may need to repeat with
+ancestors
+• After a BST deletion, update the heights of the node’s ancestors
+• From leaf to root, check if each node is unbalanced
+• If a node is unbalanced then at the deepest unbalanced node:
+
+• Case LL: If we deleted in the left subtree of the left child then: rotate left
+• Case RR: If we deleted in the right subtree of the right child then: rotate right
+• Case LR: If we deleted into the right subtree of the left child then: rotate right at the
+left child and then rotate left at the root
+• Case RL: If we deleted into the left subtree of the right child then: rotate left at the
+right child and then rotate right at the root
+
+• Continue checking until reach the root
+
+Why is this Θ(log 𝑛) time?
+• We get poor running times when ℎ𝑒𝑖𝑔ℎ𝑡 ≈ 𝑛
+• Let 𝑀(ℎ) be the minimum count of nodes in an AVL tree of height ℎ
+• An AVL tree of height ℎ must have one subtree of height ℎ − 1
+• This means the other subtree has height at least ℎ − 2
+• 𝑀 ℎ =𝑀 ℎ−1 +𝑀 ℎ−2 +1
+
+Comparing to Fibonacci Sequence
+• 𝑀 ℎ =𝑀 ℎ−1 +𝑀 ℎ−2 +1
+• 𝐹 𝑛 = 𝐹 𝑛 − 1 + 𝐹(𝑛 − 2)
+• Fibonacci Sequence
+
+• So 𝑀 ℎ > 𝐹(ℎ)
+• For large values of ℎ, 𝐹 ℎ ≈ 𝜙 ℎ
+• 𝜙 being the golden ratio. 𝜙 > 1.6
+
+• This means that an AVL tree of height ℎ has at least 𝜙 ℎ nodes
+• So a tree of 𝑛 nodes has height at most log 𝜙 (𝑛)
+• We need 𝑛 ≤ 𝜙 ℎ , so log 𝜙 𝑛 ≤ ℎ
+
+• All operations run in time 𝑂(log 𝑛)
+
+• The maximum number of nodes for height ℎ is 2𝑛+1 − 1, so they are also Ω(log 𝑛)
+
+
