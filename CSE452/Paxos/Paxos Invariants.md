@@ -46,7 +46,7 @@ This is why Paxos is safe (never chooses two values) but not always live (might 
 6.  **Result**: They keep "stepping on each other's toes" forever.
 7.  **The Fix**: Use a **Stable Leader** (Multi-Paxos) or **Randomized Backoff** so one proposer gets enough time to finish both phases.
 
-## Core Invariants (The "Rules" of Paxos)
+## Core Invariant(s) (The "Rules" of Paxos)
 Paxos relies on these safety properties:
 
 ### 1. The Quorum Intersection Property
@@ -56,8 +56,14 @@ Any two majorities (quorums) **must overlap** by at least one node.
 ### 2. The P2 Rule (The Value Choice Rule)
 > *If a proposal with value $v$ is chosen, then every higher-numbered proposal that is chosen has value $v$.*
 
-- **How it's enforced**: In Phase 2, a proposer **cannot** pick its own value if it sees that a majority has already started voting on a previous value. It must "adopt" the value from the highest-numbered previous round it learned about in Phase 1.
-- **The result**: Once a majority chooses $v$, any future proposer will be forced to see $v$ in its Phase 1 (because its majority will intersect with the majority that chose $v$) and will propose $v$ again in Phase 2.
+- **How it's enforced**: In Phase 2, a proposer **cannot** pick its own value if it learns that any acceptor in its Phase 1 quorum has already accepted a value. It must "adopt" the value from the **highest-numbered previous round** (highest Ballot ID) it learned about.
+- **Example**: 
+	- Proposer (Ballot 10) contacts Acceptors A, B, and C.
+	- **Acceptor A** says: "I accepted 'Value X' in Ballot 5."
+	- **Acceptor B** says: "I accepted 'Value Y' in Ballot 8."
+	- **Acceptor C** says: "I haven't accepted anything."
+	- **The Result**: The Proposer **must** adopt **Value Y** (because 8 is the highest ballot number). It doesn't matter that Value Y only had one vote; the rule is about the *newest* attempt (highest ID), not the *most popular* one.
+- **The result**: Once a majority chooses $v$, any future proposer will be forced to see $v$ in its Phase 1 (because its majority will intersect with the majority that chose $v$) and will propose $v$ again in Phase 2. This "locks" the value forever.
 
 ### 3. The Promise Invariant
 > *Once an acceptor sends a `Promise(n)`, it can never accept any proposal with a number $n' < n$.*

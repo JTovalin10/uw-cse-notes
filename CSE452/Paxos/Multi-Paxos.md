@@ -2,10 +2,20 @@
 
 **Multi-Paxos** builds on the core Single Decree Paxos algorithm to decide values for an entire sequence of log slots rather than just a single decision.
 
+## What is a Log?
+
+In a distributed system, a **Log** is an ordered sequence of commands. Think of it as a list of "to-do" items for a database or state machine.
+
+- **The Goal**: Every server in the cluster should have an identical copy of the log. 
+- **Consistency**: If Server A executes the log `[Set X=1, Set Y=2]`, but Server B executes `[Set Y=2, Set X=1]`, they might end up with different data. The log ensures every node does the exact same thing in the exact same order.
+- **Slots (Indices)**: Each position in the log is called a **Slot**.
+    - Slot 1: `PUT "Apple" = 5`
+    - Slot 2: `PUT "Banana" = 10`
+    - Slot 3: `DELETE "Apple"`
+- **Replicated State Machine (RSM)**: This is the actual application (like a SQL database). It reads the commands from the log one-by-one and executes them. Because Paxos ensures every server's log is identical, every server's database will stay perfectly in sync.
+
 ## The Concept of Slots
-In a replicated state machine, we don't just need one agreement; we need to agree on an ordered sequence of commands.
-- The log is divided into **slots** (Slot 1, Slot 2, ..., Slot $i$).
-- Each slot runs an independent instance of Paxos to decide which command goes into that slot.
+Each slot runs an independent instance of Paxos to decide which command goes into that slot.
 
 ## Efficiency: The "Stable Leader"
 Running two full phases (Prepare and Accept) for every single log slot is slow. Multi-Paxos optimizes this by electing a **Leader**.

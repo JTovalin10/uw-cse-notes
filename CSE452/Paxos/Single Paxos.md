@@ -39,6 +39,25 @@ While often mapped to physical nodes, roles are distinct functional entities:
 ### Phase 3: Learning
 1.  **Learner**: Once a learner receives `Accepted(n, v)` from a majority of acceptors, the value $v$ is considered **chosen**.
 
+## Deep Dive: Understanding Majorities
+
+### 1. The "Fixed Majority" Rule
+The majority required for consensus is **always based on the initial total number of nodes**, not the number of nodes currently alive.
+- **Example (7-node cluster)**: The majority is always **4**. 
+- If 2 nodes die, you still need 4 votes. This means you need 4 out of the 5 remaining nodes to agree.
+- If 4 nodes die, the system **stalls** because you only have 3 nodes left and can never reach the required 4 votes.
+- **Why?** This prevents "Split Brain." If the cluster partitions, only the side that can reach the *original* majority can make progress.
+
+### 2. Value Adoption (Phase 2 Rule)
+When a proposer performs Phase 1 (Prepare), it doesn't care if a value has reached a majority yet. 
+- **The Rule**: If **any** node in your Phase 1 quorum reports having accepted a value, you **must** adopt the value from the **highest ballot number** reported.
+- **Example**: 
+    - Acceptor A voted for "X" in Ballot 5.
+    - Acceptor B and C have never voted.
+    - Proposer (Ballot 10) talks to A and B. 
+    - Even though "X" only has 1 vote (not a majority), the Proposer **must** adopt "X" for Ballot 10.
+- **Why?** The proposer cannot know if that value *might* have reached a majority on nodes it didn't talk to (like C). Adopting it "just in case" ensures that once a value is chosen, it stays chosen.
+
 ## Summary of Logic
 - **Safety**: A value is chosen only when a majority agrees. Since any two majorities overlap by at least one node, that node "remembers" the chosen value and forces any future proposers to adopt it (Phase 2 rule).
 - **Liveness**: Paxos does not guarantee liveness (it can get stuck in a "dueling proposers" scenario), but in practice, a leader/randomized backoff is used.
