@@ -23,6 +23,11 @@ To guarantee uniqueness across all proposers without needing a central coordinat
 
 $$(SequenceNumber, ProposerID)$$
 
+## MultiPaxos Tuple
+As we are now dealing with slots we need to keep track of which slot the tuple is for hence multipaxos uses a tuple:
+$$
+(S=0, R=(seqnum, Proposers Id)
+$$
 ### Comparison Logic
 When comparing two Ballot IDs $B_1$ and $B_2$:
 1.  Compare the **Sequence Numbers** first.
@@ -49,3 +54,4 @@ In this model, the "owner" of any number $n$ is simply $n \pmod{TotalProposers}$
 ---
 - [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
 - [[CSE452/Paxos/Paxos Invariants|Back to Paxos Invariants]]
+- [[Multi-Paxos|Back to Multi-Paxos]
