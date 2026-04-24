@@ -49,7 +49,7 @@ A layered approach to security means no single failure is catastrophic:
 ## Related
 
 - [[What is security]] — foundational security mindset
-- [[How Systems Fails]] — why systems break down
+- [[How Systems Fail]] — why systems break down
 - [[Bug, Vulnerabilities, and Exploits]] — bugs that become exploitable
 - [[CSE484/Policy and Access Control/Targets for policy|Targets for Policy]] — CIA triad and defining security properties
 - 

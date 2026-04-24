@@ -34,7 +34,7 @@ CSE 461 covers the fundamentals of computer networking. The course explores how 
 
 ### Network Layer
 - [[Network Layer - Internetworking and IP]] — Hourglass model, Datagram vs. VC.
-- [[Network Layer - IPv4 Addressing and Subnetting]] — CIDR, VLSM, DHCP, NAT.
+- [[Network Layer - IPv4 Addressing and Subnetting]] — CIDR, VLSM, DHCP, [[Network Address Translation (NAT) box|NAT]].
 - [[Network Layer - IPv6]] — Header format, SLAAC, Anycast.
 - [[Network Layer - Forwarding and Routing Mechanics]] — LPM, ARP, Fragmentation, ICMP.
 - [[Network Layer - Multicast]] — IGMP, PIM, Distribution Trees.

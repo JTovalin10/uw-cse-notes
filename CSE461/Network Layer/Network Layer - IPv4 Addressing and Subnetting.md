@@ -49,13 +49,11 @@ DHCP automates the assignment of IP addresses, subnet masks, and default gateway
 
 ---
 
-## 4. Network Address Translation (NAT)
+## 4. [[Network Address Translation (NAT) box|Network Address Translation (NAT)]]
 
-NAT is a mechanism used to map multiple **Private IPs** (from ranges like `192.168.x.x`) to a single **Public IP**.
+NAT is a mechanism used to map multiple **Private IPs** to a single **Public IP**, primarily to mitigate IPv4 address exhaustion.
 
-*   **Motivation**: IPv4 address exhaustion.
-*   **Mechanics**: The NAT router maintains a translation table. It replaces the internal (Source IP, Source Port) with the (Public IP, New Port) when packets leave the network, and does the reverse for incoming traffic.
-*   **Controversy**: NAT violates the **End-to-End Principle**, as routers are now modifying application data and maintaining per-flow state.
+See the full entry: [[Network Address Translation (NAT) box]]
 
 ---
 
@@ -68,11 +66,3 @@ A standard IPv4 header is **20 bytes** long.
 
 ![[Screenshots/IPv4 Packet Header.png]]
 
-
-![[Screenshots/internel, external translation table.png]]
-
-
-![[Screenshots/NAT (5).png]]
-
-
-![[Screenshots/NAT.png]]

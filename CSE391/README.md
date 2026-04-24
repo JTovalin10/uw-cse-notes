@@ -15,4 +15,4 @@ CSE391 is often called the "missing semester" of a CS major. It covers a collect
 - **[[Users Groups and Permissions/Unix Permissions|Unix Users, Groups, and Permissions]]**
 - **[[Bash Scripting/Bash Scripting Basics|Basic Shell Scripting]]**
 
-For a detailed breakdown of all topics, see the **[[Index]]**.
+For a detailed breakdown of all topics, see the **[[CSE391 Index]]**.

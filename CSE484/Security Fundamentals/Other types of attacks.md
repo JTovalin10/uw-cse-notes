@@ -87,7 +87,7 @@ By carefully measuring these tiny time differences, an attacker can guess the se
 
 ## Related
 
-- [[How Systems Fails]] — categories of system failures
+- [[How Systems Fail]] — categories of system failures
 - [[Bug, Vulnerabilities, and Exploits]] — buffer overflows and bounds checking
 - [[CSE484/Side Channel Attacks/Side Channel Attacks|Side Channel Attacks]] — timing attacks in context of hardware
 - [[CSE484/Side Channel Attacks/Spectre|Spectre]] — cache timing attack on CPUs

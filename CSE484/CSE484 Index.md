@@ -8,7 +8,7 @@ Master navigation hub for CSE 484 notes.
 
 - [[CSE484/Security Fundamentals/What is security|What is Security]] — security mindset, stakeholders, assets, threats, adversaries
 - [[CSE484/Security Fundamentals/Threat Model|Threat Model]] — assets, adversaries, vulnerabilities, threats, risk, and defense in depth
-- [[CSE484/Security Fundamentals/How Systems Fails|How Systems Fail]] — reliability, usability, design oversights, and intentional attacks
+- [[CSE484/Security Fundamentals/How Systems Fail|How Systems Fail]] — reliability, usability, design oversights, and intentional attacks
 - [[CSE484/Security Fundamentals/Bug, Vulnerabilities, and exploits|Bugs, Vulnerabilities, and Exploits]] — buffer overflows, bounds checking, prevention techniques
 - [[CSE484/Security Fundamentals/Root Cause Analysis and Patching|Root Cause Analysis and Patching]] — investigating exploits, CVE/CWE/CVSS, zero-days
 - [[CSE484/Security Fundamentals/Other types of attacks|Other Types of Attacks]] — integer overflow, TOCTOU race conditions, timing attacks, defensive principles

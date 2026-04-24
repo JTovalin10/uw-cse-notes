@@ -5,21 +5,9 @@ This note explains the technical "why" behind Paxos, focusing on the Ballot ID s
 ## The Ballot ID (Proposal Number)
 A Ballot ID must be **unique** and **monotonically increasing**. 
 
-### Why a pair? `(number, server_id)`
-If multiple proposers (servers) could use the same ballot number, the system would break.
-- **The Problem**: Proposer A and Proposer B both pick ballot #5. Acceptors get confused about who "owns" ballot #5. One acceptor might promise to A, while another promises to B.
-- **The Fix**: We use a pair: `(round_number, server_id)`. 
-- **Comparison Logic**: `(n1, s1) > (n2, s2)` if:
-	1. $n1 > n2$, OR
-	2. $n1 = n2$ AND $s1 > s2$ (tie-breaking).
-- **Invariance**: This ensures that every ballot in the entire system's history is unique and belongs to exactly one proposer.
+To ensure this, Paxos typically uses a tuple $(SequenceNumber, ServerID)$ or round-robin allocation. 
 
-### Why Round-Robin?
-Another way to ensure uniqueness is round-robin allocation of numbers:
-- Server 0 uses numbers 0, 3, 6, ...
-- Server 1 uses numbers 1, 4, 7, ...
-- Server 2 uses numbers 2, 5, 8, ...
-- This achieves the same goal: no two servers can ever issue the same proposal number.
+**See also**: [[CSE452/Paxos/Ballot IDs|Detailed: Why Ballot IDs must be unique]]
 
 ## What do Ballot IDs fix?
 1.  **Stale Proposers**: If an old proposer (who was partitioned or slow) tries to propose something after a newer proposer has already started, the newer proposer will have a higher ballot number. Acceptors will reject the old proposer's messages because they have already promised a higher number.

@@ -10,8 +10,8 @@
 TCP uses **ssthresh** to balance the need for rapid capacity probing (exponential growth) with the need for stable, cautious probing (linear growth).
 
 ### Phase Transition Rules
-1.  **If [[cwnd]] < ssthresh**: TCP is in **Slow Start**. The congestion window increases by 1 MSS for every ACK received (exponential growth).
-2.  **If [[cwnd]] >= ssthresh**: TCP transitions to **Congestion Avoidance**. The congestion window increases by 1 MSS per **[[Round-Trip Time (RTT)]]** (linear growth).
+1.  **If cwnd < ssthresh**: TCP is in **Slow Start**. The congestion window increases by 1 MSS for every ACK received (exponential growth).
+2.  **If cwnd >= ssthresh**: TCP transitions to **Congestion Avoidance**. The congestion window increases by 1 MSS per **[[Round-Trip Time (RTT)]]** (linear growth).
 
 ### Dynamic Adjustment
 The value of **ssthresh** is not fixed; it is dynamically recalculated whenever congestion is detected:

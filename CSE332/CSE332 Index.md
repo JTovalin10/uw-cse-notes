@@ -5,7 +5,7 @@ Master navigation hub for CSE 332 notes. For a course overview, see the [[CSE332
 ---
 
 ## ADT and Design
-- [[CSE332/ADT and Design/Abstract Data Type (ADT)|Abstract Data Type (ADT)]]
+- [[CSE332/ADT and Design/Abstract Data Type (ADT)|Abstract Data Type (ADT)]] — mathematical specification of data structure behavior
 
 ## Analysis
 - [[CSE332/Analysis/Algorithm Analysis|Algorithm Analysis]]
@@ -14,8 +14,8 @@ Master navigation hub for CSE 332 notes. For a course overview, see the [[CSE332
 - [[CSE332/Analysis/Recurrences|Recurrences]]
 
 ## Complexity Analysis
-- [[CSE332/Complexity Analysis/asymptotic analysis|Asymptotic Analysis]]
-- [[CSE332/Complexity Analysis/Big Oh formal definition|Big Oh Formal Definition]]
+- [[CSE332/Complexity Analysis/asymptotic analysis|Asymptotic Analysis]] — growth rate analysis of algorithm efficiency
+- [[CSE332/Complexity Analysis/Big Oh formal definition|Big Oh Formal Definition]] — formal O(g(n)) definition with c and n₀
 
 ## Priority Queues
 - [[CSE332/Priority Queues/Binary Heaps|Binary Heaps]]
