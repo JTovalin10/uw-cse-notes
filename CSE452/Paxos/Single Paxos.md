@@ -28,7 +28,8 @@ Paxos is often described using a compact message notation:
 ## The Algorithm: Step-by-Step
 
 ### Phase 1: Prepare (1a/1b)
-1.  **Proposer**: Selects a unique, monotonically increasing **Ballot Number** $r$. To ensure uniqueness, proposers can use IDs as tiebreakers (e.g., $ProposerID + n \times NumProposers$).
+1.  **Proposer**: Selects a unique, monotonically increasing **Ballot Number** $r$. 
+    - **See also**: [[CSE452/Paxos/Ballot IDs|How to generate unique Ballot IDs]].
 2.  **Acceptor**: 
     - If $r > max\_ballot$, updates $max\_ballot = r$ and responds with **1b**.
 	    - This means that the acceptor promises to never accept anything than r

@@ -27,5 +27,5 @@ When analyzing a suspected exploit, start by asking:
 ## Related
 
 - [[Bug, Vulnerabilities, and Exploits]] — what bugs become vulnerabilities
-- [[How Systems Fails]] — categories of failure
+- [[How Systems Fail]] — categories of failure
 - [[Threat Model]] — risk assessment 

@@ -13,4 +13,4 @@ Note that $P \subset EXP$. Since membership in $P$ is determined by the *most ef
 ## Related
 - [[P And NP]]
 - [[NP-Completeness]]
-- [[CSE311/Index|Math: Mathematical Foundations]]
+- [[CSE311 Index|Math: Mathematical Foundations]]

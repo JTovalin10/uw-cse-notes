@@ -46,5 +46,5 @@ Advanced database systems: internals, query processing, storage, and distributed
 ---
 
 ## Related Courses
-- [[CSE344/Index|CSE344 — Introduction to Data Management]] — prerequisite; covers SQL, RA, transactions, normalization
+- [[CSE344 Index|CSE344 — Introduction to Data Management]] — prerequisite; covers SQL, RA, transactions, normalization
 - [[CSE452/Index|CSE452 — Distributed Systems]] — distributed database topics (replication, fault tolerance)

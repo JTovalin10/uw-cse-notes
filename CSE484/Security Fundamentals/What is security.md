@@ -12,5 +12,5 @@ The **security mindset** requires asking several foundational questions before b
 ## Related
 
 - [[Threat Model]] — assets, adversaries, vulnerabilities, and risk
-- [[How Systems Fails]] — why systems break down
+- [[How Systems Fail]] — why systems break down
 - [[CSE484/Policy and Access Control/Targets for policy|Targets for Policy]] — CIA triad and defining security properties

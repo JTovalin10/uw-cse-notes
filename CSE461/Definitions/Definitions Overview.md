@@ -5,7 +5,7 @@ Quick lookup for terms used across CSE461 notes.
 ## Addressing and routing
 
 - [[Autonomous System (AS)]] — [[IPv4]] — [[IPv6]] — [[Subnet]] — [[Subnet Mask]] — [[IP Address Classes (Classful Addressing)]] — [[Classless Interdomain Routing (CIDR)]]
-- [[Internet Protocol (IP)]] — [[Address Resolution Protocol (ARP)]] — [[Neighbor Discovery Protocol (NDP)]] — [[Time to Live (TTL)]]
+- [[Internet Protocol (IP)]] — [[Address Resolution Protocol (ARP)]] — [[Neighbor Discovery Protocol (NDP)]] — [[Time to Live (TTL)]] — [[Network Address Translation (NAT) box]]
 - [[Routing]] — [[Forwarding]] — [[Forwarding Table]] — [[Next Hop Router]] — [[Source Routing]] — [[Path Vector]]
 
 ## Protocols

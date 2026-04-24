@@ -4,10 +4,10 @@ Locality of reference refers to the tendency of programs to access a small porti
 
 ## Types of Locality
 
-### Temporal Locality
+### [[CSE351/Cache/Temporal Locality|Temporal Locality]]
 **Temporal locality** exists when locations referenced recently tend to be referenced again in the near future. This occurs frequently in loops, where instructions and data are accessed repeatedly.
 
-### Spatial Locality
+### [[CSE351/Cache/Spatial Locality|Spatial Locality]]
 **Spatial locality** exists when locations near recently referenced locations are likely to be referenced in the near future. This occurs with linear data structures like arrays, or when instructions are executed sequentially.
 
 ## Related
