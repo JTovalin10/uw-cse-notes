@@ -3,19 +3,19 @@
 These are some of the most frequently used commands for processing text and files in the Unix/Linux environment.
 
 ## Text Processing Commands
-- **[[grep]]**: Searches for patterns in text.
+- **[[Linux Fundamentals/Commands/grep\|grep]]**: Searches for patterns in text.
     - `grep "pattern" file`
-- **[[wc]]**: Counts words, lines, or characters.
+- **[[Linux Fundamentals/Commands/wc\|wc]]**: Counts words, lines, or characters.
     - `wc -l file` (count lines)
-- **[[sort]]**: Sorts lines of text.
-- **[[uniq]]**: Filters out repeated lines (usually requires sorted input).
-- **[[head]]**: Outputs the first part of a file.
+- **[[Linux Fundamentals/Commands/sort\|sort]]**: Sorts lines of text.
+- **[[Linux Fundamentals/Commands/uniq\|uniq]]**: Filters out repeated lines (usually requires sorted input).
+- **[[Linux Fundamentals/Commands/head\|head]]**: Outputs the first part of a file.
     - `head -n 5 file` (first 5 lines)
-- **[[tail]]**: Outputs the last part of a file.
+- **[[Linux Fundamentals/Commands/tail\|tail]]**: Outputs the last part of a file.
 
 ## Utility Commands
-- **[[echo]]**: Prints text to the terminal.
-- **[[cat]]**: Concatenates and displays files.
+- **[[Linux Fundamentals/Commands/echo\|echo]]**: Prints text to the terminal.
+- **[[Linux Fundamentals/Commands/cat\|cat]]**: Concatenates and displays files.
 - **less**: Displays file content one page at a time (better for large files than `cat`).
 
 ## Wildcards

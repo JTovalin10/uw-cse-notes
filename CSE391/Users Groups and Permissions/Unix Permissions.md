@@ -1,42 +1,81 @@
-# CSE391: Unix Permissions
+# Unix Permissions
 
 Unix permissions define who can do what with a file or directory. These are visible when running `ls -l`.
 
-## Permission Structure
-A permission string looks like `drwxrwxrwx`:
-- `d`: Indicates if it's a directory (`-` if it's a file).
-- `rwx` (1st set): Permissions for the **Owner** (u).
-- `rwx` (2nd set): Permissions for the **Group** (g).
-- `rwx` (3rd set): Permissions for **Others** (o).
+## Permission String Structure
+A permission string looks like `-rwxr-xr--`:
+- **Type (1st char):** `-` for file, `d` for directory, `l` for symbolic link.
+- **User/Owner (chars 2-4):** `rwx`
+- **Group (chars 5-7):** `r-x`
+- **Others (chars 8-10):** `r--`
 
-### Action Types
-- **r** (read): Permission to read the file or list directory contents.
-- **w** (write): Permission to modify the file or add/remove files in a directory.
-- **x** (execute): Permission to run the file as a program or enter the directory.
+### Action Types Breakdown
+| Permission | On a File | On a Directory |
+| :--- | :--- | :--- |
+| **r** (read) | View the file's content. | List the files inside (e.g., `ls`). |
+| **w** (write) | Modify the file's content. | Add, delete, or rename files inside. |
+| **x** (execute) | Run the file as a program/script. | Enter the directory (e.g., `cd`). |
+
+---
 
 ## Modifying Permissions (`chmod`)
-The `chmod` command is used to change permissions.
+The `chmod` (change mode) command is used to modify these settings.
 
-### Symbolic (Letter) Mode
+### 1. Symbolic (Letter) Mode
 `chmod [who][action][permission] file`
-- **Who:** `u` (user/owner), `g` (group), `o` (others), `a` (all).
+- **Who:** `u` (user), `g` (group), `o` (others), `a` (all).
 - **Action:** `+` (add), `-` (remove), `=` (set exactly).
-- **Example:** `chmod u+x script.sh` (gives owner execute permission).
-- **Example:** `chmod ug+rw,o+r file.txt` (gives owner/group read/write, others read only).
+- **Example: Give owner execute permission**
+  ```bash
+  chmod u+x script.sh
+  ```
+- **Example: Remove write permission for group and others**
+  ```bash
+  chmod go-w sensitive_data.txt
+  ```
+- **Example: Set specific permissions for everyone**
+  ```bash
+  chmod a=r public_note.txt
+  ```
 
-### Octal (Numeric) Mode
+### 2. Octal (Numeric) Mode
 `chmod NNN file`
-Each digit is the sum of permissions: **4 (read) + 2 (write) + 1 (execute)**.
-- **7** (4+2+1): read, write, and execute.
-- **6** (4+2): read and write.
-- **5** (4+1): read and execute.
-- **4**: read only.
-- **Example:** `chmod 754 file.txt` (u=rwx, g=rx, o=r).
+Each digit represents one of the three "who" categories (User, Group, Others). The digit is calculated by summing the values of the permissions:
+- **4**: Read (r)
+- **2**: Write (w)
+- **1**: Execute (x)
 
-## Default Permissions (`umask`)
-The `umask` command sets the default permissions for newly created files. It "masks out" (removes) permissions from the default (usually 666 for files, 777 for directories).
-- Example: `umask 022` results in new files having 644 permissions.
+| Sum | Permissions | Description |
+| :--- | :--- | :--- |
+| **7** | `rwx` | Full access (4+2+1) |
+| **6** | `rw-` | Read and Write (4+2) |
+| **5** | `r-x` | Read and Execute (4+1) |
+| **4** | `r--` | Read Only |
+| **0** | `---` | No permissions |
+
+**Common Octal Examples:**
+- `chmod 755 script.sh`: `rwxr-xr-x` (Owner can do anything; others can read/execute).
+- `chmod 644 file.txt`: `rw-r--r--` (Owner can read/write; others can only read).
+- `chmod 600 private.key`: `rw-------` (Only the owner can read/write).
+- `chmod 700 secret_dir`: `rwx------` (Only the owner can enter/modify the folder).
+
+---
+
+## Recursive Modification
+Use the `-R` flag to apply changes to a directory and all its contents (subfolders and files).
+```bash
+chmod -R 755 project_folder/
+```
+
+---
+
+## Changing Ownership (`chown` and `chgrp`)
+While `chmod` changes *what* can be done, these commands change *who* owns the file.
+- **chown (change owner):** `chown username file.txt`
+- **chgrp (change group):** `chgrp groupname file.txt`
+- **Both at once:** `chown username:groupname file.txt`
 
 ## Related/See-also
-- [[Users Groups and Permissions/The PATH Variable|The PATH Variable]]
-- [[Users Groups and Permissions/Shell Customization|Shell Customization]]
+- [[The PATH Variable\|The PATH Variable]]
+- [[Shell Customization\|Shell Customization]]
+- [[Linux Fundamentals/Commands/ls\|ls Command]]

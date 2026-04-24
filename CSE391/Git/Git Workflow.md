@@ -1,24 +1,69 @@
-# CSE391: Git Workflow and Best Practices
+# The Standard Git Workflow
 
-A typical Git workflow involves iterative cycles of development, staging, and committing.
+Git is a tool for developers to manage their code's history and collaborate with others. To use Git effectively, you should follow this common workflow.
 
-## Standard Development Cycle
-1. **Pull** latest changes: `git pull origin main`
-2. Create a **Branch**: `git checkout -b my-feature`
-3. **Work** on code in the Working Directory.
-4. **Stage** changes: `git add <files>`
-5. **Commit** changes: `git commit -m "Description of changes"`
-6. **Push** to remote: `git push origin my-feature`
-7. Open a **Pull Request** (or Merge Request) for review.
-8. **Merge** into `main` after approval.
+## 1. Prepare your environment
+Before starting any work, ensure you are in the correct repository and on the correct branch.
 
-## Best Practices
-- **Commit often:** Small, atomic commits are easier to understand and revert.
-- **Write good messages:** Summarize *what* changed and *why*.
-- **Keep main stable:** Do not commit broken code to the `main` branch.
-- **Pull before you push:** Ensure you have the latest changes to avoid conflicts.
-- **Don't alter shared history:** Avoid using `git reset --hard` or force-pushing on branches others are using. Use `git revert` instead.
+### Update from remote
+Always pull any changes from the server before you begin your own work.
+```bash
+git checkout main
+git pull origin main
+```
+
+### Create a new branch
+Start your task in its own isolated environment.
+```bash
+git checkout -b new-feature
+```
+
+---
+
+## 2. Edit and Stage Changes
+Modify your files as needed. Use `git status` frequently to see which files you have changed.
+
+### Stage a file
+Tell Git which files to include in the next commit.
+```bash
+git add filename.txt
+```
+
+### Unstage a file
+If you accidentally stage the wrong file:
+```bash
+git reset HEAD filename.txt
+```
+
+---
+
+## 3. Commit Changes
+Save your work locally. Each commit should represent a single, logical change.
+```bash
+git commit -m "Add descriptive message here"
+```
+
+---
+
+## 4. Push and Share
+Upload your local history to the remote server so others can see it (or to backup your work).
+```bash
+git push origin new-feature
+```
+
+---
+
+## The .gitignore File
+Not every file belongs in your repository. You should exclude files like:
+- **Temporary files:** `*.tmp`, `*.log`
+- **Compiler output:** `*.class`, `*.o`, `bin/`
+- **User configuration:** `.vscode/`, `.DS_Store`
+
+### To ignore files:
+Create a file named `.gitignore` in the root of your project and list the files/folders you want to exclude.
 
 ## Related/See-also
-- [[Git/Git Fundamentals|Git Fundamentals]]
-- [[Git/Branching and Merging|Branching and Merging]]
+- [[Git Fundamentals\|Git Core Concepts (Repo, Branch, Commit)]]
+- [[Four Phases of Git\|The Four Phases of Git]]
+- [[Branching and Merging\|Branching and Merging]]
+- [[Remote Repositories\|Connecting to Remote Servers]]

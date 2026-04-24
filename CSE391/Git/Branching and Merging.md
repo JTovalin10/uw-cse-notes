@@ -1,21 +1,73 @@
-# CSE391: Branching and Merging
+# Branching and Merging in Git
 
-**Branching** allows you to depart from the main line of development and continue to work without affecting that main line.
+One of Git's most powerful features is **branching**, which allows you to create independent lines of development. You can work on a new feature or experiment without affecting the stable `main` branch.
 
-## Why use Branches?
-- **Isolation:** Keep the `main` branch stable while working on new features.
-- **Parallelism:** Work on multiple features or bugs simultaneously.
-- **Collaboration:** Team members can work on their own branches and merge them when ready.
+## 1. Managing Branches
 
-## Key Commands
-- `git branch <name>`: Creates a new branch.
-- `git checkout <name>`: Switches to the specified branch.
-- `git checkout -b <name>`: Creates and switches to a new branch in one step.
-- `git merge <name>`: Combines the changes from the specified branch into the current branch.
+### Create a branch
+Creates a new pointer to the current commit.
+```bash
+git branch feature-name
+```
 
-## Merge Conflicts
-A **Merge Conflict** occurs when Git cannot automatically resolve differences between two branches being merged (e.g., the same line was changed in both). You must manually edit the file to resolve the conflict and then commit the result.
+### Switch to a branch (Checkout)
+Moves the **HEAD** pointer to the specified branch.
+```bash
+git checkout feature-name
+# In newer Git versions:
+git switch feature-name
+```
+
+### Create and switch in one step
+The most common way to start a new task.
+```bash
+git checkout -b bug-fix
+```
+
+### List branches
+See which branch you are currently on (it will be marked with an `*`).
+```bash
+git branch
+```
+
+### Delete a branch
+Do this after you have finished merging your work.
+```bash
+git branch -d feature-name
+```
+
+---
+
+## 2. Merging Changes
+When you have finished working on a branch, you must "merge" it back into the main branch.
+
+### The Standard Merge Workflow
+1. Switch to the target branch (usually `main`).
+   `git checkout main`
+2. Merge the other branch.
+   `git merge feature-name`
+3. Delete the feature branch (optional).
+   `git branch -d feature-name`
+
+---
+
+## 3. Resolving Merge Conflicts
+A conflict occurs if you and another person (or another branch) modified the same line in the same file. Git cannot automatically decide which version to keep.
+
+### How to Resolve
+1. **Identify the files:** Git will list the files with conflicts.
+2. **Edit the file:** Open it and look for the conflict markers:
+   ```text
+   <<<<<<< HEAD
+   Your version (from main)
+   =======
+   Their version (from feature branch)
+   >>>>>>> feature-name
+   ```
+3. **Choose the version:** Delete the markers and keep only the code you want.
+4. **Stage and commit:** `git add <file>` followed by `git commit` to finalize the merge.
 
 ## Related/See-also
-- [[Git/Git Fundamentals|Git Fundamentals]]
-- Git Workflow and Best Practices
+- [[Git Fundamentals\|Git Core Concepts (Repo, Branch, Commit)]]
+- [[Four Phases of Git\|The Four Phases of Git]]
+- [[Remote Repositories\|Connecting to Remote Servers]]

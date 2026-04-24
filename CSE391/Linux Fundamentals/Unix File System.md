@@ -21,5 +21,5 @@ The Unix file system is hierarchical, starting from the **Root Directory** (deno
 - **`~/Desktop`**: References your desktop.
 
 ## Related/See-also
-- [[Linux Fundamentals/Basic Commands|Basic Commands]]
-- [[Users Groups and Permissions/The PATH Variable|The PATH Variable]]
+- [[Basic Commands|Basic Commands]]
+- [[The PATH Variable|The PATH Variable]]

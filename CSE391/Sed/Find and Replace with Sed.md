@@ -1,6 +1,6 @@
 # CSE391: Find and Replace with Sed
 
-The most common use of **[[sed]]** is for finding and replacing text using the substitution command.
+The most common use of **[[Sed Commands\|sed]]** is for finding and replacing text using the substitution command.
 
 ## Substitution Syntax
 `sed 's/pattern/replacement/flags' file`
@@ -21,5 +21,6 @@ The most common use of **[[sed]]** is for finding and replacing text using the s
 3. **Regex delimiters:** You can use characters other than `/` as delimiters if your pattern contains slashes (e.g., `sed 's|/usr/bin|/usr/local/bin|'`).
 
 ## Related/See-also
-- [[Sed/Sed Basics|Sed Basics]]
+- [[Sed Commands\|Detailed Sed Reference (Flags & Examples)]]
+- [[Sed Basics\|Sed Basics]]
 - [[Regular Expressions/Advanced Regex|Advanced Regex and Backreferences]]

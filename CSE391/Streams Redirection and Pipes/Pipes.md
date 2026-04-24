@@ -1,6 +1,7 @@
 # CSE391: Pipes
 
-A **Pipe** (`|`) is an operator that redirects the **[[stdout]]** of one command into the **[[stdin]]** of another command. This allows for combining many small, specialized programs to solve complex problems, a core part of the **Unix Philosophy**.
+A **Pipe** (`|`) is an operator that redirects the **stdout** of one command into the **stdin** of another command.
+ This allows for combining many small, specialized programs to solve complex problems, a core part of the **Unix Philosophy**.
 
 ## Basic Usage
 `command1 | command2`

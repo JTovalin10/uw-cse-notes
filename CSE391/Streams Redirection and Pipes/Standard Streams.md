@@ -1,31 +1,57 @@
-# CSE391: Standard Streams
+# Standard Streams (stdin, stdout, stderr)
 
-Unix processes have three **streams**: abstract locations that tell a program where to read input from and where to write output to.
+Unix processes have three **streams**: abstract locations that specify where a program reads its input from and where it writes its output and error messages to.
 
-There are three standard streams:
-- **[[stdin]]** (standard input): The default source of data for a command.
-- **[[stdout]]** (standard output): The default destination for a command's output.
-- **[[stderr]]** (standard error): The destination for error messages.
+## The Three Standard Streams
 
-## Stream Overview
-| Integer | Stream | Java Equivalent | Description |
-|---|---|---|---|
-| 0 | stdin | `System.in` | Standard Input |
-| 1 | stdout | `System.out` | Standard Output |
-| 2 | stderr | `System.err` | Standard Error |
+### 1. stdin (Standard Input) - File Descriptor 0
+The default source of data for a command.
+- **Default:** The keyboard.
+- **Redirection (<):** Reads from a file instead of the keyboard. `grep "pattern" < file.txt`
+- **Piping (|):** Reads from the output of a previous command. `cat file.txt | grep "pattern"`
 
-By default, these streams are connected to the console (terminal).
+### 2. stdout (Standard Output) - File Descriptor 1
+The default destination for a command's normal output.
+- **Default:** The terminal screen.
+- **Redirection (>):** Writes output to a file (overwrites). `ls > files.txt`
+- **Append Redirection (>>):** Adds output to the end of a file. `date >> log.txt`
 
-## Standard Input vs. Parameters
-One of the most important distinctions is the difference between **standard input (stdin)** and a command's **parameters** (arguments):
+### 3. stderr (Standard Error) - File Descriptor 2
+The destination for all error messages and diagnostics. This is separate from `stdout` so that errors don't get mixed with valid data when piping or redirecting.
+- **Default:** The terminal screen.
+- **Redirection (2>):** Writes error messages to a file. `find / -name "test" 2> errors.log`
+- **Silencing errors:** Send them to the "null" device. `command 2> /dev/null`
+
+---
+
+## Stream Overview Table
+| Integer (FD) | Stream Name | Java Equivalent | Redirect | Append |
+| :--- | :--- | :--- | :--- | :--- |
+| **0** | **stdin** | `System.in` | `<` | N/A |
+| **1** | **stdout** | `System.out` | `>` | `>>` |
+| **2** | **stderr** | `System.err` | `2>` | `2>>` |
+
+---
+
+## Redirection Techniques
+
+### Redirecting Both stdout and stderr
+To send all output (both data and errors) to the same file:
+```bash
+# Old style:
+command > output.txt 2>&1
+# Modern Bash style:
+command &> output.txt
+```
+
+### Standard Input vs. Parameters
+It is crucial to distinguish between **stdin** and **parameters** (arguments):
 - **Parameters** are arguments given directly on the command line.
-    - Example: In `ls dir1`, `dir1` is a parameter.
-    - Example: In `grep "a"`, `"a"` is a parameter.
-- **Standard Input** comes from the user, a file, or another program.
-    - Example: In `grep "a" < berries.txt`, the contents of `berries.txt` go into `stdin`.
-    - Example: Typing `grep "a"` and then typing text into the keyboard until pressing `Ctrl + D` (which closes the stream).
+    - `ls dir1` (`dir1` is a parameter).
+- **Standard Input** is data the program "reads" during execution.
+    - `grep "a" < berries.txt` (the content of `berries.txt` is fed into `grep` via `stdin`).
 
 ## Related/See-also
-- [[Streams Redirection and Pipes/Input Output Redirection|Input/Output Redirection]]
-- [[Streams Redirection and Pipes/Pipes|Pipes]]
-- [[Streams Redirection and Pipes/Common Shell Commands|Common Shell Commands]]
+- [[Input Output Redirection\|Input/Output Redirection]]
+- [[Pipes\|Pipes]]
+- [[Common Shell Commands\|Common Shell Commands]]

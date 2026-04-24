@@ -1,20 +1,17 @@
 # CSE391: Sed Basics
 
-**[[sed]]** (Stream Editor) is a powerful utility used to parse and transform text in a functional and automated way. Unlike a typical text editor, `sed` processes text line-by-line and outputs the result to **[[stdout]]**.
+**[[Sed/Sed Commands|sed]]** (Stream Editor) is a powerful utility used to parse and transform text in a functional and automated way. Unlike a typical text editor, `sed` processes text line-by-line and outputs the result to **[[Streams Redirection and Pipes/Standard Streams#2. stdout (Standard Output) - File Descriptor 1|stdout]]**.
 
 ## Basic Syntax
 `sed [options] 'command' file`
 
 Common options:
-- `-E`: Use extended regular expressions (recommended).
-- `-i`: Edit the file "in-place" (be careful!).
-- `-n`: Suppress automatic printing of lines.
-
-## Basic Commands
-- **Printing:** `sed -n '5p' file` (prints only the 5th line).
-- **Deleting:** `sed '1,3d' file` (deletes lines 1 through 3 from the output).
-- **Substitution:** The most common use of `sed`.
+- `-n`: Suppress automatic printing of pattern space.
+- `-e script`: Add the script to the commands to be executed.
+- `-f script-file`: Add the contents of script-file to the commands to be executed.
+- `-i`: Edit files in-place.
+- `-E`: Use extended regular expressions.
 
 ## Related/See-also
-- Find and Replace with Sed
+- [[Sed/Sed Commands|Detailed Sed Reference (Flags & Examples)]]
 - [[Regular Expressions/Regex Basics|Regex Basics and Syntax]]
