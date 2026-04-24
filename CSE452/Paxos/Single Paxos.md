@@ -18,12 +18,12 @@ The protocol must satisfy three formal requirements:
 ## The Ballot Protocol (Message Names)
 Paxos is often described using a compact message notation:
 
-| Message | Name | Direction | Content |
-| :--- | :--- | :--- | :--- |
-| **1a(r)** | Prepare | P $\to$ A | "I am beginning round $r$." |
-| **1b(r, s)** | Promise | A $\to$ P | "I promise not to participate in rounds < $r$. Here is my history ($s$)." |
-| **2a(r, v)** | Accept Request | P $\to$ A | "Please vote for value $v$ in round $r$." |
-| **2b(r, v)** | Accept Reply | A $\to$ L | "I voted for $v$ in round $r$." |
+| Message      | Name           | Direction | Content                                                                   |
+| :----------- | :------------- | :-------- | :------------------------------------------------------------------------ |
+| **1a(r)**    | Prepare        | P $\to$ A | "I am beginning round $r$."                                               |
+| **1b(r, s)** | Promise        | A $\to$ P | "I promise not to participate in rounds < $r$. Here is my history ($s$)." |
+| **2a(r, v)** | Accept Request | P $\to$ A | "Please vote for value $v$ in round $r$."                                 |
+| **2b(r, v)** | Accept Reply   | A $\to$ L | "I voted for $v$ in round $r$."                                           |
 
 ## The Algorithm: Step-by-Step
 

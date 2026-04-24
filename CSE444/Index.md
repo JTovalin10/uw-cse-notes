@@ -29,7 +29,11 @@ Advanced database systems: internals, query processing, storage, and distributed
 - [[CSE444/Query Evaluation/Partitioned Hash Algorithms|Partitioned Hash Join]] — two-pass hash-based join (Grace join); partitions both relations into $M-1$ buckets
 
 ### Query Optimization
-*(notes in progress)*
+- [[CSE444/Query Optimization/Query Optimization|Query Optimization Hub]] — overview of the optimization process
+- [[CSE444/Query Optimization/OptimizationComponents/Cost Estimation|Cost Estimation]] — database statistics, histograms, and cardinality estimation
+- [[CSE444/Query Optimization/OptimizationComponents/Search Space|Search Space]] — approaches to plan enumeration and pruning heuristics
+- [[CSE444/Query Optimization/OptimizationComponents/Dynamic Programming|Dynamic Programming]] — System R style join reordering algorithm
+- [[CSE444/Query Optimization/OptimizationComponents/Join Trees|Join Trees]] — bushy, linear, and left-deep tree shapes
 
 ### Parallel Query Processing
 *(notes in progress)*
