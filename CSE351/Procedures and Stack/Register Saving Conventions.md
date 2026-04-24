@@ -1,8 +1,6 @@
-# Register Saving Conventions
+# CSE351: Register Saving Conventions
 
 Define how procedures handle register reuse to avoid destroying other procedures' data.
-
-**Related:** [[Calling Conventions]], [[Stack Frames]], [[x86-64 Registers]]
 
 ---
 
@@ -14,7 +12,7 @@ Define how procedures handle register reuse to avoid destroying other procedures
 - **Timing:** Save early, restore before `ret`
 - **Caller view:** Values unchanged across calls
 
-**Registers:** `%rbx`, `%rbp`, `%r12`-`%r15`
+**Registers:** `%rbx`, `%rbp`, `%r12`–`%r15`
 
 ### Caller-saved Registers
 
@@ -22,7 +20,7 @@ Define how procedures handle register reuse to avoid destroying other procedures
 - **Timing:** Save before `call`, restore after
 - **Callee view:** Free to modify
 
-**Registers:** `%rax`, `%rcx`, `%rdx`, `%rsi`, `%rdi`, `%r8`-`%r11`
+**Registers:** `%rax`, `%rcx`, `%rdx`, `%rsi`, `%rdi`, `%r8`–`%r11`
 
 ---
 
@@ -87,7 +85,13 @@ popq %rcx
 ## Optimization
 
 - Use **caller-saved** for temporaries not needed across calls
-- Use **callee-saved** for values needed throughout function
-- Compilers optimize allocation automatically
+- Use **callee-saved** for values needed throughout the function
+- Compilers optimize register allocation automatically
 
-**Related:** [[Recursion]], [[Stack Frames]]
+---
+
+## Related
+- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
+- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
+- [[CSE351/Procedures and Stack/Recursion|Recursion]]
+- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]

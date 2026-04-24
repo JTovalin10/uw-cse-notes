@@ -20,6 +20,6 @@ An **N-way set associative cache** is a middle ground where each memory address 
 - **Pros**: Reduces conflict misses compared to direct-mapped caches without requiring hardware comparators for every single line in the cache.
 
 ## Related
-- [[CSE351/Cache/Locality|Locality]]
-- [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
+- [[CSE351/Cache/Cache Organization|Cache Organization]]
+- [[CSE351/Cache/Cache Locality|Locality]]
 - [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]]

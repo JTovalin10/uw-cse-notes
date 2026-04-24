@@ -1,6 +1,4 @@
-# Arrays in C
-
-**Related:** [[Pointer Arithmetic]], [[x86-64 Memory Operands]], [[Structs]]
+# CSE351: Arrays in C
 
 ---
 
@@ -40,8 +38,8 @@ uw_zip: .long 9
 
 ### x86-64 Memory Operand Formats
 
-1. `(Rb, Ri, S)` - `Rb` = address, `Ri` = index, `S` = sizeof(T)
-2. `D(,Ri,S)` - `D` = array label, `Ri` = index, `S` = sizeof(T)
+1. `(Rb, Ri, S)` — `Rb` = address, `Ri` = index, `S` = sizeof(T)
+2. `D(,Ri,S)` — `D` = array label, `Ri` = index, `S` = sizeof(T)
 
 ```assembly
 movl (%rdi,%rsi,4), %eax     # array in %rdi, index in %rsi
@@ -52,7 +50,7 @@ movl uw_zip(,%rsi,4), %eax   # using label directly
 
 ## No Bounds Checking
 
-C has **no bounds checking** - memory operand doesn't know array size!
+C has **no bounds checking** — the memory operand doesn't know the array size!
 
 ```c
 int x = 351;
@@ -61,7 +59,7 @@ int ucb_zip[] = {9, 4, 7, 2, 0};
 
 uw_zip[4];      // Returns 5 ✓
 *(uw_zip + 4);  // Returns 5 ✓
-*(&x + 5);      // UNDEFINED - no guaranteed adjacency
+*(&x + 5);      // UNDEFINED — no guaranteed adjacency
 ucb_zip[-1];    // UNDEFINED
 ```
 
@@ -77,19 +75,27 @@ int matrix[3][4];  // 3 rows, 4 columns
 ```
 
 | Expression | Returns |
-|------------|---------|
+|:---|:---|
 | `ar[r][c]` | Element value |
 | `ar[r]` | Address of row r |
 | `ar` | Address of matrix |
 
 ---
 
-## Multilevel vs Multidimensional
+## Multilevel vs. Multidimensional
 
 | Aspect | Multidimensional | Multilevel |
-|--------|------------------|------------|
+|:---|:---|:---|
 | Memory | Contiguous | Arrays of pointers |
 | Space | Efficient | Extra pointer overhead |
 | Access | Single memory access | Multiple accesses |
 
-**Related:** [[Pointer Arithmetic]], [[CSE484/Memory Exploits/Memory Layout]]
+---
+
+## Related
+- [[CSE351/Memory Fundamentals/Pointers|Pointers and Pointer Arithmetic]]
+- [[CSE351/x86-64 Assembly/x86-64 Memory Operands|Memory Operands]]
+- [[CSE351/Data Structures/Structs|Structs]]
+- [[CSE351/Security/Buffer Overflow|Buffer Overflow (no bounds checking)]]
+- [[CSE333/Data Structures/Vector|Vector (CSE333)]]
+- [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

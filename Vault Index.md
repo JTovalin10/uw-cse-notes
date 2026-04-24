@@ -367,7 +367,7 @@ Reference map of all files in the vault, organized by course and directory. Use 
 - [[Words and Memory]] — word size and memory addressing
 
 ### Memory Management
-- [[Memory Allocation]] — malloc/free dynamic allocation
+- [[CSE351/Memory Management/Memory Allocation]] — malloc/free dynamic allocation
 - [[Page Faults]] — accessing unmapped virtual memory
 - [[Page Tables]] — virtual-to-physical address translation tables
 - [[Paging]] — virtual memory paging mechanism
@@ -999,7 +999,7 @@ Reference map of all files in the vault, organized by course and directory. Use 
 - [[What is security]] — security fundamentals (CIA triad, etc.)
 
 ### Side Channel Attacks
-- [[Side Channel Attacks]] — timing, power, cache side channels
+- [[CSE484/Side Channel Attacks/Side Channel Attacks]] — timing, power, cache side channels
 - [[Spectre]] — Spectre speculative execution vulnerability
 
 ### Usable Security

@@ -1,8 +1,6 @@
-# Switch Statements
+# CSE351: Switch Statements
 
 Switch statements use **jump tables** and **indirect jumps** for efficient multi-way branching.
-
-**Related:** [[Jump Instructions]], [[CSE351/x86-64 Assembly/Conditionals]], [[CSE451/Processes/CPUState/Program Counter]]
 
 ---
 
@@ -17,15 +15,6 @@ A **jump table** is an array of code block addresses.
 
 ---
 
-## Program Counter (`%rip`)
-
-Special register holding the **address of the next instruction** to execute.
-
-- **Normal execution:** Advances sequentially
-- **Jump instructions:** Alter `%rip` to jump
-
----
-
 ## Indirect Jumps
 
 ### Syntax
@@ -33,7 +22,7 @@ Special register holding the **address of the next instruction** to execute.
 jmp *Loc
 ```
 
-- **Asterisk (`*`)** indicates indirect jump
+- **Asterisk (`*`)** indicates an indirect jump
 - Address is **found in** `Loc`, not directly given
 
 ### Example with Jump Table
@@ -93,9 +82,16 @@ jmp *.L4(,%rdi,8)     # Indirect jump using table
 ## Handling Special Cases
 
 | Case | Implementation |
-|------|----------------|
-| Multiple labels | Same address in multiple entries |
+|:---|:---|
+| Multiple labels | Same address in multiple table entries |
 | Fall-through | Consecutive code blocks |
 | Default | Non-specified indices point to default |
 
-**Related:** [[Arrays]], [[CSE484/Memory Exploits/Memory Layout]]
+---
+
+## Related
+- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
+- [[CSE351/x86-64 Assembly/Conditionals|Conditionals]]
+- [[CSE351/Procedures and Stack/Program Counter|Program Counter]]
+- [[CSE351/Data Structures/Arrays|Arrays]]
+- [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

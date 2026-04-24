@@ -1,16 +1,14 @@
-# Fork-Exec Model
+# CSE351: Fork-Exec Model
 
 Linux uses the **fork-exec model** for process creation, splitting the operation into two steps.
-
-**Related:** [[Processes]], [[Context Switching]], [[System Calls]]
 
 ---
 
 ## Why Fork-Exec?
 
 - **Flexibility:** Fork without exec, or prepare environment before exec
-- **Simplicity:** Each operation has single, well-defined purpose
-- **Efficiency:** Share resources between parent and child before exec
+- **Simplicity:** Each operation has a single, well-defined purpose
+- **Efficiency:** Parent and child share resources between fork and exec
 
 ---
 
@@ -19,12 +17,12 @@ Linux uses the **fork-exec model** for process creation, splitting the operation
 ### `fork()` Behavior
 
 - **Purpose:** Duplicates the calling process
-- **Result:** Creates "child" process identical to "parent"
+- **Result:** Creates a "child" process identical to the "parent"
 
 ### Return Values
 
 | Process | Return Value |
-|---------|--------------|
+|:---|:---|
 | Parent | Child's PID (positive) |
 | Child | 0 |
 | Error | -1 |
@@ -51,12 +49,12 @@ if (pid > 0) {
 
 ### Purpose
 
-**Overlay** current process with fresh instance of specified program.
+**Overlay** the current process with a fresh instance of the specified program.
 
 ### Variants
 
 | Function | Arguments | Environment | PATH |
-|----------|-----------|-------------|------|
+|:---|:---|:---|:---|
 | `execv` | Vector | Current | No |
 | `execl` | List | Current | No |
 | `execve` | Vector | Specified | No |
@@ -65,7 +63,7 @@ if (pid > 0) {
 ### What Exec Overlays
 
 | Section | New State |
-|---------|-----------|
+|:---|:---|
 | Code | From executable |
 | Data | From executable |
 | Heap | Empty |
@@ -96,8 +94,17 @@ void fork_exec(char *path, char *argv[]) {
 ## Key Insights
 
 1. Child inherits **everything** from parent at fork
-2. Exec **completely replaces** process image
-3. Only parent continues past successful exec
+2. Exec **completely replaces** the process image
+3. Only the parent continues past a successful exec
 4. Parent and child execute **concurrently** after fork
 
-**Related:** [[Processes]], [[Process Termination]]
+---
+
+## Related
+- [[CSE351/System Programming/Processes|Processes]]
+- [[CSE351/System Programming/Context Switching|Context Switching]]
+- [[CSE351/System Programming/System Calls|System Calls]]
+- [[CSE351/System Programming/Process Termination|Process Termination]]
+- [[CSE451/Processes/Syscalls/Fork|Fork (CSE451)]]
+- [[CSE451/Processes/Syscalls/Exec|Exec (CSE451)]]
+- [[CSE451/Processes/Syscalls/exec vs fork|Fork vs Exec (CSE451)]]

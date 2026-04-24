@@ -1,15 +1,13 @@
-# Stack Pointer (`%rsp`)
+# CSE351: Stack Pointer (`%rsp`)
 
 The stack pointer holds the address of the current "top" of the stack.
-
-**Related:** [[CSE351/Procedures and Stack/Memory Layout]], [[The Stack]], [[x86-64 Registers]]
 
 ---
 
 ## Key Concept
 
 - Addresses **below** `%rsp` are **not part** of the stack
-- Stack "top" moves as `%rsp` is manipulated
+- The stack "top" moves as `%rsp` is manipulated
 - Useful reference point for accessing stack data
 
 ---
@@ -77,4 +75,11 @@ If `%rsp = 0x7fffff000000`, after `popq %rbx`:
 - `%rsp = 0x7fffff000008`
 - Pop deallocates 8 bytes → increases `%rsp`
 
-**Related:** [[Stack Frames]], [[Calling Conventions]]
+---
+
+## Related
+- [[CSE351/Procedures and Stack/Memory Layout|Memory Layout]]
+- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
+- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
+- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[CSE451/Processes/CPUState/Stack Pointer|Stack Pointer (CSE451)]]

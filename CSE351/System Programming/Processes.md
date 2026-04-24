@@ -1,8 +1,6 @@
-# Processes
+# CSE351: Processes
 
 A **process** is an instance of a running program/executable.
-
-**Related:** [[CSE351/System Programming/Exceptions]], [[Context Switching]], [[Fork-Exec Model]], [[CSE451/Virtual Memory/Virtual Memory]]
 
 ---
 
@@ -12,13 +10,13 @@ A **process** is an instance of a running program/executable.
 
 - **Illusion:** Each process has exclusive CPU use
 - **Reality:** CPU time shared among processes
-- **Implementation:** [[Context Switching]]
+- **Implementation:** [[CSE351/System Programming/Context Switching|Context Switching]]
 
 ### 2. Private Address Space
 
 - **Illusion:** Each process has exclusive memory
 - **Reality:** Physical memory shared and managed by OS
-- **Implementation:** [[CSE451/Virtual Memory/Virtual Memory]]
+- **Implementation:** [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 
 ---
 
@@ -52,9 +50,20 @@ Achieved through:
 ## Viewing Processes
 
 | OS | Tool |
-|----|------|
+|:---|:---|
 | Windows | Task Manager |
 | macOS | Activity Monitor |
 | Linux | `ps` command |
 
-**Related:** [[CSE484/Memory Exploits/Memory Layout]], [[CSE351/System Programming/Exceptions]]
+---
+
+## Related
+- [[CSE351/System Programming/Exceptions|Exceptions]]
+- [[CSE351/System Programming/Context Switching|Context Switching]]
+- [[CSE351/System Programming/Fork-Exec Model|Fork-Exec Model]]
+- [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
+- [[CSE451/Processes/Process|Process (CSE451)]]
+- [[CSE451/Processes/ProcessComponents/Process vs Program|Process vs Program (CSE451)]]
+- [[CSE451/Virtual Memory/Virtual Memory|Virtual Memory (CSE451)]]
+- [[CSE333/Process Management/Process Management|Process Management (CSE333)]]
+- [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

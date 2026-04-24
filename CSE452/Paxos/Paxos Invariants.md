@@ -1,0 +1,70 @@
+# Paxos Invariants and Design
+
+This note explains the technical "why" behind Paxos, focusing on the Ballot ID structure and the invariants that keep the system safe.
+
+## The Ballot ID (Proposal Number)
+A Ballot ID must be **unique** and **monotonically increasing**. 
+
+### Why a pair? `(number, server_id)`
+If multiple proposers (servers) could use the same ballot number, the system would break.
+- **The Problem**: Proposer A and Proposer B both pick ballot #5. Acceptors get confused about who "owns" ballot #5. One acceptor might promise to A, while another promises to B.
+- **The Fix**: We use a pair: `(round_number, server_id)`. 
+- **Comparison Logic**: `(n1, s1) > (n2, s2)` if:
+	1. $n1 > n2$, OR
+	2. $n1 == n2$ AND $s1 > s2$ (tie-breaking).
+- **Invariance**: This ensures that every ballot in the entire system's history is unique and belongs to exactly one proposer.
+
+### Why Round-Robin?
+Another way to ensure uniqueness is round-robin allocation of numbers:
+- Server 0 uses numbers 0, 3, 6, ...
+- Server 1 uses numbers 1, 4, 7, ...
+- Server 2 uses numbers 2, 5, 8, ...
+- This achieves the same goal: no two servers can ever issue the same proposal number.
+
+## What do Ballot IDs fix?
+1.  **Stale Proposers**: If an old proposer (who was partitioned or slow) tries to propose something after a newer proposer has already started, the newer proposer will have a higher ballot number. Acceptors will reject the old proposer's messages because they have already promised a higher number.
+2.  **Split Brain**: In a network partition, both sides might try to elect a leader. The side with the higher ballot number (and a majority) will eventually win or pre-empt the other side.
+3.  **Safety Invariance**: It allows the protocol to "lock" a value once a majority has agreed.
+
+## Scenario: Why we need unique IDs
+Imagine Server A and Server B both use Round 10:
+1.  Server A sends `Prepare(10)` to Acceptor 1. A1 promises.
+2.  Server B sends `Prepare(10)` to Acceptor 2. A2 promises.
+3.  Server A sends `Accept(10, "Value A")` to A1 and A2.
+4.  **Problem**: A2 says: "I already promised Round 10 (from Server B), so I can't accept your Round 10." 
+5.  If Server A and B use exactly the same ID, the acceptors cannot distinguish between them, leading to a deadlock where nobody can progress. 
+6.  **Fix**: By using `(10, ServerA)` vs `(10, ServerB)`, the nodes know exactly which proposal is "newer" and which one to reject.
+
+## Scenario: Dueling Proposers (Liveness Issue)
+This is why Paxos is safe (never chooses two values) but not always live (might never choose one).
+
+1.  **Proposer 1** prepares Round 10.
+2.  **Proposer 2** prepares Round 20 before Proposer 1 can finish Phase 2.
+3.  **Acceptors** reject Proposer 1's `Accept(10)` because they promised Round 20.
+4.  **Proposer 1** sees the failure and immediately prepares Round 30.
+5.  **Acceptors** now reject Proposer 2's `Accept(20)` because they promised Round 30.
+6.  **Result**: They keep "stepping on each other's toes" forever.
+7.  **The Fix**: Use a **Stable Leader** (Multi-Paxos) or **Randomized Backoff** so one proposer gets enough time to finish both phases.
+
+## Core Invariants (The "Rules" of Paxos)
+Paxos relies on these safety properties:
+
+### 1. The Quorum Intersection Property
+Any two majorities (quorums) **must overlap** by at least one node.
+- This overlap is the "link" that carries information from a previous successful round to a new round.
+
+### 2. The P2 Rule (The Value Choice Rule)
+> *If a proposal with value $v$ is chosen, then every higher-numbered proposal that is chosen has value $v$.*
+
+- **How it's enforced**: In Phase 2, a proposer **cannot** pick its own value if it sees that a majority has already started voting on a previous value. It must "adopt" the value from the highest-numbered previous round it learned about in Phase 1.
+- **The result**: Once a majority chooses $v$, any future proposer will be forced to see $v$ in its Phase 1 (because its majority will intersect with the majority that chose $v$) and will propose $v$ again in Phase 2.
+
+### 3. The Promise Invariant
+> *Once an acceptor sends a `Promise(n)`, it can never accept any proposal with a number $n' < n$.*
+
+- This prevents "time travel" where an old proposer could overwrite a newly agreed-upon value.
+
+---
+- [[CSE452/Paxos/Paxos|Back to Paxos Overview]]
+- [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
+- [[CSE452/Paxos/Multi-Paxos|Continue to Multi-Paxos]]

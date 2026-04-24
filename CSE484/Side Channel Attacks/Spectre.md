@@ -20,5 +20,5 @@ An attacker can read memory from another process or even the kernel without bein
 
 ## Related
 
-- [[Side Channel Attacks]] — general overview of side channel attack methods, including cache timing
+- [[CSE484/Side Channel Attacks/Side Channel Attacks]] — general overview of side channel attack methods, including cache timing
 - [[CSE484/Security Fundamentals/Other types of attacks|Other Types of Attacks]] — timing attacks at the software level

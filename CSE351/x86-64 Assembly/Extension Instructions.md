@@ -1,8 +1,6 @@
-# Extension Instructions (movz and movs)
+# CSE351: Extension Instructions (movz and movs)
 
-Extension instructions handle **size mismatches** where source is smaller than destination.
-
-**Related:** [[x86-64 Instruction Format]], [[Two's Complement]], [[Unsigned Integers]]
+Extension instructions handle **size mismatches** where the source is smaller than the destination.
 
 ---
 
@@ -13,7 +11,7 @@ Extension instructions handle **size mismatches** where source is smaller than d
 - Used for **unsigned** values
 
 ### Sign Extension (`movs`)
-- Fills upper bits with copies of **sign bit**
+- Fills upper bits with copies of the **sign bit**
 - Used for **signed** values
 
 ---
@@ -29,16 +27,16 @@ Extension instructions handle **size mismatches** where source is smaller than d
 Starting with `%al = 0x80`:
 
 ```assembly
-movzbw %al, %bx     # Zero extend byte->word: %bx = 0x0080
-movsbw %al, %bx     # Sign extend byte->word: %bx = 0xFF80
-movsbl %al, %ebx    # Sign extend byte->long: %ebx = 0xFFFFFF80
+movzbw %al, %bx     # Zero extend byte→word: %bx = 0x0080
+movsbw %al, %bx     # Sign extend byte→word: %bx = 0xFF80
+movsbl %al, %ebx    # Sign extend byte→long: %ebx = 0xFFFFFF80
 ```
 
 ---
 
 ## Important Note
 
-When using 32-bit destination, upper 32 bits are automatically zeroed:
+When using a 32-bit destination, the upper 32 bits are automatically zeroed:
 
 ```assembly
 movsbl %al, %ebx    # %ebx = 0xFFFFFF80
@@ -56,4 +54,10 @@ movsbl %al, %ebx    # %ebx = 0xFFFFFF80
 - Sign bit is 1 (negative)
 - Sign extend: `%rdi = 0xFFFFFFFFFFFFF2F1`
 
-**Related:** [[x86-64 Registers]], [[Two's Complement]]
+---
+
+## Related
+- [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
+- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
+- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]

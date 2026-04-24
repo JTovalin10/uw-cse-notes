@@ -1,16 +1,14 @@
-# Conditionals (If-Else)
+# CSE351: Conditionals (If-Else)
 
-Conditionals use [[Labels]] and [[Jump Instructions]] to ensure only one branch executes.
-
-**Related:** [[Condition Codes]], [[Jump Instructions]], [[Labels]], [[CSE351/x86-64 Assembly/Loops]]
+Conditionals use [[CSE351/x86-64 Assembly/Labels|labels]] and [[CSE351/x86-64 Assembly/Jump Instructions|jump instructions]] to ensure only one branch executes.
 
 ---
 
 ## Basic Strategy
 
 1. Set condition codes with `cmp` or `test`
-2. Use conditional jump to skip one branch
-3. Use unconditional `jmp` to skip the other branch
+2. Use a conditional jump to skip one branch
+3. Use an unconditional `jmp` to skip the other branch
 
 ---
 
@@ -59,12 +57,19 @@ addq $2, %rbx       # if case: y += 2
 
 ## Pattern: Jump on Opposite Condition
 
-To execute code when condition is true, **jump on opposite condition** to skip to else.
+To execute code when a condition is true, **jump on the opposite condition** to skip to else.
 
 | C Condition | Jump to Skip |
-|-------------|--------------|
+|:---|:---|
 | `x < 3` | `jge` (jump if >= 3) |
 | `x > 1` | `jle` (jump if <= 1) |
 | `x == 0` | `jne` (jump if != 0) |
 
-**Related:** [[CSE351/x86-64 Assembly/Loops]], [[Switch Statements]]
+---
+
+## Related
+- [[CSE351/x86-64 Assembly/Condition Codes|Condition Codes]]
+- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
+- [[CSE351/x86-64 Assembly/Labels|Labels]]
+- [[CSE351/x86-64 Assembly/Loops|Loops]]
+- [[CSE351/x86-64 Assembly/Switch Statements|Switch Statements]]

@@ -1,15 +1,13 @@
-# Loops
+# CSE351: Loops
 
-Loops use [[Labels]] and [[Jump Instructions]] with **backward jumps** to repeat code.
-
-**Related:** [[CSE351/x86-64 Assembly/Conditionals]], [[Jump Instructions]], [[Condition Codes]]
+Loops use [[CSE351/x86-64 Assembly/Labels|labels]] and [[CSE351/x86-64 Assembly/Jump Instructions|jump instructions]] with **backward jumps** to repeat code.
 
 ---
 
 ## Key Differences from If-Else
 
 - **Backward jumps:** Must jump back to loop beginning
-- **Timing:** When to evaluate test condition
+- **Timing:** When to evaluate the test condition
 - **Efficiency:** Number of jump instructions
 
 ---
@@ -44,7 +42,7 @@ loopDone:
 
 ---
 
-## While Loop (Version 2 - Optimized)
+## While Loop (Version 2 — Optimized)
 
 ```assembly
     <CC instr>          # Initial test
@@ -56,7 +54,7 @@ loopTop:
 loopDone:
 ```
 
-**Why Version 2?** Fewer jumps in common case.
+**Why Version 2?** Fewer jumps in the common case.
 
 ---
 
@@ -103,4 +101,11 @@ test:
     jl loop             # continue if index < size
 ```
 
-**Related:** [[Arrays]], [[Pointer Arithmetic]]
+---
+
+## Related
+- [[CSE351/x86-64 Assembly/Conditionals|Conditionals]]
+- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
+- [[CSE351/x86-64 Assembly/Condition Codes|Condition Codes]]
+- [[CSE351/Data Structures/Arrays|Arrays]]
+- [[CSE351/Memory Fundamentals/Pointers|Pointer Arithmetic]]

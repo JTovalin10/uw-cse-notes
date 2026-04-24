@@ -1,15 +1,13 @@
-# CALL Process (Building an Executable)
+# CSE351: CALL Process (Building an Executable)
 
 **CALL** = **C**ompiling → **A**ssembling → **L**inking → **L**oading
-
-**Related:** [[CSE351/Procedures and Stack/Memory Layout]], [[x86-64 Instruction Format]]
 
 ---
 
 ## Overview
 
 | Phase | Input | Output |
-|-------|-------|--------|
+|:---|:---|:---|
 | Compiling | `.c` source | `.s` assembly |
 | Assembling | `.s` assembly | `.o` object file |
 | Linking | `.o` files | executable |
@@ -26,7 +24,7 @@
 ### Optimization Flags
 
 | Flag | Purpose |
-|------|---------|
+|:---|:---|
 | `-O0` | No optimization (debugging) |
 | `-O1`, `-O2`, `-O3` | Performance optimization |
 | `-Os` | Size optimization |
@@ -49,22 +47,22 @@ Converts assembly to object code.
 - **Relocation table:** Addresses needing patching
 
 ### Why "Incomplete"?
-- Don't know final addresses yet
+- Final addresses not yet known
 - Multiple files only know about themselves
 
 ---
 
 ## Linking
 
-Stitches object files and libraries into final executable.
+Stitches object files and libraries into a final executable.
 
 ### Process
-1. Combine code, data, literal sections
+1. Combine code, data, and literal sections
 2. Resolve references (relocation table ↔ symbol table)
 3. Assign final addresses
 
 ### Symbol Resolution
-- **Relocation table:** "I need address of function X"
+- **Relocation table:** "I need the address of function X"
 - **Symbol table:** "Function X is at address Y"
 - **Linker:** Updates all references
 
@@ -77,10 +75,10 @@ Stitches object files and libraries into final executable.
 
 ## Loading
 
-OS converts executable to running process.
+OS converts the executable into a running process.
 
 ### OS Tasks
-- Initialize code, data, stack, heap sections
+- Initialize code, data, stack, and heap sections
 - Set initial register values
 - Create process control block
 - Jump to program entry point
@@ -112,9 +110,16 @@ Reverse engineering: binary → assembly
 ```
 
 | Column | Meaning |
-|--------|---------|
+|:---|:---|
 | Left | Memory addresses |
 | Middle | Machine code bytes |
 | Right | Assembly instructions |
 
-**Related:** [[CSE451/Virtual Memory/Virtual Memory]], [[CSE351/Procedures and Stack/Memory Layout]]
+---
+
+## Related
+- [[CSE351/Procedures and Stack/Memory Layout|Memory Layout]]
+- [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
+- [[CSE351/System Programming/Processes|Processes]]
+- [[CSE451/Virtual Memory/Virtual Memory|Virtual Memory (CSE451)]]
+- [[CSE333/Build Systems/Makefiles|Makefiles (CSE333)]]

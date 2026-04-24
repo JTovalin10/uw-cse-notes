@@ -1,13 +1,11 @@
-# x86-64 Registers
-
-**Related:** [[x86-64 Instruction Format]], [[Calling Conventions]], [[Register Saving Conventions]]
+# CSE351: x86-64 Registers
 
 ---
 
 ## Register Names and Sizes
 
 | 64-bit | 32-bit | 16-bit | 8-bit |
-|--------|--------|--------|-------|
+|:---|:---|:---|:---|
 | %rax | %eax | %ax | %al |
 | %rbx | %ebx | %bx | %bl |
 | %rcx | %ecx | %cx | %cl |
@@ -43,10 +41,17 @@ movl $100, %eax       # Sets %rax = 0x0000000000000064
 ## Special Registers
 
 | Register | Purpose |
-|----------|---------|
-| `%rsp` | [[CSE451/Processes/CPUState/Stack Pointer]] |
+|:---|:---|
+| `%rsp` | [[CSE351/Procedures and Stack/Stack Pointer\|Stack pointer]] |
 | `%rbp` | Frame pointer (optional) |
-| `%rip` | [[CSE451/Processes/CPUState/Program Counter]] |
+| `%rip` | [[CSE351/Procedures and Stack/Program Counter\|Program counter]] |
 | `%rax` | Return value |
 
-**Related:** [[Calling Conventions]], [[Stack Frames]]
+---
+
+## Related
+- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
+- [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
+- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
+- [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
+- [[CSE451/Processes/CPUState/Registers|Registers (CSE451)]]

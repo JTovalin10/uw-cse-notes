@@ -1,8 +1,6 @@
-# Context Switching
+# CSE351: Context Switching
 
-The mechanism by which the OS switches execution between [[Processes|processes]].
-
-**Related:** [[Processes]], [[CSE351/System Programming/Exceptions]], [[x86-64 Registers]]
+The mechanism by which the OS switches execution between [[CSE351/System Programming/Processes|processes]].
 
 ---
 
@@ -10,17 +8,17 @@ The mechanism by which the OS switches execution between [[Processes|processes]]
 
 ### 1. Save Current State
 - Save all CPU registers to memory
-- Save program counter ([[CSE451/Processes/CPUState/Program Counter|%rip]])
+- Save program counter (`%rip`)
 - Save stack pointer and process state
 
 ### 2. Schedule Next Process
-- OS scheduler selects next process
+- OS scheduler selects the next process
 - May consider priority, waiting time, etc.
 
 ### 3. Restore New Process State
 - Load saved registers from memory
-- Switch to new process's address space
-- Update memory management unit (MMU)
+- Switch to the new process's address space
+- Update the memory management unit (MMU)
 
 ---
 
@@ -40,7 +38,7 @@ CPU:       [A code] [OS switch] [B code] [OS switch] [A code]
 ## Performance Considerations
 
 - **Overhead:** Context switches consume CPU cycles
-- **Frequency:** Balance responsiveness vs efficiency
+- **Frequency:** Balance responsiveness vs. efficiency
 - **Hardware support:** Modern CPUs have acceleration features
 
 ---
@@ -48,11 +46,19 @@ CPU:       [A code] [OS switch] [B code] [OS switch] [A code]
 ## What Gets Saved
 
 | Component | Description |
-|-----------|-------------|
+|:---|:---|
 | General registers | `%rax`, `%rbx`, etc. |
 | Program counter | `%rip` |
 | Stack pointer | `%rsp` |
 | Condition codes | `EFLAGS` |
 | Memory mappings | Page table pointer |
 
-**Related:** [[Register Saving Conventions]], [[CSE451/Virtual Memory/Virtual Memory]]
+---
+
+## Related
+- [[CSE351/System Programming/Processes|Processes]]
+- [[CSE351/System Programming/Exceptions|Exceptions]]
+- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
+- [[CSE451/Processes/CPUState/Context Switch|Context Switch (CSE451)]]
+- [[CSE451/Virtual Memory/Virtual Memory|Virtual Memory (CSE451)]]

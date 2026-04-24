@@ -1,39 +1,27 @@
-# Page Faults
+# CSE351: Page Faults
 
-A **page fault** occurs when a requested page is not in physical memory (valid bit = 0). This means the page has been evicted or never loaded
+A **page fault** occurs when a requested virtual page is not in physical memory (valid bit = 0). When a page is evicted from RAM, the OS marks its PTE as invalid and records the disk location where the page was stored. On the next access, the invalid PTE causes a page fault exception, and the OS handler brings the page back from disk.
 
-## What happens then
-- when the page is evicted, the OS set the PTE as invalid and noted the disk location of the page in a data strucrture
-- when a process tries to access the page, the invalid PTE will cause an exception (page fault) to be thrown
-	- can a single instrution have multiple faults
-- the OS will run the page fauklt hanlder in response
-	- hanlder uses the like a page data structure to lcoat ethe page on disk
-	- handler reads page into a physkical frame, update tPTE to point to it and to be vald
-	- OS restarts the failting process
-	- and more
-
-**Related:** [[Page Tables]], [[CSE351/Memory Management/Virtual Memory]], [[CSE351/System Programming/Exceptions]]
+Note: a single instruction can trigger multiple page faults — for example, if both the instruction fetch and the data access reference pages that are not in memory.
 
 ---
 
-## Page Fault Handling
-
-### Steps
+## Page Fault Handling Steps
 
 1. CPU sends virtual address to MMU
-2. MMU looks up PTE using VPN
+2. MMU looks up the PTE using the VPN
 3. Valid bit = 0 → **page fault exception**
 4. OS handler:
-   - Identifies victim page in physical memory
-   - Pages out victim (if dirty) to disk
-   - Pages in requested page from disk
-   - Updates PTE with new PPN and valid = 1
-5. Returns control to restart instruction
-6. Retry is guaranteed page hit
+   - Identifies a victim page in physical memory to evict
+   - Writes victim to disk if dirty
+   - Reads the requested page from disk into the freed physical frame
+   - Updates the PTE (new PPN, valid = 1)
+5. OS restarts the faulting instruction
+6. On retry, the access is a guaranteed page hit
 
 ---
 
-## Page Hit vs Page Fault
+## Page Hit vs. Page Fault
 
 ### Page Hit
 
@@ -47,28 +35,40 @@ Memory accesses: **2** (PTE + data)
 ```
 CPU → MMU → Memory (PTE) → MMU → OS Handler → Disk I/O → Memory update → restart
 ```
-Memory accesses by MMU: **3** (initial PTE + 2 for subsequent hit)
+Memory accesses by MMU: **3** (initial PTE + 2 for the subsequent hit after restart)
 
-Plus massive disk I/O penalty!
+Plus a massive disk I/O penalty.
 
 ---
 
 ## Why Page Faults Are Expensive
 
-- Disk access: ~10,000,000 cycles
-- Memory access: ~100 cycles
-- Register access: ~1 cycle
+| Level | Access Time |
+|:---|:---|
+| Register | ~1 cycle |
+| Memory (RAM) | ~100 cycles |
+| Disk | ~10,000,000 cycles |
 
-This is why we use [[Translation Lookaside Buffer (TLB 351)]] to minimize page table accesses.
+This 100,000× cost is why the [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]] minimizes page table accesses and why write-back policy limits disk writes.
 
 ---
 
 ## Address Translation Components
 
 | Component | Purpose |
-|-----------|---------|
+|:---|:---|
 | CPU | Issues virtual addresses |
 | MMU | Performs address translation |
-| PTBR | Points to current process's page table |
+| PTBR | Points to the current process's page table |
 
-**Related:** [[Translation Lookaside Buffer (TLB 351)]], [[Context Switching]]
+---
+
+## Related
+- [[CSE351/Memory Management/Page Tables|Page Tables]]
+- [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
+- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]]
+- [[CSE351/System Programming/Exceptions|Exceptions]]
+- [[CSE351/System Programming/Context Switching|Context Switching]]
+- [[CSE451/Virtual Memory/Page Fault|Page Fault (CSE451)]]
+- [[CSE451/Virtual Memory/How does the OS handle page faults|How the OS Handles Page Faults (CSE451)]]
+- [[CSE451/Virtual Memory/Page Replacement/Page replacement|Page Replacement (CSE451)]]

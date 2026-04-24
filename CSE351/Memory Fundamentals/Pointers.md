@@ -62,7 +62,7 @@ ar[i] == *(ar + i)
 ```
 
 ## Related
-- [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory]]
-- [[CSE351/Memory Fundamentals/Endianness|Endianness]]
+- [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory (including Endianness)]]
 - [[CSE351/Data Structures/Arrays|Arrays]]
 - [[CSE351/x86-64 Assembly/x86-64 Memory Operands|x86-64 Memory Operands]]
+- [[CSE333/Memory Management/Pointers|Pointers (CSE333)]]

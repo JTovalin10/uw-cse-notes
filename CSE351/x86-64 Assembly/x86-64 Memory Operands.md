@@ -1,13 +1,11 @@
-# x86-64 Memory Operands
-
-**Related:** [[x86-64 Operand Types]], [[Pointer Arithmetic]], [[Arrays]]
+# CSE351: x86-64 Memory Operands
 
 ---
 
 ## General Form: `D(Rb,Ri,S)`
 
 | Component | Description |
-|-----------|-------------|
+|:---|:---|
 | **D** | Displacement (immediate/constant) |
 | **Rb** | Base register |
 | **Ri** | Index register |
@@ -29,7 +27,7 @@ Copies 1 byte from memory at that address into `%cl`.
 ## Default Values (Omitted Parts)
 
 | Part | Default |
-|------|---------|
+|:---|:---|
 | D | 0 |
 | Reg[Rb] | 0 |
 | Reg[Ri] | 0 |
@@ -64,4 +62,11 @@ popq %rbx               # Pop from stack
 
 **Important:** Always use 64-bit register names in memory operands since addresses are 8 bytes.
 
-**Related:** [[Pointer Arithmetic]], [[CSE451/Processes/CPUState/Stack Pointer]], [[Arrays]]
+---
+
+## Related
+- [[CSE351/x86-64 Assembly/x86-64 Operand Types|Operand Types]]
+- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[CSE351/Memory Fundamentals/Pointers|Pointer Arithmetic]]
+- [[CSE351/Data Structures/Arrays|Arrays]]
+- [[CSE351/Procedures and Stack/Stack Pointer|Stack Pointer]]

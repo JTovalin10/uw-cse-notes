@@ -1,4 +1,4 @@
-# CSE351: Locality
+# CSE351: Cache Locality
 
 Locality of reference refers to the tendency of programs to access a small portion of their address space at any given time. This principle is what makes caching effective.
 

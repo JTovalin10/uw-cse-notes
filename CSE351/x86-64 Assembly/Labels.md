@@ -1,8 +1,6 @@
-# Labels
+# CSE351: Labels
 
 A **label** is a symbolic name for an instruction's memory address.
-
-**Related:** [[Jump Instructions]], [[CSE351/x86-64 Assembly/Conditionals]], [[CSE351/x86-64 Assembly/Loops]]
 
 ---
 
@@ -43,4 +41,10 @@ Compilers typically use format: `.L#:` (GCC convention)
 
 Labels are associated with the **next instruction** after them (ignoring whitespace).
 
-**Related:** [[CSE451/Processes/CPUState/Program Counter]], [[CSE351/x86-64 Assembly/Conditionals]]
+---
+
+## Related
+- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
+- [[CSE351/x86-64 Assembly/Conditionals|Conditionals]]
+- [[CSE351/x86-64 Assembly/Loops|Loops]]
+- [[CSE351/Procedures and Stack/Program Counter|Program Counter]]

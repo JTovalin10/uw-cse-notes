@@ -1,13 +1,11 @@
-# Memory Layout
-
-**Related:** [[The Stack]], [[CSE451/Virtual Memory/Virtual Memory]], [[Memory Allocation]]
+# CSE351: Memory Layout
 
 ---
 
 ## Memory Segments (High to Low Addresses)
 
 | Segment | Purpose | Growth |
-|---------|---------|--------|
+|:---|:---|:---|
 | **Stack** | Local variables, function calls | Downward |
 | **Heap** | Dynamic allocation (`malloc`) | Upward |
 | **Static/Global** | Global variables, static data | Fixed |
@@ -42,4 +40,12 @@
 
 **Memory addresses ordered:** Code < Static < Heap < Stack
 
-**Related:** [[CSE351/Procedures and Stack/Stack Pointer]], [[Stack Frames]], [[Memory Allocation]]
+---
+
+## Related
+- [[CSE351/Procedures and Stack/Stack Pointer|Stack Pointer]]
+- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
+- [[CSE351/Memory Management/Memory Allocation|Memory Allocation]]
+- [[CSE451/Virtual Memory/Virtual Memory|Virtual Memory (CSE451)]]
+- [[CSE333/Memory Management/Stack|Stack (CSE333)]]
+- [[CSE333/Memory Management/Heap|Heap (CSE333)]]

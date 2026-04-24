@@ -62,4 +62,5 @@ struct example {
 - [[CSE351/Data Structures/Arrays|Arrays]]
 - [[CSE351/Memory Fundamentals/Pointers|Pointers]]
 - [[CSE351/Memory Management/Memory Allocation|Memory Allocation]]
-- [[CSE484/Memory Exploits/Memory Layout|Memory Layout]]
+- [[CSE333/Data Structures/Struct|Struct (CSE333)]]
+- [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

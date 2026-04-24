@@ -44,19 +44,25 @@ Master navigation hub for CSE 351 notes. For a course overview and goals, see th
 - [[CSE351/Data Structures/Structs|Structs (including Alignment)]]
 
 ## Cache
-- [[CSE351/Cache/Locality|Locality]]
+- [[CSE351/Cache/Cache Locality|Locality]]
+- [[CSE351/Cache/Cache Organization|Cache Organization (Parameters, Placement, Miss Types)]]
 - [[CSE351/Cache/Cache Associativity|Cache Associativity]]
+- [[CSE351/Cache/Handling Writes|Handling Writes (Write Policies)]]
+- [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
+- [[CSE351/Cache/Side Channel Attacks|Side Channel Attacks (Spectre, Flush+Reload)]]
+
+## Security
+- [[CSE351/Security/Buffer Overflow|Buffer Overflow]]
 
 ## Memory Management
 - [[CSE351/Memory Management/Memory Allocation|Memory Allocation]]
+- [[CSE351/Memory Management/Explicit Allocation Implementation|Explicit Allocation Implementation]]
+- [[CSE351/Memory Management/Segregated List Allocators|Segregated List Allocators]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 - [[CSE351/Memory Management/Paging|Paging]]
 - [[CSE351/Memory Management/Page Tables|Page Tables]]
 - [[CSE351/Memory Management/Page Faults|Page Faults]]
 - [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|Translation Lookaside Buffer (TLB)]]
-
-## Security
-- [[CSE351/Security/Buffer Overflow|Buffer Overflow]]
 
 ## System Programming
 - [[CSE351/System Programming/Exceptions|Exceptions]]

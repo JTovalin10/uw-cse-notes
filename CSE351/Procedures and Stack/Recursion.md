@@ -1,8 +1,6 @@
-# Recursion
+# CSE351: Recursion
 
-Recursion works seamlessly with stack frames and calling conventions - no special considerations needed!
-
-**Related:** [[Stack Frames]], [[Register Saving Conventions]], [[Calling Conventions]]
+Recursion works seamlessly with stack frames and calling conventions — no special considerations needed!
 
 ---
 
@@ -75,8 +73,8 @@ recursive:
 1. `fact(3)`: n=3 > 1, save %rbx, save n=3, call fact(2)
 2. `fact(2)`: n=2 > 1, save %rbx=3, save n=2, call fact(1)
 3. `fact(1)`: n=1, return 1 (base case)
-4. `fact(2)`: compute 2*1=2, return 2
-5. `fact(3)`: compute 3*2=6, return 6
+4. `fact(2)`: compute 2×1=2, return 2
+5. `fact(3)`: compute 3×2=6, return 6
 
 ---
 
@@ -86,4 +84,10 @@ recursive:
 - All recursive calls return to `imul` instruction
 - Each `n` saved in `%rbx` and restored for multiplication
 
-**Related:** [[The Stack]], [[CSE351/Procedures and Stack/Stack Pointer]]
+---
+
+## Related
+- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
+- [[CSE351/Procedures and Stack/Stack Pointer|Stack Pointer]]
+- [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
+- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]

@@ -1,6 +1,4 @@
-# x86-64 Operand Types
-
-**Related:** [[x86-64 Instruction Format]], [[x86-64 Registers]], [[x86-64 Memory Operands]]
+# CSE351: x86-64 Operand Types
 
 ---
 
@@ -48,9 +46,15 @@ movl 4(%rbp), %ecx    # Load from %rbp + 4
 
 **Valid combinations:**
 ```assembly
-movq $5, %rax         # immediate -> register
-movq %rax, (%rbx)     # register -> memory
-movq (%rax), %rbx     # memory -> register
+movq $5, %rax         # immediate → register
+movq %rax, (%rbx)     # register → memory
+movq (%rax), %rbx     # memory → register
 ```
 
-**Related:** [[CSE333/Memory Management/Pointers]], [[x86-64 Memory Operands]]
+---
+
+## Related
+- [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
+- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[CSE351/x86-64 Assembly/x86-64 Memory Operands|Memory Operands]]
+- [[CSE333/Memory Management/Pointers|Pointers (CSE333)]]
