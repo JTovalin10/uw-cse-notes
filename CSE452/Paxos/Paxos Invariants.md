@@ -11,7 +11,7 @@ If multiple proposers (servers) could use the same ballot number, the system wou
 - **The Fix**: We use a pair: `(round_number, server_id)`. 
 - **Comparison Logic**: `(n1, s1) > (n2, s2)` if:
 	1. $n1 > n2$, OR
-	2. $n1 == n2$ AND $s1 > s2$ (tie-breaking).
+	2. $n1 = n2$ AND $s1 > s2$ (tie-breaking).
 - **Invariance**: This ensures that every ballot in the entire system's history is unique and belongs to exactly one proposer.
 
 ### Why Round-Robin?

@@ -65,4 +65,4 @@ fi
 
 ## Related
 - [[Control Flow]]
-- [[Bash Basics]]
+- [[Bash Scripting Basics]]

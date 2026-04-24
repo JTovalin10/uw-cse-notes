@@ -1,3 +1,3 @@
 # uniq
 
-**[[CSE391/Definitions/uniq|uniq]]**: Definition needed.
+**[[uniq]]**: Filters out adjacent duplicate lines. Often used after `sort`.

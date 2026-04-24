@@ -1,3 +1,3 @@
 # grep
 
-**[[CSE391/Definitions/grep|grep]]**: Definition needed.
+**[[grep]]**: Searches for patterns in text using regular expressions.

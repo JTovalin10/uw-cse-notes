@@ -1,3 +1,3 @@
 # tail
 
-**[[CSE391/Definitions/tail|tail]]**: Definition needed.
+**[[tail]]**: Displays the last few lines (default 10) of a file.

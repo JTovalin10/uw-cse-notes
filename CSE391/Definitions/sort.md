@@ -1,3 +1,3 @@
 # sort
 
-**[[CSE391/Definitions/sort|sort]]**: Definition needed.
+**[[sort]]**: Reorders the lines of a file alphabetically or numerically.

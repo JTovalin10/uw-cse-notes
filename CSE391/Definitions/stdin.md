@@ -1,3 +1,3 @@
 # stdin
 
-**[[CSE391/Definitions/stdin|stdin]]**: Definition needed.
+**[[stdin]]** (standard input): The default source of data for a command, usually the keyboard or the output of another command.

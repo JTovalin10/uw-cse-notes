@@ -1,3 +1,3 @@
 # head
 
-**[[CSE391/Definitions/head|head]]**: Definition needed.
+**[[head]]**: Displays the first few lines (default 10) of a file.

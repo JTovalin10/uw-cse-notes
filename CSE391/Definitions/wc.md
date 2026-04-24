@@ -1,3 +1,3 @@
 # wc
 
-**[[CSE391/Definitions/wc|wc]]**: Definition needed.
+**[[wc]]**: Short for "word count," it counts lines, words, and characters in a file.

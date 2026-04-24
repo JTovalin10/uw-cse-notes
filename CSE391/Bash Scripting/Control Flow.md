@@ -42,5 +42,5 @@ These are shorthand for simple `if` logic:
 
 ## Related
 - [[Comparisons]]
-- [[Bash Basics]]
+- [[Bash Scripting Basics]]
 - [[Intermediate Command Line/Control Flow Operators|Shell Operators]]

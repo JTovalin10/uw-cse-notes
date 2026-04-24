@@ -1,3 +1,3 @@
 # sed
 
-**[[CSE391/Definitions/sed|sed]]**: Definition needed.
+**[[sed]]**: (Stream Editor) is a powerful utility used to parse and transform text line-by-line.

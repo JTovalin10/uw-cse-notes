@@ -1,3 +1,3 @@
 # GitLab
 
-**[[CSE391/Definitions/GitLab|GitLab]]**: Definition needed.
+**[[GitLab]]** is a web-based Git repository manager that provides wiki, issue-tracking, and CI/CD pipeline features.

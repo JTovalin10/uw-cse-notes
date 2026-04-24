@@ -1,3 +1,3 @@
 # find
 
-**[[CSE391/Definitions/find|find]]**: Definition needed.
+**[[find]]**: A powerful tool for searching the filesystem for files that match specific criteria (name, size, type).
