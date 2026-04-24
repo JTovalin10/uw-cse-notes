@@ -14,7 +14,7 @@ $$\text{Max In-Flight Data} = \min(\text{cwnd}, \text{rwnd})$$
 
 ### cwnd Dynamics
 The value of **cwnd** changes based on the congestion control phase:
-1.  **[[Slow Start]]**: cwnd starts at 1 **[[Maximum Segment Size (MSS)]]** and increases by 1 MSS for every ACK received (exponential growth).
+1.  **[[Slow Start]]**: cwnd starts at 1 Maximum Segment Size (MSS) and increases by 1 MSS for every ACK received (exponential growth).
 2.  **[[Congestion Avoidance]]**: cwnd increases linearly by 1 MSS per **[[Round-Trip Time (RTT)]]**.
 3.  **[[Multiplicative Decrease]]**: Upon detecting packet loss (via timeout or duplicate ACKs), cwnd is reduced (typically cut in half or reset to 1 MSS depending on the algorithm).
 
@@ -31,4 +31,3 @@ The value of **cwnd** changes based on the congestion control phase:
 
 ## Related Terminology
 *   **[[ssthresh]] (Slow Start Threshold)**: The target value where TCP switches from exponential growth (Slow Start) to linear growth (Congestion Avoidance).
-*   **[[Maximum Segment Size (MSS)]]**: The largest amount of data, specified in bytes, that TCP can send in a single segment.

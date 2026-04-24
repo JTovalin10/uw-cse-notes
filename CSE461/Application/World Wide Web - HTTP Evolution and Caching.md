@@ -42,7 +42,7 @@ HTTP is a **Stateless** protocol—the server does not remember the client betwe
 
 ## Advanced Web Caching
 
-Caching is the primary mechanism for scaling the Web. It occurs at the browser, in the network (**[[Proxy]]**), and at the origin (**[[CDN]]**).
+Caching is the primary mechanism for scaling the Web. It occurs at the browser, in the network (**Proxy**), and at the origin (**[[CDN]]**).
 
 ### Cache-Control Directives
 *   **`public`**: Can be cached by any intermediate proxy.
@@ -58,7 +58,7 @@ Tells the cache which request headers (e.g., `Accept-Encoding`, `User-Agent`) we
 
 ## Proxy Architectures
 
-A **[[Proxy]]** is an intermediate entity that acts as both a client and a server.
+A **Proxy** is an intermediate entity that acts as both a client and a server.
 
 ### 1. Forward Proxy
 *   **Role**: Sits in front of the **Client**.

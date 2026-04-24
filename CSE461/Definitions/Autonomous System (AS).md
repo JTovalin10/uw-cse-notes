@@ -35,5 +35,5 @@ Collection of routers under one administrative authority. Internet organized as 
 
 - [[Border Gateway Protocol (BGP)]] — the interdomain routing protocol used between ASes
 - [[Internet Service Provider (ISP)]] — many ISPs operate as ASes
-- [[AS Relationships and Policies]] — [[AS Relationships and Policies#Provider–Customer|provider policy]], [[AS Relationships and Policies#Customer–Provider|customer policy]], [[AS Relationships and Policies#Peer|peer policy]]
+- AS Relationships and Policies — provider policy, customer policy, peer policy
 - [[Integrating iBGP and eBGP]] — integration with intradomain routing

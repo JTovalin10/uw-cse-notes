@@ -28,7 +28,7 @@ A **[[Shell]]** is an interactive program that allows the user to interact with 
 Common methods to access a Linux environment include:
 - Remotely logging in via `ssh` to servers like `attu` (CSE majors) or `vergil` (all UW students).
 - Running a **[[Virtual Machine]] (VM)**.
-- Using the **[[Windows Subsystem for Linux]] (WSL)**.
+- Using the **Windows Subsystem for Linux (WSL)**.
 
 ## Related/See-also
 - Unix File System

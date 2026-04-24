@@ -38,4 +38,4 @@ int result = op(5); // calls negate(5)
 - **Big-endian**: Least significant byte has the **highest** address.
 - **Little-endian**: Least significant byte has the **lowest** address (standard on x86-64).
 
-Related: [[Arrays]], [[Memory Management/Stack]], [[Memory Management/Heap Management]], [[CSE351/Memory Fundamentals/Pointers|CSE351: Pointers]]
+Related: Arrays, [[Memory Management/Stack]], [[Memory Management/Heap Management]], [[CSE351/Memory Fundamentals/Pointers|CSE351: Pointers]]

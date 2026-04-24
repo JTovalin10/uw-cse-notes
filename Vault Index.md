@@ -352,7 +352,7 @@ Reference map of all files in the vault, organized by course and directory. Use 
 - [[Direct Associate Cache]] — direct-mapped cache structure
 - [[fully associative cache]] — cache with full flexibility in placement
 - [[N-Way associative cache]] — N-way set associative cache
-- [[Spatial Locality]] — accessing nearby memory addresses
+- Spatial Locality — accessing nearby memory addresses
 - [[Temporal locality]] — reusing recently accessed data
 
 ### Data Structures

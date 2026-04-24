@@ -38,6 +38,15 @@ Paxos is often described using a compact message notation:
 1.  **Proposer**: Waits for a majority of **1b** responses.
     - If all summaries are $null$, the proposer can propose its own value.
     - If any summary is non-null, the proposer **must** propose the value $v'$ from the **highest-numbered round** $r'$ reported.
+    - **Crucial Rule**: The proposer's original intended value is **not** part of this comparison. If it sees a previous value, it **discards** its own and "adopts" the old one.
+
+> **Example**: Proposer M is running **Round 8**. It hears from three acceptors:
+> - A1: Voted in Round 2 for $V_1$
+> - A2: No history ($null$)
+> - A3: Voted in Round 4 for $V_2$
+> 
+> Even though M is in Round 8, it sees that Round 4 is the highest historical round. M **must** propose $(8, V_2)$. It uses its own round (8) for authority, but the old value ($V_2$) for safety.
+
 2.  **Acceptor**: Receives **2a(r, v)**. If it hasn't promised a higher round since Phase 1, it sends **2b(r, v)** to the learners.
 
 ## Why Phase 1 Needs a Majority (The "History Check")
