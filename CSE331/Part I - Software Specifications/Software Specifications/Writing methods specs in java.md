@@ -16,9 +16,9 @@ In Java, method specifications are written as **Javadoc comments** directly abov
 | `@param name desc` | Describe each parameter |
 | `@return desc` | Describe the return value |
 | `@throws Ex desc` | Describe when exception `Ex` is thrown |
-| `@spec.requires` | State the [[Pre and Post Conditions\|precondition]] |
-| `@spec.modifies` | See [[CSE331/Part I - Software Specifications/Definitions/@modifies\|@modifies]] |
-| `@spec.effects` | See [[CSE331/Part I - Software Specifications/Definitions/@effects\|@effects]] |
+| `@spec.requires` | State the precondition |
+| `@spec.modifies` | See @modifies |
+| `@spec.effects` | See @effects |
 
 ## Example
 

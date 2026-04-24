@@ -1,7 +1,7 @@
 # Network Layer: Multicast
 
 ## Low-Level Primer: One-to-Many Efficiency
-**[[Multicast]]** is a delivery model where a sender transmits a single packet to a **Group Address**, and the network infrastructure (routers) is responsible for replicating that packet only when paths diverge. This is significantly more efficient than **Unicast** (sending $N$ copies to $N$ receivers) or **Broadcast** (sending to everyone).
+**Multicast** is a delivery model where a sender transmits a single packet to a **Group Address**, and the network infrastructure (routers) is responsible for replicating that packet only when paths diverge. This is significantly more efficient than **Unicast** (sending $N$ copies to $N$ receivers) or **Broadcast** (sending to everyone).
 
 ---
 

@@ -1,6 +1,6 @@
 # Forwarding Table
 
-Maps destination addresses (or [[Virtual Circuit Identifier|VCI]]s) to output ports. Determines next hop per packet.
+Maps destination addresses (or VCIs) to output ports. Determines next hop per packet.
 
 ## Key points
 

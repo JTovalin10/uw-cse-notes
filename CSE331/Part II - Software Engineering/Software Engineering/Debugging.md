@@ -7,7 +7,7 @@
 
 **Key Point:** Both testing and debugging require a complete understanding of how the program is *supposed* to work. Without knowing the intended behavior you cannot tell whether you are looking at a bug.
 
-Debugging is one of several techniques used during [[Software Implementation]]; it complements type checking, [[Reasoning]], and [[Testing]], each of which catches different kinds of bugs.
+Debugging is one of several techniques used during [[Software Implementation]]; it complements type checking, Reasoning, and [[Testing]], each of which catches different kinds of bugs.
 
 # Debugging Techniques
 

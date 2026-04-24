@@ -17,7 +17,7 @@ $$\text{LastByteSent} - \text{LastByteAcked} \le \text{rwnd}$$
 
 ### Corner Cases
 *   **Zero Window**: If the receiver's buffer is full, it advertises `rwnd = 0`. The sender stops transmitting and periodically sends 1-byte **Zero Window Probes** to check if space has opened up.
-*   **[[Silly Window Syndrome]]**: Occurs when the receiver advertises tiny increases in the window (e.g., 1 byte), leading to massive overhead. Clark's Algorithm and Nagle's Algorithm are used to mitigate this.
+*   **Silly Window Syndrome**: Occurs when the receiver advertises tiny increases in the window (e.g., 1 byte), leading to massive overhead. Clark's Algorithm and Nagle's Algorithm are used to mitigate this.
 
 ---
 

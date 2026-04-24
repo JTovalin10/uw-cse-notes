@@ -1,6 +1,6 @@
 # CSE 332: Depth-First Search
 
-**[[Depth-First Search]] (DFS)** is a graph traversal algorithm that explores as deep as possible along each branch before backtracking.
+**Depth-First Search (DFS)** is a graph traversal algorithm that explores as deep as possible along each branch before backtracking.
 
 ## Behavior
 Start with a node $s$, visit one neighbor of $s$, then visit all nodes reachable from that neighbor before moving on to the second neighbor of $s$.
@@ -51,15 +51,15 @@ public void dfsIterative(Graph graph, Node startNode) {
 DFS is commonly used for:
 * Finding if a graph is connected.
 * Finding paths between nodes.
-* **[[Cycle Detection]]**: If we encounter a node that is currently "in progress" (visited but not yet "done"), we have found a back edge, which definitively indicates a cycle.
+* **Cycle Detection**: If we encounter a node that is currently "in progress" (visited but not yet "done"), we have found a back edge, which definitively indicates a cycle.
 * **[[Topological Sort]]**.
 
 ## Edge Classification in DFS
 By keeping track of "visited" (discovery) and "done" (finish) times, edges can be classified:
-1. **[[Tree Edge]]**: $(a, b)$ was followed when pushing (i.e., $b$ was unvisited when we were at $a$).
-2. **[[Back Edge]]**: $(a, b)$ goes to an "ancestor". $a$ and $b$ are visited but not done when we see $(a, b)$. This indicates a **cycle**!
-3. **[[Forward Edge]]**: $(a, b)$ goes to a "descendant". $b$ was visited and done between when $a$ was visited and done.
-4. **[[Cross Edge]]**: $(a, b)$ goes to a node that doesn't connect to $a$ directly as an ancestor or descendant.
+1. **Tree Edge**: $(a, b)$ was followed when pushing (i.e., $b$ was unvisited when we were at $a$).
+2. **Back Edge**: $(a, b)$ goes to an "ancestor". $a$ and $b$ are visited but not done when we see $(a, b)$. This indicates a **cycle**!
+3. **Forward Edge**: $(a, b)$ goes to a "descendant". $b$ was visited and done between when $a$ was visited and done.
+4. **Cross Edge**: $(a, b)$ goes to a node that doesn't connect to $a$ directly as an ancestor or descendant.
 
 ## Cycle Detection Logic
 To look for a cycle, we search for a back edge.

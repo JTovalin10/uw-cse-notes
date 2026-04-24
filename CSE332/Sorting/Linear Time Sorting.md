@@ -3,7 +3,7 @@
 Standard sorting algorithms based on comparisons cannot be asymptotically faster than $\Theta(n \log n)$. However, if we can make additional assumptions about the contents of the list, we can achieve "Linear Time" sorting without direct comparisons.
 
 ## BucketSort
-**[[BucketSort]]**: Assumes the array contains integers between $0$ and $k-1$ (or another small known range).
+**BucketSort**: Assumes the array contains integers between $0$ and $k-1$ (or another small known range).
 * **Idea**:
   * Use each value as an index into an array of size $k$ (buckets).
   * Add the item into the bucket at that index (e.g., a linked list).
@@ -18,7 +18,7 @@ Standard sorting algorithms based on comparisons cannot be asymptotically faster
 **Properties**: Not In-Place, Not Adaptive, but it is **Stable**.
 
 ## RadixSort
-**[[RadixSort]]**: Uses a base (radix) number system (e.g., base 10) to sort elements.
+**RadixSort**: Uses a base (radix) number system (e.g., base 10) to sort elements.
 * **Idea**: Perform BucketSort by each digit, one at a time, starting from the least significant digit to the most significant digit.
 
 **Running Time**:

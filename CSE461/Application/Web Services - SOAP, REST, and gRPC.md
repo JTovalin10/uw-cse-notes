@@ -1,23 +1,23 @@
 # Web Services: SOAP, REST, and gRPC
 
-Modern web architectures rely on machine-to-machine communication protocols to build scalable **[[Micro-services]]**.
+Modern web architectures rely on machine-to-machine communication protocols to build scalable **Micro-services**.
 
 ---
 
-## [[SOAP]]: Simple Object Access Protocol
+## SOAP: Simple Object Access Protocol
 *   **Paradigm**: **Operation-Oriented** (RPC-style).
 *   **Format**: Strictly **[[XML]]** based.
-*   **[[WSDL]]**: A schema that defines available operations and message formats.
+*   **WSDL**: A schema that defines available operations and message formats.
 *   **Use Case**: Enterprise systems requiring high reliability and security standards (WS-*).
 
 [Image: SOAP message structure]
 
 ---
 
-## [[REST]]: Representational State Transfer
+## REST: Representational State Transfer
 *   **Paradigm**: **Data-Oriented** (Resource-style).
 *   **Methodology**: Manipulates resources identified by URIs using standard **[[HTTP (CSE 333)]]** verbs (GET, POST, PUT, DELETE).
-*   **Format**: Typically uses **[[JSON]]** or **[[XML]]**.
+*   **Format**: Typically uses **JSON** or **[[XML]]**.
 *   **Key Principle**: **Statelessness**. Every request must contain all information necessary for the server to fulfill it.
 
 ---

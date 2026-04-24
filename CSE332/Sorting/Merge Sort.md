@@ -6,7 +6,7 @@
 * **Base Case**: If the list is of length 0 or 1, it's already sorted; return it.
 * **Divide**: Split the list into two sublists of roughly equal length. ($0$ comparisons)
 * **Conquer**: Sort both sublists recursively.
-* **Combine**: **[[Merge]]** the two sorted sublists into one sorted list. ($n$ comparisons)
+* **Combine**: **Merge** the two sorted sublists into one sorted list. ($n$ comparisons)
   * Uses 3 pointers (`L_next`, `R_next`, `M_next`). Iteratively compares the smallest unmerged elements from left and right, placing the smaller into a new merged array.
 
 ## Running Time Analysis

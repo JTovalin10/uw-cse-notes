@@ -2,20 +2,20 @@
 
 **[[Parallelism]]**: One task being completed by many threads/processors. Recruit several cooks to peel a lot of potatoes faster.
 
-**[[Concurrency]]**: Parallel tasks using a shared resource. Several cooks are making their own recipes, but there is only 1 oven.
+**Concurrency**: Parallel tasks using a shared resource. Several cooks are making their own recipes, but there is only 1 oven.
 
-The **[[ForkJoin Framework]]** is a Java library for parallelism using divide and conquer. It utilizes a `ForkJoinPool` and `RecursiveTask<V>` or `RecursiveAction`.
+The **ForkJoin Framework** is a Java library for parallelism using divide and conquer. It utilizes a `ForkJoinPool` and `RecursiveTask<V>` or `RecursiveAction`.
 
 To implement parallel divide and conquer:
-1. **Base Case**: If the input is smaller than the **[[Sequential Cutoff]]** (typically 500 to 5000), compute sequentially.
+1. **Base Case**: If the input is smaller than the **Sequential Cutoff** (typically 500 to 5000), compute sequentially.
 2. **Divide**: Split the problem in half across two separate tasks.
 3. **Conquer**: Use `fork()` to compute the left half in parallel, and `compute()` directly to compute the right half in the current thread (a small optimization over forking both).
 4. **Wait**: Use `join()` to wait for the forked task to finish and get its result. Don't call `join()` immediately after `fork()`, as that defeats parallelism!
 5. **Combine**: Combine the results.
 
 Common parallel operations:
-- **[[Reduction]]** / **[[Fold]]**: Reducing all elements in an array to a single item (e.g., sum, max). Requires the operation to be associative (e.g., $(x+y)+z = x+(y+z)$).
-- **[[Map]]**: Applying a function to each element of an array independently.
+- **[[Reduction]]** / **Fold**: Reducing all elements in an array to a single item (e.g., sum, max). Requires the operation to be associative (e.g., $(x+y)+z = x+(y+z)$).
+- **Map**: Applying a function to each element of an array independently.
 
 ## Implementation Example: Summing an Array
 Below is an example of a `RecursiveTask` that computes the sum of an array in parallel.

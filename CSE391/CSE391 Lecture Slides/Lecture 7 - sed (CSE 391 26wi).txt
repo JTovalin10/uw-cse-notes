@@ -1,0 +1,130 @@
+CSE 391: System & Software Tools
+
+sed
+
+Ruth Anderson
+✉ rea@cs.uw.edu
+🔗 cs.uw.edu/391
+
+Agenda
+●
+●
+●
+●
+
+Administrivia
+HW6 – lightning-round walkthrough
+Discussion Questions
+HW7!
+
+Questions over HW6?
+
+discussion question time :)
+
+grep & sed in find-and-replace
+Almost all code editors support regex for ﬁnd-and-replace in some way!
+VS Code has this feature
+(Aside: there is usually vim editor-like key shortcut support in most editors, so
+you can use that too, if you’re team vim.)
+
+HW7 Tips
+●
+●
+●
+●
+
+biggest tip: use grep ﬁrst to match right parts, then sed!
+for larger edits: try on a small example ﬁrst (and tweak) before committing
+use git to undo changes you’ve made!
+use the reference sheet :)
+
+rest: pre-lecture slides
+(what you saw in the video)
+
+🤔 Pause and Think (Counting Classes)
+classes.txt
+
+CSE 121
+CSE 123
+CSE 311
+CSE 351
+CSE 391
+CSE 416
+CSE 421
+CSE 507
+INFO 201
+MATH 126
+MATH 394
+MATH 461
+PHIL 322
+HIST 210
+
+Suppose we have the ﬁle classes.txt on the left, where each line
+contains the name of a class at UW. What is the full grep command
+that prints out all CSE classes not at the 300-level?
+
+Syntax
+
+Functionality
+
+[0-9]
+
+Any digit
+
+[^0-9]
+
+Not any digit
+
+^
+
+Beginning of line
+
+$
+
+End of line
+
+🤔 Pause and Think (Enunciating Emails)
+Emails.txt
+mxw@cs.washington.edu
+kevinl@uw.edu
+elba@cs.washington.edu
+rea@cs.washington.edu
+asalguer@uw.edu
+…
+
+Console Output
+mxw@cs.washington.edu
+kevinl@cs.washington.edu
+elba@cs.washington.edu
+rea@cs.washington.edu
+asalguer@cs.washington.edu
+…
+
+Suppose we have a ﬁle called emails.txt, where each line is the
+email address of a CSE faculty (who has taught/will teach 391).
+Write a sed command that “normalizes” all the email addresses to
+end with '@cs.washington.edu'.
+
+🤔 Pause and Think (Excising Emails)
+emails.txt
+mxw@cs.washington.edu
+kevinl@uw.edu
+elba@cs.washington.edu
+rea@cs.washington.edu
+asalguer@uw.edu
+…
+
+Console Output
+mxw
+kevinl
+elba
+rea
+asalguer
+…
+
+Suppose we have a ﬁle called emails.txt, where each line is the
+email address of a CSE faculty (who has taught/will teach 391).
+Write a sed command that outputs just the “basename” of the
+email address (i.e. the part before the @ symbol).
+
+

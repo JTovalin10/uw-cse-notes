@@ -1,7 +1,7 @@
 # HTTP: Protocol Mechanics, Performance, and Evolution
 
 ## High-Level Primer: The Request/Reply Architecture
-The **HyperText Transfer Protocol (HTTP)** is the foundational **[[Application Layer]]** protocol of the World Wide Web. At a high level, it is a stateless protocol where a client (User Agent) and a server exchange "Resources" (HTML, JSON, Images) over a reliable transport network.
+The **HyperText Transfer Protocol (HTTP)** is the foundational **Application Layer** protocol of the World Wide Web. At a high level, it is a stateless protocol where a client (User Agent) and a server exchange "Resources" (HTML, JSON, Images) over a reliable transport network.
 
 ## Low-Level Primer: The Wire Format
 Historically, HTTP was a human-readable **ASCII-based** protocol. As the Web evolved from simple text documents to complex, resource-heavy web applications, the protocol had to evolve into a highly optimized, **Binary-framed** system designed to minimize **[[Round-Trip Time (RTT)]]** and maximize link utilization.
@@ -38,8 +38,8 @@ Content-Length: 137
 </html>
 ```
 
-### The Problem: [[Connection Latency and Slow Start]]
-*   **[[TCP Three-Way Handshake|TCP Handshake]] Overhead**: Every new connection requires a full **[[Round-Trip Time (RTT)]]** to perform the `SYN` $\to$ `SYN-ACK` $\to$ `ACK` handshake before any HTTP data can be sent.
+### The Problem: Connection Latency and Slow Start
+*   **TCP Handshake Overhead**: Every new connection requires a full **[[Round-Trip Time (RTT)]]** to perform the `SYN` $\to$ `SYN-ACK` $\to$ `ACK` handshake before any HTTP data can be sent.
 *   **[[Slow Start (TCP Additive Increase)|TCP Slow Start]] Penalty**: TCP starts with a small **[[Congestion Window (cwnd)]]** and grows it exponentially. Because most web objects are small, the connection often closes before the window is large enough to utilize the full available **[[Bandwidth]]**.
 *   **Result**: The network spends more time "negotiating" the connection than actually moving data.
 
@@ -157,7 +157,7 @@ To prevent making requests entirely, HTTP utilizes aggressive caching at the bro
 
 ### 2. Validation (The "Stale" Problem)
 *   **The Problem**: A cache may have a copy of a resource whose `max-age` has expired, but the browser doesn't know if the file on the server has *actually* been changed. Re-downloading a file that hasn't changed wastes bandwidth.
-*   **The Fix (Conditional GET)**: The client sends a request with an **[[ETag]]** (a cryptographic hash of the file provided by the server previously) via the `If-None-Match` header.
+*   **The Fix (Conditional GET)**: The client sends a request with an **ETag** (a cryptographic hash of the file provided by the server previously) via the `If-None-Match` header.
     ```http
     GET /style.css HTTP/1.1
     If-None-Match: "33a64df551425fcc55e4d42a148795d9f25f89d4"

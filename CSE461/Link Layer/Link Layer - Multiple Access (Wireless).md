@@ -35,9 +35,9 @@ To solve the Hidden Terminal problem, nodes use a virtual carrier sensing mechan
 
 ### MACAW and Inter-Frame Spacing
 802.11 uses precise timing to coordinate access:
-*   **[[SIFS]] (Short Inter-Frame Space)**: Used for high-priority ACKs and CTS.
-*   **[[DIFS]] (Distributed Inter-Frame Space)**: The minimum time a node must wait after the medium becomes idle before sensing again.
-*   **[[NAV]] (Network Allocation Vector)**: A local timer at each node that tracks how long the medium is reserved by other nodes (based on RTS/CTS info).
+*   **SIFS (Short Inter-Frame Space)**: Used for high-priority ACKs and CTS.
+*   **DIFS (Distributed Inter-Frame Space)**: The minimum time a node must wait after the medium becomes idle before sensing again.
+*   **NAV (Network Allocation Vector)**: A local timer at each node that tracks how long the medium is reserved by other nodes (based on RTS/CTS info).
 
 ---
 

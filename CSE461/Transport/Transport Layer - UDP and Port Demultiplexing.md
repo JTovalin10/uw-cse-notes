@@ -1,7 +1,7 @@
 # Transport Layer: UDP and Port Demultiplexing
 
 ## Low-Level Primer: Process-to-Process Delivery
-While the Network Layer (IP) delivers packets to a specific host, the Transport Layer is responsible for delivering that data to the correct **Process** running on that host. This is achieved through **Demultiplexing** using **[[Ports]]**.
+While the Network Layer (IP) delivers packets to a specific host, the Transport Layer is responsible for delivering that data to the correct **Process** running on that host. This is achieved through **Demultiplexing** using **Ports**.
 
 ---
 

@@ -42,9 +42,9 @@ movl $100, %eax       # Sets %rax = 0x0000000000000064
 
 | Register | Purpose |
 |:---|:---|
-| `%rsp` | [[CSE351/Procedures and Stack/Stack Pointer\|Stack pointer]] |
+| `%rsp` | Stack pointer |
 | `%rbp` | Frame pointer (optional) |
-| `%rip` | [[CSE351/Procedures and Stack/Program Counter\|Program counter]] |
+| `%rip` | Program counter |
 | `%rax` | Return value |
 
 ---

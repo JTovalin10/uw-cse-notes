@@ -74,4 +74,4 @@ System calls are implemented as **trap** exceptions:
 - [[CSE351/System Programming/Fork-Exec Model|Fork-Exec Model]]
 - [[CSE451/Kernel Abstraction/Traps/Traps|Traps / System Calls (CSE451)]]
 - [[CSE451/Kernel Abstraction/Traps/System Call|System Call (CSE451)]]
-- [[CSE333/File IO and POSIX/POSIX Open|POSIX File I/O (CSE333)]]
+- POSIX File I/O (CSE333)

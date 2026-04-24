@@ -50,6 +50,6 @@ pid_t waitpid(pid_t pid, int *status, int options);
 - Important for cleaning up terminated processes (avoiding "zombie processes").
 
 ## Related
-- [[CSE333/Definitions/Creating a new process]]
+- CSE333/Definitions/Creating a new process
 - [[CSE333/File IO and POSIX/POSIX perror]]
 - [[CSE351/System Programming/Exceptions]]

@@ -1,39 +1,39 @@
 # Program Loading and Execution: The OS Loader
 
 ## Low-Level Primer: The Loader's Role
-In an Operating System, the **Loader** is the critical kernel component responsible for transitioning a static binary on disk into a dynamic, executing process in memory. It bridges the gap between the **[[File System]]** and **[[Memory Management]]** subsystems. The loading process is not a simple "copy-paste" from disk to RAM; it is a sophisticated orchestration of metadata allocation, address space mapping, and lazy-loading mechanisms.
+In an Operating System, the **Loader** is the critical kernel component responsible for transitioning a static binary on disk into a dynamic, executing process in memory. It bridges the gap between the **File System** and **Memory Management** subsystems. The loading process is not a simple "copy-paste" from disk to RAM; it is a sophisticated orchestration of metadata allocation, address space mapping, and lazy-loading mechanisms.
 
 ---
 
 ## Technical Lifecycle of Program Loading
 
 ### 1. Process Descriptor Allocation
-The kernel first allocates a **[[Process Control Block (PCB)]]** to track the state of the new entity.
-*   **Actions**: Assigns a unique **[[Process ID (PID)]]**, initializes CPU registers (cleared to zero), and sets the process state to `NEW`.
+The kernel first allocates a **Process Control Block (PCB)** to track the state of the new entity.
+*   **Actions**: Assigns a unique **Process ID (PID)**, initializes CPU registers (cleared to zero), and sets the process state to `NEW`.
 
 ### 2. Address Space Initialization
-The OS creates the **[[Virtual Address Space]]** for the process.
+The OS creates the **Virtual Address Space** for the process.
 *   **Page Table Creation**: The kernel allocates frames for the top-level **[[Page Table]]**.
 *   **Virtual Mapping**: The loader parses the binary's header (e.g., **ELF header** on Linux) and maps segments (CODE, DATA, BSS) to specific virtual address ranges.
 *   **Note**: No physical memory is allocated for the program code yet; only the virtual mappings are established.
 
 ### 3. Demand Paging Setup
 The loader sets up the **[[Demand Paging]]** mechanism.
-*   **PTE Configuration**: All **[[Page Table Entries (PTEs)]]** are initially marked as `INVALID`.
+*   **PTE Configuration**: All **Page Table Entries (PTEs)** are initially marked as `INVALID`.
 *   **Backing Store Mapping**: An internal kernel data structure (the **VNODE** or **swap mapping**) tracks the exact byte offset on disk where each virtual page resides.
 
 ### 4. Cold Start and Execution
 When the CPU is jumped to the entry point (e.g., `_start`):
 1.  **Instruction Fetch**: The CPU attempts to fetch the first instruction.
 2.  **[[Page Fault]]**: The hardware triggers a fault because the PTE is invalid.
-3.  **Kernel Intervention**: The OS catches the fault, identifies the disk location from the backing store, allocates a physical **[[Page Frame]]**, and copies 4KB of data from disk to RAM.
+3.  **Kernel Intervention**: The OS catches the fault, identifies the disk location from the backing store, allocates a physical **Page Frame**, and copies 4KB of data from disk to RAM.
 4.  **Resumption**: The PTE is updated with the frame number, marked `VALID`, and the instruction is re-executed.
 
 ---
 
 ## Expert Augmentation: Dynamic Linking (PLT and GOT)
 
-In modern systems, programs do not include the code for every library they use (e.g., `printf` from `libc`). Instead, they use **Dynamic Linking** via the **[[Procedure Linkage Table (PLT)]]** and the **[[Global Offset Table (GOT)]]**.
+In modern systems, programs do not include the code for every library they use (e.g., `printf` from `libc`). Instead, they use **Dynamic Linking** via the **Procedure Linkage Table (PLT)** and the **Global Offset Table (GOT)**.
 
 ### The Mechanism of Lazy Binding
 Dynamic linking utilizes a "Lazy Binding" strategy to avoid the overhead of resolving every library symbol at load time.
@@ -51,8 +51,8 @@ Dynamic linking utilizes a "Lazy Binding" strategy to avoid the overhead of reso
     *   Because the GOT has been updated, the jump goes **directly to the library function**, bypassing the resolver.
 
 ### Security Impact: ASLR and PIC
-*   **[[Address Space Layout Randomization (ASLR)]]**: The OS randomizes the base addresses of libraries. This makes the GOT/PLT mechanism essential, as the program cannot hardcode addresses.
-*   **[[Position Independent Code (PIC)]]**: Shared libraries are compiled to use relative addressing, allowing them to be loaded at any address without modification.
+*   **Address Space Layout Randomization (ASLR)**: The OS randomizes the base addresses of libraries. This makes the GOT/PLT mechanism essential, as the program cannot hardcode addresses.
+*   **Position Independent Code (PIC)**: Shared libraries are compiled to use relative addressing, allowing them to be loaded at any address without modification.
 
 ---
 

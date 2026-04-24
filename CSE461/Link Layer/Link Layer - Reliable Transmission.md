@@ -27,7 +27,7 @@ If an ACK is lost, the sender will retransmit the original frame. To prevent the
 *   If the receiver sees two consecutive frames with the same sequence number, it discards the second one but still sends an ACK (in case the previous ACK was lost).
 
 ### Efficiency Limitation
-Stop-and-Wait is highly inefficient on links with a large **[[Bandwidth-Delay Product]]**.
+Stop-and-Wait is highly inefficient on links with a large **Bandwidth-Delay Product**.
 *   **Utilization ($U$)**: The fraction of time the sender is busy.
     $$U = \frac{T_{trans}}{T_{trans} + RTT}$$
 *   On high-latency links (e.g., satellite), $RTT \gg T_{trans}$, causing $U$ to approach zero as the sender sits idle waiting for ACKs.

@@ -9,7 +9,7 @@ $$T(n) = T(p_1) + T(p_2) + \dots + T(p_x) + f(n)$$
 - $f(n)$: The non-recursive work done in the current stack frame (e.g., splitting the data, combining results).
 
 ## Solving Recurrences: The Tree Method
-The **[[Tree Method]]** is a technique to solve recurrences by unrolling them into a tree structure.
+The **Tree Method** is a technique to solve recurrences by unrolling them into a tree structure.
 1. Draw a picture of the recursion tree.
 2. Identify the non-recursive work done at each node.
 3. Sum the work level by level.

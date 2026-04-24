@@ -38,4 +38,4 @@ clean:
     rm -f *.o myprog
 ```
 
-Related: [[GCC Workflow]], [[C Fundamentals/Linkage and Visibility]]
+Related: [[GCC Workflow]], C Fundamentals/Linkage and Visibility

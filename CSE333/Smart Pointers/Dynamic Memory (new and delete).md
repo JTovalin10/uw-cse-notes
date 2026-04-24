@@ -1,6 +1,6 @@
 # CSE333: Dynamic Memory (new and delete)
 
-In C++, **[[new]]** and **[[delete]]** are operators used for dynamic memory allocation and deallocation on the heap, providing a type-safe alternative to `malloc` and `free`.
+In C++, **[[new]]** and **delete** are operators used for dynamic memory allocation and deallocation on the heap, providing a type-safe alternative to `malloc` and `free`.
 
 ## Single Object Allocation
 
@@ -42,7 +42,7 @@ void example(int n) {
 ```
 
 ## Related
-- [[CSE333/Smart Pointers/Smart Pointer]]
+- CSE333/Smart Pointers/Smart Pointer
 - [[CSE333/Smart Pointers/Unique Pointer]]
 - [[CSE333/Smart Pointers/Shared Pointer]]
 - [[CSE333/Memory Management/Heap]]

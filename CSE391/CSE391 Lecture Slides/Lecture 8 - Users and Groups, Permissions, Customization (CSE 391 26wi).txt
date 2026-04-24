@@ -1,0 +1,276 @@
+CSE 391: System & Software Tools
+
+Users, Groups,
+Permissions,
+& Shell Settings
+Ruth Anderson
+✉ rea@cs.uw.edu
+🔗 cs.uw.edu/391
+
+xkcd #1987
+
+Agenda
+●
+●
+●
+●
+
+Administrativa
+Homework 7 review
+Discussion questions
+Homework 8 preview
+
+Administrativia
+●
+
+Reminder: Check to see if you are on track to get 14 points in the course!
+
+pause.
+any HW questions?
+
+Review: $PATH pseudocode
+Q: When you type in a command (e.g. ls), how does the system know what
+program to run?
+A: by looking at the $PATH variable!
+execute(command)
+for each directory in $PATH separated by ":"
+if command in directory
+run command
+exit
+print "command not found"
+
+Decoding Unix File Permissions
+Unix permissions for each ﬁle are deﬁned by:
+●
+●
+
+who is doing the action: owner (u), group (g), others (o)
+what the action is: read (r), write (w), execute (x)
+
+is it a directory
+owner(u)
+group(g)
+others(o)
+d rwx rwx rwx
+
+🤔 Pause and Think (Pruning Permissions)
+Using letter codes, (i.e. rwx) what would be the command to modify run.sh so:
+-
+
+the owner and group can read, write, and execute
+others can only read the ﬁle
+Letter Code
+
+Meaning
+
+u
+
+owner
+
+g
+
+group
+
+o
+
+other
+
+r
+
+read
+
+w
+
+write
+
+x
+
+execute
+
+Octal Permissions
+An alternative syntax for permissions is “octal” (base 8) syntax:
+chmod NNN filename
+●
+●
+
+each digit corresponds to owner (u), group (g), and others (o) in order
+each gets +4 for read, +2 for write, and +1 for execute
+○
+
+●
+
+from the binary representation of a 3-bit string, or octal!
+
+e.g. owners can read/write, everyone else gets nothing:
+chmod 600 file.txt
+
+Discussion Questions
+
+Homework 8: Users, Groups, Permissions
+●
+
+Task 1: Basic shell commands
+○
+
+●
+
+Task 2: .bashrc
+○
+
+●
+
+You will be writing some shell commands to do various actions (compress a tar.gz ﬁle,
+change permissions)
+
+Modify your .bashrc ﬁle with various aliases
+
+Task 3: .bash_profile
+○
+
+Modify your bash_proﬁle to display a personalized message!
+
+rest: pre-lecture slides
+(what you saw in the video)
+
+$PATH pseudocode
+Q: When you type in a command (e.g. ls), how does the system know what
+program to run?
+A: by looking at the $PATH variable!
+execute(command)
+for each directory in $PATH separated by ":"
+if command in directory
+run command
+exit
+print "command not found"
+
+🤔 Pause and Think (Paving Paths)
+/usr/bin/hello.sh
+
+Suppose we have the following executable ﬁles
+and $PATH variable:
+
+echo "howdy partner"
+
+PATH=/usr/home:/usr/bin:/usr/sbin
+/usr/sbin/hello.sh
+
+echo "yeehaw"
+
+What would be the output of the following command?
+$ hello.sh
+
+Changing $PATH
+A common use-case for .bashrc and .bash_profile is changing your $PATH.
+To prepend a directory to your $PATH:
+export PATH=/your/new/directory:$PATH
+To append a directory to your $PATH:
+export PATH=$PATH:/your/new/directory
+
+Decoding Unix File Permissions
+Unix permissions for each ﬁle are deﬁned by:
+●
+●
+
+who is doing the action: owner (u), group (g), others (o)
+what the action is: read (r), write (w), execute (x)
+
+is it a directory
+owner(u)
+group(g)
+others(o)
+d rwx rwx rwx
+
+🤔 Pause and Think (Pruning Permissions)
+Using letter codes, (i.e. rwx) what would be the command to modify run.sh so:
+-
+
+the owner and group can read, write, and execute
+others can only read the ﬁle
+Letter Code
+
+Meaning
+
+u
+
+owner
+
+g
+
+group
+
+o
+
+other
+
+r
+
+read
+
+w
+
+write
+
+x
+
+execute
+
+Octal Permissions
+An alternative syntax for permissions is “octal” (base 8) syntax:
+chmod NNN ﬁlename
+●
+●
+
+each digit corresponds to owner (u), group (g), and others (o) in order
+each gets +4 for read, +2 for write, and +1 for execute
+○
+
+●
+
+from the binary representation of a 3-bit string, or octal!
+
+e.g. owners can read/write, everyone else gets nothing:
+chmod 600 file.txt
+
+Default File Permissions
+●
+
+Finally, there is a program called umask which sets the default permissions
+for newly created ﬁles. The syntax is as follows:
+umask [options] [mask]
+○
+○
+○
+○
+
+Calling umask without any arguments will print out the current mask.
+Calling umask similarly to chmod with octal will remove those permissions for newly
+created ﬁles.
+The following will give the owner full privileges and all others read/execute privileges only.
+umask 0022
+Note that the leading zero for umask is intended to signify that it is an octal number (base
+8).
+
+🤔 Pause and Think (Dr. Octal)
+Using octal codes codes, (i.e. 0-7) what would be the command to modify run.sh so:
+-
+
+the owner and group can read, write, and execute
+others can only read the ﬁle
+
+Octal Code
+
+Meaning
+
+1
+
+execute
+
+2
+
+write
+
+4
+
+read
+
+

@@ -5,5 +5,5 @@
 - [[File Systems]]
 - [[Protection]]
 - [[Command Interpreter (shell)]]
-- [[GUI]]
-- [[networking]]
+- GUI
+- networking

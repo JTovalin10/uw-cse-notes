@@ -50,4 +50,4 @@ Schedules under Strict 2PL are:
 - [[Other Lock Modes and Lock Granularity]] — shared/exclusive locks, fine vs. coarse-grained locking
 - [[Isolation Transactions in SQL]] — conflict-serializability and precedence graphs
 - [[Phantom Reads]] — a concurrency problem not solved by standard 2PL
-- [[CSE451/Synchronization/Deadlock]] — OS-level deadlock detection and prevention
+- CSE451/Synchronization/Deadlock — OS-level deadlock detection and prevention

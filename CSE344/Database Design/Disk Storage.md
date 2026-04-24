@@ -53,4 +53,4 @@ Without indices, any query requires an $O(n)$ sequential scan over the entire ta
 - [[CSE451/Persistent Storage/Magnetic Disks|CSE451 Magnetic Disks]] — OS-level view of HDD mechanics (seek, rotational latency, tracks, sectors)
 - [[CSE451/Persistent Storage/Flash Storage|CSE451 Flash Storage]] — SSD characteristics that change the cost model
 - [[CSE351/Cache/Spatial Locality|CSE351 Spatial Locality]] — why loading whole blocks at once pays off
-- [[CSE351/Cache/Temporal locality|CSE351 Temporal Locality]] — why caching recently-read blocks pays off
+- CSE351 Temporal Locality — why caching recently-read blocks pays off

@@ -8,9 +8,9 @@ The **World Wide Web (WWW)** is a global, distributed information space where **
 ## Resource Identifiers: URI, URL, and URN
 
 ### The Identifier Hierarchy
-*   **[[URI]] (Uniform Resource Identifier)**: The master set of all identifiers.
-*   **[[URN]] (Uniform Resource Name)**: A persistent, location-independent name (e.g., `urn:isbn:0451450523`).
-*   **[[URL]] (Uniform Resource Locator)**: The most common URI, specifying a resource by its network location and the mechanism to retrieve it.
+*   **URI (Uniform Resource Identifier)**: The master set of all identifiers.
+*   **URN (Uniform Resource Name)**: A persistent, location-independent name (e.g., `urn:isbn:0451450523`).
+*   **URL (Uniform Resource Locator)**: The most common URI, specifying a resource by its network location and the mechanism to retrieve it.
 
 ### Anatomy of a URL
 A standard URL is composed of five distinct components:
@@ -26,7 +26,7 @@ A standard URL is composed of five distinct components:
 
 ## State Management: Cookies and Sessions
 
-HTTP is a **Stateless** protocol—the server does not remember the client between requests. To build applications (e.g., shopping carts), the Web uses **[[Cookies]]**.
+HTTP is a **Stateless** protocol—the server does not remember the client between requests. To build applications (e.g., shopping carts), the Web uses **Cookies**.
 
 ### The Cookie Lifecycle
 1.  **Set-Cookie**: The server sends a `Set-Cookie` header in the response (e.g., `Set-Cookie: session_id=12345; HttpOnly; Secure`).
@@ -34,9 +34,9 @@ HTTP is a **Stateless** protocol—the server does not remember the client betwe
 3.  **Cookie Header**: For every subsequent request to that domain, the browser automatically includes the `Cookie: session_id=12345` header.
 
 ### Security Attributes
-*   **HttpOnly**: Prevents JavaScript from accessing the cookie (mitigates **[[Cross-Site Scripting (XSS)]]**).
+*   **HttpOnly**: Prevents JavaScript from accessing the cookie (mitigates **Cross-Site Scripting (XSS)**).
 *   **Secure**: Ensures the cookie is only sent over HTTPS.
-*   **SameSite**: Restricts whether cookies are sent with cross-site requests (mitigates **[[Cross-Site Request Forgery (CSRF)]]**).
+*   **SameSite**: Restricts whether cookies are sent with cross-site requests (mitigates **Cross-Site Request Forgery (CSRF)**).
 
 ---
 
@@ -66,7 +66,7 @@ A **[[Proxy]]** is an intermediate entity that acts as both a client and a serve
 
 ### 2. Reverse Proxy
 *   **Role**: Sits in front of the **Server**.
-*   **Goal**: **[[Load Balancing]]**, SSL termination, and caching. Users think they are talking to the origin server, but they are actually talking to the proxy.
+*   **Goal**: **Load Balancing**, SSL termination, and caching. Users think they are talking to the origin server, but they are actually talking to the proxy.
 
 ### 3. Transparent Proxy
 *   **Role**: Intercepts traffic at the network level without the client's knowledge or configuration.

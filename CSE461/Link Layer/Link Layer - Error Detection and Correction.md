@@ -10,7 +10,7 @@ Physical communication channels are inherently noisy. Thermal noise, electromagn
 
 ## Hamming Distance ($d$)
 
-The **[[Hamming Distance]]** is the fundamental metric for evaluating the strength of an error code.
+The **Hamming Distance** is the fundamental metric for evaluating the strength of an error code.
 
 *   **Definition**: The number of bit positions in which two codewords differ.
 *   **Code Distance**: The *minimum* Hamming distance between any two valid codewords in a coding scheme.
@@ -39,7 +39,7 @@ The simplest form of error detection.
 
 ## 2. Internet Checksum
 
-Used primarily in the **[[Transport Layer]]** (TCP/UDP) and **[[Network Layer]]** (IP), though relevant to the study of error codes.
+Used primarily in the **Transport Layer** (TCP/UDP) and **[[Network Layer]]** (IP), though relevant to the study of error codes.
 
 ### Technical Mechanics
 1.  Treat data as a sequence of 16-bit integers.

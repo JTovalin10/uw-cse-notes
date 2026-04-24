@@ -4,7 +4,7 @@ To implement the Graph ADT, we need to efficiently support operations like `addE
 
 Let $|V| = n$ and $|E| = m$.
 
-## [[Adjacency List]]
+## Adjacency List
 An array of size $n$, where each index $i$ stores a list (or linked list) of all neighbors of vertex $i$.
 
 * **Space Complexity**: $\Theta(n + m)$
@@ -15,7 +15,7 @@ An array of size $n$, where each index $i$ stores a list (or linked list) of all
 
 **Pros**: Adjacency lists are much more common in practice because most real-world graphs are sparse ($|E| \ll |V|^2$), meaning it saves a significant amount of memory. Iterating over a node's neighbors is extremely fast.
 
-## [[Adjacency Matrix]]
+## Adjacency Matrix
 An $n \times n$ matrix (2D array) where the value at `matrix[i][j]` represents the presence (or weight) of an edge from node $i$ to node $j$.
 
 * **Space Complexity**: $\Theta(n^2)$

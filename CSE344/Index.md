@@ -1,6 +1,6 @@
 # CSE 344 — Database Systems
 
-Master navigation hub for CSE 344 notes. For a course overview see [[CSE344/README|README]] (if available).
+Master navigation hub for CSE 344 notes. For a course overview see README (if available).
 
 ---
 
@@ -47,7 +47,7 @@ Master navigation hub for CSE 344 notes. For a course overview see [[CSE344/READ
 - [[CSE344/Database Design/Multi-tier Architecture|Multi-tier Architecture]] — presentation, logic, and data tiers
 
 ### Security
-- [[CSE344/Database Design/Password Handling|Password Handling]] — hashing, salting, SQL injection — see also [[CSE484/SQL Injection]]
+- [[CSE344/Database Design/Password Handling|Password Handling]] — hashing, salting, SQL injection — see also CSE484/SQL Injection
 
 ---
 

@@ -1,6 +1,6 @@
 # CSE 332: Kruskal's Algorithm
 
-**[[Kruskal's Algorithm]]** finds a Minimum Spanning Tree (MST) for a connected weighted undirected graph.
+**Kruskal's Algorithm** finds a Minimum Spanning Tree (MST) for a connected weighted undirected graph.
 
 ## Idea
 Instead of growing a single connected tree like Prim's, Kruskal's considers all edges in the entire graph simultaneously. It considers them in strictly increasing order of weight. It greedily adds the lowest-weight edge to the MST *as long as it does not create a cycle*.

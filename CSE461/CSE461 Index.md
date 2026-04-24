@@ -17,9 +17,9 @@ Overview and index for all CSE461 notes. Data transmission from physical layer u
 ### Stack and concepts
 - [[Layering]] — [[Protocols and Layers]] — [[Encapsulation (stack)]] — [[OSI Layers]]
 - [[Host]], [[Router]], [[Application]], [[Link]] — [[Computer Network Names by Scale]]
-- [[Network]] — [[Internetwork (IP)]] — [[Store and forward packet switching]] — [[Datagrams vs virtual circuits]]
-- [[Routing]] vs [[Forwarding]] — [[Datagram model]] — [[Network service models]]
-- [[Types of Links]] — [[Performance Cheat Sheet]]
+- Network — Internetwork (IP) — [[Store and forward packet switching]] — Datagrams vs virtual circuits
+- [[Routing]] vs [[Forwarding]] — Datagram model — Network service models
+- Types of Links — Performance Cheat Sheet
 
 ### Physical Layer
 - [[Physical Layer - Performance and Latency]] — BW, Delay, Throughput, BDP
@@ -45,7 +45,7 @@ Overview and index for all CSE461 notes. Data transmission from physical layer u
 - [[Network Layer - IPv4 Addressing and Subnetting]] — CIDR, VLSM, DHCP, NAT
 - [[Network Layer - IPv6]] — Header, SLAAC, Anycast, Transition
 - [[Network Layer - Forwarding and Routing Mechanics]] — LPM, ARP, Fragmentation, ICMP, Tunneling
-- [[Network Layer - Network-Side Congestion Control]] — ECN, RED
+- Network Layer - Network-Side Congestion Control — ECN, RED
 - [[Network Layer - Multicast]] — IGMP, PIM, Distribution Trees
 - [[Network Layer - MPLS]] — Label Switching, Traffic Engineering, VPNs
 - [[Network Layer - Mobility]] — Mobile IP, Home/Foreign Agents

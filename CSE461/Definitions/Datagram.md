@@ -8,7 +8,7 @@ Self-contained, independently routed packet. Full destination address; forwarded
 - [[Connectionless]] — no connection setup before sending
 - Internet [[Internet Protocol (IP)|IP]] layer uses datagram delivery
 
-See also: [[Datagrams]], [[Virtual Circuit (VC)]]
+See also: Datagrams, [[Virtual Circuit (VC)]]
 
 
 ![[Screenshots/Datagrams.png]]

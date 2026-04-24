@@ -18,4 +18,4 @@ Linkage determines whether symbols (variables and functions) are visible across 
 - **Inclusion**: NEVER `#include` a `.c` file.
 - **Consistency**: A `.c` file should include its own `.h` file so the compiler can check for consistency between declarations and definitions.
 
-Related: [[Preprocessor]], [[Build Systems/GCC Workflow]]
+Related: [[Preprocessor]], Build Systems/GCC Workflow

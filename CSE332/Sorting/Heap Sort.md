@@ -4,7 +4,7 @@
 
 ## In-Place Heap Sort
 By default, creating a new heap takes $O(n)$ space. However, Heap Sort can be made in-place.
-1. Build a max heap in the array itself using **[[Floyd's BuildHeap]]** algorithm in $O(n)$ time.
+1. Build a max heap in the array itself using **Floyd's BuildHeap** algorithm in $O(n)$ time.
 2. When "removing" an element from the heap, swap it with the last item of the heap.
 3. Then "pretend" the heap is one item shorter.
 4. Call `percolateDown(root)` to restore the heap property.

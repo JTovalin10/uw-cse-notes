@@ -4,7 +4,7 @@ Session control manages the logic of establishing, maintaining, and tearing down
 
 ---
 
-## [[SDP]]: Session Description Protocol
+## SDP: Session Description Protocol
 A text-based (**ASCII**) protocol used to describe media parameters. It is typically encapsulated in **SIP** payloads.
 *   **Key Fields**:
     *   `c=`: Connection information (IP address, Multicast group).
@@ -15,7 +15,7 @@ A text-based (**ASCII**) protocol used to describe media parameters. It is typic
 
 ---
 
-## [[SIP]]: Session Initiation Protocol
+## SIP: Session Initiation Protocol
 An application-layer protocol (**Port 5060**) modeled after HTTP for initiating real-time sessions.
 
 ### Architecture
@@ -33,7 +33,7 @@ An application-layer protocol (**Port 5060**) modeled after HTTP for initiating 
 
 ---
 
-## [[H.323]]
+## H.323
 An alternative ITU-T standard for multimedia over packet networks.
 *   **Gatekeeper**: Performs address translation and **Admission Control**.
 *   **Gateway**: Bridges H.323 to the traditional phone network (PSTN).

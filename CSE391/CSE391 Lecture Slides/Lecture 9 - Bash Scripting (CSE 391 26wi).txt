@@ -1,0 +1,199 @@
+CSE 391: System & Software Tools
+
+Bash Scripting
+Ruth Anderson
+✉ rea@cs.uw.edu
+🔗 cs.uw.edu/391
+
+xkcd #293
+
+Administrivia
+●
+●
+
+Last real lecture!
+Next week (3/10) during our lecture slot:
+○
+○
+○
+○
+
+We will hold oﬃce hours in this room
+We will extend the deadline for HW9 to 11:59pm on Tues 3/10
+We will also release HW10 BEFORE lecture
+Basically next week is open work time for HW9 and HW10
+
+Reflect: Comparing Java & Bash
+Great exercise for learning new programming languages!
+For example,
+
+Q: do double-quoted strings work the same in Java & Bash?
+A: not quite!
+● e.g. variable expansion (e.g. "$name")
+● e.g. evaluating arithmetic (e.g. let a="$b / 2")
+
+Think, Pair, Share – Wanton Whitespace
+Java & Bash both have rules on how programmers use whitespace.
+●
+●
+
+how are their whitespace rules similar?
+how are their whitespace rules diﬀerent?
+
+Hint: what deﬁnes a new statement in either language?
+
+Think, Pair, Share – Tentatively Typed
+Java & Bash both have data types.
+While we haven’t formally explored Bash’s type system (nor is this a PL class),
+●
+●
+
+how are types similar in Java and Bash?
+how are types diﬀerent in Java and Bash?
+
+Think, Pair, Share – Forced Fors
+How would you write the following Java for loop in Bash?
+
+for (int i = 0; i < 10; i += 2) {
+System.out.println(i);
+}
+Hint: man seq
+
+Discussion Questions: Your Turn
+In small groups, work on discussion questions (under Week 9)
+●
+
+questions are in increasing diﬃculty
+○
+
+●
+●
+
+tell me which question(s) you want me to do live :))
+
+have a question? I’ll be walking around
+ﬁnished early? start HW9!
+
+HW9 Tips
+●
+
+read Development Strategies!
+○
+
+●
+
+debug frequently
+○
+○
+
+●
+●
+
+key insight: not solving the entire problem at once
+echo (~ print) debugging is totally reasonable!
+can also dump variable contents to a ﬁle (output redirection!)
+
+read Assumptions (and non-assumptions)
+bash-isms to remember
+○
+○
+○
+○
+
+whitespace matters!
+using the right quotes matters!
+arithmetic requires special syntax (either let or $(( )) )
+string & numerical comparisons have diﬀerent syntax!
+
+rest: pre-lecture slides
+(what you saw in the video)
+
+if statements: arithmetic comparison
+Operator
+
+Description
+
+-gt
+
+greater than
+
+-ge
+
+greater than or equal to
+
+-lt
+
+less than
+
+-le
+
+less than or equal to
+
+-eq
+
+equal to
+
+-ne
+
+not equal to
+
+if [ $a -lt $b ]; then
+echo "$a is less than $b"
+fi
+
+if statements: boolean comparison
+Operator
+
+Description
+
+if [ expr1 -a expr2 ]; then
+
+and
+
+if [ expr1 ] && [ expr2 ]; then
+
+and
+
+if [ expr1 -o expr2 ]; then
+
+or
+
+if [ expr1 ] || [ expr2 ]; then
+
+or
+
+if [ ! expr1 ]; then
+
+if [ $a -lt 10 ] && [ $a -gt 5 ]; then
+echo "variable a is between 5 and 10"
+fi
+
+negation
+
+if statements: string and file comparison
+Comparison Operator
+
+Description
+
+=, !=
+
+String operator comparison
+
+-z, -n
+
+Test if a string is empty (-z) or nonempty (-n)
+
+-f, -d
+
+Test if a ﬁle (-f) or a directory (-d) exists
+
+-r, -w, -x
+
+Test if a ﬁle exists and is readable (-r),
+writeable (-w) and executable (-x)
+
+if [ -n "$NAME" ]; then
+echo 'Variable $NAME exists'
+fi
+
+

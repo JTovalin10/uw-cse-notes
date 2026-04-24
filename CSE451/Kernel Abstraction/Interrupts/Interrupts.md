@@ -4,7 +4,7 @@
 
 Note: interrupts can be temporarily deferred by the kernel — this is crucial for implementing mutual exclusion (mutex). See [[Interrupt Masking]].
 
-Interrupts fix the problem of [[Polling]] by letting devices notify the CPU rather than having the CPU constantly check device status.
+Interrupts fix the problem of Polling by letting devices notify the CPU rather than having the CPU constantly check device status.
 
 ## Components
 - [[Source of Interrupts]] — timer, I/O devices, software, exceptions

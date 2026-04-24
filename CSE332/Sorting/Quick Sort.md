@@ -3,7 +3,7 @@
 **[[Quick Sort]]**: A divide and conquer sorting algorithm that selects a "pivot" element and partitions the array into two sublists—elements less than the pivot and elements greater than the pivot—before sorting them recursively.
 
 ## Procedure
-* **Divide**: Select a **[[Pivot]]** element $p$ and **[[Partition]]** the array. This is the "hard" part.
+* **Divide**: Select a **Pivot** element $p$ and **Partition** the array. This is the "hard" part.
 * **Conquer**: Recursively sort the left and right sublists.
 * **Combine**: Nothing! The array is sorted in place.
 

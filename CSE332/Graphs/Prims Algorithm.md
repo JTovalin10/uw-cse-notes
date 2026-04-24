@@ -1,6 +1,6 @@
 # CSE 332: Prim's Algorithm
 
-**[[Prim's Algorithm]]** finds a Minimum Spanning Tree (MST) for a connected weighted undirected graph.
+**Prim's Algorithm** finds a Minimum Spanning Tree (MST) for a connected weighted undirected graph.
 
 ## Idea
 Prim's algorithm builds a single tree $A$. It starts from an arbitrary root node. At each step, it looks at all the edges connecting the current tree $A$ to nodes not yet in $A$, and greedily adds the minimum-weight edge to $A$. This perfectly implements the [[Cut Theorem]] where the cut is implicitly defined as (Nodes currently in $A$, Nodes not in $A$).

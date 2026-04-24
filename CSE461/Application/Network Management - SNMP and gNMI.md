@@ -1,6 +1,6 @@
 # Network Management: SNMP and gNMI
 
-Network management involves the programmatic monitoring and configuration of distributed hardware state. It is a core **[[Infrastructure Applications|Infrastructure Application]]**.
+Network management involves the programmatic monitoring and configuration of distributed hardware state. It is a core **Infrastructure Application**.
 
 ---
 
@@ -24,12 +24,12 @@ The legacy standard for network monitoring, operating over **UDP Ports 161 (Agen
 
 Industry has shifted from "pull-based" SNMP to "push-based" **Streaming Telemetry**.
 
-### [[gNMI]]: gRPC Network Management Interface
+### gNMI: gRPC Network Management Interface
 *   **Transport**: Built on **gRPC** (**HTTP/2**).
 *   **Efficiency**: Uses **[[Protobufs]]** for compact binary serialization.
 *   **Capability**: Supports both monitoring and **Declarative Configuration**.
 
-### [[YANG]]: Yet Another Next Generation
+### YANG: Yet Another Next Generation
 *   A modeling language used to define the **Schema** for device state.
 *   Enables **Zero-Touch Management** where operators declare intent, and tools resolve per-device configuration.
 

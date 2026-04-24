@@ -1,7 +1,7 @@
 # CSE 332: Algorithm Analysis
 
 ## Resource Analysis
-**[[Resource Analysis]]**: A process that maps an algorithm's input size to a count of resources used. This allows us to compare algorithms theoretically, independent of specific implementations, hardware, or languages.
+**Resource Analysis**: A process that maps an algorithm's input size to a count of resources used. This allows us to compare algorithms theoretically, independent of specific implementations, hardware, or languages.
 
 When doing resource analysis, we define a function where:
 - **Input**: Size of the input (e.g., number of items in a list, number of characters in a string).
@@ -9,10 +9,10 @@ When doing resource analysis, we define a function where:
 
 ## Complexity Types
 Algorithms can be analyzed under different scenarios:
-- **[[Worst-case Complexity]]**: The maximum number of steps an algorithm takes on the "most challenging" input of size $n$.
-- **[[Best-case Complexity]]**: The minimum number of steps an algorithm takes on the "easiest" input of size $n$.
-- **[[Average Complexity]]** / Expected complexity: The average number of steps an algorithm takes on random inputs. This is context and distribution-dependent.
-- **[[Amortized Complexity]]**: The maximum total number of steps an algorithm takes on $M$ "most challenging" consecutive inputs, divided by $M$.
+- **Worst-case Complexity**: The maximum number of steps an algorithm takes on the "most challenging" input of size $n$.
+- **Best-case Complexity**: The minimum number of steps an algorithm takes on the "easiest" input of size $n$.
+- **Average Complexity** / Expected complexity: The average number of steps an algorithm takes on random inputs. This is context and distribution-dependent.
+- **Amortized Complexity**: The maximum total number of steps an algorithm takes on $M$ "most challenging" consecutive inputs, divided by $M$.
   - *Example*: In an `ArrayList`, the `add(value)` operation has a worst-case time of $O(n)$ if the array needs to resize. However, because resizing guarantees additional capacity, the average cost over a sequence of operations across $n$ adds is constant. Thus, the amortized running time is $O(1)$.
 
 ## Counting Operations

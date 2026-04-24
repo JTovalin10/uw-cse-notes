@@ -15,14 +15,14 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Traps]] — [[Interrupts]] — [[Exceptions]]
 - [[Hardware Modes]] — [[User Mode]] — [[Kernel Mode]] — [[Privilege Level]]
 - [[Virtual Addresses]] — [[Base and Bounds]]
-- [[Registers and Flags]] — x86 ([[Global Descriptor Table]], [[Code Segment]])
+- Registers and Flags — x86 ([[Global Descriptor Table]], [[Code Segment]])
 
 ### Processes and threads
 - [[Process]] — [[Process vs Thread]] — [[Process vs Program]]
 - [[Fork]] — [[Exec]]
 - [[Threads Overview]] — [[Achieving Multithreading]]
-- [[Scheduling]] — [[Processor Scheduling]]
-- [[Deadlocks]] — [[The Four Coffman Conditions]]
+- [[Scheduling]] — Processor Scheduling
+- [[Deadlocks]] — The Four Coffman Conditions
 - [[Critical Sections]] — [[Semaphore Operations]] — [[Condition Variables]] — [[Locks]]
 
 ### Memory
@@ -46,4 +46,4 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Virtual Machine]]
 
 ### Security
-- [[Meltdown]] — [[Speculative Execution Vulnerability]] — [[KPTI]]
+- [[Meltdown]] — Speculative Execution Vulnerability — [[KPTI]]

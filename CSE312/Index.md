@@ -3,7 +3,7 @@
 ## Part I — Discrete Mathematics
 
 ### Counting and Combinatorics
-[[Product Rule]] · [[Sum Rule]] · [[Factorial]] · [[Permutation]] · [[Number of Subsets Formula]] · [[Symmetry of Combination]] · [[Binomial Theorem]] · [[Sequences]] · [[Overcounting]] · [[Complementary Counting]] · [[Pigeonhole Principle]] · [[Possibilities with Restrictions]] · [[Principle of Inclusion-Exclusion]] · [[Size of Cartesian Product]] · [[Size of Power Set]] · [[Stars and Bars]]
+[[Product Rule]] · [[Sum Rule]] · [[Factorial]] · [[Permutation]] · [[Number of Subsets Formula]] · [[Symmetry of Combination]] · [[Binomial Theorem]] · [[Sequences]] · [[Overcounting]] · [[Complementary Counting]] · Pigeonhole Principle · [[Possibilities with Restrictions]] · [[Principle of Inclusion-Exclusion]] · [[Size of Cartesian Product]] · [[Size of Power Set]] · [[Stars and Bars]]
 
 ### Basic Probability
 [[Conditional Probability]] · [[Independence]] · [[Mutual Exclusion]] · [[Bayes Rule]] · [[Chain Rule]] · [[Law of Total Probability]] · [[Union Bound]]

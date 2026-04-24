@@ -3,11 +3,11 @@
 **[[Asymptotic Notation]]** is a mathematical tool used to describe the limiting behavior of a function, particularly for comparing algorithm running times as the input size $n$ grows.
 
 ## Big-O, Big-Omega, and Big-Theta
-- **[[Big-O]]** ($O(g(n))$): Represents an **upper bound**. It is the set of functions with asymptotic behavior less than or equal to $g(n)$.
+- **Big-O** ($O(g(n))$): Represents an **upper bound**. It is the set of functions with asymptotic behavior less than or equal to $g(n)$.
   - **Formal Definition**: $f \in O(g(n)) \equiv \exists c > 0 . \exists n_0 > 0 . \forall n \ge n_0 . f(n) \le c \cdot g(n)$
-- **[[Big-Omega]]** ($\Omega(g(n))$): Represents a **lower bound**. It is the set of functions with asymptotic behavior greater than or equal to $g(n)$.
+- **Big-Omega** ($\Omega(g(n))$): Represents a **lower bound**. It is the set of functions with asymptotic behavior greater than or equal to $g(n)$.
   - **Formal Definition**: $f \in \Omega(g(n)) \equiv \exists c > 0 . \exists n_0 > 0 . \forall n \ge n_0 . f(n) \ge c \cdot g(n)$
-- **[[Big-Theta]]** ($\Theta(g(n))$): Represents a **tight bound**. A function is in Big-Theta if it is both upper-bounded and lower-bounded by the same function (up to constant factors).
+- **Big-Theta** ($\Theta(g(n))$): Represents a **tight bound**. A function is in Big-Theta if it is both upper-bounded and lower-bounded by the same function (up to constant factors).
   - **Formal Definition**: $\Theta(g(n)) \equiv \Omega(g(n)) \cap O(g(n))$
 
 ## Proving Asymptotic Bounds

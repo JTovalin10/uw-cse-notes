@@ -1,6 +1,6 @@
 # CSE 332: Dictionaries
 
-A **[[Dictionary]]** (or Map) is an Abstract Data Type (ADT) that stores sets of key-value pairs where keys must be comparable.
+A **Dictionary** (or Map) is an Abstract Data Type (ADT) that stores sets of key-value pairs where keys must be comparable.
 
 ### Operations
 - `insert(key, value)`: Adds the `(key, value)` pair into the dictionary. If the key already has a value, it overwrites the old value. Consequently, keys cannot be repeated.

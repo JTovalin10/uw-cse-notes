@@ -1,7 +1,7 @@
 # Routing Layer: Open Shortest Path First (OSPF)
 
 ## Low-Level Primer: The Link-State Standard
-**[[OSPF]]** is a hierarchical, link-state intradomain routing protocol. It is the most widely deployed Interior Gateway Protocol (IGP) in large enterprise networks. OSPF routers discover neighbors using a **Hello Protocol** and exchange **Link-State Advertisements (LSAs)** to build a synchronized **Link-State Database (LSDB)**—a complete "map" of the network.
+**OSPF** is a hierarchical, link-state intradomain routing protocol. It is the most widely deployed Interior Gateway Protocol (IGP) in large enterprise networks. OSPF routers discover neighbors using a **Hello Protocol** and exchange **Link-State Advertisements (LSAs)** to build a synchronized **Link-State Database (LSDB)**—a complete "map" of the network.
 
 ---
 

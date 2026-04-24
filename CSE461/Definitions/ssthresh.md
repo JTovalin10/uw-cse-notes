@@ -15,7 +15,7 @@ TCP uses **ssthresh** to balance the need for rapid capacity probing (exponentia
 
 ### Dynamic Adjustment
 The value of **ssthresh** is not fixed; it is dynamically recalculated whenever congestion is detected:
-*   **On Loss (Duplicate ACKs)**: In **[[Fast Recovery (TCP Multiplicative Decrease)|TCP Reno]]**, `ssthresh` is set to $cwnd / 2$, and `cwnd` is set to the new `ssthresh` (skipping slow start).
+*   **On Loss (Duplicate ACKs)**: In **TCP Reno**, `ssthresh` is set to $cwnd / 2$, and `cwnd` is set to the new `ssthresh` (skipping slow start).
 *   **On Timeout**: `ssthresh` is set to $cwnd / 2$, and `cwnd` is reset to 1 MSS (entering a full slow-start restart).
 
 ---

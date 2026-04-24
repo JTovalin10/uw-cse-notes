@@ -29,7 +29,7 @@ To mitigate misfortune, TCP uses an adaptive algorithm that tracks both the mean
 
 ### The Mathematical Model
 1.  **SampleRTT**: The measured time from sending a segment to receiving its ACK.
-2.  **EstimatedRTT**: A **[[Exponential Weighted Moving Average (EWMA)]]** of the RTT.
+2.  **EstimatedRTT**: A **Exponential Weighted Moving Average (EWMA)** of the RTT.
     *   `Difference = SampleRTT - EstimatedRTT`
     *   `EstimatedRTT = EstimatedRTT + (δ × Difference)` (typically $\delta = 0.125$)
 3.  **DevRTT (Deviation)**: Tracks the variance in the samples.

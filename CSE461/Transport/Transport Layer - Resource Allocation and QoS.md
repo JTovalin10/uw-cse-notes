@@ -11,7 +11,7 @@ In a congested network, the transport layer must decide how to distribute shared
 
 ### The Algorithm (Intuition)
 1.  Imagine "pouring water" into the network paths for all flows at an equal rate.
-2.  When a flow's path hits a **[[Bottleneck]]** link, its rate is frozen.
+2.  When a flow's path hits a **Bottleneck** link, its rate is frozen.
 3.  Continue increasing the rate for all non-frozen flows until they hit their own bottlenecks.
 *   **Result**: Every flow gets an equal share of its most constrained link. Increasing the rate of any flow would require decreasing the rate of an already smaller flow.
 
@@ -73,5 +73,5 @@ When simple fairness is not enough (e.g., for VoIP or VIP traffic), the network 
 ## 4. Key Metrics
 
 *   **Throughput**: The aggregate data rate achieved.
-*   **[[Goodput]]**: The rate of useful data delivered to the application (excludes retransmissions and protocol overhead).
-*   **Jitter**: The variance in packet inter-arrival time. Critical for **[[Real-Time Transport (RTP and RTCP)|RTP]]** applications.
+*   **Goodput**: The rate of useful data delivered to the application (excludes retransmissions and protocol overhead).
+*   **Jitter**: The variance in packet inter-arrival time. Critical for **RTP** applications.

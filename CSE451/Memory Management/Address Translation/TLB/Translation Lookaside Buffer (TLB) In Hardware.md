@@ -1,5 +1,5 @@
 # TLB In Hardware
-The TLB is implemented as a [[fully associative cache 1]] inside the [[Memory Management Unit]] — all entries are searched in parallel.
+The TLB is implemented as a fully associative cache 1 inside the [[Memory Management Unit]] — all entries are searched in parallel.
 
 | component | value |
 |-----------|-------|

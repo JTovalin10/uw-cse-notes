@@ -1,6 +1,6 @@
 # CSE 332: Divide and Conquer Sorting
 
-**[[Divide and Conquer]]**: A recursive algorithm design technique used to solve a large problem by breaking it up into smaller versions of the same problem.
+**Divide and Conquer**: A recursive algorithm design technique used to solve a large problem by breaking it up into smaller versions of the same problem.
 
 ## Template
 1. **Base Case**: If the problem is "small", solve directly and return.

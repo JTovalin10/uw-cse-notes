@@ -48,7 +48,7 @@ The **BDP** represents the "volume" of the network pipe—the maximum number of 
     *   $R$: Bandwidth (bps).
     *   $RTT$: Round-Trip Time (seconds).
 *   **Significance**:
-    *   To keep a high-speed, long-distance link full, the sender's window size (in **[[Sliding Window]]** protocols) must be at least the BDP.
+    *   To keep a high-speed, long-distance link full, the sender's window size (in **Sliding Window** protocols) must be at least the BDP.
     *   If the window is smaller than the BDP, the sender will stop and wait for ACKs while the link is idle, leading to low **Utilization**.
 
 ---

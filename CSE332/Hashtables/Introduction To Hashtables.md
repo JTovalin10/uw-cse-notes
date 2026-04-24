@@ -2,7 +2,7 @@
 
 **[[Dictionary ADT]]**: A map containing sets of key-value pairs where keys must be unique and have a hash function. Operations include `insert`, `find`, and `delete`.
 
-**[[Hash Table]]**: A data structure that uses a small array to store information and a **[[Hash Function]]** to convert a key into an index. The hash function scatters the keys as if randomly assigned.
+**Hash Table**: A data structure that uses a small array to store information and a **Hash Function** to convert a key into an index. The hash function scatters the keys as if randomly assigned.
 
 ## Hash Functions
 A hash function maps objects to integers. A "good" hash function has the following properties:
@@ -12,7 +12,7 @@ A hash function maps objects to integers. A "good" hash function has the followi
 * **Efficient**: Time to calculate the hash should be $\Theta(1)$.
 
 ## Collision Resolution
-A **[[Collision]]** occurs when we want to insert something into an already-occupied position in the hash table. Two main strategies exist:
+A **Collision** occurs when we want to insert something into an already-occupied position in the hash table. Two main strategies exist:
 * **[[Separate Chaining]]**: Use a secondary data structure (like a linked list) to contain the items at each index.
 * **[[Open Addressing]]**: Use a different spot in the table instead (Linear Probing, Quadratic Probing, Double Hashing).
 

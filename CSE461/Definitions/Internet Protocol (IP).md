@@ -32,7 +32,7 @@ Addresses allocated in blocks called **prefixes**.
 - Best-effort delivery (no reliability, ordering, or timing guarantees)
 - [[IP Fragmentation and Reassembly|Fragmentation]] when packets exceed [[Maximum Transmission Unit (MTU)|MTU]]
 
-See also: [[IP Service Model]], [[IP Packet Format]]
+See also: IP Service Model, [[IP Packet Format]]
 
 ## IPv6
 

@@ -3,4 +3,4 @@ An error detection mechanism where the sender computes a value from the data and
 
 IP uses a ones' complement checksum computed over the header only (not the payload). Higher-layer protocols like [[CSE461/Definitions/Transmission Control Protocol (TCP)|TCP]] and [[CSE461/Definitions/User Datagram Protocol (UDP)|UDP]] compute checksums over both headers and data.
 
-See also: [[CSE461/Link Layer/Error Detection and Correction/Checksum]]
+See also: CSE461/Link Layer/Error Detection and Correction/Checksum

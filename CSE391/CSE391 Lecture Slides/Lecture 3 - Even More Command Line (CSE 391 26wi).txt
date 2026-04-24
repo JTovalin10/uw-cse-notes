@@ -1,0 +1,194 @@
+CSE 391: System & Software Tools
+
+more I/O & streams,
+xargs, cut
+Ruth Anderson
+✉ rea@cs.uw.edu
+🔗 cs.uw.edu/391
+
+Agenda
+●
+●
+
+Administrivia
+HW2 Q&A + questions
+○
+
+●
+
+Reviewing pre-lecture concepts
+○
+○
+○
+
+●
+
+for sure: we will do the last question live!
+new operators (“control ﬂow”)
+new commands (xargs, cut, ﬁnd)
+many discussion questions
+
+HW3 tips & tricks
+
+Administrivia
+●
+
+Sometime this week: we will set up a GitLab project for you
+○
+○
+
+●
+
+If you get an email, that’s expected, but
+you may also not get an email, that’s ok too :)
+
+Announcement w/ materials will come out ~late afternoon/evening
+
+HW2 Q&A + Review
+anything you want to go over from
+HW2?
+
+L3: Quick Sketch
+From the pre-lecture:
+●
+●
+
+new operators: &&, ||, ;
+new commands: xargs, find, cut
+○
+
+and: using xargs with other commands we’ve already used!
+
+From HW2 & L2:
+●
+●
+●
+
+Concept of “streams”: stdin, stdout, stderr
+Manipulating streams: redirection and pipes
+Other new commands (e.g. grep)
+
+Think, Pair, Share – Overwhelming Operators
+When downloading your HW, we often have you run two commands:
+wget https://courses.cs.washington.edu/courses/cse391/26wi/homework/hw2/hw2.zip
+unzip hw2.zip
+
+Which operator would best encode this behavior
+into just one statement?
+1.
+2.
+3.
+4.
+
+wget … | unzip hw2.zip
+wget … || unzip hw2.zip
+wget … && unzip hw2.zip
+wget … ; unzip hw2.zip
+
+Think, Pair, Share – Existential xargs
+In which of these situations would we have to use xargs?
+1.
+2.
+3.
+4.
+
+Find "public class" in .java ﬁles in the current folder
+Find "public class" in .java ﬁles in the current folder and subfolders
+Calculate line count for .java ﬁles in the current folder
+Calculate line count for .java ﬁles in the current folder and subfolders
+
+Think, Pair, Share – Critical Cuts
+In HW2 Q8, we asked you:
+How many students in the course are not also taking CSE 351?
+Assume the survey is in stdin. How could we use cut to answer this same
+question? (the 351 question was the 4th column)
+1.
+2.
+3.
+4.
+
+cut
+| grep "No" | wc -l
+cut -c4
+| grep "No" | wc -l
+cut -d -f4 | grep "No" | wc -l
+cut -d, -f4 | grep "No" | wc -l
+
+L3: Priming Some Questions
+Questions you may have from pre-lecture:
+●
+●
+
+new operators: &&, ||, ;
+new commands: xargs, find, cut
+○
+
+and: using xargs with other commands we’ve already used!
+
+Lingering questions from homework & last week:
+●
+●
+●
+
+Concept of “streams”: stdin, stdout, stderr
+Manipulating streams: redirection and pipes
+Other new commands (e.g. grep)
+
+Discussion Questions: Your Turn
+In small groups, work on discussion questions (under Week 3)
+●
+
+Questions are in increasing diﬃculty
+○
+
+●
+
+at the very least: will do Q1, Q4, Q5 live
+
+Have a question? We’ll be walking around :)
+
+Tips for HW3
+Biggest advice: break up big problems into small problems!
+●
+●
+●
+
+Pipes are your friend :)
+Don’t grep for too much at once
+Don’t worry about eﬃciency
+
+From the last question in HW2, we saw that order matters!
+●
+●
+
+When could you accidentally ﬁlter out “too much” data?
+Remember: you can always ﬁlter later, but you can’t unﬁlter!
+
+And, make sure you know why xargs exists—if not, review L2 & L3 ﬁrst!
+
+Think, Pair, Share – Malicious Method Making
+Pipes and xargs are a very powerful tool. But, they can lead to some security
+issues if they’re used improperly!
+Brainstorm (by yourself, with a partner(s), then sharing out):
+how could using xargs “go wrong”? Can you provide a concrete example?
+
+Hint: there’s are a few nasty combinations with xargs and rm…
+
+rest: pre-lecture slides
+(what you saw in the video)
+
+🤔 Pause and Think (Jumbling Java)
+Given a directory with some *.java ﬁles, what would happen when running:
+
+$ ls *.java | javac
+
+🤔 Pause and Think (Reified Removing)
+Given a ﬁle called toRemove.txt (where each line is a path to a ﬁle), what
+command(s) can you use to remove each of the given ﬁles?
+For example, it could include:
+CompilerErrors.java
+beans.txt
+
+$ xargs rm < toRemove.txt
+
+

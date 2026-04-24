@@ -11,5 +11,5 @@ The adjacent [[Router]] to which a packet should be [[Forwarding|forwarded]] for
 ## See also
 
 - [[Forwarding Table]] — stores prefix → next hop mappings
-- [[IP Datagram Forwarding]] — the forwarding algorithm
+- IP Datagram Forwarding — the forwarding algorithm
 - [[Routing]] — how next hops are computed

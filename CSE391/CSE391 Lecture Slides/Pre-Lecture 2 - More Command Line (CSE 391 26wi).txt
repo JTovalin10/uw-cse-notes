@@ -1,0 +1,109 @@
+pre-lecture slides
+(what you saw in the videos)
+
+🤔 Pause and Think (Ticking off TODOs)
+You’re working on a project and have been leaving comments with the text
+"TODO" near all the things you still need to ﬁnish. Your project is stored in the
+project directory in your current directory.
+Write a command to ﬁnd and print all of the lines that have a TODO on them
+in the project folder.
+Hint: Recall for HW1 we taught you how to use the “wildcard” to select all ﬁles
+as part of a path.
+
+🤔 Pause and Think (Catch-all Compiling)
+What is the command to compile all Java ﬁles in the current directory?
+
+Hint: How can you use wildcards to ﬁnd all Java ﬁles?
+
+Standard Streams
+Unix processes have three streams: abstract locations that tell a program
+where to read input from and where to write output to.
+There are three standard streams:
+●
+●
+●
+
+stdin (standard input)
+stdout (standard output)
+stderr (standard error)
+
+You’ve implicitly used these when writing Java programs—the System.out in
+System.out.println is referring to stdout!
+
+Standard Streams Diagram
+int
+
+stream
+
+Java
+
+0
+
+stdin
+
+System.in
+
+1
+
+stdout
+
+System.out
+
+2
+
+stderr
+
+System.err
+
+Process
+
+stdin
+
+A program
+such as ls,
+cd, or grep
+
+stdout
+
+stderr
+
+These default to
+the console
+(terminal)
+
+🤔 Pause and Think (Fruit Preserves)
+Write a command to store all of the lines in fruits.txt that contain the string
+"berry" into a ﬁle called berries.txt
+
+Standard Input versus Parameters
+One of the most important distinctions in this class is the diﬀerence
+between standard input (stdin) and a command’s parameters:
+●
+
+parameters are arguments given on the command line:
+○
+○
+
+●
+
+e.g. in ls dir1,
+e.g. in grep "a",
+
+dir1 is a parameter
+"a" is a parameter
+
+standard input comes from the user (either from a ﬁle or the console)
+○
+○
+
+e.g. in grep "a" < berries.txt, the contents of berries.txt go into stdin
+e.g. after typing grep "a", it accepts input from your keyboard until the stream is closed
+(using Ctrl + D)
+
+🤔 Pause and Think (Bountiful Berries)
+Suppose we have a ﬁle berries.txt where each line is the name of a diﬀerent
+berry.
+Write a command that outputs how many berries have names that contain
+both the letter a and the letter e.
+
+

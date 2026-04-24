@@ -14,6 +14,6 @@ The **Virtual Table (vtable)** is a mechanism used in C++ to support **dynamic d
 
 ## Related
 - [[CSE333/C++ OOP/Dynamic Dispatch|Dynamic Dispatch]]
-- [[CSE333/C++ OOP/Virtual Identifier|Virtual Identifier]]
+- Virtual Identifier
 - [[CSE333/C++ OOP/Upcasting|Upcasting]]
-- [[CSE333/C++ OOP/C++ Inheritance I|C++ Inheritance]]
+- C++ Inheritance

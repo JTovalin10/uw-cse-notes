@@ -1,6 +1,6 @@
 # CSE 332: AVL Insertions And Deletions
 
-When modifying an **[[AVL Tree]]**, the tree might become "out of balance". If an insertion or deletion breaks the Balance Property, the tree is repaired using **[[Rotations]]** at the deepest unbalanced node.
+When modifying an **[[AVL Tree]]**, the tree might become "out of balance". If an insertion or deletion breaks the Balance Property, the tree is repaired using **Rotations** at the deepest unbalanced node.
 
 ### Node Structure
 To efficiently check the balance property, each node tracks its `Height` in addition to its `Key`, `Value`, `Left child`, and `Right child`.
@@ -13,13 +13,13 @@ To efficiently check the balance property, each node tracks its `Height` in addi
 
 #### Rotation Cases for Insertion
 Identify the deepest problem node and determine where the insertion occurred relative to it:
-- **[[Case LL]]** (Left-Left): Inserted in the left subtree of the left child.
-  - *Fix*: Perform a **[[Right Rotation]]** at the unbalanced node.
-- **[[Case RR]]** (Right-Right): Inserted in the right subtree of the right child.
-  - *Fix*: Perform a **[[Left Rotation]]** at the unbalanced node.
-- **[[Case LR]]** (Left-Right): Inserted into the right subtree of the left child.
+- **Case LL** (Left-Left): Inserted in the left subtree of the left child.
+  - *Fix*: Perform a **Right Rotation** at the unbalanced node.
+- **Case RR** (Right-Right): Inserted in the right subtree of the right child.
+  - *Fix*: Perform a **Left Rotation** at the unbalanced node.
+- **Case LR** (Left-Right): Inserted into the right subtree of the left child.
   - *Fix*: Requires two rotations. First, rotate Left at the left child. Then, rotate Right at the root (problem node).
-- **[[Case RL]]** (Right-Left): Inserted into the left subtree of the right child.
+- **Case RL** (Right-Left): Inserted into the left subtree of the right child.
   - *Fix*: Requires two rotations. First, rotate Right at the right child. Then, rotate Left at the root (problem node).
 
 ### Delete Summary

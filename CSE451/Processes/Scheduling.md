@@ -3,7 +3,7 @@
 ## Low-Level Primer: Policy vs. Mechanism
 In Operating System architecture, CPU management is strictly divided:
 *   **Policy (Scheduling)**: The high-level decision-making logic that determines *which* thread should run next and for *how long*.
-*   **Mechanism (Switching)**: The low-level **[[Context Switch]]** code that saves/restores registers, switches stacks, and updates the **[[TLB]]**.
+*   **Mechanism (Switching)**: The low-level **[[Context Switch]]** code that saves/restores registers, switches stacks, and updates the **TLB**.
 
 ## Classes of Schedulers
 Schedulers are optimized for specific workload characteristics:
@@ -134,5 +134,5 @@ Scheduling becomes significantly more complex when multiple CPUs are available.
 - [[Context Switch]]
 - [[Thread Levels]]
 - [[Process]]
-- [[CPUState]]
+- CPUState
 - [[Interrupts]]

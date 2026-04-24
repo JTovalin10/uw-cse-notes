@@ -1,0 +1,102 @@
+rest: pre-lecture slides
+(what you saw in the video)
+
+CSE 391: System & Software Tools
+
+Bash Scripting
+
+matt wang (he/him)
+✉ mxw@cs.uw.edu
+🔗 cs.uw.edu/391
+
+xkcd #293
+
+if statements: arithmetic comparison
+Operator
+
+Description
+
+-gt
+
+greater than
+
+-ge
+
+greater than or equal to
+
+-lt
+
+less than
+
+-le
+
+less than or equal to
+
+-eq
+
+equal to
+
+-ne
+
+not equal to
+
+if [ $a -lt $b ]; then
+echo "$a is less than $b"
+fi
+
+if statements: boolean comparison
+Operator
+
+Description
+
+if [ expr1 -a expr2 ]; then
+
+and
+
+if [ expr1 ] && [ expr2 ]; then
+
+and
+
+if [ expr1 -o expr2 ]; then
+
+or
+
+if [ expr1 ] || [ expr2 ]; then
+
+or
+
+if [ ! expr1 ]; then
+
+if [ $a -lt 10 ] && [ $a -gt 5 ]; then
+echo "variable a is between 5 and 10"
+fi
+
+negation
+
+if statements: string and file comparison
+Comparison Operator
+
+Description
+
+=, !=
+
+String operator comparison
+
+-z, -n
+
+Test if a string is empty (-z) or nonempty (-n)
+
+-f, -d
+
+Test if a ﬁle (-f) or a directory (-d) exists
+
+-r, -w, -x
+
+Test if a ﬁle exists and is readable (-r),
+writeable (-w) and executable (-x)
+
+if [ -n "$NAME" ]; then
+echo 'Variable $NAME exists'
+fi
+
+

@@ -1,83 +1,101 @@
 # Single Decree Paxos
 
-**Single Decree Paxos** is the core algorithm used to reach consensus on a **single value** in a distributed system, even in the presence of node failures (excluding Byzantine failures).
+**Single Decree Paxos** is the core algorithm used to reach consensus on a **single value** in a distributed system, even in the presence of node failures.
+
+## The Consensus Problem
+The protocol must satisfy three formal requirements:
+1.  **Validity**: The chosen value was proposed (no making up values).
+2.  **Agreement**: At most one value is chosen (never two different winners).
+3.  **Integrity**: No node believes a value is chosen unless it actually was (Learners aren't misled).
+
+> **Note on Liveness**: Paxos does not guarantee it will always terminate (FLP Impossibility), but it makes progress whenever the network behaves "well enough" for long enough.
 
 ## Roles
-While often mapped to physical nodes, roles are distinct functional entities:
+- **Proposer**: Drives the protocol. Picks ballot numbers and proposes values.
+- **Acceptor**: Votes on proposals. The fixed set of acceptors collectively holds the state.
+- **Learner**: Detects when a value has been chosen and reports it.
 
-- **Proposers**: Propose values by starting a new **Ballot**. They first communicate with acceptors to learn about any values already being considered.
-- **Acceptors**: The "memory" of the protocol. They vote on proposals. A **Majority** (quorum) of acceptors must agree for a value to be chosen.
-    - You can tolerate $f$ failures with $2f + 1$ acceptors (need a majority $\frac{n}{2} + 1$).
-- **Learners**: Discover the final result once a value has been chosen by a majority.
+## The Ballot Protocol (Message Names)
+Paxos is often described using a compact message notation:
+| Message | Name | Direction | Content |
+| :--- | :--- | :--- | :--- |
+| **1a(r)** | Prepare | P $\to$ A | "I am beginning round $r$." |
+| **1b(r, s)** | Promise | A $\to$ P | "I promise not to participate in rounds $< r$. Here is my history ($s$)." |
+| **2a(r, v)** | Accept Request | P $\to$ A | "Please vote for value $v$ in round $r$." |
+| **2b(r, v)** | Accept Reply | A $\to$ L | "I voted for $v$ in round $r$." |
 
 ## The Algorithm: Step-by-Step
 
-### Phase 1: Prepare
-1.  **Proposer**: Selects a unique, monotonically increasing **Ballot Number** $n$. It sends a `Prepare(n)` message to a majority of acceptors.
-2.  **Acceptor**: Maintains two pieces of state: `max_ballot` (highest promised) and `(accepted_n, accepted_v)` (the last value it actually voted for).
-    - **The Filter**: If $n > max_ballot$, the acceptor updates `max_ballot = n` and responds with a `Promise`.
-    - **The Promise**: It guarantees it will never again accept a proposal with a number less than $n$.
-    - **The History**: If the acceptor has *ever* accepted a proposal in the past (Phase 2 of an earlier round), it **must** include that `(accepted_n, accepted_v)` in its `Promise` response. If it has never accepted a value, it returns `null`.
+### Phase 1: Prepare (1a/1b)
+1.  **Proposer**: Selects a unique, monotonically increasing **Ballot Number** $r$. To ensure uniqueness, proposers can use IDs as tiebreakers (e.g., $ProposerID + n \times NumProposers$).
+2.  **Acceptor**: 
+    - If $r > max\_ballot$, updates $max\_ballot = r$ and responds with **1b**.
+    - **The Summary ($s$)**: If the acceptor previously voted (sent a 2b) in an earlier round, it includes the highest round $r'$ and value $v'$ it voted for. Otherwise, $s = null$.
 
-#### Example Promise Messages
-*   **Case A (Fresh Acceptor)**: Proposer sends `Prepare(10)`. Acceptor has never seen a proposal.
-    *   **Response**: `Promise(10, accepted_n=null, accepted_v=null)`
-    *   *Result*: Proposer is free to propose any new value.
-*   **Case B (Previously Voted)**: Proposer sends `Prepare(20)`. Acceptor previously voted for "Value X" in Round 5.
-    *   **Response**: `Promise(20, accepted_n=5, accepted_v="Value X")`
-    *   *Result*: Proposer **must** use "Value X" for its own proposal in Phase 2.
+### Phase 2: Accept (2a/2b)
+1.  **Proposer**: Waits for a majority of **1b** responses.
+    - If all summaries are $null$, the proposer can propose its own value.
+    - If any summary is non-null, the proposer **must** propose the value $v'$ from the **highest-numbered round** $r'$ reported.
+2.  **Acceptor**: Receives **2a(r, v)**. If it hasn't promised a higher round since Phase 1, it sends **2b(r, v)** to the learners.
 
-### Phase 2: Accept
-1.  **Proposer**: Waits for a majority of `Promise` responses.
-    - **Crucial Rule**: The proposer looks at all the `(accepted_n, accepted_v)` pairs returned.
-    - If any were not `null`, the proposer **must** throw away its own intended value and use the `accepted_v` from the **highest-numbered** round reported by the acceptors.
-    - If all were `null`, the proposer can finally use its own value (e.g., the client's request).
-    - It sends `Accept(n, v)` to a majority of acceptors.
-2.  **Acceptor**: Receives `Accept(n, v)`.
-    - If $n \geq max_ballot$, it accepts the value, updates its state to `(accepted_n=n, accepted_v=v)`, and notifies learners.
+## What "Chosen" Actually Means
+In Paxos, "chosen" is a property of the **system state**, not an action.
+- **chosen(r, v)** holds if a majority of acceptors have sent 2b(r, v).
+- **chosen(v)** holds if there exists any round $r$ where $v$ was chosen.
 
-### Phase 3: Learning
-1.  **Learner**: Once a learner receives `Accepted(n, v)` from a majority of acceptors, the value $v$ is considered **chosen**.
+**Key Insight**: A value can be chosen even if the proposer crashes immediately after sending 2a, and before any node "knows" it. The learner's job is simply to detect this pre-existing state.
 
-## Deep Dive: Understanding Majorities
+## Connection to Knowledge
+Paxos climbs the knowledge hierarchy:
+1.  **Distributed Knowledge**: Once a majority votes, "v is chosen" is distributed knowledge. No single node knows it, but the group's state determines it.
+2.  **Individual Knowledge**: The Learner gathers 2b messages to achieve $K_L(v \text{ is chosen})$.
+3.  **Common Knowledge**: Impossible in asynchronous systems, but we reach enough "Everyone Knows" ($E_G$) to perform work.
 
-### 1. The "Fixed Majority" Rule
-The majority required for consensus is **always based on the initial total number of nodes**, not the number of nodes currently alive.
-- **Example (7-node cluster)**: The majority is always **4**. 
-- If 2 nodes die, you still need 4 votes. This means you need 4 out of the 5 remaining nodes to agree.
-- If 4 nodes die, the system **stalls** because you only have 3 nodes left and can never reach the required 4 votes.
-- **Why?** This prevents "Split Brain." If the cluster partitions, only the side that can reach the *original* majority can make progress.
+## The Votes Table (Visualization)
+A useful tool for tracking safety. Rows are rounds, columns are acceptors.
+- `✓`: Voted (sent 2b).
+- `✗`: Promised not to vote (sent 1b for a higher round).
+- A value is chosen when a row has a majority of `✓`.
 
-### 2. Value Adoption (Phase 2 Rule)
-When a proposer performs Phase 1 (Prepare), it doesn't care if a value has reached a majority yet. 
-- **The Rule**: If **any** node in your Phase 1 quorum reports having accepted a value, you **must** adopt the value from the **highest ballot number** reported.
-- **Example**: 
-    - Acceptor A voted for "X" in Ballot 5.
-    - Acceptor B and C have never voted.
-    - Proposer (Ballot 10) talks to A and B. 
-    - Even though "X" only has 1 vote (not a majority), the Proposer **must** adopt "X" for Ballot 10.
-- **Why?** The proposer cannot know if that value *might* have reached a majority on nodes it didn't talk to (like C). Adopting it "just in case" ensures that once a value is chosen, it stays chosen.
+| Round | A1 | A2 | A3 | Result |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 ($v_1$) | `✓` | `✗` | `✗` | Minority; not chosen. |
+| 2 ($v_2$) | ` ` | `✓` | `✓` | **Chosen!** (Majority A2, A3) |
 
-## Summary of Logic
-- **Safety**: A value is chosen only when a majority agrees. Since any two majorities overlap by at least one node, that node "remembers" the chosen value and forces any future proposers to adopt it (Phase 2 rule).
-- **Liveness**: Paxos does not guarantee liveness (it can get stuck in a "dueling proposers" scenario), but in practice, a leader/randomized backoff is used.
+Safety is guaranteed because any new majority in a higher round **must** overlap with the previous majority, encountering at least one `✓` that forces the proposer to adopt the old value.
 
-## Visualizing Safety: A Step-by-Step Scenario
-Imagine a system with 3 Acceptors (A1, A2, A3).
+## Failure Scenario: Dropped 2b
+If all 2b messages for a chosen value $v_1$ are dropped, the learner sees nothing. 
+- **Recovery**: Any proposer can start a fresh round (Round 2). 
+- Because $v_1$ was chosen (or even just voted for by a minority that the new proposer hits), Phase 1 will return a non-null summary.
+- The new proposer is forced to propose $v_1$ again, "re-choosing" it and giving the learner another chance to hear the result.
 
-1.  **Proposer 1** starts **Round 10**.
-    - Sends `Prepare(10)` to A1 and A2.
-    - Both respond `Promise(10, null, null)`.
-2.  **Proposer 1** sends `Accept(10, "Value A")` to A1 and A2.
-    - Both accept it. **"Value A" is now chosen** (a majority has voted).
-3.  **Proposer 2** starts **Round 20** (a later round).
-    - Sends `Prepare(20)` to A2 and A3.
-    - A3 responds `Promise(20, null, null)` (it hasn't voted yet).
-    - **Crucially**, A2 responds `Promise(20, accepted_n=10, accepted_v="Value A")`.
-4.  **Proposer 2** must follow the rule:
-    - It sees "Value A" was already being voted on in Round 10.
-    - It **must** drop its own value and send `Accept(20, "Value A")`.
-    - **Result**: Even though Proposer 2 had a higher number, it was forced to "adopt" the already chosen value. Safety is preserved.
+## The Three-Round Scenario (Safety in Action)
+This scenario demonstrates how the "Highest Round" rule and "Majority Overlap" work together when the system state is fragmented.
+
+**Setup (3 Acceptors: A1, A2, A3):**
+1.  **Round 1**: A3 votes for $v_1$ (sent 2b).
+2.  **Round 2**: A2 votes for $v_2$ (sent 2b).
+3.  **Round 3**: Proposer $P_3$ starts Phase 1.
+
+| Round | A1 | A2 | A3 | Summary |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 ($v_1$) | ` ` | ` ` | `✓` | Not chosen |
+| 2 ($v_2$) | ` ` | `✓` | ` ` | Not chosen |
+| 3 ($v_?$) | ` ` | ` ` | ` ` | **What must $P_3$ propose?** |
+
+**Outcome for $P_3$:**
+$P_3$ needs a majority (2 out of 3) of 1b responses. Because A2 and A3 have both voted, $P_3$ **cannot** avoid seeing a non-null summary:
+- **If $P_3$ hits {A1, A2}**: It sees $v_2$ from Round 2. It **must** propose $v_2$.
+- **If $P_3$ hits {A1, A3}**: It sees $v_1$ from Round 1. It **must** propose $v_1$.
+- **If $P_3$ hits {A2, A3}**: It sees both. It must pick the value from the **highest round** (Round 2) and propose $v_2$.
+
+### The 5-Acceptor Comparison
+The interaction between the number of acceptors and rounds matters. If we had 5 acceptors (majority = 3):
+- If only A2 and A3 had voted, $P_3$ could potentially reach A1, A4, and A5. 
+- All three would return `null` summaries.
+- $P_3$ would then be "free" to propose a brand new value $v_3$.
+- **Why is this safe?** Because with only 2 votes ($v_1$ and $v_2$), no value could have possibly been chosen yet in a 5-node system. The "distributed knowledge" of a chosen value is only guaranteed to be hit if the proposer contacts a majority.
 
 ---
 - [[CSE452/Paxos/Paxos|Back to Paxos Overview]]

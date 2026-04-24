@@ -9,15 +9,15 @@ In the context of computer architecture, an **[[Operating System]]** acts as a l
 The **Referee** role is focused on managing contention between multiple, potentially distrusting users and processes. It ensures that the system remains stable and that no single process can monopolize or compromise the hardware.
 
 ### Key Technical Responsibilities
-*   **[[Resource Allocation]]**: Deciding which process gets which piece of hardware (CPU time, memory pages, I/O bandwidth) and for how long.
-*   **[[Isolation]]**: Ensuring that a fault or a malicious action in one process (e.g., a **[[Segmentation Fault]]**) does not crash the entire system or leak data to another process.
-*   **[[Communication]]**: Providing secure, mediated channels for processes to interact, such as **[[Inter-Process Communication (IPC)]]**.
+*   **Resource Allocation**: Deciding which process gets which piece of hardware (CPU time, memory pages, I/O bandwidth) and for how long.
+*   **Isolation**: Ensuring that a fault or a malicious action in one process (e.g., a **Segmentation Fault**) does not crash the entire system or leak data to another process.
+*   **Communication**: Providing secure, mediated channels for processes to interact, such as **Inter-Process Communication (IPC)**.
 
 ### Mechanics of Protection
 The Referee relies on hardware-assisted mechanisms to enforce its rules:
-*   **[[Dual-Mode Operation]]**: Distinguishing between **[[User Mode]]** (restricted) and **[[Kernel Mode]]** (privileged).
-*   **[[Memory Protection]]**: Using **[[Base and Bounds]]** registers or **[[Page Tables]]** to prevent a process from accessing memory outside its allocated range.
-*   **[[Timer Interrupts]]**: Preventing CPU "hogging" by forcibly returning control to the kernel after a fixed **[[Quantum]]**.
+*   **Dual-Mode Operation**: Distinguishing between **[[User Mode]]** (restricted) and **[[Kernel Mode]]** (privileged).
+*   **Memory Protection**: Using **[[Base and Bounds]]** registers or **[[Page Tables]]** to prevent a process from accessing memory outside its allocated range.
+*   **Timer Interrupts**: Preventing CPU "hogging" by forcibly returning control to the kernel after a fixed **Quantum**.
 
 ---
 
@@ -26,9 +26,9 @@ The **Illusionist** role provides each application with the abstraction of a "pr
 
 ### Provided Abstractions
 *   **Virtual CPU**: Through **[[Context Switching]]**, each process believes it has a dedicated processor, even if thousands of processes are sharing a single core.
-*   **[[Virtual Memory]]**: Each process sees a contiguous, private address space (starting at `0x00000000`), regardless of where its data is physically stored in **[[RAM]]** or on disk.
+*   **[[Virtual Memory]]**: Each process sees a contiguous, private address space (starting at `0x00000000`), regardless of where its data is physically stored in **RAM** or on disk.
 *   **Near-Infinite Resources**: The OS uses **[[Swapping]]** and **[[Demand Paging]]** to make physical memory appear much larger than its actual capacity.
-*   **Reliable Storage/Networking**: The Illusionist masks hardware failures (e.g., disk bad sectors or packet loss) by providing high-level abstractions like **[[Files]]** and **[[TCP]]** streams.
+*   **Reliable Storage/Networking**: The Illusionist masks hardware failures (e.g., disk bad sectors or packet loss) by providing high-level abstractions like **Files** and **TCP** streams.
 
 [Image: Diagram showing multiple virtual machines/processes mapped onto a single set of physical hardware resources.]
 
@@ -38,8 +38,8 @@ The **Illusionist** role provides each application with the abstraction of a "pr
 The **Glue** role provides a set of common, high-level abstractions and libraries that simplify application development and ensure different programs can work together seamlessly.
 
 ### Technical Facilities
-*   **[[System Calls (Syscalls)]]**: A standardized API (e.g., `open()`, `read()`, `write()`) that allows applications to request services from the kernel without knowing hardware-specific details.
-*   **[[Hardware Abstraction Layer (HAL)]]**: Hiding the differences between different hardware manufacturers (e.g., treating different SSDs through a common **[[Block Device]]** interface).
+*   **System Calls (Syscalls)**: A standardized API (e.g., `open()`, `read()`, `write()`) that allows applications to request services from the kernel without knowing hardware-specific details.
+*   **Hardware Abstraction Layer (HAL)**: Hiding the differences between different hardware manufacturers (e.g., treating different SSDs through a common **Block Device** interface).
 *   **Standard Libraries**: Providing UI widgets, networking stacks, and file formats that are shared across all applications.
 *   **Clipboard and Drag-and-Drop**: Facilitating the transfer of data between isolated applications.
 

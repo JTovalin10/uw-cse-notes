@@ -22,7 +22,7 @@ A **Hoare Triple** is a structure used in [[Floyd Logic]] to reason about progra
 
 When is such a triple valid?
 - It is valid when $P \rightarrow Q$.
-- We can establish this using [[CSE311/Part II - Formal Reasoning/Proof Techniques/Proof by Calculation|proof by calculation]].
+- We can establish this using proof by calculation.
 
 ## Hoare Triples With Code
 

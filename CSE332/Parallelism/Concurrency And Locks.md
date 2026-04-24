@@ -1,14 +1,14 @@
 # CSE 332: Concurrency And Locks
 
-**[[Interleaving]]**: The sequence that operations occur across two threads. Due to time slicing, a thread can be interrupted at any time, leading to non-determinism.
+**Interleaving**: The sequence that operations occur across two threads. Due to time slicing, a thread can be interrupted at any time, leading to non-determinism.
 
 **[[Race Condition]]**: Occurs when the computation result depends on scheduling (how threads are interleaved). Bad interleavings expose "bad" intermediate states.
-**[[Data Race]]**: A specific type of race condition where two threads can access the same variable simultaneously, and at least one is a write.
+**Data Race**: A specific type of race condition where two threads can access the same variable simultaneously, and at least one is a write.
 
-To prevent race conditions, we need **[[Mutual Exclusion]]**, which ensures only one thread can be in a **[[Critical Section]]** at a time. This is implemented using a **[[Lock]]** (or Mutex).
+To prevent race conditions, we need **[[Mutual Exclusion]]**, which ensures only one thread can be in a **Critical Section** at a time. This is implemented using a **Lock** (or Mutex).
 
 Java provides `java.util.concurrent.locks.ReentrantLock`.
-A **[[Reentrant Lock]]** remembers the thread that holds it and a count of how many times it was acquired, preventing a thread from deadlocking itself if it re-enters a locked method.
+A **Reentrant Lock** remembers the thread that holds it and a count of how many times it was acquired, preventing a thread from deadlocking itself if it re-enters a locked method.
 
 Always use a `try...finally` block to ensure locks are released even if exceptions occur!
 ```java

@@ -1,6 +1,6 @@
 # CSE333: Linked Lists
 
-**[[Linked Lists]]** are dynamic data structures where each element (node) is a separate object allocated on the heap. Unlike arrays, nodes are not stored in contiguous memory but are linked together using pointers.
+**Linked Lists** are dynamic data structures where each element (node) is a separate object allocated on the heap. Unlike arrays, nodes are not stored in contiguous memory but are linked together using pointers.
 
 ## Building a Linked List Node by Node
 
@@ -85,7 +85,7 @@ void appendNode(Node** headRef, int value) {
 
 ## Key Points About Linked List Memory Management
 
-1. **Individual Allocation**: Each node requires a separate **[[Malloc|malloc()]]** call.
+1. **Individual Allocation**: Each node requires a separate **malloc()** call.
 2. **Traversal Order**: You must allocate new memory for each new node on the heap.
 3. **Memory Leaks**: Losing the reference to a node without calling **[[Free|free()]]** causes memory leaks.
 4. **Free Order**: When deallocating, save the `next` pointer before freeing the current node.
@@ -95,4 +95,4 @@ void appendNode(Node** headRef, int value) {
 - [[CSE333/Memory Management/Malloc]]
 - [[CSE333/Memory Management/Free]]
 - [[CSE333/Data Structures/Struct]]
-- [[CSE333/Memory Management/Double Free (Delete)]]
+- CSE333/Memory Management/Double Free (Delete)

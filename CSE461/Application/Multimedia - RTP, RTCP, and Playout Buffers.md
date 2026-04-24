@@ -9,7 +9,7 @@
 *   **Jitter**: Variance in the inter-arrival time of packets.
 *   **[[Playout Buffer]]**: A client-side buffer used to smooth out jitter by delaying playback until a steady stream is available.
 *   **Isochronous**: Data that requires a constant bit rate and strict timing for playback.
-*   **[[Codecs]]**: Algorithms like **G.711** (voice) or **H.264** (video) that compress analog signals into digital streams.
+*   **Codecs**: Algorithms like **G.711** (voice) or **H.264** (video) that compress analog signals into digital streams.
 
 ---
 
@@ -19,7 +19,7 @@
 *   **Function**: Provides **Sequence Numbers** (for loss detection) and **Timestamps** (to remove jitter).
 *   **Note**: RTP does *not* provide reliability; it only provides the metadata needed to reconstruct the stream.
 
-### [[RTCP]]: Real-Time Control Protocol
+### RTCP: Real-Time Control Protocol
 *   **Function**: Provides QoS feedback (loss rate, delay) to the sender.
 *   **Benefit**: Enables **Adaptive Encoding**, where the sender can lower the bitrate if the network is congested.
 

@@ -9,7 +9,7 @@ Obsolete [[IPv4]] addressing scheme (1981–1993) that divided the 32-bit addres
 | **A** | 0 | 8 | 24 | 1–126* | 126 | ~16.7M | 255.0.0.0 (/8) |
 | **B** | 10 | 16 | 16 | 128–191 | 16,384 | ~65K | 255.255.0.0 (/16) |
 | **C** | 110 | 24 | 8 | 192–223 | ~2M | 254 | 255.255.255.0 (/24) |
-| **D** | 1110 | — | — | 224–239 | — | — | [[Multicast Overview]] |
+| **D** | 1110 | — | — | 224–239 | — | — | Multicast Overview |
 | **E** | 1111 | — | — | 240–255 | — | — | Reserved / experimental |
 
 \* Class A: 0 and 127 reserved (0.0.0.0 = "this host"; 127.x.x.x = loopback)
@@ -26,7 +26,7 @@ Obsolete [[IPv4]] addressing scheme (1981–1993) that divided the 32-bit addres
 
 - [[Classless Interdomain Routing (CIDR)]] — what replaced it
 - [[IPv4]] — 32-bit addressing
-- [[Multicast Addresses]] — Class D in use for multicast
+- Multicast Addresses — Class D in use for multicast
 
 
 ![[Screenshots/IP addressess (classes).png]]

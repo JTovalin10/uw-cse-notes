@@ -7,4 +7,4 @@ Assigns [[Internet Protocol (IP)|IP]] addresses to hosts from a pool — minimal
 - Newly booted host broadcasts `DHCPDISCOVER`
 - DHCP server (or relay agent) responds with: IP address, [[Subnet Mask]], default [[Router]]
 
-See also: [[IP Address Resolution Protocol (ARP)]], [[IP Global Addresses]]
+See also: IP Address Resolution Protocol (ARP), IP Global Addresses

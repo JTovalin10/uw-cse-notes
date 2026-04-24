@@ -104,4 +104,4 @@ In modern operating systems (like Windows or Linux), the primary culprits are us
 - [[Condition Variables]]
 - [[Bounded Buffer Problem]]
 - [[Threads]]
-- [[Race Conditions]]
+- Race Conditions

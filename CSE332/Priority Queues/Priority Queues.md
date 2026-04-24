@@ -1,6 +1,6 @@
 # CSE 332: Priority Queues
 
-**[[Priority Queue]]**: A collection of items and their "priorities" that allows quick access and removal to the "top priority" thing. Usually, a smaller priority value means the item is "more important".
+**Priority Queue**: A collection of items and their "priorities" that allows quick access and removal to the "top priority" thing. Usually, a smaller priority value means the item is "more important".
 
 ### Operations
 The core operations for a Priority Queue are:

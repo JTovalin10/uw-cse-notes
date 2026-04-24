@@ -14,11 +14,11 @@ The total load time is the sum of several discrete phases.
 *   **Latency**: 1 **[[Round Trip Time (RTT)]]** to the recursive resolver (if not cached).
 
 ### 2. Connection Establishment (TCP Handshake)
-*   **Mechanism**: The **[[Three-Way Handshake]]** (SYN $\to$ SYN-ACK $\to$ ACK).
+*   **Mechanism**: The **Three-Way Handshake** (SYN $\to$ SYN-ACK $\to$ ACK).
 *   **Latency**: 1 **RTT**.
 
 ### 3. Security Negotiation (TLS Handshake)
-*   **Mechanism**: **[[Transport Layer Security (TLS)]]** handshake.
+*   **Mechanism**: **Transport Layer Security (TLS)** handshake.
 *   **Latency**: 1 **RTT** in **TLS 1.3**.
 
 ### 4. HTTP Request and Response

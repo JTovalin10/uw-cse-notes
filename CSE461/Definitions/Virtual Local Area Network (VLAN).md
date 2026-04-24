@@ -5,4 +5,4 @@ A mechanism that partitions a single physical [[Switched Network]] into multiple
 - Traffic between VLANs must go through a router
 - Allows network segmentation without rewiring physical infrastructure
 
-See also: [[Virtual LANs (VLANs)]]
+See also: Virtual LANs (VLANs)

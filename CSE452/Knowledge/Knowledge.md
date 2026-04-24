@@ -22,51 +22,54 @@ Reasoning:
 - For $k \geq 2$: each muddy child waits — if $k - 1$ rounds pass without anyone raising, it means the $k - 1$ others also couldn't deduce their status, which implies the observer also has mud
 - On round $k$, all $k$ muddy children can deduce their status and raise their hands
 
-**Key insight**: the puzzle fails entirely if the teacher does not announce *"someone has mud."* Even if every child can already see at least one muddy forehead, the announcement creates *common knowledge* of $k \geq 1$ — without it, no child can reason about what others know.
+**Key insight**: the puzzle fails entirely if the teacher does not announce *"someone has mud."* Even if every child can already see at least one muddy forehead, the announcement creates *common knowledge* of $k \geq 1$ — without it, no child can reason about what others know (e.g., they don't know that others know that someone is muddy).
+
+### Differences from Distributed Systems
+- **Synchronicity**: The puzzle is synchronous; rounds advance in lockstep.
+- **Communication**: Real servers can talk; children cannot.
+- **Observation**: Children "see" state; servers must use message passing.
 
 ## Kinds of Knowledge
 
 These levels are ordered from weakest to strongest:
 
-- $k_i(\phi)$ — **individual knowledge**: node $i$ knows $\phi$
-  - Axiom: $k_i(\phi) \rightarrow \phi$ (you cannot know something false)
-- $S_G(\phi)$ — **someone knows**: at least one node in group $G$ knows $\phi$
-- $D_G(\phi)$ — **distributed knowledge**: if you pooled all knowledge in $G$, you could derive $\phi$
-  - This is weaker than everyone knowing; it means the knowledge is spread across nodes
-  - Example (muddy foreheads): each child knows everyone else's forehead but not their own — together they know everything, but individually each is missing one piece
-- $E_G(\phi)$ — **everyone knows**: every node in $G$ knows $\phi$
-- $E_G^k(\phi)$ — **k-th order everyone knows**: ("everyone knows")$^k$ of $\phi$
-- $C_G(\phi)$ — **common knowledge**: $\phi$ is common knowledge in $G$
+- $D_G(\phi)$ — **distributed knowledge**: if you pooled all knowledge in $G$, you could derive $\phi$. (Weakest)
+- $S_G(\phi)$ — **someone knows**: at least one node in group $G$ knows $\phi$.
+- $K_i(\phi)$ — **individual knowledge**: node $i$ knows $\phi$. (Axiom: $K_i \phi \rightarrow \phi$)
+- $E_G(\phi)$ — **everyone knows**: every node in $G$ knows $\phi$.
+- $E_G^k(\phi)$ — **k-th order everyone knows**: ("everyone knows")$^k$ of $\phi$.
+- $C_G(\phi)$ — **common knowledge**: $\phi$ is common knowledge in $G$. (Strongest)
 
 $$C_G(\phi) \equiv \bigwedge_{k=1}^{\infty} E_G^k(\phi)$$
 
-Common knowledge means: everyone knows $\phi$, everyone knows everyone knows $\phi$, and so on infinitely.
+### Iterated Knowledge Case Study (k=2)
+With Alice and Bob, and $m = \text{"someone is muddy"}$:
+- **Before the teacher speaks**:
+    - $E_G m$ holds: Both see a muddy forehead.
+    - $E_G^2 m$ **fails**: Alice doesn't know if she is muddy. She considers it possible that Bob is the *only* muddy child, in which case Bob would see no mud and wouldn't know $m$.
+- **After the announcement**: The teacher's public announcement creates $C_G m$ instantly.
 
-### Knowledge Hierarchy
-
-$$D_G(\phi) \rightarrow S_G(\phi)$$
-$$K_i(\phi) \rightarrow E_G(\phi) \quad \text{(if all nodes know it)}$$
-
-**Gaining common knowledge through message passing is impossible** in an asynchronous system with unreliable communication.
+### Evolution of a Protocol
+Distrubted protocols "climb" this hierarchy over time:
+1.  **$D_G \phi \rightsquigarrow S_G \phi$ (Gathering)**: Gathering distributed info to a single node.
+2.  **$K_i \phi \rightsquigarrow E_G \phi$ (Publishing)**: One node broadcasts a fact (e.g., a View Server announcing a new view).
 
 ## Impossibility of Coordinated Attack
 
-A concrete impossibility result that follows from the impossibility of common knowledge.
+**Theorem**: Gaining common knowledge is impossible over an unreliable network. If $C_G \phi$ holds at any point, it must have held at the very beginning.
 
 Setup:
-- Two armies on separate hills want to coordinate an attack on a village in the valley
-- They can only communicate via messengers who must pass through the village (unreliable — messengers can be captured)
-- Both armies must attack simultaneously to succeed; attacking alone means defeat
+- Two armies (A and B) want to coordinate an attack.
+- Communication via unreliable messengers.
+- Both must attack together to win.
 
-**Result**: no finite exchange of messages can guarantee coordination.
-
-Proof sketch (by induction on message count):
-- Consider the last message sent; the sender cannot know whether it was received
-- If that message is dropped, the sender may still attack (having decided to send it), but the receiver will not — uncoordinated attack
-- Removing the last message does not change the argument: the second-to-last message is now "last," and the same reasoning applies
-- By induction, no finite message sequence works
-
-This is equivalent to saying that common knowledge of *"we will attack at time T"* cannot be established over an unreliable network.
+### Proof (Indistinguishable Executions)
+1.  Assume a correct protocol $P$ exists.
+2.  Consider an execution where the last message (A $\to$ B) is dropped.
+3.  A cannot distinguish between "delivered" and "dropped" (no feedback).
+4.  Since A acts the same, B must also attack to stay coordinated.
+5.  This implies the last message was useless. Induction reduces the protocol to 0 messages.
+6.  **Result**: Coordination cannot depend on information gathered during the execution.
 
 ## Consensus
 

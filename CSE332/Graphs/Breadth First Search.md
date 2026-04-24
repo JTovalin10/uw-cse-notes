@@ -1,6 +1,6 @@
 # CSE 332: Breadth-First Search
 
-**[[Breadth-First Search]] (BFS)** is a graph traversal algorithm that explores nodes level-by-level, expanding outwards from a starting node $s$.
+**Breadth-First Search (BFS)** is a graph traversal algorithm that explores nodes level-by-level, expanding outwards from a starting node $s$.
 
 ## Behavior
 BFS starts with node $s$, visits all neighbors of $s$, then visits all neighbors of neighbors, and so on. It guarantees that it visits every node reachable from $s$ in order of their shortest distance from $s$.

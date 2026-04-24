@@ -11,7 +11,7 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[CSE452/RPC/Fault Model|Fault Model]] — catalog of failures to plan for: crashes, dropped/delayed/duplicate messages
 - [[CSE452/Clocks/Time and Virtual Clocks|Time and Virtual Clocks]] — happens-before relation, concurrent events, partial ordering of events
 - [[CSE452/Clocks/System State|System State]] — stable/unstable properties, invariants, and correctness proofs in primary-backup
-- [[CSE452/Clocks/Virtual + Vector Clocks|Virtual and Vector Clocks]] — Lamport clock algorithm, logical timestamps, clock condition
+- Virtual and Vector Clocks — Lamport clock algorithm, logical timestamps, clock condition
 - [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — individual/common/distributed knowledge, muddy foreheads puzzle, impossibility of coordinated attack, consensus
 
 ### Remote Procedure Call

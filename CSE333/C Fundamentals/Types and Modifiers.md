@@ -27,4 +27,4 @@ To solve the ambiguity of type sizes (like `long int`), C99 introduced `<stdint.
 
 It is recommended to use these **extended types** in most CSE 333 code for clarity and safety.
 
-Related: [[C Fundamentals/Introduction to C]], [[Memory Management/C Memory Model]]
+Related: [[C Fundamentals/Introduction to C]], Memory Management/C Memory Model
