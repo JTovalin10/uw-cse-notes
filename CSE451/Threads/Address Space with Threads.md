@@ -44,3 +44,7 @@ typical layout with threads:
 guard pages are unmapped memory regions placed between thread stacks. if a thread's stack grows into a guard page, the hardware triggers a page fault (segfault), catching the overflow before it silently corrupts another thread's stack.
 
 the default stack size varies by OS (commonly 1-8 MB per thread), which limits how many threads a process can practically create. for example, with a 2 GB user address space and 8 MB stacks, you could fit roughly 250 threads before running out of address space for stacks alone.
+
+# Related
+- [[CSE333/Concurrency/Threads|CSE333: Threads]]
+- [[Thread]]

@@ -22,3 +22,7 @@ analogy extended:
 - the **house** (process) provides the shared space: kitchen, living room, bathroom (address space, files, resources)
 - the **people** (threads) each have their own bedroom (private stack) and can move around the shared spaces independently
 - if the house burns down (process crash), everyone inside is affected
+
+# Related
+- [[CSE333/Concurrency/Threads|Implementation: POSIX Threads (pthreads)]]
+- [[CSE332/Parallelism/Concurrency And Locks|CSE332: Concurrency and Locks]]

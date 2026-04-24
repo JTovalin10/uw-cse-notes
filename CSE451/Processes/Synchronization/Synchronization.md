@@ -28,3 +28,9 @@ solving critical section problems requires mechanisms that enforce mutual exclus
 - [[Monitors]] - higher-level construct requiring language support
 - [[Messages]] - synchronization based on atomic data transfer across channels
 - [[Disabling Interrupts]] - kernel-only mechanism
+
+# Related
+- [[CSE332/Parallelism/Concurrency And Locks|CSE332: Concurrency and Locks]]
+- [[CSE333/Concurrency/Threads|CSE333: Threads]]
+- [[Deadlocks]]
+- [[Threads]]

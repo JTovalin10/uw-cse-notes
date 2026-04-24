@@ -67,6 +67,7 @@ Security is a major issue in DNS:
 - **`dig`**: Domain Information Groper. Use `dig +trace` to see the full iterative process.
 
 ## Related
+- [[CSE333/Networking/DNS|Implementation: DNS in C]]
 - [[Local Nameservers]] — the resolver a client queries first
 - [[Root Nameservers]] — the top of the DNS hierarchy
 - [[Iterative vs Recursive Queries]] — resolution strategies

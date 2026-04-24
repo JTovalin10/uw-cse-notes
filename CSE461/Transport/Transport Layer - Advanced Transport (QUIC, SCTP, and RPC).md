@@ -52,3 +52,8 @@ Traditional TCP (Reno) reacts to packet loss, which is a late and noisy signal.
 *   **Model-Based (TCP BBR)**: Estimates the **Bottleneck Bandwidth** and **Min RTT** to maintain a transmission rate that matches the physical capacity without filling buffers.
 
 [Image: Comparison graph showing buffer occupancy for Loss-based vs. Delay-based congestion control]
+
+## Related
+- [[CSE452/RPC/Remote Procedure Call (RPC)|CSE452: RPC Failure Semantics]]
+- [[Transport Layer - Transmission Control Protocol (TCP)]]
+- [[Transport Layer - UDP and Port Demultiplexing]]

@@ -1,3 +1,5 @@
+# CSE451: Memory Management
+
 ## Goals
 1. allocate memory among competing processes, maximizing memory utilization and system throughput
 2. provide memory isolation between processes
@@ -26,3 +28,9 @@
 - paging (page tables and [[Translation Lookaside Buffer (TLB)]])
 - segmentation (segment tables)
 - page faults => page fault handling => virtual memory
+
+# Related
+- [[CSE333/Memory Management/Malloc and Free|Malloc and Free (333)]]
+- [[CSE333/Memory Management/Heap Management|Heap Management (333)]]
+- [[CSE351/Memory Management/Memory Allocation|Memory Allocation (351)]]
+- [[CSE351/Memory Management/Virtual Memory|Virtual Memory (351)]]

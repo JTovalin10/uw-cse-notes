@@ -38,3 +38,8 @@ Modern web architectures rely on machine-to-machine communication protocols to b
 | **Transport** | Any (usually HTTP) | HTTP/1.1 | HTTP/2 |
 | **Coupling** | Tight (WSDL) | Loose | Tight (IDL) |
 | **Performance** | Low | Medium | **High** |
+
+## Related
+- [[CSE452/RPC/Remote Procedure Call (RPC)|CSE452: Distributed RPC Semantics]]
+- [[HTTP - Protocol Mechanics and Evolution]]
+- [[Transport Layer - Advanced Transport (QUIC, SCTP, and RPC)]]

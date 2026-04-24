@@ -96,6 +96,7 @@ In modern operating systems (like Windows or Linux), the primary culprits are us
 ---
 
 ## Related Concepts
+- [[CSE332/Parallelism/Concurrency And Locks|CSE332: Concurrency and Locks]]
 - [[Synchronization]]
 - [[Mutual Exclusion]]
 - [[Binary Semaphore]]

@@ -18,6 +18,7 @@ The name for a process is called a [[Process ID]]
 [[Process Address Space]]
 
 # Related
+- [[CSE333/Process Management/Processes|CSE333: Processes]]
 - [[Context Switch]]
 - [[Machine State]]
 - [[Process Control Block]]

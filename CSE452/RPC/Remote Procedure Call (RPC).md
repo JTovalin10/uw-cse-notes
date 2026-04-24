@@ -82,6 +82,8 @@ Because the network can drop messages (see [[CSE452/RPC/Fault Model|Fault Model]
 ---
 
 ## Related
+- [[CSE461/Transport/Transport Layer - Advanced Transport (QUIC, SCTP, and RPC)|CSE461: Advanced Transport (RPC)]]
+- [[CSE333/Networking/TCP Sockets|Implementation: TCP Sockets]]
 - [[CSE452/RPC/Fault Model|Fault Model]] — the failures RPC must handle (drops, duplicates, delays)
 - [[CSE452/Primary-Backup/Idempotence|Idempotence]] — why at-least-once RPC is only safe for idempotent operations
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — formal model for replicating state across machines

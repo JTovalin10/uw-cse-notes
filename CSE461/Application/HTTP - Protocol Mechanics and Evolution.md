@@ -165,3 +165,6 @@ To prevent making requests entirely, HTTP utilizes aggressive caching at the bro
 *   **Result**: If the server calculates the hash of the current file and it matches the client's ETag, the server replies with a tiny **`304 Not Modified`** response containing no body, instantly validating the client's stale cache.
 
 [Image: Sequence diagram comparing HTTP/2 HOL blocking vs. HTTP/3 independent streams]
+
+## Related
+- [[CSE333/Networking/HTTP|Implementation: HTTP in C]]

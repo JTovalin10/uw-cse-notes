@@ -32,6 +32,8 @@ Same as [[Process State]]:
 - **Hybrid** - maps many user threads to fewer kernel threads
 
 # Related
+- [[CSE333/Concurrency/Threads|CSE333: Threads]]
+- [[CSE332/Parallelism/Concurrency And Locks|CSE332: Concurrency and Locks]]
 - [[Process vs Thread]]
 - [[Context Switch]]
 - [[Process]]
