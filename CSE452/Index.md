@@ -9,9 +9,12 @@ Principles of building correct and fault-tolerant distributed systems.
 ### Foundations
 - [[CSE452/RPC/Introduction to DS|Introduction to Distributed Systems]] — what a DS is, why build one, fundamental challenges (coherence, partial failures, concurrency)
 - [[CSE452/RPC/Fault Model|Fault Model]] — catalog of failures to plan for: crashes, dropped/delayed/duplicate messages
-- [[CSE452/Clocks/Time and Virtual Clocks|Time and Virtual Clocks]] — happens-before relation, concurrent events, partial ordering of events
+- [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — happens-before relation, concurrent events, partial ordering of events
+- [[CSE452/Clocks/Lamport Clock Algorithm|Lamport Clock Algorithm]] — logical timestamps and the clock condition
+- [[CSE452/Clocks/Vector Clock Algorithm|Vector Clock Algorithm]] — capturing causality and detecting concurrent events
+- [[CSE452/Clocks/Linearizability|Linearizability]] — strongest consistency model, looks like a single copy
+- [[CSE452/Clocks/Sequential Consistency|Sequential Consistency]] — operations appear in some legal serial order
 - [[CSE452/Clocks/System State|System State]] — stable/unstable properties, invariants, and correctness proofs in primary-backup
-- Virtual and Vector Clocks — Lamport clock algorithm, logical timestamps, clock condition
 - [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — individual/common/distributed knowledge, muddy foreheads puzzle, impossibility of coordinated attack, consensus
 
 ### Remote Procedure Call
@@ -26,6 +29,13 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[CSE452/Primary-Backup/Failover Protocol|Failover Protocol]] — detecting failure and transferring roles between nodes
 - [[CSE452/Primary-Backup/Idempotence|Idempotence]] — why some operations are safe to repeat and others are not
 - [[CSE452/Primary-Backup/Why not just use TCP|Why Not Just Use TCP]] — TCP's limitations under failures
+
+### Consensus (Paxos)
+- [[CSE452/Paxos/Paxos|Paxos Overview]] — reaching consensus in a distributed system with faulty nodes
+- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] — the core algorithm for reaching agreement on one value
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — building a replicated state machine using a sequence of Paxos instances
+- [[CSE452/Paxos/Paxos Invariants|Paxos Invariants and Design]] — safety properties and the design principles of the Paxos protocol
+- [[CSE452/Paxos/Ballot IDs|Paxos Ballot IDs]] — the role of proposal numbers in ensuring progress and safety
 
 ---
 
