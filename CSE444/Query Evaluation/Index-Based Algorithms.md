@@ -1,4 +1,4 @@
-# CSE444: Index-Based Algorithms
+T# CSE444: Index-Based Algorithms
 
 Index-based algorithms exploit an existing index on one relation to avoid full scans. They are part of the §15.6 family in Ramakrishnan & Gehrke.
 
@@ -37,6 +37,19 @@ Cost:
 - If index on $S$ is **unclustered**: $B(R) + T(R) \times \dfrac{T(S)}{V(S, a)}$
 
 This avoids the full scan of $S$ for each tuple of $R$ that plain [[CSE444/Query Evaluation/Nested Loop Join|nested loop join]] performs.
+
+### Special Case: PK-FK Join
+In a **Primary-Key (S) to Foreign-Key (R)** join:
+1. Every tuple in $R$ matches **exactly one** tuple in $S$.
+2. Because the join attribute is a Primary Key in $S$, the number of distinct values equals the number of tuples: $V(S, a) = T(S)$.
+3. The selectivity fraction $\frac{T(S)}{V(S, a)}$ cancels out to **1**.
+
+**Clustered vs. Unclustered:** 
+In this specific case, the cost is the same for both. Clustering only benefits joins where one value matches *multiple* tuples (by keeping them on the same page). For a unique Primary Key lookup, you always perform exactly 1 I/O to fetch the data page regardless of clustering.
+
+Assuming index pages are in memory, the cost simplifies to:
+$$\text{Cost} = B(R) + T(R)$$
+*(1 I/O to scan each page of R + 1 I/O to fetch the single matching partner in S for every tuple in R).*
 
 ## Related
 

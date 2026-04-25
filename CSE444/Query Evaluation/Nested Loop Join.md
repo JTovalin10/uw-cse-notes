@@ -4,6 +4,7 @@
 
 ## Tuple-Based Nested Loop Join
 
+- tuple at a timeB
 $R \bowtie S$, where $R$ is the **outer relation** and $S$ is the **inner relation**:
 - Time complexity: $O(n^2)$
 - **Cost**: $B(R) + T(R) \cdot B(S)$
@@ -29,10 +30,14 @@ for each page of tuples r in R do
 ```
 
 This is strictly better than tuple-based nested loop join since $B(R) \leq T(R)$.
+- Usually combined with index access to inner table
+- Efficient when the outer table is small
 
 ## Block-Memory Refinement
 
 The **block-memory refinement** loads $M - 1$ pages of $R$ into memory at once, reducing the number of times $S$ must be scanned to $\lceil B(R) / (M-1) \rceil$. In-memory operations are free, so holding $M - 1$ pages from $R$ in memory costs nothing once loaded.
+- Usually builds a hash table on the outer table 
+- Efficient when the outer table is small
 
 **Cost**: $B(R) + B(S) \cdot \left\lceil \dfrac{B(R)}{M-1} \right\rceil$
 
