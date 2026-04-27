@@ -29,17 +29,20 @@ A standard TCP header is **20 bytes** long (without options).
 
 ### Three-Way Handshake (Establishment)
 Used to synchronize **Initial Sequence Numbers (ISNs)** and exchange options (e.g., MSS).
-1.  **Client $\to$ Server (SYN)**: "I want to connect. My ISN is $X$."
-2.  **Server $\to$ Client (SYN-ACK)**: "Acknowledged $X$. My ISN is $Y$."
-3.  **Client $\to$ Server (ACK)**: "Acknowledged $Y$. Let's send data."
+1.  **Client (CLOSED $\to$ SYN_SENT)**: Sends SYN, seq=$X$.
+2.  **Server (LISTEN $\to$ SYN_RCVD)**: Receives SYN, sends SYN-ACK, seq=$Y$, ack=$X+1$.
+3.  **Client (SYN_SENT $\to$ ESTABLISHED)**: Receives SYN-ACK, sends ACK, ack=$Y+1$.
+4.  **Server (SYN_RCVD $\to$ ESTABLISHED)**: Receives ACK.
 
 ### Four-Way Teardown (Termination)
 TCP supports **Half-Close**; one side can stop sending while still receiving.
-1.  **Node A $\to$ B (FIN)**: "I have no more data to send."
-2.  **Node B $\to$ A (ACK)**: "Acknowledged." (B can still send data to A).
-3.  **Node B $\to$ A (FIN)**: "I am also done."
-4.  **Node A $\to$ B (ACK)**: Final acknowledgment.
-*   **TIME_WAIT**: The active closer waits for $2 \times MSL$ (Maximum Segment Lifetime) to ensure the final ACK reached the peer and old segments clear the network.
+1.  **Active Closer (ESTABLISHED $\to$ FIN_WAIT_1)**: Sends FIN.
+2.  **Passive Closer (ESTABLISHED $\to$ CLOSE_WAIT)**: Receives FIN, sends ACK.
+3.  **Active Closer (FIN_WAIT_1 $\to$ FIN_WAIT_2)**: Receives ACK.
+4.  **Passive Closer (CLOSE_WAIT $\to$ LAST_ACK)**: Sends FIN.
+5.  **Active Closer (FIN_WAIT_2 $\to$ TIME_WAIT)**: Receives FIN, sends ACK.
+6.  **Passive Closer (LAST_ACK $\to$ CLOSED)**: Receives ACK.
+7.  **Active Closer (TIME_WAIT $\to$ CLOSED)**: Wait $2 \times MSL$ (Maximum Segment Lifetime) to ensure the final ACK reached the peer and old segments clear the network.
 
 ---
 

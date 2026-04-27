@@ -26,10 +26,11 @@ When a router receives multiple paths to the same prefix, it chooses the "best" 
 
 1.  **Local Preference**: Highest value wins. Used to prefer one exit point (e.g., a cheaper provider) over others. (Local to the AS).
 2.  **AS-PATH Length**: Shortest path (fewest AS hops) wins.
-3.  **Multi-Exit Discriminator (MED)**: Lowest value wins. Used by a neighboring AS to suggest which entry point you should use.
-4.  **eBGP over iBGP**: Routes learned from outside the AS are preferred over internal ones.
-5.  **IGP Cost**: Path with the lowest interior cost to reach the BGP Next-Hop.
-6.  **Router ID**: Final tie-breaker; lowest ID wins.
+3.  **Origin**: Preferred IGP > EGP > Incomplete.
+4.  **Multi-Exit Discriminator (MED)**: Lowest value wins. Used by a neighboring AS to suggest which entry point you should use.
+5.  **Type**: Prefer eBGP over iBGP.
+6.  **IGP Cost**: Path with the lowest interior cost to reach the BGP Next-Hop.
+7.  **Router ID**: Final tie-breaker; lowest ID wins.
 
 ---
 

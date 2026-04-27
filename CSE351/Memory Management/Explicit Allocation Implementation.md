@@ -42,8 +42,41 @@ Traverse the entire heap block by block using pointer arithmetic until a free bl
 ### Explicit Free List
 
 Maintain a doubly-linked list of **only** the free blocks. Since free blocks are not storing payload, their payload area can hold the `next` and `prev` pointers.
+
+**Free Block Structure:**
+1. **Header**: (4 or 8 bytes) stores `size | a`.
+2. **Next Pointer**: (8 bytes) stores address of next free block in list.
+3. **Prev Pointer**: (8 bytes) stores address of previous free block in list.
+4. **Old Payload/Padding**: remainder of the block.
+5. **Footer**: (4 or 8 bytes) copy of header for backward coalescing.
+
 - **Pros**: Finding a free block is faster — only free blocks are visited.
 - **Cons**: Requires more space (pointers add to minimum free block size).
+
+### Implicit Free List: Implementation Steps
+
+1. **Initialization**: Set up a large chunk of memory with a "prologue" block and an "epilogue" block to simplify edge cases during coalescing.
+2. **Allocation (`malloc`)**:
+    - Round up the requested size to satisfy alignment and include the header.
+    - Search the heap from the start (First-Fit) or last position (Next-Fit).
+    - If a large enough free block is found: **Split** it if the remainder is $\ge$ minimum block size. Mark as allocated.
+    - If no block fits: Request more memory from the OS (`sbrk`).
+3. **Deallocation (`free`)**:
+    - Clear the "allocated" bit in the header.
+    - **Coalesce** with adjacent blocks immediately (Eager) or later (Deferred).
+
+### Explicit Free List: Implementation Steps
+
+1. **Initialization**: Same as implicit, but also initialize an empty doubly-linked list of free blocks.
+2. **Allocation (`malloc`)**:
+    - Search **only** the free list (faster than implicit).
+    - If a block is found: Remove it from the free list. **Split** if necessary.
+    - Insert the remaining free fragment back into the free list.
+3. **Deallocation (`free`)**:
+    - Mark the block as free.
+    - Check neighbors (using footers or "prev-allocated" flags).
+    - If neighbors are free, remove them from the free list and merge.
+    - **Insert** the (merged) block into the free list according to the policy (LIFO or Address-Ordered).
 
 ---
 

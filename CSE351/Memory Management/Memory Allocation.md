@@ -65,9 +65,22 @@ free(p);         // ERROR: freeing wrong address
 
 Poor memory utilization caused by **fragmentation** — parts of the heap not storing useful payload.
 
-### Internal Fragmentation
+### Internal Fragmentation Math
 
-Wasted space **inside** allocated blocks: `Block Size − Payload`. Sources include headers/footers, alignment padding, and policy decisions that return an oversized block.
+Wasted space **inside** allocated blocks: $Internal = BlockSize − Payload$.
+
+**Calculation Steps:**
+1. Determine requested payload size ($P$).
+2. Add overhead for metadata ($M$): Header (and Footer if using boundary tags).
+3. Round up to the nearest multiple of the **Alignment Requirement** ($A$).
+   - $BlockSize = \text{ceil}((P + M) / A) \times A$
+4. $Fragmentation = BlockSize - P$.
+
+**Example (16-byte alignment, 8-byte header):**
+- Request 20 bytes.
+- $P=20, M=8 \rightarrow P+M = 28$.
+- Round 28 up to multiple of 16 $\rightarrow BlockSize = 32$.
+- $Internal = 32 - 20 = 12$ bytes.
 
 ### External Fragmentation
 

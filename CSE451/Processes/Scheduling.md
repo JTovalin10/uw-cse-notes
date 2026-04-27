@@ -83,13 +83,18 @@ Schedulers are optimized for specific workload characteristics:
 *   **Priority Inversion**: A high-priority thread is blocked by a low-priority thread holding a resource, while a medium-priority thread hogs the CPU.
 
 ### 5. Multi-Level Feedback Queues (MLFQ)
-*   **Logic**: Workloads have **Increasing Residual Life** (the longer it has run, the longer it will likely continue to run).
-*   **Mechanism**:
-    *   Hierarchy of queues with varying priority and quanta.
-    *   New threads enter the **Highest Priority** queue.
-    *   **Demotion**: Using an entire quantum causes a move to a lower queue.
-    *   **Promotion (Feedback)**: Age threads to prevent starvation by increasing priority over time.
-    *   **Quanta Scaling**: Lower priority queues often have **longer quanta** to handle compute-bound tasks efficiently.
+**Philosophy**: Workloads have **Increasing Residual Life** (the longer it has run, the longer it will likely continue to run). MLFQ aims to minimize response time for interactive jobs while also being fair to long-running compute jobs.
+
+**The 5 Rules of MLFQ**:
+1.  **Rule 1**: If Priority(A) > Priority(B), A runs (B doesn't).
+2.  **Rule 2**: If Priority(A) = Priority(B), A & B run in Round Robin (RR) using the quantum of that level.
+3.  **Rule 3**: When a job enters the system, it is placed at the highest priority (topmost queue).
+4.  **Rule 4**: Once a job uses up its time allotment at a given level (regardless of how many times it has given up the CPU), its priority is reduced (it moves down one queue).
+5.  **Rule 5**: After some time period *S*, move all the jobs in the system to the topmost queue (**Priority Boost**). This prevents starvation and allows CPU-bound jobs to become interactive again if their behavior changes.
+
+**Mechanism**:
+*   Hierarchy of queues with varying priority and quanta.
+*   **Quanta Scaling**: Lower priority queues often have **longer quanta** to handle compute-bound tasks efficiently.
 
 ![[MLFQ.png]]
 [Image: MLFQ hierarchy showing priority-based queue migration.]

@@ -10,6 +10,12 @@ fork syscall
 	- once into the parent, and once into the child
 		- returns the child's PID to the parent
 		- returns 0 to the child
+	- **The Register-Level Trick**: 
+		- When `fork()` is called, the OS clones the entire process state, including all registers.
+		- To allow the two processes to distinguish themselves, the OS manually modifies the **return value register** (e.g., `%rax` on x86-64 or `%eax` on x86-32) in the child's saved context.
+		- In the **Parent**: The OS places the PID of the new child into the return register.
+		- In the **Child**: The OS places **0** into the return register.
+		- When both processes resume (pop their registers and return to user space), they see different values from the same function call.
 - fork() = "clone me"
 	- **complete copy**
 		- except PID

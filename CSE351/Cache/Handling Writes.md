@@ -4,8 +4,10 @@
 
 A **write-hit** occurs when the data being written is already in the cache.
 
-- **Write-through**: Immediately write to the next memory level (another cache level or main memory) on every write. Simple, but generates more memory traffic.
+- **Write-through**: Immediately write to the next memory level (another cache level or main memory) on every write.
+    - **Bus Impact**: High. Every `STORE` instruction generates a bus transaction. Can saturate bandwidth in write-heavy workloads.
 - **Write-back**: Defer writing to the next level until the cache line is evicted. Each line has a **dirty bit** that tracks whether it has been modified; on eviction, dirty lines are written back.
+    - **Bus Impact**: Low. Bus transactions only occur when a dirty line is evicted to make room for new data. Significantly more efficient for repeated writes to the same block.
 
 ## Write-Miss Policies
 
