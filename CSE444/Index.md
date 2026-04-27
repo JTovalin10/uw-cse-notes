@@ -33,13 +33,14 @@ Advanced database systems: internals, query processing, storage, and distributed
 - [[CSE444/Query Optimization/OptimizationComponents/Cost Estimation|Cost Estimation]] — database statistics, histograms, and cardinality estimation
 - [[CSE444/Query Optimization/OptimizationComponents/Search Space|Search Space]] — approaches to plan enumeration and pruning heuristics
 - [[CSE444/Query Optimization/OptimizationComponents/Dynamic Programming|Dynamic Programming]] — System R style join reordering algorithm
+- [[CSE444/Query Optimization/OptimizationComponents/Selinger Algorithm|Selinger Algorithm]] — interesting orders, left-deep plans, and the orderJoins DP procedure
 - [[CSE444/Query Optimization/OptimizationComponents/Join Trees|Join Trees]] — bushy, linear, and left-deep tree shapes
 
 ### Parallel Query Processing
 *(notes in progress)*
 
 ### Transactions
-*(notes in progress)*
+- [[CSE444/Transactions/Concurrency Intro|Transactions]] — all-or-nothing semantics, COMMIT, ROLLBACK
 
 ### Replication and Distribution
 *(notes in progress)*
