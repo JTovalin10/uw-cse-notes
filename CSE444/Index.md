@@ -24,9 +24,9 @@ Advanced database systems: internals, query processing, storage, and distributed
 - [[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]] — two-phase external sort; generates sorted runs then merges them
 - [[CSE444/Query Evaluation/Index-Based Algorithms|Index-Based Algorithms]] — using indexes to speed up selection and join
 - [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — simple O(B(R)·B(S)) join; page-at-a-time refinement reduces I/Os
-- [[CSE444/Query Evaluation/Hash Join|Hash Join]] — one-pass hash-based join; requires smaller relation fits in memory
+- [[CSE444/Query Evaluation/Single-Pass Hash Join|Single-Pass Hash Join]] — one-pass hash-based join; requires smaller relation fits in memory
 - [[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]] — one-pass and two-pass (merge-join) sort-based join algorithms
-- [[CSE444/Query Evaluation/Partitioned Hash Algorithms|Partitioned Hash Join]] — two-pass hash-based join (Grace join); partitions both relations into $M-1$ buckets
+- [[Partitioned Hash Algorithms (Grace Join)|Two-Pass Hash Join (Grace Join)]] — two-pass and multi-pass hash-based join; handles relations larger than memory using partitioning
 
 ### Query Optimization
 - [[CSE444/Query Optimization/Query Optimization|Query Optimization Hub]] — overview of the optimization process

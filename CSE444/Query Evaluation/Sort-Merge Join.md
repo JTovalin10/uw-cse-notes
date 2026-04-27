@@ -1,6 +1,6 @@
 # CSE444: Sort-Merge Join
 
-**Sort-merge join** $R \bowtie S$ is a join algorithm that sorts both relations on the join attribute and then merges them in a linear scan. It can be implemented as either a one-pass or two-pass algorithm depending on available memory.
+d**Sort-merge join** $R \bowtie S$ is a join algorithm that sorts both relations on the join attribute and then merges them in a linear scan. It can be implemented as either a one-pass or two-pass algorithm depending on available memory.
 
 ## One-Pass Algorithm
 
@@ -16,16 +16,8 @@ If both relations fit entirely in main memory ($B(R) + B(S) \leq M$), sort-merge
 
 ## Two-Pass Algorithm (Sort-Merge Join)
 
-When relations are too large to fit in memory, sort-merge join (often called **merge-join** in this context) uses **external merge-sort** to handle the data.
+ **[[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]]**
 
-1. **Step 1** — Generate initial sorted runs for both $R$ and $S$ using [[CSE444/Query Evaluation/External Merge-Sort|external merge-sort]].
-2. **Step 2** — Merge and join:
-   - Option A: Fully merge $R$ and $S$ to disk first, then join the sorted results.
-   - Option B: Merge the final sorted runs of $R$ and $S$ and perform the join simultaneously in a single pass.
-
-**Cost**: $3(B(R) + B(S))$
-
-This is feasible when $B(R) + B(S) \leq M^2$, which holds for most practical relation sizes given modern buffer pool sizes.
 
 ![[CSE444/Screenshots/Merge Join.png]]
 

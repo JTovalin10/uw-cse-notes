@@ -31,7 +31,7 @@ Join algorithms are classified into three families depending on how many passes 
 
 ### One-Pass Algorithms
 Require one relation to fit entirely in memory (§15.2–15.3):
-- [[CSE444/Query Evaluation/Hash Join|Hash Join]] — default; build hash table on smaller relation, probe with larger; cost $B(R) + B(S)$ when $B(R) \leq M$
+- [[CSE444/Query Evaluation/Single-Pass Hash Join|Single-Pass Hash Join]] — default; build hash table on smaller relation, probe with larger; cost $B(R) + B(S)$ when $B(R) \leq M$
 - [[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]] — sort both relations then merge; cost $B(R) + B(S)$ when $B(R) + B(S) \leq M$
 
 ### Index-Based Algorithms
