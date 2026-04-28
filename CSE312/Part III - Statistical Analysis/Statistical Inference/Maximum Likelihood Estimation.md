@@ -38,6 +38,14 @@ $$\hat{p} = \frac{n}{\sum_{i=1}^n x_i}$$
 
 An estimator is **unbiased** when $\theta = E[\hat{\theta}]$, meaning the true value equals the expected value of the estimate.
 
+### Proof: Sample Mean is Unbiased
+Let $X_1, X_2, \dots, X_n$ be i.i.d. random variables with mean $\mu$. The sample mean is $\bar{X} = \frac{1}{n} \sum X_i$.
+$$E[\bar{X}] = E\left[\frac{1}{n} \sum_{i=1}^n X_i\right] = \frac{1}{n} \sum_{i=1}^n E[X_i] = \frac{1}{n} \cdot n\mu = \mu$$
+Since $E[\bar{X}] = \mu$, the sample mean is an unbiased estimator of the population mean.
+
+### Note on Variance
+The MLE for variance $\hat{\sigma}^2 = \frac{1}{n} \sum (X_i - \bar{X})^2$ is actually **biased**. The unbiased estimator for variance uses $\frac{1}{n-1}$ (Bessel's correction).
+
 ## Related
 
 [[Argmax]] · [[Expectation]] · [[Discrete Random Variables]] · [[Continuous Random Variable]] · [[Confidence Intervals]]

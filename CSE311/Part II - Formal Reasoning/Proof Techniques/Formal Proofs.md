@@ -54,9 +54,36 @@ $$
 A \lor B;\quad A \rightarrow C;\quad B \rightarrow C \quad \Rightarrow \quad C
 $$
 
+## Latin Rules
+
+#Definition **Principium Contradictionis**:
+Given $\neg A$ and $A$, we can conclude a contradiction ($F$).
+$$
+\neg A; A \quad \Rightarrow \quad F
+$$
+
+#Definition **Reductio Ad Absurdum**:
+If assuming $A$ leads to a contradiction ($F$), we can conclude $\neg A$.
+$$
+A \Rightarrow F \quad \Rightarrow \quad \neg A
+$$
+
+#Definition **Ex Falso Quodlibet**:
+From a contradiction ($F$), we can conclude anything ($A$).
+$$
+F \quad \Rightarrow \quad A
+$$
+
+#Definition **Ad Litteram Verum**:
+We can always conclude True ($T$).
+$$
+\quad \Rightarrow \quad T
+$$
+
 ## Related
 
 - [[Logical Equivalence(s)]]
 - [[Induction]]
 - [[Proof by Calculation]]
 - [[Formal and Informal]]
+- [[Inference Rules for Quantifiers]]

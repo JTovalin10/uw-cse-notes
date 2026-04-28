@@ -39,10 +39,21 @@
 - [[Cumulative Distribution Function]] — F(x) = P(X ≤ x)
 - [[Discrete Random Variables]] — RV on countable domain with PMF
 - [[Continuous Random Variable]] — RV on uncountable domain with PDF
+- [[Joint Distributions]] — probability distribution of multiple random variables
+- [[Indicator Random Variable]] — binary RV for event occurrence
 
 ### Distributions
 - [[Distribution]] — probability distribution of a random variable
 - [[Normal Random Variable]] — Gaussian/normal distribution properties
+- [[Bernoulli Distribution]] — single trial with success/failure
+- [[Binomial Distribution]] — number of successes in n independent Bernoulli trials
+- [[Geometric Distribution]] — number of trials until the first success
+- [[Negative Binomial Distribution]] — number of trials until the r-th success
+- [[Discrete Uniform Distribution]] — equal probability for all finite outcomes
+- [[Poisson Distribution]] — number of events in a fixed interval of time/space
+- [[Hypergeometric Distribution]] — sampling without replacement
+- [[Continuous Uniform Distribution]] — equal probability over an interval
+- [[Exponential Random Variable]] — time between events in a Poisson process
 
 ## Part III — Statistical Analysis
 

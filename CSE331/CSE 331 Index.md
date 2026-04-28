@@ -49,7 +49,11 @@ Master navigation hub for CSE 331 notes. For a course overview and goals see the
 ### Java Programming
 
 - [[CSE331/Part II - Software Engineering/Java Programming/Conditionals|Conditionals]] — if-else control flow in Java
+- [[CSE331/Part II - Software Engineering/Java Programming/Equality|Equality]] — overriding equals and hashCode
 - [[CSE331/Part II - Software Engineering/Java Programming/Loops|Loops]] — loop control flow in Java
+- [[CSE331/Part II - Software Engineering/Java Programming/Loop invariants with pictures|Loop invariants with pictures]] — visual array algorithms
+- [[CSE331/Part II - Software Engineering/Java Programming/Array Reasoning|Array Reasoning]] — prefix, suffix, and for-any facts
+- [[CSE331/Part II - Software Engineering/Java Programming/Loop to Tail Recursion|Loop to Tail Recursion]] — translating loops to recursive functions
 - [[CSE331/Part II - Software Engineering/Java Programming/Subtypes|Subtypes]] — type inheritance and polymorphism
 - [[CSE331/Part II - Software Engineering/Java Programming/Generics|Generics]] — generic type-safe classes and interfaces
 - [[CSE331/Part II - Software Engineering/Java Programming/Generic Methods|Generic Methods]] — type-parameterized method definitions
@@ -70,3 +74,4 @@ The Need for Software Design → Software Implementation → Abstract Data Type 
 
 **Java Programming (Part II):**
 Conditionals → Loops → Visualizing Array Algorithms → Subtypes → Generics → Generic Methods → Wildcards → Type Erasure and Arrays → Pattern Matching.
+tching.

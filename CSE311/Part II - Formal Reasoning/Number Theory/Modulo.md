@@ -15,6 +15,15 @@ $$m \mid a - b \quad \Rightarrow \quad a - b = mk, \quad \exists\, k \in \mathbb
 Example:
 $$5 \equiv_3 -8 \quad \Rightarrow \quad 5 \equiv_3 -8 + 3k \quad \text{(In this case } k = 3 \text{, which gives: } 5 \equiv_3 1\text{)}$$
 
+## Properties of Modular Arithmetic
+
+Let $a, b, c, d$ and $m$ be integers with $m > 0$.
+
+- **Basic Property**: $a \equiv_m b$ if and only if $a \bmod m = b \bmod m$.
+- **Addition Property**: If $a \equiv_m b$ and $c \equiv_m d$, then $a + c \equiv_m b + d$.
+- **Multiplication Property**: If $a \equiv_m b$ and $c \equiv_m d$, then $ac \equiv_m bd$.
+- **Transitivity**: If $a \equiv_m b$ and $b \equiv_m c$, then $a \equiv_m c$.
+
 ## Related
 
 [[Divides]] · [[Extended Euclid]] · [[N-Bit Integer Representation]]

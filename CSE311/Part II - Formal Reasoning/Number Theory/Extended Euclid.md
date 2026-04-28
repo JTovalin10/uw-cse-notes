@@ -1,5 +1,20 @@
 # CSE 311: Extended Euclidean Algorithm
 
+## Bézout's Theorem
+
+If $a$ and $b$ are positive integers, then there exist integers $s$ and $t$ such that:
+$$\gcd(a,b) = sa + tb$$
+
+## Multiplicative Inverse Modulo $m$
+
+Let $0 \le a, b < m$. Then $b$ is the **multiplicative inverse** of $a$ (modulo $m$) if and only if:
+$$ab \equiv_m 1$$
+
+Suppose $\gcd(a, m) = 1$. By Bézout's Theorem, there exist integers $s$ and $t$ such that $sa + tm = 1$.
+Taking modulo $m$ of both sides gives $sa \equiv_m 1$, which means $s$ is the multiplicative inverse of $a$ modulo $m$. We can compute these inverses using the Extended Euclidean Algorithm.
+
+## Algorithm
+
 #Definition **Extended Euclid** standard form:
 $$Ax \equiv_m B$$
 

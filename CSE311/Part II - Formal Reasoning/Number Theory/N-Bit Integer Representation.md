@@ -5,6 +5,9 @@
 #Definition A **signed** $n$-bit integer uses **two's complement** representation and covers the range:
 $$-2^{n-1} \leq x \leq 2^{n-1} - 1$$
 
+**Key Property**: Two's complement representation of any number $y$ is equivalent to $y \bmod 2^n$. Therefore, arithmetic operations work modulo $2^n$:
+$$y + 2^n \equiv_{2^n} y$$
+
 ## Unsigned Integer
 
 #Definition An **unsigned** $n$-bit integer has no sign bit and covers the range:

@@ -5,6 +5,11 @@
 - $p \rightarrow q \quad \equiv \quad \neg p \lor q$
 - $p \leftrightarrow q \quad \equiv \quad (p \rightarrow q) \land (q \rightarrow p)$
 
+## Equality vs. Equivalence
+
+- $A = B$ means $A$ and $B$ are the same thing written twice (character-for-character identical).
+- $A \equiv B$ is an assertion that two propositions $A$ and $B$ always have the same truth values.
+
 ## Important Equivalences
 
 #Definition **Identity**:

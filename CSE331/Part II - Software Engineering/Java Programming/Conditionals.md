@@ -23,6 +23,8 @@ That is, the assertion at the top of the `then` branch includes the truth of the
 - For `if (cond) A else B`:
   - In the `then` branch assume `cond`.
   - In the `else` branch assume `not cond`.
+- The general postcondition of an `if/else` statement is `{{ A or B }}`, where `A` is the state after the `then` branch and `B` is the state after the `else` branch.
+- **State after a return**: The state immediately following a `return` statement is `false` (no states can reach beyond a return). This simplifies the `or` condition. For example, if the `else` branch returns, the postcondition simplifies from `{{ A or false }}` to just `{{ A }}`.
 - The [[Postcondition]] must hold along **every** path.
 
 ## Why Separate Paths?

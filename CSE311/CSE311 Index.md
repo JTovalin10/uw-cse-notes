@@ -61,3 +61,11 @@
 - [[CSE311/Part II - Formal Reasoning/Proof Techniques/Proof by calculation|Proof by calculation]] — proving equations/inequalities from known facts
 - [[CSE311/Part II - Formal Reasoning/Proof Techniques/Strong Induction|Strong Induction]] — induction for multiple base cases in recursive functions
 - [[CSE311/Part II - Formal Reasoning/Proof Techniques/Structural Induction|Structural Induction]] — induction on recursively-defined sets
+
+## Part III — Computability
+
+### Computability
+- [[CSE311/Part III - Computability/Computability and Uncomputability|Computability and Uncomputability]] — cardinality, the halting problem, and reductions
+ons/inequalities from known facts
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Strong Induction|Strong Induction]] — induction for multiple base cases in recursive functions
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Structural Induction|Structural Induction]] — induction on recursively-defined sets

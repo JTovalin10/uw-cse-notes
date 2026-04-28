@@ -3,7 +3,7 @@
 ## Correctness of Loops
 
 - Assignment and [[Conditionals|conditional]] reasoning is **mechanical**.
-- Loop reasoning **cannot be made mechanical** — there is no way around this.
+- Loop reasoning **cannot be made mechanical** — there is no way around this (this follows from **Rice's Theorem**).
 - One extra bit of information fixes this:
   - The programmer must provide a **loop invariant**.
   - With the invariant, reasoning is again mechanical.

@@ -28,6 +28,27 @@ The **[[Representation Invariants|Representation Invariant]]** says *which* fiel
 
 Together the AF and RI document what the fields mean and what they must satisfy — this is the key to understanding any non-trivial ADT implementation.
 
+## Correctness of ADT Implementation
+
+To prove an ADT implementation is correct, you must use both the RI and AF.
+
+### Correctness of Immutable ADTs
+1. **Check the constructor:** 
+   - Creates a concrete state satisfying the RI.
+   - Creates the abstract state required by the spec (verified using the AF).
+2. **Check the correctness of each method:** 
+   - Check the value returned is the one stated by the spec.
+   - Will need to use the RI in most methods.
+   - Will need to use the AF in every method to translate concrete state to abstract state.
+
+### Correctness of Mutable ADTs
+1. **Check the constructor:** Same as immutable.
+2. **Check the correctness of each observer method:** Same as immutable.
+3. **Check the correctness of each mutator method:**
+   - Check abstract state produced is the one stated by the spec.
+   - Check that the **RI still holds** at the end.
+   - Make sure there are **no aliases** (prevent representation exposure).
+
 ## Related
 
 - [[Abstract Data Type]]
