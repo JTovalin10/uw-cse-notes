@@ -61,4 +61,4 @@ Any two majorities (quorums) **must overlap** by at least one node.
 ---
 - [[CSE452/Paxos/Paxos|Back to Paxos Overview]]
 - [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Multi-Paxos|Continue to Multi-Paxos]]
+- [[CSE452/Paxos/Multi-PaxosComponents/Multi-Paxos|Continue to Multi-Paxos]]

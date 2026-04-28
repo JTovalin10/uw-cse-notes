@@ -131,5 +131,5 @@ The interaction between the number of acceptors and rounds matters. If we had 5 
 
 ---
 - [[CSE452/Paxos/Paxos|Back to Paxos Overview]]
-- [[CSE452/Paxos/Multi-Paxos|Continue to Multi-Paxos]]
+- [[CSE452/Paxos/Multi-PaxosComponents/Multi-Paxos|Continue to Multi-Paxos]]
 - [[CSE452/Paxos/Paxos Invariants|In-depth: Ballot IDs and Invariants]]

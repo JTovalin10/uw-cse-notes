@@ -54,4 +54,4 @@ In this model, the "owner" of any number $n$ is simply $n \pmod{TotalProposers}$
 ---
 - [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
 - [[CSE452/Paxos/Paxos Invariants|Back to Paxos Invariants]]
-- [[Multi-Paxos|Back to Multi-Paxos]
+- [[CSE452/Paxos/Multi-PaxosComponents/Multi-Paxos|Back to Multi-Paxos]]
