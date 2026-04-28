@@ -84,7 +84,9 @@ Cost: $O(\log_{2d} n)$ page reads.
 2. If no overflow ($\leq 2d$ keys after insert) — done
 3. If overflow ($2d + 1$ keys) — **split the node**:
    - For a leaf split: distribute keys evenly; push a copy of the middle key up to the parent (keep it in both children)
+	   - leafs
    - For an internal node split: distribute keys; the middle key is pushed up (not kept in the children)
+	   - middle layers
    - If the root splits, a **new root** is created with just one key
 
 ![[Screenshots/Insertion in a B+ tree.png]]

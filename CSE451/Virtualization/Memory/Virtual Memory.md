@@ -18,6 +18,7 @@ The memory allocated for each process is "virtual," where each process thinks it
 ## How can we achieve this
 - [[Memory Management Unit]]
 - [[Translation Lookaside Buffer (TLB)]]
+- [[What is a Page]]
 - [[Page Table]]
 	- [[Page Fault]] handling
 - sometimes accompanied by [[swap space]] (swapping) or limited segmentation

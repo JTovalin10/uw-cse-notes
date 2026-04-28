@@ -1,3 +1,7 @@
+# Paging
+
+Paging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. It works by dividing virtual memory into **[[What is a Page|Pages]]** and physical memory into **Frames**.
+
 ## Advantages
 Easy to allocate physical memory
 - physical memory is allocated from a free list of frames

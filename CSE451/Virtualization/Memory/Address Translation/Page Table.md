@@ -1,6 +1,7 @@
 # What is it
 A page table is a data structure responsible for translating **virtual memory** addresses into **physical memory** addresses
 
+
 # Components
 - [[Page Table Purpose]]
 - [[Virtual Address Parts]]
