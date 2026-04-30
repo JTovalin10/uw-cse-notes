@@ -1,4 +1,4 @@
-# Paxos Invariants and Design
+# CSE452: Paxos Invariants and Design
 
 This note explains the technical "why" behind Paxos, focusing on the Ballot ID structure and the invariants that keep the system safe.
 
@@ -61,4 +61,4 @@ Any two majorities (quorums) **must overlap** by at least one node.
 ---
 - [[CSE452/Paxos/Paxos|Back to Paxos Overview]]
 - [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Multi-PaxosComponents/Multi-Paxos|Continue to Multi-Paxos]]
+- [[CSE452/Paxos/Multi-Paxos|Continue to Multi-Paxos]]

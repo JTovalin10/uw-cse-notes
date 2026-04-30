@@ -1,4 +1,4 @@
-# Multi-Paxos: Leader Election
+# CSE452: Multi-Paxos Leader Election
 
 The naive Multi-Paxos approach — running two full phases (Prepare and Accept) for every single log slot — is slow. The **Distinguished Proposer** optimization addresses this by electing a stable **Leader** that can skip Phase 1 for all subsequent slots.
 
@@ -40,13 +40,13 @@ If the leader fails, a follower will time out and attempt to become the new lead
 3. It fills any holes (see [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]]) and then enters steady-state Phase 2.
 
 ## Notes
-- timer values will matter. we need to give enough time for a server to have a chance to win an election
-- As soon as you get a p1a with a higher ballot, server's should back off before trying to become a leader
-- Heartbeat messages are how the leader tells followers that it's alive
+- Timer values matter. We need to give enough time for a server to have a chance to win an election.
+- As soon as a server receives a 1a with a higher ballot, it should back off before trying to become a leader.
+- Heartbeat messages are how the leader tells followers that it is alive.
 ---
 
 ## Related
-- [[CSE452/Paxos/Multi-PaxosComponents/Multi-Paxos|Back to Multi-Paxos]]
+- [[CSE452/Paxos/Multi-Paxos|Back to Multi-Paxos]]
 - [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]] — Detecting leader failure via heartbeats
 - [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]] — How holes are discovered and filled during Phase 1 recovery
 - [[CSE452/Paxos/Ballot IDs|Ballot IDs]] — How round numbers (ballot IDs) are structured and compared

@@ -8,9 +8,10 @@
 - **Ballot ID**: A unique, monotonic identifier for proposals (often a pair of `(number, server_id)`).
 
 ## Main Components
-- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] — The core algorithm for deciding a single value. Includes roles (Proposer, Acceptor, Learner) and the two-phase protocol (Prepare/Accept).
-- [[CSE452/Paxos/Multi-PaxosComponents/Multi-Paxos|Multi-Paxos]] — Extending consensus to a sequence of values (a Log). Explains slots and the "Stable Leader" optimization.
-- [[CSE452/Paxos/Paxos Invariants|Invariants and Design]] — Why we use specific Ballot IDs, what problems they fix (like split-brain), and the mathematical invariants that guarantee safety.
+- **[[CSE452/Paxos/Single Paxos|Single Decree Paxos]]**: The core algorithm for deciding a single value. Includes roles (Proposer, Acceptor, Learner) and the two-phase protocol (Prepare/Accept).
+- **[[CSE452/Paxos/Multi-Paxos|Multi-Paxos]]**: Extending consensus to a sequence of values (a Log). Explains slots and the "Stable Leader" optimization.
+- **[[CSE452/Paxos/Paxos Invariants|Invariants and Design]]**: Why we use specific Ballot IDs, what problems they fix (like split-brain), and the mathematical invariants that guarantee safety.
+- **[[CSE452/Paxos/Ballot IDs|Ballot IDs]]**: Detailed explanation of why global uniqueness is required and how it is achieved.
 
 ## Motivation & Requirements
 - **Goal**: All servers execute all client requests in the same order.
@@ -24,4 +25,4 @@
 ## Related
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — Paxos is used to order commands for a DSM
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — An alternative approach to replication
-- [[CSE451/Threads/Deadlocks|CSE451: Deadlocks]] — Consensus help avoid distributed deadlocks
+- [[CSE451/Threads/Deadlocks|CSE451: Deadlocks]] — Consensus helps avoid distributed deadlocks

@@ -1,4 +1,4 @@
-# Paxos Ballot IDs (Proposal Numbers)
+# CSE452: Paxos Ballot IDs (Proposal Numbers)
 
 In Paxos, every proposal must be identified by a unique, monotonically increasing number. This is often called a **Ballot ID**, **Proposal Number**, or **Round Number**.
 
@@ -56,4 +56,4 @@ In this model, the "owner" of any number $n$ is simply $n \pmod{TotalProposers}$
 ---
 - [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
 - [[CSE452/Paxos/Paxos Invariants|Back to Paxos Invariants]]
-- [[CSE452/Paxos/Multi-PaxosComponents/Multi-Paxos|Back to Multi-Paxos]]
+- [[CSE452/Paxos/Multi-Paxos|Back to Multi-Paxos]]

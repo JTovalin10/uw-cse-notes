@@ -1,4 +1,4 @@
-# Multi-Paxos: The Log
+# CSE452: Multi-Paxos The Log
 
 The **Log** tracks the full state of the Multi-Paxos algorithm: what commands to feed into the [[CSE452/RPC/Deterministic State Machine|state machine]], which slots have been decided, and how to avoid processing duplicate requests.
 
@@ -67,36 +67,37 @@ If a node missed a chosen command (e.g., it was partitioned or temporarily down)
 
 ## Log Merging
 For each slot in an incoming P1b message:
-- keep the command with the highest ballot number
-- if we've recieved the same command with the same abllot number form a majority of the nodes, mark the command as chosen
-- if no command is found for a lot, put a No-Op command there instead
-- warnining: do not try to merge directly into your log
+- Keep the command with the highest ballot number.
+- If we've received the same command with the same ballot number from a majority of the nodes, mark the command as chosen.
+- If no command is found for a slot, put a No-Op command there instead.
+- **Warning**: Do not try to merge directly into your log.
+
 ### Temporary Log State
-- with each log the candiaite places it in a temporary log state. We have to trust it's chosen
-	- this is a copy of the earlier log
-	- we place the largest ballot number into each slot (as normal), if there is already something in taht slot we can potentially override it
-	- ![[Incoming Messages to Merge.png]]
-	- once we finish checking each slot, we can merge it into the server
-- Log merging rukes
-	- for each slot in an incoming P1b message
-		- keep the command with the highest ballot number
-		- if we've recieved the same command with the same ballot number from a majority of the nodes, mark the command as chosen
-		- if no command is found for a slot, out a No-op command ther einstead
-	- several ways to implement
-		- merge P1bs into temp log as they're recieved (keep track command with largest ballot nums as P1bs are reicved)
-			- make sure to only take P1bs that correspond to the current election
-		- store P1bs. only merge them toegher after reciginf a majority
-			- temp log not cessary in this case
-		- other ways too
-	- dealing with Log Holes
-		- if we have a hole in the log, how do we know those empty log slots are decied, how can we push these log slots to completeion and exectute, and why do we need no-ops
-			- we need to handle these holes, a server might see agreement being reached on a lot but not previous slots. our implementation must still get to where it can execute the append, even if no more clients reuest arrive
-			- make progress maneas we are going to drive agreement such that future operations eventually get into the log
-			- need to propose NO-OP commands in holes, so that clients waiting in append get the result
+- With each log the candidate places it in a temporary log state. We have to trust it's chosen.
+	- This is a copy of the earlier log.
+	- We place the largest ballot number into each slot (as normal), if there is already something in that slot we can potentially override it.
+	- ![[CSE452/Screenshots/Incoming Messages to Merge.png]]
+	- Once we finish checking each slot, we can merge it into the server.
+- **Log merging rules**:
+	- For each slot in an incoming P1b message:
+		- Keep the command with the highest ballot number.
+		- If we've received the same command with the same ballot number from a majority of the nodes, mark the command as chosen.
+		- If no command is found for a slot, put a No-Op command there instead.
+	- Several ways to implement:
+		- Merge P1bs into temp log as they're received (keep track of command with largest ballot nums as P1bs are received).
+			- Make sure to only take P1bs that correspond to the current election.
+		- Store P1bs. Only merge them together after receiving a majority.
+			- Temp log not necessary in this case.
+		- Other ways too.
+	- **Dealing with Log Holes**:
+		- If we have a hole in the log, how do we know those empty log slots are decided, how can we push these log slots to completion and execute, and why do we need no-ops?
+			- We need to handle these holes; a server might see agreement being reached on a slot but not previous slots. Our implementation must still get to where it can execute the append, even if no more client requests arrive.
+			- "Make progress" means we are going to drive agreement such that future operations eventually get into the log.
+			- Need to propose NO-OP commands in holes, so that clients waiting in append get the result.
 
 ---
 
 ## Related
-- [[CSE452/Paxos/Multi-PaxosComponents/Multi-Paxos|Back to Multi-Paxos]]
+- [[CSE452/Paxos/Multi-Paxos|Back to Multi-Paxos]]
 - [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]] — Handling holes left by failed leaders
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — What the log feeds into

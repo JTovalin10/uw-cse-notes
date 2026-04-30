@@ -22,7 +22,7 @@ Principles of building correct and fault-tolerant distributed systems.
 
 ### Replication
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — the formal model: same commands in same order → same state on all replicas
-- [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — primary orders requests, backup executes, view server tracks roles, state transfer, split brain
+- [[CSE452/Primary-Backup/Primary Backup|Primary Backup Replication]] — primary orders requests, backup executes, view server tracks roles, state transfer, split brain
 - [[CSE452/Primary-Backup/View Server|View Server]] — single source of truth for current view; ping-based failure detection, view transitions, ACK requirement
 - [[CSE452/Primary-Backup/Six Rules of Primary Backup|Six Rules of Primary-Backup]] — the six correctness rules governing message ordering, view acceptance, and state transfer
 - [[CSE452/Primary-Backup/State Machine Replication (State Transfer)|State Transfer]] — copying full application state to a new backup, idempotence, and serialization with client requests

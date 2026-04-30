@@ -1,4 +1,4 @@
-# Multi-Paxos
+# CSE452: Multi-Paxos
 
 **Multi-Paxos** builds on [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] to reach consensus on an entire sequence of log slots, rather than just a single value.
 
@@ -29,18 +29,16 @@ See [[CSE452/Paxos/Multi-PaxosComponents/Log|Log]] for detailed data structures,
 
 In most practical implementations, every server acts as a **Proposer**, **Acceptor**, and **Learner** simultaneously.
 - One server is designated the **Distinguished Proposer** (the Leader).
-	- act as a proposer and acceptor from Basic Paxos
-	- we should have a boolean flag is_leader
-	- propsoe requests from clients
-		- first, check if the comamnd has already been proposed, decided, or executed
-	- keep replicas up to data
-	- send heartbeats to server so they know the leader is alie
-	- send heartbeats to servers so they know the leader is alive
-		- can include garbage collection information in these messages
-	- non-leaders
-		- drop client requests
-		- act only as an acceptor, not a propose
-			- until the server believes the leader died. Then it should start phase 1
+	- Acts as both a proposer and acceptor.
+	- Uses an `is_leader` boolean flag.
+	- Proposes requests from clients:
+		- First, checks if the command has already been proposed, decided, or executed.
+	- Keeps replicas up to date.
+	- Sends heartbeats to servers so they know the leader is alive.
+		- Can include garbage collection information in these messages.
+	- **Non-leaders**:
+		- Drop or forward client requests.
+		- Act only as an acceptor, not a proposer, until the server believes the leader has died. Then it starts Phase 1.
 - Clients send requests to the Leader.
 - The Leader assigns the request to the next available slot and drives Phase 2.
 
