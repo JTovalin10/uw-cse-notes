@@ -39,6 +39,10 @@ If the leader fails, a follower will time out and attempt to become the new lead
 2. It collects 1b summaries from a majority, discovering any holes in the log.
 3. It fills any holes (see [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]]) and then enters steady-state Phase 2.
 
+## Notes
+- timer values will matter. we need to give enough time for a server to have a chance to win an election
+- As soon as you get a p1a with a higher ballot, server's should back off before trying to become a leader
+- Heartbeat messages are how the leader tells followers that it's alive
 ---
 
 ## Related

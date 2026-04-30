@@ -8,6 +8,11 @@ The **Log** tracks the full state of the Multi-Paxos algorithm: what commands to
 HashMap<Integer, LogEntry> log;
 // key   = slot index
 // value = all data about that slot
+class LogEntry {
+	Ballot Ballot // (rndNum/seqNum, server address)
+	Object Paxos_log_status
+	AMOCommand command
+}
 ```
 
 ### Slot Pointers
@@ -47,12 +52,47 @@ This is hard because network delays mean nodes can disagree on whether a slot ha
 
 **Rules**:
 - A slot must be **executed** before it can be deleted.
+	- everyone must have executed it
 - A slot cannot be deleted until **every node** has received and acknowledged it, so that lagging nodes can still catch up.
 - Only **prefixes** of the log are deleted — slot $n$ cannot be removed while any slot $m < n$ is still present.
+### Solutions
+need a way to determine waht slots other nodes are done with
+- need some state about what everyone knows
+- one way is to send an array of everything we've executed which is piggybacked with heartbeat replies
+	- however this fails if a server dies as everyone will be waiting for them
 
 ### Catching Up
 
 If a node missed a chosen command (e.g., it was partitioned or temporarily down), the leader must inform it of the missing entries. The leader keeps log entries alive long enough for all nodes to catch up before deleting them. Once a node has received all missing entries and applied them to its state machine, it is safe to garbage-collect the earlier prefix.
+
+## Log Merging
+For each slot in an incoming P1b message:
+- keep the command with the highest ballot number
+- if we've recieved the same command with the same abllot number form a majority of the nodes, mark the command as chosen
+- if no command is found for a lot, put a No-Op command there instead
+- warnining: do not try to merge directly into your log
+### Temporary Log State
+- with each log the candiaite places it in a temporary log state. We have to trust it's chosen
+	- this is a copy of the earlier log
+	- we place the largest ballot number into each slot (as normal), if there is already something in taht slot we can potentially override it
+	- ![[Incoming Messages to Merge.png]]
+	- once we finish checking each slot, we can merge it into the server
+- Log merging rukes
+	- for each slot in an incoming P1b message
+		- keep the command with the highest ballot number
+		- if we've recieved the same command with the same ballot number from a majority of the nodes, mark the command as chosen
+		- if no command is found for a slot, out a No-op command ther einstead
+	- several ways to implement
+		- merge P1bs into temp log as they're recieved (keep track command with largest ballot nums as P1bs are reicved)
+			- make sure to only take P1bs that correspond to the current election
+		- store P1bs. only merge them toegher after reciginf a majority
+			- temp log not cessary in this case
+		- other ways too
+	- dealing with Log Holes
+		- if we have a hole in the log, how do we know those empty log slots are decied, how can we push these log slots to completeion and exectute, and why do we need no-ops
+			- we need to handle these holes, a server might see agreement being reached on a lot but not previous slots. our implementation must still get to where it can execute the append, even if no more clients reuest arrive
+			- make progress maneas we are going to drive agreement such that future operations eventually get into the log
+			- need to propose NO-OP commands in holes, so that clients waiting in append get the result
 
 ---
 

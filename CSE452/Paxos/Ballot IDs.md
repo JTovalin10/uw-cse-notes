@@ -20,8 +20,10 @@ Acceptors use the proposal number to determine if a message is "new" or "stale."
 
 ## The Solution: The (Sequence, ID) Tuple
 To guarantee uniqueness across all proposers without needing a central coordinator, Paxos uses a tuple:
+- make it comparable and define compareTo
+- use a single ballot on each server (not for each role)
 
-$$(SequenceNumber, ProposerID)$$
+$$(SequenceNumber/RoundNumber, ProposerID)$$
 
 ## MultiPaxos Tuple
 As we are now dealing with slots we need to keep track of which slot the tuple is for hence multipaxos uses a tuple:

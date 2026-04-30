@@ -29,6 +29,18 @@ See [[CSE452/Paxos/Multi-PaxosComponents/Log|Log]] for detailed data structures,
 
 In most practical implementations, every server acts as a **Proposer**, **Acceptor**, and **Learner** simultaneously.
 - One server is designated the **Distinguished Proposer** (the Leader).
+	- act as a proposer and acceptor from Basic Paxos
+	- we should have a boolean flag is_leader
+	- propsoe requests from clients
+		- first, check if the comamnd has already been proposed, decided, or executed
+	- keep replicas up to data
+	- send heartbeats to server so they know the leader is alie
+	- send heartbeats to servers so they know the leader is alive
+		- can include garbage collection information in these messages
+	- non-leaders
+		- drop client requests
+		- act only as an acceptor, not a propose
+			- until the server believes the leader died. Then it should start phase 1
 - Clients send requests to the Leader.
 - The Leader assigns the request to the next available slot and drives Phase 2.
 
@@ -41,6 +53,28 @@ In most practical implementations, every server acts as a **Proposer**, **Accept
 | **Instances** | One decision | One Paxos instance per log slot |
 | **Phase 1** | Run for every decision | Only the leader runs it; elided in steady state |
 | **Log Gaps** | N/A | Holes must be filled before later slots can execute |
+
+## Possible order for implementation of Paxos
+1. ballots
+2. Log(s)
+3. Accept messages/timers (P2As, P2Bs, Decisions)
+	1. you can start by hard-coding one of the servers as the leader
+	2. make sure execution are happening in the order (starting from slot_out and don't skip slots) and progress can be made for clients
+4. leader election/prepare messages/timers (P1As, P1Bs)
+	1. start leader election at the very start
+	2. Check if leader is alive
+5. heartbeats
+	1. catch-up mechanism
+6. Garbage collection
+
+## Things to consider in code
+- Receiving a request that’s already in your log as a proposer
+- When do holes come up in your log? When should you propose no-ops?
+- What happens when you receive a larger ballot in a message? 
+- How does a server know who the leader is?
+- If you receive an accept message for a slot that you already know is chosen, what should you do?
+- Why do we execute the log in order?
+- What happens when a leader dies?
 
 ---
 

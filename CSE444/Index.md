@@ -26,7 +26,7 @@ Advanced database systems: internals, query processing, storage, and distributed
 - [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — simple O(B(R)·B(S)) join; page-at-a-time refinement reduces I/Os
 - [[CSE444/Query Evaluation/Single-Pass Hash Join|Single-Pass Hash Join]] — one-pass hash-based join; requires smaller relation fits in memory
 - [[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]] — one-pass and two-pass (merge-join) sort-based join algorithms
-- [[Partitioned Hash Algorithms (Grace Join)|Two-Pass Hash Join (Grace Join)]] — two-pass and multi-pass hash-based join; handles relations larger than memory using partitioning
+- [[CSE444/Query Evaluation/Partitioned Hash Algorithms|Partitioned Hash Join (Grace Join)]] — two-pass and multi-pass hash-based join; handles relations larger than memory using partitioning
 
 ### Query Optimization
 - [[CSE444/Query Optimization/Query Optimization|Query Optimization Hub]] — overview of the optimization process
@@ -40,7 +40,9 @@ Advanced database systems: internals, query processing, storage, and distributed
 *(notes in progress)*
 
 ### Transactions
-- [[CSE444/Transactions/Concurrency Intro|Transactions]] — all-or-nothing semantics, COMMIT, ROLLBACK
+- [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)
+- [[CSE444/Transactions/Schedules and Concurrency Problems|Schedules and Concurrency Problems]] — serializable schedules and WR/RW/WW conflicts
+- [[CSE444/Transactions/Conflict Serializability|Conflict Serializability]] — precedence graphs and concurrency control (Strict 2PL)
 
 ### Replication and Distribution
 *(notes in progress)*
