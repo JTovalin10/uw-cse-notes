@@ -1,4 +1,4 @@
-# CSE452: The Paxos Protocol
+e# CSE452: The Paxos Protocol
 
 The Paxos protocol consists of two main phases to ensure that a single value is chosen safely.
 
@@ -20,15 +20,21 @@ Paxos is often described using a compact message notation:
 2.  **Acceptor**: 
     - If $r > max\_ballot$, updates $max\_ballot = r$ and responds with **1b**.
 	    - This means that the acceptor promises to never accept anything with a ballot lower than $r$.
-    - **The Summary ($s$)**: If the acceptor previously voted (sent a 2b) in an earlier round, it includes the highest round $r'$ and value $v'$ it voted for. Otherwise, $s = null$.
+    - **The Summary ($s$)**: If the acceptor previously voted (sent a 2b) in an earlier round, it includes the **highest-numbered round** $r'$ and value $v'$ it voted for. It is strictly the maximum $r' < r$, not a full history. Otherwise, $s = null$.
 
 ### Phase 2: Accept (2a/2b)
 1.  **Proposer**: Waits for a majority of **1b** responses.
     - If all summaries are $null$, the proposer can propose its own value.
     - If any summary is non-null, the proposer **must** propose the value $v'$ from the **highest-numbered round** $r'$ reported.
-    - **Crucial Rule**: The proposer's original intended value is **not** part of this comparison. If it sees a previous value, it **discards** its own and "adopts" the old one.
+    - **Crucial Rule**: The proposer's original intended value is **not** part of this comparison. If it sees a previous value, it **discards** its own and "adopts" the old one. "You vote for the one you have to."
+    - **Note**: No two summaries can report the same round with different values because round numbers are unique to proposers.
 
 2.  **Acceptor**: Receives **2a(r, v)**. If it hasn't promised a higher round since Phase 1, it sends **2b(r, v)** to the learners.
+
+## Liveness: Dueling Proposers
+Paxos guarantees **Safety** (no two different values are chosen), but it does not guarantee **Liveness**. 
+- **The Loop**: Proposer A sends $1a(1)$. Before it can finish, Proposer B sends $1a(2)$, preempting A. Then A sends $1a(3)$, preempting B. 
+- **The Fix**: Use **Randomized Backoff** or a **Distinguished Proposer (Leader)** to ensure only one node drives proposals at a time.
 
 ---
 - [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]

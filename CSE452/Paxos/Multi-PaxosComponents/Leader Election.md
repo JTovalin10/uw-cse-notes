@@ -32,6 +32,18 @@ Once an acceptor has promised allegiance to the leader, the leader can **skip Ph
 - The leader assigns incoming client requests to slots and sends 2a, collecting 2b responses.
 - Client requests can serve as implicit heartbeats (see [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]]).
 
+## Learning and Execution: The Commit Index
+In basic Paxos, acceptors don't know when a majority is reached—only the Proposer/Learner does.
+- **The `leaderCommit` Index**: The leader tracks the highest slot that has reached a majority. It includes this `leaderCommit` value in its next 2a or heartbeat.
+- **Execution**: When a server receives a message with `leaderCommit = N`, it knows everything up to slot $N$ is **Chosen** and safe to execute.
+- **The Flow**: A 2a for slot 10 might carry `leaderCommit = 8`. This proposes the future (slot 10) while confirming the past (everything up to 8).
+
+## Read-Only Queries and Leases
+To ensure **Linearizability**, a leader must ensure it hasn't been deposed before answering a `GET` request.
+- **The Risk**: A partitioned leader might serve stale data if a new leader was elected.
+- **Leases**: When acceptors respond to a 1a, they grant the leader a time-bound **Lease** (e.g., 5s). During this time, they promise not to respond to other 1a messages.
+- **Optimization**: As long as its lease is active, the leader can serve read requests locally from memory without any network round-trips.
+
 ## Phase 3 — Failure and Re-election
 
 If the leader fails, a follower will time out and attempt to become the new leader:

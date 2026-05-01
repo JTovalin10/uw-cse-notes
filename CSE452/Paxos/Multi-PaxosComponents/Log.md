@@ -65,6 +65,12 @@ need a way to determine waht slots other nodes are done with
 
 If a node missed a chosen command (e.g., it was partitioned or temporarily down), the leader must inform it of the missing entries. The leader keeps log entries alive long enough for all nodes to catch up before deleting them. Once a node has received all missing entries and applied them to its state machine, it is safe to garbage-collect the earlier prefix.
 
+## Log Compaction and Snapshots
+The log cannot grow forever. To reclaim space and speed up recovery, we use **Snapshots**.
+- **The Snapshot**: Periodically, the state machine saves its current state (e.g., the current value of all keys) to disk.
+- **Compaction**: Once a snapshot is saved for everything up to slot $N$, the log entries from $0$ to $N$ can be deleted (**truncated**).
+- **InstallSnapshot**: If a follower is so far behind that the leader has already deleted the missing log slots, the leader sends the entire Snapshot file (`InstallSnapshot` RPC) to the follower. The follower installs the snapshot to jump its state machine forward instantly.
+
 ## Log Merging
 For each slot in an incoming P1b message:
 - Keep the command with the highest ballot number.
