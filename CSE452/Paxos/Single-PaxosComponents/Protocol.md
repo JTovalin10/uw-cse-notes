@@ -28,7 +28,6 @@ Paxos is often described using a compact message notation:
     - If any summary is non-null, the proposer **must** propose the value $v'$ from the **highest-numbered round** $r'$ reported.
     - **Crucial Rule**: The proposer's original intended value is **not** part of this comparison. If it sees a previous value, it **discards** its own and "adopts" the old one. "You vote for the one you have to."
     - **Note**: No two summaries can report the same round with different values because round numbers are unique to proposers.
-
 2.  **Acceptor**: Receives **2a(r, v)**. If it hasn't promised a higher round since Phase 1, it sends **2b(r, v)** to the learners.
 
 ## Liveness: Dueling Proposers
