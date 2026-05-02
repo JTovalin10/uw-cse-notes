@@ -34,7 +34,7 @@ The VS can only advance to a new view under specific conditions — it cannot ch
   1. The current view $i$ has been **acknowledged** by the primary of view $i$ (see Rule 5 in [[CSE452/Primary-Backup/Six Rules of Primary Backup|Six Rules]])
   2. A primary or backup has failed (detected via missed pings)
 
-This requirement prevents the VS from racing ahead of state transfers — the primary's ACK signals that the new backup is fully up to date.
+This requirement prevents the VS from racing ahead of state transfers — the primary's ACK signals that the new backup is fully up to date. However, the view server can publish it to other server's in the meantime
 
 ---
 

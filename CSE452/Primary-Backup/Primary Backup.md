@@ -18,6 +18,7 @@ With only one client, the client can attach a **sequence number** to each reques
 **Primary-Backup** handles multiple clients by designating one replica as authoritative for ordering:
 
 - **Primary (P)**: in charge of ordering all client requests; decides the order; forwards requests to the backup with its own sequence number
+	- primary should only send outstanding request at a time
 - **Backup (B)**: executes requests in the order the primary dictates; sends an ACK back to the primary
 
 Each client still tracks its own seqnum; the primary also maintains a global seqnum for backup coordination.
