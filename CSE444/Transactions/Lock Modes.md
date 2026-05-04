@@ -1,14 +1,28 @@
+# CSE444: Lock Modes
+
 ## Lock Modes
-S = shared lock (for read)
-X = exclusive lock (for write)
-![[Lock compatibility matrix.png]]
+- **Shared lock (S)**: Used for reading.
+- **Exclusive lock (X)**: Used for writing.
+
+### Lock Compatibility Matrix
+![[CSE444/screenshots/Lock compatibility matrix.png]]
+
 ## Lock Granularity
-- fine granularity locking (tuples)
-	- high concurrency
-	- high overhead in managing locks
-- coarse grain locking (tables, predicate locks)
-	- many false conflicts
-	- less overhead in managing locks
+- **Fine granularity locking** (e.g., tuples/rows):
+	- High concurrency.
+	- High overhead in managing many locks.
+- **Coarse grain locking** (e.g., tables, predicate locks):
+	- Many false conflicts.
+	- Less overhead in managing fewer locks.
+
 ## Lock Performance
-![[Lock Performance.png]]
-thrashing in DBMS: could be false conflicts if using corase grain or overhead if using fine grain
+![[CSE444/screenshots/Lock Performance.png]]
+
+**Thrashing** in a DBMS can occur due to:
+- False conflicts if using coarse grain locking.
+- Excessive overhead if using fine grain locking.
+
+## Related
+- [[Locking]]
+- [[The Locking Scheduler]]
+- [[Phantom Problem]]

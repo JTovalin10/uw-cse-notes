@@ -1,11 +1,27 @@
-Task 1: act on behalf of the transaction, Add lock/unlock requests to transactions
-- examine all READ(A) or WRITE(A) actions
-- add appropriate lock requests
-- On COMMIT/ROLLBACK release all locks
-- Ensure Strict 2PL
-Task 2: act on behalf of the system, execute the locks accordingly
-- lock table: a big critical structure in a DBMS
-- When a lock is requested, check the lock table, grant, or add the transaction to the element's wait list
-- when lock is released reactive transaction from its wait list
-- when a transaction aborts, release all its locks
-- Check for deadlocks occasionally
+# CSE444: The Locking Scheduler
+
+The scheduler operates in two main tasks:
+
+### Task 1: Transaction Agent
+Acts on behalf of the transaction by adding lock/unlock requests.
+- Examine all `READ(A)` or `WRITE(A)` actions.
+- Add appropriate lock requests.
+- On **COMMIT** or **ROLLBACK**, release all locks.
+- Ensure **Strict 2PL** (Two-Phase Locking).
+
+### Task 2: System Agent
+Acts on behalf of the system to execute the locks accordingly.
+- Manages the **Lock Table**: A major critical structure in a DBMS.
+- When a lock is requested:
+	- Check the lock table.
+	- Grant the lock if compatible.
+	- Otherwise, add the transaction to the element's wait list.
+- When a lock is released:
+	- **Reactivate** a transaction from its wait list.
+- When a transaction aborts, release all its locks.
+- Check for **Deadlocks** periodically.
+
+## Related
+- [[Locking]]
+- [[Lock Modes]]
+- [[Deadlocks]]

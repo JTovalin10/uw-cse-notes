@@ -42,7 +42,14 @@ Advanced database systems: internals, query processing, storage, and distributed
 ### Transactions
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)
 - [[CSE444/Transactions/Schedules and Concurrency Problems|Schedules and Concurrency Problems]] — serializable schedules and WR/RW/WW conflicts
-- [[CSE444/Transactions/Conflict Serializability|Conflict Serializability]] — precedence graphs and concurrency control (Strict 2PL)
+- [[CSE444/Transactions/Conflict Serializability|Conflict Serializability]] — precedence graphs and conflict serializability
+- [[CSE444/Transactions/Locking|Locking and 2PL]] — pessimistic concurrency control, Two-Phase Locking (2PL), and Strict 2PL
+- [[CSE444/Transactions/Lock Modes|Lock Modes and Granularity]] — shared (S) and exclusive (X) locks, fine vs. coarse granularity
+- [[CSE444/Transactions/The Locking Scheduler|The Locking Scheduler]] — transaction agent vs. system agent roles and the lock table
+- [[CSE444/Transactions/Deadlocks|Deadlocks]] — detection via wait-for graphs, timeouts, and avoidance strategies
+- [[CSE444/Transactions/Isolation Levels|Isolation Levels]] — SQL standard levels (Read Uncommitted to Serializable) and their trade-offs
+- [[CSE444/Transactions/Phantom Problem|The Phantom Problem]] — inconsistencies due to insertions/deletions and predicate locking
+- [[CSE444/Transactions/Optimistic Concurrency Control|Optimistic Concurrency Control]] — timestamp-based concurrency control and validation mechanisms
 
 ### Replication and Distribution
 *(notes in progress)*

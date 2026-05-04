@@ -40,3 +40,9 @@ To ensure data integrity, a DBMS must provide **ACID** properties:
 |-------|------------|-------------|
 | **No-Steal / Force** | Easiest for recovery | Poor |
 | **Steal / No-Force** | Complex recovery (Undo/Redo) | Highest |
+
+## Related
+- [[Schedules and Concurrency Problems]]
+- [[Locking]]
+- [[Isolation Levels]]
+- [[Optimistic Concurrency Control]]

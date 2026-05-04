@@ -1,14 +1,24 @@
-If tuples are inserted/deleted then the phantom problem appears
-![[Phantom Problem.png]]
-A phantom is a tuple that is invisible during part of a transaction execution but not invisible during the entire execution
-- in the example
-	- T1 reads list of products
-	- T2 inserts a new product
-	- T1 re-reads: a new product appears
+# CSE444: The Phantom Problem
+
+If tuples are inserted or deleted during a transaction, the **Phantom Problem** appears.
+
+![[CSE444/screenshots/Phantom Problem.png]]
+
+A **phantom** is a tuple that is invisible during part of a transaction execution but not invisible during the entire execution.
+
+**Example**:
+1. $T_1$ reads a list of products.
+2. $T_2$ inserts a new product.
+3. $T_1$ re-reads the list: a new "phantom" product appears.
+
 ## Dealing with Phantoms
-- lock the entire table
-- lock the index entry for 'blue'
-	- if index is avaliable
-- or use predicate locks
-	- a lock on an arbitrary predicate
-- Dealing with phantom's is expensive
+- **Table Locks**: Lock the entire table (coarse-grained).
+- **Index Locking**: Lock the index entry (e.g., for 'blue') if an index is **available**.
+- **Predicate Locks**: A lock on an arbitrary predicate (very expensive).
+
+Dealing with phantoms is generally expensive and requires locking more than just existing individual tuples.
+
+## Related
+- [[Locking]]
+- [[Lock Modes]]
+- [[Isolation Levels]]

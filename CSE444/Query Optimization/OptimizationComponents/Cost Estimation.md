@@ -19,6 +19,8 @@ Given the cardinalities of input relations, the goal is to estimate the size $T(
 ### Selectivity Factors
 - **Equality Selection** ($\sigma_{A=c}(R)$): $\frac{1}{V(R, A)}$
 - **Range Selection** ($\sigma_{A<c}(R)$): $\frac{c - \text{Low}(R, A)}{\text{High}(R, A) - \text{Low}(R, A)}$
+-  **Range Selection** ($\sigma_{A\leq c}(R)$): $\frac{\text{Hight(R, a)} - c}{\text{High}(R, A) - \text{Low}(R, A)}$
+- **Range Selection** ($\sigma_{A > c}(R)$): $\frac{\text{Hight(R, a)} - c}{\text{High}(R, A) - \text{Low}(R, A)}$
 - **Join** ($R \bowtie_{A=B} S$): $\frac{1}{\max(V(R, A), V(S, B))}$
 
 ### Join Cardinality Formula
