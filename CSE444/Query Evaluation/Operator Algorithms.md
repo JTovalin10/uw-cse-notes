@@ -31,17 +31,19 @@ Join algorithms are classified into three families depending on how many passes 
 
 ### One-Pass Algorithms
 Require one relation to fit entirely in memory (§15.2–15.3):
-- [[CSE444/Query Evaluation/Single-Pass Hash Join|Single-Pass Hash Join]] — default; build hash table on smaller relation, probe with larger; cost $B(R) + B(S)$ when $B(R) \leq M$
-- [[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]] — sort both relations then merge; cost $B(R) + B(S)$ when $B(R) + B(S) \leq M$
+- [[CSE444/Query Evaluation/Single-Pass Hash Join|Single-Pass Hash Join]] — build hash table on smaller relation, probe with larger; cost $B(R) + B(S)$ when $B(R) \leq M$
+- **One-Pass Join** (Nested Loop) — cost $B(R) + B(S)$ when $B(R) \leq M$ or $B(S) \leq M$
 
 ### Index-Based Algorithms
 Exploit an existing index on one relation to avoid full scans (§15.6):
-- [[CSE444/Query Evaluation/Index-Based Algorithms|Index-Based Selection and Join]] — clustered index costs $B(R)/V(R,a)$; unclustered costs $T(R)/V(R,a)$
+- [[CSE444/Query Evaluation/Index-Based Algorithms|Index-Based Selection]] — clustered index costs $B(R)/V(R,a)$; unclustered costs $T(R)/V(R,a)$
+- **Index Nested Loop Join** — cost $B(R) + T(R) \times (\text{cost of index lookup})$
 
 ### Two-Pass Algorithms
 Sort or hash-partition the data before joining; handle relations larger than memory (§15.4–15.5):
-- [[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]] — produces sorted runs then merges; total cost $3B(R)$; requires $B(R) \leq M^2$
-- [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — tuple-based, page-at-a-time, and block-memory variants; best case cost $B(R) + B(S) \cdot \lceil B(R)/(M-1) \rceil$
+- [[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]] — sort both relations then merge; cost $3(B(R) + B(S))$ when $B(R), B(S) \leq M^2$
+- **Partitioned Hash Join** — partition both relations into buckets, join matching buckets; cost $3(B(R) + B(S))$ when $\min(B(R), B(S)) \leq M^2$
+- [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — block-memory variant; cost $B(R) + B(S) \cdot \lceil B(R)/(M-1) \rceil$
 
 ## Related
 

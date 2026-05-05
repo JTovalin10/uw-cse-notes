@@ -1,9 +1,8 @@
-T# CSE444: Index-Based Algorithms
+# CSE444: Index-Based Algorithms
 
 Index-based algorithms exploit an existing index on one relation to avoid full scans. They are part of the §15.6 family in Ramakrishnan & Gehrke.
 
 ## Index-Based Selection
-
 **Selection on equality**: $\sigma_{a=v}(R)$
 
 Standard cost parameters:
@@ -26,6 +25,18 @@ Note: indexes are fast for highly selective queries (small $\frac{1}{V(R,a)}$), 
 
 ![[CSE444/Screenshots/Index-based selection example.png]]
 
+## Range Selection Cost
+
+| Index type            | Cost                 |
+| --------------------- | -------------------- |
+| **Clustered** index   | $sel(P) \times B(R)$ |
+| **Unclustered** index | $sel(P) \times T(R)$ |
+
+### When to prefer clustered vs unclustered
+- Clustered is always cheaper for range queries
+- Unclustered is only worth using if $sel(P)$ is very small
+- Rule of thumb: if $sel(P) \times T(R) > B(R)$, just do a full sequential scan instead
+
 ## Index Nested Loop Join
 
 **Index nested loop join** $R \bowtie S$ assumes $S$ has an index on the join attribute.
@@ -47,9 +58,34 @@ In a **Primary-Key (S) to Foreign-Key (R)** join:
 **Clustered vs. Unclustered:** 
 In this specific case, the cost is the same for both. Clustering only benefits joins where one value matches *multiple* tuples (by keeping them on the same page). For a unique Primary Key lookup, you always perform exactly 1 I/O to fetch the data page regardless of clustering.
 
-Assuming index pages are in memory, the cost simplifies to:
+Assume index pages are in memory, the cost simplifies to:
 $$\text{Cost} = B(R) + T(R)$$
 *(1 I/O to scan each page of R + 1 I/O to fetch the single matching partner in S for every tuple in R).*
+
+### For intermediate relations
+If $R$ is an intermediate result (not a base table), you may not know $B(R)$ directly.
+Estimate it as:
+$$B(R_{int}) = \frac{T(R_{int})}{T(R)} \times B(R)$$
+i.e. scale the page count by how many tuples survived.
+
+## Pipelining & I/O Costs
+
+In a physical query plan, we assume an **Iterator Interface** (pull-based model).
+
+- **Pipelined Operations**: If an operator can process tuples one-at-a-time as they are pulled from the child, the I/O cost for that step is **0**.
+  - *Examples*: Selection ($\sigma$), Projection ($\pi$), and the "probe" phase of a Hash Join or Index Nested Loop Join.
+- **Materialized Operations**: If an operator must read/write to disk (e.g., because a hash table doesn't fit in memory or a sort is required), you must count those I/Os.
+- **Rule of Thumb for HW**:
+  - Reading a base table = $B(R)$ I/Os.
+  - Selection/Projection on a stream = 0 I/Os.
+  - Hash Join (if fits in memory) = 0 additional I/Os beyond reading the two inputs.
+  - Index Nested Loop Join = $T(R_{left}) \times (\text{probe cost})$.
+
+## Selectivity Caveats
+
+- **AND**: $sel(P_1 \land P_2) \approx sel(P_1) \times sel(P_2)$ (Independence assumption)
+- **OR**: $sel(P_1 \lor P_2) \approx sel(P_1) + sel(P_2) - sel(P_1) \times sel(P_2)$
+  - Simplified to $sel(P_1) + sel(P_2)$ in practice
 
 ## Related
 

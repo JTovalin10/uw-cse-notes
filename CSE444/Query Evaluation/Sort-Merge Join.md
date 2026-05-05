@@ -16,8 +16,15 @@ If both relations fit entirely in main memory ($B(R) + B(S) \leq M$), sort-merge
 
 ## Two-Pass Algorithm (Sort-Merge Join)
 
- **[[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]]**
+When relations do not fit in memory ($B(R) + B(S) > M$), we use the two-pass version which integrates with **[[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]]**.
 
+1. **Step 1: Run Generation**: Generate sorted runs of length $M$ for both $R$ and $S$.
+   - Cost: $2(B(R) + B(S))$
+2. **Step 2: Merge + Join**: Load the head page of every run from both relations into memory. Merge the runs of $R$ and $S$ on-the-fly and join them simultaneously.
+   - Requires: $\lceil B(R)/M \rceil + \lceil B(S)/M \rceil \leq M - 1$
+   - Cost: $B(R) + B(S)$ (reads only; results are pipelined)
+
+**Total Cost**: $3(B(R) + B(S))$ I/Os.
 
 ![[CSE444/Screenshots/Merge Join.png]]
 
