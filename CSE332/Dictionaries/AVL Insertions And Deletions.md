@@ -30,11 +30,11 @@ Identify the deepest problem node and determine where the insertion occurred rel
 5. **Continue checking** up the tree until the root is reached (unlike insertion, a deletion fix may cause an imbalance higher up).
 
 #### Rotation Cases for Deletion
-The cases are identified by where the deletion occurred.
-- **Case LL**: Deleted in the left subtree of the left child. $\rightarrow$ Rotate Left.
-- **Case RR**: Deleted in the right subtree of the right child. $\rightarrow$ Rotate Right.
-- **Case LR**: Deleted into the right subtree of the left child. $\rightarrow$ Rotate Right at left child, then Left at root.
-- **Case RL**: Deleted into the left subtree of the right child. $\rightarrow$ Rotate Left at right child, then Right at root.
+The cases are identified by which subtree became too tall after the deletion (same logic as insertion — the same imbalance requires the same fix).
+- **Case LL**: The left subtree of the left child is taller. $\rightarrow$ Rotate Right at the unbalanced node.
+- **Case RR**: The right subtree of the right child is taller. $\rightarrow$ Rotate Left at the unbalanced node.
+- **Case LR**: The right subtree of the left child is taller. $\rightarrow$ Rotate Left at the left child, then Rotate Right at the unbalanced node.
+- **Case RL**: The left subtree of the right child is taller. $\rightarrow$ Rotate Right at the right child, then Rotate Left at the unbalanced node.
 
 ### Visualizing Rotations
 - **Right Rotation** at node $a$ (where $b$ is $a$'s left child): Make $b$ the new root, make $a$ the right child of $b$, and make $b$'s original right subtree the left subtree of $a$.
