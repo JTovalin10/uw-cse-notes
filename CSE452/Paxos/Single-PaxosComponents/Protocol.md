@@ -28,7 +28,8 @@ Paxos is often described using a compact message notation:
     - If any summary is non-null, the proposer **must** propose the value $v'$ from the **highest-numbered round** $r'$ reported.
     - **Crucial Rule**: The proposer's original intended value is **not** part of this comparison. If it sees a previous value, it **discards** its own and "adopts" the old one. "You vote for the one you have to."
     - **Note**: No two summaries can report the same round with different values because round numbers are unique to proposers.
-2.  **Acceptor**: Receives **2a(r, v)**. If it hasn't promised a higher round since Phase 1, it sends **2b(r, v)** to the learners.
+2.  **Acceptor**: Receives **2a(r, v)**. If it hasn't promised a higher round since Phase 1 ($r \ge max\_ballot$), it sends **2b(r, v)** to the learners.
+    - **Note on Determinism**: Acceptance is **mandatory**. If the ballot is valid (not superseded by a higher promise), the acceptor *must* vote for the value. It doesn't accept "blindly" from any proposer; it only accepts if the proposer has the "authority" of the current highest ballot.
 
 ## Liveness: Dueling Proposers
 Paxos guarantees **Safety** (no two different values are chosen), but it does not guarantee **Liveness**. 

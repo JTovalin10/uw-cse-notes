@@ -42,6 +42,16 @@ In most practical implementations, every server acts as a **Proposer**, **Accept
 - Clients send requests to the Leader.
 - The Leader assigns the request to the next available slot and drives Phase 2.
 
+## Slot Statuses (The Paxos Lifecycle)
+
+In Multi-Paxos, every slot in the log progresses through several states. It is critical to distinguish between what a *single node* has done and what the *entire cluster* has decided.
+
+| Status | Meaning | Deterministic Rule |
+| :--- | :--- | :--- |
+| **EMPTY** | The node has no data for this slot. | Initial state. |
+| **ACCEPTED** | The node received a `2a` (Accept Request) and voted for the value. | **Not Random**: If a node receives a `2a` with a **ballot $\ge$ its current promise**, it **must** accept. It doesn't accept "blindly" from anyone; it only accepts from the proposer (Leader) it has already promised to follow. |
+| **CHOSEN** | A **majority** of nodes have accepted this value. | Once CHOSEN, the value is immutable. Nodes learn this via the Leader's commit index or by seeing a majority of votes. |
+
 ## Key Differences from Single Paxos
 
 | Property | Single Paxos | Multi-Paxos |
