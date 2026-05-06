@@ -96,10 +96,8 @@ For each slot in an incoming P1b message:
 			- Temp log not necessary in this case.
 		- Other ways too.
 	- **Dealing with Log Holes**:
-		- If we have a hole in the log, how do we know those empty log slots are decided, how can we push these log slots to completion and execute, and why do we need no-ops?
-			- We need to handle these holes; a server might see agreement being reached on a slot but not previous slots. Our implementation must still get to where it can execute the append, even if no more client requests arrive.
-			- "Make progress" means we are going to drive agreement such that future operations eventually get into the log.
-			- Need to propose NO-OP commands in holes, so that clients waiting in append get the result.
+		- For a detailed explanation of why holes occur and how no-ops are used to patch them, see [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]].
+		- Briefly: A leader identifies holes during Phase 1 recovery and proposes No-Ops to ensure a contiguous log prefix for the state machine to execute.
 
 ---
 

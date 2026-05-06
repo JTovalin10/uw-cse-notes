@@ -49,7 +49,7 @@ To ensure **Linearizability**, a leader must ensure it hasn't been deposed befor
 If the leader fails, a follower will time out and attempt to become the new leader:
 1. The follower runs Phase 1 with a higher ballot number than the old leader's.
 2. It collects 1b summaries from a majority, discovering any holes in the log.
-3. It fills any holes (see [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]]) and then enters steady-state Phase 2.
+3. It fills any holes (see [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]]) and then enters steady-state Phase 2.
 
 ## Notes
 - Timer values matter. We need to give enough time for a server to have a chance to win an election.
