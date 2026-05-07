@@ -55,6 +55,23 @@ public BSTNode insert(BSTNode root, int key) {
 }
 ```
 
+## Tree Traversals
+Algorithms to visit every node in a tree:
+- **Pre-Order**: Root, Left Subtree, Right Subtree
+- **In-Order**: Left Subtree, Root, Right Subtree (Visits BST keys in sorted order)
+- **Post-Order**: Left Subtree, Right Subtree, Root
+
+### Implementation
+```java
+void inOrder(BSTNode root) {
+    if (root != null) {
+        inOrder(root.left);
+        process(root.key);
+        inOrder(root.right);
+    }
+}
+```
+
 ### Related
 - [[Dictionaries]]
 - [[AVL Trees]]
