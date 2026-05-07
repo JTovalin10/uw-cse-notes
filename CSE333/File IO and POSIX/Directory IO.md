@@ -20,4 +20,7 @@ When looking up documentation:
 - `man 2 <func>`: System calls (e.g., `man 2 open`).
 - `man 3 <func>`: Library functions (e.g., `man 3 fopen`, `man 3 opendir`).
 
-Related: [[POSIX IO]]
+## Related
+- [[POSIX IO]]
+- [[Standard C Streams]]
+- [[System Calls]]

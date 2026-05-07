@@ -27,9 +27,35 @@ PointPtr p1_ptr = &p1;
 - **Dot operator (`.`)**: Access a field from a struct variable.
 - **Arrow operator (`->`)**: Access a field from a struct pointer (shorthand for `(*p).field`).
 
+## Self-Referential Structs
+Structs can contain pointers to their own type, which is essential for building data structures like linked lists. Note that you must use the **struct tag** (e.g., `struct node`) inside the definition because the `typedef` name isn't available until the definition is complete.
+
+```c
+typedef struct node_st {
+    int data;
+    struct node_st* next;
+} Node;
+```
+
 ## Memory Behavior
 - **Copy by Assignment**: Assigning one struct to another (e.g., `p2 = p1`) copies the **entire contents**.
 - **Pass by Value**: Structs are passed by value to functions, meaning the entire struct is copied onto the stack. For large structs, it is more efficient to pass a pointer.
 - **Returning Structs**: Can return structs by value. Small structs are often returned in registers (`%rax`, `%rdx`), while larger ones are returned via memory.
 
-Related: [[C Fundamentals/Introduction to C]], [[Memory Management/Heap Management]]
+## Memory Alignment and Padding
+The size of a struct is at least the sum of the sizes of its fields, but it is often larger due to **padding**. Compilers align fields to addresses that are multiples of their size (e.g., an `int` at a 4-byte boundary) to improve CPU access efficiency.
+
+- **32-bit systems**: Typically align to 4-byte boundaries.
+- **64-bit systems**: Typically align to 8-byte boundaries.
+- **Rule of thumb**: The struct itself is aligned to the requirement of its largest member.
+
+## C++ Structs
+In C++, `struct` and `class` are nearly identical. The only difference is the default access level:
+- **`struct`**: Public by default.
+- **`class`**: Private by default.
+
+## Related
+- [[Introduction to C]]
+- [[Memory Management/Heap Management|Heap Management]]
+- [[Data Structures/LinkedList|LinkedList]]
+- [[Pointers]]

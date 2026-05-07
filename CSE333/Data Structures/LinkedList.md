@@ -87,12 +87,12 @@ void appendNode(Node** headRef, int value) {
 
 1. **Individual Allocation**: Each node requires a separate **malloc()** call.
 2. **Traversal Order**: You must allocate new memory for each new node on the heap.
-3. **Memory Leaks**: Losing the reference to a node without calling **[[Free|free()]]** causes memory leaks.
+3. **Memory Leaks**: Losing the reference to a node without calling **[[Memory Management/Malloc and Free|free()]]** causes memory leaks.
 4. **Free Order**: When deallocating, save the `next` pointer before freeing the current node.
 5. **Dangling Pointers**: After freeing a node, any pointers to it become dangling pointers and should not be used.
 
 ## Related
-- [[CSE333/Memory Management/Malloc]]
-- [[CSE333/Memory Management/Free]]
-- [[CSE333/Data Structures/Struct]]
-- CSE333/Memory Management/Double Free (Delete)
+- [[Memory Management/Malloc and Free|Malloc and Free]]
+- [[C Fundamentals/Structs and Typedef|Structs]]
+- [[Memory Management/Heap Management|Heap Management]]
+- [[Vector]]

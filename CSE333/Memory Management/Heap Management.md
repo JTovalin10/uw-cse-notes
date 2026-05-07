@@ -12,4 +12,8 @@ Programmers explicitly request and release blocks of memory on the heap.
 2. **Size**: When the size of the data is determined at runtime (e.g., reading a file of unknown length).
 3. **Capacity**: The heap is much larger than the stack.
 
-Related: [[Malloc and Free]], [[Memory Bugs and Valgrind]]
+## Related
+- [[Malloc and Free]]
+- [[Memory Bugs and Valgrind]]
+- [[C Memory Model]]
+- [[Stack]]

@@ -1,5 +1,7 @@
 # CSE 333 - Systems Programming
 
+For a detailed list of all notes, see the **[[CSE333 Index]]**.
+
 ## Course Overview
 
 CSE 333 focuses on low-level systems programming in C and C++. The course covers memory management, file I/O, networking, and the tools needed to build robust systems software.

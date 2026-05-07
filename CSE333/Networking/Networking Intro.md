@@ -30,5 +30,11 @@ On the receiving end, each layer "unwraps" its respective header to pass the pay
 
 ## Tools
 *   **netcat (nc)**: A networking utility for reading from and writing to network connections using TCP or UDP.
-    *   Listen: `nc -l <port>`
     *   Connect: `nc <IPaddr> <port>`
+
+## Related
+- [[DNS]]
+- [[HTTP]]
+- [[TCP Sockets]]
+- [[Concurrency/Concurrency Intro|Concurrency Intro]]
+- [[File IO and POSIX/POSIX IO|POSIX IO]]

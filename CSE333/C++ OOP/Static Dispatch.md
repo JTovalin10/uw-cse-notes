@@ -38,3 +38,9 @@ With static dispatch:
 - No runtime type checking or function lookup occurs
 
 This is why static dispatch is more efficient but less flexible than dynamic dispatch - the decision is "hardcoded" at compile time rather than determined at runtime.
+
+## Related
+- [[Inheritance]]
+- [[C++ Classes]]
+- [[Virtual table]]
+- [[C++ Fundamentals/C++ Introduction|C++ Introduction]]

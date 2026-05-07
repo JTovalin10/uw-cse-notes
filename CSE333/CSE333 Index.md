@@ -35,12 +35,11 @@
 
 ## [[CSE333/C++ OOP/C++ Classes|C++ Object-Oriented Programming]]
 - [[CSE333/C++ OOP/C++ Classes|C++ Object-Oriented Programming]]
-- [[CSE333/C++ OOP/Constructor Details|Constructor Details]]
-- [[CSE333/C++ OOP/Inheritance|Inheritance]] — C++ inheritance concepts and syntax
-- [[CSE333/C++ OOP/Dynamic Dispatch|Dynamic Dispatch]] — virtual function runtime resolution
+- [[CSE333/C++ OOP/Object Lifecycle|Object Lifecycle]] — constructors, destructors, and resource management
+- [[CSE333/C++ OOP/RAII|RAII]] — Resource Allocation Is Initialization
+- [[CSE333/C++ OOP/Inheritance|Inheritance]] — C++ inheritance, dynamic dispatch, and abstract classes
 - [[CSE333/C++ OOP/Static Dispatch|Static Dispatch]] — compile-time method resolution
 - [[CSE333/C++ OOP/Virtual table|Virtual Table]] — vtable mechanism for dynamic dispatch
-- [[CSE333/C++ OOP/Pure Virtual Specifier|Pure Virtual Specifier]] — abstract methods in C++
 
 ## [[CSE333/Smart Pointers/Smart Pointers|Smart Pointers & Move Semantics]]
 - [[CSE333/Smart Pointers/Smart Pointers|Smart Pointers Overview]] — automatic memory management pointers
@@ -58,5 +57,5 @@
 ## [[CSE333/Concurrency/Concurrency Intro|Concurrency & Process Management]]
 - [[CSE333/Concurrency/Concurrency Intro|Concurrency Intro]]
 - [[CSE333/Concurrency/Threads|Threads (pthreads)]]
-- [[CSE333/Process Management/Processes|Processes (fork/exec)]] — process creation and management
-- [[CSE333/Process Management/Process Management|Process Management Overview]]
+- [[CSE333/Concurrency/C++ Concurrency|C++11 Concurrency (std::thread)]]
+- [[CSE333/Process Management/Process Management|Process Management]] — process creation (fork/exec) and management

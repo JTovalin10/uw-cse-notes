@@ -126,4 +126,9 @@ void custom_deleters() {
     // Resource will be deleted with custom deleter when ref count reaches zero
 }
 ```
-[[Smart Pointer]]
+
+## Related
+- [[Smart Pointers]]
+- [[Unique Pointer]]
+- [[weak pointer]]
+- [[move]]

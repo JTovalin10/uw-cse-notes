@@ -36,9 +36,11 @@ A **mutex** ("mutual exclusion") is used to grant access to a **critical section
 *   `pthread_mutex_unlock()`: Releases the lock.
 
 ### C++11 Threads
-C++11 introduced standard library support for threads (`<thread>`), mutexes (`<mutex>`), and atomics (`<atomic>`). While these are often built on top of pthreads, they provide a more idiomatic C++ interface.
+C++11 introduced standard library support for threads (`<thread>`), mutexes (`<mutex>`), and atomics (`<atomic>`). For details on modern C++ concurrency, see: **[[C++ Concurrency]]**.
 
 # Related
+- [[C++ Concurrency]]
+- [[Concurrency Intro]]
 - [[CSE451/Threads/Thread|CSE451: Thread]]
 - [[CSE451/Threads/Threads and Processes|CSE451: Threads and Processes]]
 - [[CSE332/Parallelism/Concurrency And Locks|CSE332: Concurrency and Locks]]

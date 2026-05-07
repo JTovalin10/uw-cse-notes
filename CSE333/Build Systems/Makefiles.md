@@ -38,4 +38,7 @@ clean:
     rm -f *.o myprog
 ```
 
-Related: [[GCC Workflow]], C Fundamentals/Linkage and Visibility
+## Related
+- [[GCC Workflow]]
+- [[C Fundamentals/Linkage and Visibility|Linkage and Visibility]]
+- [[C Fundamentals/Preprocessor|Preprocessor]]

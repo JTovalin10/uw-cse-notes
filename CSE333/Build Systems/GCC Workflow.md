@@ -26,4 +26,7 @@ The **GNU Compiler Collection (gcc)** handles the transformation of C source cod
 - `-o <name>`: Specify the output filename.
 - `-c`: Compile but do not link (generates `.o` file).
 
-Related: C Fundamentals/Preprocessor, [[Makefiles]]
+## Related
+- [[C Fundamentals/Preprocessor|Preprocessor]]
+- [[Makefiles]]
+- [[C Fundamentals/Linkage and Visibility|Linkage and Visibility]]

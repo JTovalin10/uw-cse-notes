@@ -1,6 +1,6 @@
 # CSE333: Process Management
 
-In systems programming, **[[Process Management]]** involves creating, controlling, and synchronizing multiple processes to execute concurrently.
+In systems programming, **Process Management** involves creating, controlling, and synchronizing multiple processes to execute concurrently.
 
 ## Creating Processes
 
@@ -49,7 +49,26 @@ pid_t waitpid(pid_t pid, int *status, int options);
 - **waitpid()**: Blocks until the specific child process terminates.
 - Important for cleaning up terminated processes (avoiding "zombie processes").
 
+### The Double-Fork Trick
+If a parent doesn't want to `wait()` for a child, it can use the double-fork trick to orphan the child:
+1.  Parent forks child.
+2.  Child forks grandchild and then immediately exits.
+3.  Grandchild is orphaned and adopted by `init` (PID 1), which reaps it automatically.
+4.  Parent reaps the short-lived child immediately.
+
+## Processes vs. Threads for Servers
+| Feature | Processes | Threads |
+| :--- | :--- | :--- |
+| **Creation** | Slow (~0.25 ms/fork) | Fast (~0.036 ms/thread) |
+| **Address Space** | Private (Isolated) | Shared |
+| **Communication** | Complex (IPC, Pipes, Files) | Easy (Shared Memory) |
+| **Fate** | Independent | Shared (Rogue thread can crash process) |
+| **Overhead** | High (Context switching) | Low |
+
+## Thread Pools
+In high-performance servers, creating a new thread or process for every request is still too expensive. A **thread pool** creates a fixed set of worker threads at startup. Requests are placed in a queue, and workers take tasks from the queue as they become available.
+
 ## Related
-- CSE333/Definitions/Creating a new process
-- [[CSE333/File IO and POSIX/POSIX perror]]
+- [[Concurrency/Threads|Threads]]
+- [[File IO and POSIX/POSIX perror]]
 - [[CSE351/System Programming/Exceptions]]

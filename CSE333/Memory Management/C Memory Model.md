@@ -12,9 +12,9 @@ A C program's **virtual address space** is organized into several segments.
 ## Address Space Layout Randomization (ASLR)
 Modern OSs like Linux randomize the base addresses of the stack, heap, and shared libraries on each run. This is a security feature to make buffer overflow attacks harder to execute.
 
-# Related
+## Related
 - [[Stack]]
 - [[Heap Management]]
-- C Fundamentals/Pointers
+- [[C Fundamentals/Pointers|Pointers]]
 - [[CSE351/Memory Fundamentals/Words and Memory|CSE351: Words and Memory]]
 - [[CSE351/Memory Management/Memory Allocation|CSE351: Memory Allocation]]

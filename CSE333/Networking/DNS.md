@@ -48,5 +48,8 @@ You must use `freeaddrinfo()` to free the memory allocated by `getaddrinfo()`.
 *   **inet_pton**: Converts human-readable strings ("presentation") to network byte ordered binary addresses.
 *   **inet_ntop**: Converts binary addresses to human-readable strings.
 
-# Related
+## Related
+- [[Networking Intro]]
+- [[TCP Sockets]]
+- [[HTTP]]
 - [[CSE461/Application/Domain Name System (DNS)|CSE461: DNS]]

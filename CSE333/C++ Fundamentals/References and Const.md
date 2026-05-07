@@ -47,5 +47,5 @@ The Google C++ style guide recommends specific uses for references and pointers:
 
 ## Related
 - [[C++ Introduction]]
-- [[C++ Classes]]
-- [[Constructor Details]]
+- [[C++ OOP/C++ Classes|C++ Classes]]
+- [[C++ OOP/Object Lifecycle|Object Lifecycle]]

@@ -140,9 +140,20 @@ int main() {
 - When possible, reserve memory in advance using `vector.reserve(n)` to avoid reallocations
 
 # Memory Management
+`std::vector` is an **RAII** container that manages a dynamic array on the **Heap**.
+- **Internal Allocation**: It uses **[[C++ Fundamentals/Heap Management|new]]** (or an allocator) to reserve a contiguous block of memory.
+- **Automatic Deallocation**: When the vector object goes out of scope, its destructor automatically calls **[[C++ Fundamentals/Heap Management|delete]]** on the underlying array.
 
 ```c++
-vector.reserve(n)   // reserve storage capacity for n elements
+vector.reserve(n)   // reserve storage capacity for n elements (avoids multiple reallocations)
 vector.capacity()   // return current storage capacity
 vector.shrink_to_fit() // reduce memory usage by freeing unused memory
 ```
+
+## Related
+- [[C++ OOP/RAII|RAII]]
+- [[C++ Fundamentals/Heap Management|C++ Heap Management]]
+- [[Memory Management/Heap Management|C Heap Management]]
+- [[Memory Management/Malloc and Free|Malloc and Free]]
+- [[C++ OOP/C++ Classes|C++ Classes]]
+- [[LinkedList]]

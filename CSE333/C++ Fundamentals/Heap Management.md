@@ -20,6 +20,20 @@ To deallocate an array, you **must** use **`delete[]`**:
 - **Syntax**: `delete[] array;`
 - Using `delete` instead of `delete[]` on an array is **undefined behavior**.
 
+## Template Example
+```c++
+template <typename T>
+void example(int n) {
+    // Single object
+    T* temp = new T();
+    delete temp;
+
+    // Array
+    T* arr = new T[n];
+    delete[] arr;
+}
+```
+
 ## `nullptr`
 Introduced in C++11, **`nullptr`** is a new literal used to represent a null pointer.
 - It is type-safe (has type `T*` for any `T`) and is not an integer.
@@ -39,11 +53,9 @@ Introduced in C++11, **`nullptr`** is a new literal used to represent a null poi
 | **Constructors?** | No | Yes (invokes them) |
 
 ## RAII: Resource Allocation Is Initialization
-C++'s constructors and destructors enable a powerful pattern called **RAII**.
-- Resources (like heap memory, file handles, or locks) are acquired in a constructor and released in a destructor.
-- Because the destructor is called automatically when an object goes out of scope, the resource is guaranteed to be released, even in the presence of exceptions.
+C++'s constructors and destructors enable a powerful pattern called **RAII**. For a deep dive into how RAII ensures exception safety and prevents leaks, see: **[[C++ OOP/RAII|RAII]]**.
 
 ## Related
 - [[C++ Introduction]]
-- [[Smart Pointers]]
-- [[Constructor Details]]
+- [[Smart Pointers/Smart Pointers|Smart Pointers]]
+- [[C++ OOP/Object Lifecycle|Object Lifecycle]]

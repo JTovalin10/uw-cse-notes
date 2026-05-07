@@ -34,4 +34,5 @@ While `perror()` prints to `stderr`, you can use **`strerror()`** (from `<string
 
 ## Related
 - [[Standard C Streams]] — information on `stderr`
-- [[Process Management]] — where `perror` is commonly used after `fork` or `exec` failures
+- [[Process Management/Process Management|Process Management]] — where `perror` is commonly used after `fork` or `exec` failures
+- [[POSIX IO]]

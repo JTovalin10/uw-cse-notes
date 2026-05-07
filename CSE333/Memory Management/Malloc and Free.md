@@ -23,8 +23,9 @@ Dynamic memory in C is managed using functions from `<stdlib.h>`.
 - Use `sizeof()` to calculate sizes: `int* arr = (int*)malloc(10 * sizeof(int));`.
 - Ensure every `malloc` has a corresponding `free`.
 
-# Related
+## Related
 - [[Heap Management]]
 - [[Memory Bugs and Valgrind]]
+- [[C Memory Model]]
 - [[CSE351/Memory Management/Memory Allocation|Memory Allocation (351)]]
 - [[CSE451/Memory Management/Memory management|OS Memory Management (451)]]

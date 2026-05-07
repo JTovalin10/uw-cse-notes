@@ -18,5 +18,5 @@ In systems programming, understanding the size of data types is critical for mem
 - Use `sizeof()` in C to determine the exact size of a type or variable on the current system.
 
 ## Related
-- [[CSE333/Memory Management/Malloc|Malloc]]
-- [[CSE333/Memory Management/Pointers|Pointers]]
+- [[Malloc and Free]]
+- [[C Fundamentals/Pointers|Pointers]]

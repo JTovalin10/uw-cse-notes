@@ -20,4 +20,8 @@ Manual memory management in C is error-prone and leads to several classes of bug
 - Dereferencing `NULL` causes a **Segmentation Fault**.
 - Useful as an indicator of an uninitialized pointer or an allocation failure.
 
-Related: [[Malloc and Free]], [[Heap Management]], [[C Fundamentals/Arrays]]
+## Related
+- [[Malloc and Free]]
+- [[Heap Management]]
+- [[C Fundamentals/Arrays|Arrays]]
+- [[C Memory Model]]

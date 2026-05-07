@@ -221,4 +221,9 @@ void resetting_and_assignment() {
     weak1.swap(weak2);
 }
 ```
-[[Shared Pointer]]
+
+## Related
+- [[Shared Pointer]]
+- [[Smart Pointers]]
+- [[Unique Pointer]]
+- [[move]]

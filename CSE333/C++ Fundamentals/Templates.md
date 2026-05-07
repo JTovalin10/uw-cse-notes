@@ -47,5 +47,5 @@ Templates can also accept constant values as parameters, known as **non-types**.
 
 ## Related
 - [[C++ Introduction]]
-- [[C++ Classes]]
-- [[Smart Pointers]]
+- [[C++ OOP/C++ Classes|C++ Classes]]
+- [[Smart Pointers/Smart Pointers|Smart Pointers]]

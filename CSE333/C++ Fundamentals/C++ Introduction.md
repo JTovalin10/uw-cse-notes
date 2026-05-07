@@ -53,5 +53,7 @@ The `<iomanip>` header defines stream manipulator functions to affect formatting
 
 ## Related
 - [[References and Const]]
-- [[C++ Classes]]
-- [[Heap Management]]
+- [[C++ OOP/C++ Classes|C++ Classes]]
+- [[C++ Fundamentals/Heap Management|Heap Management]]
+- [[C++ Fundamentals/Templates|Templates]]
+- [[Smart Pointers/Smart Pointers|Smart Pointers]]

@@ -27,4 +27,8 @@ By default, `stdio` uses **buffering** to improve performance by grouping many s
 - **Performance**: Standard streams are generally faster for small I/O but can be slower for very high-performance applications that require "zero-copy".
 - **Disable Buffering**: Use `setbuf(stream, NULL)`.
 
-Related: [[System Calls]], [[POSIX IO]]
+## Related
+- [[System Calls]]
+- [[POSIX IO]]
+- [[POSIX perror]]
+- [[Directory IO]]

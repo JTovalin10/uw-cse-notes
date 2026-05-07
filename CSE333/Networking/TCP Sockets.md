@@ -43,5 +43,9 @@ Computers may use different **endianness**. The network standard is **Big Endian
 *   **write()**: Enqueues data in the OS send buffer. If the buffer is full, it **blocks**. The OS transmits the data in the background.
 *   **close()**: Shuts down the socket on both ends.
 
-# Related
+## Related
+- [[Networking Intro]]
+- [[DNS]]
+- [[HTTP]]
+- [[File IO and POSIX/POSIX IO|POSIX IO]]
 - [[CSE461/Transport/Transport Layer - Transmission Control Protocol (TCP)|CSE461: TCP]]

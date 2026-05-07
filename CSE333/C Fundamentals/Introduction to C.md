@@ -44,4 +44,10 @@ The process of turning source code into an executable involves several stages ma
 - **Exit Codes**: Processes return an integer exit code on termination (e.g., `EXIT_SUCCESS` or `EXIT_FAILURE`).
 - **Crashes**: Bad operations often result in a **Segmentation Fault**, which is the "good" option compared to silent memory corruption.
 
-Related: [[GCC Workflow]], [[Preprocessor]], [[Linkage and Visibility]]
+## Related
+- [[Build Systems/GCC Workflow|GCC Workflow]]
+- [[Preprocessor]]
+- [[Linkage and Visibility]]
+- [[Pointers]]
+- [[Arrays]]
+- [[Structs and Typedef]]

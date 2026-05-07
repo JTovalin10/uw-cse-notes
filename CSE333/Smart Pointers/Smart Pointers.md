@@ -37,7 +37,10 @@ Introduced in C++11, **move semantics** allow for "stealing" the resources of an
 - **Cons**: Overhead of maintaining counts, cannot handle cycles without help (like `weak_ptr`).
 
 ## Related
-- [[Heap Management]]
-- [[Constructor Details]]
-- [[Templates]]
-- [[Inheritance]]
+- [[Memory Management/Heap Management|Heap Management]]
+- [[C++ OOP/Object Lifecycle|Object Lifecycle]]
+- [[C++ Fundamentals/Templates|Templates]]
+- [[C++ OOP/Inheritance|Inheritance]]
+- [[Unique Pointer]]
+- [[Shared Pointer]]
+- [[weak pointer]]

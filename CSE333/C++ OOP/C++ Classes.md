@@ -33,14 +33,25 @@ int Point::get_x() const { return x_; }
 - **`protected`**: Visible to the class and its **derived classes**.
 - **`private`**: Visible only to the class itself.
 
+## OOP Principles
+For a detailed look at the core pillars of Object-Oriented Programming (Encapsulation, Abstraction, Inheritance, and Polymorphism) with code examples, see: **[[OOP Principles]]**.
+
 ## Nonmember Functions
 **Nonmember functions** are regular functions that are not part of a class but may interact with it.
 - Useful for commutative operators or stream I/O (e.g., `operator<<`).
 - Declared in the header file but outside the class definition.
 
-### `friend` Functions
-A class can grant a nonmember function access to its `private` members by declaring it as a **`friend`** within the class definition.
-- Friends are usually unnecessary if the class provides appropriate public "getter" functions.
+### `friend` Keyword
+A class can grant a non-member function or another class access to its `private` and `protected` members by using the **`friend`** keyword.
+
+- **`friend` Functions**: Often used for overloaded operators (like `operator<<`) that need to access internal data but cannot be member functions (e.g., when the left-hand operand is not the class itself).
+- **`friend` Classes**: If `class A` declares `friend class B;`, all member functions of `B` can access private members of `A`.
+- **Encapsulation Note**: `friend` should be used sparingly. While it solves specific architectural problems, it bypasses the standard access control and can make the code harder to maintain if overused.
+
+**Key Properties**:
+- Friendship is **granted, not taken**: Class A must declare B as a friend.
+- Friendship is **not symmetric**: If A is a friend of B, B is not automatically a friend of A.
+- Friendship is **not transitive**: If A is a friend of B and B is a friend of C, A is not a friend of C.
 
 ## Namespaces
 **Namespaces** create a separate scope to avoid symbol collisions.
@@ -49,7 +60,8 @@ A class can grant a nonmember function access to its `private` members by declar
 - Access members using `namespace_name::member_name`.
 
 ## Related
-- [[Constructor Details]]
+- [[Object Lifecycle]]
 - [[Inheritance]]
-- [[References and Const]]
-- [[Heap Management]]
+- [[RAII]]
+- [[C++ Fundamentals/References and Const|References and Const]]
+- [[C++ Fundamentals/Heap Management|Heap Management]]

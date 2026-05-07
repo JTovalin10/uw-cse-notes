@@ -17,7 +17,9 @@ In a **sequential** implementation, the CPU sits idle (**blocked**) while waitin
 
 ## Concurrent Programming Styles
 1.  **Threads**: Multiple threads of control within a single process.
-2.  **Processes**: Forking multiple processes.
+    - **POSIX pthreads**: Low-level C API (`pthread.h`).
+    - **[[C++ Concurrency|C++11 Threads]]**: Modern, type-safe C++ API (`<thread>`).
+2.  **Processes**: Forking multiple processes (see [[Process Management/Process Management|Process Management]]).
 3.  **Asynchronous I/O**: Also known as **non-blocking I/O** or **event-driven programming**.
 
 ### Event-Driven Programming
@@ -28,3 +30,11 @@ The program is structured as an **event-loop**.
 *   **Advantages**: Avoids locks and race conditions; simple for GUIs.
 *   **Disadvantages**: Can lead to complex, "jumbled" code (callback hell).
 *   **Note**: You are the scheduler in event-driven code; tasks do not have their own stacks and must bundle state into "continuations".
+
+# Related
+- [[Threads]]
+- [[C++ Concurrency]]
+- [[Process Management/Process Management|Process Management]]
+- [[Networking/Networking Intro|Networking Intro]]
+- [[File IO and POSIX/POSIX IO|POSIX IO (Non-blocking I/O)]]
+- [[CSE451/Concurrency/Concurrency|CSE451: Concurrency]]

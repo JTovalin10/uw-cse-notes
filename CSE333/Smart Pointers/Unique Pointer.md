@@ -96,4 +96,9 @@ void releasing_resources() {
     std::cout << "ptr is null: " << (ptr == nullptr) << std::endl;
 }
 ```
-[[Smart Pointer]]
+
+## Related
+- [[Smart Pointers]]
+- [[Shared Pointer]]
+- [[weak pointer]]
+- [[move]]

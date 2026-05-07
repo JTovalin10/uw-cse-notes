@@ -60,5 +60,8 @@ HTTP/[version] [status code] [reason]
 ## HTTP/2
 Standardized in 2015, HTTP/2 is a **binary protocol** (easier for machines to parse) that allows multiple data streams to be multiplexed on a single TCP connection. It also includes header compression and server push.
 
-# Related
+## Related
+- [[Networking Intro]]
+- [[DNS]]
+- [[TCP Sockets]]
 - [[CSE461/Application/HTTP - Protocol Mechanics and Evolution|CSE461: HTTP]]

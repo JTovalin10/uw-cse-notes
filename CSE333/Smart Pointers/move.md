@@ -38,4 +38,8 @@ public:
     }
 };
 ```
-[[Smart Pointer]]
+
+## Related
+- [[Unique Pointer]]
+- [[Smart Pointers]]
+- [[C++ Fundamentals/Heap Management|Heap Management]]

@@ -22,7 +22,8 @@ The OS is the "layer below" that:
 ## strace
 **strace** is a Linux utility that shows the sequence of system calls a process makes. It is an invaluable tool for debugging I/O and process issues.
 
-# Related
+## Related
 - [[Standard C Streams]]
 - [[POSIX IO]]
+- [[Process Management/Process Management|Process Management]]
 - [[CSE451/Kernel Abstraction/Traps/System Call|CSE451: System Calls]]
