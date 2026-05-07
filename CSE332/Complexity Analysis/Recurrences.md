@@ -68,6 +68,29 @@ Form: $T(n) = aT(n/b) + f(n)$
 
 ---
 
+## Solving Recurrences: The Master Theorem
+The **Master Theorem** provides a "cookbook" solution for recurrences of the form:
+$$T(n) = aT(n/b) + n^k$$
+where $a \ge 1, b > 1, k \ge 0$.
+
+To solve, compare $\log_b a$ with $k$:
+
+| Condition | Result | Intuition |
+| :--- | :--- | :--- |
+| $\log_b a < k$ | $T(n) \in \Theta(n^k)$ | Work at the **root** dominates. |
+| $\log_b a = k$ | $T(n) \in \Theta(n^k \log n)$ | Work is **balanced** across all levels. |
+| $\log_b a > k$ | $T(n) \in \Theta(n^{\log_b a})$ | Work at the **leaves** dominates. |
+
+### Master Theorem Examples
+- **Merge Sort**: $T(n) = 2T(n/2) + n$
+  - $a=2, b=2, k=1 \implies \log_2 2 = 1$. Since $1=1$, result is $\Theta(n \log n)$.
+- **Binary Search**: $T(n) = 1T(n/2) + 1$
+  - $a=1, b=2, k=0 \implies \log_2 1 = 0$. Since $0=0$, result is $\Theta(\log n)$.
+- **Matrix Multiplication (Naive)**: $T(n) = 8T(n/2) + n^2$
+  - $a=8, b=2, k=2 \implies \log_2 8 = 3$. Since $3 > 2$, result is $\Theta(n^3)$.
+
+---
+
 ## Finite Geometric Series
 $$ \sum_{i=0}^{L} a^i = \frac{a^{L+1} - 1}{a - 1} $$
 - **If $a > 1$**: Dominated by the **last term** ($a^L$).
@@ -75,5 +98,7 @@ $$ \sum_{i=0}^{L} a^i = \frac{a^{L+1} - 1}{a - 1} $$
 - **If $a = 1$**: Simply $L+1$.
 
 ## Related
-- [[Algorithm Analysis]]
-- [[Definitions/Recurrence Relation|Recurrence Relation]]
+- [[CSE332/Complexity Analysis/Algorithm Analysis|Algorithm Analysis]]
+- [[CSE332/Complexity Analysis/Asymptotic Notation|Asymptotic Notation]]
+- [[CSE332/CSE332 Index|CSE332 Index]]
+

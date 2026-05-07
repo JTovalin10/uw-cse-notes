@@ -1,46 +1,46 @@
 # CSE 333: Smart Pointers
 
-Smart pointers are objects that store pointers to heap-allocated objects and manage their lifetime automatically using the RAII pattern.
+**Smart pointers** are objects that store pointers to heap-allocated objects and manage their lifetime automatically using the **Resource Acquisition Is Initialization (RAII)** pattern.
 
 ## Overview
-A **smart pointer** looks and behaves like a regular pointer by overloading the `*` and `->` operators. Its primary goal is to ensure that `delete` is called on the heap memory at the correct time, preventing memory leaks and dangling pointers.
+A smart pointer looks and behaves like a regular (raw) pointer by overloading the `*` and `->` operators. Its primary goal is to ensure that `delete` is called on the heap memory at the correct time, preventing:
+1. **Memory Leaks**: Memory that is never freed.
+2. **Dangling Pointers**: Pointers that point to memory that has already been freed.
+3. **Double Frees**: Attempting to free the same memory twice.
 
-## `std::unique_ptr`
-A **`unique_ptr`** represents sole ownership of a pointer.
-- It cannot be copied (the copy constructor and assignment operator are deleted).
-- It **can be moved** using `std::move()`.
-- Its destructor automatically calls `delete` on the owned pointer when the `unique_ptr` goes out of scope.
-- **Methods**:
-  - `get()`: Returns the raw pointer (dangerous).
-  - `release()`: Relinquishes ownership and returns the raw pointer (responsibility for deletion passes to caller).
-  - `reset(ptr)`: Deletes current object and takes ownership of a new pointer.
+## Types of Smart Pointers (C++11)
 
-## `std::shared_ptr`
-A **`shared_ptr`** allows multiple owners for the same heap object.
-- It uses **reference counting** to track how many `shared_ptr` instances point to the same object.
-- The reference count is incremented when a `shared_ptr` is copied and decremented when one is destroyed.
-- When the reference count reaches 0, the owned object is automatically deleted.
+### 1. `std::unique_ptr`
+- **Ownership**: Exclusive. Exactly one `unique_ptr` owns the resource.
+- **Copying**: Not allowed.
+- **Moving**: Allowed (transfers ownership).
+- See more: [[CSE333/Smart Pointers/Unique Pointer|Unique Pointer]]
 
-## `std::weak_ptr`
-A **`weak_ptr`** points to an object managed by a `shared_ptr` but does not contribute to the reference count.
-- It is used to break circular references (cycles) that would otherwise prevent memory from being freed.
-- You cannot dereference a `weak_ptr` directly. You must call **`lock()`** to obtain a temporary `shared_ptr`. If the object has been deleted, `lock()` returns a null `shared_ptr`.
+### 2. `std::shared_ptr`
+- **Ownership**: Shared. Multiple `shared_ptr` instances can point to the same resource.
+- **Mechanism**: Reference counting.
+- **Copying**: Allowed (increments reference count).
+- See more: [[CSE333/Smart Pointers/Shared Pointer|Shared Pointer]]
 
-## Move Semantics
-Introduced in C++11, **move semantics** allow for "stealing" the resources of an object instead of copying them.
-- **`std::move()`**: Casts an object to an "rvalue reference," signaling to the compiler that the object can be moved from.
-- This is essential for `unique_ptr` since it cannot be copied. Moving a `unique_ptr` transfers ownership from the source to the destination.
+### 3. `std::weak_ptr`
+- **Ownership**: None. Points to a resource managed by a `shared_ptr` without contributing to the reference count.
+- **Use Case**: Breaking circular references.
+- See more: [[CSE333/Smart Pointers/Weak Pointer|Weak Pointer]]
 
-## Reference Counting Perspective
-**Reference counting** is a technique for managing resources by storing the number of references to them.
-- **Pros**: Automated cleanup, prevents premature deletion.
-- **Cons**: Overhead of maintaining counts, cannot handle cycles without help (like `weak_ptr`).
+---
+
+## Comparison Table
+
+| Smart Pointer | Copyable? | Movable? | Ref Count? | Best Use Case |
+| :--- | :--- | :--- | :--- | :--- |
+| `unique_ptr` | No | Yes | No | Local variables, member variables with clear owner. |
+| `shared_ptr` | Yes | Yes | Yes | Resources shared across multiple components (e.g., caches). |
+| `weak_ptr` | Yes | Yes | No | Observers, breaking cycles in linked data structures. |
+
+---
 
 ## Related
-- [[Memory Management/Heap Management|Heap Management]]
-- [[C++ OOP/Object Lifecycle|Object Lifecycle]]
-- [[C++ Fundamentals/Templates|Templates]]
-- [[C++ OOP/Inheritance|Inheritance]]
-- [[Unique Pointer]]
-- [[Shared Pointer]]
-- [[weak pointer]]
+- [[CSE333/Memory Management/Heap Management|Heap Management]]
+- [[CSE333/C++ OOP/Object Lifecycle|Object Lifecycle]]
+- [[CSE333/C++ Fundamentals/Templates|Templates]]
+- [[CSE333/C++ OOP/RAII|RAII]]

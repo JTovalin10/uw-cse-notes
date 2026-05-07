@@ -1,7 +1,12 @@
-Can read/write to the pointer and multiple shared pointers can point to the same resource.
+# CSE 333: Shared Pointer
 
-- It is important to note that a shared pointer is only deconstructed if there is only once shared pointer pointing to the object or if all objects go out of scope (exit the stack)
-- If one shared pointer gets declared a nullptr then all sharedptrs are declared a nullptr (but only calls the deconstructor once)
+A **`std::shared_ptr`** allows multiple owners for the same heap-allocated object. It uses reference counting to manage the resource's lifetime.
+
+## Key Properties
+- **Shared Ownership**: Multiple `shared_ptr`s can own the same resource.
+- **Reference Counting**: The system tracks how many `shared_ptr`s point to the resource. When the count reaches zero, the resource is deleted.
+- **Copying**: Assigning or copying a `shared_ptr` increments the reference count.
+- **Nullification**: Setting one `shared_ptr` to `nullptr` (or it going out of scope) only affects that specific pointer and decrements the reference count. Other `shared_ptr`s to the same resource remain valid.
 
 ```c++
 #include <iostream>
@@ -20,6 +25,7 @@ WHAT MAKES std::shared_ptr DIFFERENT:
 - Potential for Cycles: Can create memory leaks with circular references (solved with weak_ptr)
 - Control Block: Uses an additional memory allocation for the reference counting mechanism
 */
+
 
 // 1. Defining shared_ptr
 void defining_shared_ptr() {

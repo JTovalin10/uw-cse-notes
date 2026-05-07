@@ -43,10 +43,10 @@
 
 ## [[CSE333/Smart Pointers/Smart Pointers|Smart Pointers & Move Semantics]]
 - [[CSE333/Smart Pointers/Smart Pointers|Smart Pointers Overview]] — automatic memory management pointers
-- [[CSE333/Smart Pointers/move|Move Semantics]] — move semantics and rvalue references
+- [[CSE333/Smart Pointers/Smart Pointers#Move Semantics|Move Semantics]] — move semantics and rvalue references
 - [[CSE333/Smart Pointers/Unique Pointer|Unique Pointer]] — exclusive ownership smart pointer
 - [[CSE333/Smart Pointers/Shared Pointer|Shared Pointer]] — reference-counted shared ownership pointer
-- [[CSE333/Smart Pointers/weak pointer|Weak Pointer]] — non-owning smart pointer reference
+- [[CSE333/Smart Pointers/Weak Pointer|Weak Pointer]] — non-owning smart pointer reference
 
 ## [[CSE333/Networking/Networking Intro|Networking]]
 - [[CSE333/Networking/Networking Intro|Networking Intro]]

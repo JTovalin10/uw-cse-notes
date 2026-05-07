@@ -12,8 +12,7 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — happens-before relation, concurrent events, partial ordering of events
 - [[CSE452/Clocks/Lamport Clock Algorithm|Lamport Clock Algorithm]] — logical timestamps and the clock condition
 - [[CSE452/Clocks/Vector Clock Algorithm|Vector Clock Algorithm]] — capturing causality and detecting concurrent events
-- [[CSE452/Clocks/Linearizability|Linearizability]] — strongest consistency model, looks like a single copy
-- [[CSE452/Clocks/Sequential Consistency|Sequential Consistency]] — operations appear in some legal serial order
+- [[CSE452/Consistency/Linearizability and Sequential Consistency|Linearizability and Sequential Consistency]] — the strongest consistency models for single-object operations; total ordering and real-time constraints
 - [[CSE452/Clocks/System State|System State]] — stable/unstable properties, invariants, and correctness proofs in primary-backup
 - [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — individual/common/distributed knowledge, muddy foreheads puzzle, impossibility of coordinated attack, consensus
 

@@ -1,9 +1,13 @@
-This is a type of smart pointer however it has an exclusive ownership mode where only one pointer can own the resource
+# CSE 333: Unique Pointer
 
-- If you do ::move the value gets "stolen" so the pointer is pointing to nothing but it does not get deallocated
+A **`std::unique_ptr`** represents exclusive ownership of a heap-allocated resource. Exactly one `unique_ptr` can own a resource at any given time.
 
-Cannot be copied, only moved which ensures exactly one owner
-[[move]]
+## Key Properties
+- **Exclusive Ownership**: Only one pointer can own the resource.
+- **No Copying**: The copy constructor and assignment operator are deleted.
+- **Moving**: Ownership can be transferred using `std::move()`. After a move, the source pointer becomes `nullptr`.
+- **Automatic Deallocation**: The resource is deleted when the `unique_ptr` goes out of scope.
+
 ```c++
 #include <iostream>
 #include <memory>
