@@ -4,7 +4,9 @@ Concurrency Control by Validation (also known as **Optimistic Concurrency Contro
 
 ## Workflow in Depth
 
-Unlike pessimistic locking (where you wait for locks *before* doing work), Validation-based CC assumes you will succeed. 
+Unlike pessimistic locking (where you wait for locks *before* doing work), Validation-based CC assumes you will succeed. You are still allowed to rollback
+- Read set RS(T) = the element it reads
+- Write set WS(T) = the element it writes
 
 ### 1. The Read Phase (Parallel Execution)
 - **Work**: The transaction $T$ executes its logic fully in a private workspace.
@@ -14,13 +16,18 @@ Unlike pessimistic locking (where you wait for locks *before* doing work), Valid
 - **Concurrency**: Because there are no locks, many transactions can "complete their work" simultaneously at full speed.
 
 ### 2. The Validate Phase (The Critical Section)
-- **Work**: Once $T$ is finished with its work, it asks the DBMS: "Did anyone else make a change while I was working that would make my work invalid?"
+- **Work**: Once $T$ is finished with its work, it asks the DBMS scheduler: "Did anyone else make a change while I was working that would make my work invalid?" if not you may need to rollback
+	- if it works it gives only the validation timestamp and tells you that you are allowed to do transaction. gemini is this only for writes? what happens if a read occures, does it also need a timestamp
+	- The validation step is to ensure there is no overlap between other WS or RS. we want to ensure that any object finished before the other starts and if there is a conflict we ROLLBACK
 - **Sequentiality**: To ensure correctness, the **Validation and Write phases are typically sequential**. The DBMS processes one validation at a time (or uses a very tight lock) to assign the serialization order based on $VAL(T)$.
 - **Checks**: It compares $T$'s Read Set ($RS(T)$) and Write Set ($WS(T)$) against the Write Sets of other transactions that committed recently.
 
 ### 3. The Write Phase
 - **Work**: If (and only if) validation succeeds, the changes in the **private workspace** are copied into the actual database.
 - **Atomicity**: This is where the transaction officially "happens" for everyone else to see.
+
+### Invariant
+The serialization order is VAL(T)
 
 ---
 

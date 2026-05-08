@@ -4,7 +4,7 @@ A **transaction** is a sequence of database operations that executes as a single
 
 ```sql
 START_TXN; -- may be omitted if autocommit is off
-  [...]
+[...]
 COMMIT;    -- make all changes permanent
 -- or
 ROLLBACK;  -- undo all changes (= ABORT)

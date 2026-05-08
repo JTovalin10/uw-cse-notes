@@ -90,7 +90,9 @@ If $T$ wants to write $X$ and $WT(X) > TS(T)$, we **don't** necessarily have to 
 
 ## 4. Multiversion Timestamp (MVCC)
 To avoid the massive amount of rollbacks caused by the "Read Too Late" problem, the DBMS can keep multiple versions of an element $X$: $X_t, X_{t-1}, X_{t-2}, \dots$ where $TS(X_t) > TS(X_{t-1}) > TS(X_{t-2})$.
-
+- Does not solve
+	- cascading aborts and recoverability, we need the commit bit for this
+	- Does allow transactions tor read in cases when they would have to abort in simple time-stamp
 ### How it Changes the Rules
 With multiple versions available, the scheduler must now track $RT(X_t)$ and $WT(X_t)$ for *every single version* of $X$, along with its commit bit $C(X_t)$. 
 
