@@ -9,7 +9,7 @@ A **General Protection Fault (GPF)** is a CPU exception that occurs when code vi
 - **Invalid memory access**: writing to read-only memory, executing non-executable pages
 
 ## Related
-- [[Exception]] — the general category of hardware-triggered control transfers
+- [[CSE451/Virtualization/Mechanisms/Exceptions/Exception]] — the general category of hardware-triggered control transfers
 - [[Privilege Level]] — the Ring 0/3 privilege system enforced by the GPF
 - [[Dual-Mode Restrictions]] — what restricted operations trigger a GPF
 - [[Source of Interrupts]] — GPF listed as an exception source

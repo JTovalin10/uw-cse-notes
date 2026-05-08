@@ -57,4 +57,4 @@ movq (%rax), %rbx     # memory → register
 - [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
 - [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
 - [[CSE351/x86-64 Assembly/x86-64 Memory Operands|Memory Operands]]
-- [[CSE333/Memory Management/Pointers|Pointers (CSE333)]]
+- [[CSE333/C Fundamentals/Pointers|Pointers (CSE333)]]

@@ -10,12 +10,12 @@ A **mode switch** is the transition between kernel mode and user mode (and vice 
 	- Example: user types Ctrl+C, which fires an interrupt and executes signal handler code
 
 ## User to Kernel
-- [[Interrupts]] — hardware device signals the CPU
-- [[Exception]] — program causes a hardware error (e.g., segfault)
+- [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]] — hardware device signals the CPU
+- [[CSE451/Virtualization/Mechanisms/Exceptions/Exception]] — program causes a hardware error (e.g., segfault)
 - [[System Call]] — protected procedure call (trap) to request OS service
 
 ## Related
 - [[Hardware Modes]] — the modes being switched between
 - [[Atomic Transfer of Control]] — the hardware mechanism for user-to-kernel transitions
-- [[Traps]] — the general mechanism for user-to-kernel transitions
+- [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps]] — the general mechanism for user-to-kernel transitions
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]] — switching between processes (not just modes)

@@ -34,4 +34,4 @@ When you call a virtual function through a base pointer (e.g., `ptr->Speak()`):
 ## Related
 - [[Inheritance]]
 - [[C++ Casting]]
-- [[C++ Fundamentals/Data Type Sizes|Data Type Sizes]]
+- [[CSE333/Memory Management/Data Type Sizes]]

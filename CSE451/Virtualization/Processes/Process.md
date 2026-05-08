@@ -59,6 +59,6 @@ Machine state can be broken down into three categories:
 - [[CSE451/Virtualization/Processes/Process/Process Control Block|Process Control Block]]
 - [[CSE451/Virtualization/Processes/CPUState/CPU State|CPU State]]
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]]
-- [[CSE333/Process Management/Processes|CSE333: Processes]]
-- [[CSE451/Kernel Abstraction/Memory/Virtual Addresses]]
+- [[CSE333/Process Management/Process Management|CSE333: Process Management]]
+- [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses]]
 - [[Optimizing Fork]]

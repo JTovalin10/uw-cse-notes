@@ -5,4 +5,4 @@ when the RAM is full, it must make room for new data. It does this through swapp
 1. selection: the OS picks a victim page in RAM in LRU fashion
 2. eviction: the OS copies that page's data to the swap space on the disk
 3. updating: the OS updates the page table for that process, marking the page as "not present" but recording its location on disk
-4. retrieval: if the program later tries to access that data, a [[Page Fault]] [[Exception]] occurs. The OS then "swaps in" the page from the disk back into ram
+4. retrieval: if the program later tries to access that data, a [[Page Fault]] [[CSE451/Virtualization/Mechanisms/Exceptions/Exception|Exception]] occurs. The OS then "swaps in" the page from the disk back into ram

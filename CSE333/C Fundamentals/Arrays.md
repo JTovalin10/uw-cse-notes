@@ -34,7 +34,7 @@ void copyArray(int src[], int dst[], int size) {
 ```
 
 ## Related
-- [[Pointers]]
+- [[CSE333/C Fundamentals/Pointers]]
 - [[Memory Management/Stack|Stack]]
 - [[C Fundamentals/Introduction to C|Introduction to C]]
 - [[Types and Modifiers]]

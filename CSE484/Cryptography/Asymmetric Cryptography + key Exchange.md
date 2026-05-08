@@ -58,4 +58,4 @@
 - [[Hashing + Ciphertext Integrity]] — MACs and HMAC
 - [[Public Key Encryption + Digital Signatures]] — RSA and Schnorr signatures built on these hardness assumptions
 - [[CSE484/Policy and Access Control/Groups|Groups]] — mathematical foundation (cyclic groups, generators)
-- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — Diffie-Hellman is used in TLS for perfect forward secrecy
+- [[CSE461/Transport/Transport Layer Security (TLS)|TLS]] — Diffie-Hellman is used in TLS for perfect forward secrecy

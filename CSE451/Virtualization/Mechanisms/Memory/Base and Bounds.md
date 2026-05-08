@@ -17,11 +17,11 @@ if (virtual_addr >= bounds) { SEGFAULT; }
 4. [[Limited Growth]] — processes cannot dynamically expand their allocation
 5. [[Relocation Nightmare]] — defragmenting memory requires copying and pausing processes
 
-These problems are solved by [[CSE451/Kernel Abstraction/Memory/Virtual Addresses]].
+These problems are solved by [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses]].
 
 ## Related
 - [[Simple Memory Protection]] — base and bounds is the primary mechanism
-- [[CSE451/Kernel Abstraction/Memory/Virtual Addresses]] — the modern replacement
+- [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses]] — the modern replacement
 - [[Fixed Partitions]] — uses base and bounds registers per partition
 - [[Variable Partitions]] — also uses base and bounds
 - [[Segmentation]] — extends base and bounds with multiple segments per process

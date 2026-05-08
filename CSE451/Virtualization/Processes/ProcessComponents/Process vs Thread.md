@@ -24,7 +24,7 @@ OSTEP: *"Each thread is very much like a separate process, except for one differ
 ## Thread has its own:
 OSTEP: *"Different threads differentiate with each other mainly in: Different PC register values... Separate stacks and SP."*
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Program Counter (PC)|Program Counter]]
-- [[Registers]]
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Registers|Registers]]
 - Stack
 - Thread ID
 
@@ -49,7 +49,7 @@ Even though processes have separate address spaces, they can share memory in spe
 
 **Key insight**: anything read-only can be safely shared between processes since no one can modify it.
 
-This is how [[Easy Sharing]] works with [[CSE451/Kernel Abstraction/Memory/Virtual Addresses]] - multiple virtual pages can point to the same physical frame.
+This is how [[Easy Sharing]] works with [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses]] - multiple virtual pages can point to the same physical frame.
 
 # When to use which
 - **Use processes when:**

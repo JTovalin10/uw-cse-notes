@@ -19,4 +19,4 @@ In systems programming, understanding the size of data types is critical for mem
 
 ## Related
 - [[Malloc and Free]]
-- [[C Fundamentals/Pointers|Pointers]]
+- [[CSE333/C Fundamentals/Pointers]]

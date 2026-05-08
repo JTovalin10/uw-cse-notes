@@ -59,4 +59,4 @@ A **mixnet** chains multiple mix servers together for stronger anonymity guarant
 
 - [[CSE484/Anonymity and Privacy/Anonymity in data|Anonymity in Data]] — anonymity in datasets and re-identification
 - [[CSE484/Side Channel Attacks/Side Channel Attacks|Side Channel Attacks]] — traffic analysis is a side-channel on networks
-- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — encryption in transit, which E2EE builds on
+- [[CSE461/Transport/Transport Layer Security (TLS)|TLS]] — encryption in transit, which E2EE builds on

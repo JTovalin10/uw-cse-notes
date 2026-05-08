@@ -33,6 +33,6 @@ What happens if an interrupt handler runs too long?
 - [[Interrupt Handler]] — the code that runs when an interrupt fires
 - [[Interrupt Vector]] — the table of function pointers for interrupt dispatch
 - [[Interrupt Masking]] — how the OS temporarily disables interrupts
-- [[Traps]] — software-initiated counterpart to hardware interrupts
+- [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps]] — software-initiated counterpart to hardware interrupts
 - [[CLI]] / [[STI]] — x86 instructions to disable/enable interrupts
 - [[CSE351/System Programming/Exceptions]] — exceptions at the systems programming level

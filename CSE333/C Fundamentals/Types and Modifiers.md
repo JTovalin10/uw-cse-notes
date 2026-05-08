@@ -30,4 +30,4 @@ It is recommended to use these **extended types** in most CSE 333 code for clari
 ## Related
 - [[Introduction to C]]
 - [[Memory Management/C Memory Model|C Memory Model]]
-- [[Memory Management/Data Type Sizes|Data Type Sizes]]
+- [[CSE333/Memory Management/Data Type Sizes]]

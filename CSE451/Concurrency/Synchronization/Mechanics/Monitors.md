@@ -1,22 +1,36 @@
-## Lecture Notes
-[[Monitor Lecture Notes]]
+# CSE451: Monitors
+A higher-level synchronization construct that combines mutual exclusion with condition variables. Requires language support — synchronization code is added by the compiler.
 
-# Monitors
-a higher-level synchronization construct that combines mutual exclusion with condition variables
+A monitor is essentially a class where every method automatically acquires a lock on entry and releases it on exit. It combines:
+- **shared data** structures (object)
+- **procedures** that operate on the shared data
+- **synchronization** between concurrent threads that invoke those procedures
 
-requires language support for implicit operations
+Data can only be accessed from within the monitor using the procedures, which protects it from unstructured access and prevents ambiguity about what the synchronization variables protect. Addresses the key usability issues that arise with [[CSE451/Concurrency/Synchronization/Mechanics/Semaphores]].
+
+![[Screenshot 2026-01-20 at 3.57.31 PM.png]]
 
 ## Structure
-[[Monitor Structure]]
+```
+monitor MonitorName {
+    // shared data
+    // condition variables
+
+    procedure P1(...) { ... }
+    procedure P2(...) { ... }
+    ...
+
+    initialization code { ... }
+}
+```
 
 ## Key Properties
 - only one thread can be active inside the monitor at a time
 - mutual exclusion is automatic (implicit lock on entry)
 - condition variables for coordination between threads
 
-
 ## Condition Variables
-used for threads to wait for specific conditions within the monitor
+Used for threads to wait for specific conditions within the monitor.
 
 ### Operations
 ```c
@@ -25,23 +39,28 @@ signal(condition) // wake up one waiting thread
 broadcast(condition) // wake up all waiting threads
 ```
 
-
 ## Semantics: Hoare vs Mesa
-[[Monitor Semantics Hoare vs Mesa]]
+[[CSE451/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Semantics Hoare vs Mesa]]
 
 ## Example: Bounded Buffer
-[[Monitor Bounded Buffer Example]]
+[[CSE451/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Bounded Buffer Example]]
 
-## Advantages of monitors
-[[Monitor Advantages]]
+## Advantages
+- easier to program correctly than semaphores
+- mutual exclusion is automatic
+- encapsulation of shared data
 
-## Disadvantages of monitors
-[[Monitor Disadvantages]]
+## Disadvantages
+- requires language support
+- less flexible than semaphores
+- can still have deadlock with nested monitors
 
 ## Languages with Monitor Support
-[[Languages with Monitor Support]]
+- Java (`synchronized` methods/blocks)
+- C# (`lock` statement)
+- Mesa (original implementation)
 
 ## Related
-- [[Semaphores]]
-- [[Critical Sections]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Semaphores]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Critical Sections/Critical Sections]]
 - [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]

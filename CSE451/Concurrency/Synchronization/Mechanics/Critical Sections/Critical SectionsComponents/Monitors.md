@@ -41,10 +41,10 @@ monitor MonitorName {
 - can still have deadlock with nested monitors
 
 ## Semantics: Hoare vs Mesa
-[[Monitor Semantics Hoare vs Mesa]]
+[[CSE451/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Semantics Hoare vs Mesa]]
 
 ## Example: Bounded Buffer
-[[Monitor Bounded Buffer Example]]
+[[CSE451/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/MonitorsComponents/Monitor Bounded Buffer Example]]
 
 ## Languages with Monitor Support
 - Java (`synchronized` methods/blocks)
@@ -52,6 +52,6 @@ monitor MonitorName {
 - Mesa (original implementation)
 
 ## Related
-- [[Semaphores]]
-- [[Critical Sections]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Semaphores]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Critical Sections/Critical Sections]]
 - [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]

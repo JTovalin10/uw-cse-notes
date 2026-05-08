@@ -25,7 +25,7 @@ solving critical section problems requires mechanisms that enforce mutual exclus
 	- [[compare_and_swap]] - atomic compare-and-exchange instruction
 - [[Spinlock]] - primitive lock using busy-waiting
 - [[Semaphores]] - basic synchronization primitive with counter
-- [[Monitors]] - higher-level construct requiring language support
+- [[CSE451/Concurrency/Synchronization/Mechanics/Monitors]] - higher-level construct requiring language support
 - [[Messages]] - synchronization based on atomic data transfer across channels
 - [[Disabling Interrupts]] - kernel-only mechanism
 

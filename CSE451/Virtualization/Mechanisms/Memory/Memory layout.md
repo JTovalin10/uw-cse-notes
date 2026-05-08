@@ -1,3 +1,3 @@
 [[Simple Memory Protection]]
 
-[[CSE451/Kernel Abstraction/Memory/Virtual Addresses]]
+[[CSE451/Virtualization/Memory/Concepts/Virtual Addresses]]

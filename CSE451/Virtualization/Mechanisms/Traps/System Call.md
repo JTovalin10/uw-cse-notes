@@ -20,7 +20,7 @@ A **system call (syscall)** is a request by a program for the kernel to perform 
 - `fork()` / `exec()` — process creation and replacement
 
 ## Related
-- [[Traps]] — system calls are intentional traps
+- [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps]] — system calls are intentional traps
 - [[How Traps Work]] — the mechanism behind syscall execution
 - [[Privilege Level]] — syscalls cross the privilege boundary from user to kernel
 - [[Mode Switch]] — the user-to-kernel transition triggered by a syscall

@@ -8,10 +8,10 @@ Master navigation hub for CSE 332 notes. For a course overview, see the [[CSE332
 - [[CSE332/ADT and Design/Abstract Data Type (ADT)|Abstract Data Type (ADT)]] — mathematical specification of data structure behavior
 
 ## Analysis
-- [[CSE332/Analysis/Algorithm Analysis|Algorithm Analysis]]
-- [[CSE332/Analysis/Asymptotic Notation|Asymptotic Notation]]
-- [[CSE332/Analysis/Dictionaries And BSTs|Dictionaries And BSTs]]
-- [[CSE332/Analysis/Recurrences|Recurrences]]
+- [[CSE332/Complexity Analysis/Algorithm Analysis|Algorithm Analysis]]
+- [[CSE332/Complexity Analysis/Asymptotic Notation|Asymptotic Notation]]
+- [[CSE332/Complexity Analysis/Dictionaries And BSTs|Dictionaries And BSTs]]
+- [[CSE332/Complexity Analysis/Recurrences|Recurrences]]
 
 ## Priority Queues
 - [[CSE332/Priority Queues/Binary Heaps|Binary Heaps]]

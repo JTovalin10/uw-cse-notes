@@ -1,6 +1,6 @@
 # CSE451: Privileged Instructions
 
-**Privileged instructions** are CPU instructions that can only be executed in kernel mode (Ring 0). If a user program attempts to execute one, the CPU raises an [[Exception]] and the OS takes control.
+**Privileged instructions** are CPU instructions that can only be executed in kernel mode (Ring 0). If a user program attempts to execute one, the CPU raises an [[CSE451/Virtualization/Mechanisms/Exceptions/Exception|Exception]] and the OS takes control.
 
 ## What the OS Does When a User Program Attempts a Privileged Instruction
 1. Halt the current instruction

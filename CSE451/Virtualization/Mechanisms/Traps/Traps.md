@@ -13,9 +13,9 @@ The trap is a **doorway into kernel mode**, through which a process running in u
 - [[Trap vs Interrupt]] — software-triggered and synchronous vs. external and asynchronous
 
 ## Related
-- [[Interrupts]] — hardware-triggered counterpart
+- [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]] — hardware-triggered counterpart
 - [[System Call]] — the most common intentional trap
-- [[Exception]] — unintentional trap caused by program error
+- [[CSE451/Virtualization/Mechanisms/Exceptions/Exception]] — unintentional trap caused by program error
 - [[Trap Table]] — the dispatch table for trap handlers
 - [[Atomic Transfer of Control]] — the hardware mechanism used during trap entry
 - [[Transparent Restartable Execution]] — the illusion maintained after a trap

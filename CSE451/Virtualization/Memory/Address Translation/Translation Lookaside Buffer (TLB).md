@@ -2,7 +2,7 @@
 
 - a hardware cache of recent virtual-to-physical address translations
 - part of the chip's memory management unit (MMU)
-- solves the performance problem of [[CSE451/Kernel Abstraction/Memory/Virtual Addresses]]: without a TLB, every memory access requires walking the page table (extra memory accesses per instruction)
+- solves the performance problem of [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses]]: without a TLB, every memory access requires walking the page table (extra memory accesses per instruction)
 - typically holds 32-256 entries
 
 # Related

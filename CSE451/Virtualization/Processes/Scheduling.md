@@ -140,4 +140,4 @@ Scheduling becomes significantly more complex when multiple CPUs are available.
 - [[Thread Levels]]
 - [[Process]]
 - CPUState
-- [[Interrupts]]
+- [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]]

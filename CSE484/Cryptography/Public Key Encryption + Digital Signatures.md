@@ -89,4 +89,4 @@ Bob ($pk_B, sk_B$) wants to sign a message $m$ and send it to Alice ($pk_A, sk_A
 - [[Hashing + Ciphertext Integrity]] — hash functions used in signature constructions (Schnorr uses $H$)
 - [[Cryptography]] — symmetric encryption and the broader cryptographic ecosystem
 - [[CSE484/Policy and Access Control/Groups|Groups]] — group theory underlying RSA and Schnorr
-- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — where digital signatures are used for certificate verification
+- [[CSE461/Transport/Transport Layer Security (TLS)|TLS]] — where digital signatures are used for certificate verification

@@ -62,4 +62,4 @@
 - [[Cryptography]] — symmetric encryption, block ciphers, OTP
 - [[Asymmetric Cryptography + key Exchange]] — Diffie-Hellman and key exchange
 - [[Public Key Encryption + Digital Signatures]] — digital signatures also provide integrity
-- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — uses HMAC and AES-GCM for integrity in practice
+- [[CSE461/Transport/Transport Layer Security (TLS)|TLS]] — uses HMAC and AES-GCM for integrity in practice

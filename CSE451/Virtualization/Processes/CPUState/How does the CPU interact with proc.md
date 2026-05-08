@@ -1,12 +1,12 @@
 - when a process is running, its CPU state is inside the CPU
-	- [[Registers]]
+	- [[CSE451/Virtualization/Processes/CPUState/CPU State#Registers|Registers]]
 	- CPU contains current values
 - When the OS gets control because of a...
-	- [[Traps]]: program executing syscall
-	- [[Exception]]: Program does something unexpected
-	- [[Interrupts]]: A hardware device requests service
+	- [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps]]: program executing syscall
+	- [[CSE451/Virtualization/Mechanisms/Exceptions/Exception|Exception]]: Program does something unexpected
+	- [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]]: A hardware device requests service
 - The OS saves the CPU state of the running process in that process's proc
-- When the OS returns the process to the running state, it loads the hardware registers with values from that process's proc — general [[Registers]], stack pointers, instruction pointers
+- When the OS returns the process to the running state, it loads the hardware registers with values from that process's proc — general [[CSE451/Virtualization/Processes/CPUState/CPU State#Registers|Registers]], stack pointers, instruction pointers
 - the act of switching the CPU from one process to another is called a [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]]
 	- systems may do 100+ of switches/sec
 	- takes a few microseconds on todays hardware

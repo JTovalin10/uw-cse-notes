@@ -18,7 +18,7 @@ An **interrupt handler** (also called an **Interrupt Service Routine, ISR**) is 
 	- Switches back to user mode
 
 ## Related
-- [[Interrupts]] — what triggers the handler
+- [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]] — what triggers the handler
 - [[Interrupt Vector]] — the dispatch table that maps interrupts to handlers
 - [[Interrupt Masking]] — interrupts are disabled while the handler runs
 - [[Interrupt Stack]] — the stack the handler runs on

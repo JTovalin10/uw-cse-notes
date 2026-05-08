@@ -48,4 +48,4 @@
 - [[CSE351/Memory Management/Memory Allocation|Memory Allocation]]
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]
 - [[CSE333/Memory Management/Stack|Stack (CSE333)]]
-- [[CSE333/Memory Management/Heap|Heap (CSE333)]]
+- [[CSE333/Memory Management/Heap Management|Heap Management (CSE333)]]

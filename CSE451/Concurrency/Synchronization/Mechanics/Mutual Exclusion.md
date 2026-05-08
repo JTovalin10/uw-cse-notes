@@ -15,7 +15,7 @@ one way to guarantee mutually exclusive execution is using **locks**
 - [[Locks]] - acquire/release semantics
 - [[Spinlock]] - busy-waiting primitive
 - [[Semaphores]] - counter-based
-- [[Monitors]] - language-level support
+- [[CSE451/Concurrency/Synchronization/Mechanics/Monitors]] - language-level support
 - [[Disabling Interrupts]] - kernel only
 
 # Related

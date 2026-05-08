@@ -69,5 +69,5 @@ Because disk access is massively slower than RAM, the OS manages physical memory
 - [[CSE351/System Programming/Processes|Processes]]
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]
 - [[CSE451/Virtualization/Memory/Paged Virtual Memory|Paged Virtual Memory (CSE451)]]
-- [[CSE451/Kernel Abstraction/Memory/Virtual Addresses|Virtual Addresses (CSE451)]]
+- [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses|Virtual Addresses (CSE451)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

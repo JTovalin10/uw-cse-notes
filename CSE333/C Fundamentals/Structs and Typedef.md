@@ -58,4 +58,4 @@ In C++, `struct` and `class` are nearly identical. The only difference is the de
 - [[Introduction to C]]
 - [[Memory Management/Heap Management|Heap Management]]
 - [[Data Structures/LinkedList|LinkedList]]
-- [[Pointers]]
+- [[CSE333/C Fundamentals/Pointers]]

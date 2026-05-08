@@ -9,6 +9,6 @@ The interrupt handler cannot run on the interrupted user process's stack because
 ![[Screenshot 2026-01-07 at 12.01.34 PM.png]]
 
 ## Related
-- [[Interrupts]] — what causes the switch to the interrupt stack
+- [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]] — what causes the switch to the interrupt stack
 - [[Interrupt Handler]] — the code that runs on this stack
 - [[Kernel Stack]] — the related per-process kernel stack

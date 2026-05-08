@@ -80,7 +80,7 @@ Setup:
 
 ## Related
 
-- [[CSE452/Clocks/Time and Virtual Clocks|Time and Virtual Clocks]] — happens-before ordering; a prerequisite for reasoning about what nodes can know
+- [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — happens-before ordering; a prerequisite for reasoning about what nodes can know
 - [[CSE452/Clocks/System State|System State]] — stable properties and invariants in distributed systems
 - [[CSE452/RPC/Fault Model|Fault Model]] — the failure model that makes coordination hard
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — a practical protocol that works around coordination limits

@@ -7,7 +7,7 @@ Forcing [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]] betwee
 ## Mechanisms
 - [[Spinlock]]
 - [[Semaphores]]
-- [[Monitors]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Monitors]]
 - [[Messages]]
 - [[Disabling Interrupts]]
 

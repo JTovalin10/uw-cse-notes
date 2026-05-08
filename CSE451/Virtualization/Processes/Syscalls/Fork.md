@@ -25,6 +25,6 @@ fork syscall
 	1. no copying of address space contents has occurred at this point — with the sole exception of the top page of the stack
 3. set both parent and child page tables to make all pages read-only
 4. if either parent or child write to memory, an exception occurs
-5. when [[Exception]] occurs, OS copies the page, adjusts page tables, etc
+5. when [[CSE451/Virtualization/Mechanisms/Exceptions/Exception|Exception]] occurs, OS copies the page, adjusts page tables, etc
 # Image
 ![[Pasted image 20260116005901.png]]

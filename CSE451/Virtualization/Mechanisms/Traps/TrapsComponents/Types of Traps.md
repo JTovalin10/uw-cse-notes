@@ -18,8 +18,8 @@ The process did something illegal or nonsensical.
 **Result:** the trap handler for these errors usually kills the process (or sends it a signal like SIGSEGV).
 
 ## Related
-- [[Traps]] — the parent concept
+- [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps]] — the parent concept
 - [[System Call]] — intentional traps
-- [[Exception]] — unintentional traps caused by hardware errors
+- [[CSE451/Virtualization/Mechanisms/Exceptions/Exception]] — unintentional traps caused by hardware errors
 - [[Dealing with Exceptions]] — OS responses to unintentional traps
 - [[How Traps Work]] — the mechanism behind both types

@@ -7,9 +7,9 @@ The CPU keeps checking if the device/process has finished rather than allowing t
 This is inefficient because the CPU burns cycles repeatedly checking a status register rather than doing useful work.
 
 ## The Fix
-[[Interrupts]] solve the polling problem by letting the device interrupt the CPU only when the operation completes.
+[[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]] solve the polling problem by letting the device interrupt the CPU only when the operation completes.
 
 ## Related
-- [[Interrupts]] — the alternative to polling
+- [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]] — the alternative to polling
 - [[Interrupt Handler]] — the code that runs when the device signals completion
 - [[Blocking IO Problem]] — related issue with user threads and blocking I/O

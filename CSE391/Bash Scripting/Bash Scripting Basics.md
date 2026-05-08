@@ -15,13 +15,13 @@ Before a script can be run, it must have **execute permissions**.
 2. **Run the script:** `./myscript.sh` (The `./` is necessary to specify the current directory).
 
 ## Variables and Typing
-Bash is **[[Tentatively Typed]]**, meaning variables do not have strict data types like `int` or `boolean`.
+Bash is **Tentatively Typed**, meaning variables do not have strict data types like `int` or `boolean`.
 - **Everything is a String:** By default, Bash treats all variables as strings.
 - **Context Matters:** A variable is treated as a number only when used in an arithmetic context (e.g., inside `$(( ... ))`).
 - **No Spaces in Assignment:** `NAME=Justin` is correct. `NAME = Justin` will fail because Bash thinks `NAME` is a command and `=` is its first argument.
 
 ## Variable Expansion
-**[[Variable Expansion]]** is the process where the shell replaces a variable name with its stored value.
+**Variable Expansion** is the process where the shell replaces a variable name with its stored value.
 - **Accessing Values:** Use the `$` prefix. `echo $NAME`
 - **Brace Expansion:** Use `{}` to avoid ambiguity. `echo "${NAME}_file.txt"`
 - **Command Substitution:** Capture the output of a command into a variable using `$(...)`.

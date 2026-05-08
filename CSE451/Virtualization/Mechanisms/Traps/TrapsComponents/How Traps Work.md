@@ -9,7 +9,7 @@ Traps follow a five-step sequence from trigger to return:
 5. **Return-from-Trap** — if the process is allowed to continue, the OS executes a special `return-from-trap` instruction, which lowers the privilege back to user mode and resumes the process exactly where it left off
 
 ## Related
-- [[Traps]] — the parent concept
+- [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps]] — the parent concept
 - [[Trap Table]] — step 3 uses this dispatch table
 - [[Atomic Transfer of Control]] — step 2 uses this mechanism
 - [[Transparent Restartable Execution]] — step 5 relies on this property

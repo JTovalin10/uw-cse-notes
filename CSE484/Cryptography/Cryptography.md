@@ -206,4 +206,4 @@ An attacker is assumed to know the ciphertext and the encryption algorithm (Kerc
 - [[Asymmetric Cryptography + key Exchange]] — Diffie-Hellman key exchange and hardness assumptions
 - [[Public Key Encryption + Digital Signatures]] — RSA and Schnorr signatures
 - [[CSE484/Policy and Access Control/Targets for policy|Targets for Policy]] — CIA triad: confidentiality, integrity, availability
-- [[CSE461/Transport Layer/Transport Layer Security (TLS)|TLS]] — how symmetric and asymmetric crypto are combined in practice
+- [[CSE461/Transport/Transport Layer Security (TLS)|TLS]] — how symmetric and asymmetric crypto are combined in practice

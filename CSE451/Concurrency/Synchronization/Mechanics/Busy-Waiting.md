@@ -17,4 +17,4 @@ while (condition == false)
 - [[Spinlock]]
 
 ## Alternative
-- blocking/sleeping (used by [[Semaphores]], [[Monitors]])
+- blocking/sleeping (used by [[CSE451/Concurrency/Synchronization/Mechanics/Semaphores|Semaphores]], [[CSE451/Concurrency/Synchronization/Mechanics/Monitors|Monitors]])

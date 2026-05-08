@@ -6,7 +6,7 @@ The **Kernel Stack** is a per-process (or per-thread) stack used when the CPU is
 - **Location**: It resides in kernel memory, which is inaccessible to user-mode code.
 
 ## Purpose
-When a process enters the kernel (via a [[Traps|Trap]], [[Exception]], or [[Interrupts|Interrupt]]), the hardware or low-level entry code switches the stack pointer ([[ESP]]/[[RSP]]) to this kernel stack. 
+When a process enters the kernel (via a [[CSE451/Virtualization/Mechanisms/Traps/Traps|Trap]], [[CSE451/Virtualization/Mechanisms/Exceptions/Exception|Exception]], or [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupt]]), the hardware or low-level entry code switches the stack pointer ([[ESP]]/[[RSP]]) to this kernel stack. 
 
 It is used to store:
 - Saved user-mode registers (the **Trap Frame**)

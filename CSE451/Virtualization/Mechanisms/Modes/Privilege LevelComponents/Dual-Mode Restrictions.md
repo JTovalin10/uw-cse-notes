@@ -20,5 +20,5 @@ Available only to kernel mode (Ring 0), not to user code. See [[Privileged Instr
 - [[Privilege Level]] — the parent concept
 - [[Privileged Instructions]] — the restricted instruction set
 - [[Base and Bounds]] — one mechanism for memory access limits
-- [[CSE451/Kernel Abstraction/Memory/Virtual Addresses]] — paging-based memory protection
-- [[Interrupts]] — how the timer interrupt reclaims control
+- [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses]] — paging-based memory protection
+- [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]] — how the timer interrupt reclaims control

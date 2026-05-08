@@ -48,6 +48,6 @@ The process of turning source code into an executable involves several stages ma
 - [[Build Systems/GCC Workflow|GCC Workflow]]
 - [[Preprocessor]]
 - [[Linkage and Visibility]]
-- [[Pointers]]
+- [[CSE333/C Fundamentals/Pointers]]
 - [[Arrays]]
 - [[Structs and Typedef]]
