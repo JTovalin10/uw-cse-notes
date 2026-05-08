@@ -4,8 +4,8 @@ a process consists of (at least):
 	- the code (text segment) for the running program
 	- the data (global/static variables, heap) for the running program
 - thread state
-	- the [[CSE451/Processes/CPUState/Program Counter]] - where in the code the thread is currently executing
-	- the [[CSE451/Processes/CPUState/Stack Pointer]] - points to the top of the current execution stack
+	- the [[CSE451/Virtualization/Processes/CPUState/CPU State#Program Counter (PC)|Program Counter]] - where in the code the thread is currently executing
+	- the [[CSE451/Virtualization/Processes/CPUState/CPU State#Stack Pointer (SP)|Stack Pointer]] - points to the top of the current execution stack
 	- CPU registers - hold intermediate computation values
 - other OS resources
 	- open file descriptors

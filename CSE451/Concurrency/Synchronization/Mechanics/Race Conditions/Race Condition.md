@@ -10,7 +10,7 @@ a program has a race condition or data race if the result of an execution depend
 
 # How to prevent
 - [[Critical Sections]] - identify and protect shared data access
-- [[CSE451/Processes/Synchronization/Mutual Exclusion]] - ensure operations are not simultaneous
+- [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]] - ensure operations are not simultaneous
 - [[Locks]] - enforce ordering with acquire/release
 
 # Related

@@ -7,7 +7,7 @@ Every single process running has its own unique PCB stored in kernel memory
 the PCB is a struct. each os varies but agrees on:
 - [[Process ID]] (PID)
 - [[Process State]]
-- [[CSE451/Processes/CPUState/Program Counter]]
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Program Counter (PC)|Program Counter]]
 - [[Registers]]
 - [[CPU Scheduling Information]]
 - [[Memory Management Information]]

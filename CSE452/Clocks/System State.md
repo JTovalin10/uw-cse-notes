@@ -44,4 +44,4 @@ The distinction matters when writing correctness proofs: you can always rely on 
 
 - [[CSE452/Primary-Backup/Primary Backup|Primary Backup]] — replication system where these invariants are applied
 - [[CSE452/Primary-Backup/View Server|View Server]] — manages view transitions and maintains system-wide invariants
-- [[CSE451/Processes/Synchronization/Critical Sections/Critical Sections.md]] — invariants are also used to prove correctness of mutual exclusion
+- [[CSE451/Concurrency/Synchronization/Mechanics/Critical Sections/Critical Sections.md]] — invariants are also used to prove correctness of mutual exclusion

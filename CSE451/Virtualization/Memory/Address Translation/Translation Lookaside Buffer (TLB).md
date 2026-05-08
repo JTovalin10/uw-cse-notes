@@ -9,7 +9,7 @@
 - [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB (351)]]
 - [[Translation Lookaside Buffer (TLB) In Hardware]]
 - [[Translation Lookaside Buffer (TLB) Exploits Locality]]
-- [[Translation Lookaside Buffer (TLB) How It Works]]
+- [[CSE451/Virtualization/Memory/Address Translation/TLB/Translation Lookaside Buffer (TLB) How It Works]]
 - [[Translation Lookaside Buffer (TLB) Entry Contents]]
 - [[Translation Lookaside Buffer (TLB) Entry Layout]]
 - [[Translation Lookaside Buffer (TLB) Miss Handling]]

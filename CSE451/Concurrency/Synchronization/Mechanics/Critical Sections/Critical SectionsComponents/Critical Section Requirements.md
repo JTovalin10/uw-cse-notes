@@ -3,7 +3,7 @@ for a solution to the critical section problem to be correct, it must satisfy th
 
 ## Mutual Exclusion
 - at most one thread is in the critical section at any time
-- see [[CSE451/Processes/Synchronization/Mutual Exclusion]]
+- see [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]
 
 ## Progress
 - if [[Thread]] T is outside the critical section, then T cannot prevent thread S from entering the critical section
@@ -20,4 +20,4 @@ for a solution to the critical section problem to be correct, it must satisfy th
 
 ## Related
 - [[Critical Sections]]
-- [[CSE451/Processes/Synchronization/Mutual Exclusion]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]

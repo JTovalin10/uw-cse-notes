@@ -10,9 +10,9 @@ A process can have multiple threads, all sharing the same address space but each
 - Enables parallelism on multi-core CPUs
 - Shares resources (memory, files) with other threads in the same process
 - Each thread has its own:
-	- [[CSE451/Processes/CPUState/Program Counter]] - tracks which instruction to execute next
+	- [[CSE451/Virtualization/Processes/CPUState/CPU State#Program Counter (PC)|Program Counter]] - tracks which instruction to execute next
 	- [[Registers]] - holds thread-specific data
-	- [[CSE451/Processes/CPUState/Stack Pointer]] / Stack - for function calls and local variables
+	- [[CSE451/Virtualization/Processes/CPUState/CPU State#Stack Pointer (SP)|Stack Pointer]] / Stack - for function calls and local variables
 
 # Why use threads
 - **Responsiveness** - UI can stay responsive while background work happens

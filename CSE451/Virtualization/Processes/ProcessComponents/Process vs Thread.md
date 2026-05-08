@@ -23,7 +23,7 @@ OSTEP: *"Each thread is very much like a separate process, except for one differ
 
 ## Thread has its own:
 OSTEP: *"Different threads differentiate with each other mainly in: Different PC register values... Separate stacks and SP."*
-- [[CSE451/Processes/CPUState/Program Counter]]
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Program Counter (PC)|Program Counter]]
 - [[Registers]]
 - Stack
 - Thread ID

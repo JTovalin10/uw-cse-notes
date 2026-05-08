@@ -31,5 +31,5 @@ The following operations are done **[[Atomic]]ally**
 
 ## Related
 - [[Critical Sections]]
-- [[CSE451/Processes/Synchronization/Mutual Exclusion]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]
 - [[Spinlock]]

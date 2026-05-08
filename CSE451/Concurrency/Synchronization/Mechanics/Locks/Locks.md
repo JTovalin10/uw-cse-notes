@@ -18,5 +18,5 @@ locks require hardware support for atomic operations:
 
 # Related
 - [[Critical Sections]]
-- [[CSE451/Processes/Synchronization/Mutual Exclusion]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]
 - [[Spinlock]]

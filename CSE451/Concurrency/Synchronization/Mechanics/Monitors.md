@@ -44,4 +44,4 @@ broadcast(condition) // wake up all waiting threads
 ## Related
 - [[Semaphores]]
 - [[Critical Sections]]
-- [[CSE451/Processes/Synchronization/Mutual Exclusion]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]

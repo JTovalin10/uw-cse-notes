@@ -1,1 +1,0 @@
-logically (and possibly physically) simultaneous operations for convenience/simplicity

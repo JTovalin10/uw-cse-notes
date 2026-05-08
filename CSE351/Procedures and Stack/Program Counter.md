@@ -48,4 +48,4 @@ Used for [[CSE351/x86-64 Assembly/Switch Statements|Switch Statements]] with jum
 - [[CSE351/x86-64 Assembly/Switch Statements|Switch Statements]]
 - [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
 - [[CSE351/x86-64 Assembly/Labels|Labels]]
-- [[CSE451/Processes/CPUState/Program Counter|Program Counter (CSE451)]]
+- [[CSE451/Virtualization/Processes/CPUState/Program Counter|Program Counter (CSE451)]]

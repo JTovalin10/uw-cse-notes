@@ -3,7 +3,7 @@ sequences of instructions that may get incorrect results if executed simultaneou
 (also called [[Race Condition]] in reference when the result depends on the timing)
 
 # How do we solve this
-Forcing [[CSE451/Processes/Synchronization/Mutual Exclusion]] between two critical section executions is sufficient to ensure correct execution - guarantees ordering
+Forcing [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]] between two critical section executions is sufficient to ensure correct execution - guarantees ordering
 ## Mechanisms
 - [[Spinlock]]
 - [[Semaphores]]

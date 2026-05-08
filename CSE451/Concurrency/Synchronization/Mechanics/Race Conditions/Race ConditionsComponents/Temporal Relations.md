@@ -7,7 +7,7 @@ the ordering relationship between events in concurrent execution
 
 # Why it matters
 - without explicit ordering, [[Race Condition]]s can occur
-- [[CSE451/Processes/Synchronization/Mutual Exclusion]] provides ordering guarantees
+- [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]] provides ordering guarantees
 
 # Related
 - [[Interleaved Schedules]]

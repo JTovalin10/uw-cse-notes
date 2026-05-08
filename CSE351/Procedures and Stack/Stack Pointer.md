@@ -82,4 +82,4 @@ If `%rsp = 0x7fffff000000`, after `popq %rbx`:
 - [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
 - [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
 - [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
-- [[CSE451/Processes/CPUState/Stack Pointer|Stack Pointer (CSE451)]]
+- [[CSE451/Virtualization/Processes/CPUState/Stack Pointer|Stack Pointer (CSE451)]]

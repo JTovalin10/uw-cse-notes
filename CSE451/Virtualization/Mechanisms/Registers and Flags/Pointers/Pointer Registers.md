@@ -56,7 +56,7 @@ mov rax, [rip + offset]  ; load from address relative to current instruction
 ## Related
 - [[General Purpose Registers]] — EAX, EBX, ECX, EDX, ESI, EDI
 - [[EFLAGS]] — the flags register
-- [[CSE451/Processes/CPUState/Program Counter]] — generic term for instruction pointer
-- [[CSE451/Processes/CPUState/Stack Pointer]] — generic term for stack pointer
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Program Counter (PC)|Program Counter]] — generic term for instruction pointer
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Stack Pointer (SP)|Stack Pointer]] — generic term for stack pointer
 - [[Kernel Stack]] — how pointer registers are saved during kernel entry
 - [[CSE351/System Programming/Exceptions]] — pointer registers saved during exceptions

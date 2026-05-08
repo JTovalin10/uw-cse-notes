@@ -59,4 +59,4 @@ See [[CSE344/SQL/Basics|SQL Basics]] for the underlying SQL statement syntax tha
 - [[Isolation Transactions in SQL]] — conflict-serializability as a way to verify isolation
 - [[Isolation Levels]] — weaker ACID guarantees and their trade-offs
 - [[CSE344/Database Design/Integrity Constraints|Integrity Constraints]] — declarative consistency enforcement
-- [[CSE451/Processes/Synchronization/Synchronization|Synchronization]] — OS-level concurrency control that underlies DBMS locking
+- [[CSE451/Concurrency/Synchronization/Mechanics/Synchronization|Synchronization]] — OS-level concurrency control that underlies DBMS locking

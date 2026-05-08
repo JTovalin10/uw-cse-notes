@@ -1,5 +1,5 @@
 # The big picture
-threads are about **[[concurrency]]** and **[[parallelism]]**
+threads are about **[[CSE451/Concurrency/Threads/Threads Overview|Threads Overview]]** and **[[CSE451/Concurrency/Threads/Threads Overview|Threads Overview]]**
 
 one way to get concurrency and parallelism is to use multiple processes
 - the programs of distinct processes are isolated from each other

@@ -29,6 +29,6 @@
 - [[Isolation Levels]] — weaker isolation levels and their trade-offs
 
 ## Related
-- [[CSE451/Processes/Synchronization/Locks/Locks|Locks (CSE451)]] — OS-level perspective on locking and synchronization
-- [[CSE451/Processes/Synchronization/Race Conditions/Race Condition|Race Conditions]] — the OS-level analog of transaction conflicts
-- [[CSE451/Processes/Synchronization/Synchronization|Synchronization]] — general concurrency control in OSes
+- [[CSE451/Concurrency/Synchronization/Mechanics/Locks/Locks|Locks (CSE451)]] — OS-level perspective on locking and synchronization
+- [[CSE451/Concurrency/Synchronization/Mechanics/Race Conditions/Race Condition|Race Conditions]] — the OS-level analog of transaction conflicts
+- [[CSE451/Concurrency/Synchronization/Mechanics/Synchronization|Synchronization]] — general concurrency control in OSes

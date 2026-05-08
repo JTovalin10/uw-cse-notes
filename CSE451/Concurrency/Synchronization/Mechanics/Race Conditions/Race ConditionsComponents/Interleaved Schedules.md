@@ -10,7 +10,7 @@
 
 # Solution
 - protect [[Critical Sections]] with [[Locks]] or other synchronization mechanisms
-- enforce [[CSE451/Processes/Synchronization/Mutual Exclusion]]
+- enforce [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]
 
 # Related
 - [[Temporal Relations]]

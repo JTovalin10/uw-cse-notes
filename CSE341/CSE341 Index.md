@@ -3,31 +3,31 @@
 Master navigation hub for Programming Languages notes.
 
 ## Part I: Functional Programming and OCaml
-- [[CSE341/OCaml Fundamentals/OCaml Fundamentals|OCaml Fundamentals]]
-- [[CSE341/Syntax and Semantics/Syntax and Semantics|Syntax and Semantics]]
-- [[CSE341/Lists and Tuples/Lists and Tuples|Lists and Tuples]]
-- [[CSE341/Records and Variants/Records and Variants|Records and Variants]]
-- [[CSE341/Pattern Matching/Pattern Matching|Pattern Matching]]
-- [[CSE341/Functions/First Class Functions and Closures|First Class Functions and Closures]]
-- [[CSE341/Mutation/Mutation and Aliasing|Mutation and Aliasing]]
-- [[CSE341/Thunks and Streams/Delayed Evaluation|Delayed Evaluation]]
+- [[CSE341/OCaml Fundamentals/OCaml Fundamentals|OCaml Fundamentals]] — variable bindings, functions, and core syntax
+- [[CSE341/Syntax and Semantics/Syntax and Semantics|Syntax and Semantics]] — static vs. dynamic semantics
+- [[CSE341/Data Structures/Lists and Tuples|Lists and Tuples]] — compound data types
+- [[CSE341/Data Structures/Options and Let Expressions|Options and Let Expressions]] — optional values and local scope
+- [[CSE341/Pattern Matching/Records and Variants|Records and Variants]] — "each-of" and "one-of" types
+- [[CSE341/Pattern Matching/Nested Patterns and Tail Recursion|Nested Patterns and Tail Recursion]] — deep matching and optimization
+- [[CSE341/Functions/First Class Functions and Closures|First Class Functions and Closures]] — higher-order functions and lexical scope
+- [[CSE341/Mutation/Mutation and Aliasing|Mutation and Aliasing]] — state in functional programming
+- [[CSE341/Thunks and Streams/Delayed Evaluation|Delayed Evaluation]] — thunks, promises, and lazy evaluation
 
 ## Part II: Programming Language Theory
-- [[CSE341/Type Systems/Type Inference|Type Inference]]
-- [[CSE341/Implementation/Implementing Languages|Implementing Programming Languages]]
-- [[CSE341/Modules/Modules and Abstraction|Modules and Abstraction]]
+- [[CSE341/Type Systems/Type Inference|Type Inference]] — how OCaml determines types
+- [[CSE341/Implementation/Implementing Languages|Implementing Programming Languages]] — the parser/interpreter pipeline
+- [[CSE341/Modules/Modules and Abstraction|Modules and Abstraction]] — ADTs and signatures
 
-## Part III: Alternative Paradigms
-- [[CSE341/Racket/Racket Fundamentals|Racket Fundamentals]]
-- [[CSE341/OOP/OOP with Ruby|OOP with Ruby]]
+## Part III: Trefoil & Racket Concepts
+- [[CSE341/Trefoil Basics/Trefoil Language Design|Trefoil Language Design]] — S-expressions, PSTs, and ASTs
+- [[CSE341/Trefoil Basics/Trefoil Functions and Scoping|Trefoil Functions and Scoping]] — environment-based evaluation
+- [[CSE341/Trefoil Advanced/Structs and Pattern Matching|Advanced Trefoil]] — lists, truthiness, and dynamic typing
 
-## Part IV: Trefoil Language Project
-- [[CSE341/Trefoil Basics/Trefoil Language Design|Trefoil Language Design]]
-- [[CSE341/Trefoil Basics/Trefoil Functions and Scoping|Trefoil Functions and Scoping]]
+## Part IV: Object-Oriented Features
+- [[CSE341/Object Features/Mutation and Objects|Mutation and Objects]] — implementing objects with closures and state
 
 ## Definitions
-- [[CSE341/Definitions/CSE341 Definitions Index|Glossary]]
-- [[CSE341/Definitions/Part2/Exception|Part 2 Definitions]]
+- [[CSE341/Definitions/CSE341 Definitions Index|Glossary]] — index of all PL terms
 
 ## Resources
 - [[CSE341/README|Course README]]

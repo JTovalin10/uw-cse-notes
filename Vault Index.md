@@ -9,6 +9,7 @@ High-level navigation hub for the UW CSE notes vault. Each course maintains its 
 - [[CSE 331 Index|CSE331 — Software Design and Implementation]]
 - [[CSE332 Index|CSE332 — Data Structures and Parallelism]]
 - [[CSE333 Index|CSE333 — Systems Programming]]
+- [[CSE341/CSE341 Index|CSE341 — Programming Languages]]
 - [[CSE344 Index|CSE344 — Introduction to Data Management]]
 - [[CSE351 Index|CSE351 — The Hardware/Software Interface]]
 - [[CSE391 Index|CSE391 — System and Software Tools]]

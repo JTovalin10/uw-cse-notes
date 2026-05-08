@@ -1,5 +1,5 @@
 - value is 0 or 1
-- Guarantees [[CSE451/Processes/Synchronization/Mutual Exclusion]] access to resource
+- Guarantees [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]] access to resource
 - only one [[Thread]]/[[Process]] allowed entry at a time
 	- uses a queue
 - logically equivalent to a lock with blocking rather than spinning

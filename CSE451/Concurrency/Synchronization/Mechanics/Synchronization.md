@@ -15,7 +15,7 @@ coordinating the execution of multiple threads to ensure correctness when access
 ## Key Concepts
 - [[Critical Sections]] - code sequences that may produce incorrect results if executed simultaneously
 	- [[Critical Section Requirements]] - mutual exclusion, progress, bounded waiting, performance
-- [[CSE451/Processes/Synchronization/Mutual Exclusion]] - ensuring operations are not simultaneous
+- [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]] - ensuring operations are not simultaneous
 - [[Atomic]] - operations that execute as though they cannot be interrupted
 
 ## Mechanisms

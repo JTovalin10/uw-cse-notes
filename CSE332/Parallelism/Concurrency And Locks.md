@@ -48,6 +48,6 @@ Memory categories in parallel programming:
 - [[CSE333/Concurrency/Threads|CSE333: Threads]]
 - [[CSE451/Threads/Thread|CSE451: Thread]]
 - [[CSE451/Threads/Threads Overview|OS: Threads Overview]]
-- [[CSE451/Processes/Synchronization/Synchronization|OS: Synchronization]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Synchronization|OS: Synchronization]]
 - [[CSE451/Threads/Deadlocks|OS: Deadlocks]]
 - [[CSE333/Process Management/Process Management|Systems: Process Management]]

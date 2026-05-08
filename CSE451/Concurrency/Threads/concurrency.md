@@ -1,1 +1,0 @@
-physically simultaneous operations for performance

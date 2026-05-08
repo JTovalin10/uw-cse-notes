@@ -34,4 +34,4 @@ Because detection is imperfect, systems accept the risk of false positives and d
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — the full replication protocol that failover supports
 - [[CSE452/RPC/Fault Model|Fault Model]] — the types of failures that trigger failover
 - [[CSE452/Primary-Backup/Why not just use TCP|Why Not Just Use TCP]] — why TCP cannot substitute for an application-level failover protocol
-- [[CSE451/Processes/Process/Process Management.md]] — OS-level process management and failure handling
+- [[CSE451/Virtualization/Processes/Process/Process Management.md]] — OS-level process management and failure handling

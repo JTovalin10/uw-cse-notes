@@ -36,4 +36,4 @@ This biconditional is stronger than the Lamport clock condition, which only hold
 - [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — the core concepts and the happens-before relation
 - [[CSE452/Clocks/Lamport Clock Algorithm|Lamport Clock Algorithm]] — the simpler single-counter implementation
 - [[CSE452/Primary-Backup/Idempotence|Idempotence]] — causality helps ensure operations are not repeated incorrectly
-- [[CSE451/Processes/Synchronization/Synchronization.md]] — synchronization in OS environments
+- [[CSE451/Concurrency/Synchronization/Mechanics/Synchronization.md]] — synchronization in OS environments

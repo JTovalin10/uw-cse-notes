@@ -54,4 +54,4 @@ movl $100, %eax       # Sets %rax = 0x0000000000000064
 - [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
 - [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
 - [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
-- [[CSE451/Processes/CPUState/Registers|Registers (CSE451)]]
+- [[CSE451/Virtualization/Processes/CPUState/Registers|Registers (CSE451)]]

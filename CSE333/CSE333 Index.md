@@ -31,7 +31,6 @@
 - [[CSE333/C++ Fundamentals/References and Const|References and Const]]
 - [[CSE333/C++ Fundamentals/Heap Management|Heap Management]] — dynamic memory allocation in C++ (new/delete)
 - [[CSE333/C++ Fundamentals/Templates|Templates]]
-- [[CSE333/C++ Fundamentals/C++ Casting|C++ Casting]] — type casting in C++
 
 ## [[CSE333/C++ OOP/C++ Classes|C++ Object-Oriented Programming]]
 - [[CSE333/C++ OOP/C++ Classes|C++ Object-Oriented Programming]]
@@ -40,6 +39,7 @@
 - [[CSE333/C++ OOP/Inheritance|Inheritance]] — C++ inheritance, dynamic dispatch, and abstract classes
 - [[CSE333/C++ OOP/Static Dispatch|Static Dispatch]] — compile-time method resolution
 - [[CSE333/C++ OOP/Virtual table|Virtual Table]] — vtable mechanism for dynamic dispatch
+- [[CSE333/C++ OOP/C++ Casting|C++ Casting]] — type casting in C++
 
 ## [[CSE333/Smart Pointers/Smart Pointers|Smart Pointers & Move Semantics]]
 - [[CSE333/Smart Pointers/Smart Pointers|Smart Pointers Overview]] — automatic memory management pointers

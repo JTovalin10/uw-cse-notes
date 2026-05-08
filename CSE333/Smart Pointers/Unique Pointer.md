@@ -105,4 +105,4 @@ void releasing_resources() {
 - [[Smart Pointers]]
 - [[Shared Pointer]]
 - [[weak pointer]]
-- [[move]]
+- [[CSE333/C++ OOP/Object Lifecycle#Move Mechanics: The Silent Fallback|Move]]

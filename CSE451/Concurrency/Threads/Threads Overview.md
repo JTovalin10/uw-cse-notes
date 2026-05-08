@@ -1,23 +1,31 @@
-threads are **concurrent executions sharing an address space (and some OS resources)**
-- address spaces provide isolation (if you can't name it, then you can't read or write to it)
-- communication between processes is expensive
-	- must go through the OS to move data from one address space to another
-	- typically done via pipes, sockets, shared memory regions (which require syscalls to set up), or message passing
-- threads that are in the same address space have cheap communication
-	- just update a shared variable
-	- use locks to control access
-	- no need to cross address space boundaries or involve the OS for data transfer
+# Course: Threads Overview
 
-because threads share the same address space, they can directly read and write the same memory locations. this makes sharing data trivial compared to inter-process communication (IPC), but it also introduces the need for [[Synchronization|synchronization]] to avoid race conditions.
+Threads are **concurrent executions sharing an address space (and some OS resources)**.
 
-threads within the same process also share:
-- open file descriptors
-- signal handlers
-- working directory
-- user and group IDs
+## Concurrency vs. Parallelism
+- **Concurrency**: Logically (and possibly physically) simultaneous operations for convenience or simplicity. It is about *dealing with* many things at once.
+- **Parallelism**: Physically simultaneous operations for performance. It is about *doing* many things at once.
 
-what each thread gets privately:
-- its own [[CSE451/Processes/CPUState/Stack Pointer]] and stack
-- its own [[CSE451/Processes/CPUState/Program Counter]]
-- its own set of CPU registers
-- its own thread ID
+## Why Threads?
+- **Address Space Sharing**: Address spaces provide isolation. Communication between processes is expensive because it must go through the OS (pipes, sockets, shared memory syscalls).
+- **Cheap Communication**: Threads within the same address space can communicate cheaply by updating shared variables. They use locks to control access, avoiding the need for OS intervention for data transfer.
+- **Shared Resources**: Threads within the same process share:
+    - Open file descriptors
+    - Signal handlers
+    - Working directory
+    - User and group IDs
+
+## Thread-Specific State
+While they share much, each thread has its own private:
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Stack Pointer|Stack Pointer]] and stack
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Program Counter|Program Counter]]
+- Set of CPU registers
+- Thread ID
+
+## Challenges
+Because threads share the same address space and can directly read/write the same memory locations, they require [[Synchronization|synchronization]] to avoid race conditions.
+
+## Related
+- [[CSE451/Concurrency/Threads/Threads]]
+- [[CSE451/Virtualization/Processes/Process|Processes]]
+- [[Synchronization]]
