@@ -1,3 +1,9 @@
 [
-  "obsidian-style-settings"
+  "obsidian-style-settings",
+  "calendar",
+  "code-styler",
+  "dataview",
+  "obsidian-excalidraw-plugin",
+  "templater-obsidian",
+  "obsidian-vimrc-support"
 ]
