@@ -13,7 +13,7 @@ Programmers explicitly request and release blocks of memory on the heap.
 3. **Capacity**: The heap is much larger than the stack.
 
 ## Related
-- [[Malloc and Free]]
-- [[Memory Bugs and Valgrind]]
-- [[C Memory Model]]
-- [[Stack]]
+- [[CSE333/Memory Management/Malloc and Free|Malloc and Free]]
+- [[CSE333/Memory Management/Memory Bugs and Valgrind|Memory Bugs and Valgrind]]
+- [[CSE333/Memory Management/C Memory Model|C Memory Model]]
+- [[CSE333/Memory Management/Stack|Stack]]

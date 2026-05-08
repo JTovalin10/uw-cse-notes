@@ -47,4 +47,4 @@ the default stack size varies by OS (commonly 1-8 MB per thread), which limits h
 
 # Related
 - [[CSE333/Concurrency/Threads|CSE333: Threads]]
-- [[Thread]]
+- [[CSE451/Concurrency/Threads/Thread|Thread]]

@@ -1,4 +1,4 @@
-# Thread-Local Allocation Buffers (TLABs)
+# CSE451: Thread-Local Allocation Buffers (TLABs)
 
 **Thread-Local Allocation Buffers (TLABs)** are an optimization technique used in high-performance, multi-threaded memory allocators (e.g., JVM's HotSpot, Go runtime, Jemalloc) to minimize synchronization overhead during heap allocation.
 
@@ -22,4 +22,4 @@ Instead of allocating individual objects from the global heap, each thread is pr
 - **Large Objects**: Very large objects that exceed the TLAB size are usually allocated directly from the global heap or a specialized "Large Object Space" to avoid wasting TLAB space.
 
 ---
-**See Also**: [[CSE451/Memory Management/Concepts/Slab Allocation|Slab Allocation]], [[Heap Management]]
+**See Also**: [[CSE451/Virtualization/Memory/Concepts/Slab Allocation|Slab Allocation]], [[CSE351/Memory Management/Memory Allocation|Memory Allocation (351)]]

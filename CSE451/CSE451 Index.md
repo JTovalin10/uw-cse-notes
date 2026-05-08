@@ -197,6 +197,9 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[CSE451/Virtualization/Memory/Concepts/OS Memory Responsibilities|OS Memory Responsibilities]] — what the OS manages in memory
 - [[CSE451/Virtualization/Memory/Concepts/Page Coloring|Page Coloring]] — cache-aware page allocation
 - [[CSE451/Virtualization/Memory/Concepts/Primary Memory|Primary Memory]] — RAM and primary storage
+- [[CSE451/Virtualization/Memory/Concepts/Buddy Allocator|Buddy Allocator]] — binary tree-based page allocator
+- [[CSE451/Virtualization/Memory/Concepts/Slab Allocation|Slab Allocation]] — kernel object caching allocator
+- [[CSE451/Virtualization/Memory/Concepts/TLABs|TLABs]] — thread-local allocation buffers
 - [[CSE451/Virtualization/Memory/Concepts/Swapping|Swapping]] — swapping processes to disk
 - [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses|Virtual Addresses]] — virtual address space concept
 - [[CSE451/Virtualization/Memory/Concepts/Virtual and Physical Caches|Virtual and Physical Caches]] — caching with virtual vs physical addresses

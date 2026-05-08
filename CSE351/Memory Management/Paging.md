@@ -69,4 +69,4 @@ The page offset is identical in both — only the page number changes during tra
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 - [[CSE351/Memory Management/Page Tables|Page Tables]]
 - [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]]
-- [[CSE451/Memory Management/Memory Models/Paging|Paging (CSE451)]]
+- [[CSE451/Virtualization/Memory/Memory Models/Paging|Paging (CSE451)]]

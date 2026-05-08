@@ -60,7 +60,7 @@ Because the network can drop messages (see [[CSE452/RPC/Fault Model|Fault Model]
 - Naïve: store all executed seqnums → grows $O(n)$ per client, $O(nm)$ for $m$ clients
 - Optimization: store only the **highest seqnum per client** → $O(m)$ space
   - Requires that one client never has two concurrent in-flight requests
-- For evicting old entries, see [[CSE451/Memory Management/Address Translation/TLB/Translation Lookaside Buffer (TLB) Replacement Policies|TLB Replacement Policies]] for analogous eviction strategies
+- For evicting old entries, see [[CSE451/Virtualization/Memory/Address Translation/TLB/Translation Lookaside Buffer (TLB) Replacement Policies|TLB Replacement Policies]] for analogous eviction strategies
 
 ### Multiple Clients
 - Server stores a set of `(client_id, seqnum, response)` triples

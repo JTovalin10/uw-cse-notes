@@ -1,88 +1,83 @@
 # CSE444: Validation
 
-Concurrency Control by Validation (also known as **Optimistic Concurrency Control**) assumes that conflicts are rare and validates transactions only at commit time.
+Concurrency Control by Validation (also known as **Optimistic Concurrency Control** or **OCC**) assumes that conflicts are rare and validates transactions only at commit time.
 
 ## Workflow in Depth
 
-Unlike pessimistic locking (where you wait for locks *before* doing work), Validation-based CC assumes you will succeed. You are still allowed to rollback
-- Read set RS(T) = the element it reads
-- Write set WS(T) = the element it writes
+Unlike [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Pessimistic Locking]] (where you wait for locks *before* doing work), Validation-based CC assumes you will succeed. 
 
-### 1. The Read Phase (Parallel Execution)
-- **Work**: The transaction $T$ executes its logic fully in a private workspace.
-	- *What this means*: $T$ runs its entire business logic (e.g., calculations) without requesting any locks (Shared or Exclusive). It assumes no conflicts will occur.
-- **Reads**: It reads the necessary values from the main database into its own memory.
-- **Writes**: Any `UPDATE` or `INSERT` is performed **only** in a **private workspace** (a local buffer). The real database on disk remains unchanged.
-- **Concurrency**: Because there are no locks, many transactions can "complete their work" simultaneously at full speed.
+### Timestamps in Validation
+Every transaction $T$ is tracked using three critical timestamps:
+1. **$START(T)$**: When $T$ starts its Read Phase.
+2. **$VAL(T)$**: When $T$ starts its Validation Phase. This determines the **serialization order**.
+3. **$FIN(T)$**: When $T$ finishes its Write Phase.
 
-### 2. The Validate Phase (The Critical Section)
-- **Work**: Once $T$ is finished with its work, it asks the DBMS scheduler: "Did anyone else make a change while I was working that would make my work invalid?" if not you may need to rollback
-	- if it works it gives only the validation timestamp and tells you that you are allowed to do transaction. gemini is this only for writes? what happens if a read occures, does it also need a timestamp
-	- The validation step is to ensure there is no overlap between other WS or RS. we want to ensure that any object finished before the other starts and if there is a conflict we ROLLBACK
-- **Sequentiality**: To ensure correctness, the **Validation and Write phases are typically sequential**. The DBMS processes one validation at a time (or uses a very tight lock) to assign the serialization order based on $VAL(T)$.
-- **Checks**: It compares $T$'s Read Set ($RS(T)$) and Write Set ($WS(T)$) against the Write Sets of other transactions that committed recently.
+> **Me**: Does a read-only transaction need a validation timestamp?
+> **Answer**: Yes. Even if a transaction doesn't write anything ($WS(T) = \emptyset$), it must be validated against the Write Sets of transactions that committed *after* $T$ started. This ensures $T$ saw a consistent, serializable snapshot of the data.
 
-### 3. The Write Phase
-- **Work**: If (and only if) validation succeeds, the changes in the **private workspace** are copied into the actual database.
-- **Atomicity**: This is where the transaction officially "happens" for everyone else to see.
+### The Three Phases
 
-### Invariant
-The serialization order is VAL(T)
+#### 1. The Read Phase (Parallel Execution)
+- **Work**: The transaction $T$ executes its logic fully in a private workspace (local buffer).
+- **Reads**: It reads values from the database. The set of elements read is the **Read Set** ($RS(T)$).
+- **Writes**: Any updates are performed **only** in the private workspace. The real database remains unchanged.
+- **Concurrency**: Because there are no locks, many transactions can run simultaneously at full speed.
 
----
+#### 2. The Validate Phase (The Critical Section)
+- **Work**: Once $T$ is finished, it requests validation. The scheduler checks if any other transaction committed changes that conflict with $T$'s work.
+- **Sequentiality**: Validation is typically a **critical section**. The DBMS processes one validation at a time to assign a unique $VAL(T)$ timestamp.
+- **Check**: The scheduler compares $RS(T)$ and $WS(T)$ against the Write Sets of other transactions ($WS(U)$) based on the [[#Formal Validation Rules|Validation Rules]].
 
-## What happens if Validation fails?
-If the DBMS detects a conflict (i.e., another transaction $U$ changed data that $T$ relied on), validation fails.
-
-1. **Immediate Abort**: The transaction $T$ is killed.
-2. **Discard Workspace**: The private workspace is deleted. Because no changes were ever written to the main database, there is **nothing to undo/rollback** in the physical storage—the "rollback" is just deleting local memory.
-3. **Restart**: The transaction is typically restarted from the beginning with a new $START(T)$ time.
+#### 3. The Write Phase
+- **Work**: If validation succeeds, the changes in the private workspace are copied into the actual database.
+- **Finish**: $FIN(T)$ is recorded, and the transaction is officially committed.
 
 ---
 
 ## Formal Validation Rules
-To ensure [[CSE444/Transactions/Serializability/Serializability|serializability]], for any two transactions $T_i$ and $T_j$ such that $VAL(T_i) < VAL(T_j)$ (meaning $T_i$ is logically "older"), **one** of the following three conditions must hold:
+To ensure [[CSE444/Transactions/Serializability/Serializability|serializability]], for any two transactions $T_i$ and $T_j$ where $VAL(T_i) < VAL(T_j)$ ($T_i$ is logically older), **one** of the following must hold:
 
-### Rule 1
+### Rule 1: No Overlap
 $$FIN(T_i) < START(T_j)$$
-$T_i$ finishes its Write phase before $T_j$ even starts its Read phase.
+$T_i$ finished everything before $T_j$ even started. No conflict possible.
 
-### Rule 2
+### Rule 2: No Read Conflict
 $$FIN(T_i) < VAL(T_j) \quad \text{and} \quad WS(T_i) \cap RS(T_j) = \emptyset$$
-$T_i$ finishes its Write phase before $T_j$ starts its Validation phase, and $T_i$ did not write any data elements that $T_j$ read.
+$T_i$ finished writing before $T_j$ started checking. Safe as long as $T_i$ didn't change anything $T_j$ read.
 
-### Rule 3
+### Rule 3: No Read or Write Conflict
 $$VAL(T_i) < VAL(T_j) \quad \text{and} \quad WS(T_i) \cap (RS(T_j) \cup WS(T_j)) = \emptyset$$
-$T_i$ completes its Validation phase before $T_j$ completes its own, and $T_i$ does not write to any data elements that $T_j$ either reads or writes.
+They are finishing at the same time. Safe only if their work is completely independent (no shared reads or writes).
 
 ---
 
-## Simplified Logic for Validation Rules
+## Walkthrough Example
 
-| Rule | Simple Logic |
-| :--- | :--- |
-| **Rule 1** | $T_i$ finished everything before $T_j$ even started. They never overlapped, so no conflict is possible. |
-| **Rule 2** | $T_i$ finished writing before $T_j$ started checking. As long as $T_i$ didn't change anything $T_j$ was looking at, $T_j$ is still valid. |
-| **Rule 3** | $T_i$ and $T_j$ are finishing at nearly the same time. This is only safe if their work is completely independent (they didn't read or write the same things). |
+Consider two transactions:
+- **$T_1$**: Reads $A$, Writes $A$.
+- **$T_2$**: Reads $A$, Writes $B$.
 
-## Conflict Avoidance
+| Time | Event | $T_1$ State | $T_2$ State | Result |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | $START(T_1)$ | Read Phase | - | $T_1$ reads $A=10$. |
+| 2 | $START(T_2)$ | Read Phase | Read Phase | $T_2$ reads $A=10$. |
+| 3 | $T_2$ calculates $B=A+5$ | Read Phase | Read Phase | $WS(T_2)=\{B\}$. |
+| 4 | $VAL(T_1)$ | **Validate** | Read Phase | $T_1$ validates. No one committed yet. **Success**. |
+| 5 | $T_1$ Writes $A=20$ | Write Phase | Read Phase | $T_1$ updates DB. |
+| 6 | $FIN(T_1)$ | **Committed** | Read Phase | $T_1$ is done. |
+| 7 | $VAL(T_2)$ | - | **Validate** | Check $T_2$ against $T_1$ (since $VAL(T_1) < VAL(T_2)$). |
 
-In Optimistic Concurrency Control, "Conflict Avoidance" refers to the process of **detecting and blocking** any transaction that would break [[CSE444/Transactions/Serializability/Serializability|serializability]] before its changes touch the actual disk.
+**Validation Check for $T_2$ at Time 7:**
+- **Rule 1?** No. $FIN(T_1) (6) \not< START(T_2) (2)$.
+- **Rule 2?** No. $FIN(T_1) (6) < VAL(T_2) (7)$ is true, BUT $WS(T_1) \cap RS(T_2) = \{A\} \cap \{A\} = \{A\}$. The intersection is NOT empty.
+- **Rule 3?** No. $VAL(T_1) < VAL(T_2)$ is true, but again, the sets overlap.
+- **Outcome**: $T_2$ **Rolls back**. It read a value of $A$ (10) that $T_1$ has since changed (to 20).
 
-- **How it works**: The DBMS uses the [[#Formal Validation Rules|Validation Rules]] to compare the data a transaction "drafted" in private against the data other transactions actually "committed" to the system. 
-- **The "Avoidance" mechanism**: If a conflict is found, the transaction is **aborted**. By killing the transaction *before* it writes, the database **avoids** ever entering a state that violates serializability.
+---
 
-### Why Conflict Avoidance Matters
-
-If we do not strictly avoid these conflicts, we lose the **Isolation** guarantee of ACID:
-
-1. **Prevents "Reading the Past"**: Without avoidance, $T_j$ might commit based on a value that $T_i$ changed *after* $T_j$ read it. This would mean $T_j$ acted on "stale" information.
-2. **Prevents Lost Updates**: Avoidance ensures that if $T_i$ and $T_j$ both try to update the same record, only the one that "arrives" at validation first wins. The second one is forced to restart, preventing it from accidentally overwriting $T_i$'s work without seeing it.
-3. **Ensures the Serial Illusion**: The entire goal of a DBMS is to make it look like transactions happened one-by-one. Conflict avoidance is the "security guard" that prevents any interleaving that doesn't fit into a clean, serial timeline.
+## Conflict Avoidance Summary
+OCC avoids conflicts by detecting them *before* they are written to the database.
+- **Pros**: High performance when conflicts are rare; no deadlocks.
+- **Cons**: High overhead of rollbacks if conflicts are frequent; "starvation" of long transactions.
 
 ![[Avoid $r_t(X) - w_U(X)$ conflicts.png]]
-
-## Related
-- [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]]
-- [[CSE444/Transactions/Optimistic Components/Snapshot Isolation|Snapshot Isolation]]
-- [[CSE444/Transactions/Serializability/Conflict Serializability|Conflict Serializability]]

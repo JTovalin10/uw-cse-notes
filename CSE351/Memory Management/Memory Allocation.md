@@ -165,5 +165,5 @@ Multiple free lists, one per size class, for better throughput and utilization. 
 - [[CSE351/Data Structures/Structs|Structs (including Alignment)]]
 - [[CSE333/Memory Management/Malloc and Free|Malloc and Free (333)]]
 - [[CSE333/Memory Management/Heap Management|Heap Management (333)]]
-- [[CSE451/Memory Management/Memory management|OS Memory Management (451)]]
+- [[CSE451/Virtualization/Memory/Memory management|OS Memory Management (451)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (484)]]

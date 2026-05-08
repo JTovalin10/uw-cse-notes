@@ -4,7 +4,7 @@
 
 ### Linking & References
 - Internal links use Obsidian wiki-links: `[[Page Name]]`
-- Disambiguated links use full paths: `[[CSE451/Virtual Memory/Virtual Memory]]`
+- Disambiguated links use full paths: `[[CSE451/Virtualization/Memory/Virtual Memory]]`
 - Display text overrides: `[[CSE461/Definitions/Transmission Control Protocol (TCP)|TCP]]`
 - Embedded images: `![[Screenshots/image.png]]`
 - Cross-course references are used freely: `[[CSE351/System Programming/Exceptions]]`

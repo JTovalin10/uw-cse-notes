@@ -35,7 +35,7 @@ Same as [[Process State]]:
 - [[CSE333/Concurrency/Threads|CSE333: Threads]]
 - [[CSE332/Parallelism/Concurrency And Locks|CSE332: Concurrency and Locks]]
 - [[Process vs Thread]]
-- [[Context Switch]]
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]]
 - [[Process]]
 
 # Source

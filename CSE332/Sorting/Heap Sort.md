@@ -1,6 +1,6 @@
 # CSE 332: Heap Sort
 
-**[[Heap Sort]]**: A sorting algorithm that works by inserting all items into a max heap, then repeatedly extracting the largest element to fill a sorted list from right-to-left.
+**Heap Sort**: A sorting algorithm that works by inserting all items into a max [[CSE332/Definitions/Binary Heap|Binary Heap]], then repeatedly extracting the largest element to fill a sorted list from right-to-left.
 
 ## In-Place Heap Sort
 By default, creating a new heap takes $O(n)$ space. However, Heap Sort can be made in-place.
@@ -20,4 +20,4 @@ By default, creating a new heap takes $O(n)$ space. However, Heap Sort can be ma
 * **Stable**: No. 
 
 ## Related
-* [[Introduction To Sorting]]
+* [[CSE332/Sorting/Introduction To Sorting|Introduction To Sorting]]

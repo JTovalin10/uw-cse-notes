@@ -26,5 +26,5 @@ The memory allocated for each process is "virtual," where each process thinks it
 # Related
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory (351)]]
 - [[CSE351/Memory Management/Paging|Paging (351)]]
-- [[CSE451/Memory Management/Memory management|OS Memory Management (451)]]
-- [[CSE451/Virtual Memory/Paged Virtual Memory|Paged Virtual Memory (451)]]
+- [[CSE451/Virtualization/Memory/Memory management|OS Memory Management (451)]]
+- [[CSE451/Virtualization/Memory/Paged Virtual Memory|Paged Virtual Memory (451)]]

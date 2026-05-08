@@ -46,6 +46,6 @@
 - [[CSE351/Procedures and Stack/Stack Pointer|Stack Pointer]]
 - [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
 - [[CSE351/Memory Management/Memory Allocation|Memory Allocation]]
-- [[CSE451/Virtual Memory/Virtual Memory|Virtual Memory (CSE451)]]
+- [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]
 - [[CSE333/Memory Management/Stack|Stack (CSE333)]]
 - [[CSE333/Memory Management/Heap|Heap (CSE333)]]

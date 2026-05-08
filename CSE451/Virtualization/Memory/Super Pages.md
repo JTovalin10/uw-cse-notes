@@ -20,4 +20,4 @@ By using a larger page size, each TLB entry covers a much larger range of contig
 
 ## Related
 - [[Translation Lookaside Buffer (TLB)]]
-- [[CSE451/Memory Management/Memory Models/Paging|Paging]]
+- [[CSE451/Virtualization/Memory/Memory Models/Paging|Paging]]

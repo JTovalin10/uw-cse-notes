@@ -29,4 +29,4 @@ Standard sorting algorithms based on comparisons cannot be asymptotically faster
 * By optimizing the base $b$, this can achieve highly efficient running times.
 
 ## Related
-* [[Introduction To Sorting]]
+* [[CSE332/Sorting/Introduction To Sorting|Introduction To Sorting]]

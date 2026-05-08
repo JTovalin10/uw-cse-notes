@@ -1,6 +1,6 @@
 # CSE344: External Memory Algorithms
 
-**External memory algorithms** assume data is on disk rather than in main memory. They are slower than [[Main Memory Join Algorithms|main memory algorithms]] but have no limitation on data size.
+**External memory algorithms** assume data is on disk rather than in main memory. They are slower than [[CSE344/Query Execution/Main Memory Join Algorithms|main memory algorithms]] but have no limitation on data size.
 
 ## Introduction and Costing
 
@@ -111,11 +111,11 @@ There are $T(S)/V(S, B)$ tuples in $S$ whose value equals $x$, and we loop over 
 Not a general-purpose join, but useful as a helper when an index is already available.
 
 ## Related
-- [[Main Memory Join Algorithms]] — the in-memory versions of these algorithms
-- [[Pipelined Execution]] — how these algorithms compose in a full query plan
-- [[Physical Algorithms and Pipelining]] — overview of physical operator classification
-- [[Parallel Join Algorithms]] — distributed extensions of these joins
-- [[Cardinality Estimation]] — how the optimizer chooses between these algorithms
+- [[CSE344/Query Execution/Main Memory Join Algorithms|Main Memory Join Algorithms]] — the in-memory versions of these algorithms
+- [[CSE344/Query Execution/Pipelined Execution|Pipelined Execution]] — how these algorithms compose in a full query plan
+- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — overview of physical operator classification
+- [[CSE344/Query Execution/Parallel Join Algorithms|Parallel Join Algorithms]] — distributed extensions of these joins
+- [[CSE344/Query Execution/Cardinality Estimation|Cardinality Estimation]] — how the optimizer chooses between these algorithms
 - [[CSE344/Database Design/Disk Storage|Disk Storage]] — block organization on disk that drives these I/O costs
 - [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how index type affects selection and join cost
 - [[CSE344/Database Design/Database Indices|Database Indices]] — index structures referenced by index-based join

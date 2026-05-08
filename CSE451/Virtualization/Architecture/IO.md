@@ -29,7 +29,7 @@ The OS cannot afford to let the CPU sit idle waiting for a file to load or a key
 2. **Block**
 	1. since the data isnt ready instantly the OS moves the process from running to waiting
 3. **switch**
-	1. the OS performs a [[Context Switch]] and gives the CPU to a different process that is ready to run
+	1. the OS performs a [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]] and gives the CPU to a different process that is ready to run
 4. **interrupts**
 	1. when the I/O device finishes (the user pressed a key), it sends an electrical signal (interrupt) to the CPU
 5. **Wake up**

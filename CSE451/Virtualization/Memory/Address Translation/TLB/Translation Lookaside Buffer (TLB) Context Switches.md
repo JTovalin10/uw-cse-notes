@@ -1,5 +1,5 @@
 # TLB and Context Switches
-**Problem**: after a [[Context Switch]], TLB entries still belong to the old process and cannot be used by the new one.
+**Problem**: after a [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]], TLB entries still belong to the old process and cannot be used by the new one.
 
 | approach | how it works | tradeoff |
 |----------|-------------|----------|

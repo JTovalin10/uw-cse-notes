@@ -7,7 +7,7 @@ OSTEP: *"Each thread is very much like a separate process, except for one differ
 | Address Space      | Own separate address space                | Shares address space with other threads |
 | Memory             | Does not share memory (needs IPC)         | Shares heap, data, code with siblings   |
 | Creation Cost      | Expensive (copy address space)            | Cheap (just new stack + registers)      |
-| [[Context Switch]] | Slow (switch page tables, flush TLB)      | Fast (same address space)               |
+| [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]] | Slow (switch page tables, flush TLB)      | Fast (same address space)               |
 | Communication      | IPC required (pipes, sockets, shared mem) | Direct memory access                    |
 | Isolation          | Strong - crash doesn't affect others      | Weak - one thread crash can kill all    |
 | Resources          | Own file descriptors, sockets             | Shares file descriptors, sockets        |

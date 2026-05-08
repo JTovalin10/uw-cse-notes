@@ -89,10 +89,11 @@ If $T$ wants to write $X$ and $WT(X) > TS(T)$, we **don't** necessarily have to 
 ---
 
 ## 4. Multiversion Timestamp (MVCC)
-To avoid the massive amount of rollbacks caused by the "Read Too Late" problem, the DBMS can keep multiple versions of an element $X$: $X_t, X_{t-1}, X_{t-2}, \dots$ where $TS(X_t) > TS(X_{t-1}) > TS(X_{t-2})$.
-- Does not solve
-	- cascading aborts and recoverability, we need the commit bit for this
-	- Does allow transactions tor read in cases when they would have to abort in simple time-stamp
+To avoid the high volume of rollbacks caused by the "Read Too Late" problem, the DBMS can keep multiple versions of a data element $X$: $X_t, X_{t-1}, X_{t-2}, \dots$ where $TS(X_t) > TS(X_{t-1}) > TS(X_{t-2})$.
+
+- **Recoverability**: MVCC alone does not solve [[CSE444/Definitions/Cascading Abort|cascading aborts]]; it still requires the commit bit $C(X)$ logic to ensure that a transaction only reads committed data.
+- **Improved Concurrency**: It allows transactions to read a value even if a "newer" transaction has already overwritten it, by providing the "older" version that the transaction should logically see.
+
 ### How it Changes the Rules
 With multiple versions available, the scheduler must now track $RT(X_t)$ and $WT(X_t)$ for *every single version* of $X$, along with its commit bit $C(X_t)$. 
 
@@ -116,14 +117,36 @@ With multiple versions available, the scheduler must now track $RT(X_t)$ and $WT
 - **Simplified**:
 	- *Did someone from the future already read the version I'm about to replace?* Die. (Because they read the old version thinking it was the latest, inserting a new version right before their timeline would invalidate what they already saw).
 	- *Safe?* Instead of overwriting the old data, just **create a brand new version** stamped with your time. 
-		- **What "Create a New Version" means**: Physically, the database does *not* erase the old data on the hard drive (no "update-in-place"). Instead, it performs an `INSERT` of a completely new row/record, tags it with your $TS(T)$, and leaves the old row exactly where it is.
-		- **Why it's brilliant**: It leaves the old physical row intact for any "older" transactions that still need to read it, while your new row is ready for any "future" transactions to use.
 
-#### Garbage Collection
+---
+
+## 5. Walkthrough Examples
+
+### Basic Timestamp Scheduling (Single Version)
+Suppose we have $X$ with $RT(X)=0, WT(X)=0, C(X)=true$.
+
+| Time | Transaction | Request | Action | Reason |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | $T_1$ ($TS=10$) | $r(X)$ | **Grant** | $10 \geq WT(X)$. $RT(X) \to 10$. |
+| 2 | $T_2$ ($TS=20$) | $r(X)$ | **Grant** | $20 \geq WT(X)$. $RT(X) \to 20$. |
+| 3 | $T_2$ ($TS=20$) | $w(X)$ | **Grant** | $20 \geq RT(X)$. $WT(X) \to 20, C(X) \to false$. |
+| 4 | $T_1$ ($TS=10$) | $w(X)$ | **Rollback** | $10 < RT(X)$ (20). Writing would invalidate $T_2$'s read. |
+
+### MVCC Example
+Suppose we have version $X_0$ with $RT=0, WT=0, C=true$.
+
+| Time | Transaction | Request | Action | Reason |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | $T_1$ ($TS=10$) | $r(X)$ | **Grant** | Reads $X_0$. $RT(X_0) \to 10$. |
+| 2 | $T_2$ ($TS=20$) | $w(X)$ | **Grant** | Creates $X_{20}$. $RT(X_{20})=20, WT(X_{20})=20, C(X_{20})=false$. |
+| 3 | $T_3$ ($TS=25$) | $r(X)$ | **Delay** | Highest $WT \leq 25$ is $X_{20}$, but $C(X_{20})=false$. |
+| 4 | $T_1$ ($TS=10$) | $r(X)$ | **Grant** | Highest $WT \leq 10$ is $X_0$. $C(X_0)=true$. Still works! |
+| 5 | $T_2$ | Commit | **Grant** | $C(X_{20}) \to true$. Wake up $T_3$. |
+| 6 | $T_3$ | $r(X)$ | **Grant** | Now reads $X_{20}$. $RT(X_{20}) \to 25$. |
+
+### Garbage Collection
 - **Textbook Definition**: The system can safely delete $X_t$ if a later version $X_{t1}$ exists (where $t1 > t$) and there are no active transactions $T$ in the system where $t \leq TS(T) < t1$.
 - **Simplified**: You can throw away an old version once a newer version exists AND there is nobody left alive who is old enough to need the old one.
-
-*Note: MVCC alone does not solve cascading aborts/recoverability; it still requires the $C(X)$ commit bit logic.*
 
 ![[CSE444/Screenshots/Second Example w Multiversion.png]]
 

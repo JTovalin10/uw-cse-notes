@@ -2,7 +2,7 @@
 
 ## Query Plans
 
-A **query plan** is an expression in [[Relational Algebra|relational algebra]].
+A **query plan** is an expression in [[CSE344/Query Execution/Relational Algebra|relational algebra]].
 - Expressions are written as a tree
 - The DBMS translates SQL queries into analogous query plans
 	- The plan specifies the order of operators
@@ -46,10 +46,10 @@ Subqueries in `FROM` translate naturally — each subquery becomes a named inter
 - After decorrelating, `=` or `IN` must be converted into a join — RA has no operator that checks set membership
 
 ## Related
-- [[Relational Algebra]] — RA overview and query plan trees
-- [[RA Operators]] — the full operator reference
-- [[RA Tree Transformations]] — optimizing the resulting plan
-- [[Cardinality Estimation]] — costing the translated plan
+- [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — RA overview and query plan trees
+- [[CSE344/Query Execution/RA Operators|RA Operators]] — the full operator reference
+- [[CSE344/Query Execution/RA Tree Transformations|RA Tree Transformations]] — optimizing the resulting plan
+- [[CSE344/Query Execution/Cardinality Estimation|Cardinality Estimation]] — costing the translated plan
 - [[CSE344/SQL/Basics|SQL Basics]] — the surface syntax being translated
 - [[CSE344/SQL/Sub-Queries|Sub-Queries]] — the SQL subquery mechanics being translated
 - [[CSE344/SQL/Decorrelation and Unnesting|Decorrelation and Unnesting]] — monotonicity and when subqueries can be unnested

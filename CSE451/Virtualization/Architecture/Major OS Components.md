@@ -1,4 +1,4 @@
-- [[Process]](es)/[[Thread]](s)
+- [[CSE451/Virtualization/Processes/Process|Process]](es)/[[CSE451/Concurrency/Threads/Thread|Thread]](s)
 - [[Memory]]
 - [[IO]]
 - [[Secondary Storage]]

@@ -7,7 +7,7 @@
 	- [[Interrupts]]: A hardware device requests service
 - The OS saves the CPU state of the running process in that process's proc
 - When the OS returns the process to the running state, it loads the hardware registers with values from that process's proc — general [[Registers]], stack pointers, instruction pointers
-- the act of switching the CPU from one process to another is called a [[Context Switch]]
+- the act of switching the CPU from one process to another is called a [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]]
 	- systems may do 100+ of switches/sec
 	- takes a few microseconds on todays hardware
 - choosing which process to run next is called [[Scheduling]]

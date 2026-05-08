@@ -11,4 +11,4 @@ The kernel saves the complete execution state of the user program (registers, pr
 - [[Safe Interrupts]] — transparent restartable execution is one of three safety requirements
 - [[Atomic Transfer of Control]] — the complementary mechanism for entering the kernel
 - [[Interrupt Handler]] — the end of the handler atomically restores state and returns
-- [[Context Switch]] — related concept for process switching
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]] — related concept for process switching

@@ -44,7 +44,7 @@ Some FDs logically imply other FDs.
 - **Extensivity:** If $A \rightarrow B$, then $A \rightarrow AB$
 
 ## Related
-- [[Normalization]] — using FDs to normalize a schema into BCNF
+- [[CSE344/Database Design/Normalization|Normalization]] — using FDs to normalize a schema into BCNF
 - [[Closures and Keys]] — computing $X^+$ and determining superkeys from FDs
 - [[BCNF Decomposition]] — the algorithm driven by FDs
 - [[Data Anomalies]] — the anomalies FDs help identify

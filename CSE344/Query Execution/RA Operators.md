@@ -1,6 +1,6 @@
 # CSE344: RA Operators
 
-All operators take one or two relations as input and return a new relation. See [[Relational Algebra]] for an overview of RA.
+All operators take one or two relations as input and return a new relation. See [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] for an overview of RA.
 
 ## Sets vs. Bags
 
@@ -96,11 +96,11 @@ $$R(A, B) \ltimes S(B, C) \rightarrow T(A, B)$$
 - Variant applicable to all join types above — unmatched rows are preserved and padded with NULLs
 
 ## Related
-- [[Relational Algebra]] — overview, query plan trees, and why joins are so common
-- [[SQL to RA Translation]] — how SQL operators map to these RA operators
-- [[RA Tree Transformations]] — rewriting rules using these operators
-- [[Physical Algorithms and Pipelining]] — how these logical operators are physically implemented
-- [[Main Memory Join Algorithms]] — specific implementations of the join operators
+- [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — overview, query plan trees, and why joins are so common
+- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — how SQL operators map to these RA operators
+- [[CSE344/Query Execution/RA Tree Transformations|RA Tree Transformations]] — rewriting rules using these operators
+- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — how these logical operators are physically implemented
+- [[CSE344/Query Execution/Main Memory Join Algorithms|Main Memory Join Algorithms]] — specific implementations of the join operators
 - [[CSE344/SQL/Joins|Joins]] — the SQL syntax for join operators
 - [[CSE344/SQL/Outer Joins|Outer Joins]] — SQL-level outer join syntax
 - [[CSE344/SQL/Set Operations|Set Operations]] — SQL counterparts to union/intersection/difference

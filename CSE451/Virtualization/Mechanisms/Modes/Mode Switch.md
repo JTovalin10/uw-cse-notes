@@ -18,4 +18,4 @@ A **mode switch** is the transition between kernel mode and user mode (and vice 
 - [[Hardware Modes]] — the modes being switched between
 - [[Atomic Transfer of Control]] — the hardware mechanism for user-to-kernel transitions
 - [[Traps]] — the general mechanism for user-to-kernel transitions
-- [[Context Switch]] — switching between processes (not just modes)
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]] — switching between processes (not just modes)

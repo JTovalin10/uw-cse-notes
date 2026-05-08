@@ -46,7 +46,7 @@ To solve the Hidden Terminal problem, nodes use a virtual carrier sensing mechan
 ### Physical Layer Properties
 *   **ISM Bands**: Operates in unlicensed 2.4 GHz and 5 GHz bands.
 *   **Modulation**: Uses **OFDM** (Orthogonal Frequency Division Multiplexing) to handle multipath fading.
-*   **[[MIMO]] (Multiple Input Multiple Output)**: Uses multiple antennas to increase throughput via spatial multiplexing (sending different data streams on different antennas).
+*   **[[CSE461/Definitions/Multiple Input Multiple Output (MIMO)|MIMO]] (Multiple Input Multiple Output)**: Uses multiple antennas to increase throughput via spatial multiplexing (sending different data streams on different antennas).
 
 ### Reliability
 Because wireless is lossy, the 802.11 Link Layer uses **Immediate ACKs**. If an ACK is not received, the frame is retransmitted at the link layer, hiding the loss from the higher-layer TCP protocol.

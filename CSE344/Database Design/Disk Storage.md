@@ -1,6 +1,6 @@
 # CSE344: Disk Storage
 
-Understanding disk storage is essential for understanding why [[Database Indices|indices]] exist and how [[External Memory Algorithms|external memory algorithms]] are costed.
+Understanding **Disk Storage** is essential for understanding why [[CSE344/Database Design/Database Indices|Indices]] exist and how [[CSE344/Query Execution/External Memory Algorithms|External Memory Algorithms]] are costed.
 
 ## Hard Disk Characteristics
 
@@ -11,46 +11,46 @@ Understanding disk storage is essential for understanding why [[Database Indices
 - Number of bytes/track: ~10^5
 
 **Disk access characteristics:**
-- **Disk latency** = time between a request and when data is in memory
+- **Disk Latency** = time between a request and when data is in memory
 	- Lower-bounded by seek time + rotational latency
-	- **Seek time** = time for the head to reach the correct track (10ms–40ms)
-	- **Rotational latency** = time for the platter to rotate to the correct sector (~5ms)
+	- **Seek Time** = time for the head to reach the correct track (10ms–40ms)
+	- **Rotational Latency** = time for the platter to rotate to the correct sector (~5ms)
 - Bandwidth: typically 40–80 MB/s
 
 **How disk is organized:**
-- Disk is organized in chunks called **pages** or **blocks**
-- Data elements that are close together on disk are accessed together
-	- An entire block is loaded into main memory at once
+- Disk is organized in chunks called **Pages** or **Blocks**.
+- Data elements that are close together on disk are accessed together.
+	- An entire block is loaded into main memory at once.
 
-**Caching/Buffering:**
-- Read an entire block into a section of main memory called the **cache**
-	- When the same element is needed again, it is read from cache instead of going back to disk
+**Caching and Buffering:**
+- Read an entire block into a section of main memory called the **Buffer Cache**.
+	- When the same element is needed again, it is read from cache instead of going back to disk.
 
 ## Representing Relations on Disk
 
-[[Physical Data Independence|Physical data independence]] means there are many storage options:
+[[CSE344/SQL/Physical Data Independence|Physical Data Independence]] means there are many storage options:
 
 | Format | Description |
 |---|---|
-| **Row-store** | Attributes of a single row are stored together; rows may be sorted or unsorted |
-| **Column-store** | One file per column (e.g., one file with all flight IDs, one with all prices) |
-| **Heap file** | File is unsorted |
-| **Sequential file** | File is ordered by something, usually the primary key |
+| **Row-Store** | Attributes of a single row are stored together; rows may be sorted or unsorted |
+| **Column-Store** | One file per column (e.g., one file with all flight IDs, one with all prices) |
+| **Heap File** | File is unsorted |
+| **Sequential File** | File is ordered by something, usually the primary key |
 
-**Goals:**
-- DBMS attempts to store table files in **contiguous chunks** on disk — sequential reads are far faster than random ones
-- DBMS attempts to **minimize unnecessary copying** of table data into memory — load entire blocks at a time
+**DBMS Storage Goals:**
+- DBMS attempts to store table files in **contiguous chunks** on disk — sequential reads are far faster than random ones.
+- DBMS attempts to **minimize unnecessary copying** of table data into memory — load entire blocks at a time.
 
 ## Querying Without Indices
 
-Without indices, any query requires an $O(n)$ sequential scan over the entire table. This motivates [[Database Indices|index creation]].
+Without indices, any query requires an $O(n)$ sequential scan over the entire table. This motivates [[CSE344/Database Design/Database Indices|Index Creation]].
 
 ## Related
-- [[Database Indices]] — how indices speed up queries beyond a sequential scan
-- [[Clustered and Unclustered Indices]] — how the physical ordering of data on disk relates to index type
-- [[External Memory Algorithms]] — algorithms whose cost is measured in block I/Os
-- [[Physical Design and Indices]] — the broader physical-design context this fits into
-- [[CSE451/Persistent Storage/Magnetic Disks|CSE451 Magnetic Disks]] — OS-level view of HDD mechanics (seek, rotational latency, tracks, sectors)
-- [[CSE451/Persistent Storage/Flash Storage|CSE451 Flash Storage]] — SSD characteristics that change the cost model
+- [[CSE344/Database Design/Database Indices|Database Indices]] — how indices speed up queries beyond a sequential scan
+- [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how the physical ordering of data on disk relates to index type
+- [[CSE344/Query Execution/External Memory Algorithms|External Memory Algorithms]] — algorithms whose cost is measured in block I/Os
+- [[CSE344/Database Design/Physical Design and Indices|Physical Design and Indices]] — the broader physical-design context this fits into
+- [[CSE451/Persistence/Storage/Magnetic Disks|CSE451 Magnetic Disks]] — OS-level view of HDD mechanics (seek, rotational latency, tracks, sectors)
+- [[CSE451/Persistence/Storage/Flash Storage|CSE451 Flash Storage]] — SSD characteristics that change the cost model
 - [[CSE351/Cache/Spatial Locality|CSE351 Spatial Locality]] — why loading whole blocks at once pays off
-- CSE351 Temporal Locality — why caching recently-read blocks pays off
+- [[CSE351/Cache/Temporal Locality|CSE351 Temporal Locality]] — why caching recently-read blocks pays off

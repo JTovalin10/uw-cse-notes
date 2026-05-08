@@ -63,4 +63,4 @@ Conflict misses do not occur in fully associative caches.
 - [[CSE351/Cache/Cache Locality|Locality]]
 - [[CSE351/Cache/Handling Writes|Handling Writes]]
 - [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
-- [[CSE451/Memory Management/Concepts/Virtual and Physical Caches|Virtual and Physical Caches (451)]]
+- [[CSE451/Virtualization/Memory/Concepts/Virtual and Physical Caches|Virtual and Physical Caches (451)]]

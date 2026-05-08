@@ -1,6 +1,6 @@
 # CSE 332: Merge Sort
 
-**[[Merge Sort]]**: A divide and conquer sorting algorithm that splits an array in half, recursively sorts each half, and then **merges** the two sorted halves back together.
+**Merge Sort**: A divide and conquer sorting algorithm that splits an array in half, recursively sorts each half, and then **merges** the two sorted halves back together.
 
 ## Procedure
 * **Divide**: Split the array into two roughly equal halves.
@@ -51,7 +51,7 @@ private static void merge(int[] arr, int low, int mid, int high) {
 ```
 
 ## Related
-* [[Divide And Conquer Sorting]]
-* [[Quick Sort]]
-* [[Introduction To Sorting]]
+* [[CSE332/Sorting/Divide And Conquer Sorting|Divide And Conquer Sorting]]
+* [[CSE332/Sorting/Quick Sort|Quick Sort]]
+* [[CSE332/Sorting/Introduction To Sorting|Introduction To Sorting]]
 * [[CSE444/Query Evaluation/External Merge-Sort|Databases: External Merge-Sort]]

@@ -1,6 +1,6 @@
 # CSE344: Main Memory Join Algorithms
 
-**Main memory join algorithms** assume the data fits entirely in main memory. These are the building blocks for [[External Memory Algorithms|external memory algorithms]].
+**Main Memory Join Algorithms** assume the data fits entirely in main memory. These are the building blocks for [[CSE344/Query Execution/External Memory Algorithms|External Memory Algorithms]].
 
 Consider:
 $$\text{Payroll} \bowtie_{\text{userid} = \text{userid}} \text{Registry}$$
@@ -58,9 +58,9 @@ Runtime: $O(n \log n + m \log m)$
 Merge join is particularly efficient when the input relations are already sorted on the join key.
 
 ## Related
-- [[External Memory Algorithms]] — extensions of these algorithms when data doesn't fit in memory
-- [[Parallel Join Algorithms]] — distributed variants (partitioned hash join, broadcast join, skew join)
-- [[RA Operators#Join Operators]] — the logical join operators these algorithms implement
-- [[Physical Algorithms and Pipelining]] — overview of physical operator classification
-- [[Pipelined Execution]] — how these operators plug into the iterator interface
+- [[CSE344/Query Execution/External Memory Algorithms|External Memory Algorithms]] — extensions of these algorithms when data doesn't fit in memory
+- [[CSE344/Query Execution/Parallel Join Algorithms|Parallel Join Algorithms]] — distributed variants (partitioned hash join, broadcast join, skew join)
+- [[CSE344/Query Execution/RA Operators#Join Operators|RA Operators]] — the logical join operators these algorithms implement
+- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — overview of physical operator classification
+- [[CSE344/Query Execution/Pipelined Execution|Pipelined Execution]] — how these operators plug into the iterator interface
 - [[CSE344/SQL/Joins|Joins]] — the SQL surface syntax compiled into these joins

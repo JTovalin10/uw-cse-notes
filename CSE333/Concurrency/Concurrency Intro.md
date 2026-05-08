@@ -18,8 +18,8 @@ In a **sequential** implementation, the CPU sits idle (**blocked**) while waitin
 ## Concurrent Programming Styles
 1.  **Threads**: Multiple threads of control within a single process.
     - **POSIX pthreads**: Low-level C API (`pthread.h`).
-    - **[[C++ Concurrency|C++11 Threads]]**: Modern, type-safe C++ API (`<thread>`).
-2.  **Processes**: Forking multiple processes (see [[Process Management/Process Management|Process Management]]).
+    - **[[CSE333/Concurrency/C++ Concurrency|C++11 Threads]]**: Modern, type-safe C++ API (`<thread>`).
+2.  **Processes**: Forking multiple processes (see [[CSE333/Process Management/Process Management|Process Management]]).
 3.  **Asynchronous I/O**: Also known as **non-blocking I/O** or **event-driven programming**.
 
 ### Event-Driven Programming
@@ -32,9 +32,9 @@ The program is structured as an **event-loop**.
 *   **Note**: You are the scheduler in event-driven code; tasks do not have their own stacks and must bundle state into "continuations".
 
 # Related
-- [[Threads]]
-- [[C++ Concurrency]]
-- [[Process Management/Process Management|Process Management]]
-- [[Networking/Networking Intro|Networking Intro]]
-- [[File IO and POSIX/POSIX IO|POSIX IO (Non-blocking I/O)]]
-- [[CSE451/Concurrency/Concurrency|CSE451: Concurrency]]
+- [[CSE333/Concurrency/Threads|Threads]]
+- [[CSE333/Concurrency/C++ Concurrency|C++ Concurrency]]
+- [[CSE333/Process Management/Process Management|Process Management]]
+- [[CSE333/Networking/Networking Intro|Networking Intro]]
+- [[CSE333/File IO and POSIX/POSIX IO|POSIX IO (Non-blocking I/O)]]
+- [[CSE451/Concurrency/Synchronization/Mechanics/Synchronization|CSE451: Concurrency]]

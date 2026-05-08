@@ -21,7 +21,7 @@ Manual memory management in C is error-prone and leads to several classes of bug
 - Useful as an indicator of an uninitialized pointer or an allocation failure.
 
 ## Related
-- [[Malloc and Free]]
-- [[Heap Management]]
-- [[C Fundamentals/Arrays|Arrays]]
-- [[C Memory Model]]
+- [[CSE333/Memory Management/Malloc and Free|Malloc and Free]]
+- [[CSE333/Memory Management/Heap Management|Heap Management]]
+- [[CSE333/C Fundamentals/Arrays|Arrays]]
+- [[CSE333/Memory Management/C Memory Model|C Memory Model]]

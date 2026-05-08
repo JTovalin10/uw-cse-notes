@@ -13,4 +13,4 @@ Caches can be indexed and tagged using either virtual addresses or physical addr
 # Related
 - [[CSE351/Cache/Cache Organization|Cache Organization (351)]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory (351)]]
-- [[CSE451/Memory Management/Memory management|OS Memory Management (451)]]
+- [[CSE451/Virtualization/Memory/Memory management|OS Memory Management (451)]]

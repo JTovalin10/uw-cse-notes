@@ -40,6 +40,6 @@ Unrelated columns stored in the same table lead to undefined deletions — delet
 	3. Use the FDs to normalize the schema into [[Normalization#BCNF|BCNF]]
 
 ## Related
-- [[Normalization]] — the formal process for eliminating anomalies
+- [[CSE344/Database Design/Normalization|Normalization]] — the formal process for eliminating anomalies
 - [[Functional Dependencies (FDs)]] — the formalism used to identify anomalies
 - [[BCNF Decomposition]] — the algorithm that eliminates anomalies

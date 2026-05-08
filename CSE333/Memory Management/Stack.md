@@ -50,8 +50,9 @@ Memory on the stack is allocated and freed automatically via **calling conventio
 - **Lifetime**: Local variables only exist while their function is active. **Never return a pointer to a local variable**, as it will point to a "dangling" location in a frame that has been reclaimed.
 
 ## Related
-- [[C Memory Model]]
-- [[Heap Management]]
-- [[C Fundamentals/Arrays|Arrays]]
-- [[C Fundamentals/Introduction to C|Introduction to C]]
-- [[CSE351/Memory Fundamentals/Stack|CSE351: The Stack]]
+- [[CSE333/Memory Management/C Memory Model|C Memory Model]]
+- [[CSE333/Memory Management/Heap Management|Heap Management]]
+- [[CSE333/C Fundamentals/Arrays|Arrays]]
+- [[CSE333/C Fundamentals/Introduction to C|Introduction to C]]
+- [[CSE351/Procedures and Stack/Stack Frames|CSE351: Stack Frames]]
+- [[CSE351/Procedures and Stack/Stack Pointer|CSE351: Stack Pointer]]

@@ -81,6 +81,6 @@ Each process has its own page table, enabling:
 - [[CSE351/Memory Management/Page Faults|Page Faults]]
 - [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]]
 - [[CSE351/Security/Buffer Overflow|Buffer Overflow]]
-- [[CSE451/Memory Management/Address Translation/Page Table|Page Table (CSE451)]]
-- [[CSE451/Memory Management/Address Translation/Page Table/Page Table Entry Anatomy|Page Table Entry Anatomy (CSE451)]]
+- [[CSE451/Virtualization/Memory/Address Translation/Page Table|Page Table (CSE451)]]
+- [[CSE451/Virtualization/Memory/Address Translation/Page Table/Page Table Entry Anatomy|Page Table Entry Anatomy (CSE451)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

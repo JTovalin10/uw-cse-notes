@@ -1,6 +1,6 @@
-# Windows Kernel Heap
+# CSE451: Windows Kernel Heap
 
-The Windows kernel uses several different heap managers for dynamic memory allocation.
+The **Windows Kernel Heap** uses several different heap managers for dynamic memory allocation.
 
 ## Types of Heaps
 - **Pools**: The primary kernel-mode heap managers.
@@ -9,5 +9,6 @@ The Windows kernel uses several different heap managers for dynamic memory alloc
 - **Segment Heap**: A modern heap manager (introduced in Windows 10) designed for better efficiency and security.
 
 ## Related
-- [[Windows Paging]]
-- [[CSE451/Memory Management/Memory Allocation|Memory Allocation]]
+- [[CSE451/Virtualization/Memory/Windows/Windows Paging|Windows Paging]]
+- [[CSE351/Memory Management/Memory Allocation|Memory Allocation (351)]]
+- [[CSE451/Virtualization/Memory/Memory management|Memory Management (451)]]

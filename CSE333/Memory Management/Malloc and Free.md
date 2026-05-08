@@ -24,8 +24,8 @@ Dynamic memory in C is managed using functions from `<stdlib.h>`.
 - Ensure every `malloc` has a corresponding `free`.
 
 ## Related
-- [[Heap Management]]
-- [[Memory Bugs and Valgrind]]
-- [[C Memory Model]]
+- [[CSE333/Memory Management/Heap Management|Heap Management]]
+- [[CSE333/Memory Management/Memory Bugs and Valgrind|Memory Bugs and Valgrind]]
+- [[CSE333/Memory Management/C Memory Model|C Memory Model]]
 - [[CSE351/Memory Management/Memory Allocation|Memory Allocation (351)]]
-- [[CSE451/Memory Management/Memory management|OS Memory Management (451)]]
+- [[CSE451/Virtualization/Memory/Memory management|OS Memory Management (451)]]

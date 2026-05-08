@@ -1,6 +1,6 @@
 - value is 0 or 1
 - Guarantees [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]] access to resource
-- only one [[Thread]]/[[Process]] allowed entry at a time
+- only one [[CSE451/Concurrency/Threads/Thread|Thread]]/[[CSE451/Virtualization/Processes/Process|Process]] allowed entry at a time
 	- uses a queue
 - logically equivalent to a lock with blocking rather than spinning
 - **initialized to 1**

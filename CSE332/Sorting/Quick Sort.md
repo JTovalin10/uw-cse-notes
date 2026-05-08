@@ -1,6 +1,6 @@
 # CSE 332: Quick Sort
 
-**[[Quick Sort]]**: A divide and conquer sorting algorithm that selects a "pivot" element and partitions the array into two sublists—elements less than the pivot and elements greater than the pivot—before sorting them recursively.
+**Quick Sort**: A divide and conquer sorting algorithm that selects a "pivot" element and partitions the array into two sublists—elements less than the pivot and elements greater than the pivot—before sorting them recursively.
 
 ## Procedure
 * **Divide**: Select a **Pivot** element $p$ and **Partition** the array. This is the "hard" part.
@@ -74,6 +74,6 @@ private static void swap(int[] arr, int i, int j) {
 ```
 
 ## Related
-* [[Divide And Conquer Sorting]]
-* [[Merge Sort]]
-* [[Introduction To Sorting]]
+* [[CSE332/Sorting/Divide And Conquer Sorting|Divide And Conquer Sorting]]
+* [[CSE332/Sorting/Merge Sort|Merge Sort]]
+* [[CSE332/Sorting/Introduction To Sorting|Introduction To Sorting]]

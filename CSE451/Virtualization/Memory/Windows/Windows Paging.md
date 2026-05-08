@@ -9,5 +9,5 @@ Windows uses a demand-paging virtual memory system with a "working set" model.
 
 ## Related
 - [[Windows Kernel Heap]]
-- [[CSE451/Memory Management/Memory Models/Paging|Paging]]
+- [[CSE451/Virtualization/Memory/Memory Models/Paging|Paging]]
 - [[Virtual Memory]]

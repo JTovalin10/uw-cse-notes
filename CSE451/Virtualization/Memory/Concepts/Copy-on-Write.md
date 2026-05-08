@@ -29,4 +29,4 @@ When either the parent or the child attempts to write to a shared page:
 - **Memory Efficiency**: Pages that are never written to (e.g., shared libraries, static data) are never duplicated.
 
 ---
-**See Also**: [[CSE451/Memory Management/Concepts/Page Fault Lifecycle|Page Fault Lifecycle]], [[Virtual Memory]]
+**See Also**: [[CSE451/Virtualization/Memory/Concepts/Page Fault Lifecycle|Page Fault Lifecycle]], [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory]]

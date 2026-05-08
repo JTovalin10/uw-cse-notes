@@ -1,18 +1,30 @@
-A page fault is a hardware [[Exception]] that occurs when a running program tries to access a virtual page that is not currently present in physical RAM
+# CSE451: Page Fault
 
-## What triggers it
-- the [[Page Table Entries|PTE]] has valid = 1 but present = 0 (page exists but is on disk)
-- the hardware cannot complete the address translation and traps to the OS
+A **Page Fault** is a hardware [[CSE351/System Programming/Exceptions|Exception]] that occurs when a running program tries to access a virtual page that is not currently present in physical RAM.
 
-## What happens
-1. CPU traps to the kernel (page fault handler)
-2. OS looks up the faulting virtual address to find where the page lives on disk
-3. OS selects a free physical frame (or evicts one using a page replacement policy)
-	- if the evicted page is dirty (modified bit set in the [[Page Table Entries|PTE]]), it must be written back to disk first
-4. OS reads the needed page from disk into the free frame
-5. OS updates the [[Page Table]] entry: sets PFN to the new frame, sets present = 1
-6. OS restarts the faulting instruction — this time the translation succeeds
+## Triggering Mechanism
+- The [[CSE451/Virtualization/Memory/Address Translation/Page Table/Page Table Entry Anatomy|Page Table Entry (PTE)]] has `valid = 1` but `present = 0` (the page exists in the address space but is currently on disk).
+- The hardware cannot complete the address translation and traps to the OS.
 
-## Types
-- **minor (soft) page fault** — the page is already in memory (e.g. shared by another process or in a buffer cache), no disk I/O needed
-- **major (hard) page fault** — the page must be read from disk, much slower
+## Handling Workflow
+1. **Trap**: The CPU traps to the kernel (page fault handler).
+2. **Disk Lookup**: The OS looks up the faulting virtual address to find where the page lives on disk.
+3. **Frame Selection**: The OS selects a free physical frame (or evicts one using a [[CSE451/Virtualization/Memory/Page Replacement/Page replacement|Page Replacement Policy]]).
+	- If the evicted page is **Dirty** (modified bit set in the PTE), it must be written back to disk first.
+4. **I/O**: The OS reads the needed page from disk into the free frame.
+5. **Update**: The OS updates the [[CSE451/Virtualization/Memory/Address Translation/Page Table|Page Table]] entry: sets PFN to the new frame, and sets `present = 1`.
+6. **Restart**: The OS restarts the faulting instruction — this time the translation succeeds.
+
+## Types of Page Faults
+- **Minor (Soft) Page Fault**: The page is already in memory (e.g., shared by another process or in a buffer cache), so no disk I/O is needed.
+- **Major (Hard) Page Fault**: The page must be read from disk, which is significantly slower.
+
+## Related
+- [[CSE351/Memory Management/Page Tables|Page Tables (CSE351)]]
+- [[CSE351/Memory Management/Virtual Memory|Virtual Memory (CSE351)]]
+- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB (351)]]
+- [[CSE351/System Programming/Exceptions|Exceptions (351)]]
+- [[CSE351/System Programming/Context Switching|Context Switching (351)]]
+- [[CSE451/Virtualization/Memory/How does the OS handle page faults|How the OS Handles Page Faults]]
+- [[CSE451/Virtualization/Memory/Page Replacement/Page replacement|Page Replacement]]
+- [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]

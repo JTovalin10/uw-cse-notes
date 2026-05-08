@@ -179,5 +179,5 @@ Two-phase algorithm:
 - [[CSE351/Memory Management/Segregated List Allocators|Segregated List Allocators]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 - [[CSE333/Data Structures/LinkedList|Linked Lists (CSE333)]]
-- [[CSE333/Memory Management/Malloc|malloc (CSE333)]]
-- [[CSE333/Memory Management/Free|free (CSE333)]]
+- [[CSE333/Memory Management/Malloc and Free|malloc (CSE333)]]
+- [[CSE333/Memory Management/Malloc and Free|free (CSE333)]]

@@ -102,15 +102,15 @@ Each node computes the selection independently; results are implicitly unioned.
 
 ### Partitioned Joins $\bowtie$
 
-See [[Parallel Join Algorithms]] for the full descriptions of:
+See [[CSE344/Query Execution/Parallel Join Algorithms|Parallel Join Algorithms]] for the full descriptions of:
 - **Partitioned Hash Join** — shuffle on join key, local join
 - **Broadcast Join** — broadcast the smaller table, local join
 - **Skew Join** — handles heavy hitters with a hybrid approach
 
 ## Related
-- [[Parallel Join Algorithms]] — detailed algorithms for parallel joins
-- [[Physical Algorithms and Pipelining]] — the single-node algorithms that each node runs locally
-- [[Pipelined Execution]] — how operators within a node stream tuples
-- [[Cardinality Estimation]] — skew directly affects cardinality estimates
+- [[CSE344/Query Execution/Parallel Join Algorithms|Parallel Join Algorithms]] — detailed algorithms for parallel joins
+- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — the single-node algorithms that each node runs locally
+- [[CSE344/Query Execution/Pipelined Execution|Pipelined Execution]] — how operators within a node stream tuples
+- [[CSE344/Query Execution/Cardinality Estimation|Cardinality Estimation]] — skew directly affects cardinality estimates
 - [[CSE344/Database Design/Disk Storage|Disk Storage]] — data layout choices interact with partitioning strategies
-- [[CSE451/Memory Management/Memory management|Memory Management]] — OS-level resource sharing that parallels shared-memory/shared-nothing architectures
+- [[CSE451/Virtualization/Memory/Memory management|Memory Management]] — OS-level resource sharing that parallels shared-memory/shared-nothing architectures

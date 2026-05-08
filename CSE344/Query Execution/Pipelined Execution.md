@@ -35,10 +35,10 @@ I/O cost may be lower with pipelined execution:
 - Baseline assumption: no indexes + block-at-a-time NLJ
 
 ## Related
-- [[External Memory Algorithms]] — the algorithms that execute within a pipeline stage
-- [[Main Memory Join Algorithms]] — in-memory operators pipelined via the iterator interface
-- [[Physical Algorithms and Pipelining]] — overview of physical operator types
-- [[Parallel Query Execution]] — pipelining interacts with the shared-nothing shuffle model
-- [[Relational Algebra]] — the logical operators implemented by the pipeline
-- [[Cardinality Estimation]] — memory availability affects whether a pipeline is single- or multi-pass
+- [[CSE344/Query Execution/External Memory Algorithms|External Memory Algorithms]] — the algorithms that execute within a pipeline stage
+- [[CSE344/Query Execution/Main Memory Join Algorithms|Main Memory Join Algorithms]] — in-memory operators pipelined via the iterator interface
+- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — overview of physical operator types
+- [[CSE344/Query Execution/Parallel Query Execution|Parallel Query Execution]] — pipelining interacts with the shared-nothing shuffle model
+- [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — the logical operators implemented by the pipeline
+- [[CSE344/Query Execution/Cardinality Estimation|Cardinality Estimation]] — memory availability affects whether a pipeline is single- or multi-pass
 - [[CSE344/Database Design/Disk Storage|Disk Storage]] — the disk I/O that pipelining tries to minimize

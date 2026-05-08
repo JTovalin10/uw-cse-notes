@@ -1,4 +1,4 @@
-We can combine [[Segmentation]] and [[CSE451/Memory Management/Memory Models/Paging]]
+We can combine [[Segmentation]] and [[CSE451/Virtualization/Memory/Memory Models/Paging]]
 - use segments to manage logical units
 	- segments vary in size but are typically large
 - use pages to partition segments into fixed-size chunks

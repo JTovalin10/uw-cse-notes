@@ -6,7 +6,7 @@ for a solution to the critical section problem to be correct, it must satisfy th
 - see [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]
 
 ## Progress
-- if [[Thread]] T is outside the critical section, then T cannot prevent thread S from entering the critical section
+- if [[CSE451/Concurrency/Threads/Thread|Thread]] T is outside the critical section, then T cannot prevent thread S from entering the critical section
 - threads outside the critical section should not block others
 
 ## Bounded Waiting (No Starvation)

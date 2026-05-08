@@ -31,4 +31,4 @@ The **Page Fault** is a critical mechanism in virtual memory systems that allows
 5. **Re-execution**: When scheduled, the OS restores the context. The CPU re-executes the **exact same instruction** that caused the fault. This time, the MMU walk succeeds.
 
 ---
-**See Also**: [[CSE451/Memory Management/Concepts/Copy-on-Write|Copy-on-Write]], [[TLB Miss]]
+**See Also**: [[CSE451/Virtualization/Memory/Concepts/Copy-on-Write|Copy-on-Write]], [[TLB Miss]]

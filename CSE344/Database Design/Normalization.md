@@ -1,14 +1,14 @@
 # CSE344: Normalization
 
-Normalization is the process of restructuring a relational schema to eliminate [[Data Anomalies|data anomalies]] using [[Functional Dependencies (FDs)|functional dependencies]].
+Normalization is the process of restructuring a relational schema to eliminate [[CSE344/Database Design/Data Anomalies|data anomalies]] using [[CSE344/Database Design/Functional Dependencies (FDs)|functional dependencies]].
 
 ## Process Overview
 
 1. Start with a relational schema: $R(A_1, A_2, A_3, ...)$
-2. Identify [[Data Anomalies]] (redundancy, update, deletion)
-3. Find the schema's [[Functional Dependencies (FDs)|functional dependencies]]
-4. Compute [[Closures and Keys|closures and keys]]
-5. Apply [[BCNF Decomposition]] until the schema is in BCNF
+2. Identify [[CSE344/Database Design/Data Anomalies|Data Anomalies]] (redundancy, update, deletion)
+3. Find the schema's [[CSE344/Database Design/Functional Dependencies (FDs)|functional dependencies]]
+4. Compute [[CSE344/Database Design/Closures and Keys|closures and keys]]
+5. Apply [[CSE344/Database Design/BCNF Decomposition|BCNF Decomposition]] until the schema is in BCNF
 
 ## Normal Forms
 
@@ -27,11 +27,11 @@ For every non-trivial functional dependency $X \rightarrow C$, $X$ must be a **s
 
 ## Key Topics
 
-- [[Data Anomalies]] — redundancy, update anomaly, deletion anomaly, and informal design guidelines
-- [[Functional Dependencies (FDs)]] — formal definition, Armstrong's axioms, reasoning about FDs
-- [[Closures and Keys]] — closure algorithm, superkeys, keys, candidate keys
-- [[BCNF Decomposition]] — the recursive decomposition algorithm with worked examples
+- [[CSE344/Database Design/Data Anomalies|Data Anomalies]] — redundancy, update anomaly, deletion anomaly, and informal design guidelines
+- [[CSE344/Database Design/Functional Dependencies (FDs)|Functional Dependencies (FDs)]] — formal definition, Armstrong's axioms, reasoning about FDs
+- [[CSE344/Database Design/Closures and Keys|Closures and Keys]] — closure algorithm, superkeys, keys, candidate keys
+- [[CSE344/Database Design/BCNF Decomposition|BCNF Decomposition]] — the recursive decomposition algorithm with worked examples
 
 ## Related
-- [[Entities, Relationships, and ER Diagrams]] — design starting point before normalization
-- [[Physical Design and Indices]] — physical design follows after logical normalization
+- [[CSE344/Database Design/Entities, Relationships, and ER Diagrams|Entities, Relationships, and ER Diagrams]] — design starting point before normalization
+- [[CSE344/Database Design/Physical Design and Indices|Physical Design and Indices]] — physical design follows after logical normalization

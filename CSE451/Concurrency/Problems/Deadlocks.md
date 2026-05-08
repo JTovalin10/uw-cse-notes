@@ -1,14 +1,14 @@
 # Deadlock: Technical Analysis and Formal Reasoning
 
 ## Low-Level Primer: The Deadlock State
-A **[[Deadlock]]** is a permanent, non-recoverable system state involving a set of **[[Threads]]** or processes. This state occurs when every member of the set is blocked because it is waiting for a resource that is currently held by another member of that same set. This creates a circular dependency chain where progress is mathematically impossible without external kernel-level intervention.
+A **[[Deadlock]]** is a permanent, non-recoverable system state involving a set of **[[CSE451/Concurrency/Threads/Thread|Threads]]** or processes. This state occurs when every member of the set is blocked because it is waiting for a resource that is currently held by another member of that same set. This creates a circular dependency chain where progress is mathematically impossible without external kernel-level intervention.
 
 ## The Four Necessary Conditions (Coffman Conditions)
 For a **Deadlock** to be possible, all four of the following technical conditions must hold simultaneously. Breaking any single condition is the fundamental basis for **Deadlock Prevention**.
 
-1.  **Mutual Exclusion**: At least one resource must be held in a non-sharable mode. Only one **[[Thread]]** can access the resource at any given time; any subsequent requester must wait.
-2.  **Hold and Wait**: A **[[Thread]]** must be holding at least one resource while simultaneously waiting to acquire additional resources that are currently held by other threads.
-3.  **No Preemption**: Resources cannot be forcibly taken from a **[[Thread]]**. They can only be released voluntarily by the holder after the task is completed.
+1.  **Mutual Exclusion**: At least one resource must be held in a non-sharable mode. Only one **[[CSE451/Concurrency/Threads/Thread|Thread]]** can access the resource at any given time; any subsequent requester must wait.
+2.  **Hold and Wait**: A **[[CSE451/Concurrency/Threads/Thread|Thread]]** must be holding at least one resource while simultaneously waiting to acquire additional resources that are currently held by other threads.
+3.  **No Preemption**: Resources cannot be forcibly taken from a **[[CSE451/Concurrency/Threads/Thread|Thread]]**. They can only be released voluntarily by the holder after the task is completed.
 4.  **Circular Wait**: A closed chain of threads $\{T_1, T_2, \dots, T_n\}$ exists such that $T_1$ is waiting for a resource held by $T_2$, $T_2$ is waiting for $T_3$, and $T_n$ is waiting for $T_1$.
 
 ## Resource Allocation Graphs (RAG)

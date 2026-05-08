@@ -11,6 +11,6 @@
 Several highly efficient sorting algorithms use this paradigm to achieve $\Theta(n \log n)$ performance.
 
 ## Related
-* [[Merge Sort]]
-* [[Quick Sort]]
-* [[Introduction To Sorting]]
+* [[CSE332/Sorting/Merge Sort|Merge Sort]]
+* [[CSE332/Sorting/Quick Sort|Quick Sort]]
+* [[CSE332/Sorting/Introduction To Sorting|Introduction To Sorting]]

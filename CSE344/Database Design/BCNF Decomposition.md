@@ -39,7 +39,7 @@ The key insight from [[Closures and Keys]]:
 By extracting $X^+$ into $R_1$ and keeping the rest in $R_2$ (with $X$ as a foreign key), the "bad" FD is isolated and the anomaly is eliminated.
 
 ## Related
-- [[Normalization]] — defines BCNF and the normal forms
+- [[CSE344/Database Design/Normalization|Normalization]] — defines BCNF and the normal forms
 - [[Closures and Keys]] — the closure algorithm and superkey check used in each step
 - [[Data Anomalies]] — the anomalies that BCNF eliminates
 - [[Functional Dependencies (FDs)]] — the FDs that drive each decomposition step

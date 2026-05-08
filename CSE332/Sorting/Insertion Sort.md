@@ -1,6 +1,8 @@
 # CSE 332: Insertion Sort
 
-**[[Insertion Sort]]**: A sorting algorithm that maintains a sorted list prefix and extends that prefix by "inserting" the next element into its correct position within the prefix.
+**Insertion Sort**: A sorting algorithm that maintains a sorted list prefix and extends that prefix by "inserting" the next element into its correct position within the prefix. 
+
+Because it processes elements one by one as they arrive, it is a naturally [[CSE332/Definitions/Online Algorithm|Online Algorithm]].
 
 ## Properties
 * **Running Time**:
@@ -30,4 +32,4 @@ public static void insertionSort(int[] arr) {
 ```
 
 ## Related
-* [[Introduction To Sorting]]
+* [[CSE332/Sorting/Introduction To Sorting|Introduction To Sorting]]
