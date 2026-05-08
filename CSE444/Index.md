@@ -41,15 +41,20 @@ Advanced database systems: internals, query processing, storage, and distributed
 
 ### Transactions
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)
-- [[CSE444/Transactions/Schedules and Concurrency Problems|Schedules and Concurrency Problems]] — serializable schedules and WR/RW/WW conflicts
-- [[CSE444/Transactions/Conflict Serializability|Conflict Serializability]] — precedence graphs and conflict serializability
-- [[CSE444/Transactions/Locking|Locking and 2PL]] — pessimistic concurrency control, Two-Phase Locking (2PL), and Strict 2PL
-- [[CSE444/Transactions/Lock Modes|Lock Modes and Granularity]] — shared (S) and exclusive (X) locks, fine vs. coarse granularity
-- [[CSE444/Transactions/The Locking Scheduler|The Locking Scheduler]] — transaction agent vs. system agent roles and the lock table
-- [[CSE444/Transactions/Deadlocks|Deadlocks]] — detection via wait-for graphs, timeouts, and avoidance strategies
+- [[CSE444/Transactions/Serializability/Schedules|Schedules]] — definition of serial, serializable, and recoverable schedules
+- [[CSE444/Transactions/Concurrency Anomalies|Concurrency Anomalies]] — WR (Dirty Read), RW (Unrepeatable Read), WW (Lost Update) conflicts
+- [[CSE444/Transactions/Serializability/Serializability|Serializability]] — correctness criteria and types of equivalence (Conflict vs. View)
+- [[CSE444/Transactions/Serializability/Conflict Serializability|Conflict Serializability]] — precedence graphs and conflict serializability
+- [[CSE444/Transactions/Serializability/View Serializability|View Serializability]] — view equivalence and the limits of conflict serializability
+- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Pessimistic Scheduler]] — transaction agent vs. system agent roles and the lock table
+- [[CSE444/Transactions/Pessimistic Components/Two-Phase Locking (2PL)|Two-Phase Locking (2PL)]] — 2PL, Strict 2PL, and ensuring conflict serializability
+- [[CSE444/Transactions/Pessimistic Components/Lock Modes|Lock Modes and Granularity]] — shared (S) and exclusive (X) locks, fine vs. coarse granularity
+- [[CSE444/Transactions/Pessimistic Components/Deadlocks|Deadlocks]] — detection via wait-for graphs, timeouts, and avoidance strategies
 - [[CSE444/Transactions/Isolation Levels|Isolation Levels]] — SQL standard levels (Read Uncommitted to Serializable) and their trade-offs
 - [[CSE444/Transactions/Phantom Problem|The Phantom Problem]] — inconsistencies due to insertions/deletions and predicate locking
-- [[CSE444/Transactions/Optimistic Concurrency Control|Optimistic Concurrency Control]] — timestamp-based concurrency control and validation mechanisms
+- [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]] — timestamp-based concurrency control and MVCC
+- [[CSE444/Transactions/Optimistic Components/Validation|Validation]] — optimistic validation phases (Read, Validate, Write)
+- [[CSE444/Transactions/Optimistic Components/Snapshot Isolation|Snapshot Isolation]] — multiversion concurrency control and first-committer-wins rule
 
 ### Replication and Distribution
 *(notes in progress)*

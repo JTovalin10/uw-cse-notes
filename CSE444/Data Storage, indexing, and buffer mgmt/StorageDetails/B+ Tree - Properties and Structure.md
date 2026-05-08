@@ -12,7 +12,7 @@ A **B+ tree** is a **balanced search tree** optimized for disk-page access. It i
 - **Leaves are linked** in a doubly-linked list, enabling efficient range scans
 - Each node access = one page read (which is expensive — the whole point is to minimize tree height)
 
-![[Screenshots/B+ Tree example.png]]
+![[B+ Tree example.png]]
 
 ---
 
@@ -30,11 +30,11 @@ A **B+ tree** is a **balanced search tree** optimized for disk-page access. It i
 - Each **internal node** has $d \leq m \leq 2d$ keys (except the root, which may have fewer)
 - Each internal node with $m$ keys has $m + 1$ child pointers
 
-![[Screenshots/B+ tree node pointers.png]]
+![[B+ tree node pointers.png]]
 
 - Each **leaf node** has $d \leq m \leq 2d$ key/pointer pairs
 
-![[Screenshots/B+ tree leaf keys.png]]
+![[B+ tree leaf keys.png]]
 
 ### Computing $d$ for a Given Page Size
 

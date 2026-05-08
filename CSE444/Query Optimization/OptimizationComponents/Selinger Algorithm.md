@@ -44,8 +44,8 @@ The Selinger optimizer restricts the search space to **left-deep join trees**:
 
 For each subset, the optimizer retains both the cheapest plan overall and any plan with an interesting order, for potential use by later joins.
 
-![[CSE444/Screenshots/Example from selinger paper 1.png]]
-![[CSE444/Screenshots/Example from selinger paper 2.png]]
+![[Example from selinger paper 1.png]]
+![[Example from selinger paper 2.png]]
 
 ## OrderJoins Pseudocode
 
@@ -65,9 +65,9 @@ OrderJoins(R):
 
 ### Example: OrderJoins(A, B, C, D) — All Nested-Loop Joins
 
-![[CSE444/Screenshots/orderJoins ex1.png]]
-![[CSE444/Screenshots/orderJoins ex2.1.png]]
-![[CSE444/Screenshots/order-join ex2.2.png]]
+![[orderJoins ex1.png]]
+![[orderJoins ex2.1.png]]
+![[order-join ex2.2.png]]
 
 ---
 

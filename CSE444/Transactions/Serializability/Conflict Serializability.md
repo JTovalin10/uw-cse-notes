@@ -17,13 +17,12 @@ To determine if a schedule is conflict-serializable:
 
 ![[Acyalic Graph Conflict Serializable.png]]
 
-## View Equivalence
-A serializable schedule need not be conflict serializable, even under the "worst case update" assumption. **View equivalence** is a weaker notion of equivalence that captures more serializable schedules.
+## View Serializability
+A serializable schedule need not be conflict serializable, even under the "worst case update" assumption. **[[CSE444/Transactions/Serializability/View Serializability|View Serializability]]** is a weaker notion of equivalence that captures more serializable schedules (specifically those with blind writes).
 
 ![[View Equivalence Example.png]]
-![[View Equivalence.png]]
 
 ## Related
-- [[Schedules and Concurrency Problems]]
-- [[Locking]]
-- [[Transaction Fundamentals]]
+- [[CSE444/Transactions/Concurrency Anomalies|Schedules and Concurrency Problems]]
+- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]]
+- [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]]

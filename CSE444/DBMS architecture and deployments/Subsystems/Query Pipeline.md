@@ -2,7 +2,7 @@
 
 A DBMS has two major subsystems: the **Query Processor** (where queries are executed) and the **Storage Manager** (where data is stored).
 
-![[Screenshots/DBMS Architecture.png]]
+![[DBMS Architecture.png]]
 
 ---
 
@@ -54,7 +54,7 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
     - Operator implementation to use at each node
 
 #### Logical Query Plan
-![[Screenshots/Logical Query Plan.png]]
+![[Logical Query Plan.png]]
 
 #### Physical Query Plan
 - Logical query plan with extra annotations
@@ -63,7 +63,7 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
   - Bottom of tree = reading from disk
   - Use a file scan or use an index
 
-![[Screenshots/Physical Query Plan.png]]
+![[Physical Query Plan.png]]
 
 ### 4. Executor
 - Actually executes the physical plan and returns results

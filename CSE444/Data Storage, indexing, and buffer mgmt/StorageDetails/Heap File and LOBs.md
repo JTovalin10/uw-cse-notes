@@ -13,4 +13,4 @@
 
 A **heap file** is an unordered collection of pages containing records. It is the simplest file organization.
 
-![[Screenshots/Heap File Implementations.png]]
+![[Heap File Implementations.png]]

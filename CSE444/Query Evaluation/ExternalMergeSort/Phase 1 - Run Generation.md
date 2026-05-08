@@ -14,4 +14,4 @@
 - Total runs produced: $\lceil B(R) / M \rceil$
 - **Cost**: read $B(R)$ + write $B(R)$ = $2B(R)$ I/Os
 
-![[CSE444/Screenshots/External Merge-Sort step 1.png]]
+![[External Merge-Sort step 1.png]]

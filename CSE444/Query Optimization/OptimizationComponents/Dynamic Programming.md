@@ -37,7 +37,7 @@ For each subquery $Q \subseteq \{R_1, \ldots, R_n\}$, the optimizer computes:
   - If restricting to **Left-Deep trees**, then $Q''$ must always be a single relation.
   - Most optimizers will only consider $Q'$ and $Q''$ that have a join predicate between them (to avoid Cartesian products).
 
-![[CSE444/Screenshots/DB Dynamic Programming.png]]
+![[DB Dynamic Programming.png]]
 
 ## Related
 - [[CSE444/Query Optimization/OptimizationComponents/Search Space|Search Space]]

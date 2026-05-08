@@ -12,7 +12,7 @@ When neither relation fits in memory ($B(R) > M$ and $B(S) > M$), we use a two-p
 - **Partition Size**: Assuming **uniform distribution**, each bucket has size $B(R_i) = \frac{B(R)}{k}$ and $B(S_i) = \frac{B(S)}{k}$.
 - **Goal**: Each build partition (e.g., $R_i$) must fit in the $M-2$ pages of the main memory build area.
 
-![[CSE444/Screenshots/Partitioned Hash Algorithm.png]]
+![[Partitioned Hash Algorithm.png]]
 
 **Total Ideal Cost**: $3(B(R) + B(S))$ I/Os.
 

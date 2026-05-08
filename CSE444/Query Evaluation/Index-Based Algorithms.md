@@ -23,7 +23,7 @@ Note: indexes are fast for highly selective queries (small $\frac{1}{V(R,a)}$), 
 
 ### Example
 
-![[CSE444/Screenshots/Index-based selection example.png]]
+![[Index-based selection example.png]]
 
 ## Range Selection Cost
 

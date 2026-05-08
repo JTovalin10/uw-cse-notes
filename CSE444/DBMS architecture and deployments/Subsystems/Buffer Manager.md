@@ -12,6 +12,6 @@ The **Buffer Manager** brings pages into memory and caches them in the **buffer 
   - Each frame has a **dirty bit**
   - A dirty frame must be **flushed** to disk before it can be evicted (write-back)
 
-![[Screenshots/Buffer Manager.png]]
+![[Buffer Manager.png]]
 
 See [[CSE444/Data Storage, indexing, and buffer mgmt/StorageDetails/Buffer Manager - Eviction and Updates|Data Storage — Buffer Manager]] for details on page formats and record layouts.

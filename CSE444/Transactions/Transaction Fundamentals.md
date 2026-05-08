@@ -27,6 +27,19 @@ To ensure data integrity, a DBMS must provide **ACID** properties:
 - **System Failures**: Occur at any time, impacting atomicity and durability.
 - **Aborts**: Transactions may need to be rolled back mid-way.
 
+## Pessimistic vs. Optimistic Concurrency Control
+
+To guarantee Isolation and handle concurrent operations, databases generally adopt one of two overarching philosophies:
+
+- **Pessimistic CC (Locking)**:
+	- Prevent unserializable schedules *before* they happen.
+	- Never abort for serializability reasons (but may abort for deadlocks).
+	- Best for workloads with **high levels of contention** (many transactions competing for the same data).
+- **Optimistic CC (Timestamp, Multi-version, Validation)**:
+	- Assume schedules will be serializable.
+	- Abort when conflicts are detected at *commit time*.
+	- Best for workloads with **low levels of contention** (reads are frequent, writes rarely conflict).
+
 ## Terminology: Buffer Management & Recovery
 
 - **Steal or No-Steal**:
@@ -42,7 +55,9 @@ To ensure data integrity, a DBMS must provide **ACID** properties:
 | **Steal / No-Force** | Complex recovery (Undo/Redo) | Highest |
 
 ## Related
-- [[Schedules and Concurrency Problems]]
-- [[Locking]]
-- [[Isolation Levels]]
-- [[Optimistic Concurrency Control]]
+- [[CSE444/Transactions/Concurrency Anomalies|Schedules and Concurrency Problems]]
+- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]]
+- [[CSE444/Transactions/Isolation Levels|Isolation Levels]]
+- [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]]
+- [[CSE444/Transactions/Optimistic Components/Validation|Validation]]
+- [[CSE444/Transactions/Optimistic Components/Snapshot Isolation|Snapshot Isolation]]

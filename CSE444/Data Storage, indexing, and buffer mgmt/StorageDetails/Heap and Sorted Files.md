@@ -26,7 +26,7 @@ Examples of attribute-based queries:
 - A heap file is **not sorted** on any attribute
 - Attribute-based queries require a full sequential scan
 
-![[Screenshots/Searching in a Heap File.png]]
+![[Searching in a Heap File.png]]
 
 #### Sorted File (Sequential File)
 
@@ -42,7 +42,7 @@ CREATE CLUSTERED INDEX s_sid ON Student(sid);
 - Binary search is possible: $O(\log_2 n)$ cost
 - See [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]]
 
-![[Screenshots/Sequential File.png]]
+![[Sequential File.png]]
 
 **Limitations of Sorted Files:**
 - The $\log_2 n$ binary search only applies to the indexed attribute

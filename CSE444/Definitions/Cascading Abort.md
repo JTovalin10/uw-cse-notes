@@ -1,0 +1,1 @@
+**Cascading Abort**: A phenomenon where the failure or rollback of one transaction causes a series of other dependent transactions to also rollback. This occurs in non-recoverable or non-strict schedules.

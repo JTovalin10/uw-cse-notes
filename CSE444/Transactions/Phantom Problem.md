@@ -2,7 +2,7 @@
 
 If tuples are inserted or deleted during a transaction, the **Phantom Problem** appears.
 
-![[CSE444/screenshots/Phantom Problem.png]]
+![[Phantom Problem.png]]
 
 A **phantom** is a tuple that is invisible during part of a transaction execution but not invisible during the entire execution.
 
@@ -19,6 +19,6 @@ A **phantom** is a tuple that is invisible during part of a transaction executio
 Dealing with phantoms is generally expensive and requires locking more than just existing individual tuples.
 
 ## Related
-- [[Locking]]
-- [[Lock Modes]]
-- [[Isolation Levels]]
+- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]]
+- [[CSE444/Transactions/Pessimistic Components/Lock Modes|Lock Modes]]
+- [[CSE444/Transactions/Isolation Levels|Isolation Levels]]

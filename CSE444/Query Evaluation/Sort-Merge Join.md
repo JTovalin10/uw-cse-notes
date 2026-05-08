@@ -12,7 +12,7 @@ If both relations fit entirely in main memory ($B(R) + B(S) \leq M$), sort-merge
 
 **Cost**: $B(R) + B(S)$
 
-![[CSE444/Screenshots/Sort-Merge Join.png]]
+![[Sort-Merge Join.png]]
 
 ## Two-Pass Algorithm (Sort-Merge Join)
 
@@ -26,13 +26,13 @@ When relations do not fit in memory ($B(R) + B(S) > M$), we use the two-pass ver
 
 **Total Cost**: $3(B(R) + B(S))$ I/Os.
 
-![[CSE444/Screenshots/Merge Join.png]]
+![[Merge Join.png]]
 
 ### Two-Pass Example
 
-![[CSE444/Screenshots/Merge join example 1.png]]
+![[Merge join example 1.png]]
 ![[CSE444/Screenshots/Sort-Merge Join example 2.png]]
-![[CSE444/Screenshots/Merge Join Example 3.png]]
+![[Merge Join Example 3.png]]
 
 ---
 

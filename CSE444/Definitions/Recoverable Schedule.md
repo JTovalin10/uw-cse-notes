@@ -1,0 +1,1 @@
+**Recoverable Schedule**: A schedule where, for every pair of transactions $ and $ such that $ reads a data item previously written by $, the commit operation of $ appears before the commit operation of $.

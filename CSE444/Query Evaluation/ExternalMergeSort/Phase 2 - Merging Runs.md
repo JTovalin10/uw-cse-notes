@@ -41,8 +41,8 @@ After one such pass:
 **Number of merge passes needed** to reduce to 1 run:
 $$\text{merge passes} = \lceil \log_{M-1}(\lceil B(R)/M \rceil) \rceil$$.
 
-![[CSE444/Screenshots/External Merge Sort phase 2.png]]
+![[External Merge Sort phase 2.png]]
 
 ### Example
 
-![[CSE444/Screenshots/External Merge-Sort phase 2 example.png]]
+![[External Merge-Sort phase 2 example.png]]

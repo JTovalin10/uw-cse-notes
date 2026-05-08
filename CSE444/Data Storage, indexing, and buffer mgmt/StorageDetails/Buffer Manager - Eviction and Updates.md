@@ -10,7 +10,7 @@ The **buffer manager** sits between the storage layer and the rest of the DBMS. 
 - Tracks which pages are **dirty** — a dirty page has in-memory modifications not yet written back to disk
   - Each frame has a **dirty bit**; a dirty frame must be flushed before eviction
 
-![[Screenshots/Buffer Manager Image.png]]
+![[Buffer Manager Image.png]]
 
 ### Pushing Updates to Disk
 

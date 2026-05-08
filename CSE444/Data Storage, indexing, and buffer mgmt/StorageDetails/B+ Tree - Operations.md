@@ -22,7 +22,7 @@ Cost: $O(\log_{2d} n)$ page reads.
 	   - middle layers
    - If the root splits, a **new root** is created with just one key
 
-![[Screenshots/Insertion in a B+ tree.png]]
+![[Insertion in a B+ tree.png]]
 
 ### Deletion
 
@@ -36,8 +36,8 @@ Cost: $O(\log_{2d} n)$ page reads.
    - Remove the separator key from the parent
    - Repeat the algorithm on the parent (which may itself become underfull)
 
-![[Screenshots/Deletion from a B+ Tree.png]]
-![[Screenshots/Deletion from a B+ Tree 2.png]]
+![[Deletion from a B+ Tree.png]]
+![[Deletion from a B+ Tree 2.png]]
 
 ---
 

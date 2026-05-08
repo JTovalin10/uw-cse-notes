@@ -30,5 +30,5 @@ We take the 10 buckets and split each one into 10 smaller "sub-buckets."
 ---
 
 ## Visual Examples
-![[CSE444/Screenshots/Partitioned Hash Join ex1.png]]
-![[CSE444/Screenshots/Partitioned Hash Join 6.png]]
+![[Partitioned Hash Join ex1.png]]
+![[Partitioned Hash Join 6.png]]

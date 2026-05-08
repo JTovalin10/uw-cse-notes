@@ -1,0 +1,1 @@
+**Blind Write**: A write operation to a data element $ performed by a transaction without previously reading $. Blind writes are a key differentiator between [[CSE444/Transactions/Conflict Serializability|Conflict Serializability]] and [[CSE444/Transactions/View Serializability|View Serializability]].

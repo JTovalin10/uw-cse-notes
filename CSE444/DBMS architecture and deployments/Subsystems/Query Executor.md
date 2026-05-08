@@ -16,4 +16,4 @@ Every operator implements an iterator interface (e.g., `OPIterator.java` in the 
 
 Each operator holds a reference to its child operator and can call `child.open()`, `child.next()`, etc.
 
-![[Screenshots/Query Execution.png]]
+![[Query Execution.png]]

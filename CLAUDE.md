@@ -26,9 +26,17 @@
 
 ### Note Structure Patterns
 - Hub files are short (2-10 lines) and serve as link collections to subtopics
-- Detailed files use consistent heading patterns:
-  - CSE461 style: `# [Layer]: [Topic]` → `## Low-Level Primer` → numbered sections → comparison tables → related topics
-  - CSE451 style: `# What is it` → `# What does it do` → `# How X works` → `# Key points` → `# Components` → `# Related`
+- **Progressive Narrative Flow**: Sections within a detailed file MUST build on each other logically. Start with the core concept, move to the mechanism/timeline, provide a concrete walkthrough/example, delve into physical implementation details, and conclude with outcomes/trade-offs. Do not scatter related points.
+- **Deep Technical Detail ("Not Sparknotes")**: Explanations must be thorough. Always explain the "how" and the "why" (e.g., the underlying physical storage mechanics or the algorithmic logic).
+- **Dual-Layer Explanations**: For complex rules and definitions, provide both a formal definition (textbook/mathematical rigor) and a simplified explanation (plain-English intuition). Do NOT use emojis for these headers; maintain professional text-only formatting.
+  - *Example Format:*
+    `### Formal Definition`
+    `$TS(T) < WT(X)$`
+    `### Simplified Explanation`
+    `Someone from the future already changed it.`
+- **Encapsulation & High-Density Linking**: Treat the vault as a knowledge graph. Extract *distinct, reusable* technical terms into the `Definitions/` folder. Extract shared concepts into their own focused files. Extensively cross-link these terms using full disambiguated paths every time they are mentioned.
+  - *Example Link:* `This leads to a [[CSE444/Definitions/Dirty Read|Dirty Read]].`
+  - **Crucial Limit**: Do NOT create files just for the sake of creating files. If a concept is minor, highly specific to the current topic, or only a sentence long and unlikely to be referenced elsewhere, just **inline it** in the main file. Only encapsulate concepts that are truly standalone or shared.
 - Personal annotations appear as `Me: ...` comments
 - Source attributions at bottom (e.g. OSTEP textbook references)
 - Related/See-also sections at the end linking to dependencies
@@ -50,9 +58,10 @@ The user often dumps raw lecture content into files without structure. When aske
 6. **Consolidate redundant files** — if two files cover the same topic, merge them
 7. **Move loose images** into a `Screenshots/` subdirectory
 8. **Add a Related section** at the bottom of files that connect to other topics
-9. **Fix flow and logical ordering** — sections within a file should build on each other (fundamentals first, then details, then advanced patterns)
-10. **Never remove information to make a file shorter** — the goal is better organization, not brevity. If anything, expand on points that are terse or unclear. Do not cut bullet points, examples, or explanations that were in the original
-11. **Preserve the user's original content and meaning** — reorganize and clean up, but don't add new technical content or change what was taught
-12. **Add cross-course links** — check whether topics in other courses cover the same concept in more depth and link to them (e.g., CSE451 covers OS-level locking which relates to CSE344 transactions; CSE484 covers hashing and SQL injection which relates to CSE344 password handling). Use disambiguated paths when linking across courses: `[[CSE451/Synchronization/Locks]]`
+9. **Fix flow and logical ordering** — sections within a file must build on each other cohesively. Eliminate backtracking and scattered thoughts.
+10. **Never remove information to make a file shorter** — the goal is better organization, not brevity. Expand on points that are terse or unclear. Provide deep technical context.
+11. **Preserve the user's original content and meaning** — reorganize and clean up, but don't add entirely new technical content that contradicts what was taught.
+12. **Add cross-course links** — check whether topics in other courses cover the same concept in more depth and link to them using disambiguated paths.
 13. **Rename files to Title Case** if they aren't already
-14. **Split large files into focused files** when a section is a self-contained topic that could be referenced independently — these notes come from slides that cram many topics together, so break them into individual files when it makes sense for linking and lookup
+14. **Split large files into focused files (Encapsulation)** — when a section is a heavily self-contained topic or a discrete reusable definition, break it out into its own file so it can be referenced independently. **However, do not over-encapsulate:** do not create files for the sake of creating files; if a concept is minor or highly context-dependent, inline it within the broader topic file.
+15. **Enforce Professional Style** — strictly remove any emojis from headers and content. Use plain markdown for structure.

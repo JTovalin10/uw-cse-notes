@@ -16,7 +16,7 @@ A **page** holds records and is the unit of I/O between disk and memory.
 - **Adding a tuple**: find free space and claim it; update N (tuple count)
 - **Deleting a tuple**: difficult — records cannot be moved because RIDs contain the slot number; also cannot handle variable-length tuples
 
-![[Screenshots/Page Format Approach 1.png]]
+![[Page Format Approach 1.png]]
 
 ### Approach 2: Slot Directory
 - Sacrifice a small amount of space for a **slot directory** in the page header
@@ -26,7 +26,7 @@ A **page** holds records and is the unit of I/O between disk and memory.
 - slot directory grows left
 - slots grow right
 
-![[Screenshots/Page Format Approach 2.png]]
+![[Page Format Approach 2.png]]
 
 ---
 
@@ -37,10 +37,10 @@ A **page** holds records and is the unit of I/O between disk and memory.
 - The same byte length is used for every record in the relation
 - Simple to navigate: field offset = sum of preceding field lengths
 
-![[Screenshots/Record Formats.png]]
+![[Record Formats.png]]
 
 ### Variable-Length Records
 - Fields like `VARCHAR` can differ in length across records
 - Requires storing offsets or delimiters to locate each field within a record
 
-![[Screenshots/Variable length records.png]]
+![[Variable length records.png]]

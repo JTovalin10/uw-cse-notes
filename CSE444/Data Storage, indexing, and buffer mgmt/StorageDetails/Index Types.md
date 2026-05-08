@@ -12,16 +12,16 @@ An **index** is a separate file that enables fast access by a **search key** val
 - `(k, list-of-RIDs)` — multiple pointers (when key is not unique)
 - The full record with key k — a **clustered (primary) index**
 
-![[Screenshots/Indexes Image.png]]
+![[Indexes Image.png]]
 
 ### Clustered Index (Primary Index)
 
 - Records in the data file have the **same order** as in the index
 - **Dense index**: a `(key, RID)` pair for every record; each entry points to one specific record
-  - ![[Screenshots/Dense Index.png]]
+  - ![[Dense Index.png]]
 - **Sparse index**: stores only a subset of `(key, RID)` pairs; each entry points to a page rather than a specific record
   - Only works on a clustered index (requires physical sorting)
-  - ![[Screenshots/Sparse Index.png]]
+  - ![[Sparse Index.png]]
 
 ### Secondary Index (Unclustered Index)
 
@@ -30,7 +30,7 @@ An **index** is a separate file that enables fast access by a **search key** val
   - Cannot use the sparse index space optimization since the data is not physically sorted on the secondary key
 - Inserts and deletions are expensive — the index must be updated
 
-![[Screenshots/Secondary Indexes.png]]
+![[Secondary Indexes.png]]
 
 ### Clustered vs. Unclustered Summary
 

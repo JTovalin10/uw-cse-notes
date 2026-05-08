@@ -32,7 +32,7 @@ SQL standardizes several isolation levels that trade off consistency for perform
 - **Phantoms**: Uses **predicate locking** or index locking to deal with phantoms.
 
 ## Summary Table
-| Isolation Level | Dirty Read | Unrepeatable Read | Phantom |
+| Isolation Level | [[CSE444/Definitions/Dirty Read|Dirty Read]] | [[CSE444/Definitions/Unrepeatable Read|Unrepeatable Read]] | [[CSE444/Transactions/Phantom Problem|Phantom]] |
 | :--- | :---: | :---: | :---: |
 | Read Uncommitted | Possible | Possible | Possible |
 | Read Committed | No | Possible | Possible |
@@ -40,6 +40,8 @@ SQL standardizes several isolation levels that trade off consistency for perform
 | Serializable | No | No | No |
 
 ## Related
-- [[Locking]]
-- [[Phantom Problem]]
-- [[Transaction Fundamentals]]
+- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]]
+- [[CSE444/Transactions/Phantom Problem|Phantom Problem]]
+- [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]]
+- [[CSE444/Transactions/Optimistic Components/Snapshot Isolation|Snapshot Isolation]]
+

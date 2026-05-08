@@ -75,7 +75,7 @@ The optimizer computes costs in a bottom-up fashion:
 2. Estimate cardinality of intermediate results.
 3. Apply operator-specific cost formulas (e.g., [[CSE444/Query Evaluation/Operator Algorithms|External Merge Sort]] or Hash Join costs).
 
-![[CSE444/Screenshots/Computing the cost of a plan.png]]
+![[Computing the cost of a plan.png]]
 
 > [!NOTE] Intermediate Results
 > If an operator (like a selection) brings data into memory but a subsequent operator (like sort-merge join) requires disk-based runs, the intermediate result must be written to disk, adding to the total I/O cost.
