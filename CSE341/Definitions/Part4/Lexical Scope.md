@@ -1,0 +1,1 @@
+**[[CSE341/Definitions/Part4/Lexical Scope|Lexical Scope]]**: A scoping discipline where the scope of a variable is determined by its location within the source code (the "lexical" environment). Functions are evaluated in the environment where they were *defined*, not where they are *called*.

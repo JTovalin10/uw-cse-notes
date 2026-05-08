@@ -1,0 +1,1 @@
+**[[CSE341/Definitions/Part4/Abstract Syntax Tree (AST)|Abstract Syntax Tree (AST)]]**: A tree representation of the abstract syntactic structure of source code, where each node denotes a construct occurring in the source code. It strips away purely syntactic details like parentheses, focusing on the logical structure of expressions and statements.
