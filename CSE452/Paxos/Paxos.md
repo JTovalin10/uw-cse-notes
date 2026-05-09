@@ -1,24 +1,30 @@
-# CSE452: Paxos Overview
+# Paxos: Distributed Consensus Overview
 
-**Paxos** is a general algorithm used to get a group of nodes (a distributed system) to reach consensus on a single value or a sequence of operations. It is the foundation for building fault-tolerant replicated systems.
+**Paxos** is the foundational algorithm for reaching consensus in a distributed system. It allows a cluster of nodes to agree on a single value (or a sequence of values) even when the network is unreliable and nodes may fail.
 
-## Key Concepts
-- **Consensus**: Agreement among a majority of nodes.
-- **Quorum**: A majority ($\frac{n}{2} + 1$) of nodes that must be active for the system to make progress.
-- **Ballot ID**: A unique, monotonic identifier for proposals (often a pair of `(number, server_id)`).
+## Core Concepts
 
-## Main Components
-- **[[CSE452/Paxos/Single Paxos|Single Decree Paxos]]**: The core algorithm for deciding a single value. Includes roles (Proposer, Acceptor, Learner) and the two-phase protocol (Prepare/Accept).
-- **[[CSE452/Paxos/Multi-Paxos|Multi-Paxos]]**: Extending consensus to a sequence of values (a Log). Explains slots and the "Stable Leader" optimization.
-- **[[CSE452/Paxos/Paxos Invariants|Invariants and Design]]**: Why we use specific Ballot IDs, what problems they fix (like split-brain), and the mathematical invariants that guarantee safety.
-- **[[CSE452/Paxos/Ballot IDs|Ballot IDs]]**: Detailed explanation of why global uniqueness is required and how it is achieved.
+### Formal Definition
+Consensus is a coordination primitive that ensures a set of processes agree on a single result $v$ such that:
+1. **Validity**: $v$ was proposed by some process.
+2. **Agreement**: All non-faulty processes eventually decide on the same $v$.
+3. **Termination**: All non-faulty processes eventually reach a decision.
 
-## Motivation & Requirements
-- **Goal**: All servers execute all client requests in the same order.
-- **Validity**: Only a proposed value can be chosen.
-- **Agreement**: At most one value can be chosen (safety).
-- **Integrity**: No node thinks a value was chosen unless it actually was.
-- **Fault Tolerance**: Tolerate $f$ nodes failing with $2f + 1$ total nodes.
+### Simplified Explanation
+Paxos is a voting system. Instead of needing everyone to agree, you only need a **Majority** (half the group plus one). Once a majority votes for something, it is "locked in" forever, and even nodes that were offline must eventually accept that result.
+
+## The Quorum Requirement
+To tolerate $f$ failures, a system must have at least $2f + 1$ nodes.
+- **Why?**: A majority of $f+1$ nodes ensures that any two successful quorums share at least one node. This "overlapping node" is the link that prevents the system from making two different decisions (Split-Brain).
+
+## Main Components of the Paxos Suite
+- **[[CSE452/Paxos/Single Paxos|Single Decree Paxos]]**: The core mechanism for deciding one single value. It introduces the two-phase protocol (Prepare and Accept).
+- **[[CSE452/Paxos/Multi-Paxos|Multi-Paxos]]**: The production-ready extension that handles an infinite sequence of decisions (a Log). It introduces the "Stable Leader" and "Commit Index" optimizations.
+- **[[CSE452/Paxos/Paxos Invariants|Invariants and Design]]**: The mathematical rules that guarantee safety, specifically how Ballot IDs prevent "time travel" or overwriting chosen values.
+- **[[CSE452/Paxos/Ballot IDs|Ballot IDs]]**: The technical implementation of unique, monotonic identifiers used to establish authority.
+
+## Motivation
+In a replicated system (like a database), every server must execute every client request in the **exact same order**. Paxos provides the "Global Clock" or "Ordered Log" that makes this possible without a single point of failure.
 
 ---
 

@@ -1,20 +1,29 @@
-# CSE452: Single Decree Paxos
+# Paxos: Single Decree Consensus
 
-**Single Decree Paxos** is the core algorithm used to reach consensus on a **single value** in a distributed system, even in the presence of node failures.
+**Single Decree Paxos** is the core algorithm used to reach consensus on a **single value** in a distributed system. It serves as the atomic building block for more complex systems like [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]].
 
-## Core Concepts
-- **[[CSE452/Paxos/Single-PaxosComponents/Roles|Roles]]**: Proposers, Acceptors, and Learners.
-- **[[CSE452/Paxos/Single-PaxosComponents/Protocol|The Protocol]]**: Phase 1 (Prepare) and Phase 2 (Accept).
-- **[[CSE452/Paxos/Single-PaxosComponents/Majority Overlap|Majority Overlap]]**: Why quorums are required for safety and discovery.
-- **[[CSE452/Paxos/Single-PaxosComponents/Safety and Scenarios|Safety and Scenarios]]**: Visualization of votes and complex failure cases.
+## Formal Requirements
+The protocol must satisfy three formal safety requirements:
+1.  **Validity**: The chosen value must have been proposed by some node.
+2.  **Agreement**: At most one value can be chosen across the entire cluster.
+3.  **Integrity**: A node cannot believe a value is chosen unless it actually reached a majority.
 
-## Requirements
-The protocol must satisfy three formal requirements:
-1.  **Validity**: The chosen value was proposed.
-2.  **Agreement**: At most one value is chosen.
-3.  **Integrity**: No node believes a value is chosen unless it actually was.
+## Narrative Mechanics
+The protocol operates in two distinct phases to ensure that a value is only chosen if it is safe to do so.
 
-> **Note on Liveness**: Paxos does not guarantee it will always terminate (FLP Impossibility), but it makes progress whenever the network behaves "well enough" for long enough.
+1.  **Phase 1 (Discovery and Promise)**: A proposer "pings" a majority to see if anyone has already voted for a value and to "lock down" the majority so they don't listen to older proposers.
+2.  **Phase 2 (Propose and Accept)**: If Phase 1 succeeds, the proposer tells the majority to "vote" for a specific value.
+
+### Simplified Explanation
+Think of Phase 1 as a "Reservation." You ask a majority of nodes to save a spot for your proposal number. If they agree, Phase 2 is when you actually show up and "Fill" that spot with a value.
+
+## Implementation Detail
+- **[[CSE452/Paxos/Single-PaxosComponents/Roles|Roles]]**: Every node can act as a Proposer, Acceptor, or Learner.
+- **[[CSE452/Paxos/Single-PaxosComponents/Protocol|The Protocol]]**: The step-by-step logic for 1a, 1b, 2a, and 2b messages.
+- **[[CSE452/Paxos/Single-PaxosComponents/Majority Overlap|Majority Overlap]]**: The mathematical proof that quorums must intersect.
+- **[[CSE452/Paxos/Single-PaxosComponents/Safety and Scenarios|Safety and Scenarios]]**: How the system handles node crashes during the voting process.
+
+> **Note on Liveness**: Paxos guarantees **Safety** (it will never make a wrong decision) but not **Liveness** (it might never make a decision at all if proposers keep fighting). This is known as the FLP Impossibility.
 
 ---
 - [[CSE452/Paxos/Paxos|Back to Paxos Overview]]

@@ -58,6 +58,28 @@ Any two majorities (quorums) **must overlap** by at least one node.
 
 - This prevents "time travel" where an old proposer could overwrite a newly agreed-upon value.
 
+## Network Partitions and Progress
+
+### Formal Definition
+Paxos is a **Quorum-based** protocol. Any operation (Phase 1 or Phase 2) requires a response from a **Majority** ($Q > N/2$) of nodes. The **Quorum Intersection Property** ensures that any two successful quorums share at least one node.
+
+### Simplified Explanation
+If you have 5 nodes, you need 3 to do anything. If the network splits into a group of 3 and a group of 2, the group of 3 (the majority) keeps working. The group of 2 (the minority) realizes they don't have enough people to make a decision, so they stop and wait.
+
+### Why Paxos is Resistant to Partitions
+
+- **No Split Brain**: In a network partition, both sides might try to elect a leader. However, it is mathematically impossible for both sides to get a majority. Only the side with $N/2 + 1$ nodes can win.
+- **Agreement Safety**: The overlapping node (the intersection) between any two quorums carries the "memory" of the system. If a value was chosen in a previous round, at least one node in the new majority will know about it and force the new leader to adopt that same value.
+- **Resilience**: The system does not need "perfect" connectivity. It only needs "enough" connectivity.
+
+### How Progress is Maintained
+
+- **The Majority Side**: As long as a majority of nodes can communicate, they can elect a leader and process requests. The system remains **Live**.
+- **The Minority Side**: Nodes in the minority partition will continuously timeout and attempt to start new elections (Phase 1). However, since they cannot reach a majority, they can never receive enough `P1b` or `P2b` messages to finish. They remain **Safe** (they won't make a wrong decision) but are not **Live**.
+- **Healing and Catch-up**: When the partition heals, the lagging nodes will receive messages (P2as or Heartbeats) from the majority's leader.
+    - These messages will have a **higher ballot number**, forcing the lagging nodes to recognize the new leader.
+    - These messages contain the **`leaderCommit` index**, telling the lagging nodes exactly which slots they missed so they can request a catch-up.
+
 ---
 - [[CSE452/Paxos/Paxos|Back to Paxos Overview]]
 - [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]

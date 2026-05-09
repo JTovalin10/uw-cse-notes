@@ -22,7 +22,7 @@ The `Paxos_log_status` field (often an Enum) tracks the state of consensus for a
 | Status | Description | Note on Determinism |
 | :--- | :--- | :--- |
 | **EMPTY** | No knowledge of this slot index yet. | Default state. |
-| **ACCEPTED** | This server has received a `P2a` message, updated its `max_ballot` for this slot, and responded with a `P2b`. It now "holds" a value and a ballot. | **Mandatory, not random**: If a node "gets" the message and the ballot is $\ge$ its current promise, it **must** accept. It only accepts from the **current leader** (the one it promised to follow in Phase 1). It will ignore requests from old leaders. |
+| **ACCEPTED** | This server has received a `P2a` message, updated its `max_ballot` for this slot, and responded with a `P2b`. It now "holds" a value and a ballot. | **"Accept is Loose"**: If a node "gets" the message and the ballot is $\ge$ its current promise, it **must** accept. This means the node received the message and verified the sender is a valid leader (authorized by the promise). It will ignore requests from old leaders. |
 | **CHOSEN** | This server knows for a fact that a **majority** of the cluster has accepted this value for this slot. | At this point, the value is "committed" and can be executed by the state machine (in order). |
 
 **Why do nodes have different statuses?**

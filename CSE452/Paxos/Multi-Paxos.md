@@ -49,7 +49,7 @@ In Multi-Paxos, every slot in the log progresses through several states. It is c
 | Status | Meaning | Deterministic Rule |
 | :--- | :--- | :--- |
 | **EMPTY** | The node has no data for this slot. | Initial state. |
-| **ACCEPTED** | The node received a `2a` (Accept Request) and voted for the value. | **Not Random**: If a node receives a `2a` with a **ballot $\ge$ its current promise**, it **must** accept. It doesn't accept "blindly" from anyone; it only accepts from the proposer (Leader) it has already promised to follow. |
+| **ACCEPTED** | The node received a `2a` (Accept Request) and voted for the value. | **"Accept is Loose"**: If a node receives a `2a` with a **ballot $\ge$ its current promise**, it **must** accept. This means the node "got it" and the sender is a valid leader (the one it promised to follow). It doesn't accept "blindly," but the rule is deterministic. |
 | **CHOSEN** | A **majority** of nodes have accepted this value. | Once CHOSEN, the value is immutable. Nodes learn this via the Leader's commit index or by seeing a majority of votes. |
 
 ## Key Differences from Single Paxos
