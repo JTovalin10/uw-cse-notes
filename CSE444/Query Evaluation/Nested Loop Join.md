@@ -61,5 +61,5 @@ for each group of ceil(M-1) pages r in R do
 ## Related
 
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — overview of all algorithm families
-- [[CSE444/Query Evaluation/Hash Join|Hash Join]] — more efficient one-pass alternative
+- [[CSE444/Query Evaluation/Single-Pass Hash Join|Hash Join]] — more efficient one-pass alternative
 - [[CSE444/Query Evaluation/Index-Based Algorithms|Index-Based Algorithms]] — index nested loop join uses an index to skip inner scans

@@ -1,6 +1,6 @@
 # CSE444: Sort-Merge Join
 
-d**Sort-merge join** $R \bowtie S$ is a join algorithm that sorts both relations on the join attribute and then merges them in a linear scan. It can be implemented as either a one-pass or two-pass algorithm depending on available memory.
+**Sort-merge join** $R \bowtie S$ is a join algorithm that sorts both relations on the join attribute and then merges them in a linear scan. It can be implemented as either a one-pass or two-pass algorithm depending on available memory.
 
 ## One-Pass Algorithm
 
@@ -31,7 +31,7 @@ When relations do not fit in memory ($B(R) + B(S) > M$), we use the two-pass ver
 ### Two-Pass Example
 
 ![[Merge join example 1.png]]
-![[CSE444/Screenshots/Sort-Merge Join example 2.png]]
+![[CSE444/Screenshots/Merge-Join example 2.png]]
 ![[Merge Join Example 3.png]]
 
 ---
@@ -40,5 +40,5 @@ When relations do not fit in memory ($B(R) + B(S) > M$), we use the two-pass ver
 
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — overview of all algorithm families and cost parameters
 - [[CSE444/Query Evaluation/External Merge-Sort|External Merge-Sort]] — the sorting primitive used for large relations
-- [[CSE444/Query Evaluation/Hash Join|Hash Join]] — alternative join algorithm (one-pass or two-pass)
+- [[CSE444/Query Evaluation/Single-Pass Hash Join|Hash Join]] — alternative join algorithm (one-pass or two-pass)
 - [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — simpler but higher-cost alternative

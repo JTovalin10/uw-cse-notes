@@ -26,4 +26,4 @@ The OS is the "layer below" that:
 - [[Standard C Streams]]
 - [[POSIX IO]]
 - [[Process Management/Process Management|Process Management]]
-- [[CSE451/Kernel Abstraction/Traps/System Call|CSE451: System Calls]]
+- [[CSE451/Virtualization/Mechanisms/Traps/System Call|CSE451: System Calls]]

@@ -25,4 +25,4 @@
 ## Related
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — Paxos is used to order commands for a DSM
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — An alternative approach to replication
-- [[CSE451/Threads/Deadlocks|CSE451: Deadlocks]] — Consensus helps avoid distributed deadlocks
+- [[CSE451/Concurrency/Problems/Deadlocks|CSE451: Deadlocks]] — Consensus helps avoid distributed deadlocks

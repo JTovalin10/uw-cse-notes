@@ -20,7 +20,7 @@ The history of your project on your own machine. When you commit, Git takes ever
 - **Action:** Saving a version locally.
 
 ## 4. Remote Repository (Server)
-A version of your project stored on a server (e.g., **[[GitLab]]**). This allows for collaboration and off-site backup.
+A version of your project stored on a server (e.g., **GitLab**). This allows for collaboration and off-site backup.
 - **State:** Pushed
 - **Command:** `git push`
 - **Action:** Sharing your work with others.

@@ -66,4 +66,4 @@ Instead of detecting deadlocks after they happen, some systems try to prevent th
 ## Related
 - [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]]
 - [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|The Locking Scheduler]]
-- [[CSE451/Concurrency/Synchronization/Deadlock|Deadlocks (CSE451)]]
+- [[CSE451/Concurrency/Problems/Deadlocks|Deadlocks (CSE451)]]

@@ -63,7 +63,7 @@ Achieved through:
 - [[CSE351/System Programming/Fork-Exec Model|Fork-Exec Model]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 - [[CSE451/Virtualization/Processes/Process|Process (CSE451)]]
-- [[CSE451/Virtualization/Processes/ProcessComponents/Process vs Program|Process vs Program (CSE451)]]
+- [[CSE451/Virtualization/Processes/ProcessComponents/Sequential Process And what is Proc|Process vs Program (CSE451)]]
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]
 - [[CSE333/Process Management/Process Management|Process Management (CSE333)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

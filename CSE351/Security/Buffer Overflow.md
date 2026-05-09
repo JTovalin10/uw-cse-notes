@@ -114,4 +114,4 @@ Higher Addresses
 - [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory (Endianness)]]
 - [[CSE351/Memory Management/Page Tables|Page Tables (memory protection)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]
-- [[CSE451/Virtualization/Processes/CPUState/Stack Pointer|Stack Pointer (CSE451)]]
+- [[CSE451/Virtualization/Processes/CPUState/CPU State#Stack Pointer (SP)|Stack Pointer (CSE451)]]

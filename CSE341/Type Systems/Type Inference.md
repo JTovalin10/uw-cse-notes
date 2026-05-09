@@ -83,4 +83,4 @@ let pairWithOne xs = List.map (fun x -> (x,1)) xs
 ### Related
 - [[CSE341/Definitions/Part3/Type Inference|Definition: Type Inference]]
 - [[CSE341/Definitions/Part3/Value Restriction|Definition: Value Restriction]]
-- [[CSE351/Number Representation/Number Representation|Cross-course: Integer Representation]]
+- [[CSE351/Number Representation/Two's Complement|Cross-course: Integer Representation]]

@@ -119,5 +119,5 @@ Not a general-purpose join, but useful as a helper when an index is already avai
 - [[CSE344/Database Design/Disk Storage|Disk Storage]] — block organization on disk that drives these I/O costs
 - [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how index type affects selection and join cost
 - [[CSE344/Database Design/Database Indices|Database Indices]] — index structures referenced by index-based join
-- [[CSE451/Persistent Storage/Magnetic Disks|Magnetic Disks]] — OS-level view of the disk I/O these algorithms minimize
+- [[CSE451/Persistence/Storage/Magnetic Disks|Magnetic Disks]] — OS-level view of the disk I/O these algorithms minimize
 - [[CSE351/Cache/Spatial Locality|Spatial Locality]] — the block-level locality principle that makes these algorithms efficient

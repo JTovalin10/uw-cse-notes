@@ -33,7 +33,7 @@ Hash join maps naturally onto the [[CSE444/Query Evaluation/Query Execution & Al
 ## Related
 
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — overview of all algorithm families and cost parameters
-- [[Partitioned Hash Algorithms (Grace Join)|Partitioned Hash Join (Grace Join)]] — the two-pass hash join for relations larger than memory
+- [[CSE444/Query Evaluation/Partitioned Hash Algorithms|Partitioned Hash Join (Grace Join)]] — the two-pass hash join for relations larger than memory
 - [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — simpler alternative join algorithm
 - [[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]] — sort-based join algorithm
 - [[CSE444/Query Evaluation/Query Execution & Algorithms|Query Execution]] — iterator interface used by all operators

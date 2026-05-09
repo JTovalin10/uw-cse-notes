@@ -73,4 +73,4 @@ The following algorithms implement logical clocks with different properties:
 - [[CSE452/Clocks/Vector Clock Algorithm|Vector Clock Algorithm]] — bidirectional causality and concurrency detection
 - [[CSE452/Clocks/System State|System State]] — stable and unstable properties and invariants
 - [[CSE452/RPC/Fault Model|Fault Model]] — how message drops and delays impact event ordering
-- [[CSE451/Threads/concurrency.md]] — OS-level concurrency concepts
+- [[CSE451/Concurrency/Threads/Threads Overview|Threads Overview (CSE451)]] — OS-level concurrency concepts

@@ -12,7 +12,7 @@ A schedule is **serializable** if it is equivalent to some **serial schedule** (
 Serializability is usually defined by different levels of "equivalence":
 
 1.  **[[CSE444/Transactions/Serializability/Conflict Serializability|Conflict Serializability]]**: Equivalent to a serial schedule by swapping non-conflicting adjacent actions. This is the most common type used in practice (e.g., [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|2PL]]).
-2.  **[[CSE444/Transactions/Serializability/View Serializability|View Serializability]]**: Equivalent to a serial schedule by maintaining the same "view" of data (who reads what and who writes last). A weaker condition that allows for [[CSE444/Definitions/Blind Write|Blind Writes]].
+2.  **[[CSE444/Transactions/Serializability/View Serializability|View Serializability]]**: Equivalent to a serial schedule by maintaining the same "view" of data (who reads what and who writes last). A weaker condition that allows for **blind writes**.
 
 ## Hierarchy of Correctness
 $$Conflict\ Serializable \subset View\ Serializable \subset Serializable$$

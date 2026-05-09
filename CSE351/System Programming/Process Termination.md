@@ -119,4 +119,4 @@ if (child == 0) {
 - [[CSE351/System Programming/Context Switching|Context Switching]]
 - [[CSE351/System Programming/Exceptions|Exceptions]]
 - [[CSE451/Virtualization/Processes/Process/Process State|Process State (CSE451)]]
-- [[CSE451/Virtualization/Processes/Process/States of a user process|States of a User Process (CSE451)]]
+- [[CSE451/Virtualization/Processes/Process/Process State|States of a User Process (CSE451)]]

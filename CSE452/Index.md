@@ -16,6 +16,7 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[CSE452/Consistency/Linearizability and Sequential Consistency|Linearizability and Sequential Consistency]] — strong consistency, total ordering, and real-time constraints
 - [[CSE452/Consistency/Memory Consistency|Memory Consistency]] — hardware models (TSO), distributed architectures, and memory barriers
 - [[CSE452/Consistency/CAP Theorem and Partitions|CAP Theorem]] — the fundamental trade-off between consistency and availability
+- [[CSE452/Consistency/Distributed Cache Coherence|Distributed Cache Coherence]] — single-core vs. multi-core vs. distributed coherence, write-through, sharding, leases
 - [[CSE452/Clocks/System State|System State]] — stable/unstable properties, invariants, and correctness proofs in primary-backup
 - [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — individual/common/distributed knowledge, muddy foreheads puzzle, impossibility of coordinated attack, consensus
 

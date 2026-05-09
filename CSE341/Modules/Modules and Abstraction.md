@@ -90,5 +90,5 @@ end
 ## Related
 - [[CSE341/Definitions/Part3/Module|Definition: Module]]
 - [[CSE341/Definitions/Part3/Signature|Definition: Signature]]
-- [[CSE333/C++ OOP/C++ OOP|Cross-course: Classes and Encapsulation]]
-- [[CSE332/ADT and Design/ADT and Design|Cross-course: Abstract Data Types]]
+- [[CSE333/C++ OOP/C++ Classes|Cross-course: Classes and Encapsulation]]
+- [[CSE332/ADT and Design/Abstract Data Type (ADT)|Cross-course: Abstract Data Types]]

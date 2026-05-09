@@ -24,4 +24,4 @@ This means Lamport clocks cannot distinguish two causally unrelated events — a
 - [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — the core concepts and the happens-before relation
 - [[CSE452/Clocks/Vector Clock Algorithm|Vector Clock Algorithm]] — bidirectional causality and concurrency detection
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — state machine replication relies on total ordering
-- [[CSE451/Threads/concurrency.md]] — OS-level concurrency and ordering
+- [[CSE451/Concurrency/Threads/Threads Overview|Threads Overview (CSE451)]] — OS-level concurrency and ordering

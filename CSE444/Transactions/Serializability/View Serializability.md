@@ -14,7 +14,7 @@ A schedule is **view serializable** if it is view equivalent to some serial sche
 ## Relationship to Conflict Serializability
 - Every **conflict-serializable** schedule is also **view-serializable**.
 - Not every view-serializable schedule is conflict-serializable.
-- The difference usually arises from **[[CSE444/Definitions/Blind Write|Blind Writes]]** (writing a value without reading it first).
+- The difference usually arises from **blind writes** (writing a value without reading it first — a transaction writes a data element without first reading it).
 
 ### Example: Thomas' Write Rule
 Thomas' Write Rule (used in [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]]) creates schedules that are view-serializable but not conflict-serializable by intentionally ignoring "outdated" writes.

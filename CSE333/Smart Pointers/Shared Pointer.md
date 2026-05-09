@@ -137,4 +137,4 @@ void custom_deleters() {
 - [[Smart Pointers]]
 - [[Unique Pointer]]
 - [[weak pointer]]
-- [[move]]
+- `std::move`
