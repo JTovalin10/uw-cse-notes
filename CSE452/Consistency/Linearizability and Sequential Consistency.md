@@ -1,6 +1,6 @@
 # CSE452: Linearizability and Sequential Consistency
 
-These are the two primary "Strong" consistency models for single-object operations. 
+These are the two primary "strong" consistency models for single-object operations in distributed systems. Both guarantee that all clients observe operations in some consistent total order, but they differ in whether that order must respect wall-clock time. Understanding their distinction is essential for reasoning about correctness proofs in distributed systems.
 
 ## The Hierarchy
 Linearizability is **strictly stronger** than sequential consistency. In terms of legal executions:
