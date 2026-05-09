@@ -140,10 +140,12 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[CSE451/Concurrency/Synchronization/Mechanics/Mutual Exclusion|Mutual Exclusion]] — mutual exclusion concept
 - [[CSE451/Concurrency/Synchronization/Mechanics/Race Conditions/Race Condition|Race Condition]] — concurrent access causing incorrect results
 - [[CSE451/Concurrency/Synchronization/Mechanics/Synchronization|Synchronization]] — synchronization overview
+- [[CSE451/Concurrency/Synchronization|Synchronization Primitives]] — Mutex/Spinlock, CAS, RCU, and Deadlock
 
 **Syscalls**
 - [[CSE451/Virtualization/Processes/Syscalls/Fork|Fork]] — fork() syscall to create child process
 - [[CSE451/Virtualization/Processes/Syscalls/Exec|Exec]] — exec() syscall to replace process image
+- [[CSE451/Processes/Signals and Syscalls|Signals and Syscalls]] — Trap mechanism, vDSO, FDs, and Signal safety
 - [[CSE451/Virtualization/Processes/Syscalls/clone|clone]] — Linux clone() syscall for threads
 - [[CSE451/Virtualization/Memory/Concepts/Copy-on-Write|copy-on-write]] — COW optimization for fork
 - [[CSE451/Virtualization/Processes/Syscalls/exec vs fork|exec vs fork]] — exec vs fork comparison
@@ -227,10 +229,13 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[CSE451/Virtualization/Memory/Page Replacement/Page FIFO|Page FIFO]] — FIFO page replacement algorithm
 - [[CSE451/Virtualization/Memory/Thrashing|Thrashing]] — excessive paging degrading performance
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory]] — virtual memory overview (CSE451)
+- [[CSE451/Memory/Virtual Memory|Virtual Memory Deep Dive]] — Multi-level page tables, TLB shootdown, ASID, and Page Faults
+- [[CSE451/Memory/Allocation|Memory Allocation]] — Slab allocator, sbrk/mmap, and Linux memory metrics
 - [[CSE451/Virtualization/Memory/Working set of program behavior|Working set of program behavior]] — working set model
 
 ### Storage
 - [[CSE451/Persistence/Storage/Persistent Storage|Persistent Storage]] — persistent storage overview
+- [[CSE451/Persistence/Storage and FS|Storage and File Systems]] — SSD/HDD mechanics, Inodes, VFS, and Journaling
 - [[CSE451/Persistence/Storage/Secondary Storage/Secondary Storage|Secondary Storage]] — secondary storage overview
 - [[CSE451/Persistence/Storage/Secondary Storage/HDD|HDD]] — hard disk drive specifics
 - [[CSE451/Persistence/Storage/Secondary Storage/SSD|SSD]] — solid-state drive specifics
@@ -248,6 +253,7 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 ### OS architecture
 - [[CSE451/Virtualization/Architecture/Major OS Components|Major OS Components]] — kernel, shell, services overview
 - [[CSE451/Virtualization/Architecture/OS Structure|OS Structure]] — OS architectural structure
+- [[CSE451/Kernel/Kernel Internals|Kernel Internals and Performance]] — Interrupts, perf, eBPF, and architectures
 - [[CSE451/Virtualization/Architecture/Microkernels|Microkernels]] — microkernel vs monolithic design
 - [[CSE451/Virtualization/Architecture/Hardware Abstraction Layer|Hardware Abstraction Layer]] — HAL abstracting hardware details
 - [[CSE451/Virtualization/Architecture/IO|IO]] — OS IO management
@@ -256,6 +262,7 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 
 ### Virtualization
 - [[CSE451/Virtualization/Virtual Machine/Virtual Machine|Virtual Machine]] — virtual machine abstraction
+- [[CSE451/Virtualization/Containers and Virt|Containers and Virtualization]] — VT-x, KVM, Namespaces, and cgroups
 
 ### Security
 - [[CSE451/Virtualization/Memory/Meltdown|Meltdown]] — Meltdown speculative execution vulnerability

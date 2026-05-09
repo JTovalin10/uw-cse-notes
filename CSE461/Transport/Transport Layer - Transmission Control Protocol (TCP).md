@@ -34,6 +34,21 @@ Used to synchronize **Initial Sequence Numbers (ISNs)** and exchange options (e.
 3.  **Client (SYN_SENT $\to$ ESTABLISHED)**: Receives SYN-ACK, sends ACK, ack=$Y+1$.
 4.  **Server (SYN_RCVD $\to$ ESTABLISHED)**: Receives ACK.
 
+#### Kernel Handshake Management
+The Linux kernel maintains two queues for a listening socket to handle the handshake:
+- **SYN Queue (Incomplete)**: Stores half-open connections in the `SYN_RECV` state. Limited by `tcp_max_syn_backlog`.
+- **Accept Queue (Complete)**: Stores fully established connections waiting for the app's `accept()` call. Limited by the `backlog` parameter in `listen()`.
+- **Syncookies**: A defense against **SYN Floods**. When the SYN Queue is full, the server encodes TCB state into the SYN-ACK sequence number instead of allocating memory. This bypasses the queue but disables some TCP options (like Window Scaling) due to bit-space constraints.
+
+#### TCP Options
+- **Maximum Segment Size (MSS)**: The largest payload a host can receive. Negotiated in the SYN/SYN-ACK. Default is **MTU (1500) - 40 bytes (Headers) = 1460 bytes**.
+- **Window Scaling**: Extends the 16-bit window field (64KB) to up to 1GB using a shift count. **Must** be negotiated during the handshake.
+- **Selective Acknowledgement (SACK)**: Allows the receiver to ACK non-contiguous blocks, so the sender only retransmits missing gaps rather than everything after the first loss.
+
+### High-Performance Networking (Server Side)
+- **SO_REUSEPORT**: A socket option that allows multiple processes to bind to the same port. The kernel performs built-in load balancing, distributing incoming connections across processes to reduce contention on a single accept queue.
+- **sendfile()**: Implements **Zero-Copy** data transfer. It allows the kernel to move data directly from a file buffer to a socket buffer without copying it into user-space, reducing CPU overhead and context switches.
+
 ### Four-Way Teardown (Termination)
 TCP supports **Half-Close**; one side can stop sending while still receiving.
 1.  **Active Closer (ESTABLISHED $\to$ FIN_WAIT_1)**: Sends FIN.

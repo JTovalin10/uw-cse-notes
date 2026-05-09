@@ -46,6 +46,16 @@
 - Nested `*Components/` subdirectories when a topic has many sub-concepts
 - Depth varies by complexity (2-5 levels), but wiki-links allow non-hierarchical navigation
 
+### Anki Card Conventions
+- **Front**: Always use "Why" or "What happens when" questions to test mechanism reasoning rather than rote definition (e.g., "Why three steps instead of two" instead of "What is a three-way handshake").
+- **Back**: Keep it to 3–5 sentences. If it's longer, it's memorization, not understanding.
+- **Process**: Write the back in your own words from memory, then verify against notes. Never copy-paste.
+- **Trip Wires**: Add a dedicated line for common wrong answers or misconceptions (e.g., "Common wrong answer: TIME_WAIT is a bug—it is actually intentional and necessary").
+
+*Example Card:*
+- **Front**: Why does TCP use a three-way handshake instead of two steps?
+- **Back**: Two steps only confirms one direction. The client sends SYN (proposes its ISN), server replies SYN-ACK (confirms client's ISN and proposes its own), client sends final ACK (confirms server's ISN). Both sides must confirm the other's ISN was received — a two-way exchange leaves the server never knowing if its ISN was acknowledged.
+
 ## When Organizing Notes
 
 The user often dumps raw lecture content into files without structure. When asked to organize:

@@ -12,11 +12,14 @@ Advanced database systems: internals, query processing, storage, and distributed
 
 ### DBMS Architecture
 - [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture and Query Processing]] — query pipeline (parse → rewrite → optimize → execute), iterator interface, storage manager, buffer manager
+- [[CSE444/DBMS architecture and deployments/Engine Internals|Engine Internals]] — PostgreSQL vs InnoDB architectures, MVCC implementations, and memory management
 
 ### Data Storage
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats, record formats, LOB, heap file implementations, buffer pool eviction
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Indexing|Indexes and File Organizations]] — heap file API, sorted files, clustered/unclustered indexes, dense/sparse indexes, overflow pages
+- [[CSE444/Data Storage, indexing, and buffer mgmt/Advanced Indexing|Advanced Indexing]] — Bitmap, GIN, GiST, R-Tree, and index maintenance (VACUUM/ANALYZE)
 - [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree]] — balanced tree structure, degree/occupancy, insertion/deletion, practical performance, optimizations
+- [[CSE444/Data Storage, indexing, and buffer mgmt/LSM Trees|LSM Trees]] — log-structured merge trees, memtables, SSTables, Bloom filters, and compaction strategies
 
 ### Query Evaluation
 - [[CSE444/Query Evaluation/Query Execution & Algorithms|Query Execution]] — query processor pipeline, memory management, BP-tuples vs M-tuples
@@ -41,6 +44,7 @@ Advanced database systems: internals, query processing, storage, and distributed
 
 ### Transactions
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)
+- [[CSE444/Transactions/Recovery and Logging|Recovery and Logging]] — WAL, ARIES algorithm (Analysis/Redo/Undo), and idempotence
 - [[CSE444/Transactions/Serializability/Schedules|Schedules]] — definition of serial, serializable, and recoverable schedules
 - [[CSE444/Transactions/Concurrency Anomalies|Concurrency Anomalies]] — WR (Dirty Read), RW (Unrepeatable Read), WW (Lost Update) conflicts
 - [[CSE444/Transactions/Serializability/Serializability|Serializability]] — correctness criteria and types of equivalence (Conflict vs. View)
@@ -57,7 +61,7 @@ Advanced database systems: internals, query processing, storage, and distributed
 - [[CSE444/Transactions/Optimistic Components/Snapshot Isolation|Snapshot Isolation]] — multiversion concurrency control and first-committer-wins rule
 
 ### Replication and Distribution
-*(notes in progress)*
+- [[CSE444/Replication and distribution/Distributed Databases|Distributed Databases]] — shared-nothing vs shared-disk, MPP, sharding, and distributed joins
 
 ### NoSQL and NewSQL
 *(notes in progress)*
