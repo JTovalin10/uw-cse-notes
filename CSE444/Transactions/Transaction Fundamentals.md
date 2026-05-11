@@ -42,19 +42,24 @@ To guarantee Isolation and handle concurrent operations, databases generally ado
 
 ## Terminology: Buffer Management & Recovery
 
-- **Steal or No-Steal**:
-    - **Steal**: An uncommitted transaction can overwrite the most recent committed value on disk. (Highest performance).
-    - **No-Steal**: Changes are kept in memory until the transaction commits.
-- **Force or No-Force**:
-    - **Force**: All updates must be written to disk *before* the transaction commits. (Easiest for recovery).
-    - **No-Force**: A transaction can commit before all its data is on disk. (Highest performance).
+The interaction between the buffer pool and the recovery manager determines how the DBMS ensures **Atomicity** and **Durability**.
 
-| Setup | Difficulty | Performance |
-|-------|------------|-------------|
-| **No-Steal / Force** | Easiest for recovery | Poor |
-| **Steal / No-Force** | Complex recovery (Undo/Redo) | Highest |
+- **[[CSE444/Transactions/Recovery/RecoveryComponents/Buffer Management Policies#Steal|Steal or No-Steal]]**:
+    - **Steal**: An uncommitted transaction can overwrite the most recent committed value on disk. Requires **Undo** logging.
+    - **No-Steal**: Changes are kept in memory until the transaction commits.
+- **[[CSE444/Transactions/Recovery/RecoveryComponents/Buffer Management Policies#Force|Force or No-Force]]**:
+    - **Force**: All updates must be written to disk *before* the transaction commits.
+    - **No-Force**: A transaction can commit before all its data is on disk. Requires **Redo** logging.
+
+| Policy Combination | Required Logging | Performance / Difficulty |
+|--------------------|------------------|--------------------------|
+| **Force / No-Steal** | None | Poor performance (Used in Lab 3). |
+| **Force / Steal** | **Undo Log** | Better memory use, but slow commit. |
+| **No-Force / No-Steal**| **Redo Log** | Fast commit, but limited txn size. |
+| **No-Force / Steal** | **Undo-Redo Log**| **Highest Performance** (ARIES). |
 
 ## Related
+- [[CSE444/Transactions/Recovery/Recovery|Recovery and Logging]]
 - [[CSE444/Transactions/Concurrency Anomalies|Schedules and Concurrency Problems]]
 - [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]]
 - [[CSE444/Transactions/Isolation Levels|Isolation Levels]]
