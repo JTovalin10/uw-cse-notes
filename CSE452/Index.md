@@ -40,6 +40,9 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[CSE452/Paxos/Paxos Invariants|Paxos Invariants and Design]] — safety properties and the design principles of the Paxos protocol
 - [[CSE452/Paxos/Ballot IDs|Paxos Ballot IDs]] — the role of proposal numbers in ensuring progress and safety
 
+### Scalability
+- [[CSE452/Partitioning|Partitioning]] — horizontal scaling, ShardMaster architecture, linearizable handovers, and multi-key operations
+
 ---
 
 ## Related Courses

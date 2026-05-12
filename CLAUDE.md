@@ -4,7 +4,7 @@
 
 ### Linking & References
 - Internal links use Obsidian wiki-links: `[[Page Name]]`
-- Disambiguated links use full paths: `[[CSE451/Virtual Memory/Virtual Memory]]`
+- Disambiguated links use full paths: `[[CSE451/Virtualization/Memory/Virtual Memory]]`
 - Display text overrides: `[[CSE461/Definitions/Transmission Control Protocol (TCP)|TCP]]`
 - Embedded images: `![[Screenshots/image.png]]`
 - Cross-course references are used freely: `[[CSE351/System Programming/Exceptions]]`
@@ -27,16 +27,22 @@
 ### Note Structure Patterns
 - Hub files are short (2-10 lines) and serve as link collections to subtopics
 - **Progressive Narrative Flow**: Sections within a detailed file MUST build on each other logically. Start with the core concept, move to the mechanism/timeline, provide a concrete walkthrough/example, delve into physical implementation details, and conclude with outcomes/trade-offs. Do not scatter related points.
-- **Deep Technical Detail ("Not Sparknotes")**: Explanations must be thorough. Always explain the "how" and the "why" (e.g., the underlying physical storage mechanics or the algorithmic logic).
+- **Deep Technical Detail ("Not Sparknotes")**: Explanations must be thorough. Always explain the "how" and the "why" (e.g., the underlying physical storage mechanics or the algorithmic logic). **Never sacrifice technical depth for brevity.**
+- **Strict Course Terminology**: Strictly adhere to the terminology used in the specific course lectures and labs (e.g., in CSE452, use **ShardMaster** and **ShardKV Group**, NOT generic industry terms like "Control Plane" or "Data Plane").
 - **Dual-Layer Explanations**: For complex rules and definitions, provide both a formal definition (textbook/mathematical rigor) and a simplified explanation (plain-English intuition). Do NOT use emojis for these headers; maintain professional text-only formatting.
   - *Example Format:*
     `### Formal Definition`
     `$TS(T) < WT(X)$`
     `### Simplified Explanation`
     `Someone from the future already changed it.`
-- **Encapsulation & High-Density Linking**: Treat the vault as a knowledge graph. Extract *distinct, reusable* technical terms into the `Definitions/` folder. Extract shared concepts into their own focused files. Extensively cross-link these terms using full disambiguated paths every time they are mentioned.
-  - *Example Link:* `This leads to a [[CSE444/Definitions/Dirty Read|Dirty Read]].`
-  - **Crucial Limit**: Do NOT create files just for the sake of creating files. If a concept is minor, highly specific to the current topic, or only a sentence long and unlikely to be referenced elsewhere, just **inline it** in the main file. Only encapsulate concepts that are truly standalone or shared.
+- **Encapsulation & High-Density Linking**: Treat the vault as a knowledge graph. 
+  - **Definitions**: Only extract terms into the `Definitions/` folder if they are referenced by multiple other files. Otherwise, **inline them** within the relevant topic.
+  - **Components**: For large, complex topics, split them into a main file and a `*Components/` subdirectory. This allows for modularity and deeper expansion on sub-concepts.
+  - Extensively cross-link terms using full disambiguated paths every time they are mentioned.
+- **Robust Mermaid Diagrams**: Ensure all diagrams use Obsidian-compatible syntax:
+  - Use `-->|label|` or `==>|label|` for labeled arrows.
+  - **Avoid leading numbers followed by a period** in labels (e.g., use `(1) Step` instead of `1. Step`) to prevent the renderer from misinterpreting them as markdown lists.
+  - Prefer the `subgraph ID [Title]` syntax for clarity and compatibility.
 - Personal annotations appear as `Me: ...` comments
 - Source attributions at bottom (e.g. OSTEP textbook references)
 - Related/See-also sections at the end linking to dependencies
