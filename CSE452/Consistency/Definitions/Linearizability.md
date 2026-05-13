@@ -9,6 +9,5 @@
 - **Composability**: A system composed of linearizable objects is itself linearizable.
 
 ## Related
-- [[CSE452/Consistency/Linearizability and Sequential Consistency|Linearizability and Sequential Consistency (Detailed)]]
-- [[CSE452/Consistency/Definitions/Sequential Consistency|Sequential Consistency]]
-
+- [[CSE452/Consistency/Strong Consistency Models#Linearizability|Strong Consistency Models: Linearizability (Detailed)]]
+- [[CSE452/Consistency/Strong Consistency Models#Sequential Consistency|Sequential Consistency]]
