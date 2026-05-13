@@ -1,100 +1,128 @@
 # CSE452: Multi-Paxos
 
-**Multi-Paxos** builds on [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] to reach consensus on an entire sequence of log slots, rather than just a single value.
+**Multi-Paxos** builds on [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] to reach consensus on an entire sequence of log slots, rather than just a single value. These notes are from the lecture on **April 24, 2026**.
 
-## What is a Log?
+## Notation & Data Structures
+Multi-Paxos uses the following standardized notation for its protocol messages and local state.
 
-In a distributed system, a **Log** is an ordered sequence of commands — think of it as a list of "to-do" items for a database or state machine.
+### Core Data Types
+```cpp
+// Ballot Number (r): A unique tuple (seq_num, server_id)
+struct Ballot {
+    int seq_num;        
+    std::string server_id; // Unique tie-breaker (e.g., IP address)
 
-- **The Goal**: Every server in the cluster maintains an identical copy of the log (a "global log").
-- **Consistency**: If Server A executes `[Set X=1, Set Y=2]` but Server B executes `[Set Y=2, Set X=1]`, they may end up with different data. The log ensures every node performs the exact same operations in the exact same order.
-- **Slots (Indices)**: Each position in the log is called a **Slot**. Conceptually, there are infinitely many slots.
-    - The order of decisions is not the order of execution — a value can be inserted into slot 3 while slots 1 and 2 are still empty, but slot 3 cannot be *executed* until slots 1 and 2 complete.
-        - Slot 1: `PUT "Apple" = 5`
-        - Slot 2: `PUT "Banana" = 10`
-        - Slot 3: `DELETE "Apple"`
-- **Replicated State Machine (RSM)**: The actual application (e.g., a key-value store or SQL database) reads commands from the log one-by-one and executes them. Because Paxos ensures every server's log is identical, every server's state stays perfectly in sync.
+    // Lexicographical comparison: Higher seq_num wins; server_id breaks ties.
+    bool operator>(const Ballot& other) const {
+        if (seq_num != other.seq_num) return seq_num > other.seq_num;
+        return server_id > other.server_id;
+    }
+};
 
-See [[CSE452/Paxos/Multi-PaxosComponents/Log|Log]] for detailed data structures, slot pointers, duplicate detection, and garbage collection.
+// Value (v): The AMO Log Entry
+struct AMOCommand {
+    std::string client_id;
+    int sequence_number;
+    std::string command; // e.g., "put(x, 10)"
+};
 
-## Basic Idea (Unoptimized)
+// PaxosLogSlotStatus: The lifecycle of a single log slot
+enum class PaxosLogSlotStatus {
+    EMPTY,    // No command known
+    ACCEPTED, // Received P2a and voted
+    CHOSEN,   // Majority has accepted; immutable
+    CLEARED   // Garbage collected after execution
+};
 
-- Run [[CSE452/Paxos/Single Paxos]] independently in each slot.
-- A client broadcasts its request to all servers.
-- Each server finds an empty slot and proposes the request.
-- Once a prefix of the log is chosen, the server executes the request and responds to the client.
-- **Problem**: Running a full two-phase protocol per slot produces multiple unnecessary rounds of communication.
+// Summary Entry (AcceptedValue): Used in P1b to report history
+struct AcceptedValue {
+    Ballot r;      // Ballot previously voted for
+    AMOCommand v;  // Value previously voted for
+};
+```
 
-## Roles in Multi-Paxos
+### Network Messages (RPCs)
+In the **Distinguished Proposer** optimization, Phase 1 is combined across all slots to reduce latency.
 
-In most practical implementations, every server acts as a **Proposer**, **Acceptor**, and **Learner** simultaneously.
-- One server is designated the **Distinguished Proposer** (the Leader).
-	- Acts as both a proposer and acceptor.
-	- Uses an `is_leader` boolean flag.
-	- Proposes requests from clients:
-		- First, checks if the command has already been proposed, decided, or executed.
-	- Keeps replicas up to date.
-	- Sends heartbeats to servers so they know the leader is alive.
-		- Can include garbage collection information in these messages.
-	- **Non-leaders**:
-		- Drop or forward client requests.
-		- Act only as an acceptor, not a proposer, until the server believes the leader has died. Then it starts Phase 1.
-- Clients send requests to the Leader.
-- The Leader assigns the request to the next available slot and drives Phase 2.
-
-## Slot Statuses (The Paxos Lifecycle)
-
-In Multi-Paxos, every slot in the log progresses through several states. It is critical to distinguish between what a *single node* has done and what the *entire cluster* has decided.
-
-| Status | Meaning | Deterministic Rule |
+| Message | Format | Purpose |
 | :--- | :--- | :--- |
-| **EMPTY** | The node has no data for this slot. | Initial state. |
-| **ACCEPTED** | The node received a `2a` (Accept Request) and voted for the value. | **"Accept is Loose"**: If a node receives a `2a` with a **ballot $\ge$ its current promise**, it **must** accept. This means the node "got it" and the sender is a valid leader (the one it promised to follow). It doesn't accept "blindly," but the rule is deterministic. |
-| **CHOSEN** | A **majority** of nodes have accepted this value. | Once CHOSEN, the value is immutable. Nodes learn this via the Leader's commit index or by seeing a majority of votes. |
-
-## Key Differences from Single Paxos
-
-| Property | Single Paxos | Multi-Paxos |
-| :--- | :--- | :--- |
-| **Roles** | Separate Proposer, Acceptor, Learner | All nodes play all roles |
-| **Ballot IDs** | Simple number | Pair `(seqnum, server_id)`, compared lexicographically |
-| **Instances** | One decision | One Paxos instance per log slot |
-| **Phase 1** | Run for every decision | Only the leader runs it; elided in steady state |
-| **Log Gaps** | N/A | Holes must be filled before later slots can execute |
-
-## Possible order for implementation of Paxos
-1. ballots
-2. Log(s)
-3. Accept messages/timers (P2As, P2Bs, Decisions)
-	1. you can start by hard-coding one of the servers as the leader
-	2. make sure execution are happening in the order (starting from slot_out and don't skip slots) and progress can be made for clients
-4. leader election/prepare messages/timers (P1As, P1Bs)
-	1. start leader election at the very start
-	2. Check if leader is alive
-5. heartbeats
-	1. catch-up mechanism
-6. Garbage collection
-
-## Things to consider in code
-- Receiving a request that’s already in your log as a proposer
-- When do holes come up in your log? When should you propose no-ops?
-- What happens when you receive a larger ballot in a message? 
-- How does a server know who the leader is?
-- If you receive an accept message for a slot that you already know is chosen, what should you do?
-- Why do we execute the log in order?
-- What happens when a leader dies?
+| **P1a** | `P1a(Ballot r)` | **Prepare**: Attempt to become leader for ballot `r` across the entire log. |
+| **P1b** | `P1b(Ballot r, map<int, AcceptedValue> summ)` | **Promise**: Acceptor promises to follow `r` and provides a **Summary** (`summ`) of all prior votes. |
+| **P2a** | `P2a(int s, Ballot r, AMOCommand v)` | **Accept Request**: Leader proposes value `v` for slot `s`. |
+| **P2b** | `P2b(int s, Ballot r)` | **Accepted Response**: Acceptor confirms vote for `s` in ballot `r`. |
 
 ---
 
-## Components
-- [[CSE452/Paxos/Multi-PaxosComponents/Leader Election|Leader Election]] — The Distinguished Proposer optimization: combining Phase 1 across all slots, steady-state Phase 2, and failure handling.
-- [[CSE452/Paxos/Multi-PaxosComponents/Log|Log]] — The log data structure, slot pointers ($S_i$, $S_o$, $S_{gc}$), duplicate detection, and garbage collection.
-- [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]] — Heartbeats and detecting leader failure.
-- [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]] — Empty slots left by failed leaders and how they are filled.
+## Core Protocol Rules
+
+### 1. The "Accept is Loose" Rule (Acceptance)
+### Formal Definition
+$$If \text{ P2a.ballot} \geq \text{local.promise} \implies \text{Update Log(s) and Reply P2b}$$
+### Simplified Explanation
+If a leader comes to you with a ballot that is at least as high as any promise you've made, you **must** accept their proposal. You cannot reject a value just because you already have something else in that slot; the only thing that matters is the ballot number.
+
+### 2. The Safety Invariant (Leader Recovery)
+### Formal Definition
+$$v_{new} = \begin{cases} v_{max\_ballot} \in \{summ\} & \text{if } \{summ\} \neq \emptyset \\ v_{client} & \text{otherwise} \end{cases}$$
+### Simplified Explanation
+When a new leader takes over, it must honor the past. It looks at all the summaries (`summ`) from a majority. For any slot where someone has already voted, the leader **must** pick the value that had the highest ballot number. Only if a slot is truly empty can the leader use it for a new client request.
+
+### 3. Sequential Execution
+### Formal Definition
+$$Execute(s) \iff \forall i < s: Status(i) = CHOSEN \land Executed(i)$$
+### Simplified Explanation
+You can decide slots in any order, but you must execute them like a book. You can't read page 5 (Slot 5) until you've finished pages 1 through 4. If there's a gap, the state machine stops and waits.
 
 ---
+
+## The Distinguished Proposer Optimization
+By electing a stable leader, Multi-Paxos reduces the common-case cost from **2 Round Trips to 1 Round Trip**.
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant L as Leader (S1)
+    participant A as Acceptors (S2, S3)
+
+    Note over L, A: Phase 1: Leader Election (Once)
+    L->>A: P1a(ballot=(1, S1))
+    A-->>L: P1b(ballot=(1, S1), summ={...})
+
+    Note over C, A: Phase 2: Steady State (Per Request)
+    C->>L: Request(put(x, 5))
+    L->>A: P2a(slot=0, ballot=(1, S1), v=put(x, 5))
+    A-->>L: P2b(slot=0, ballot=(1, S1))
+    L->>C: Response(success)
+```
+
+For the detailed mechanics of heartbeat-based failure detection, see [[Failure Detection]].
+
+---
+
+## Implementation Strategy (Lab 3)
+
+### Development Order
+1. **Ballots**: Implement lexicographical comparison.
+2. **Log Structure**: Build the `LogEntry` map and implement slot pointers ($S_i, S_o, S_{gc}$).
+3. **Phase 2**: Implement the steady-state push path (P2a/P2b/Decisions).
+4. **Phase 1**: Implement the combined election logic and **Log Merging**.
+5. **Recovery**: Handle gap-filling using **No-Ops**. See [[Holes in the Log]].
+6. **Maintenance**: Add heartbeats and garbage collection. See [[Log#Garbage Collection]].
+
+### Critical Considerations
+- **Dueling Proposers**: Use randomized back-off when a `P1a` is rejected to prevent two nodes from livelocking the system.
+- **Commit Index**: Piggyback the highest chosen slot (`leaderCommit`) on all outgoing messages so followers can execute.
+- **AMO State**: The state machine must track the highest sequence number per client to ensure "At-Most-Once" semantics.
+
+---
+
+## Detailed Components
+- [[CSE452/Paxos/Multi-PaxosComponents/Leader Election|Leader Election]] — Steady-state details, leases, and the rejection logic.
+- [[CSE452/Paxos/Multi-PaxosComponents/Log|Log]] — Slot pointers, garbage collection, snapshots, and catching up.
+- [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]] — Heartbeat mechanics and election timers.
+- [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]] — The specific logic for proposing No-Ops to fill gaps.
 
 ## Related
-- [[CSE452/Paxos/Paxos|Back to Paxos Overview]]
-- [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Paxos Invariants|Ballot IDs and Invariants]]
+- [[CSE452/Paxos/Paxos|Paxos Overview]]
+- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]]
+- [[CSE452/Paxos/Paxos Invariants|Invariants & Safety Proofs]]

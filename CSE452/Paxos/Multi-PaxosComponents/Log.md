@@ -1,122 +1,68 @@
-# CSE452: Multi-Paxos The Log
+# CSE452: Multi-Paxos Log Management
 
-The **Log** tracks the full state of the Multi-Paxos algorithm: what commands to feed into the [[CSE452/RPC/Deterministic State Machine|state machine]], which slots have been decided, and how to avoid processing duplicate requests.
-
-## Data Structure
-
-```java
-HashMap<Integer, LogEntry> log;
-// key   = slot index
-// value = all data about that slot
-class LogEntry {
-	Ballot Ballot // (rndNum/seqNum, server address)
-	Object Paxos_log_status
-	AMOCommand command
-}
-```
-
-### Paxos Log Statuses
-
-The `Paxos_log_status` field (often an Enum) tracks the state of consensus for a specific slot on this server.
-
-| Status | Description | Note on Determinism |
-| :--- | :--- | :--- |
-| **EMPTY** | No knowledge of this slot index yet. | Default state. |
-| **ACCEPTED** | This server has received a `P2a` message, updated its `max_ballot` for this slot, and responded with a `P2b`. It now "holds" a value and a ballot. | **"Accept is Loose"**: If a node "gets" the message and the ballot is $\ge$ its current promise, it **must** accept. This means the node received the message and verified the sender is a valid leader (authorized by the promise). It will ignore requests from old leaders. |
-| **CHOSEN** | This server knows for a fact that a **majority** of the cluster has accepted this value for this slot. | At this point, the value is "committed" and can be executed by the state machine (in order). |
-
-**Why do nodes have different statuses?**
-Consensus doesn't mean every node is in the same state at the same time. It means they *agree* on the outcome.
-- If Node A has a slot as `CHOSEN` and Node B has it as `EMPTY`, it just means Node B is lagging or missed a message.
-- If Node A has it as `ACCEPTED` with Value X and Node B has it as `ACCEPTED` with Value Y, this can only happen with **different ballot numbers**. The protocol ensures that only one of these (the higher ballot) can eventually reach a majority.
+The **Log** is the central data structure of a Multi-Paxos node. While the core protocol (see [[CSE452/Paxos/Multi-Paxos|Multi-Paxos Hub]]) defines how entries are decided, this file covers the mechanics of managing those entries locally.
 
 ## Slot Pointers
 
-Finding the next empty slot naively (scanning for the largest index) is inefficient. Instead, maintain three auxiliary pointers:
+Efficient log management requires tracking the "window" of active slots using three pointers:
 
 | Pointer | Symbol | Meaning |
 | :--- | :--- | :--- |
-| **slot_in** | $S_i$ | First available (empty) slot for a new proposal |
-| **slot_out** | $S_o$ | First slot that has not yet been executed |
-| **slot_gc** | $S_{gc}$ | First slot that has not yet been garbage collected |
+| **slot_in** | $S_i$ | The index of the first available (empty) slot for a new proposal. |
+| **slot_out** | $S_o$ | The index of the first slot that has not yet been executed by the State Machine. |
+| **slot_gc** | $S_{gc}$ | The index of the first slot that has not yet been garbage-collected (truncated). |
 
-**Invariant**: $S_{gc} \leq S_o \leq S_i$
+**Fundamental Invariant**: $S_{gc} \leq S_o \leq S_i$
 
-- $S_i$ advances when a new request is assigned to a slot.
-- $S_o$ advances when a slot is executed and fed to the state machine.
-- The protocol aims toward $S_i = S_o$, which occurs when all assigned slots have been executed and there are no pending requests.
+- **Advancing $S_i$**: The leader increments this when a new client request arrives.
+- **Advancing $S_o$**: A node increments this after successfully applying a **CHOSEN** command to its local State Machine.
+- **Advancing $S_{gc}$**: Incremented after a successful garbage collection cycle.
 
-## Avoiding Duplicate Log Entries
+---
 
-Checking for duplicates is a **performance** optimization, not a correctness requirement — it avoids wasting consensus rounds on requests already handled.
+## Avoiding Duplicate Proposals
 
-Before proposing a request, check if it is already in the log:
+Checking for duplicates is a performance optimization that prevents wasting consensus rounds on requests already handled.
 
 | Case | Action |
 | :--- | :--- |
-| Request already executed | Retransmit the cached response to the client |
-| Request is old and not in AMO | Client already received the response; ignore |
-| Request not yet chosen | If the system is making progress, ignore — it will be proposed soon |
-| Request is chosen but not yet executed | A hole exists in the log; if it is already being handled, no further action needed |
+| Request already executed | Retransmit the cached response from the AMO state. |
+| Request not yet chosen | If it's already in the log ($S_o \dots S_i$), ignore the new request—it will be decided soon. |
+| Request is chosen but not executed | A hole exists; wait for the gap to fill. |
 
-## Ejection Policy / Garbage Collection
+---
 
-**Main Question**: When is it safe to delete a log entry?
+## Log Merging (Recovery Phase)
 
-This is hard because network delays mean nodes can disagree on whether a slot has been executed.
+When a node receives a majority of `P1b` messages, it must merge their summaries into its own log to ensure safety.
 
-**Rules**:
-- A slot must be **executed** before it can be deleted.
-	- everyone must have executed it
-- A slot cannot be deleted until **every node** has received and acknowledged it, so that lagging nodes can still catch up.
-- Only **prefixes** of the log are deleted — slot $n$ cannot be removed while any slot $m < n$ is still present.
-### Solutions
-need a way to determine waht slots other nodes are done with
-- need some state about what everyone knows
-- one way is to send an array of everything we've executed which is piggybacked with heartbeat replies
-	- however this fails if a server dies as everyone will be waiting for them
+### Merging Rules
+For each slot reported in an incoming `P1b` summary:
+1.  **Highest Ballot Wins**: For each slot, identify the command associated with the highest ballot number across all received summaries.
+2.  **Majority Check**: If a specific command was reported by a majority as already **CHOSEN**, mark it as chosen locally.
+3.  **Hole Detection**: If no command is found for a slot index $s < S_i$, mark it as a hole to be filled by a **No-Op**.
 
-### Catching Up
+**Warning**: Do not merge directly into your active log. Use a temporary data structure or a "candidate log" until the majority is reached and the leader transition is finalized.
 
-If a node missed a chosen command (e.g., it was partitioned or temporarily down), the leader must inform it of the missing entries. The leader keeps log entries alive long enough for all nodes to catch up before deleting them. Once a node has received all missing entries and applied them to its state machine, it is safe to garbage-collect the earlier prefix.
+---
 
-## Log Compaction and Snapshots
-The log cannot grow forever. To reclaim space and speed up recovery, we use **Snapshots**.
-- **The Snapshot**: Periodically, the state machine saves its current state (e.g., the current value of all keys) to disk.
-- **Compaction**: Once a snapshot is saved for everything up to slot $N$, the log entries from $0$ to $N$ can be deleted (**truncated**).
-- **InstallSnapshot**: If a follower is so far behind that the leader has already deleted the missing log slots, the leader sends the entire Snapshot file (`InstallSnapshot` RPC) to the follower. The follower installs the snapshot to jump its state machine forward instantly.
+## Garbage Collection and Truncation
 
-## Log Merging
-For each slot in an incoming P1b message:
-- Keep the command with the highest ballot number.
-- If we've received the same command with the same ballot number from a majority of the nodes, mark the command as chosen.
-- If no command is found for a slot, put a No-Op command there instead.
-- **Warning**: Do not try to merge directly into your log.
+The log cannot grow forever. To reclaim space, nodes must eventually delete executed slots.
 
-### Temporary Log State
-- With each log the candidate places it in a temporary log state. We have to trust it's chosen.
-	- This is a copy of the earlier log.
-	- We place the largest ballot number into each slot (as normal), if there is already something in that slot we can potentially override it.
-	- ![[CSE452/Screenshots/Incoming Messages to Merge.png]]
-	- Once we finish checking each slot, we can merge it into the server.
-- **Log merging rules**:
-	- For each slot in an incoming P1b message:
-		- Keep the command with the highest ballot number.
-		- If we've received the same command with the same ballot number from a majority of the nodes, mark the command as chosen.
-		- If no command is found for a slot, put a No-Op command there instead.
-	- Several ways to implement:
-		- Merge P1bs into temp log as they're received (keep track of command with largest ballot nums as P1bs are received).
-			- Make sure to only take P1bs that correspond to the current election.
-		- Store P1bs. Only merge them together after receiving a majority.
-			- Temp log not necessary in this case.
-		- Other ways too.
-	- **Dealing with Log Holes**:
-		- For a detailed explanation of why holes occur and how no-ops are used to patch them, see [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]].
-		- Briefly: A leader identifies holes during Phase 1 recovery and proposes No-Ops to ensure a contiguous log prefix for the state machine to execute.
+### When is it safe to delete?
+A slot $s$ can be deleted (**truncated**) only if:
+1.  The command in slot $s$ has been **executed** by the local state machine ($s < S_o$).
+2.  **Every node** in the cluster has received and acknowledged the command.
+
+### Snapshots
+If a node is so far behind that its missing slots have already been garbage-collected by the leader, the leader cannot send `P2a` messages for those slots.
+- **The Solution**: The leader sends an **InstallSnapshot** RPC containing the full serialized state of the State Machine.
+- **Outcome**: The follower installs the snapshot, jumps its $S_o$ and $S_{gc}$ forward, and begins processing new log entries from that point.
 
 ---
 
 ## Related
-- [[CSE452/Paxos/Multi-Paxos|Back to Multi-Paxos]]
-- [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]] — Handling holes left by failed leaders
-- [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — What the log feeds into
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos Hub]] — Core log entry structures and status definitions.
+- [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]] — Detailed logic for patching gaps with No-Ops.
+- [[CSE452/RPC/Deterministic State Machine|State Machine]] — The target for log execution.
