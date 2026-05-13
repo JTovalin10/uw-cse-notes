@@ -1,6 +1,6 @@
 # CSE452: Multi-Paxos
 
-**Multi-Paxos** builds on [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] to reach consensus on an entire sequence of log slots, rather than just a single value. These notes are from the lecture on **April 24, 2026**.
+**Multi-Paxos** builds on [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] to reach consensus on an entire **sequence of log slots**, rather than just a single value. The key optimization is the **Distinguished Proposer**: a stable elected leader that amortizes the Phase 1 cost across many proposals, reducing the common-case cost from 2 round trips to 1.
 
 ## Notation & Data Structures
 Multi-Paxos uses the following standardized notation for its protocol messages and local state.
@@ -44,34 +44,40 @@ struct AcceptedValue {
 ### Network Messages (RPCs)
 In the **Distinguished Proposer** optimization, Phase 1 is combined across all slots to reduce latency.
 
-| Message | Format | Purpose |
-| :--- | :--- | :--- |
-| **P1a** | `P1a(Ballot r)` | **Prepare**: Attempt to become leader for ballot `r` across the entire log. |
+| Message | Format                                        | Purpose                                                                                              |
+| :------ | :-------------------------------------------- | :--------------------------------------------------------------------------------------------------- |
+| **P1a** | `P1a(Ballot r)`                               | **Prepare**: Attempt to become leader for ballot `r` across the entire log.                          |
 | **P1b** | `P1b(Ballot r, map<int, AcceptedValue> summ)` | **Promise**: Acceptor promises to follow `r` and provides a **Summary** (`summ`) of all prior votes. |
-| **P2a** | `P2a(int s, Ballot r, AMOCommand v)` | **Accept Request**: Leader proposes value `v` for slot `s`. |
-| **P2b** | `P2b(int s, Ballot r)` | **Accepted Response**: Acceptor confirms vote for `s` in ballot `r`. |
+| **P2a** | `P2a(int s, Ballot r, AMOCommand v)`          | **Accept Request**: Leader proposes value `v` for slot `s`.                                          |
+| **P2b** | `P2b(int s, Ballot r)`                        | **Accepted Response**: Acceptor confirms vote for `s` in ballot `r`.                                 |
 
 ---
 
 ## Core Protocol Rules
 
 ### 1. The "Accept is Loose" Rule (Acceptance)
-### Formal Definition
-$$If \text{ P2a.ballot} \geq \text{local.promise} \implies \text{Update Log(s) and Reply P2b}$$
-### Simplified Explanation
-If a leader comes to you with a ballot that is at least as high as any promise you've made, you **must** accept their proposal. You cannot reject a value just because you already have something else in that slot; the only thing that matters is the ballot number.
+
+#### Formal Definition
+$$\text{P2a.ballot} > \text{local.promise} \implies \text{Update Log}(s)\ \text{and Reply P2b}$$
+
+#### Simplified Explanation
+If a leader comes to you with a ballot that is higher than any promise you've made, you **must** accept their proposal. You cannot reject a value just because you already have something else in that slot — the only thing that matters is the ballot number.
 
 ### 2. The Safety Invariant (Leader Recovery)
-### Formal Definition
+
+#### Formal Definition
 $$v_{new} = \begin{cases} v_{max\_ballot} \in \{summ\} & \text{if } \{summ\} \neq \emptyset \\ v_{client} & \text{otherwise} \end{cases}$$
-### Simplified Explanation
+
+#### Simplified Explanation
 When a new leader takes over, it must honor the past. It looks at all the summaries (`summ`) from a majority. For any slot where someone has already voted, the leader **must** pick the value that had the highest ballot number. Only if a slot is truly empty can the leader use it for a new client request.
 
 ### 3. Sequential Execution
-### Formal Definition
-$$Execute(s) \iff \forall i < s: Status(i) = CHOSEN \land Executed(i)$$
-### Simplified Explanation
-You can decide slots in any order, but you must execute them like a book. You can't read page 5 (Slot 5) until you've finished pages 1 through 4. If there's a gap, the state machine stops and waits.
+
+#### Formal Definition
+$$Execute(s) \iff \forall i < s:\ Status(i) = \text{CHOSEN} \land Executed(i)$$
+
+#### Simplified Explanation
+You can decide slots in any order, but you must execute them like reading a book. You cannot execute page 5 (Slot 5) until you have finished pages 1 through 4. If there is a gap, the state machine stops and waits.
 
 ---
 
@@ -95,7 +101,7 @@ sequenceDiagram
     L->>C: Response(success)
 ```
 
-For the detailed mechanics of heartbeat-based failure detection, see [[Failure Detection]].
+For the detailed mechanics of heartbeat-based failure detection, see [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]].
 
 ---
 
@@ -106,8 +112,8 @@ For the detailed mechanics of heartbeat-based failure detection, see [[Failure D
 2. **Log Structure**: Build the `LogEntry` map and implement slot pointers ($S_i, S_o, S_{gc}$).
 3. **Phase 2**: Implement the steady-state push path (P2a/P2b/Decisions).
 4. **Phase 1**: Implement the combined election logic and **Log Merging**.
-5. **Recovery**: Handle gap-filling using **No-Ops**. See [[Holes in the Log]].
-6. **Maintenance**: Add heartbeats and garbage collection. See [[Log#Garbage Collection]].
+5. **Recovery**: Handle gap-filling using **No-Ops**. See [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]].
+6. **Maintenance**: Add heartbeats and garbage collection. See [[CSE452/Paxos/Multi-PaxosComponents/Log|Log]].
 
 ### Critical Considerations
 - **Dueling Proposers**: Use randomized back-off when a `P1a` is rejected to prevent two nodes from livelocking the system.
