@@ -41,7 +41,7 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[CSE452/Paxos/Ballot IDs|Paxos Ballot IDs]] — the role of proposal numbers in ensuring progress and safety
 
 ### Scalability
-- [[CSE452/Partitioning|Partitioning]] — horizontal scaling, ShardMaster architecture, linearizable handovers, and multi-key operations
+- [[CSE452/Sharding/Sharding|Sharding]] — horizontal scaling, ShardMaster architecture, linearizable handovers, and cross-group transactions
 
 ---
 
