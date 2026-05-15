@@ -27,7 +27,7 @@
 ### Note Structure Patterns
 - Hub files are short (2-10 lines) and serve as link collections to subtopics
 - **Progressive Narrative Flow**: Sections within a detailed file MUST build on each other logically. Start with the core concept, move to the mechanism/timeline, provide a concrete walkthrough/example, delve into physical implementation details, and conclude with outcomes/trade-offs. Do not scatter related points.
-- **Deep Technical Detail ("Not Sparknotes")**: Explanations must be thorough. Always explain the "how" and the "why" (e.g., the underlying physical storage mechanics or the algorithmic logic). **Never sacrifice technical depth for brevity.**
+- **Deep Technical Detail ("Not Sparknotes")**: Explanations must be thorough. Always explain the "how" and the "why" (e.g., the underlying physical storage mechanics or the algorithmic logic). **Never sacrifice technical depth for brevity. The goal is to expand and add information to the notes, never to reduce or summarize them into a shorter form.**
 - **Strict Course Terminology**: Strictly adhere to the terminology used in the specific course lectures and labs (e.g., in CSE452, use **ShardMaster** and **ShardKV Group**, NOT generic industry terms like "Control Plane" or "Data Plane").
 - **Dual-Layer Explanations**: For complex rules and definitions, provide both a formal definition (textbook/mathematical rigor) and a simplified explanation (plain-English intuition). Do NOT use emojis for these headers; maintain professional text-only formatting.
   - *Example Format:*
@@ -75,7 +75,7 @@ The user often dumps raw lecture content into files without structure. When aske
 7. **Move loose images** into a `Screenshots/` subdirectory
 8. **Add a Related section** at the bottom of files that connect to other topics
 9. **Fix flow and logical ordering** — sections within a file must build on each other cohesively. Eliminate backtracking and scattered thoughts.
-10. **Never remove information to make a file shorter** — the goal is better organization, not brevity. Expand on points that are terse or unclear. Provide deep technical context.
+10. **Never remove information to make a file shorter** — the goal is better organization, not brevity. Always prioritize expanding and adding information over reduction. Expand on points that are terse or unclear. Provide deep technical context.
 11. **Preserve the user's original content and meaning** — reorganize and clean up, but don't add entirely new technical content that contradicts what was taught.
 12. **Add cross-course links** — check whether topics in other courses cover the same concept in more depth and link to them using disambiguated paths.
 13. **Rename files to Title Case** if they aren't already
