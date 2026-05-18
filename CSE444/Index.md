@@ -44,7 +44,7 @@ Advanced database systems: internals, query processing, storage, and distributed
 
 ### Transactions
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)
-- [[CSE444/Transactions/Recovery and Logging|Recovery and Logging]] — WAL, ARIES algorithm (Analysis/Redo/Undo), and idempotence
+- [[Recovery and Logging|Recovery and Logging]] — WAL, ARIES algorithm (Analysis/Redo/Undo), and idempotence
 - [[CSE444/Transactions/Serializability/Schedules|Schedules]] — definition of serial, serializable, and recoverable schedules
 - [[CSE444/Transactions/Concurrency Anomalies|Concurrency Anomalies]] — WR (Dirty Read), RW (Unrepeatable Read), WW (Lost Update) conflicts
 - [[CSE444/Transactions/Serializability/Serializability|Serializability]] — correctness criteria and types of equivalence (Conflict vs. View)
