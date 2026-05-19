@@ -128,7 +128,23 @@ For the detailed mechanics of heartbeat-based failure detection, see [[CSE452/Pa
 - [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]] — Heartbeat mechanics and election timers.
 - [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]] — The specific logic for proposing No-Ops to fill gaps.
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Multi-Paxos** | Multi-Paxos / replicated log consensus |
+| **Distinguished Proposer** | Leader |
+| **Log Slot** | Log index / log entry |
+| **No-Op** | No-op log entry / filler entry |
+| **leaderCommit** | Commit index |
+| **InstallSnapshot** | Snapshot transfer RPC |
+| **AMO Semantics** | Exactly-once / idempotent request handling |
+
+---
+
 ## Related
 - [[CSE452/Paxos/Paxos|Paxos Overview]]
 - [[CSE452/Paxos/Single Paxos|Single Decree Paxos]]
 - [[CSE452/Paxos/Paxos Invariants|Invariants & Safety Proofs]]
+- [[CSE452/Consistency/Fast Reads in Multi-Paxos|Fast Reads in Multi-Paxos]] — read optimizations that bypass the leader log
+- [[CSE452/Sharding/Sharding|Sharding]] — Multi-Paxos as the consensus engine for each replica group

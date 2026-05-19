@@ -1,6 +1,6 @@
-# Lab 4: Reconfiguration
+# CSE452: Reconfiguration
 
-**Reconfiguration** is the process of updating the system state when the **[[Sharding/Sharding#ShardMaster|ShardMaster]]** issues a new **[[Sharding/Sharding#Configuration (The Metadata)|Configuration]]**. This requires **[[Sharding/Sharding#Replica Group|Replica Groups]]** to hand off responsibility for specific **[[Sharding/Sharding#Shard (The Unit of Data)|Shards]]** while maintaining **[[CSE452/Consistency/Definitions/Linearizability|Linearizability]]**.
+**Reconfiguration** is the process of updating the system state when the **[[CSE452/Sharding/Definitions/ShardMaster|ShardMaster]]** issues a new **[[CSE452/Sharding/Definitions/Configuration|Configuration]]**. This requires **[[CSE452/Sharding/Definitions/Replica Group|Replica Groups]]** to hand off responsibility for specific **[[CSE452/Sharding/Definitions/Shard|Shards]]** while maintaining **[[CSE452/Consistency/Definitions/Linearizability|Linearizability]]**.
 
 ## The Core Challenge
 
@@ -86,8 +86,22 @@ The **Paxos log is the source of truth**.
 - **Sequence**: A group learns about a new configuration $\to$ proposes it to its own Paxos log $\to$ executes the state transfer $\to$ commits the new config.
 - **Linearizability**: A server cannot reject client commands for a shard it used to own until the `new_config` command is actually **COMMITTED** in its log. Blocking commands prematurely would violate linearizability.
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Reconfiguration** | Rebalancing / membership change |
+| **Shard Handoff** | Shard migration / partition move |
+| **Freeze** | Write-blocking / source quiescing |
+| **AMO State** | Deduplication / idempotency table |
+| **Pull / Push System** | Receiver-driven / sender-driven transfer |
+
+---
+
 ## Related
-- [[CSE452/Sharding/Sharding|Sharding Overview]]
-- [[CSE452/Sharding/Sharded Key-Value Server|ShardKV Server]]
-- [[CSE452/Consistency/Definitions/Linearizability|Linearizability]]
-- [[CSE452/RPC/Remote Procedure Call (RPC)|Exactly-Once Semantics]]
+- [[CSE452/Sharding/Sharding|Sharding Overview]] — the architecture reconfiguration operates on
+- [[CSE452/Sharding/Shard Master|Shard Master]] — the service that issues new configurations
+- [[CSE452/Sharding/Sharded Key-Value Server|Sharded Key-Value Server]] — the ShardStoreServer that performs handoffs
+- [[CSE452/Sharding/Transactions|Transactions]] — how 2PC interacts with reconfiguration
+- [[CSE452/Consistency/Definitions/Linearizability|Linearizability]] — the guarantee handoffs must preserve
+- [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — exactly-once semantics during shard transfer

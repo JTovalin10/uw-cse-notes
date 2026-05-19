@@ -21,7 +21,17 @@ Not all operations can be made idempotent. For those that cannot, server-side de
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Idempotent Operation** | Idempotent request |
+| **Server-Side Deduplication** | Idempotency key / request deduplication |
+
+---
+
 ## Related
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — where idempotence determines which RPC type is safe to use
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — state transfer and re-applied operations need care around idempotence
+- [[CSE452/Primary-Backup/State Machine Replication (State Transfer)|State Transfer]] — state transfers must be idempotent across retransmits
 - [[CSE452/RPC/Fault Model|Fault Model]] — dropped messages cause retransmission, making idempotence relevant

@@ -1,4 +1,4 @@
-e# CSE452: The Paxos Protocol
+# CSE452: The Paxos Protocol
 
 The Paxos protocol consists of two main phases to ensure that a single value is chosen safely.
 
@@ -37,6 +37,20 @@ Paxos guarantees **Safety** (no two different values are chosen), but it does no
 - **The Fix**: Use **Randomized Backoff** or a **Distinguished Proposer (Leader)** to ensure only one node drives proposals at a time.
 
 ---
-- [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Single-PaxosComponents/Majority Overlap|Why Phase 1 needs a Majority]]
-- [[CSE452/Paxos/Single-PaxosComponents/Roles|Paxos Roles]]
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Prepare (1a) / Promise (1b)** | Phase 1 / read phase |
+| **Accept Request (2a) / Accept Reply (2b)** | Phase 2 / write phase |
+| **Summary** | Highest accepted value / prior vote |
+| **Randomized Backoff** | Exponential backoff |
+
+---
+
+## Related
+- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] — the overview this protocol implements
+- [[CSE452/Paxos/Single-PaxosComponents/Majority Overlap|Majority Overlap]] — why Phase 1 needs a majority
+- [[CSE452/Paxos/Single-PaxosComponents/Roles|Paxos Roles]] — Proposer, Acceptor, and Learner
+- [[CSE452/Paxos/Ballot IDs|Ballot IDs]] — generating the unique ballot number $r$

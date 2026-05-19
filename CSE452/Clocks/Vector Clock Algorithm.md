@@ -22,6 +22,20 @@ This biconditional is stronger than the Lamport clock condition, which only hold
    - Example: $\max([1,0,0,0],\ [0,1,0,0]) + 1_b = [1, 2, 0, 0]$
 4. **Local step**: increment only the node's own component by 1.
 
+## Worked Example
+
+The diagram below shows how a message from node $b$ to node $a$ carries causal information through the component-wise max.
+
+```mermaid
+graph LR
+    A0["a: [1,0,0,0]"] -->|local step| A1["a: [2,0,0,0]"]
+    B0["b: [0,1,0,0]"] -->|send msg| Msg["msg carries [0,1,0,0]"]
+    A1 -->|receive msg| A2["a: max([2,0,0,0],[0,1,0,0]) + 1_a = [3,1,0,0]"]
+    Msg --> A2
+```
+
+After the receive, node $a$'s clock $[3,1,0,0]$ records that it has heard everything node $b$ knew up to its send event — this is what makes the biconditional hold.
+
 ## Comparison with Lamport Clocks
 
 | Property | Lamport Clock | Vector Clock |
@@ -31,9 +45,17 @@ This biconditional is stronger than the Lamport clock condition, which only hold
 | $C(e_1) < C(e_2)$ implies | Nothing certain | $e_1 \rightarrow e_2$ |
 | Can detect concurrency | No | Yes |
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Vector Clock** | Version vector / vector timestamp |
+| **Component-wise Max** | Vector merge / join |
+| **Biconditional Causality** | Exact causal-order detection |
+
 ## Related
 
 - [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — the core concepts and the happens-before relation
 - [[CSE452/Clocks/Lamport Clock Algorithm|Lamport Clock Algorithm]] — the simpler single-counter implementation
+- [[CSE452/Clocks/Vector Clock Pruning|Vector Clock Pruning]] — managing vector clock size at scale
 - [[CSE452/Primary-Backup/Idempotence|Idempotence]] — causality helps ensure operations are not repeated incorrectly
-- [[CSE451/Concurrency/Synchronization/Mechanics/Synchronization.md]] — synchronization in OS environments

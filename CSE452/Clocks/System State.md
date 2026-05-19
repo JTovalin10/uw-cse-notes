@@ -1,5 +1,15 @@
 # CSE452: System State
 
+When writing correctness proofs for a distributed protocol, it is essential to classify each property of the system's state by how it behaves over time. A property may be permanent once established, or it may come and go. This classification determines what a proof is allowed to assume.
+
+```mermaid
+graph TD
+    P[Property of System State]
+    P --> S["Stable Property<br/>once true, stays true"]
+    P --> U["Unstable Property<br/>can revert to false"]
+    S --> I["Invariant<br/>always true in every execution"]
+```
+
 ## Properties of System State
 
 ### Invariants
@@ -40,8 +50,20 @@ Example:
 
 The distinction matters when writing correctness proofs: you can always rely on stable properties once established, but must re-check unstable ones.
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Invariant** | Safety invariant / system invariant |
+| **Stable Property** | Stable predicate (Chandy-Lamport sense) |
+| **Unstable Property** | Transient predicate |
+| **AMO Table** | Deduplication / idempotency table |
+
+---
+
 ## Related
 
 - [[CSE452/Primary-Backup/Primary Backup|Primary Backup]] — replication system where these invariants are applied
 - [[CSE452/Primary-Backup/View Server|View Server]] — manages view transitions and maintains system-wide invariants
-- [[CSE451/Concurrency/Synchronization/Mechanics/Critical Sections/Critical Sections.md]] — invariants are also used to prove correctness of mutual exclusion
+- [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — happens-before reasoning used alongside invariants in correctness proofs
+- [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — stable vs. unstable properties mirror common vs. transient knowledge

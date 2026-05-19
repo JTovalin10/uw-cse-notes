@@ -68,9 +68,21 @@
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Forward Request** | Replication / log-shipping message |
+| **View Acknowledgment** | Configuration commit |
+| **Idle Pool** | Standby pool |
+| **State Transfer** | State sync / snapshot install |
+
+---
+
 ## Related
 
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — full overview of the primary-backup model, view server, and state transfer
+- [[CSE452/Primary-Backup/View Server|View Server]] — the authority that enforces these rules
 - [[CSE452/Primary-Backup/State Machine Replication (State Transfer)|State Transfer]] — mechanics of transferring state to a newly promoted backup
 - [[CSE452/Primary-Backup/Failover Protocol|Failover Protocol]] — how failure detection triggers view changes
 - [[CSE452/Primary-Backup/Idempotence|Idempotence]] — why operations must be safe to re-execute during recovery

@@ -33,7 +33,7 @@ If no chain of arrows connects two events, no information could have flowed betw
 
 ## The Happens-Before Relation
 
-The [[CSE452/Clocks/Definitions/Happens-Before|happens-before relation]], written $e_1 \rightarrow e_2$, is the formal foundation for causal ordering. It captures every situation in which event $e_1$ could have causally influenced event $e_2$. The definition is recursive:
+The **happens-before relation**, written $e_1 \rightarrow e_2$, is the formal foundation for causal ordering. It captures every situation in which event $e_1$ could have causally influenced event $e_2$. The definition is recursive:
 
 1. **Same process**: $e_1$ and $e_2$ occur on the same machine, and $e_1$ occurs first in that process's local execution order.
 2. **Message passing**: $e_1$ is the **sending** of a message and $e_2$ is the **receipt** of that exact message.
@@ -80,9 +80,20 @@ Two main algorithms implement logical clocks, each with different expressive pow
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Logical Clock** | Lamport timestamp / scalar logical clock |
+| **Happens-Before Relation** | Causal order / potential causality |
+| **Space-Time Diagram** | Process-time diagram / Lamport diagram |
+| **Clock Condition** | Causal consistency of timestamps |
+| **Concurrent Events** | Causally independent events |
+
+---
+
 ## Related
 
-- [[CSE452/Clocks/Definitions/Happens-Before|Happens-Before]] — formal definition of the causal ordering relation
 - [[CSE452/Clocks/Lamport Clock Algorithm|Lamport Clock Algorithm]] — standard logical clock implementation satisfying the clock condition
 - [[CSE452/Clocks/Vector Clock Algorithm|Vector Clock Algorithm]] — bidirectional causality and concurrency detection
 - [[CSE452/Clocks/Vector Clock Pruning|Vector Clock Pruning]] — scalability trade-offs when managing large vector clock state

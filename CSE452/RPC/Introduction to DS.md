@@ -25,8 +25,21 @@ Building a correct DS is fundamentally difficult:
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Distributed System** | Distributed system / cluster |
+| **Horizontal Scaling** | Scale-out |
+| **Vertical Scaling** | Scale-up |
+| **Partial Failure** | Partial / independent component failure |
+| **Coherence** | Replica consistency |
+
+---
+
 ## Related
 - [[CSE452/RPC/Fault Model|Fault Model]] — catalog of failures a DS must tolerate
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — how machines communicate across a network
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — one approach to fault-tolerant state replication
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — formal model underlying replication
+- [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — reasoning about concurrency and event ordering

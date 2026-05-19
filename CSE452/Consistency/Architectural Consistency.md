@@ -4,9 +4,11 @@ Architectural consistency covers how consistency guarantees are implemented in p
 
 ## 1. Memory Consistency (Hardware)
 
-#### Memory Consistency Model (MCM)
+### Memory Consistency Model (MCM)
+
 #### Formal Definition
 A contract between the hardware/system and the software programmer that specifies the rules for how memory operations (reads and writes) appear to different processors.
+
 #### Simplified Explanation
 It defines which reorderings (by the compiler or the CPU) are legal. It allows a programmer to reason about the correctness of concurrent code even when the hardware is optimizing execution order behind the scenes.
 
@@ -38,12 +40,38 @@ A **lease** grants a cache **timed, exclusive ownership** of a key.
 - **Fault Tolerance**: If the leaseholder crashes, the server simply waits for the lease TTL to expire.
 
 ### Sharding (Partition-Based)
-Instead of replicating data and solving coherence, **shard** the data so each key lives in exactly one cache. 
+Instead of replicating data and solving coherence, [[CSE452/Sharding/Sharding|**shard**]] the data so each key lives in exactly one cache. With only one copy, there is nothing to keep coherent — a read or write always lands on the single authoritative cache.
+
+```mermaid
+graph TD
+    W[Write to a key]
+    W --> INV["Invalidation Protocol<br/>send invalidations to all caches"]
+    W --> LEASE["Leases<br/>timed exclusive ownership"]
+    W --> SHARD["Sharding<br/>one cache owns the key"]
+    INV --> L["Linearizable, but high write cost"]
+    LEASE --> L2["Fast local reads, crash-safe via TTL"]
+    SHARD --> L3["No coherence problem at all"]
+```
+
+---
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Memory Consistency Model (MCM)** | Memory model (e.g., C++11 memory model) |
+| **Total Store Order (TSO)** | x86 / SPARC TSO memory model |
+| **Store Buffer** | Write buffer / store queue |
+| **Release Consistency** | Acquire/release ordering, memory fences |
+| **Write-Through Caching** | Write-through cache with invalidation |
+| **Lease** | Cache lease / time-bounded read lock |
 
 ---
 
 ## Related
-- [[CSE452/Consistency/Theoretical Foundations|Theoretical Foundations]]
-- [[CSE452/Consistency/Strong Consistency Models|Strong Consistency Models]]
-- [[CSE351/Cache/Handling Writes|CSE351: Cache Handling]]
-- [[CSE452/RPC/Remote Procedure Call (RPC)|RPC Semantics]]
+- [[CSE452/Consistency/Theoretical Foundations|Theoretical Foundations]] — CAP, PACELC, and the strength hierarchy
+- [[CSE452/Consistency/Strong Consistency Models|Strong Consistency Models]] — linearizability, which write-through caching preserves
+- [[CSE452/Consistency/Weak Consistency Models|Weak Consistency Models]] — processor consistency, the distributed analogue of TSO
+- [[CSE452/Sharding/Sharding|Sharding]] — partitioning data so each key has a single owner
+- [[CSE351/Cache/Handling Writes|CSE351: Cache Handling]] — hardware cache write policies
+- [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — the communication layer beneath cache coherence protocols

@@ -1,4 +1,4 @@
-# Paxos: Single Decree Consensus
+# CSE452: Single Decree Paxos
 
 **Single Decree Paxos** is the core algorithm used to reach consensus on a **single value** in a distributed system. It serves as the atomic building block for more complex systems like [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]].
 
@@ -23,9 +23,23 @@ Think of Phase 1 as a "Reservation." You ask a majority of nodes to save a spot 
 - **[[CSE452/Paxos/Single-PaxosComponents/Majority Overlap|Majority Overlap]]**: The mathematical proof that quorums must intersect.
 - **[[CSE452/Paxos/Single-PaxosComponents/Safety and Scenarios|Safety and Scenarios]]**: How the system handles node crashes during the voting process.
 
-> **Note on Liveness**: Paxos guarantees **Safety** (it will never make a wrong decision) but not **Liveness** (it might never make a decision at all if proposers keep fighting). This is known as the FLP Impossibility.
+> **Note on Liveness**: Paxos guarantees **Safety** (it will never make a wrong decision) but not **Liveness** (it might never make a decision at all if proposers keep fighting). This is known as the **FLP Impossibility** — see [[CSE452/Knowledge/Knowledge#Consensus and the FLP Impossibility Result|Knowledge: FLP Impossibility]].
 
 ---
-- [[CSE452/Paxos/Paxos|Back to Paxos Overview]]
-- [[CSE452/Paxos/Multi-Paxos|Continue to Multi-Paxos]]
-- [[CSE452/Paxos/Paxos Invariants|In-depth: Ballot IDs and Invariants]]
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Single Decree Paxos** | Basic Paxos / Synod algorithm |
+| **Phase 1 (Prepare)** | Prepare / read phase |
+| **Phase 2 (Accept)** | Accept / write phase |
+| **Chosen Value** | Committed / decided value |
+
+---
+
+## Related
+- [[CSE452/Paxos/Paxos|Paxos Overview]] — the consensus problem and the Paxos suite
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — extending single-decree Paxos to a log of values
+- [[CSE452/Paxos/Paxos Invariants|Paxos Invariants and Design]] — Ballot IDs and the safety invariants
+- [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — the FLP result behind Paxos's liveness limitation

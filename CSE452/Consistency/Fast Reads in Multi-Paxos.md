@@ -1,6 +1,6 @@
 # CSE452: Fast Reads in Multi-Paxos
 
-In standard [[Multi-Paxos]], every read must go through the **leader** and be appended to the log to guarantee [[Linearizability]]. This ensures reads reflect the most up-to-date committed state, but it is expensive — every read consumes log slots and requires at least a round-trip to the leader. **Fast reads** are optimizations that allow reads to be served directly from **any replica** without full consensus, at the cost of relaxed consistency guarantees.
+In standard [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]], every read must go through the **leader** and be appended to the log to guarantee [[CSE452/Consistency/Definitions/Linearizability|Linearizability]]. This ensures reads reflect the most up-to-date committed state, but it is expensive — every read consumes log slots and requires at least a round-trip to the leader. **Fast reads** are optimizations that allow reads to be served directly from **any replica** without full consensus, at the cost of relaxed consistency guarantees.
 
 There are two main fast read models, each offering a different consistency trade-off:
 
@@ -102,7 +102,7 @@ Once writes stop and all replicas receive and apply W1, W2, and W3, every replic
 
 ## Why Fast Reads Exist
 
-In [[Multi-Paxos]], the leader is a bottleneck for all operations. Fast reads allow replicas to serve reads locally, providing:
+In [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]], the leader is a bottleneck for all operations. Fast reads allow replicas to serve reads locally, providing:
 
 - **Lower latency**: no leader round-trip
 - **Higher throughput**: read load is distributed across all replicas
@@ -112,8 +112,20 @@ The trade-off is consistency. The appropriate model depends on the application �
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Fast Read** | Follower read / local read optimization |
+| **Snapshot Read** | Bounded-staleness read / consistent-prefix read |
+| **Eventually Consistent Read** | Stale read / best-effort read |
+| **Per-Client Monotonicity** | Monotonic-reads session guarantee |
+
+---
+
 ## Related
 
-- [[Multi-Paxos]]
-- [[Linearizability]]
-- [[Consistency/Consistency Models]]
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — the consensus protocol whose leader bottleneck fast reads relieve
+- [[CSE452/Consistency/Definitions/Linearizability|Linearizability]] — the strong guarantee that fast reads relax
+- [[CSE452/Consistency/Weak Consistency Models|Weak Consistency Models]] — eventual consistency, the model behind eventually consistent reads
+- [[CSE452/Consistency/Consistency|Consistency]] — the consistency-model hub

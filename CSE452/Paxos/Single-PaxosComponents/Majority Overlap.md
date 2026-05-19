@@ -20,5 +20,17 @@ By **forcing** Proposer B to receive responses from a **majority (3 people)**, t
 **Summary**: Phase 1 is a **Discovery Phase**. You talk to a majority so you can be 100% sure that if the group already made a decision, you've heard about it before you try to make a new one.
 
 ---
-- [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Paxos Invariants#1. The Quorum Intersection Property|Quorum Intersection Property]]
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Majority Overlap** | Quorum intersection property |
+| **Discovery Phase** | Phase 1 / read phase |
+
+---
+
+## Related
+- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] — the algorithm that relies on majority overlap
+- [[CSE452/Paxos/Paxos Invariants#1. The Quorum Intersection Property|Quorum Intersection Property]] — the formal invariant
+- [[CSE452/Paxos/Single-PaxosComponents/Safety and Scenarios|Safety and Scenarios]] — worked examples of overlap preserving agreement

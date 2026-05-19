@@ -26,12 +26,32 @@ The ideal process:
 2. **Decide** whether to failover (use approximate failure detection — see [[CSE452/Primary-Backup/Primary Backup#Approximate Failure Detection|Approximate Failure Detection]]).
 3. **Execute** the view change: update the [[CSE452/Primary-Backup/View Server|View Server]], perform state transfer to the new backup if needed.
 
+```mermaid
+graph TD
+    D["Detect: heartbeat timeout"] --> Q{"Decide: failover?"}
+    Q -->|likely failed| E["Execute: increment view,<br/>promote backup, state transfer"]
+    Q -->|false alarm| W[Continue with current view]
+    E --> Risk{"Old primary still alive?"}
+    Risk -->|yes| SB["Split Brain risk<br/>mitigated by View Server"]
+    Risk -->|no| OK[Clean failover]
+```
+
 Because detection is imperfect, systems accept the risk of false positives and design protocols (like the View Server) to handle the edge cases safely.
+
+---
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Failover** | Failover / leader election |
+| **Split Brain** | Split-brain syndrome |
+| **Approximate Failure Detection** | Heartbeat-based failure detector |
 
 ---
 
 ## Related
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — the full replication protocol that failover supports
+- [[CSE452/Primary-Backup/View Server|View Server]] — the authority that executes the view change during failover
 - [[CSE452/RPC/Fault Model|Fault Model]] — the types of failures that trigger failover
-- [[CSE452/Primary-Backup/Why not just use TCP|Why Not Just Use TCP]] — why TCP cannot substitute for an application-level failover protocol
-- [[CSE451/Virtualization/Processes/Process/Process Management.md]] — OS-level process management and failure handling
+- [[CSE452/Primary-Backup/Why Not Just Use TCP|Why Not Just Use TCP]] — why TCP cannot substitute for an application-level failover protocol

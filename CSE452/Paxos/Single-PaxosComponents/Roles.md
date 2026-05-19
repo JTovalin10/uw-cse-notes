@@ -9,5 +9,17 @@ In **Single Decree Paxos**, nodes take on specific roles to reach consensus on a
 In most practical implementations (like [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]]), a single node may act as all three roles simultaneously.
 
 ---
-- [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Single-PaxosComponents/Protocol|The Paxos Protocol]]
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Proposer** | Proposer / leader candidate |
+| **Acceptor** | Acceptor / voter |
+| **Learner** | Learner / observer |
+
+---
+
+## Related
+- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] — the algorithm these roles participate in
+- [[CSE452/Paxos/Single-PaxosComponents/Protocol|The Paxos Protocol]] — the messages each role sends and receives

@@ -12,7 +12,7 @@ Once a leader is elected and has completed Phase 1 for all slots, it enters the 
 
 ### The Life of a Request (Steady State)
 
-1.  **Receive**: The Leader receives an `AMORequest` from a client. It first performs a duplicate check using its local AMO state (see [[Log#Avoiding Duplicate Log Entries|Deduplication]]).
+1.  **Receive**: The Leader receives an `AMORequest` from a client. It first performs a duplicate check using its local AMO state (see [[CSE452/Paxos/Multi-PaxosComponents/Log#Avoiding Duplicate Proposals|Deduplication]]).
 2.  **Assign & Local Accept**: The Leader assigns the request to the next available slot index ($S_i$). It immediately marks the slot as **ACCEPTED** in its own local log.
 3.  **Immediate Broadcast (P2a)**: The Leader broadcasts a `P2a` message to all followers. These messages act as **Implicit Heartbeats**, resetting follower election timers.
 4.  **Majority Acknowledgement (P2b)**: Followers receive the `P2a`, verify that the ballot satisfies their current promise, and respond with a `P2b`.
@@ -44,7 +44,20 @@ To ensure **Linearizability** (where a read always returns the most recent write
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Distinguished Proposer / Leader** | Leader |
+| **Steady State** | Normal-case operation / fast path |
+| **Lease** | Leader lease / read lease |
+| **CHOSEN Transition** | Commit |
+| **Zombie Leader** | Stale / deposed leader |
+
+---
+
 ## Related
 - [[CSE452/Paxos/Multi-Paxos|Multi-Paxos Hub]] — Core message structures and data types.
 - [[CSE452/Paxos/Multi-PaxosComponents/Failure Detection|Failure Detection]] — Detecting leader failure via timers.
 - [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]] — Recovery logic for the transition from Follower to Leader.
+- [[CSE452/Paxos/Multi-PaxosComponents/Log|Log]] — slot pointers and deduplication referenced during steady state.

@@ -81,6 +81,22 @@ If you have 5 nodes, you need 3 to do anything. If the network splits into a gro
     - These messages contain the **`leaderCommit` index**, telling the lagging nodes exactly which slots they missed so they can request a catch-up.
 
 ---
-- [[CSE452/Paxos/Paxos|Back to Paxos Overview]]
-- [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Multi-Paxos|Continue to Multi-Paxos]]
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Quorum Intersection Property** | Quorum overlap / majority intersection |
+| **P2 Rule** | Choosable-value invariant (Paxos P2c) |
+| **Promise Invariant** | Monotonic-promise / no-regression invariant |
+| **Dueling Proposers** | Livelock / proposer contention |
+| **Stable Leader** | Distinguished proposer / leader |
+
+---
+
+## Related
+- [[CSE452/Paxos/Paxos|Paxos Overview]] — the consensus problem and the Paxos suite
+- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] — the two-phase protocol these invariants govern
+- [[CSE452/Paxos/Ballot IDs|Ballot IDs]] — the unique-identifier scheme behind the Promise Invariant
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — applying these invariants across a log
+- [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — how Paxos achieves safety without common knowledge

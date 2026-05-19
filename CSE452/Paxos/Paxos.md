@@ -1,4 +1,4 @@
-# Paxos: Distributed Consensus Overview
+# CSE452: Paxos Overview
 
 **Paxos** is the foundational algorithm for reaching consensus in a distributed system. It allows a cluster of nodes to agree on a single value (or a sequence of values) even when the network is unreliable and nodes may fail.
 
@@ -28,7 +28,19 @@ In a replicated system (like a database), every server must execute every client
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Paxos** | Paxos consensus algorithm |
+| **Quorum / Majority** | Quorum ($\lfloor N/2 \rfloor + 1$) |
+| **Distinguished Proposer** | Leader / coordinator |
+| **Single Decree Paxos** | Basic Paxos / Synod algorithm |
+
+---
+
 ## Related
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — Paxos is used to order commands for a DSM
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — An alternative approach to replication
+- [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — why consensus is hard (FLP) and how Paxos escapes it
 - [[CSE451/Concurrency/Problems/Deadlocks|CSE451: Deadlocks]] — Consensus helps avoid distributed deadlocks

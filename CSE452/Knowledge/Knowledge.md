@@ -228,6 +228,19 @@ This table explains the design space of distributed protocols. Systems that appe
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Common Knowledge** | Common knowledge (epistemic logic / game theory) |
+| **Distributed Knowledge** | Distributed / implicit knowledge |
+| **Coordinated Attack Problem** | Two Generals Problem |
+| **FLP Impossibility** | Fischer-Lynch-Paterson consensus impossibility |
+| **Failure Detector** | Failure detector oracle (Chandra-Toueg) |
+| **Partial Synchrony** | Eventual synchrony model |
+
+---
+
 ## Related
 
 - [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — the happens-before relation is the prerequisite for reasoning about what events a node can have known; a node cannot know an event occurred unless it is causally downstream of a message from the source

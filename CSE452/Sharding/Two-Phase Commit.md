@@ -2,7 +2,7 @@
 
 ## ShardStore and Paxos Architecture
 
-![[ShardStore and PaxosServer.png]]
+![[CSE452/Screenshots/ShardStore and PaxosServer.png]]
 
 A core constraint of the **[[CSE452/Sharding/Sharded Key-Value Server|ShardStoreServer]]** is that no server may communicate directly with another ShardStoreServer without first obtaining consensus from its own [[CSE452/Paxos/Multi-Paxos|PaxosServer]] sub-node. This enforces the invariant that the Paxos log is the single source of truth for all state changes — a server that acts on its own risks diverging from the rest of the group.
 
@@ -38,7 +38,7 @@ sequenceDiagram
 
 ## Cross-Group Transactions
 
-![[Shard Paxos Cluster.png]]
+![[CSE452/Screenshots/Shard Paxos Cluster.png]]
 
 Single-key operations are handled within one Paxos replica group. However, multi-key operations like `swap(k1, k2)` become problematic when `k1` and `k2` live in **different groups**. The goal is to maintain [[CSE452/Consistency/Definitions/Linearizability|Linearizability]] — the swap must appear to happen atomically at a single instant, with no interleaved operations from other clients visible between its two halves.
 
@@ -74,7 +74,7 @@ sequenceDiagram
 
 ### Issues with the Naive Protocol
 
-![[APpend Swap issues.png]]
+![[CSE452/Screenshots/APpend Swap issues.png]]
 
 The root problem is that the swap executes over an extended **region of time**. Group 1 and Group 2 commit their halves at different moments, and any operation from another client that arrives during this window can land between the two halves, breaking linearizability. There are five distinct failure modes:
 

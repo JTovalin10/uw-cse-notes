@@ -23,7 +23,18 @@ This is why ordering matters so much in [[CSE452/Primary-Backup/Primary Backup|P
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Deterministic State Machine** | Replicated State Machine (RSM) |
+| **Command** | Operation / log entry |
+| **Application** | State machine / application layer |
+
+---
+
 ## Related
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — uses the DSM model: same commands in same order → same state
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — orders the command sequence fed to the state machine
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — the mechanism for delivering commands to replicas
 - [[CSE452/RPC/Fault Model|Fault Model]] — what can go wrong when delivering commands

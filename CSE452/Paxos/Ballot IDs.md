@@ -1,4 +1,4 @@
-# Paxos: Ballot IDs and Proposal Numbers
+# CSE452: Ballot IDs and Proposal Numbers
 
 In Paxos, every proposal must be identified by a unique, monotonically increasing number. This identifier, known as a **Ballot ID**, **Proposal Number**, or **Round Number**, establishes the "authority" of a proposer.
 
@@ -50,6 +50,18 @@ In this model, the owner of any number $n$ is simply $n \pmod{\text{TotalServers
 - **Phase 2 (Accept)**: The proposer uses the same ID to attempt to finalize a value. If an acceptor has already seen a higher ID, it must reject this proposal.
 
 ---
-- [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Paxos Invariants|In-depth: Paxos Invariants]]
-- [[CSE452/Paxos/Multi-Paxos|Continue to Multi-Paxos]]
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Ballot ID** | Proposal number / round number / term (Raft) |
+| **(Sequence, ServerID) Tuple** | Lamport-style unique-ID tuple |
+| **Round-Robin Allocation** | Proposer ID partitioning |
+
+---
+
+## Related
+- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] — where ballot IDs first appear in the two-phase protocol
+- [[CSE452/Paxos/Paxos Invariants|Paxos Invariants and Design]] — how ballot IDs enforce the safety invariants
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — ballot IDs combined with slot indices across the log

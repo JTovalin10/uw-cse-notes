@@ -111,10 +111,24 @@ All clients and replicas must learn about new primary and backup identities. Thi
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **View Server** | Configuration manager / coordination service (ZooKeeper, etcd) |
+| **View** | Cluster configuration / membership epoch |
+| **View Number** | Configuration / epoch number |
+| **Ping** | Heartbeat / keep-alive |
+| **Idle Server** | Standby / spare node |
+| **View Acknowledgment** | Configuration commit confirmation |
+
+---
+
 ## Related
 
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — the full primary-backup model that the view server supports
 - [[CSE452/Primary-Backup/Six Rules of Primary Backup|Six Rules of Primary-Backup]] — the rules governing view acknowledgment and state transfer
 - [[CSE452/Primary-Backup/State Machine Replication (State Transfer)|State Transfer]] — mechanics of transferring state to a newly promoted backup
 - [[CSE452/Primary-Backup/Failover Protocol|Failover Protocol]] — failure detection that triggers view transitions
-- Time and Virtual Clocks — invariants about view state and what is stable vs. unstable
+- [[CSE452/Clocks/System State|System State]] — stable vs. unstable properties used to reason about view state
+- [[CSE452/Sharding/Shard Master|Shard Master]] — the fault-tolerant, multi-group successor to the View Server

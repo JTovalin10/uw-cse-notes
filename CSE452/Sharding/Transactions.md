@@ -1,6 +1,6 @@
-# Lab 4: Transactions
+# CSE452: Transactions
 
-To support operations that involve multiple keys across different shards (and potentially different replica groups), the system implements **Two-Phase Commit (2PC)** with distributed locking.
+To support operations that involve multiple keys across different [[CSE452/Sharding/Definitions/Shard|shards]] (and potentially different [[CSE452/Sharding/Definitions/Replica Group|replica groups]]), the system implements **Two-Phase Commit (2PC)** with distributed locking. For the motivation behind 2PC — the failure modes of the naive cross-group swap protocol — see [[CSE452/Sharding/Two-Phase Commit|Two-Phase Commit: Motivation]].
 
 ## The Problem: Cross-Group Atomicity
 
@@ -54,7 +54,24 @@ The easiest way to avoid deadlocks in this environment is to **Abort on Conflict
 - **Deadlock-Free**: By using "abort-on-conflict" and configuration tagging, the system avoids circular waits.
 - **Progress**: The system must be able to make progress on reconfigurations and transactions as long as the underlying Paxos groups remain available.
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Two-Phase Commit (2PC)** | Atomic Commitment Protocol (ACP) |
+| **Transaction Coordinator** | Transaction Manager (TM) |
+| **Participant** | Resource Manager (RM) |
+| **Prepare Phase** | Voting phase |
+| **Commit/Abort Phase** | Decision / completion phase |
+| **Distributed Lock** | Pessimistic write lock / two-phase locking |
+| **Abort on Conflict** | No-wait deadlock prevention |
+
+---
+
 ## Related
-- [[CSE452/Sharding/Sharding|Sharding Overview]]
-- [[CSE452/Sharding/Reconfiguration|Reconfiguration]]
-- [[CSE452/Consistency/Distributed Transactions|Distributed Transactions]]
+- [[CSE452/Sharding/Two-Phase Commit|Two-Phase Commit: Motivation]] — the naive swap protocol and its five failure modes that 2PC fixes
+- [[CSE452/Sharding/Sharding|Sharding Overview]] — the architecture transactions span
+- [[CSE452/Sharding/Reconfiguration|Reconfiguration]] — the one-configuration rule and reconfiguration interactions
+- [[CSE452/Sharding/Sharded Key-Value Server|Sharded Key-Value Server]] — the groups participating as coordinator and participants
+- [[CSE452/Consistency/Definitions/Linearizability|Linearizability]] — the guarantee 2PC preserves for multi-key operations
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — the consensus layer behind every 2PC state transition

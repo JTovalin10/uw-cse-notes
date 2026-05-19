@@ -1,6 +1,6 @@
-# Lab 4: Sharded Key-Value Server
+# CSE452: Sharded Key-Value Server
 
-Each **ShardStoreServer** operates as part of a **[[Sharding/Sharding#Replica Group|Replica Group]]**, serving client requests for the **[[Sharding/Sharding#Shard (The Unit of Data)|Shards]]** assigned to it by the **[[Sharding/Sharding#ShardMaster|Shard Master]]**.
+Each **ShardStoreServer** operates as part of a **[[CSE452/Sharding/Definitions/Replica Group|Replica Group]]**, serving client requests for the **[[CSE452/Sharding/Definitions/Shard|Shards]]** assigned to it by the **[[CSE452/Sharding/Definitions/ShardMaster|Shard Master]]**.
 
 ## Internal Architecture: The Sub-Node Pattern
 
@@ -55,8 +55,23 @@ Servers periodically send `Query` operations to the Shard Master to learn about 
 - **Complexity**: A typical solution for Part 2 takes approximately 350 lines of code.
 - **Paxos Obliviousness**: As a sub-node, Paxos should be oblivious to `AMOApplication` logic and should be able to decide the same command for different slots. Avoid overly aggressive de-duplication at the Paxos level.
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **ShardStoreServer** | Shard server / partition server |
+| **Sub-Node Pattern** | Composite / embedded consensus module |
+| **AMOApplication** | At-most-once / deduplicated state machine |
+| **keyToShard** | Hash partitioning function |
+| **Configuration Polling** | Topology refresh / config watch |
+
+---
+
 ## Related
-- [[CSE452/Sharding/Sharding|Sharding Overview]]
-- [[CSE452/Sharding/Reconfiguration|Reconfiguration & Handoff]]
-- [[CSE452/RPC/Remote Procedure Call (RPC)|At-Most-Once Semantics]]
-- [[CSE452/RPC/Deterministic State Machine|Replicated State Machine]]
+- [[CSE452/Sharding/Sharding|Sharding Overview]] — the architecture this server is part of
+- [[CSE452/Sharding/Shard Master|Shard Master]] — the service that assigns shards to this server
+- [[CSE452/Sharding/Reconfiguration|Reconfiguration]] — shard handoff between servers
+- [[CSE452/Sharding/Two-Phase Commit|Two-Phase Commit]] — the inside-out Paxos pattern and cross-group operations
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — the consensus engine of each replica group
+- [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — at-most-once semantics via the AMO wrapper
+- [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — the replicated state machine model

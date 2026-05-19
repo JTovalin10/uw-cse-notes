@@ -81,11 +81,24 @@ Because the network can drop messages (see [[CSE452/RPC/Fault Model|Fault Model]
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Stub** | Client stub / proxy |
+| **Skeleton** | Server stub / dispatcher |
+| **Marshalling / Unmarshalling** | Serialization / deserialization |
+| **Sequence Number** | Request ID / idempotency key |
+| **At-Most-Once RPC** | Deduplicated RPC |
+| **Exactly-Once RPC** | Reliable exactly-once delivery |
+
+---
+
 ## Related
-- [[CSE461/Transport/Transport Layer - Advanced Transport (QUIC, SCTP, and RPC)|CSE461: Advanced Transport (RPC)]]
-- [[CSE333/Networking/TCP Sockets|Implementation: TCP Sockets]]
 - [[CSE452/RPC/Fault Model|Fault Model]] — the failures RPC must handle (drops, duplicates, delays)
 - [[CSE452/Primary-Backup/Idempotence|Idempotence]] — why at-least-once RPC is only safe for idempotent operations
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — formal model for replicating state across machines
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — uses RPC between primary and backup
-- [[CSE452/Primary-Backup/Why not just use TCP|Why Not Just Use TCP]] — why TCP is insufficient for distributed systems
+- [[CSE452/Primary-Backup/Why Not Just Use TCP|Why Not Just Use TCP]] — why TCP is insufficient for distributed systems
+- [[CSE461/Transport/Transport Layer - Advanced Transport (QUIC, SCTP, and RPC)|CSE461: Advanced Transport (RPC)]]
+- [[CSE333/Networking/TCP Sockets|CSE333: TCP Sockets]]

@@ -47,5 +47,18 @@ $P_3$ needs a majority (2 out of 3) of 1b responses. Because A2 and A3 have both
 - **If $P_3$ hits {A2, A3}**: It sees both. It must pick the value from the **highest round** (Round 2) and propose $v_2$.
 
 ---
-- [[CSE452/Paxos/Single Paxos|Back to Single Paxos]]
-- [[CSE452/Paxos/Single-PaxosComponents/Majority Overlap|Majority Overlap]]
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Chosen** | Committed / decided |
+| **Votes Table** | Quorum / acceptance matrix |
+| **Highest Round Rule** | Choosable-value rule (Paxos P2) |
+
+---
+
+## Related
+- [[CSE452/Paxos/Single Paxos|Single Decree Paxos]] — the algorithm these scenarios trace through
+- [[CSE452/Paxos/Single-PaxosComponents/Majority Overlap|Majority Overlap]] — the property that makes these scenarios safe
+- [[CSE452/Paxos/Paxos Invariants|Paxos Invariants and Design]] — the formal rules behind "chosen"

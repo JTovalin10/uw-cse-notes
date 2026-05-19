@@ -38,9 +38,19 @@ TCP is a building block — it removes *most* network unreliability — but it d
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **TCP** | Transmission Control Protocol |
+| **Timeout Window** | Connection / retransmission timeout |
+| **At-Least-Once / Exactly-Once Semantics** | Delivery guarantees / message semantics |
+
+---
+
 ## Related
-- [[CSE333/Networking/TCP Sockets|CSE333: TCP Sockets]]
 - [[CSE452/RPC/Fault Model|Fault Model]] — the failure scenarios TCP cannot handle
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — the application-level protocol built on top of TCP
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — a full fault-tolerant protocol that goes beyond TCP
+- [[CSE333/Networking/TCP Sockets|CSE333: TCP Sockets]] — TCP socket programming
 - [[CSE461/Transport/Transport Layer - Transmission Control Protocol (TCP)|TCP (CSE461)]] — full TCP protocol details

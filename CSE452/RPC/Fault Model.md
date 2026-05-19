@@ -48,8 +48,21 @@ Network failures are particularly tricky because they are **invisible to the sen
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Fault Model** | Failure model / threat model |
+| **Fail-Stop (Crash-Stop)** | Fail-stop failure model |
+| **Byzantine Failure** | Byzantine / arbitrary fault |
+| **Dropped Message** | Packet loss |
+| **Duplicate Message** | Packet duplication |
+
+---
+
 ## Related
 - [[CSE452/RPC/Introduction to DS|Introduction to Distributed Systems]] — why faults make DS hard
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — how RPC handles dropped/duplicate messages
 - [[CSE452/Primary-Backup/Failover Protocol|Failover Protocol]] — responding to machine crashes
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — tolerating machine failures via replication
+- [[CSE452/Knowledge/Knowledge|Knowledge in Distributed Systems]] — the failure model that makes common knowledge impossible

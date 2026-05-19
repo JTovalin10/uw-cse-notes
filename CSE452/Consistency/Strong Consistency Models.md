@@ -12,9 +12,9 @@ Every linearizable execution is sequentially consistent, but the reverse is not 
 ## 2. Linearizability
 **Linearizability** is the strongest practical consistency model for single-object operations. 
 
-#### Formal Definition
+### Formal Definition
 Requires that operations appear to take effect atomically at some point between their invocation and response, respecting a single global total order that matches real-time (wall-clock) precedence.
-#### Simplified Explanation
+### Simplified Explanation
 The system behaves as if there is only a single, atomic copy of the data. If operation A finishes before B starts, everyone must see A before B.
 
 ### Proving Linearizability
@@ -26,9 +26,9 @@ The system behaves as if there is only a single, atomic copy of the data. If ope
 ## 3. Sequential Consistency
 **Sequential Consistency** is a weaker model that respects the order of operations from individual clients but allows the global order to deviate from wall-clock time.
 
-#### Formal Definition
+### Formal Definition
 All operations appear to be executed in some total order that respects the program order of each individual process. It does **not** require that the global order respects real-time (wall-clock) precedence.
-#### Simplified Explanation
+### Simplified Explanation
 Everyone agrees on the order of events, and that order respects each person's own sequence of actions. However, "the order" might not be the same as the order in which things actually happened in real time.
 
 ### Key Difference
@@ -62,8 +62,20 @@ Sequential consistency does **not** have a real-time constraint. If Client A fin
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Linearizability** | Atomic consistency / external consistency |
+| **Sequential Consistency** | Serializability (transactional analogue) |
+| **Linearization Point** | Commit / atomic visibility point |
+| **Precedence Graph** | Serialization graph / dependency graph |
+
+---
+
 ## Related
 - [[CSE452/Consistency/Theoretical Foundations|Theoretical Foundations (CAP/PACELC)]]
 - [[CSE452/Consistency/Weak Consistency Models|Weak Consistency Models]]
-- [[CSE452/Paxos/Paxos|Paxos Consensus]]
+- [[CSE452/Consistency/Architectural Consistency|Architectural Consistency]] — how strong consistency is enforced in hardware and caches
+- [[CSE452/Paxos/Paxos|Paxos Consensus]] — the protocol that implements a linearizable replicated state machine
 - [[CSE452/Consistency/Definitions/Linearizability|Linearizability (Definition)]]

@@ -105,39 +105,25 @@ The **ShardMaster** in Lab 4 is essentially a **fault-tolerant, multi-group View
 
 ## Core Concepts
 
-### Shard (The Unit of Data)
-A **shard** is a discrete subset of the total key-space used as the unit of partitioning. 
+The sharded architecture is built from four fundamental entities. Each has its own glossary entry with a full formal definition:
 
-- **Formal Definition**: A disjoint partition $S_i$ of the set of all possible keys $K$, such that $\bigcup S_i = K$ and $S_i \cap S_j = \emptyset$ for $i \neq j$.
-- **Simplified Explanation**: A slice of the database. Instead of one giant table, we cut it into 10 pieces (shards) so different machines can handle different pieces.
-- **Implementation**: Keys are mapped to shards using a deterministic hash function: `shard = hash(key) % num_shards`.
+- **[[CSE452/Sharding/Definitions/Shard|Shard]]** — a discrete, disjoint subset of the total key-space; the unit of partitioning. Keys map to shards via a deterministic hash function.
+- **[[CSE452/Sharding/Definitions/Replica Group|Replica Group]]** — a fault-tolerant cluster of servers (a [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] state machine) that serves a set of shards.
+- **[[CSE452/Sharding/Definitions/ShardMaster|ShardMaster]]** — the fault-tolerant metadata service; the authoritative source of truth for the configuration.
+- **[[CSE452/Sharding/Definitions/Configuration|Configuration]]** — the numbered metadata tuple $\langle config\_num, M_{shard}, M_{group} \rangle$ mapping shards to groups and groups to addresses.
 
-### Replica Group
-A **replica group** is a fault-tolerant cluster of servers responsible for serving a specific set of shards.
+---
 
-- **Formal Definition**: A set of nodes $N = \{n_1, n_2, ... n_m\}$ that implement a [[CSE452/RPC/Deterministic State Machine|Replicated State Machine]] (via [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]]) to provide [[CSE452/Consistency/Definitions/Linearizability|Linearizability]] for a subset of the system's data.
-- **Simplified Explanation**: A "team" of servers. Instead of trusting one machine with your data, you give it to a group of 3 or 5 machines that use Paxos to stay in sync.
-- **Responsibility**: A group must maintain a state machine for every shard assigned to it by the ShardMaster.
+## Industry Standard Terms
 
-### ShardMaster
-The **ShardMaster** is the fault-tolerant metadata service that manages configurations and shard assignments.
-
-- **Formal Definition**: The authoritative source of truth for the system's **Configuration**. It sequences all membership and assignment changes into a linearizable, numbered sequence of states.
-- **Simplified Explanation**: The "Boss" or "Traffic Controller." It decides which group of servers is responsible for which slice of data and tells the clients where to go.
-- **Reliability**: The ShardMaster is itself a [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] cluster, ensuring that the system's metadata is never lost and remains consistent even if some master nodes crash.
-
-### Configuration (The Metadata)
-The **Configuration** is the authoritative metadata describing the layout and membership of the distributed system at a specific point in time.
-
-- **Formal Definition**: A tuple $C = \langle config\_num, M_{shard}, M_{group} \rangle$ where:
-    - $config\_num$ is a monotonically increasing version identifier.
-    - $M_{shard}: ShardID \to GID$ is the routing mapping.
-    - $M_{group}: GID \to \{Address_1, ... Address_n\}$ is the membership mapping.
-- **Simplified Explanation**: The system's "Map." It tells you:
-    1. What version of the map this is.
-    2. Which group (GID) owns which slice of data (Shard).
-    3. Where those groups are located (Server Addresses).
-- **Lifecycle**: Configurations are numbered sequentially. Clients and servers use the `config_num` to detect when their local map is stale and must be updated from the ShardMaster.
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Sharding / Partitioning** | Horizontal partitioning / data partitioning |
+| **Shard** | Shard / partition |
+| **Replica Group** | Replica set / partition group |
+| **ShardMaster** | Configuration service / control plane |
+| **Hot Shard** | Hotspot / skewed partition |
+| **Static / Dynamic Partitioning** | Fixed-hash vs. directory-based partitioning |
 
 ---
 

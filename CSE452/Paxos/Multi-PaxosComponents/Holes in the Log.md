@@ -37,6 +37,17 @@ We use **No-Ops** because they satisfy the requirement of filling the slot (allo
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Hole** | Log gap / missing log entry |
+| **No-Op** | No-op entry / filler command |
+| **Patching the Log** | Log reconciliation / gap filling |
+| **Log Merging** | Log recovery / catch-up |
+
+---
+
 ## Related
 - [[CSE452/Paxos/Multi-Paxos|Multi-Paxos Overview]]
 - [[CSE452/Paxos/Multi-PaxosComponents/Leader Election|Leader Election]] — The Phase 1 process where holes are discovered

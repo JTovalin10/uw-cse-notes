@@ -62,7 +62,19 @@ If a node is so far behind that its missing slots have already been garbage-coll
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Slot Pointers ($S_i, S_o, S_{gc}$)** | Log index pointers / next-index, apply-index |
+| **Garbage Collection / Truncation** | Log compaction |
+| **InstallSnapshot** | Snapshot transfer |
+| **Log Merging** | Log reconciliation during recovery |
+
+---
+
 ## Related
 - [[CSE452/Paxos/Multi-Paxos|Multi-Paxos Hub]] — Core log entry structures and status definitions.
 - [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]] — Detailed logic for patching gaps with No-Ops.
+- [[CSE452/Paxos/Multi-PaxosComponents/Leader Election|Leader Election]] — steady-state slot assignment and deduplication.
 - [[CSE452/RPC/Deterministic State Machine|State Machine]] — The target for log execution.

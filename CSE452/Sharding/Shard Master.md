@@ -1,6 +1,6 @@
-# Lab 4: The Shard Master
+# CSE452: The Shard Master
 
-The **[[Sharding/Sharding#ShardMaster|ShardMaster]]** manages a sequence of numbered **[[Sharding/Sharding#Configuration (The Metadata)|Configurations]]** (starting with `INITIAL_CONFIG_NUM`). It acts as the "source of truth" for the distributed system, deciding which **[[Sharding/Sharding#Replica Group|Replica Group]]** should serve each **[[Sharding/Sharding#Shard (The Unit of Data)|Shard]]**.
+The **[[CSE452/Sharding/Definitions/ShardMaster|ShardMaster]]** manages a sequence of numbered **[[CSE452/Sharding/Definitions/Configuration|Configurations]]** (starting with `INITIAL_CONFIG_NUM`). It acts as the "source of truth" for the distributed system, deciding which **[[CSE452/Sharding/Definitions/Replica Group|Replica Group]]** should serve each **[[CSE452/Sharding/Definitions/Shard|Shard]]**.
 
 ## Core Operations
 
@@ -62,7 +62,22 @@ The ShardMaster is not a single point of failure; it is a **[[CSE452/Paxos/Multi
 - **Complexity**: A typical solution for Part 1 takes approximately 200 lines of code.
 - **Determinism**: The rebalancing algorithm must be strictly deterministic so all Paxos replicas arrive at the same configuration mapping.
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Shard Master / ShardMaster** | Configuration service / control plane (e.g. ZooKeeper, etcd) |
+| **Configuration** | Cluster topology / shard map |
+| **Join / Leave** | Scale-out / scale-in membership change |
+| **Rebalancing** | Shard rebalancing / load balancing |
+| **Query(-1)** | Latest-configuration read |
+
+---
+
 ## Related
-- [[CSE452/Sharding/Sharding|Sharding Overview]]
-- [[CSE452/Sharding/Reconfiguration|Reconfiguration & Handoff]]
-- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]]
+- [[CSE452/Sharding/Sharding|Sharding Overview]] — the architecture the Shard Master coordinates
+- [[CSE452/Sharding/Definitions/ShardMaster|ShardMaster (Definition)]] — glossary entry
+- [[CSE452/Sharding/Reconfiguration|Reconfiguration]] — how groups react to new configurations
+- [[CSE452/Sharding/Sharded Key-Value Server|Sharded Key-Value Server]] — the groups the Shard Master assigns shards to
+- [[CSE452/Primary-Backup/View Server|View Server]] — the single-partition ancestor of the Shard Master
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — the consensus engine making the Shard Master fault-tolerant

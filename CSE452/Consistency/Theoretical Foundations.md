@@ -15,8 +15,10 @@ $$\text{Strict} \subset \text{Linearizable} \subset \text{Sequential} \subset \t
 
 ### Strict Consistency
 The strongest theoretical consistency model.
+
 #### Formal Definition
 Any read on a data item $x$ returns a value corresponding to the result of the most recent write on $x$.
+
 #### Simplified Explanation
 Requires a perfectly synchronized global clock (impossible in distributed systems). It is the theoretical "ideal" used as a baseline for all other models.
 
@@ -31,6 +33,7 @@ In any distributed system, you cannot simultaneously provide more than two of th
 
 #### Formal Definition
 A distributed data store can provide at most two out of three guarantees: Consistency (all nodes see the same data), Availability (every request gets a response), and Partition Tolerance (the system continues to operate despite network failures).
+
 #### Simplified Explanation
 During a network partition, you must choose between being **correct** (CP) or being **online** (AP). You cannot be both.
 
@@ -43,6 +46,7 @@ CAP only describes behavior during a partition. **PACELC** extends this to norma
 #### Formal Definition
 - **P** (During Partition): Choose between **A** (Availability) and **C** (Consistency).
 - **E** (Else/Normal Operation): Choose between **L** (Latency) and **C** (Consistency).
+
 #### Simplified Explanation
 Even when the network is working perfectly, consistency has a cost: it takes time (latency) to coordinate between nodes. If you want to be fast, you must accept weaker consistency.
 
@@ -61,7 +65,20 @@ The most dangerous failure mode during a partition. If both sides of a split con
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **CAP Theorem** | Brewer's theorem |
+| **PACELC Theorem** | PACELC consistency/latency trade-off |
+| **Majority Quorum** | Quorum / majority voting |
+| **Split Brain** | Split-brain syndrome / partition divergence |
+| **CP / AP System** | Consistency-favoring / availability-favoring system |
+
+---
+
 ## Related
 - [[CSE452/Consistency/Strong Consistency Models|Strong Consistency Models]]
 - [[CSE452/Consistency/Weak Consistency Models|Weak Consistency Models]]
-- [[CSE452/Paxos/Paxos|Paxos Consensus]]
+- [[CSE452/Consistency/Architectural Consistency|Architectural Consistency]] — physical implementations of these models
+- [[CSE452/Paxos/Paxos|Paxos Consensus]] — a CP protocol built on majority quorums

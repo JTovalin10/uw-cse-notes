@@ -26,8 +26,19 @@ See [[CSE452/Paxos/Multi-PaxosComponents/Leader Election|Leader Election]] for h
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Heartbeat** | Heartbeat / keep-alive message |
+| **Election Timer** | Election timeout (Raft) |
+| **Implicit Heartbeat** | Piggybacked heartbeat |
+| **leaderCommit** | Commit index |
+
+---
+
 ## Related
-- [[CSE452/Paxos/Multi-Paxos|Back to Multi-Paxos]]
+- [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] — the protocol this failure detection supports
 - [[CSE452/Paxos/Multi-PaxosComponents/Holes in the Log|Holes in the Log]] — How empty slots left by a failed leader are detected and filled
 - [[CSE452/Paxos/Multi-PaxosComponents/Leader Election|Leader Election]] — How a new leader is elected after a failure
 - [[CSE452/Paxos/Multi-PaxosComponents/Log|Log]] — The log data structure, slot pointers, and garbage collection

@@ -42,9 +42,21 @@
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **State Transfer** | State synchronization / snapshot install |
+| **Idle Server** | Standby / spare node |
+| **Application State** | State machine snapshot |
+| **Idempotent State Transfer** | At-most-once snapshot application |
+
+---
+
 ## Related
 
 - [[CSE452/Primary-Backup/Six Rules of Primary Backup|Six Rules of Primary-Backup]] — rules governing when and how state transfer must occur
+- [[CSE452/Primary-Backup/View Server|View Server]] — triggers state transfer when promoting a new backup
 - [[CSE452/Primary-Backup/Primary Backup|Primary-Backup Replication]] — full model overview including idle pool and view transitions
 - [[CSE452/Primary-Backup/Idempotence|Idempotence]] — why state transfer messages must be safe to receive more than once
 - [[CSE452/Primary-Backup/Failover Protocol|Failover Protocol]] — failure detection that triggers a state transfer

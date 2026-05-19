@@ -19,6 +19,16 @@ The clock condition only holds in one direction:
 
 This means Lamport clocks cannot distinguish two causally unrelated events — a lower timestamp does not prove an event happened first. [[CSE452/Clocks/Vector Clock Algorithm|Vector clocks]] solve this limitation by extending the timestamp to a vector.
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Lamport Clock** | Lamport timestamp / scalar clock |
+| **Clock Condition** | Monotonic causal-timestamp property |
+| **Logical Timestamp** | Logical sequence number |
+
+---
+
 ## Related
 
 - [[CSE452/Clocks/Logical Clocks|Logical Clocks]] — the core concepts and the happens-before relation

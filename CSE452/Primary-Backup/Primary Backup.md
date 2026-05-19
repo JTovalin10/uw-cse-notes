@@ -70,10 +70,25 @@ The **split brain problem** occurs when two subsystems each believe they are the
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Primary-Backup** | Primary-backup / master-slave replication |
+| **Primary** | Leader / master |
+| **Backup** | Follower / replica / hot standby |
+| **View Server** | Coordination service (ZooKeeper, etcd) |
+| **Split Brain** | Split-brain syndrome |
+| **Approximate Failure Detection** | Heartbeat-based failure detector |
+
+---
+
 ## Related
+- [[CSE452/Primary-Backup/View Server|View Server]] — the single source of truth for the current view
+- [[CSE452/Primary-Backup/Six Rules of Primary Backup|Six Rules of Primary-Backup]] — the correctness rules of the protocol
 - [[CSE452/Primary-Backup/Failover Protocol|Failover Protocol]] — the mechanics of detecting failure and switching roles
 - [[CSE452/RPC/Deterministic State Machine|Deterministic State Machine]] — why same-order execution keeps replicas identical
 - [[CSE452/Primary-Backup/Idempotence|Idempotence]] — why some operations must be safe to repeat
-- [[CSE452/Primary-Backup/Why not just use TCP|Why Not Just Use TCP]] — TCP's limitations in the face of failures
+- [[CSE452/Primary-Backup/Why Not Just Use TCP|Why Not Just Use TCP]] — TCP's limitations in the face of failures
 - [[CSE452/RPC/Fault Model|Fault Model]] — what failures primary-backup is designed to tolerate
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — how P and B communicate over the network

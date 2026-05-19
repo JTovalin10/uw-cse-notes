@@ -20,26 +20,34 @@ In distributed systems, the choice between strong and weak consistency defines t
 Just as strong models have a hierarchy, weak models are ordered by the types of guarantees they provide.
 
 ### Causal Consistency
+
 #### Formal Definition
-Ensures operations that are potentially causally related (ordered by the Happens-Before relationship) are seen by all processes in the same order. Operations that are not causally related (concurrent) may be seen in different orders.
+Ensures operations that are potentially causally related (ordered by the [[CSE452/Clocks/Logical Clocks#The Happens-Before Relation|happens-before relationship]]) are seen by all processes in the same order. Operations that are not causally related (concurrent) may be seen in different orders.
+
 #### Simplified Explanation
 The system tracks dependencies. If Bob's post is a reply to Alice's post, everyone must see Alice's post before they see Bob's reply. If two posts are unrelated, people might see them in different orders.
 
 ### FIFO (PRAM) Consistency
+
 #### Formal Definition
 Writes from a single process are seen by all other processes in the order they were issued, but no guarantees are made about the relative ordering of writes from different processes.
+
 #### Simplified Explanation
 You see everything one person does in the order they did it, but the actions of different people might be interleaved randomly.
 
 ### Processor Consistency
+
 #### Formal Definition
 Writes issued by a single process are seen by all other processes in the order they were issued. However, writes from different processes may be seen in different orders by different observers.
+
 #### Simplified Explanation
-Similar to FIFO, but even less strict about global interleaving. It is the distributed version of the per-core ordering found in hardware (see: [[CSE452/Consistency/Architectural Consistency#Total Store Order (TSO)|TSO]]).
+Similar to FIFO, but even less strict about global interleaving. It is the distributed version of the per-core ordering found in hardware (see [[CSE452/Consistency/Architectural Consistency#Total Store Order (TSO)|TSO]]).
 
 ### Eventual Consistency
+
 #### Formal Definition
 Guarantees that, if no new updates are made to a data item, eventually all accesses to that item will return the last updated value.
+
 #### Simplified Explanation
 The system is allowed to be "wrong" or stale right now, as long as it promises to catch up and be correct at some point in the future.
 
@@ -77,7 +85,21 @@ Combines two G-Counters: $P$ (Positive) and $N$ (Negative).
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Eventual Consistency** | Eventual / convergent consistency (Amazon Dynamo, DNS) |
+| **Causal Consistency** | Causal+ consistency (COPS, Bayou) |
+| **Last-Writer-Wins (LWW)** | LWW conflict resolution |
+| **CRDT** | Conflict-Free Replicated Data Type |
+| **G-Counter / PN-Counter** | State-based (convergent) replicated counters |
+
+---
+
 ## Related
 - [[CSE452/Consistency/Theoretical Foundations|Theoretical Foundations (CAP/PACELC)]]
 - [[CSE452/Consistency/Strong Consistency Models|Strong Consistency Models]]
-- [[CSE452/Clocks/Vector Clock Algorithm|Vector Clock Algorithm]]
+- [[CSE452/Consistency/Architectural Consistency|Architectural Consistency]] — processor consistency as the hardware analogue
+- [[CSE452/Clocks/Vector Clock Algorithm|Vector Clock Algorithm]] — tracking the causality that causal consistency requires
+- [[CSE452/Clocks/Vector Clock Pruning|Vector Clock Pruning]] — LWW as a fallback when vector clocks are pruned
