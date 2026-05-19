@@ -10,21 +10,21 @@ $\mathcal{L}(X; \theta)$ is the likelihood of event $X$, given that an experimen
 
 ## Maximum Likelihood Estimator
 
-The **maximum likelihood estimator** of the parameter $\theta$ is:
+The **maximum likelihood estimator** of the parameter $\theta$ is the [[Argmax|argmax]] of the likelihood:
 
 $$\hat{\theta} = \text{argmax}_\theta \; \mathcal{L}(E; \theta)$$
 
-While $\theta$ is a variable, $\hat{\theta}$ is a number.
+While $\theta$ is a variable, $\hat{\theta}$ is a number — the value of $\theta$ that makes the observed data most probable.
 
 A quick trick when multiplying is taking the log, since $\log(ab) = \log(a) + \log(b)$.
 
 ## Definition of Likelihood
 
-For discrete variables:
+For [[Discrete Random Variables|discrete random variables]] we multiply the [[Probability Mass Function|PMF]] over every observation:
 
 $$\mathcal{L}(x; \theta) = \prod_{i=1}^n p_X(x_i; \theta)$$
 
-For continuous random variables we use:
+For [[Continuous Random Variable|continuous random variables]] we use the PDF instead:
 
 $$\mathcal{L}(x; \theta) = \prod_{i=1}^n f_X(x_i ; \theta)$$
 
@@ -36,7 +36,7 @@ $$\hat{p} = \frac{n}{\sum_{i=1}^n x_i}$$
 
 ## Unbiased
 
-An estimator is **unbiased** when $\theta = E[\hat{\theta}]$, meaning the true value equals the expected value of the estimate.
+An estimator is **unbiased** when $\theta = E[\hat{\theta}]$, meaning the true value equals the [[Expectation|expected value]] of the estimate.
 
 ### Proof: Sample Mean is Unbiased
 Let $X_1, X_2, \dots, X_n$ be i.i.d. random variables with mean $\mu$. The sample mean is $\bar{X} = \frac{1}{n} \sum X_i$.
@@ -48,4 +48,14 @@ The MLE for variance $\hat{\sigma}^2 = \frac{1}{n} \sum (X_i - \bar{X})^2$ is ac
 
 ## Related
 
-[[Argmax]] · [[Expectation]] · [[Discrete Random Variables]] · [[Continuous Random Variable]] · [[Confidence Intervals]]
+- [[Argmax]]
+- [[Expectation]]
+- [[Discrete Random Variables]]
+- [[Continuous Random Variable]]
+- [[Confidence Intervals]]
+- [[Bayes Rule]]
+
+## Industry Standard Terms
+
+- **Maximum Likelihood Estimation (MLE)** → standard statistics term. Taking the log gives the "log-likelihood." The $\frac{1}{n-1}$ fix for variance is "Bessel's correction." MLE contrasts with "Bayesian estimation," which uses a prior via [[Bayes Rule|Bayes' rule]].
+

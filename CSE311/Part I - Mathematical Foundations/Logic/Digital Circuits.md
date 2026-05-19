@@ -2,22 +2,44 @@
 
 ## Application
 
-In digital circuits, logical truth values map to binary signals:
+In **digital circuits**, the logical truth values of [[CSE311/Part I - Mathematical Foundations/Logic/Boolean Algebra|Boolean algebra]] map directly onto binary electrical signals:
 
-- T = 1
-- F = 0
-- **Gates**: take inputs and produce an output
+- $\text{T} = 1$ (high voltage)
+- $\text{F} = 0$ (low voltage)
+- **Gates**: physical components that take one or more input signals and produce an output signal. Each gate implements one logical operator, so a circuit built from gates computes a propositional formula in hardware.
 
 ## Gates
 
-#Definition **AND gate** ($\land$): [and gate image](https://media.rs-online.com/image/upload/f_auto/q_auto/v1482269874/R2175566-03.jpg)
+Each gate corresponds to a logical connective:
 
-#Definition **OR gate** ($\lor$): [or gate image](https://cdn.makecode.com/blob/e8c22cbac91ce65f2b1d85b1007a754daf6cab01/static/cp/learn/logic-lab/logic-gates/or-gate.png)
+- **AND gate** ($\land$): outputs $1$ only when *all* inputs are $1$ — the hardware form of conjunction.
+- **OR gate** ($\lor$): outputs $1$ when *at least one* input is $1$ — the hardware form of disjunction.
+- **NOT gate** ($\neg$): a single-input gate (an **inverter**) that flips its input: $1 \to 0$ and $0 \to 1$.
 
-#Definition **NOT gate** ($\neg$): [not gate image](https://computerengineeringforbabies.com/cdn/shop/articles/NOT_Logic_Gate_symbol_with_truth_table.jpg?v=1683048777)
+```mermaid
+graph LR
+    A[Input a] --> AND["AND gate (and)"]
+    B[Input b] --> AND
+    A2[Input a] --> OR["OR gate (or)"]
+    B2[Input b] --> OR
+    A3[Input a] --> NOT["NOT gate (not)"]
+    AND --> O1["a and b"]
+    OR --> O2["a or b"]
+    NOT --> O3["not a"]
+```
+
+Because any proposition can be written in [[CSE311/Part I - Mathematical Foundations/Logic/Normal Form|CNF or DNF]], any logical function can be built physically from just AND, OR, and NOT gates.
 
 ## Related
 
-- [[Boolean Algebra]]
-- [[Truth Tables]]
-- [[Normal Form]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Boolean Algebra|Boolean Algebra]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Truth Tables|Truth Tables]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Normal Form|Normal Form]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Gate | Logic gate |
+| NOT gate | Inverter |
+| Circuit | Combinational logic circuit |

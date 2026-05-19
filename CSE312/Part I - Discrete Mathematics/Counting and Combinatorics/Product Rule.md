@@ -23,3 +23,7 @@ Total outfits $= 3 \cdot 3 \cdot 2 = 18$
 - [[Permutation]]
 - [[Size of Cartesian Product]]
 - [[Possibilities with Restrictions]]
+
+## Industry Standard Terms
+
+- **Product Rule** → "Multiplication Principle" / "Rule of Product" / "Fundamental Counting Principle"

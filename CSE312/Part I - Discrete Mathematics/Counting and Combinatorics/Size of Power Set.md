@@ -10,3 +10,7 @@ This is because each element of $S$ is either included or excluded — 2 choices
 
 - [[Size of Cartesian Product]]
 - [[Number of Subsets Formula]]
+
+## Industry Standard Terms
+
+- **Power Set** $\mathcal{P}(S)$ → standard set-theory term (also written $2^S$, which directly mirrors the cardinality $2^{|S|}$).

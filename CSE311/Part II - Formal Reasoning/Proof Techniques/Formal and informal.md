@@ -32,5 +32,15 @@ An **informal** description uses natural language to explain what a formal syste
 
 ## Related
 
-- [[Formal Proofs]]
-- [[Proof by Calculation]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Formal Proofs|Formal Proofs]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Proof by Calculation|Proof by Calculation]]
+- [[CSE311/Definitions/Formal and Informal|Formal and Informal (glossary)]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Formal system | Formal specification / formal semantics |
+| Syntax | Grammar / surface form |
+| Semantics | Meaning / interpretation |
+| Informal description | Documentation / plain-English spec |

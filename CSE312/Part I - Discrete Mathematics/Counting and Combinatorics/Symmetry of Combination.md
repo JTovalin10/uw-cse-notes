@@ -10,3 +10,8 @@ Choosing $k$ items to include is equivalent to choosing which $n-k$ items to lea
 
 - [[Number of Subsets Formula]]
 - [[Binomial Theorem]]
+- [[Pascal's Rule]]
+
+## Industry Standard Terms
+
+- **Symmetry of Combination** → "symmetry identity of the binomial coefficient" / "symmetry rule".

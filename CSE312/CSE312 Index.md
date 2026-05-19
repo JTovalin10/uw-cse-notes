@@ -6,21 +6,24 @@
 - [[Product Rule]] — multiply choices across independent decisions
 - [[Sum Rule]] — add choices across mutually exclusive decisions
 - [[Factorial]] — n! definition and applications
-- [[Permutation]] — ordered arrangements (n choose k)
-- [[Number of Subsets Formula]] — |P(S)| = 2^|S|
+- [[Permutation]] — ordered arrangements P(n,k)
+- [[Number of Subsets Formula]] — combinations C(n,k) and subset counting
 - [[Symmetry of Combination]] — C(n,k) = C(n,n-k)
+- [[Pascal's Rule]] — C(n,k) = C(n-1,k-1) + C(n-1,k)
 - [[Binomial Theorem]] — expanding (a+b)^n with coefficients
 - [[Sequences]] — ordered collections of elements
 - [[Overcounting]] — recognizing and correcting double-counted items
 - [[Complementary Counting]] — counting via complement
-- [[Pigeonhole principle]] — n items in m<n containers → some container has 2+
+- [[Pigeonhole Principle]] — n items in m<n containers → some container has 2+
 - [[Possibilities with Restrictions]] — counting constrained outcomes
 - [[Principle of Inclusion-Exclusion]] — |A∪B| = |A| + |B| - |A∩B| extended
+- [[Path Counting]] — counting monotone paths through a grid
 - [[Size of Cartesian Product]] — |A × B| = |A| × |B|
 - [[Size of Power Set]] — |P(S)| = 2^|S|
-- [[Stars and bars]] — distributing identical items into distinct bins
+- [[Stars and Bars]] — distributing identical items into distinct bins
 
 ### Basic Probability
+- [[Sample Space and Events]] — outcomes, events, and the probability space
 - [[Conditional Probability]] — probability given other events occurred
 - [[Independence]] — P(A∧B) = P(A)P(B) for independent events
 - [[Mutual Exclusion]] — disjoint events with zero intersection
@@ -43,7 +46,7 @@
 - [[Indicator Random Variable]] — binary RV for event occurrence
 
 ### Distributions
-- [[Distribution]] — probability distribution of a random variable
+- [[Distribution]] — distributing distinguishable objects into distinguishable bins (k^n)
 - [[Normal Random Variable]] — Gaussian/normal distribution properties
 - [[Bernoulli Distribution]] — single trial with success/failure
 - [[Binomial Distribution]] — number of successes in n independent Bernoulli trials

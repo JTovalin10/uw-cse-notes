@@ -6,6 +6,19 @@
 
 The **length** of a string $w$, written $|w|$, is the number of characters it contains.
 
+The collection of *all* strings over $\Sigma$ forms the [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Set of Strings|set of strings]] $\Sigma^*$, and patterns over $\Sigma$ are described by [[CSE311/Part II - Formal Reasoning/Automata and Languages/Regular Expressions|regular expressions]].
+
 ## Related
 
-[[Set of Strings]] · [[Regular Expressions]] · [[Functions on a Set of Strings]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Set of Strings|Set of Strings]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Regular Expressions|Regular Expressions]]
+- [[CSE311/Part I - Mathematical Foundations/Functions/Functions on a Set of Strings|Functions on a Set of Strings]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Alphabet ($\Sigma$) | Character set |
+| String | String / sequence |
+| $\varepsilon$ (empty string) | `""` |
+| Length ($|w|$) | `.length` / `len()` |

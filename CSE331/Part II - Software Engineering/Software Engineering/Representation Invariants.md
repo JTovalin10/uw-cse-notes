@@ -4,7 +4,7 @@ A **Representation Invariant (RI)** is a set of facts about the field values of 
 
 - The RI **defines which field values are allowed** — any concrete state violating the RI is considered broken.
 - Every operation on the ADT must **preserve** the RI: it holds before the call, and must hold again after the call completes.
-- The [[Documenting an ADT Implementation|Abstract Function]] (AF) only needs to apply when the RI is true. The AF is undefined (or meaningless) on states that violate the RI.
+- The [[CSE331/Part II - Software Engineering/Software Engineering/Abstract Function|Abstract Function]] (AF) only needs to apply when the RI is true. The AF is undefined (or meaningless) on states that violate the RI.
 
 ## Example
 

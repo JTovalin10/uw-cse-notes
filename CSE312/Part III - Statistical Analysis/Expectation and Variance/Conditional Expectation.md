@@ -12,3 +12,9 @@ $$\mathbb{E}[X \mid Y = y] = \sum_{x \in \Omega_X} x \cdot \mathbb{P}(X = x \mid
 - [[Expectation]]
 - [[Law of Total Expectation]]
 - [[Conditional Probability]]
+- [[Joint Distributions]]
+
+## Industry Standard Terms
+
+- **Conditional Expectation** $E[X \mid Y]$ → standard statistics term; in advanced treatments it is itself a random variable (a function of $Y$).
+

@@ -11,3 +11,8 @@ This can be used if we want to find the complement of a problem where we have al
 - [[Principle of Inclusion-Exclusion]]
 - [[Number of Subsets Formula]]
 - [[Product Rule]]
+- [[Possibilities with Restrictions]]
+
+## Industry Standard Terms
+
+- **Complementary Counting** → "counting by complement" / "subtraction rule." In probability the same idea is the "complement rule," $P(A) = 1 - P(\bar{A})$.

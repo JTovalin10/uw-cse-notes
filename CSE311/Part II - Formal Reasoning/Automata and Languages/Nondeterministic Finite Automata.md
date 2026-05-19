@@ -1,6 +1,6 @@
 # CSE 311: Nondeterministic Finite Automata
 
-A **Nondeterministic Finite Automaton (NFA)** is a generalization of a DFA that drops two restrictions:
+A **Nondeterministic Finite Automaton (NFA)** is a generalization of a [[CSE311/Part II - Formal Reasoning/Automata and Languages/Deterministic Finite Automata|DFA]] that drops two restrictions:
 - It is not required to have exactly 1 edge out of each state labeled by each symbol (can have 0 or $>1$).
 - It can have edges labeled by the empty string $\varepsilon$ (called **$\varepsilon$-moves**).
 
@@ -17,12 +17,22 @@ Every DFA is an NFA. However, NFAs cannot recognize more languages than DFAs.
 - NFAs can be converted to DFAs using the **subset construction** algorithm, where each state in the DFA represents a subset of states that the NFA could be in.
 
 ## Regular Languages
-**Theorem:** A language is recognized by a DFA (or NFA) if and only if it has a regular expression.
+**Theorem:** A language is recognized by a DFA (or NFA) if and only if it has a [[CSE311/Part II - Formal Reasoning/Automata and Languages/Regular Expressions|regular expression]].
 Languages represented by DFAs, NFAs, or regular expressions are called **Regular Languages**.
 
 $$REs \equiv DFAs \equiv NFAs \subset CFGs$$
 
+This hierarchy says all three regular-language models have identical recognition power, while [[CSE311/Part II - Formal Reasoning/Automata and Languages/Context-Free Grammars|context-free grammars]] strictly exceed them.
+
 ## Related
-- [[Deterministic Finite Automata]]
-- [[Regular Expressions]]
-- [[Context-Free Grammars]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Deterministic Finite Automata|Deterministic Finite Automata]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Regular Expressions|Regular Expressions]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Context-Free Grammars|Context-Free Grammars]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Nondeterministic Finite Automaton (NFA) | Nondeterministic finite state machine |
+| $\varepsilon$-move | Epsilon transition / silent transition |
+| Subset construction | Powerset construction / NFA-to-DFA conversion |

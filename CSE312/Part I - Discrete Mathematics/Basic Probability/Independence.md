@@ -24,9 +24,16 @@ Mutual independence for random variables simplifies slightly compared to events:
 $$\mathbb{P}(X_1 = x_1, \dots, X_n = x_n) = \mathbb{P}(X_1 = x_1) \cdots \mathbb{P}(X_n = x_n)$$
 (You do not need to check all subsets for random variables, just all values for the full joint distribution).
 
-[[Mutual Exclusion]]
+Note that **independence** is not the same as **mutual exclusion**: independent events can both occur (their joint probability is the product of their marginals), whereas [[Mutual Exclusion|mutually exclusive]] events can never both occur (their joint probability is 0).
 
 ## Related
 
 - [[Mutual Exclusion]]
 - [[Conditional Probability]]
+- [[Joint Distributions]]
+- [[Covariance]]
+
+## Industry Standard Terms
+
+- **Independence** → standard statistics term; "statistical independence" or "stochastic independence."
+- **Mutual Independence** → also called "joint independence." Note it is strictly stronger than **pairwise independence**.

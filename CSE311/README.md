@@ -1,4 +1,6 @@
-# CSE 311 - Foundations of Computing I
+# CSE 311: Foundations of Computing I
+
+See [[CSE311/CSE311 Index|CSE311 Index]] for the master navigation hub linking every topic.
 
 ## Course Overview
 
@@ -70,6 +72,14 @@ Formal language theory basics.
 - Strings and string operations
 - Sets of strings
 - Regular expressions
+- Deterministic and nondeterministic finite automata
+- Context-free grammars
+
+### Computability
+The limits of what computers can solve.
+- Cardinality and countability
+- The halting problem
+- Reductions and Rice's Theorem
 
 ---
 
@@ -77,6 +87,8 @@ Formal language theory basics.
 
 ```
 CSE311/
+├── Definitions/
+├── Lecture Slides/
 ├── Part I - Mathematical Foundations/
 │   ├── Data Structures/
 │   ├── Functions/
@@ -87,6 +99,7 @@ CSE311/
 │   ├── Automata and Languages/
 │   ├── Number Theory/
 │   └── Proof Techniques/
+├── Part III - Computability/
 └── Screenshots/
 ```
 
@@ -98,3 +111,14 @@ CSE311/
 2. **Induction is powerful**: Mathematical and structural induction are the primary tools for proving properties of recursive structures
 3. **Formal languages describe computation**: Regular expressions and automata define what machines can recognize
 4. **Discrete math is everywhere**: Number theory, sets, and relations appear throughout algorithms, cryptography, and systems
+5. **Some problems are unsolvable**: The halting problem shows there are well-defined questions no program can answer
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Propositional logic | Boolean logic / Boolean algebra |
+| Regular expression | Regex / pattern matching |
+| Deterministic Finite Automaton (DFA) | Finite state machine (FSM) |
+| Context-Free Grammar (CFG) | Parser grammar / BNF grammar |
+| Halting problem / undecidability | Static analysis limits / Rice's Theorem |

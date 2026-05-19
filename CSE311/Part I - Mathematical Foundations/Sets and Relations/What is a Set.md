@@ -1,6 +1,6 @@
 # CSE 311: Sets
 
-#Definition **Set**: a collection of elements (objects).
+#Definition A **set** is a collection of elements (objects).
 $$B = \{a, b, c, \{d\}\}$$
 $$a \in B$$
 - Sets can be elements of other sets:
@@ -16,6 +16,8 @@ $$[n] = \{1,2,\ldots,n\} \quad n \in \mathbb{N}$$
 $$\emptyset = \{\} \quad \text{Empty set}$$
 
 ## Key Definitions
+
+Each definition below is stated formally with [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What are Quantifiers|quantifiers]]; see [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Sets and Logic|Sets and Logic]] for why logical and set reasoning coincide.
 
 #Definition **Equality**:
 $$A = B \quad := \forall x(x \in A \leftrightarrow x \in B)$$
@@ -38,7 +40,17 @@ $$A = \{1,2\} \quad B = \{a,b\} \quad A \times B = \{(1,a),\ (1,b),\ (2,a),\ (2,
 
 ## Related
 
-- [[Operations on Sets]]
-- [[Sets and Logic]]
-- [[Recursive Definition of Sets]]
-- [[What is a Predicate]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Operations on Sets|Operations on Sets]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Sets and Logic|Sets and Logic]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Recursive Definition of Sets|Recursive Definition of Sets]]
+- [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What is a Predicate|What is a Predicate]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Relations|Relations]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Set | Set / `Set` collection |
+| Subset ($\subseteq$) | `issubset()` |
+| Power set ($\mathcal{P}(A)$) | Set of all subsets |
+| Cartesian product ($A \times B$) | Cross product / `itertools.product` |

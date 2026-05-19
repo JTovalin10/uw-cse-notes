@@ -10,3 +10,7 @@ $$P(n, k) = \frac{n!}{(n-k)!}$$
 - [[Number of Subsets Formula]]
 - [[Sequences]]
 - [[Product Rule]]
+
+## Industry Standard Terms
+
+- **Permutation** $P(n,k)$ → "$k$-permutation of $n$" / "partial permutation" / "arrangement" (also written $nPk$ or $(n)_k$, the falling factorial).

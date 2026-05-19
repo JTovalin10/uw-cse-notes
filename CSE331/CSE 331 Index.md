@@ -38,6 +38,7 @@ Master navigation hub for CSE 331 notes. For a course overview and goals see the
 - [[CSE331/Part II - Software Engineering/Software Engineering/Types of Operations|Types of Operations]] — creators, producers, observers, mutators
 - [[CSE331/Part II - Software Engineering/Software Engineering/Documenting an ADT Implementation|Documenting an ADT Implementation]] — explaining ADT representation
 - [[CSE331/Part II - Software Engineering/Software Engineering/Representation Invariants|Representation Invariants]] — properties ensuring valid ADT state
+- [[CSE331/Part II - Software Engineering/Software Engineering/Abstract Function|Abstract Function]] — maps concrete field values to the abstract value
 - [[CSE331/Part II - Software Engineering/Software Engineering/Mutation|Mutation]] — changing object or variable state
 - [[CSE331/Part II - Software Engineering/Software Engineering/Local Variable Mutation|Local Variable Mutation]] — modifying local variable state
 - [[CSE331/Part II - Software Engineering/Software Engineering/Mutations of Arguments|Mutations of Arguments]] — modifying method arguments
@@ -55,6 +56,7 @@ Master navigation hub for CSE 331 notes. For a course overview and goals see the
 - [[CSE331/Part II - Software Engineering/Java Programming/Array Reasoning|Array Reasoning]] — prefix, suffix, and for-any facts
 - [[CSE331/Part II - Software Engineering/Java Programming/Loop to Tail Recursion|Loop to Tail Recursion]] — translating loops to recursive functions
 - [[CSE331/Part II - Software Engineering/Java Programming/Subtypes|Subtypes]] — type inheritance and polymorphism
+- [[CSE331/Part II - Software Engineering/Java Programming/Composition|Composition]] — "has-a" class containment as an alternative to inheritance
 - [[CSE331/Part II - Software Engineering/Java Programming/Generics|Generics]] — generic type-safe classes and interfaces
 - [[CSE331/Part II - Software Engineering/Java Programming/Generic Methods|Generic Methods]] — type-parameterized method definitions
 - [[CSE331/Part II - Software Engineering/Java Programming/Wildcards|Wildcards]] — bounded/unbounded generic type wildcards

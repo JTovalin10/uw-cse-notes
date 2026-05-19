@@ -22,4 +22,9 @@ Since both ways count the exact same thing, the expressions must be equal: $\bin
 
 - [[Binomial Theorem]]
 - [[Sum Rule]]
+- [[Symmetry of Combination]]
 - [[Number of Subsets Formula|Combinations]]
+
+## Industry Standard Terms
+
+- **Pascal's Rule** → "Pascal's identity" / "Pascal's recurrence." It is the recurrence that generates Pascal's triangle.

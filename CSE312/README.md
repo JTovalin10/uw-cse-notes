@@ -1,8 +1,10 @@
-# CSE 312 - Foundations of Computing II
+# CSE 312: Foundations of Computing II
 
 ## Course Overview
 
 CSE 312 covers the foundations of probability and statistics with applications to computer science. This course builds mathematical reasoning skills essential for algorithm analysis, machine learning, and data science.
+
+See [[CSE312 Index]] for the full navigation hub linking every topic.
 
 ## Topics Covered
 

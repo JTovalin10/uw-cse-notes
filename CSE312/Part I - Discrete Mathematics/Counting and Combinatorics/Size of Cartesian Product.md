@@ -11,3 +11,7 @@ So if $S$ has 2 items and $T$ has 3 items, then the size is 6.
 - [[Product Rule]]
 - [[Size of Power Set]]
 - [[CSE311/Part I - Mathematical Foundations/Sets and Relations/What is a Set|What is a Set]]
+
+## Industry Standard Terms
+
+- **Cartesian Product** → standard set-theory term (also "cross product" of sets, or "product set"). Its cardinality rule is the set-theoretic form of the multiplication principle.

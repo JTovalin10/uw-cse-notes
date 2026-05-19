@@ -1,6 +1,6 @@
 # CSE 311: Regular Expressions
 
-#Definition A **regular expression** over $\Sigma$ is defined recursively:
+#Definition A **regular expression** over an [[CSE311/Part II - Formal Reasoning/Automata and Languages/Strings|alphabet]] $\Sigma$ is defined recursively, following the basis-plus-recursive-step pattern of a [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Recursive Definition of Sets|recursive definition]]:
 
 - **Basis**
 	- $\varepsilon$ is a regular expression
@@ -29,6 +29,22 @@ Where $A^n$ is defined recursively:
 - $0^*1^*$
 	- Any number of $0$'s followed by any number of $1$'s
 
+The set of strings a regular expression matches is its [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Set of Strings|language]] (a subset of $\Sigma^*$). Every language describable by a regular expression is exactly the class of **regular languages** — the same languages recognized by a [[CSE311/Part II - Formal Reasoning/Automata and Languages/Deterministic Finite Automata|DFA]] or [[CSE311/Part II - Formal Reasoning/Automata and Languages/Nondeterministic Finite Automata|NFA]]. The strictly more powerful [[CSE311/Part II - Formal Reasoning/Automata and Languages/Context-Free Grammars|context-free grammars]] can describe languages no regular expression can.
+
 ## Related
 
-[[Strings]] · [[Set of Strings]] · [[Recursive Definition of Sets]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Strings|Strings]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Set of Strings|Set of Strings]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Recursive Definition of Sets|Recursive Definition of Sets]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Deterministic Finite Automata|Deterministic Finite Automata]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Nondeterministic Finite Automata|Nondeterministic Finite Automata]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Context-Free Grammars|Context-Free Grammars]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Regular expression | Regex |
+| Union / alternation ($\cup$) | `|` in regex syntax |
+| Kleene star ($A^*$) | `*` quantifier |
+| Regular language | Regular language / Type-3 language |

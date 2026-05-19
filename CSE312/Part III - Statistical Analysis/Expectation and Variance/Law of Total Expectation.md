@@ -12,3 +12,8 @@ $$\mathbb{E}[X] = \sum_{y \in \Omega_Y} \mathbb{E}[X \mid Y = y] \mathbb{P}[Y = 
 - [[Expectation]]
 - [[Conditional Expectation]]
 - [[Law of Total Probability]]
+
+## Industry Standard Terms
+
+- **Law of Total Expectation** → "tower rule" / "tower property" / "law of iterated expectations," often written $\mathbb{E}[X] = \mathbb{E}[\mathbb{E}[X \mid Y]]$.
+

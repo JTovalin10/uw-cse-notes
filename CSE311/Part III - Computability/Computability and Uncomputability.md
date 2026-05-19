@@ -1,9 +1,9 @@
 # CSE 311: Computability and Uncomputability
 
 ## Cardinality
-Two sets $A$ and $B$ have the same **cardinality** ($|A| = |B|$) if there is a 1-to-1 (injective) and onto (surjective) function $f : A \to B$ (a bijection).
+Two [[CSE311/Part I - Mathematical Foundations/Sets and Relations/What is a Set|sets]] $A$ and $B$ have the same **cardinality** ($|A| = |B|$) if there is a 1-to-1 (injective) and onto (surjective) [[CSE311/Part I - Mathematical Foundations/Functions/Functions|function]] $f : A \to B$ (a bijection).
 - A set $S$ is **countable** iff it has the same cardinality as some subset of the natural numbers $\mathbb{N}$.
-- Examples of countable sets: $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$, $\Sigma^*$ (strings over a finite alphabet), the set of all Java programs.
+- Examples of countable sets: $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$, $\Sigma^*$ ([[CSE311/Part I - Mathematical Foundations/Sets and Relations/Set of Strings|strings over a finite alphabet]]), the set of all Java programs.
 - **Cantor's Theorem:** The set of real numbers between 0 and 1 is not countable (uncountable). Proved using **diagonalization**.
 - The set of all functions $f : \mathbb{N} \to \{0, \ldots, 9\}$ is uncountable.
 
@@ -14,7 +14,35 @@ Because the set of Java programs is countable, but the set of functions is uncou
 **Theorem (Turing):** There is no program that solves the Halting Problem. It is **undecidable**.
 - The proof uses diagonalization: Assume a program $H$ solves it. Construct a program $D$ that takes program $P$ as input, runs $H(P, P)$, and if $H$ says $P$ halts, $D$ loops forever; if $H$ says $P$ loops, $D$ halts. If we run $D(D)$, we get a contradiction.
 
+```mermaid
+graph TD
+    Countable["Java programs are COUNTABLE"] --> Gap
+    Uncountable["Functions are UNCOUNTABLE"] --> Gap
+    Gap["More functions than programs"] --> Uncomputable["Some functions are uncomputable"]
+    Uncomputable --> Halting["Halting Problem is undecidable (Turing)"]
+    Halting -->|reduction| Other["Other problems shown undecidable"]
+    Other --> Rice["Rice's Theorem: every non-trivial behavior property is undecidable"]
+```
+
 ## Reductions and Rice's Theorem
 We can prove other problems are undecidable by **reducing** the Halting Problem to them (i.e., showing that if a program could decide problem $B$, we could use it to decide the Halting Problem).
 - Example: The CSE 121 Grading Problem (does a program output "HELLO" and exit?) is undecidable.
 - **Rice's Theorem:** Any "non-trivial" property of the input-output behavior of Java programs is undecidable. This implies that perfect static analysis and compilation checks are impossible.
+
+## Related
+
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/What is a Set|What is a Set]]
+- [[CSE311/Part I - Mathematical Foundations/Functions/Functions|Functions]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Set of Strings|Set of Strings]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Context-Free Grammars|Context-Free Grammars]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Cardinality / countable | Set cardinality / countably infinite |
+| Diagonalization | Cantor's diagonal argument |
+| Halting Problem | The halting problem |
+| Undecidable | Undecidable / non-computable |
+| Reduction | Many-one / Turing reduction |
+| Rice's Theorem | Rice's Theorem (limits of static analysis) |

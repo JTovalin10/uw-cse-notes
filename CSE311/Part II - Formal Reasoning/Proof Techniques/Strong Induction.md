@@ -1,6 +1,6 @@
 # CSE 311: Strong Induction
 
-**Strong induction** is a variant of mathematical induction used when a recursive function or sequence depends on multiple previous values, not just the immediately preceding one. Instead of assuming only $P(k)$, the induction hypothesis assumes $P(j)$ holds for all $j$ in the range $1 \leq j \leq k$.
+**Strong induction** is a variant of [[CSE311/Part II - Formal Reasoning/Proof Techniques/Induction|mathematical induction]] used when a recursive function or sequence depends on multiple previous values, not just the immediately preceding one. Instead of assuming only $P(k)$, the induction hypothesis assumes $P(j)$ holds for *all* $j$ in the range $1 \leq j \leq k$ — a stronger assumption, hence the name.
 
 We use strong induction when we have a recursive function with multiple constant base cases.
 
@@ -49,8 +49,17 @@ So $P(k+1)$ holds.
 
 **Conclusion**: Therefore, $P(n)$ holds for all integers $n \geq 1$ by strong induction.
 
+When the objects being inducted over come from a recursively defined set rather than the integers, the analogous technique is [[CSE311/Part II - Formal Reasoning/Proof Techniques/Structural Induction|structural induction]].
+
 ## Related
 
-- [[Induction]]
-- [[Structural Induction]]
-- [[Formal Proofs]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Induction|Induction]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Structural Induction|Structural Induction]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Formal Proofs|Formal Proofs]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Strong induction | Complete / course-of-values induction |
+| Induction hypothesis (all $j \le k$) | Strong inductive hypothesis |

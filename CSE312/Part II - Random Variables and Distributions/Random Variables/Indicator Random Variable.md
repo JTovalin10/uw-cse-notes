@@ -11,5 +11,11 @@ Indicator random variables are incredibly useful for computing the expectation o
 
 ## Related
 - [[Random Variables]]
+- [[Bernoulli Distribution]]
 - [[Expectation]]
 - [[Linearity of Expectation]]
+
+## Industry Standard Terms
+
+- **Indicator Random Variable** → "indicator function" / "characteristic function" of an event / "0-1 random variable" / "Bernoulli random variable" (an indicator is exactly a [[Bernoulli Distribution|Bernoulli]] RV).
+

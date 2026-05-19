@@ -1,15 +1,11 @@
 # CSE 312: Discrete Random Variables
 
-#Definition A **discrete random variable** takes on a countable set of values. The probability of an event being 0 is the same as it being impossible.
+#Definition A **discrete random variable** takes on a countable set of values. For a discrete random variable, the probability of an event being 0 is the same as it being impossible.
 
-- Relative Chances
-	- PMF: $p_X(k) = P(X = k)$
-- Events
-	- Sum over the PMF to get probability
-- Convert from CDF to PMF
-	- Look for "breakpoints" in the CDF to recover the PMF
-- Convert PMF to CDF
-	- Sum up the PMF to get the CDF
+- **Relative chances** — the **[[Probability Mass Function]] (PMF)** gives $p_X(k) = P(X = k)$.
+- **Events** — sum over the PMF to get the probability of an event.
+- **Convert from CDF to PMF** — look for "breakpoints" in the [[Cumulative Distribution Function]] to recover the PMF.
+- **Convert PMF to CDF** — sum up the PMF to get the CDF.
 
 ## Expectation
 
@@ -27,3 +23,8 @@ $$Var(X) = E[X^2] - E[X]^2$$
 - [[Cumulative Distribution Function]]
 - [[Expectation]]
 - [[Variance]]
+
+## Industry Standard Terms
+
+- **Discrete Random Variable** → standard statistics term; its PMF is sometimes called the "discrete density."
+

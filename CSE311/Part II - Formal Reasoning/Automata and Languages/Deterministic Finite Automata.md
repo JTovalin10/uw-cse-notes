@@ -1,14 +1,22 @@
 # CSE 311: Deterministic Finite Automata
 
-A **Deterministic Finite Automaton (DFA)** is a finite state machine that recognizes a regular language.
+A **Deterministic Finite Automaton (DFA)** is a finite state machine that recognizes a regular language — a language describable by a [[CSE311/Part II - Formal Reasoning/Automata and Languages/Regular Expressions|regular expression]].
 
 A DFA consists of:
 - A finite set of **states**.
 - A designated **start state**.
 - A set of **final states** (or accepting states).
-- **Transitions** on input symbols: exactly one transition is defined from each state for *every* symbol in the alphabet $\Sigma$.
+- **Transitions** on input symbols: exactly one transition is defined from each state for *every* symbol in the [[CSE311/Part II - Formal Reasoning/Automata and Languages/Strings|alphabet]] $\Sigma$. The word "deterministic" refers to exactly this — there is never a choice of which transition to take.
 
-The "language recognized" by the DFA is the set of strings that reach a final state from the start state.
+The "language recognized" by the DFA is the set of [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Set of Strings|strings]] that reach a final state from the start state.
+
+```mermaid
+graph LR
+    Start([Start state]) -->|symbol a| S1[State]
+    S1 -->|symbol b| F((Final state))
+    S1 -->|symbol a| S1
+    F -->|symbol a| S1
+```
 
 ## State Minimization
 Many DFAs can exist for the same problem. We can find the unique minimal equivalent DFA by grouping states that cannot be distinguished and collapsing them:
@@ -26,5 +34,15 @@ To prove a language $L$ is **not regular** (i.e., no DFA can recognize it), we c
 6. This contradicts the assumption that $M$ recognizes $L$. Thus, $L$ is not regular.
 
 ## Related
-- [[Regular Expressions]]
-- [[Nondeterministic Finite Automata]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Regular Expressions|Regular Expressions]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Nondeterministic Finite Automata|Nondeterministic Finite Automata]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Context-Free Grammars|Context-Free Grammars]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Deterministic Finite Automaton (DFA) | Finite state machine (FSM) |
+| Final / accepting state | Accept state |
+| State minimization | DFA minimization (Hopcroft's algorithm) |
+| Distinguishing set | Myhill-Nerode argument / pumping lemma alternative |

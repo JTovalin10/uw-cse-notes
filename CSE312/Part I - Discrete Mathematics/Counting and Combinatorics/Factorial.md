@@ -11,3 +11,7 @@ Factorial counts the number of ways to arrange $n$ distinct objects in a sequenc
 - [[Permutation]]
 - [[Number of Subsets Formula]]
 - [[Sequences]]
+
+## Industry Standard Terms
+
+- **Factorial** → standard mathematical notation $n!$, used identically across all of mathematics and computer science.

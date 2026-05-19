@@ -1,6 +1,6 @@
 # CSE 311: Set Operations
 
-Set operations can be translated into propositional logic, allowing us to reason about them with the same tools as logical equivalences.
+**Set operations** can be translated into propositional logic, allowing us to reason about them with the same tools as [[CSE311/Part I - Mathematical Foundations/Logic/Logical Equivalence(s)|logical equivalences]]. This translation is formalized in [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Sets and Logic|Sets and Logic]].
 
 $$A \cup B \quad := \{x : (x \in A) \lor (x \in B)\} \quad \text{Union}$$
 $$A \cap B \quad := \{x : (x \in A) \land (x \in B)\} \quad \text{Intersection}$$
@@ -18,9 +18,21 @@ $$A^c \quad := \{x : (x \in U) \land (x \notin A)\} \quad \text{Complement (wher
 - $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
 - $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$
 
+These laws are the set-theoretic mirror of the propositional [[CSE311/Part I - Mathematical Foundations/Logic/DeMorgans Laws|De Morgan's]] and distributive laws — replace $\cup$ with $\lor$ and $\cap$ with $\land$ and they become identical.
+
 ## Related
 
-- [[What is a Set]]
-- [[Logical Equivalence(s)]]
-- [[DeMorgans Laws]]
-- [[Sets and Logic]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/What is a Set|What is a Set]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Logical Equivalence(s)|Logical Equivalence(s)]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/DeMorgans Laws|DeMorgans Laws]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Sets and Logic|Sets and Logic]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Union ($\cup$) | OR / `union()` |
+| Intersection ($\cap$) | AND / `intersection()` |
+| Set difference ($\setminus$) | `difference()` / relative complement |
+| Symmetric difference ($\oplus$) | XOR / `symmetric_difference()` |
+| Complement ($A^c$) | Negation / universe minus set |

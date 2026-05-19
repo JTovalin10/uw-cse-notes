@@ -1,6 +1,6 @@
 # CSE 311: Inductive Data Types
 
-The most powerful way to define a new type is by combining basic types (unions, tuples, records) with **recursion**. This allows us to define complex, self-referential data structures whose size is not fixed in advance.
+The most powerful way to define a new type is by combining basic [[CSE311/Part I - Mathematical Foundations/Data Structures/Compound Types|compound types]] (unions, tuples, records) with **recursion**. This allows us to define complex, self-referential data structures whose size is not fixed in advance. This recursive style mirrors the [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Recursive Definition of Sets|recursive definition of sets]].
 
 An inductive type definition looks like this:
 $$\text{type } T := A \mid B(u : \mathbb{N}) \mid C(v : \mathbb{N},\ w : T) \mid D(x : \mathbb{N},\ y : T,\ z : T)$$
@@ -49,11 +49,29 @@ A constructor with two or more recursive arguments allows branching, tree-like s
 
 ---
 
+## Constructor Structure Diagram
+
+```mermaid
+graph TD
+    T[Inductive type T] -->|zero args| Enum["Enum-like (Red, Green, Blue)"]
+    T -->|one recursive arg| List["List-like chain (Cons head tail)"]
+    T -->|two or more recursive args| Tree["Tree-like branching (Node value left right)"]
+```
+
 ## Related
 
-- [[Data Types]]
-- [[Compound Types]]
-- [[Recursive Definition of Sets]]
-- [[List of Integers]]
-- [[Rooted Binary Tree Definition]]
-- [[Structural Induction]]
+- [[CSE311/Part I - Mathematical Foundations/Data Structures/Data Types|Data Types]]
+- [[CSE311/Part I - Mathematical Foundations/Data Structures/Compound Types|Compound Types]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Recursive Definition of Sets|Recursive Definition of Sets]]
+- [[CSE311/Part I - Mathematical Foundations/Data Structures/List of Integers|List of Integers]]
+- [[CSE311/Part I - Mathematical Foundations/Data Structures/Rooted Binary Tree Definition|Rooted Binary Tree Definition]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Structural Induction|Structural Induction]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Inductive data type | Algebraic data type (ADT) / recursive type |
+| Constructor | Variant / case / tag |
+| Disjoint union (`|`) | Sum type / tagged union |
+| Enum-like type | Enumeration / `enum` |

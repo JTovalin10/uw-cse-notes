@@ -1,6 +1,6 @@
 # CSE 311: Functions
 
-In many formal systems and programming languages, we distinguish between declaring what a function's type is and defining what it actually does.
+In many formal systems and programming languages, we distinguish between declaring what a **function's** type is and defining what it actually does.
 
 ## Defining a Function
 
@@ -8,7 +8,7 @@ A complete function definition has two parts: the **type signature** and the **i
 
 ### 1. Type Signature (The "What")
 
-First, we declare the function's type. This specifies the type of input it accepts and the type of output it returns. The colon `:` is read as "has the type".
+First, we declare the function's type. This specifies the [[CSE311/Part I - Mathematical Foundations/Data Structures/Data Types|type]] of input it accepts and the type of output it returns. The colon `:` is read as "has the type".
 
 - **Syntax**: `function_name : (input_type) -> output_type`
 - **Example**: A function named `double` that takes a Natural Number ($\mathbb{N}$) and returns a Natural Number.
@@ -34,7 +34,7 @@ We can define our own custom data types and use them in function signatures.
 
 ### 1. Defining a Custom Type
 
-Define a `Point` type using a **record** with two fields, `x` and `y`, both Real Numbers ($\mathbb{R}$):
+Define a `Point` type using a [[CSE311/Part I - Mathematical Foundations/Data Structures/Compound Types|record]] with two fields, `x` and `y`, both Real Numbers ($\mathbb{R}$):
 
 $$\text{type Point} := \{x : \mathbb{R},\ y : \mathbb{R}\}$$
 
@@ -52,8 +52,15 @@ This constructs a new `Point` where the `x` value is shifted by `amount` and `y`
 
 ## Related
 
-- [[Data Types]]
-- [[Compound Types]]
-- [[Functions on Lists]]
-- [[Functions on a Set of Strings]]
-- [[Composition]]
+- [[CSE311/Part I - Mathematical Foundations/Data Structures/Data Types|Data Types]]
+- [[CSE311/Part I - Mathematical Foundations/Data Structures/Compound Types|Compound Types]]
+- [[CSE311/Part I - Mathematical Foundations/Functions/Functions on Lists|Functions on Lists]]
+- [[CSE311/Part I - Mathematical Foundations/Functions/Functions on a Set of Strings|Functions on a Set of Strings]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Type signature | Function signature / type declaration |
+| Implementation (`:=`) | Function body / definition |
+| Custom type | User-defined type / class / struct |

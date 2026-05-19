@@ -9,3 +9,7 @@
 - [[Factorial]]
 - [[Permutation]]
 - [[Product Rule]]
+
+## Industry Standard Terms
+
+- **Sequence** → "ordered tuple" / "ordered list" / "string" (when over an alphabet). Contrast with a **set**, where order does not matter.

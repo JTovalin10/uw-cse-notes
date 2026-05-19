@@ -25,3 +25,10 @@ For an event $E$, the probability is defined as $\mathbb{P}(E) = \sum_{\omega \i
 
 - [[Mutual Exclusion]]
 - [[Conditional Probability]]
+- [[Random Variables]]
+
+## Industry Standard Terms
+
+- **Sample Space** $\Omega$ → "outcome space" / "universe of outcomes."
+- **Event** → standard probability term; an event is any measurable subset of the sample space.
+- **Probability Space** $(\Omega, \mathbb{P})$ → in measure-theoretic probability this is the triple $(\Omega, \mathcal{F}, \mathbb{P})$, where $\mathcal{F}$ is the sigma-algebra of events.

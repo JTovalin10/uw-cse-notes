@@ -46,6 +46,10 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[CSE452/Sharding/Transactions|Transactions (2PC)]] — Two-Phase Commit protocol, distributed locking, deadlock avoidance, and reconfiguration interactions
 - [[CSE452/Sharding/Two-Phase Commit|Two-Phase Commit: Motivation]] — the naive swap protocol, its five failure modes, and why 2PC is the fix
 
+### Case Studies
+- [[CSE452/Case Studies/Big Table|Big Table]] — Google's structured-data storage system: the Google stack, the 3D data model, tablets/SSTables/memtable, and the append-only tablet log
+- [[CSE452/Case Studies/Reading Papers|Reading Papers]] — how to approach the research papers studied in this course
+
 ---
 
 ## Related Courses

@@ -21,4 +21,9 @@ We can think of this as arranging a string of 8 characters: $\uparrow \uparrow \
 ## Related
 
 - [[Overcounting]]
+- [[Permutation]]
 - [[Number of Subsets Formula|Combinations]]
+
+## Industry Standard Terms
+
+- **Path Counting** → "lattice path counting" / "monotone grid paths." Counts of right/up paths are exactly the binomial coefficients.

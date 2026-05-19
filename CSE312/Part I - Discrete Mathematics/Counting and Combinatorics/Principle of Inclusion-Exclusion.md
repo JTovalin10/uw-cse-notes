@@ -36,3 +36,8 @@ By PIE, combine these: $|A \cup B \cup C| = |A| + |B| + |C| - (|A \cap B| + |A \
 - [[Sum Rule]]
 - [[Complementary Counting]]
 - [[Possibilities with Restrictions]]
+- [[Union Bound]]
+
+## Industry Standard Terms
+
+- **Principle of Inclusion-Exclusion (PIE)** → "inclusion-exclusion principle" / "sieve principle." It is the exact counterpart of the probabilistic [[Union Bound]], which gives only an inequality.

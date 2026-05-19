@@ -1,5 +1,7 @@
 # CSE 311: Inference Rules for Quantifiers
 
+These **inference rules** extend [[CSE311/Part II - Formal Reasoning/Proof Techniques/Formal Proofs|formal proofs]] to formulas containing [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What are Quantifiers|quantifiers]]. As with the propositional rules, each rule either *introduces* a quantifier (building a quantified statement) or *eliminates* one (extracting a usable instance).
+
 #Definition **Intro $\exists$**:
 If we know $P(c)$ is true for some specific element $c$ in the domain, we can conclude $\exists x P(x)$.
 $$
@@ -27,6 +29,15 @@ $$
 
 ## Related
 
-- [[Formal Proofs]]
-- [[What are Quantifiers]]
-- [[Scope of Quantifiers]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Formal Proofs|Formal Proofs]]
+- [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What are Quantifiers|What are Quantifiers]]
+- [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/Scope of Quantifiers|Scope of Quantifiers]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Intro $\exists$ | Existential introduction / generalization |
+| Elim $\exists$ | Existential elimination / instantiation |
+| Intro $\forall$ | Universal generalization |
+| Elim $\forall$ | Universal instantiation |

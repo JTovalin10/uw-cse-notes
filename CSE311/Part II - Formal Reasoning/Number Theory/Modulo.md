@@ -1,13 +1,17 @@
 # CSE 311: Modular Arithmetic
 
+## Formal Definition
+
 #Definition **Modulo**: For $a, b, m \in \mathbb{Z}$ with $m > 0$, we write $a \equiv_m b$ to mean that $a$ and $b$ are **congruent modulo** $m$.
 
-Modulo is like a clock — whenever $b$ reaches $m$ it wraps back to $0$.
+## Simplified Explanation
+
+Modulo is like a clock — whenever a value reaches $m$ it wraps back to $0$. Two numbers are congruent mod $m$ if they land on the same spot on that clock.
 
 By the definition of congruence:
 $$a \equiv_m b \quad \Rightarrow \quad m \mid a - b \quad \text{(Definition of congruence)}$$
 
-Further, by the definition of [[Divides]], this means:
+Further, by the definition of [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Divides|Divides]], this means:
 $$m \mid a - b \quad \Rightarrow \quad a - b = mk, \quad \exists\, k \in \mathbb{Z}$$
 
 **Note**: When $b$ is negative, we add $m$ repeatedly until the result is positive.
@@ -24,6 +28,19 @@ Let $a, b, c, d$ and $m$ be integers with $m > 0$.
 - **Multiplication Property**: If $a \equiv_m b$ and $c \equiv_m d$, then $ac \equiv_m bd$.
 - **Transitivity**: If $a \equiv_m b$ and $b \equiv_m c$, then $a \equiv_m c$.
 
+Solving congruences of the form $ay \equiv_m b$ for $y$ requires a [[CSE311/Part II - Formal Reasoning/Number Theory/Extended Euclid|multiplicative inverse]], which is found with the Extended Euclidean Algorithm.
+
 ## Related
 
-[[Divides]] · [[Extended Euclid]] · [[N-Bit Integer Representation]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Divides|Divides]]
+- [[CSE311/Part II - Formal Reasoning/Number Theory/Division Theorem|Division Theorem]]
+- [[CSE311/Part II - Formal Reasoning/Number Theory/Extended Euclid|Extended Euclid]]
+- [[CSE311/Part II - Formal Reasoning/Number Theory/N-Bit Integer Representation|N-Bit Integer Representation]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Congruence ($a \equiv_m b$) | Modular equality |
+| $a \bmod m$ | Modulo operator / `a % m` |
+| Modular arithmetic | Clock arithmetic / arithmetic mod n |

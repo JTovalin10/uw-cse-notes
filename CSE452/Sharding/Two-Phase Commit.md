@@ -105,6 +105,11 @@ The originating group (Group 1) may commit its own half of the swap — writing 
 ## Two-Phase Commit
 
 **[[CSE452/Sharding/Transactions|Two-Phase Commit (2PC)]]** solves all five failure modes by ensuring that a cross-group operation either commits at **all** participating groups or at **none**. Every step in the 2PC protocol must itself reach consensus within its local Paxos cluster before taking effect — the Paxos log is the durability guarantee behind every 2PC state transition.
+- some node in the system is responsible for coordination (coordinator)
+	- also participates as it has data relevant to the transaction
+	- in DS labs it should always be the participant but in theory it doesn't always need to be
+- some other groups are called participants
+- some are just none
 
 ### Phase 1: Prepare
 
@@ -124,6 +129,8 @@ Once **all** participants have responded `Prepared`, the coordinator:
 2. Each participant writes the new value, then **releases the lock**.
 
 If **any** participant responded `Abort` (or timed out during Prepare), the coordinator sends `Abort` to all, and every participant releases its locks without making changes. This guarantees atomicity — no partial commits.
+- Why do we need to abort
+	- some key we need to lock is already locked
 
 ```mermaid
 sequenceDiagram

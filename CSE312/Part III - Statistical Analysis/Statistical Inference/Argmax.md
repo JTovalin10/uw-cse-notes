@@ -6,4 +6,9 @@ To find the argmax, take the derivative of $f(x)$ with respect to $x$, then solv
 
 ## Related
 
-[[Maximum Likelihood Estimation]]
+- [[Maximum Likelihood Estimation]]
+
+## Industry Standard Terms
+
+- **Argmax** → standard mathematical notation $\operatorname*{arg\,max}$; the input that maximizes a function, as opposed to "max," which is the output value.
+

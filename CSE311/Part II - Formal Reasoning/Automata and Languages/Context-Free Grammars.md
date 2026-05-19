@@ -2,7 +2,7 @@
 
 A **Context-Free Grammar (CFG)** is a set of substitution rules involving:
 - A finite set $V$ of **variables** that can be replaced.
-- An alphabet $\Sigma$ of **terminal symbols** that can't be replaced.
+- An [[CSE311/Part II - Formal Reasoning/Automata and Languages/Strings|alphabet]] $\Sigma$ of **terminal symbols** that can't be replaced.
 - One variable, usually $S$, designated as the **start symbol**.
 
 The substitution rules (or productions) for a variable $A$ are written as:
@@ -27,8 +27,19 @@ $$S \to (S) \mid SS \mid \varepsilon$$
 $$S \to SS \mid 0S1 \mid 1S0 \mid \varepsilon$$
 
 ## CFGs vs Regular Expressions
-Every language described by a Regular Expression has a CFG that recognizes it ($RE \subseteq CFG$). However, CFGs are strictly more powerful than REs. For example, binary palindromes and strings with equal numbers of 0s and 1s can be described by CFGs but cannot be described by any regular expression (they are not regular languages).
+Every language described by a [[CSE311/Part II - Formal Reasoning/Automata and Languages/Regular Expressions|regular expression]] has a CFG that recognizes it ($RE \subseteq CFG$). However, CFGs are strictly more powerful than REs. For example, binary palindromes and strings with equal numbers of 0s and 1s can be described by CFGs but cannot be described by any regular expression — they are not regular languages, so no [[CSE311/Part II - Formal Reasoning/Automata and Languages/Deterministic Finite Automata|DFA]] or [[CSE311/Part II - Formal Reasoning/Automata and Languages/Nondeterministic Finite Automata|NFA]] recognizes them either.
 
 ## Related
-- [[Regular Expressions]]
-- [[Strings]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Regular Expressions|Regular Expressions]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Strings|Strings]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Deterministic Finite Automata|Deterministic Finite Automata]]
+- [[CSE311/Part II - Formal Reasoning/Automata and Languages/Nondeterministic Finite Automata|Nondeterministic Finite Automata]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Context-Free Grammar (CFG) | Context-free grammar / Type-2 grammar |
+| Variable | Nonterminal symbol |
+| Production rule | Grammar rule / BNF rule |
+| Start symbol | Root nonterminal |

@@ -1,6 +1,6 @@
 # CSE 311: Scope of Quantifiers
 
-The **scope** of a quantifier determines which variables it binds and over what part of the formula it applies. Binding the same variable in different parts of a formula is not the same as binding it once across the whole formula.
+The **scope** of a [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What are Quantifiers|quantifier]] determines which variables it binds and over what part of the formula it applies. Binding the same variable in different parts of a formula is not the same as binding it once across the whole formula.
 
 $$\exists x(P(x) \land Q(x)) \quad \neq \quad (\exists x\, P(x)) \land (\exists x\, Q(x))$$
 
@@ -21,6 +21,15 @@ However, **order is important** for mixed quantifiers:
 
 ## Related
 
-- [[What are Quantifiers]]
-- [[What is a Predicate]]
-- [[Translating Predicates with Quantifiers]]
+- [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What are Quantifiers|What are Quantifiers]]
+- [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What is a Predicate|What is a Predicate]]
+- [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/Translating Predicates with Quantifiers|Translating Predicates with Quantifiers]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Inference Rules for Quantifiers|Inference Rules for Quantifiers]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Scope of a quantifier | Variable binding scope |
+| Bound variable | Bound / dummy variable |
+| Mixed quantifier order | Quantifier alternation |

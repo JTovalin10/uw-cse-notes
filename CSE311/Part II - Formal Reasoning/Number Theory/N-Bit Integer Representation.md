@@ -1,5 +1,7 @@
 # CSE 311: N-Bit Integer Representation
 
+An **n-bit integer representation** fixes how a finite block of $n$ bits encodes a whole number. Because only $2^n$ bit patterns exist, every scheme below is fundamentally an instance of [[CSE311/Part II - Formal Reasoning/Number Theory/Modulo|arithmetic modulo]] $2^n$.
+
 ## Signed Integer (Two's Complement)
 
 #Definition A **signed** $n$-bit integer uses **two's complement** representation and covers the range:
@@ -33,4 +35,15 @@ $$\texttt{10010} \quad \Rightarrow \quad \texttt{01101} + 1 \quad \Rightarrow \q
 
 ## Related
 
-[[Modulo]] · [[Divides]] · [[Boolean Algebra]]
+- [[CSE311/Part II - Formal Reasoning/Number Theory/Modulo|Modulo]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Divides|Divides]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Boolean Algebra|Boolean Algebra]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Two's complement | Two's complement (standard signed integer encoding) |
+| Flip-and-add-one | Two's complement negation |
+| Unsigned integer | `unsigned int` / `uint` |
+| Signed integer | `int` / signed integer type |

@@ -9,3 +9,9 @@ $$\mathbb{P}(E \cup F) = \mathbb{P}(E) + \mathbb{P}(F)$$
 
 - [[Sample Space and Events]]
 - [[Union Bound]]
+- [[Independence]]
+- [[Law of Total Probability]]
+
+## Industry Standard Terms
+
+- **Mutually Exclusive** → "disjoint events" / "incompatible events." A partition is a collection of mutually exclusive events that is also "collectively exhaustive."

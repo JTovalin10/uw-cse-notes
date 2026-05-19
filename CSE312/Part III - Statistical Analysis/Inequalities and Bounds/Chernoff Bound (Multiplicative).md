@@ -1,6 +1,6 @@
 # CSE 312: Chernoff Bound (Multiplicative)
 
-Let $X_1, X_2, \ldots, X_n$ be *independent* Bernoulli random variables. Let $X = \sum X_i$ and $\mu = \mathbb{E}[X]$. For any $0 \leq \delta \leq 1$:
+Let $X_1, X_2, \ldots, X_n$ be *[[Independence|independent]]* [[Bernoulli Distribution|Bernoulli]] random variables. Let $X = \sum X_i$ and $\mu = \mathbb{E}[X]$. For any $0 \leq \delta \leq 1$:
 $$\mathbb{P}(X \geq (1 + \delta)\mu) \leq e^{-\frac{\delta^2\mu}{3}}$$
 and
 $$\mathbb{P}(X \leq (1 - \delta)\mu) \leq e^{-\frac{\delta^2\mu}{2}}$$
@@ -27,4 +27,10 @@ $$P(E) = P(X < n(m - a)) + P(X > n(m + a))$$
 - [[Expectation]]
 - [[Hoeffding's Inequality]]
 - [[Markov Inequality]]
+- [[Binomial Distribution]]
 - [[Normal Random Variable]]
+
+## Industry Standard Terms
+
+- **Chernoff Bound** → standard term; a family of "exponential tail bounds" derived by applying [[Markov Inequality|Markov's inequality]] to the moment generating function $e^{sX}$.
+

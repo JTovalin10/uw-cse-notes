@@ -1,6 +1,6 @@
 # CSE 311: Relations
 
-A **relation** $R$ on a set $A$ is a set of ordered pairs $(a, b)$ where $a, b \in A$, i.e., $R \subseteq A \times A$.
+A **relation** $R$ on a [[CSE311/Part I - Mathematical Foundations/Sets and Relations/What is a Set|set]] $A$ is itself a set of ordered pairs $(a, b)$ where $a, b \in A$, i.e., $R \subseteq A \times A$ — a subset of the Cartesian product. Each property below is stated as a formal logical sentence using [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What are Quantifiers|quantifiers]].
 
 ## Properties of Relations
 
@@ -21,5 +21,15 @@ $$\forall a \in A\, ((a,a) \in R)$$
 
 ## Related
 
-- [[What is a Set]]
-- [[Functions]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/What is a Set|What is a Set]]
+- [[CSE311/Part I - Mathematical Foundations/Functions/Functions|Functions]]
+- [[CSE311/Part I - Mathematical Foundations/Predicates and Quantifiers/What are Quantifiers|What are Quantifiers]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Relation | Binary relation |
+| Relation composition ($R \circ R$) | Relational join / transitive step |
+| Reflexive + symmetric + transitive | Equivalence relation |
+| Reflexive + antisymmetric + transitive | Partial order |

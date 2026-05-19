@@ -1,5 +1,7 @@
 # CSE 311: Extended Euclidean Algorithm
 
+The **Extended Euclidean Algorithm** runs [[CSE311/Part II - Formal Reasoning/Number Theory/GCD|Euclid's algorithm]] forward to find the GCD, then back-substitutes to express that GCD as a combination of the inputs. Its main use is computing **multiplicative inverses** for [[CSE311/Part II - Formal Reasoning/Number Theory/Modulo|modular arithmetic]].
+
 ## Bézout's Theorem
 
 If $a$ and $b$ are positive integers, then there exist integers $s$ and $t$ such that:
@@ -11,16 +13,18 @@ Let $0 \le a, b < m$. Then $b$ is the **multiplicative inverse** of $a$ (modulo 
 $$ab \equiv_m 1$$
 
 Suppose $\gcd(a, m) = 1$. By Bézout's Theorem, there exist integers $s$ and $t$ such that $sa + tm = 1$.
-Taking modulo $m$ of both sides gives $sa \equiv_m 1$, which means $s$ is the multiplicative inverse of $a$ modulo $m$. We can compute these inverses using the Extended Euclidean Algorithm.
+Taking modulo $m$ of both sides gives $sa \equiv_m 1$, which means $s$ is the multiplicative inverse of $a$ modulo $m$. We can compute these inverses using the Extended Euclidean Algorithm. The algorithm has two phases: a **forward pass** of [[CSE311/Part II - Formal Reasoning/Number Theory/Division Theorem|division steps]] that reduces the pair down to a remainder of $1$, and a **backward pass** that substitutes each remainder back until $1$ is written in terms of the original $a$ and $m$.
 
 ## Algorithm
+
+### Standard Form
 
 #Definition **Extended Euclid** standard form:
 $$Ax \equiv_m B$$
 
 When we want to find the **multiplicative inverse** $y$ of $b \pmod{n}$, i.e. $b \cdot y \equiv_n 1$, the answer should satisfy $0 \leq y < n$.
 
-## Algorithm
+### Setting Up the Recurrence
 
 The recurrence is:
 $$\gcd(a, b) \Rightarrow \gcd(b,\ a \bmod b)$$
@@ -66,4 +70,17 @@ $$y = m \cdot k + n$$
 
 ## Related
 
-[[Modulo]] · [[Divides]] · [[N-Bit Integer Representation]]
+- [[CSE311/Part II - Formal Reasoning/Number Theory/Modulo|Modulo]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/Divides|Divides]]
+- [[CSE311/Part II - Formal Reasoning/Number Theory/GCD|GCD]]
+- [[CSE311/Part II - Formal Reasoning/Number Theory/Division Theorem|Division Theorem]]
+- [[CSE311/Part II - Formal Reasoning/Number Theory/N-Bit Integer Representation|N-Bit Integer Representation]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Extended Euclidean Algorithm | Extended Euclidean algorithm |
+| Bézout's Theorem | Bézout's identity |
+| Multiplicative inverse mod $m$ | Modular inverse |
+| Back-substitution | Back-substitution / extended GCD |

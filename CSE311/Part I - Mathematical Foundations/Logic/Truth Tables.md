@@ -1,5 +1,9 @@
 # CSE 311: Truth Tables
 
+A **truth table** enumerates every possible assignment of truth values to a proposition's variables and records the resulting value of the whole formula. It is the exhaustive tool used to classify [[CSE311/Part I - Mathematical Foundations/Logic/Tautologies|tautologies]], test [[CSE311/Part I - Mathematical Foundations/Logic/Logical Equivalence(s)|logical equivalences]], and derive [[CSE311/Part I - Mathematical Foundations/Logic/Normal Form|normal forms]].
+
+## Alternation Pattern
+
 For each column, use $2^{n-1}$ to determine the T/F placement, where $n$ is the column's position from the right (starting at 1).
 
 - Example: $a = 2^{2-1} = 2$, so T appears every 2 rows; $b = 2^{1-1} = 1$, so T alternates every row.
@@ -33,7 +37,16 @@ The **contrapositive** of a conditional has the same truth value as the original
 
 ## Related
 
-- [[Tautologies]]
-- [[Logical Equivalence(s)]]
-- [[Normal Form]]
-- [[Boolean Algebra]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Tautologies|Tautologies]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Logical Equivalence(s)|Logical Equivalence(s)]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Normal Form|Normal Form]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Boolean Algebra|Boolean Algebra]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Truth table | Truth table / function table |
+| Implication ($p \rightarrow q$) | Conditional / `if`-statement |
+| Premise / conclusion | Antecedent / consequent |
+| Vacuously true | Trivially true (empty/false premise) |

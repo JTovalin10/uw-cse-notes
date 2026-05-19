@@ -11,3 +11,9 @@ where $m, j, \ldots, z$ are the counts of each repeated element. This divides ou
 - [[Permutation]]
 - [[Factorial]]
 - [[Number of Subsets Formula]]
+- [[Path Counting]]
+
+## Industry Standard Terms
+
+- **Overcounting** correction → "permutations of a multiset" / "multinomial coefficient" $\binom{n}{m, j, \ldots, z}$.
+- The general principle of dividing out duplicates is the "division rule" or "overcounting principle."

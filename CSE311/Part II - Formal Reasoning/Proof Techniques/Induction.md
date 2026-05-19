@@ -1,6 +1,6 @@
 # CSE 311: Mathematical Induction
 
-**Mathematical induction** is a proof technique used to prove that a property $P(x)$ holds for all integers $x \geq m$.
+**Mathematical induction** is a [[CSE311/Part II - Formal Reasoning/Proof Techniques/Formal Proofs|proof]] technique used to prove that a property $P(x)$ holds for all integers $x \geq m$. It works like a chain of dominoes: prove the first case, then prove that each case forces the next, and all cases follow.
 
 **Template:**
 - Let $P(x)$ be ...
@@ -9,7 +9,7 @@
 - **Induction Step**: Show that $P(k+1)$ holds.
 - **Conclusion**: Since $k$ was an arbitrary value, $P(x)$ is true for all $x \geq m$.
 
-# Summation
+## Summation
 
 When doing induction on a summation, expand $P(k+1)$ by splitting off the last term:
 $$
@@ -17,7 +17,7 @@ $$
 $$
 This allows you to apply the induction hypothesis to $\sum_{i=0}^{k} i$ and simplify.
 
-# Production
+## Product
 
 When doing induction on a product, expand $P(k+1)$ by splitting off the last factor:
 $$
@@ -25,11 +25,11 @@ $$
 $$
 This allows you to apply the induction hypothesis to $\prod_{i=0}^{k} i$ and simplify.
 
-# Equivalence Induction
+## Equivalence Induction
 
 When doing induction to prove an inequality or equivalence, more careful algebraic manipulation is required.
 
-### Example:
+### Example
 
 $$ \text{Prove that for all integers } k \geq 4: k! > 2^k $$
 
@@ -69,8 +69,19 @@ $$ \text{Therefore: } (k+1)! > 2^{(k+1)} $$
 
 $$ \text{Since } P(4) \text{ is true and } P(k) \Rightarrow P(k+1) \text{ for all } k \geq 4, \text{ by the principle of mathematical induction, } P(k) \text{ is true for all integers } k \geq 4. $$
 
+When a recursive definition depends on more than one previous value, ordinary induction is not enough — use [[CSE311/Part II - Formal Reasoning/Proof Techniques/Strong Induction|strong induction]]. When the objects are elements of a recursively defined set rather than integers, use [[CSE311/Part II - Formal Reasoning/Proof Techniques/Structural Induction|structural induction]].
+
 ## Related
 
-- [[Strong Induction]]
-- [[Structural Induction]]
-- [[Formal Proofs]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Strong Induction|Strong Induction]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Structural Induction|Structural Induction]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Formal Proofs|Formal Proofs]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Mathematical induction | Weak / simple induction |
+| Base case | Base case |
+| Induction hypothesis | Inductive hypothesis (IH) |
+| Induction step | Inductive step |

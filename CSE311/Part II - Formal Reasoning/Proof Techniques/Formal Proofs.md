@@ -1,5 +1,7 @@
 # CSE 311: Formal Proof Rules
 
+A **formal proof** derives a conclusion by chaining together **inference rules** — small, mechanically-checkable steps. Each rule below either *eliminates* a connective (extracting information from a known fact) or *introduces* one (building a new fact). These are the propositional rules; the quantifier versions appear in [[CSE311/Part II - Formal Reasoning/Proof Techniques/Inference Rules for Quantifiers|Inference Rules for Quantifiers]].
+
 #Definition **Elim Or**:
 Since we know $A \lor B$ is true, we determine which disjunct holds.
 $$
@@ -82,8 +84,17 @@ $$
 
 ## Related
 
-- [[Logical Equivalence(s)]]
-- [[Induction]]
-- [[Proof by Calculation]]
-- [[Formal and Informal]]
-- [[Inference Rules for Quantifiers]]
+- [[CSE311/Part I - Mathematical Foundations/Logic/Logical Equivalence(s)|Logical Equivalence(s)]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Induction|Induction]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Proof by Calculation|Proof by Calculation]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Formal and Informal|Formal and Informal]]
+- [[CSE311/Part II - Formal Reasoning/Proof Techniques/Inference Rules for Quantifiers|Inference Rules for Quantifiers]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Inference rule | Rule of inference / natural deduction rule |
+| Modus Ponens | Implication elimination |
+| Reductio Ad Absurdum | Proof by contradiction |
+| Ex Falso Quodlibet | Principle of explosion |

@@ -10,3 +10,7 @@ $$3 + 5 = 8$$
 
 - [[Product Rule]]
 - [[Principle of Inclusion-Exclusion]]
+
+## Industry Standard Terms
+
+- **Sum Rule** → "Addition Principle" / "Rule of Sum"

@@ -1,6 +1,6 @@
 # CSE 311: Compound Types
 
-Compound types combine simpler types to form new ones. The three fundamental compound types are **union**, **tuple**, and **record**.
+**Compound types** combine simpler [[CSE311/Part I - Mathematical Foundations/Data Structures/Data Types|data types]] to form new ones. The three fundamental compound types are **union**, **tuple**, and **record**.
 
 ---
 
@@ -47,7 +47,16 @@ In summary: a tuple `("Alice", 30)` and a record `{name: "Alice", age: 30}` hold
 
 ## Related
 
-- [[Data Types]]
-- [[Inductive Data Types]]
-- [[Functions]]
-- [[What is a Set]]
+- [[CSE311/Part I - Mathematical Foundations/Data Structures/Data Types|Data Types]]
+- [[CSE311/Part I - Mathematical Foundations/Data Structures/Inductive Data Types|Inductive Data Types]]
+- [[CSE311/Part I - Mathematical Foundations/Functions/Functions|Functions]]
+- [[CSE311/Part I - Mathematical Foundations/Sets and Relations/What is a Set|What is a Set]]
+
+## Industry Standard Terms
+
+| CSE 311 Term | Industry-Standard Equivalent |
+| --- | --- |
+| Union type | Sum type / tagged union / variant |
+| Tuple type | Product type / fixed-length array |
+| Record type | Struct / object / named tuple |
+| Disjoint union (`|`) | Algebraic data type (ADT) variant |

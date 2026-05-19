@@ -1,10 +1,14 @@
 # CSE 312: Central Limit Theorem (CLT)
 
-The sum of any independent random variables approaches a normal distribution:
+The sum of any [[Independence|independent]] [[Random Variables|random variables]] approaches a [[Normal Random Variable|normal distribution]]:
 
 $$Y_n = \frac{X_1 + X_2 + \ldots + X_n - n\mu}{\sigma \sqrt{n}}$$
 
-As $n \rightarrow \infty$, the CDF of $Y_n$ converges to the CDF of $N(0, 1)$.
+As $n \rightarrow \infty$, the [[Cumulative Distribution Function|CDF]] of $Y_n$ converges to the CDF of $N(0, 1)$.
+
+### Simplified Explanation
+
+No matter what shape the individual random variables have, once you add up enough of them and standardize, the result looks like a bell curve. This is why the normal distribution appears everywhere: most measured quantities are themselves sums of many small independent effects.
 
 When $Y_n = 0$ we can use **continuity correction**:
 
@@ -22,4 +26,13 @@ We want to use simple distributions (non-sum) to find the variance, then apply t
 
 ## Related
 
-[[Normal Random Variable]] · [[Expectation]] · [[Variance]] · [[Confidence Intervals]] · [[Hoeffding's Inequality]]
+- [[Normal Random Variable]]
+- [[Expectation]]
+- [[Variance]]
+- [[Confidence Intervals]]
+- [[Hoeffding's Inequality]]
+
+## Industry Standard Terms
+
+- **Central Limit Theorem (CLT)** → standard probability term; the "classical CLT" (Lindeberg–Lévy) covers i.i.d. variables. The half-unit shift used for discrete sums is the "continuity correction."
+

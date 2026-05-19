@@ -10,4 +10,9 @@ Each term in the expansion picks $i$ factors of $x$ and $n-i$ factors of $y$ fro
 
 - [[Number of Subsets Formula]]
 - [[Symmetry of Combination]]
+- [[Pascal's Rule]]
 - [[Product Rule]]
+
+## Industry Standard Terms
+
+- **Binomial Theorem** → standard name across mathematics; the $\binom{n}{i}$ values are called "binomial coefficients."
