@@ -1,1 +1,5 @@
-**[[CSE341/Definitions/Part5/Struct|Struct]]**: A data structure that groups multiple values together, typically associated with a type name (tag) to distinguish it from other structs or data types. In [[CSE341/Trefoil Advanced/Structs and Pattern Matching|Trefoil]], structs provide a way to define custom data types with constructors, predicates, and accessors.
+# CSE341: Struct
+
+A data structure that groups multiple values together, typically associated with a type name (tag) to distinguish it from other structs or data types. In Trefoil, structs provide a way to define custom data types with constructors, predicates, and accessors, implemented by desugaring into tagged pairs.
+
+See: [[CSE341/Trefoil Advanced/Structs and Pattern Matching|Structs and Pattern Matching]]

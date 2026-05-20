@@ -1,8 +1,9 @@
-# grep
+# CSE391: grep
 
-**[[grep]]**: Searches for patterns (regular expressions) in files or standard input. It is one of the most powerful and widely used tools in the command line for filtering data.
+**grep**: Searches for patterns ([[CSE391/Regular Expressions/Regex Basics|regular expressions]]) in files or standard input. It is one of the most powerful and widely used tools in the command line for filtering data.
 
 ## Common Flags
+
 | Flag | Description |
 | :--- | :--- |
 | `-i`, `--ignore-case` | Case-insensitive search. |
@@ -17,50 +18,61 @@
 
 ## Usage Examples
 
-### 1. Simple search
+### (1) Simple search
 Find all lines containing "TODO" in `task.txt`.
 ```bash
 grep "TODO" task.txt
 ```
 
-### 2. Case-insensitive search
+### (2) Case-insensitive search
 Find "error", "Error", or "ERROR" in a log file.
 ```bash
 grep -i "error" server.log
 ```
 
-### 3. Invert search (Exclude patterns)
+### (3) Invert search (exclude patterns)
 Find all lines that DO NOT contain "success".
 ```bash
 grep -v "success" results.csv
 ```
 
-### 4. Recursive search across files
+### (4) Recursive search across files
 Find where a function is used in a large project folder.
 ```bash
 grep -r "myFunction" src/
 ```
 
-### 5. Count matches
+### (5) Count matches
 See how many times "login" appears in the auth log.
 ```bash
 grep -c "login" /var/log/auth.log
 ```
 
-### 6. Search with line numbers
+### (6) Search with line numbers
 Identify where a pattern occurs for easy editing.
 ```bash
 grep -n "bug" script.sh
 ```
 
-### 7. Find whole words only
+### (7) Find whole words only
 Only matches "cat", but not "concatenate".
 ```bash
 grep -w "cat" document.txt
 ```
 
-### 8. Use context around matches
+### (8) Use context around matches
 See 3 lines of code before and after a specific keyword.
 ```bash
 grep -C 3 "CRITICAL" system.log
 ```
+
+## Related
+- [[CSE391/Regular Expressions/Regex Basics|Regex Basics and Syntax]]
+- [[CSE391/Regular Expressions/Regex Tools|Regex Tools and Applications]]
+- [[CSE391/Sed/Sed Commands|sed Command]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| grep | GNU grep — pattern searching tool |
+| ERE | Extended Regular Expression (POSIX ERE, enabled via `-E`) |

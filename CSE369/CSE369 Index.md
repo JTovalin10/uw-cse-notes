@@ -1,16 +1,34 @@
-# CSE369: Introduction to Digital Design
+# CSE369 — Introduction to Digital Design
 
-This course covers the design and implementation of digital systems, ranging from basic combinational logic to complex sequential circuits and CPU components.
+Design and implementation of digital systems, from basic combinational logic and Boolean algebra to sequential circuits, finite state machines, and programmable hardware (FPGAs).
 
-## Topics Covered
-- **[[CSE369/Combinational Logic|Combinational Logic]]**: Logic gates, Boolean algebra, and minimization techniques.
-- **[[CSE369/Verilog Fundamentals|Verilog Fundamentals]]**: Hardware Description Language (HDL) for circuit design.
-- **[[CSE369/Karnaugh Maps|Karnaugh Maps]]**: Graphical tool for logic simplification.
-- **[[CSE369/Finite State Machines|Finite State Machines (FSM)]]**: Designing sequential logic with states and transitions.
-- **[[CSE369/Timing Constraints|Timing Constraints]]**: Setup time, hold time, and clock frequency.
-- **[[CSE369/Building Blocks|Building Blocks]]**: Multiplexers, Encoders, Decoders, and ALUs.
-- **[[CSE369/Memory and FPGAs|Memory and FPGAs]]**: ROM, RAM, and Field-Programmable Gate Arrays.
+---
 
-## Related
-- [[CSE351/Number Representation|CSE351: Number Representation]]
-- [[CSE351/x86-64 Assembly|CSE351: x86-64 Assembly]]
+## Topics
+
+### Combinational Logic
+- [[CSE369/Combinational Logic]] — logic gates, Boolean algebra, Sum-of-Products, truth tables, and propagation delay
+
+### Verilog Fundamentals
+- [[CSE369/Verilog Fundamentals]] — hardware description language: modules, `assign`, `always_comb`, `always_ff`, blocking vs. non-blocking assignments
+
+### Karnaugh Maps
+- [[CSE369/Karnaugh Maps]] — graphical minimization of Boolean expressions using Gray-code adjacency and grouping rules
+
+### Finite State Machines
+- [[CSE369/Finite State Machines]] — Moore vs. Mealy machines, state diagrams, state encoding, next-state and output logic
+
+### Timing Constraints
+- [[CSE369/Timing Constraints]] — setup time, hold time, clock-to-Q delay, critical path, and metastability
+
+### Building Blocks
+- [[CSE369/Building Blocks]] — multiplexers, decoders, encoders, half/full/ripple-carry adders, and the ALU
+
+### Memory and FPGAs
+- [[CSE369/Memory and FPGAs]] — ROM, SRAM, DRAM, FPGA architecture (LUTs, interconnect, I/O blocks), and the synthesis-to-bitstream workflow
+
+---
+
+## Related Courses
+- [[CSE351/Number Representation/Binary and Hexadecimal]] — binary and hexadecimal encoding that all digital logic operates on
+- [[CSE351/Number Representation/Two's Complement]] — signed integer representation used in ALU arithmetic

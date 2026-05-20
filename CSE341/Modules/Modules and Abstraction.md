@@ -1,8 +1,8 @@
-# Course: Modules and Abstraction
+# CSE341: Modules and Abstraction
 
 As software grows, managing complexity requires more than just functions. OCaml's **[[CSE341/Definitions/Part3/Module|Module]] system** provides powerful tools for namespace management and implementation hiding.
 
-## Structures and [[CSE341/Definitions/Part3/Module|Modules]]
+## Structures and Modules
 
 A **structure** is a sequence of bindings. You define a module using the `module` keyword:
 
@@ -13,17 +13,19 @@ module MyMathLib = struct
 end
 ```
 
-Accessing bindings is done via dot notation: `MyMathLib.fact 5`. 
+Accessing bindings is done via dot notation: `MyMathLib.fact 5`.
 
-### Implicit [[CSE341/Definitions/Part3/Module|Modules]]
-In OCaml, every file `foo.ml` implicitly defines a module named `Foo`. If a corresponding `foo.mli` file exists, it acts as the module's [[CSE341/Definitions/Part3/Signature|Signature]].
+### Implicit Modules
 
-## [[CSE341/Definitions/Part3/Signature|Signatures]] and Implementation Hiding
+In OCaml, every file `foo.ml` implicitly defines a module named `Foo`. If a corresponding `foo.mli` file exists, it acts as the module's **[[CSE341/Definitions/Part3/Signature|Signature]]**.
+
+## Signatures and Implementation Hiding
 
 A **[[CSE341/Definitions/Part3/Signature|Signature]]** (or module type) is the "type" of a module. It defines which components (types, values, exceptions) are visible to clients of the module.
 
 ### Hiding Bindings
-By omitting a binding from a signature, you make it **private** to the module. 
+
+By omitting a binding from a signature, you make it **private** to the module.
 
 ```ocaml
 module type MATHLIB = sig
@@ -38,6 +40,7 @@ end
 ```
 
 ### Abstract Data Types (ADTs)
+
 The most powerful use of signatures is hiding the **definition** of a type. This creates an **Abstract Data Type**.
 
 ```ocaml
@@ -55,11 +58,14 @@ module Positive : POSITIVE = struct
   let add a b = a + b
 end
 ```
+
 **Why this is useful**:
-1.  **Invariants**: The `Positive` module ensures that any value of type `t` is actually positive because the only way to create a `t` is through `of_int`.
-2.  **Flexibility**: You can change the implementation of `type t` (e.g., from `int` to `float`) without breaking any client code, as long as the signature remains the same.
+
+1. **Invariants**: The `Positive` module ensures that any value of type `t` is actually positive because the only way to create a `t` is through `of_int`.
+2. **Flexibility**: You can change the implementation of `type t` (e.g., from `int` to `float`) without breaking any client code, as long as the signature remains the same.
 
 ## Example: Non-Empty Lists
+
 Implementing a non-empty list structure shows how different implementations can satisfy the same signature.
 
 ```ocaml
@@ -87,8 +93,34 @@ module NelC : NONEMPTYLIST = struct
 end
 ```
 
+```mermaid
+graph TD
+    subgraph Signature ["Signature (Interface)"]
+        SIG["module type NONEMPTYLIST<br>type 'a t<br>val single, hd, len"]
+    end
+    subgraph ImplA ["Implementation A"]
+        IA["type 'a t = 'a * 'a list"]
+    end
+    subgraph ImplC ["Implementation C"]
+        IC["type 'a t = Single of 'a | Cons of 'a * 'a t"]
+    end
+    SIG -->|"satisfied by"| IA
+    SIG -->|"satisfied by"| IC
+    CLIENT["Client Code"] -->|"only sees Signature"| SIG
+```
+
 ## Related
+
 - [[CSE341/Definitions/Part3/Module|Definition: Module]]
 - [[CSE341/Definitions/Part3/Signature|Definition: Signature]]
-- [[CSE333/C++ OOP/C++ Classes|Cross-course: Classes and Encapsulation]]
-- [[CSE332/ADT and Design/Abstract Data Type (ADT)|Cross-course: Abstract Data Types]]
+- [[CSE341/Type Systems/Type Inference|Type Inference]]
+
+## Industry Standard Terms
+
+| Course Term | Industry/Standard Term |
+| :--- | :--- |
+| Module | Module / Namespace / Package |
+| Signature (Module Type) | Interface / Protocol / API Contract |
+| Abstract Data Type (ADT) | Abstract Data Type / Opaque Type |
+| Implementation Hiding | Encapsulation / Information Hiding |
+| `.mli` file | Header File / Interface File |

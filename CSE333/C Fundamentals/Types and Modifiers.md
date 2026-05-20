@@ -1,8 +1,9 @@
-# CSE 333: Types and Modifiers
+# CSE333: Types and Modifiers
 
-C has a set of primitive types with sizes that can vary depending on the architecture (32-bit vs. 64-bit).
+C has a set of **primitive types** with sizes that can vary depending on the architecture (32-bit vs. 64-bit).
 
 ## Primitive Types
+
 | C Data Type | 32-bit Size | 64-bit Size | `printf` format |
 |-------------|-------------|-------------|-----------------|
 | **char** | 1 byte | 1 byte | `%c` |
@@ -17,17 +18,26 @@ C has a set of primitive types with sizes that can vary depending on the archite
 | **pointer** | 4 bytes | 8 bytes | `%p` |
 
 ## Modifiers
+
 - **signed** / **unsigned**: Determines if the type can represent negative numbers.
-- **short** / **long**: Influences the precision/range of the type.
+- **short** / **long**: Influences the precision and range of the type.
 
 ## C99 Extended Integer Types
-To solve the ambiguity of type sizes (like `long int`), C99 introduced `<stdint.h>` which provides types with guaranteed widths:
+
+To solve the ambiguity of type sizes (like `long int`), C99 introduced `<stdint.h>`, which provides types with guaranteed widths:
+
 - `int8_t`, `int16_t`, `int32_t`, `int64_t` (signed)
 - `uint8_t`, `uint16_t`, `uint32_t`, `uint64_t` (unsigned)
 
-It is recommended to use these **extended types** in most CSE 333 code for clarity and safety.
+It is recommended to use these **extended types** in most CSE333 code for clarity and safety. See [[CSE333/Memory Management/Data Type Sizes|Data Type Sizes]] for a concise size reference table.
 
 ## Related
-- [[Introduction to C]]
-- [[Memory Management/C Memory Model|C Memory Model]]
-- [[CSE333/Memory Management/Data Type Sizes]]
+
+- [[CSE333/C Fundamentals/Introduction to C|Introduction to C]]
+- [[CSE333/Memory Management/C Memory Model|C Memory Model]]
+- [[CSE333/Memory Management/Data Type Sizes|Data Type Sizes]]
+
+## Industry Standard Terms
+
+- **`<stdint.h>` fixed-width integers** — Universally used in embedded systems and systems software where portability requires guaranteed bit widths
+- **`size_t`** — The canonical unsigned type for sizes and counts; always use it with `sizeof()` and memory allocation functions

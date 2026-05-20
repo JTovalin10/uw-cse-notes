@@ -1,8 +1,9 @@
-# Unix Permissions
+# CSE391: Unix Permissions (Symbolic and Octal)
 
 Unix permissions define who can do what with a file or directory. These are visible when running `ls -l`.
 
 ## Permission String Structure
+
 A permission string looks like `-rwxr-xr--`:
 - **Type (1st char):** `-` for file, `d` for directory, `l` for symbolic link.
 - **User/Owner (chars 2-4):** `rwx`
@@ -10,6 +11,7 @@ A permission string looks like `-rwxr-xr--`:
 - **Others (chars 8-10):** `r--`
 
 ### Action Types Breakdown
+
 | Permission | On a File | On a Directory |
 | :--- | :--- | :--- |
 | **r** (read) | View the file's content. | List the files inside (e.g., `ls`). |
@@ -19,9 +21,11 @@ A permission string looks like `-rwxr-xr--`:
 ---
 
 ## Modifying Permissions (`chmod`)
+
 The `chmod` (change mode) command is used to modify these settings.
 
-### 1. Symbolic (Letter) Mode
+### Symbolic (Letter) Mode
+
 `chmod [who][action][permission] file`
 - **Who:** `u` (user), `g` (group), `o` (others), `a` (all).
 - **Action:** `+` (add), `-` (remove), `=` (set exactly).
@@ -38,12 +42,21 @@ The `chmod` (change mode) command is used to modify these settings.
   chmod a=r public_note.txt
   ```
 
-### 2. Octal (Numeric) Mode
+### Octal (Numeric) Mode
+
 `chmod NNN file`
+
 Each digit represents one of the three "who" categories (User, Group, Others). The digit is calculated by summing the values of the permissions:
-- **4**: Read (r)
-- **2**: Write (w)
-- **1**: Execute (x)
+
+### Formal Definition
+The octal permission value for a single category is:
+
+$\text{value} = (r \times 4) + (w \times 2) + (x \times 1)$
+
+where $r$, $w$, $x$ are each 1 if the permission is granted and 0 if not.
+
+### Simplified Explanation
+Assign point values — read = 4, write = 2, execute = 1 — and add up which ones you want to grant. A score of 7 means all three; 6 means read+write only.
 
 | Sum | Permissions | Description |
 | :--- | :--- | :--- |
@@ -62,6 +75,7 @@ Each digit represents one of the three "who" categories (User, Group, Others). T
 ---
 
 ## Recursive Modification
+
 Use the `-R` flag to apply changes to a directory and all its contents (subfolders and files).
 ```bash
 chmod -R 755 project_folder/
@@ -70,12 +84,23 @@ chmod -R 755 project_folder/
 ---
 
 ## Changing Ownership (`chown` and `chgrp`)
+
 While `chmod` changes *what* can be done, these commands change *who* owns the file.
 - **chown (change owner):** `chown username file.txt`
 - **chgrp (change group):** `chgrp groupname file.txt`
 - **Both at once:** `chown username:groupname file.txt`
 
-## Related/See-also
-- [[The PATH Variable\|The PATH Variable]]
-- [[Shell Customization\|Shell Customization]]
-- [[Linux Fundamentals/Commands/ls\|ls Command]]
+## Related
+- [[CSE391/Users Groups and Permissions/The PATH Variable|The PATH Variable]]
+- [[CSE391/Users Groups and Permissions/Shell Customization|Shell Customization]]
+- [[CSE391/Linux Fundamentals/Commands/ls|ls Command]]
+- [[CSE391/Linux Fundamentals/Commands/mkdir|mkdir — -m flag for permissions on creation]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| chmod | `chmod` — change file mode bits |
+| chown | `chown` — change file owner and group |
+| chgrp | `chgrp` — change group ownership |
+| Octal permissions | POSIX file permission octal notation |
+| Permission string | File mode / mode bits |

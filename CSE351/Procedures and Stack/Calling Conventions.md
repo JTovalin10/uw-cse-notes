@@ -1,19 +1,19 @@
 # CSE351: x86-64 Calling Conventions
 
-**Calling conventions** are established rules for passing data and control between procedures.
+**Calling conventions** are the established rules that govern how control and data are passed between procedures. They enable separately compiled modules — including libraries written in different languages — to interoperate correctly. x86-64 Linux follows the **System V AMD64 ABI**.
 
 ---
 
 ## Terminology
 
-- **Caller:** Procedure doing the calling
-- **Callee:** Procedure being called
+- **Caller:** The procedure that initiates the call.
+- **Callee:** The procedure being called.
 
 ---
 
 ## Return Address
 
-Since procedures can be called from multiple locations, we store where to return after completion. The `call` instruction pushes the address of the **next instruction** as the return address.
+Because a procedure can be called from many different sites in the program, execution must return to the correct location after each call. The `call` instruction automatically pushes the address of the **next instruction** (the instruction immediately after `call`) onto the stack as the return address. The `ret` instruction pops this address back into `%rip`.
 
 ---
 
@@ -24,8 +24,8 @@ call label
 ```
 
 **Steps:**
-1. Push return address onto stack
-2. Update `%rip` to label's address
+1. Push the return address (address of the instruction following `call`) onto the stack.
+2. Update `%rip` to the address of `label`.
 
 ---
 
@@ -36,16 +36,18 @@ ret
 ```
 
 **Steps:**
-1. Pop return address from stack
-2. Update `%rip` to popped address
+1. Pop the return address from the top of the stack.
+2. Update `%rip` to the popped address.
 
-**Critical:** `%rsp` must point to the return address before `ret`!
+**Critical:** `%rsp` must point exactly to the return address before `ret` executes. Any mismatch causes execution to jump to the wrong location — a common source of bugs in hand-written assembly and the target of [[CSE351/Security/Buffer Overflow|buffer overflow]] attacks.
 
 ---
 
 ## Argument Passing
 
 ### First 6 Arguments (Registers)
+
+Arguments are passed in dedicated registers in a fixed order. Using registers avoids the cost of memory writes for the common case of six or fewer arguments.
 
 | Argument | Register | Mnemonic |
 |:---|:---|:---|
@@ -58,17 +60,17 @@ ret
 
 **Memory aid:** "Diane's Silk Dress Cost $8.9"
 
-### Arguments 7+ (Stack)
+### Arguments 7 and Beyond (Stack)
 
-Pushed in **reverse order** (7th argument closest to return address).
+Additional arguments are pushed onto the stack in **reverse order** so that argument 7 is at the lowest address (closest to `%rsp` at the call site), immediately above the return address.
 
 ---
 
 ## Return Value
 
-- **Location:** `%rax` register
-- **Size limit:** 8 bytes
-- **Large values:** Return pointer to data in `%rax`
+- **Location:** `%rax` register.
+- **Size limit:** 8 bytes (a single 64-bit value or pointer).
+- **Large values:** Return a pointer to the data in `%rax`; the data itself lives in the caller's stack or a caller-allocated buffer.
 
 ---
 
@@ -79,7 +81,7 @@ func(a, b, c, d, e, f, g, h);
 ```
 
 ```assembly
-movq h, (%rsp)          # 8th argument
+movq h, (%rsp)          # 8th argument (pushed first, at lowest address)
 movq g, 8(%rsp)         # 7th argument
 movq a, %rdi            # 1st argument
 movq b, %rsi            # 2nd argument
@@ -92,7 +94,32 @@ call func
 
 ---
 
+```mermaid
+flowchart LR
+    A["Caller sets up args 1-6 in registers"] --> B["Caller pushes args 7+ on stack"]
+    B --> C["call: push return addr, jump to callee"]
+    C --> D["Callee executes"]
+    D --> E["Callee places return value in %rax"]
+    E --> F["ret: pop return addr, jump back to caller"]
+```
+
+---
+
 ## Related
+
 - [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
 - [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
 - [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[CSE351/Security/Buffer Overflow|Buffer Overflow]]
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|:---|:---|
+| Calling conventions | ABI (Application Binary Interface); System V AMD64 ABI (Linux/macOS); Microsoft x64 ABI (Windows) |
+| Return address | Return address; link register (in RISC architectures) |
+| Argument registers (`%rdi`–`%r9`) | Parameter registers; argument-passing registers |
+| Return value in `%rax` | Return value register; accumulator |
+| Arguments 7+ on stack | Stack-passed arguments; memory arguments |

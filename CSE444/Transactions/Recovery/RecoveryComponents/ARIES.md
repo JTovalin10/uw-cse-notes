@@ -77,17 +77,62 @@ When the database restarts after a crash, it performs recovery in three distinct
 ### 2. Redo Phase (Repeating History)
 **Main Principle**: Replay history — restore the database to the exact state it was in at the moment of the crash, including the in-progress work of transactions that will ultimately be rolled back.
 - Process the log **forward**, starting from `firstLSN`.
-- Re-apply every update record sequentially. Redo actions are **not** themselves recorded in the log.
-- Uses the Dirty Page Table as an optimization: skip redo for a page if its on-disk `pageLSN` is already greater than or equal to the log record's LSN (the change already made it to disk before the crash).
+- Read every update record sequentially. Redo actions are **not** themselves recorded in the log.
+- NEEDS Dirty Page Table: skip redo for a page if its on-disk `pageLSN` is already greater than or equal to the log record's LSN (the change already made it to disk before the crash).
+- if we crash here just try again, REDO is idempotent
+### Redo Phase: Details
+For each log entry record LSN: `<T, P, u, v>`
+- redo the action P = v and WRITE(P)
+- Only redo actions that need to be redone
+- If P is not in the Dirty Page Table, then no update
+- if recLSN > LSN, no update
+- Read page from disk: if pageLSN >= LSN then no update
+- Otherwise perform update
+
 
 ### 3. Undo Phase
+Main principle: logical undo
+- Start from end of log and move backwards
+- Read only affected log entries
+- UNDO is not idempotent
+- Solution: log the UNDO's as special log entries: **Compensating Log Records (CLR)**
+	- Records changes done during UNDO
+	- Only written during this phase
+- CLRs are redone but never undone
+- Selectively undo the correct transaction
+- Jump from physical redo to a logical undo, where we identify which specific changes (pages and tuples) need to be undone and only undo those
 The goal is to roll back the changes of all "loser" transactions identified in the Analysis phase.
 - **Action**: Scans the log backward from the end.
 - **Compensation Log Records (CLR)**: For every undo action, ARIES writes a CLR to the log.
 - **Why CLRs?**: They ensure **Idempotence**. If the system crashes *during* recovery, the CLRs tell the next recovery attempt that these undos have already been performed, preventing the system from re-undoing an undo.
+## CLR
+
+While ToUndo is not empty:
+- Choose the most recent LSN in ToUndo
+- If LSN = regular record `<T, P, u, v>`
+	- Write a CLR where `CLR.undoNextLSN = LSN.prevLSN`
+	- Undo v
+- If LSN = CLR record
+	- Don't undo
+- If `CLR.undoNextLSN` is not null, insert it in ToUndo; otherwise, write `<END>` to the log
+
+![[CSE444/Screenshots/CLR Part 1.png]]
+![[CSE444/Screenshots/CLR Part 2.png]]
+
+### Issues
+- We could unplay history the same way we replay history. However, we cannot do this selectively for one transaction that wants to roll back.
+- Reason 1:
+	- TXN T1 updates one record on page X
+	- TXN T2 updates another record on the same page X
+	- TXN T2 commits
+	- TXN T1 wants to ROLLBACK, but we cannot isolate only T1's changes on page X
+- Reason 2: indexes — for similar reasons, undoing a single transaction's index changes in isolation is not straightforward
+- Explanation: these constraints limit our abstract model and require the CLR mechanism described above
 
 ## Idempotence
 An operation is **Idempotent** if $f(f(x)) = f(x)$. In the context of recovery, this means that if you run the recovery process once, twice, or ten times (due to repeated crashes), the final state of the database is the same. This is achieved through physical/physiological logging and CLRs.
+
+## UNDO/REDO Logging
 
 ## Related
 - [[CSE444/Transactions/Recovery/Recovery|Recovery and Logging (Fundamentals)]]

@@ -1,46 +1,65 @@
-## How Static Dispatch Actually Works
+# CSE333: Static Dispatch
 
-Static dispatch is simpler and more direct than dynamic dispatch:
+**Static dispatch** is the resolution of a function call at **compile-time** based on the declared (static) type of the pointer or reference — as opposed to [[CSE333/C++ OOP/Inheritance|dynamic dispatch]], which resolves at runtime based on the actual object type.
 
-### At Compile Time:
+## How Static Dispatch Works
 
-- The compiler identifies which functions are non-virtual
-- For each function call, the compiler determines exactly which implementation to use based on the declared type of the pointer/reference
-- The compiler generates a direct function call instruction with the target address
-- No vtable or vptr is involved for these calls
+### At Compile Time
 
-### At Runtime:
+- The compiler identifies which functions are non-virtual.
+- For each non-virtual function call, it determines exactly which implementation to use based on the **declared type** of the pointer or reference.
+- The compiler generates a **direct call instruction** with the target function's address embedded in the binary.
+- No vtable or vptr is consulted for these calls.
 
-- When a non-virtual function is called:
-    1. The program jumps directly to the pre-determined function address
-    2. No lookup or indirection occurs
-    3. The same function is always called regardless of the actual object type
+### At Runtime
 
-In a code example:
+- When a non-virtual function is called, the program jumps directly to the pre-determined function address.
+- No lookup or indirection occurs.
+- The same function is always called regardless of the actual object type at that address.
 
-```c++
+## Code Example
+
+```cpp
 class Base {
-  void Speak() {...}  // Non-virtual
-}
+ public:
+  void Speak() { /* Base implementation */ }  // Non-virtual
+};
+
 class Sub : public Base {
-  void Speak() {...}  // Hides base version, not an override
-}
+ public:
+  void Speak() { /* Sub implementation */ }  // Hides base version, does NOT override
+};
 
 Base* ptr = new Sub();
-ptr->Speak();  // Always calls Base::Speak() regardless of actual object
+ptr->Speak();  // Always calls Base::Speak() regardless of actual object type
 ```
 
 With static dispatch:
 
-- The compiler resolves `ptr->Speak()` to `Base::Speak()` during compilation
-- It generates a direct call to that specific function
-- Even though `ptr` points to a `Sub` object, `Base::Speak()` will be called
-- No runtime type checking or function lookup occurs
+- The compiler resolves `ptr->Speak()` to `Base::Speak()` during compilation because `ptr` is declared as `Base*`.
+- It generates a direct call to that specific function.
+- Even though `ptr` points to a `Sub` object, `Base::Speak()` is called — `Sub::Speak()` is never invoked through this pointer.
 
-This is why static dispatch is more efficient but less flexible than dynamic dispatch - the decision is "hardcoded" at compile time rather than determined at runtime.
+## Static vs. Dynamic Dispatch Trade-offs
+
+| Property | Static Dispatch | Dynamic Dispatch |
+| :--- | :--- | :--- |
+| **Resolution time** | Compile-time | Runtime |
+| **Performance** | Faster (direct call) | Slower (vtable lookup) |
+| **Flexibility** | Fixed to declared type | Correct for actual type |
+| **Enabling mechanism** | Default (non-virtual) | `virtual` keyword |
+
+Static dispatch is more efficient but less flexible — the decision is "hardcoded" at compile-time rather than determined at runtime based on the actual object.
 
 ## Related
-- [[Inheritance]]
-- [[C++ Classes]]
-- [[Virtual table]]
-- [[C++ Fundamentals/C++ Introduction|C++ Introduction]]
+
+- [[CSE333/C++ OOP/Inheritance|Inheritance]]
+- [[CSE333/C++ OOP/C++ Classes|C++ Classes]]
+- [[CSE333/C++ OOP/Virtual Table|Virtual Table]]
+- [[CSE333/C++ Fundamentals/C++ Introduction|C++ Introduction]]
+
+## Industry Standard Terms
+
+- **Static dispatch** — Also called "early binding"; the compiler resolves the call address at compile-time
+- **Dynamic dispatch** — Also called "late binding" or "runtime polymorphism"; the call address is resolved at runtime via the vtable
+- **Method hiding** — When a derived class defines a non-virtual method with the same name as a base class method; it hides (not overrides) the base version, and the base version is called through base pointers (static dispatch)

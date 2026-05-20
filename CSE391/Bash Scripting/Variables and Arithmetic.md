@@ -1,16 +1,16 @@
-# Variables and Arithmetic in Bash
+# CSE391: Variables and Arithmetic in Bash
 
 Bash variables are dynamic and weakly typed. While they are easy to use, they require specific syntax for assignment, expansion, and arithmetic operations.
 
 ## Variables
 
-### 1. Assignment
+### (1) Assignment
 To set a variable, use the `=` operator.
 - **CRITICAL:** Do NOT put spaces around the `=`.
 - **CORRECT:** `NAME="Justin"`
 - **INCORRECT:** `NAME = "Justin"` (Bash thinks `NAME` is a command and `=` is an argument).
 
-### 2. Access and Expansion
+### (2) Access and Expansion
 Use the `$` prefix to retrieve a variable's value.
 - **Basic:** `echo $NAME`
 - **Braces:** Use `${}` to prevent ambiguity, especially when appending text to a variable name.
@@ -19,7 +19,7 @@ Use the `$` prefix to retrieve a variable's value.
   echo "${PREFIX}_backup.txt"  # Output: data_backup.txt
   ```
 
-### 3. Command Substitution
+### (3) Command Substitution
 Capture the output of a command into a variable using `$(...)`.
 ```bash
 FILES=$(ls)
@@ -29,6 +29,7 @@ CURRENT_DATE=$(date +%Y-%m-%d)
 ---
 
 ## Quoting Rules
+
 Quoting is essential in Bash to prevent the shell from splitting strings on spaces or expanding special characters.
 
 | Quote Type | Description | Example | Result |
@@ -40,9 +41,10 @@ Quoting is essential in Bash to prevent the shell from splitting strings on spac
 ---
 
 ## Arithmetic Operations
+
 By default, Bash treats all variables as strings. To perform math, you must use specific syntax.
 
-### 1. Arithmetic Expansion `$(( ... ))`
+### (1) Arithmetic Expansion `$(( ... ))`
 This is the most common and recommended way to do integer math.
 - **Syntax:** `result=$(( expression ))`
 - **Supported:** `+`, `-`, `*`, `/` (integer division), `%` (modulo), `**` (exponentiation).
@@ -54,14 +56,14 @@ echo $(( A / B ))  # 3 (Integer division)
 echo $(( A % B ))  # 1 (Remainder)
 ```
 
-### 2. The `let` Command
+### (2) The `let` Command
 An alternative way to perform assignment and arithmetic at once.
 ```bash
 let "X = 5 * 10"
 echo $X  # 50
 ```
 
-### 3. Floating Point (Advanced)
+### (3) Floating Point (Advanced)
 Bash **does not support decimals** natively. Use the `bc` (Basic Calculator) utility for floating-point math.
 ```bash
 echo "scale=2; 10 / 3" | bc
@@ -71,6 +73,7 @@ echo "scale=2; 10 / 3" | bc
 ---
 
 ## Predefined Shell Variables
+
 | Variable | Description |
 | :--- | :--- |
 | `$0` | Name of the script being run. |
@@ -80,7 +83,15 @@ echo "scale=2; 10 / 3" | bc
 | `$?` | Exit status of the last executed command (0 = success). |
 | `$$` | Process ID (PID) of the current shell. |
 
-## Related/See-also
-- [[Bash Scripting Basics\|Bash Scripting Basics]]
-- [[Comparisons\|Comparison Operators]]
-- [[Control Flow\|Loops and If Statements]]
+## Related
+- [[CSE391/Bash Scripting/Bash Scripting Basics|Bash Scripting Basics]]
+- [[CSE391/Bash Scripting/Comparisons|Comparison Operators]]
+- [[CSE391/Bash Scripting/Control Flow|Loops and If Statements]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| Arithmetic Expansion (`$((...))`) | Shell arithmetic expansion |
+| `let` | Shell `let` built-in — arithmetic evaluation |
+| `bc` | GNU bc — arbitrary precision calculator |
+| Positional Parameters | Shell positional parameters (`$1`, `$2`, ...) |

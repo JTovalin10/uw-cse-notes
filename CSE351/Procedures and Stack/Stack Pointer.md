@@ -1,22 +1,22 @@
 # CSE351: Stack Pointer (`%rsp`)
 
-The stack pointer holds the address of the current "top" of the stack.
+The **stack pointer** `%rsp` holds the address of the current "top" of the stack — the lowest address that belongs to the currently active stack frame. Because the stack grows downward, "top" means the lowest address currently in use.
 
 ---
 
 ## Key Concept
 
-- Addresses **below** `%rsp` are **not part** of the stack
-- The stack "top" moves as `%rsp` is manipulated
-- Useful reference point for accessing stack data
+- Addresses **below** `%rsp` are **not part of the stack** — they are outside the allocated region and their contents are undefined.
+- The stack "top" moves as `%rsp` is manipulated by `push`, `pop`, `call`, `ret`, and explicit arithmetic.
+- `%rsp` is a useful reference point for accessing local variables and saved values within the current frame.
 
 ---
 
 ## Accessing Stack Data
 
 ```assembly
-movq 8(%rsp), %rax      # Access data 8 bytes from top
-movq -16(%rsp), %rbx    # Access data 16 bytes "into" stack
+movq 8(%rsp), %rax      # Access data 8 bytes above the current top
+movq -16(%rsp), %rbx    # Access data 16 bytes below (into the "red zone")
 ```
 
 ---
@@ -24,12 +24,13 @@ movq -16(%rsp), %rbx    # Access data 16 bytes "into" stack
 ## Stack Manipulation
 
 ### Direct Manipulation
+
 ```assembly
-subq $16, %rsp          # Allocate 16 bytes (grows down)
-addq $16, %rsp          # Deallocate 16 bytes
+subq $16, %rsp          # Allocate 16 bytes on the stack (grows down)
+addq $16, %rsp          # Deallocate 16 bytes (shrinks)
 ```
 
-**Note:** This only changes `%rsp`, not actual memory data!
+**Note:** This only changes `%rsp` — it does not initialize or clear the memory. The data may still be present until overwritten.
 
 ---
 
@@ -40,10 +41,11 @@ pushq %rax              # Push %rax onto stack
 ```
 
 **Steps:**
-1. Decrement `%rsp` by 8 (allocate)
-2. Copy `%rax` to memory at new `%rsp`
+1. Decrement `%rsp` by 8 (allocate 8 bytes).
+2. Copy `%rax` to the memory at the new `%rsp`.
 
 **Equivalent to:**
+
 ```assembly
 subq $8, %rsp
 movq %rax, (%rsp)
@@ -54,14 +56,15 @@ movq %rax, (%rsp)
 ## Pop Instruction
 
 ```assembly
-popq %rbx               # Pop into %rbx
+popq %rbx               # Pop from stack into %rbx
 ```
 
 **Steps:**
-1. Copy data from `(%rsp)` to `%rbx`
-2. Increment `%rsp` by 8 (deallocate)
+1. Copy the value at `(%rsp)` into `%rbx`.
+2. Increment `%rsp` by 8 (deallocate 8 bytes).
 
 **Equivalent to:**
+
 ```assembly
 movq (%rsp), %rbx
 addq $8, %rsp
@@ -72,14 +75,39 @@ addq $8, %rsp
 ## Example
 
 If `%rsp = 0x7fffff000000`, after `popq %rbx`:
-- `%rsp = 0x7fffff000008`
-- Pop deallocates 8 bytes → increases `%rsp`
+- `%rbx` receives the 8 bytes at `0x7fffff000000`.
+- `%rsp = 0x7fffff000008` (stack shrinks — top moves to higher address).
+
+---
+
+```mermaid
+flowchart LR
+    subgraph PUSH [pushq %rax]
+        PA["%rsp decrements by 8"] --> PB["Write %rax to new (%rsp)"]
+    end
+    subgraph POP [popq %rbx]
+        QA["Read (%rsp) into %rbx"] --> QB["%rsp increments by 8"]
+    end
+```
 
 ---
 
 ## Related
+
 - [[CSE351/Procedures and Stack/Memory Layout|Memory Layout]]
 - [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
 - [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
 - [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Stack Pointer (SP)|Stack Pointer (CSE451)]]
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|:---|:---|
+| Stack pointer (`%rsp`) | Stack pointer (SP); RSP in Intel notation |
+| `pushq` / `popq` | Push / pop instructions; stack operations |
+| Addresses below `%rsp` | Unallocated stack region; below the red zone |
+| `subq $N, %rsp` | Stack frame allocation; prologue allocation |
+| `addq $N, %rsp` | Stack frame deallocation; epilogue teardown |

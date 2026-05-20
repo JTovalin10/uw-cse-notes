@@ -1,4 +1,4 @@
-# Shell Customization
+# CSE391: Shell Customization (.bashrc, .bash_profile)
 
 You can customize your shell environment by modifying configuration files that run automatically when you start a new shell session. This is the key to creating an efficient and personalized development environment.
 
@@ -16,11 +16,13 @@ Executed only when you first log in (e.g., via `ssh`).
 ---
 
 ## Aliases
-Aliases allow you to create short nicknames for long or frequently used commands.
+
+**Aliases** allow you to create short nicknames for long or frequently used commands.
 - **Syntax:** `alias name='command --options'`
 - **Note:** Do NOT put spaces around the `=` sign.
 
 ### Useful Alias Examples
+
 ```bash
 alias ll='ls -al'          # Long listing, including hidden files
 alias ..='cd ..'           # Go up one directory
@@ -34,12 +36,14 @@ To remove an alias temporarily, use `unalias name`.
 ---
 
 ## Environment Variables
-Environment variables affect the behavior of your shell and other programs.
+
+**Environment variables** affect the behavior of your shell and other programs.
 - **Setting:** `export VARIABLE_NAME=value`
 - **Viewing:** `printenv` or `echo $VARIABLE_NAME`
 
 ### Common Environment Variables
-- **$PATH**: List of directories to search for programs.
+
+- **$PATH**: List of directories to search for programs. See [[CSE391/Users Groups and Permissions/The PATH Variable|The PATH Variable]].
 - **$EDITOR**: Default text editor (e.g., `vim`, `nano`).
 - **$HOME**: Path to your home directory.
 - **$USER**: Your current username.
@@ -48,6 +52,7 @@ Environment variables affect the behavior of your shell and other programs.
 ---
 
 ## Shell Functions (Advanced)
+
 If a command is too complex for an alias (e.g., it needs arguments), use a function.
 ```bash
 # A function to create a directory and immediately enter it
@@ -65,6 +70,7 @@ psgrep() {
 ---
 
 ## Applying Changes
+
 After editing your `.bashrc`, the changes will not take effect in your current session unless you "source" the file:
 ```bash
 source ~/.bashrc
@@ -72,7 +78,16 @@ source ~/.bashrc
 . ~/.bashrc
 ```
 
-## Related/See-also
-- [[The PATH Variable\|The PATH Variable]]
-- [[Linux Fundamentals/Text Editors\|Text Editors (Vim & Nano)]]
-- [[Bash Scripting Basics\|Bash Scripting Basics]]
+## Related
+- [[CSE391/Users Groups and Permissions/The PATH Variable|The PATH Variable]]
+- [[CSE391/Linux Fundamentals/Text Editors|Text Editors (Vim & Nano)]]
+- [[CSE391/Bash Scripting/Bash Scripting Basics|Bash Scripting Basics]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| .bashrc | Bash run commands file — user shell configuration |
+| .bash_profile | Bash login profile — user login shell configuration |
+| alias | Shell alias — command shortcut |
+| Environment Variable | Shell environment variable (exported to child processes) |
+| source / `.` | Shell `source` built-in — execute script in current shell context |

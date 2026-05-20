@@ -1,8 +1,9 @@
-# The Standard Git Workflow
+# CSE391: Git Workflow and Best Practices
 
 Git is a tool for developers to manage their code's history and collaborate with others. To use Git effectively, you should follow this common workflow.
 
-## 1. Prepare your environment
+## (1) Prepare Your Environment
+
 Before starting any work, ensure you are in the correct repository and on the correct branch.
 
 ### Update from remote
@@ -20,7 +21,8 @@ git checkout -b new-feature
 
 ---
 
-## 2. Edit and Stage Changes
+## (2) Edit and Stage Changes
+
 Modify your files as needed. Use `git status` frequently to see which files you have changed.
 
 ### Stage a file
@@ -37,7 +39,8 @@ git reset HEAD filename.txt
 
 ---
 
-## 3. Commit Changes
+## (3) Commit Changes
+
 Save your work locally. Each commit should represent a single, logical change.
 ```bash
 git commit -m "Add descriptive message here"
@@ -45,15 +48,30 @@ git commit -m "Add descriptive message here"
 
 ---
 
-## 4. Push and Share
-Upload your local history to the remote server so others can see it (or to backup your work).
+## (4) Push and Share
+
+Upload your local history to the remote server so others can see it (or to back up your work).
 ```bash
 git push origin new-feature
+```
+
+## Workflow Diagram
+
+```mermaid
+flowchart TD
+    A["git pull origin main"] --> B["git checkout -b new-feature"]
+    B --> C["Edit files"]
+    C --> D["git add filename.txt"]
+    D --> E["git commit -m 'message'"]
+    E --> F{More changes?}
+    F -->|Yes| C
+    F -->|No| G["git push origin new-feature"]
 ```
 
 ---
 
 ## The .gitignore File
+
 Not every file belongs in your repository. You should exclude files like:
 - **Temporary files:** `*.tmp`, `*.log`
 - **Compiler output:** `*.class`, `*.o`, `bin/`
@@ -62,8 +80,15 @@ Not every file belongs in your repository. You should exclude files like:
 ### To ignore files:
 Create a file named `.gitignore` in the root of your project and list the files/folders you want to exclude.
 
-## Related/See-also
-- [[Git Fundamentals\|Git Core Concepts (Repo, Branch, Commit)]]
-- [[Four Phases of Git\|The Four Phases of Git]]
-- [[Branching and Merging\|Branching and Merging]]
-- [[Remote Repositories\|Connecting to Remote Servers]]
+## Related
+- [[CSE391/Git/Git Fundamentals|Git Core Concepts (Repo, Branch, Commit)]]
+- [[CSE391/Git/Four Phases of Git|The Four Phases of Git]]
+- [[CSE391/Git/Branching and Merging|Branching and Merging]]
+- [[CSE391/Git/Remote Repositories|Connecting to Remote Servers]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| .gitignore | `.gitignore` — file specifying intentionally untracked files |
+| Feature branch | Feature branch — isolated branch for a unit of work |
+| git reset HEAD | Unstage files — remove from index without losing changes |

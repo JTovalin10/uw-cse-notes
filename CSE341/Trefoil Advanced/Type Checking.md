@@ -19,17 +19,23 @@ Type checking relies on a **[[CSE341/Definitions/Part5/Static Environment|Static
 Type checking is defined by a set of formal rules. We use the notation $\Gamma \vdash e : \tau$ to mean "in environment $\Gamma$, expression $e$ has type $\tau$."
 
 ### Rule for Addition
-`### Formal Definition`
+
+### Formal Definition
+
 $$\frac{\Gamma \vdash e_1 : \text{Int} \quad \Gamma \vdash e_2 : \text{Int}}{\Gamma \vdash e_1 + e_2 : \text{Int}}$$
 
-`### Simplified Explanation`
-If both sides of a `+` are integers, then the whole thing is an integer.
+### Simplified Explanation
+
+If both sides of a `+` are integers, then the whole expression is an integer. If either side is not an integer, the type checker rejects the program before it ever runs.
 
 ### Rule for If-Expressions
-`### Formal Definition`
+
+### Formal Definition
+
 $$\frac{\Gamma \vdash e_1 : \text{Bool} \quad \Gamma \vdash e_2 : \tau \quad \Gamma \vdash e_3 : \tau}{\Gamma \vdash \text{if } e_1 \text{ then } e_2 \text{ else } e_3 : \tau}$$
 
-`### Simplified Explanation`
+### Simplified Explanation
+
 The condition must be a boolean. Crucially, the "then" branch and the "else" branch must have the **exact same type**. This is because the type checker must know the type of the `if` expression without knowing which branch will be taken at runtime.
 
 ---
@@ -58,11 +64,38 @@ let rec type_check (env : static_env) (e : expr) : typ =
 ```
 
 ### Soundness
-A type system is **Sound** if a program that passes the type checker is guaranteed not to have certain classes of runtime errors (e.g., trying to add a boolean to an integer). Soundness is often summarized as: "Well-typed programs do not go wrong."
+
+A type system is **sound** if a program that passes the type checker is guaranteed not to have certain classes of runtime errors (e.g., trying to add a boolean to an integer). Soundness is often summarized as: "Well-typed programs do not go wrong."
+
+```mermaid
+graph LR
+    SRC["Source Expression e"]
+    TC["Type Checker<br>type_check Γ e"]
+    OK["Type τ<br>(well-typed)"]
+    ERR["Type Error<br>(rejected)"]
+    INT["Interpreter<br>(safe to run)"]
+    SRC --> TC
+    TC -->|"success"| OK
+    TC -->|"failure"| ERR
+    OK -->|"guaranteed no stuck states"| INT
+```
 
 ---
 
 ## Related
+
 - [[CSE341/Definitions/Part5/Type Checking|Type Checking]]
 - [[CSE341/Definitions/Part5/Static Environment|Static Environment]]
 - [[CSE341/Definitions/Part5/Dynamic Environment|Dynamic Environment]]
+- [[CSE341/Type Systems/Type Inference|Type Inference (OCaml)]]
+
+## Industry Standard Terms
+
+| Course Term | Industry/Standard Term |
+| :--- | :--- |
+| Type Checking | Static Type Checking / Type Analysis |
+| Static Environment ($\Gamma$) | Type Environment / Type Context |
+| Type Rule | Typing Judgment / Inference Rule |
+| $\Gamma \vdash e : \tau$ | Typing Judgment ("$e$ has type $\tau$ under $\Gamma$") |
+| Soundness | Type Soundness / Progress and Preservation |
+| "Well-typed programs do not go wrong" | Soundness Theorem (Milner, 1978) |

@@ -1,8 +1,9 @@
-# sed
+# CSE391: sed
 
-**[[Sed Commands]]**: Short for "Stream Editor," it is a non-interactive text editor that processes input (files or standard input) line-by-line and applies specific commands to the text. It is a cornerstone of Unix text processing.
+**sed**: Short for "Stream Editor," it is a non-interactive text editor that processes input (files or standard input) line-by-line and applies specific commands to the text. It is a cornerstone of Unix text processing.
 
 ## Common Flags
+
 | Flag | Description |
 | :--- | :--- |
 | `-i[SUFFIX]` | **In-place editing:** Modifies the file directly. If a suffix is provided (e.g., `-i.bak`), a backup is created. |
@@ -12,9 +13,11 @@
 | `-e script` | **Multiple scripts:** Allows you to chain multiple commands from the command line. |
 
 ## The Substitution Command (`s`)
+
 Syntax: `sed 's/pattern/replacement/flags' file`
 
 ### Substitution Flags
+
 | Flag | Description |
 | :--- | :--- |
 | `g` | **Global:** Replaces all occurrences on a line, not just the first one. |
@@ -24,6 +27,7 @@ Syntax: `sed 's/pattern/replacement/flags' file`
 | `w file` | **Write:** If substitution occurred, write the result to the specified file. |
 
 ## Other Common Commands
+
 | Command | Action | Example |
 | :--- | :--- | :--- |
 | `d` | **Delete:** Removes lines matching the pattern or range. | `sed '1,5d' file` |
@@ -37,60 +41,74 @@ Syntax: `sed 's/pattern/replacement/flags' file`
 
 ## Usage Examples
 
-### 1. Basic Substitution (Global)
+### (1) Basic substitution (global)
 Replace every instance of "Windows" with "Linux".
 ```bash
 sed 's/Windows/Linux/g' intro.txt
 ```
 
-### 2. In-place Editing with Backup
+### (2) In-place editing with backup
 Update a configuration file and save the original as `.old`.
 ```bash
 sed -i.old 's/PORT=80/PORT=8080/g' config.env
 ```
 
-### 3. Case-Insensitive Matching
+### (3) Case-insensitive matching
 Replace "error", "Error", or "ERROR".
 ```bash
 sed 's/error/FIXED/gI' log.txt
 ```
 
-### 4. Delete Lines by Range or Pattern
+### (4) Delete lines by range or pattern
 Remove the first 10 lines, or remove any line containing "DEBUG".
 ```bash
 sed '1,10d' data.csv
 sed '/DEBUG/d' application.log
 ```
 
-### 5. Capture Groups and Backreferences (Advanced)
+### (5) Capture groups and backreferences (advanced)
 Swap the first and last name in a "First Last" format. `\1` and `\2` refer to the parenthesized groups.
 ```bash
 sed -E 's/([A-Z][a-z]+) ([A-Z][a-z]+)/\2, \1/' names.txt
 # Input: Justin Camara -> Output: Camara, Justin
 ```
 
-### 6. Address Filtering
+### (6) Address filtering
 Run a command only on specific lines (e.g., replace "TODO" only on lines 50 through 100).
 ```bash
 sed '50,100s/TODO/DONE/g' project.md
 ```
 
-### 7. Using Different Delimiters
+### (7) Using different delimiters
 If you are editing file paths, use `|` or `#` instead of `/` to avoid escaping.
 ```bash
 sed 's|/usr/bin|/usr/local/bin|g' setup.sh
 ```
 
-### 8. Print only matching lines
+### (8) Print only matching lines
 Simulate `grep` behavior using `sed`.
 ```bash
 sed -n '/critical_error/p' system.log
 ```
 
-### 9. Multiple commands at once
+### (9) Multiple commands at once
 Use the `-e` flag or a semicolon.
 ```bash
 sed -e 's/cat/dog/g' -e 's/red/blue/g' file.txt
 # OR
 sed 's/cat/dog/g; s/red/blue/g' file.txt
 ```
+
+## Related
+- [[CSE391/Sed/Sed Basics|Sed Basics]]
+- [[CSE391/Sed/Find and Replace with Sed|Find and Replace with Sed]]
+- [[CSE391/Regular Expressions/Regex Basics|Regex Basics and Syntax]]
+- [[CSE391/Regular Expressions/Advanced Regex|Advanced Regex and Backreferences]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| sed | GNU sed — Stream EDitor |
+| In-place editing (`-i`) | In-place file modification |
+| Substitution command (`s`) | POSIX sed substitution |
+| Address | sed address — line number or pattern used to select lines |

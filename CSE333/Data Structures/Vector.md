@@ -1,159 +1,137 @@
-# Include
-To start, to include a vector (class) we need to include it at the top of the file with 
-```c++
+# CSE333: Vector (std::vector)
+
+**`std::vector`** is a C++ standard library container that manages a dynamically resizable array on the heap. It is the most commonly used container in C++ and automatically handles memory allocation and deallocation via [[CSE333/C++ OOP/RAII|RAII]].
+
+## Including and Defining
+
+```cpp
 #include <vector>
+
+std::vector<int> nums;             // Empty vector of ints
+std::vector<int> nums2 = {1,2,3}; // Initialized with values
+std::vector<int> nums3{1,2,3};    // Brace initialization
+std::vector<int> nums4(3, 2);     // 3 elements, each initialized to 2: {2, 2, 2}
 ```
 
-# How to define
-```c++
-#include <vector>
-int main() {
-	std::vector<T> name;
+## Element Access
 
-	// example
-	std::vector<int> nums;
-}
+```cpp
+vector[i]       // Access element at index i (no bounds checking — undefined behavior if out of range)
+vector.at(i)    // Access element at index i (with bounds checking — throws std::out_of_range)
+vector.front()  // Access first element
+vector.back()   // Access last element
+vector.data()   // Get raw pointer to the underlying contiguous array
 ```
 
-# Initialization
-```c++
-int main() {
-	std::vector<int> nums = {1,2,3,4,5,6};
-	// or
-	std::vector<int> nums{1,2,3,4,5,6};
-	// or
-	std::vector<int> nums(3,2); // equalvent to {3,3,3}
-}
-```
-# Functions
 ## Iterators
-There are two main iterator functions to know
-```c++
-vector.begin(); // points to the beginning of the vector
-vector.end(); // points to the end of the vector
-```
-To iterator the vector we do
-```c++
-int main() {
-	for (auto it = vector.begin(); it != vector.end(); ++i) {
-		cout << *it << endl;
-	}
+
+```cpp
+vector.begin(); // Iterator pointing to the first element
+vector.end();   // Iterator pointing one past the last element (sentinel)
+
+// Range-based for loop (C++11, preferred)
+for (auto& elem : vector) { /* ... */ }
+
+// Iterator-based loop
+for (auto it = vector.begin(); it != vector.end(); ++it) {
+    std::cout << *it << std::endl;
 }
 ```
 
+## Capacity and Size
 
-## Capacity
-```c++
-vector.size() // returns size
+```cpp
+vector.size()      // Number of elements currently stored
+vector.capacity()  // Total allocated storage (may be larger than size)
+vector.reserve(n)  // Pre-allocate capacity for n elements (avoids repeated reallocations)
+vector.resize(n)   // Resize to contain n elements (default-initializes new elements)
+vector.resize(n, value) // Resize and initialize new elements with value
+vector.shrink_to_fit()  // Release unused capacity back to the heap
 ```
 
-# Element Access
+## Modifiers
 
-```c++
-vector[i]          // access element at index i (no bounds checking)
-vector.at(i)       // access element at index i (with bounds checking, throws exception)
-vector.front()     // access first element
-vector.back()      // access last element
-vector.data()      // get pointer to underlying array
-```
-
-# Modifiers
-
-```c++
+```cpp
 // Adding elements
-vector.push_back(value)      // add element to the end
-vector.emplace_back(args...) // construct element in-place at the end
+vector.push_back(value)       // Add element to the end — amortized O(1)
+vector.emplace_back(args...)  // Construct element in-place at the end (avoids extra copy)
 
 // Removing elements
-vector.pop_back()            // remove last element
-vector.clear()               // remove all elements
+vector.pop_back()             // Remove last element
+vector.clear()                // Remove all elements (capacity unchanged)
 
-// Insertion
-vector.insert(pos, value)    // insert value at iterator position
-vector.insert(pos, n, value) // insert n copies of value at position
-vector.insert(pos, first, last) // insert range
+// Insertion and erasure (O(n) — shifts elements)
+vector.insert(pos, value)             // Insert value at iterator position
+vector.insert(pos, n, value)          // Insert n copies of value
+vector.insert(pos, first, last)       // Insert range [first, last)
+vector.erase(pos)                     // Erase element at position
+vector.erase(first, last)             // Erase range of elements
 
-// Erasure
-vector.erase(pos)            // erase element at position
-vector.erase(first, last)    // erase range of elements
-
-// Size modification
-vector.resize(n)             // resize container to contain n elements
-vector.resize(n, value)      // resize and initialize new elements with value
-
-// Other modifiers
-vector.swap(other_vector)    // swap contents with another vector
-vector.emplace(pos, args...) // construct element in-place at position
-vector.assign(n, value)      // assign new contents (n copies of value)
-vector.assign(first, last)   // assign new contents from range
+// Other
+vector.swap(other)            // Swap contents with another vector (O(1))
+vector.assign(n, value)       // Replace contents with n copies of value
 ```
 
-# Example Usage
+## Performance Considerations
 
-```c++
+- **`push_back()`** and **`emplace_back()`**: Amortized O(1). When capacity is exceeded, the vector typically doubles its capacity — all elements are moved to new storage.
+- **Random access (`[]` or `at()`)**: O(1) — same as a raw array.
+- **Insertion or erasure in the middle**: O(n) — requires shifting all subsequent elements.
+- **Pre-allocation**: Use `vector.reserve(n)` when you know the approximate number of elements in advance to avoid repeated reallocations.
+
+## Memory Management
+
+`std::vector` is an **RAII** container:
+
+- **Internal Allocation**: Uses [[CSE333/C++ Fundamentals/Heap Management|`new`]] (or a custom allocator) to reserve a contiguous block of memory on the heap.
+- **Automatic Deallocation**: When the vector object goes out of scope, its destructor automatically calls `delete[]` on the underlying array — no manual cleanup needed.
+- The underlying array is always **contiguous** in memory, making `std::vector` compatible with C APIs via `.data()`.
+
+## Example Usage
+
+```cpp
 #include <vector>
 #include <iostream>
 
 int main() {
-    // Create a vector
     std::vector<int> nums = {10, 20, 30};
-    
-    // Add elements
+
     nums.push_back(40);
     nums.emplace_back(50);
-    
-    // Access elements
-    std::cout << "First element: " << nums.front() << std::endl;
-    std::cout << "Last element: " << nums.back() << std::endl;
-    std::cout << "Element at index 2: " << nums[2] << std::endl;
-    
-    // Iterate through vector
-    std::cout << "All elements: ";
-    for (auto num : nums) {  // Range-based for loop (C++11)
-        std::cout << num << " ";
-    }
+
+    std::cout << "First: " << nums.front() << std::endl;
+    std::cout << "Last:  " << nums.back() << std::endl;
+    std::cout << "At 2:  " << nums[2] << std::endl;
+
+    // Range-based for loop
+    for (auto num : nums) { std::cout << num << " "; }
     std::cout << std::endl;
-    
-    // Insert an element at position
-    auto it = nums.begin() + 2;
-    nums.insert(it, 25);
-    
-    // Erase an element
+
+    // Insert at position 2
+    nums.insert(nums.begin() + 2, 25);
+
+    // Erase first element
     nums.erase(nums.begin());
-    
-    // Vector size
-    std::cout << "Vector size: " << nums.size() << std::endl;
-    
-    // Clear the vector
+
+    std::cout << "Size: " << nums.size() << std::endl;
     nums.clear();
-    std::cout << "Vector size after clear: " << nums.size() << std::endl;
-    
+    std::cout << "Size after clear: " << nums.size() << std::endl;
+
     return 0;
 }
 ```
 
-# Performance Considerations
-
-- `push_back()` and `emplace_back()` have amortized constant time complexity
-- Insertion and erasure in the middle have linear time complexity
-- Random access (using `[]` or `at()`) has constant time complexity
-- When possible, reserve memory in advance using `vector.reserve(n)` to avoid reallocations
-
-# Memory Management
-`std::vector` is an **RAII** container that manages a dynamic array on the **Heap**.
-- **Internal Allocation**: It uses **[[C++ Fundamentals/Heap Management|new]]** (or an allocator) to reserve a contiguous block of memory.
-- **Automatic Deallocation**: When the vector object goes out of scope, its destructor automatically calls **[[C++ Fundamentals/Heap Management|delete]]** on the underlying array.
-
-```c++
-vector.reserve(n)   // reserve storage capacity for n elements (avoids multiple reallocations)
-vector.capacity()   // return current storage capacity
-vector.shrink_to_fit() // reduce memory usage by freeing unused memory
-```
-
 ## Related
-- [[C++ OOP/RAII|RAII]]
-- [[C++ Fundamentals/Heap Management|C++ Heap Management]]
-- [[Memory Management/Heap Management|C Heap Management]]
-- [[Memory Management/Malloc and Free|Malloc and Free]]
-- [[C++ OOP/C++ Classes|C++ Classes]]
-- [[LinkedList]]
+
+- [[CSE333/C++ OOP/RAII|RAII]]
+- [[CSE333/C++ Fundamentals/Heap Management|C++ Heap Management]]
+- [[CSE333/Memory Management/Heap Management|C Heap Management]]
+- [[CSE333/Memory Management/Malloc and Free|Malloc and Free]]
+- [[CSE333/C++ OOP/C++ Classes|C++ Classes]]
+- [[CSE333/Data Structures/LinkedList|LinkedList]]
+
+## Industry Standard Terms
+
+- **`std::vector`** — The C++ equivalent of a Java `ArrayList` or Python `list`; a dynamic array with O(1) amortized append
+- **Amortized O(1)** — Occasionally O(n) (when reallocation occurs), but the total cost of n push_back operations is O(n), so the average per-operation cost is O(1)
+- **`emplace_back`** — Constructs an element directly in the vector's storage, avoiding an extra copy or move; preferred over `push_back` for objects with non-trivial constructors

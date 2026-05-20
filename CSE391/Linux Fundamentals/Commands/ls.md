@@ -1,8 +1,9 @@
-# ls
+# CSE391: ls
 
-**[[ls]]**: List directory contents. It is one of the most frequently used commands to navigate the filesystem.
+**ls**: List directory contents. It is one of the most frequently used commands to navigate the filesystem.
 
 ## Common Flags
+
 | Flag | Description |
 | :--- | :--- |
 | `-l` | Use a long listing format (shows permissions, owner, size, and date). |
@@ -16,44 +17,54 @@
 
 ## Usage Examples
 
-### 1. Simple list
+### (1) Simple list
 List files in the current directory.
 ```bash
 ls
 ```
 
-### 2. Detailed listing
+### (2) Detailed listing
 See file sizes and permissions.
 ```bash
 ls -l
 ```
 
-### 3. Show hidden files
+### (3) Show hidden files
 List everything, including configuration files like `.bashrc`.
 ```bash
 ls -a
 ```
 
-### 4. Sort by time
+### (4) Sort by time
 See the files you most recently modified.
 ```bash
 ls -lt
 ```
 
-### 5. Human-readable sizes
+### (5) Human-readable sizes
 Make the output of `-l` easier to read.
 ```bash
 ls -lh
 ```
 
-### 6. Recursive list
+### (6) Recursive list
 See all files in the current directory and all subfolders.
 ```bash
 ls -R
 ```
 
-### 7. List a specific directory
-You don't have to be in the directory to list it.
+### (7) List a specific directory
+You do not have to be in the directory to list it.
 ```bash
 ls /etc
 ```
+
+## Related
+- [[CSE391/Linux Fundamentals/Commands/cd|cd]]
+- [[CSE391/Users Groups and Permissions/Unix Permissions|Unix Permissions]]
+- [[CSE391/Linux Fundamentals/Basic Commands|Command Reference]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| ls | GNU coreutils `ls` — list directory contents |

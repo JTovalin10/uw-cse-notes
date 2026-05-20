@@ -40,7 +40,7 @@ Advanced database systems: internals, query processing, storage, and distributed
 - [[CSE444/Query Optimization/OptimizationComponents/Join Trees|Join Trees]] — bushy, linear, and left-deep tree shapes
 
 ### Parallel Query Processing
-*(notes in progress)*
+- [[CSE444/Parallel/Intro to Parallel DBMS|Intro to Parallel DBMS]] — OLTP vs. OLAP scaling, shared-memory/disk/nothing architectures, data partitioning
 
 ### Transactions
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)

@@ -1,108 +1,88 @@
-# CSE 333: Unique Pointer
+# CSE333: Unique Pointer
 
-A **`std::unique_ptr`** represents exclusive ownership of a heap-allocated resource. Exactly one `unique_ptr` can own a resource at any given time.
+A **`std::unique_ptr`** represents exclusive ownership of a heap-allocated resource. Exactly one `unique_ptr` can own a resource at any given time, making ownership unambiguous and cleanup automatic.
 
 ## Key Properties
-- **Exclusive Ownership**: Only one pointer can own the resource.
-- **No Copying**: The copy constructor and assignment operator are deleted.
-- **Moving**: Ownership can be transferred using `std::move()`. After a move, the source pointer becomes `nullptr`.
-- **Automatic Deallocation**: The resource is deleted when the `unique_ptr` goes out of scope.
 
-```c++
-#include <iostream>
+- **Exclusive Ownership**: Only one pointer can own the resource.
+- **No Copying**: The copy constructor and copy assignment operator are deleted.
+- **Moving**: Ownership can be transferred using `std::move()`. After a move, the source pointer becomes `nullptr`.
+- **Automatic Deallocation**: The resource is deleted when the `unique_ptr` goes out of scope (RAII).
+
+## Defining and Using unique_ptr
+
+```cpp
 #include <memory>
 
-// 1. Defining unique_ptr
-void defining_unique_ptr() {
-    // Basic initialization with make_unique (preferred, since C++14)
-    std::unique_ptr<int> ptr1 = std::make_unique<int>(42);
-    
-    // Alternative syntax
-    auto ptr2 = std::make_unique<int>(100);
-    
-    // Direct constructor usage (less preferred)
-    std::unique_ptr<int> ptr3(new int(200));
-    
-    // Create a unique_ptr to an array
-    std::unique_ptr<int[]> array_ptr = std::make_unique<int[]>(5);
-    
-    // Initialize with nullptr
-    std::unique_ptr<int> empty_ptr = nullptr;
-}
+// Preferred: make_unique (C++14) — avoids explicit new
+auto ptr1 = std::make_unique<int>(42);
 
-// 2. Using unique_ptr
-void using_unique_ptr() {
-    auto ptr = std::make_unique<int>(42);
-    
-    // Dereferencing
-    *ptr = 100;
-    std::cout << "Value: " << *ptr << std::endl;
-    
-    // Check if pointer is valid
-    if (ptr) {
-        std::cout << "Pointer is valid" << std::endl;
-    }
-    
-    // Get the raw pointer (use with caution)
-    int* raw_ptr = ptr.get();
-    
-    // Custom class example
-    auto obj_ptr = std::make_unique<std::string>("Hello");
-    std::cout << "Length: " << obj_ptr->length() << std::endl;
-    std::cout << "String: " << *obj_ptr << std::endl;
-}
+// Alternative: direct constructor (less preferred — requires explicit new)
+std::unique_ptr<int> ptr2(new int(100));
 
-// 3. Transferring ownership
-void transferring_ownership() {
-    auto ptr1 = std::make_unique<int>(42);
-    
-    // Move ownership to ptr2
-    auto ptr2 = std::move(ptr1);
-    
-    // ptr1 is now nullptr
-    std::cout << "ptr1 is null: " << (ptr1 == nullptr) << std::endl;
-    
-    // ptr2 now owns the resource
-    std::cout << "ptr2 value: " << *ptr2 << std::endl;
-    
-    // Transfer to function (function takes ownership)
-    auto take_ownership(std::unique_ptr<int> ptr) {
-        return *ptr * 2;
-    }
-    
-    // Must use std::move to pass to function
-    int result = take_ownership(std::move(ptr2));
-    
-    // ptr2 is now nullptr
-    std::cout << "ptr2 is null: " << (ptr2 == nullptr) << std::endl;
-}
+// Arrays
+auto array_ptr = std::make_unique<int[]>(5);
 
-// 4. Releasing resources explicitly
-void releasing_resources() {
-    auto ptr = std::make_unique<int>(42);
-    
-    // Release ownership without deleting
-    int* raw_ptr = ptr.release();
-    
-    // ptr is now nullptr, but raw_ptr points to the resource
-    std::cout << "ptr is null: " << (ptr == nullptr) << std::endl;
-    std::cout << "raw_ptr value: " << *raw_ptr << std::endl;
-    
-    // Must manually delete the resource now
-    delete raw_ptr;
-    
-    // Reset with a new resource
-    ptr.reset(new int(100));
-    std::cout << "New ptr value: " << *ptr << std::endl;
-    
-    // Reset with nullptr
-    ptr.reset();
-    std::cout << "ptr is null: " << (ptr == nullptr) << std::endl;
+// Initialize with nullptr (empty)
+std::unique_ptr<int> empty_ptr = nullptr;
+
+// Dereferencing
+*ptr1 = 100;
+
+// Arrow operator for objects
+auto obj_ptr = std::make_unique<std::string>("Hello");
+std::cout << "Length: " << obj_ptr->length() << std::endl;
+
+// Check if valid
+if (ptr1) { /* ptr1 is not null */ }
+
+// Get the raw pointer (use with caution — do not delete it)
+int* raw = ptr1.get();
+```
+
+## Transferring Ownership
+
+```cpp
+auto ptr1 = std::make_unique<int>(42);
+
+// Transfer ownership to ptr2
+auto ptr2 = std::move(ptr1);
+// ptr1 is now nullptr; ptr2 owns the resource
+
+// Passing ownership to a function
+void take_ownership(std::unique_ptr<int> ptr) {
+    // ptr owns the resource; it is deleted when this function returns
 }
+take_ownership(std::move(ptr2)); // Must use std::move
+// ptr2 is now nullptr
+```
+
+## Releasing Resources Explicitly
+
+```cpp
+auto ptr = std::make_unique<int>(42);
+
+// Release ownership without deleting — returns raw pointer
+int* raw_ptr = ptr.release();
+// ptr is now nullptr; you must manually delete raw_ptr
+delete raw_ptr;
+
+// Reset with a new resource (old resource is deleted first)
+ptr.reset(new int(100));
+
+// Reset to null (deletes the current resource)
+ptr.reset();
 ```
 
 ## Related
-- [[Smart Pointers]]
-- [[Shared Pointer]]
-- [[weak pointer]]
-- [[CSE333/C++ OOP/Object Lifecycle#Move Mechanics: The Silent Fallback|Move]]
+
+- [[CSE333/Smart Pointers/Smart Pointers|Smart Pointers]]
+- [[CSE333/Smart Pointers/Shared Pointer|Shared Pointer]]
+- [[CSE333/Smart Pointers/Weak Pointer|Weak Pointer]]
+- [[CSE333/C++ OOP/Object Lifecycle|Object Lifecycle — Move Semantics]]
+
+## Industry Standard Terms
+
+- **`std::unique_ptr`** — The go-to smart pointer for single ownership; zero overhead compared to a raw pointer in most cases
+- **`std::make_unique`** — The preferred factory function (C++14); exception-safe and avoids memory leaks from partial evaluation of arguments in function calls
+- **Exclusive ownership** — A design principle where exactly one entity is responsible for an object's lifetime; prevents double-frees and makes ownership transfer explicit via `std::move()`

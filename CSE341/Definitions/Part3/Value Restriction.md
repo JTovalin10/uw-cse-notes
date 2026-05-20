@@ -1,1 +1,5 @@
-**[[Value Restriction]]**: A rule in ML-like languages that restricts polymorphic type generalization to only those expressions that are syntactically "values" or "variables" (e.g., constants or functions), preventing unsoundness when combining polymorphism with mutable references.
+# CSE341: Value Restriction
+
+A rule in ML-like languages that restricts polymorphic type generalization to only those expressions that are syntactically "values" or "variables" (e.g., constants or functions), preventing unsoundness when combining polymorphism with mutable references.
+
+See: [[CSE341/Type Systems/Type Inference|Type Inference]]

@@ -1,8 +1,9 @@
-# sort
+# CSE391: sort
 
-**[[sort]]**: Reorders the lines of a text file or standard input. It is one of the most powerful tools for organizing and processing data in the shell.
+**sort**: Reorders the lines of a text file or standard input. It is one of the most powerful tools for organizing and processing data in the shell.
 
 ## Common Flags
+
 | Flag | Description |
 | :--- | :--- |
 | `-n`, `--numeric-sort` | Sort based on numeric values (otherwise 10 comes before 2). |
@@ -16,44 +17,54 @@
 
 ## Usage Examples
 
-### 1. Basic alphabetical sort
+### (1) Basic alphabetical sort
 Sort lines from A to Z.
 ```bash
 sort names.txt
 ```
 
-### 2. Sort numbers numerically
+### (2) Sort numbers numerically
 Crucial for sorting numeric data properly.
 ```bash
 sort -n grades.csv
 ```
 
-### 3. Sort in reverse
+### (3) Sort in reverse
 List newest files by date (if using timestamp data).
 ```bash
 sort -r unsorted_list.txt
 ```
 
-### 4. Sort by a specific column
+### (4) Sort by a specific column
 Sort a CSV file based on the second column (age), using a comma as a delimiter.
 ```bash
 sort -t "," -k 2,2 -n data.csv
 ```
 
-### 5. Remove duplicates while sorting
+### (5) Remove duplicates while sorting
 Handy for quickly cleaning up lists.
 ```bash
 sort -u raw_logs.txt
 ```
 
-### 6. Human-readable sort
+### (6) Human-readable sort
 Sort file sizes from `du` command.
 ```bash
 du -h | sort -h
 ```
 
-### 7. Combine with pipes
+### (7) Combine with pipes
 See which commands you use most (combined with `uniq`).
 ```bash
 history | cut -c 8- | sort | uniq -c | sort -nr | head
 ```
+
+## Related
+- [[CSE391/Linux Fundamentals/Commands/uniq|uniq]]
+- [[CSE391/Streams Redirection and Pipes/Pipes|Pipes]]
+- [[CSE391/Linux Fundamentals/Basic Commands|Command Reference]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| sort | GNU coreutils `sort` — sort lines of text files |

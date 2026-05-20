@@ -1,140 +1,73 @@
-# CSE 333: Shared Pointer
+# CSE333: Shared Pointer
 
-A **`std::shared_ptr`** allows multiple owners for the same heap-allocated object. It uses reference counting to manage the resource's lifetime.
+A **`std::shared_ptr`** allows multiple owners for the same heap-allocated object. It uses **reference counting** to manage the resource's lifetime — the resource is deleted only when the last `shared_ptr` that owns it is destroyed or reset.
 
 ## Key Properties
-- **Shared Ownership**: Multiple `shared_ptr`s can own the same resource.
+
+- **Shared Ownership**: Multiple `shared_ptr`s can own the same resource simultaneously.
 - **Reference Counting**: The system tracks how many `shared_ptr`s point to the resource. When the count reaches zero, the resource is deleted.
-- **Copying**: Assigning or copying a `shared_ptr` increments the reference count.
-- **Nullification**: Setting one `shared_ptr` to `nullptr` (or it going out of scope) only affects that specific pointer and decrements the reference count. Other `shared_ptr`s to the same resource remain valid.
+- **Copying**: Assigning or copying a `shared_ptr` increments the reference count. Both pointers are valid owners.
+- **Nullification**: Setting one `shared_ptr` to `nullptr` (or it going out of scope) decrements the reference count. Other `shared_ptr`s to the same resource remain valid.
+- **Thread Safety**: Reference count operations are atomic, making it safe to copy `shared_ptr`s across threads. However, the pointed-to object itself is not thread-safe unless you protect it with a mutex.
+- **Higher Overhead**: Slightly more expensive than `unique_ptr` due to the reference counting mechanism and the extra control block allocation.
 
-```c++
-#include <iostream>
+## Defining and Using shared_ptr
+
+```cpp
 #include <memory>
-#include <vector>
 
-/*
-WHAT MAKES std::shared_ptr DIFFERENT:
+// Preferred: make_shared — single allocation for object and control block
+auto ptr1 = std::make_shared<int>(42);
 
-- Shared Ownership: Multiple shared_ptrs can own the same resource (unlike unique_ptr's exclusive ownership)
-- Reference Counting: Automatically tracks how many shared_ptrs point to the resource
-- Copy Semantics: Can be copied freely (unique_ptr can only be moved)
-- Automatic Cleanup: Resource is deleted only when the last shared_ptr is destroyed
-- Thread Safety: Reference counting operations are atomic/thread-safe
-- Higher Overhead: Slightly more expensive than unique_ptr due to reference counting mechanism
-- Potential for Cycles: Can create memory leaks with circular references (solved with weak_ptr)
-- Control Block: Uses an additional memory allocation for the reference counting mechanism
-*/
+// Alternative: direct constructor (two allocations)
+std::shared_ptr<int> ptr2(new int(200));
 
+// Sharing ownership — ref count becomes 2
+auto ptr3 = ptr1;  // No std::move needed; copying is allowed
+std::cout << "Ref count: " << ptr1.use_count() << std::endl; // 2
 
-// 1. Defining shared_ptr
-void defining_shared_ptr() {
-    // Basic initialization with make_shared (preferred for performance)
-    std::shared_ptr<int> ptr1 = std::make_shared<int>(42);
-    
-    // Alternative syntax
-    auto ptr2 = std::make_shared<int>(100);
-    
-    // Direct constructor usage (less preferred)
-    std::shared_ptr<int> ptr3(new int(200));
-    
-    // Create a shared_ptr to an array (requires custom deleter)
-    std::shared_ptr<int[]> array_ptr(new int[5], std::default_delete<int[]>());
-    
-    // Initialize with nullptr
-    std::shared_ptr<int> empty_ptr = nullptr;
-}
+// Modifying through any pointer affects the shared object
+*ptr3 = 100;
+std::cout << "Value via ptr1: " << *ptr1 << std::endl; // 100
 
-// 2. Using shared_ptr
-void using_shared_ptr() {
-    auto ptr = std::make_shared<int>(42);
-    
-    // Dereferencing
-    *ptr = 100;
-    std::cout << "Value: " << *ptr << std::endl;
-    
-    // Check if pointer is valid
-    if (ptr) {
-        std::cout << "Pointer is valid" << std::endl;
-    }
-    
-    // Get the raw pointer (use with caution)
-    int* raw_ptr = ptr.get();
-    
-    // Get reference count
-    std::cout << "Reference count: " << ptr.use_count() << std::endl;
-    
-    // Custom class example
-    auto obj_ptr = std::make_shared<std::string>("Hello");
-    std::cout << "Length: " << obj_ptr->length() << std::endl;
-    std::cout << "String: " << *obj_ptr << std::endl;
-}
+// Checking the raw pointer
+int* raw = ptr1.get(); // Use with caution — do not delete
 
-// 3. Sharing ownership
-void sharing_ownership() {
-    // Create first shared_ptr
-    auto ptr1 = std::make_shared<int>(42);
-    std::cout << "Initial ref count: " << ptr1.use_count() << std::endl;
-    
-    // Create a second shared_ptr to the same resource
-    auto ptr2 = ptr1;  // No need for std::move, copying is allowed
-    std::cout << "Ref count after copy: " << ptr1.use_count() << std::endl;
-    
-    // Create a third shared_ptr
-    std::shared_ptr<int> ptr3 = ptr2;
-    std::cout << "Ref count after another copy: " << ptr1.use_count() << std::endl;
-    
-    // Modify through any pointer affects all
-    *ptr2 = 100;
-    std::cout << "Value through ptr1: " << *ptr1 << std::endl;
-    std::cout << "Value through ptr3: " << *ptr3 << std::endl;
-    
-    // Store in a container
-    std::vector<std::shared_ptr<int>> vec;
-    vec.push_back(ptr1);
-    vec.push_back(std::make_shared<int>(200));
-    std::cout << "Ref count after storing in vector: " << ptr1.use_count() << std::endl;
-}
-
-// 4. Releasing and resetting
-void releasing_and_resetting() {
-    auto ptr1 = std::make_shared<int>(42);
-    auto ptr2 = ptr1;
-    
-    std::cout << "Ref count: " << ptr1.use_count() << std::endl;
-    
-    // Reset one pointer
-    ptr1.reset();
-    std::cout << "ptr1 is null: " << (ptr1 == nullptr) << std::endl;
-    std::cout << "Ref count via ptr2: " << ptr2.use_count() << std::endl;
-    
-    // Reset with a new resource
-    ptr1.reset(new int(100));
-    std::cout << "ptr1 new value: " << *ptr1 << std::endl;
-    std::cout << "Ref count for new resource: " << ptr1.use_count() << std::endl;
-    
-    // Last pointer reset will deallocate
-    ptr2.reset();
-    std::cout << "Resource deallocated when last pointer reset" << std::endl;
-}
-
-// 5. Custom deleters
-void custom_deleters() {
-    // Custom deleter function
-    auto custom_deleter = [](int* p) {
-        std::cout << "Custom deleting resource: " << *p << std::endl;
-        delete p;
-    };
-    
-    // Create shared_ptr with custom deleter
-    std::shared_ptr<int> ptr(new int(42), custom_deleter);
-    
-    // Resource will be deleted with custom deleter when ref count reaches zero
-}
+// Custom deleter (for non-standard cleanup)
+auto custom_deleter = [](int* p) { delete p; };
+std::shared_ptr<int> ptr4(new int(42), custom_deleter);
 ```
 
+## Releasing and Resetting
+
+```cpp
+auto ptr1 = std::make_shared<int>(42);
+auto ptr2 = ptr1; // ref count = 2
+
+// Reset one pointer — decrements ref count
+ptr1.reset();
+std::cout << "Ref count via ptr2: " << ptr2.use_count() << std::endl; // 1
+
+// Reset with a new resource (ptr1 now owns a different object)
+ptr1.reset(new int(100)); // ref count for new object = 1
+
+// When ptr2 goes out of scope, ref count for 42 reaches 0 and it is deleted
+```
+
+## Potential for Cycles
+
+`shared_ptr` **cannot handle circular references**. If two objects hold `shared_ptr`s to each other, their reference counts will never reach zero, causing a memory leak. Use [[CSE333/Smart Pointers/Weak Pointer|`std::weak_ptr`]] to break such cycles.
+
 ## Related
-- [[Smart Pointers]]
-- [[Unique Pointer]]
-- [[weak pointer]]
-- `std::move`
+
+- [[CSE333/Smart Pointers/Smart Pointers|Smart Pointers]]
+- [[CSE333/Smart Pointers/Unique Pointer|Unique Pointer]]
+- [[CSE333/Smart Pointers/Weak Pointer|Weak Pointer]]
+- [[CSE333/C++ OOP/Object Lifecycle|Object Lifecycle]]
+
+## Industry Standard Terms
+
+- **`std::shared_ptr`** — Reference-counted shared ownership pointer; similar to `Arc<T>` in Rust, `SharedPtr` in Swift, and managed references in Java/Python
+- **Reference counting** — A memory management technique where each object tracks how many references point to it; when the count reaches zero, the object is freed
+- **Control block** — The internal `shared_ptr` data structure that stores the reference count, weak reference count, and custom deleter; allocated separately from the managed object (unless `make_shared` is used, which co-locates them)
+- **`std::make_shared`** — The preferred factory (C++11); combines the object and control block into a single allocation, improving cache locality and reducing allocation overhead

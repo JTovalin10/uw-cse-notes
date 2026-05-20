@@ -1,8 +1,9 @@
-# uniq
+# CSE391: uniq
 
-**[[uniq]]**: Filters out adjacent duplicate lines from a file or standard input. Because it only looks at *adjacent* lines, it is almost always used in combination with `sort`.
+**uniq**: Filters out adjacent duplicate lines from a file or standard input. Because it only looks at *adjacent* lines, it is almost always used in combination with [[CSE391/Linux Fundamentals/Commands/sort|sort]].
 
 ## Common Flags
+
 | Flag | Description |
 | :--- | :--- |
 | `-c`, `--count` | Prefix each line with the number of times it occurred. |
@@ -13,38 +14,48 @@
 
 ## Usage Examples
 
-### 1. Basic duplicate removal
+### (1) Basic duplicate removal
 Must sort the file first for `uniq` to be effective.
 ```bash
 sort names.txt | uniq
 ```
 
-### 2. Count occurrences
+### (2) Count occurrences
 Determine how many times each item appears in a list.
 ```bash
 sort fruits.txt | uniq -c
 ```
 
-### 3. Identify common errors in logs
+### (3) Identify common errors in logs
 Find lines that appear more than once.
 ```bash
 sort error.log | uniq -d
 ```
 
-### 4. Find completely unique lines
+### (4) Find completely unique lines
 Show only items that are not repeated at all.
 ```bash
 sort list.txt | uniq -u
 ```
 
-### 5. Count your most used commands
+### (5) Count your most used commands
 A classic example of combining `cut`, `sort`, and `uniq`.
 ```bash
 history | cut -c 8- | sort | uniq -c | sort -nr | head
 ```
 
-### 6. Case-insensitive unique check
+### (6) Case-insensitive unique check
 Treat "Hello" and "hello" as the same.
 ```bash
 sort greeting.txt | uniq -i
 ```
+
+## Related
+- [[CSE391/Linux Fundamentals/Commands/sort|sort]]
+- [[CSE391/Streams Redirection and Pipes/Pipes|Pipes]]
+- [[CSE391/Linux Fundamentals/Basic Commands|Command Reference]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| uniq | GNU coreutils `uniq` — report or omit repeated lines |

@@ -1,15 +1,15 @@
 # CSE351: Exceptions
 
-An **exception** is the transfer of execution/control to the OS **kernel** in response to some event.
+An **exception** is the transfer of execution control to the OS **kernel** in response to some event. Every exception causes the hardware to save the current processor state and jump to a predefined kernel **exception handler**.
 
 ---
 
 ## Exception Handling Process
 
-1. **Event occurs** (interrupt, trap, fault, etc.)
-2. **Control transfers** to kernel
-3. **Handler executes** (kernel code)
-4. **Handler completes** with one of three outcomes
+1. **Event occurs** (interrupt arrives, trap instruction executed, fault detected, etc.)
+2. **Control transfers to kernel** — the hardware saves context (registers, `%rip`, `%rflags`) and jumps to the handler.
+3. **Handler executes** (kernel code runs with full privileges).
+4. **Handler completes** with one of three outcomes.
 
 ---
 
@@ -17,9 +17,9 @@ An **exception** is the transfer of execution/control to the OS **kernel** in re
 
 | Outcome | When Used |
 |:---|:---|
-| Re-execute current instruction | Recoverable faults (e.g., page fault) |
-| Execute next instruction | Successful traps, interrupts |
-| Abort the process | Unrecoverable errors |
+| Re-execute the current instruction | Recoverable faults (e.g., [[CSE351/Memory Management/Page Faults|page fault]]) — the handler fixes the problem, then restarts |
+| Execute the next instruction | Successful traps and interrupts — normal completion |
+| Abort the process | Unrecoverable errors — the process is killed |
 
 ---
 
@@ -27,45 +27,62 @@ An **exception** is the transfer of execution/control to the OS **kernel** in re
 
 ### Asynchronous Exceptions (Interrupts)
 
-- **Cause:** Events external to the processor
-- **Examples:** Timer interrupts, I/O completion, network packets
-- **Handler:** Always returns to the **next** instruction
-- Independent of the currently executing instruction
+- **Cause:** Events **external** to the processor — the CPU did not cause them.
+- **Examples:** Timer interrupts (used for time-slicing), I/O completion signals, network packets arriving.
+- **Handler:** Always returns to the **next** instruction — the interrupted instruction is completed normally.
+- Interrupts are the mechanism by which the OS regains control from a running process.
 
 ### Synchronous Exceptions
 
-Caused by executing an instruction.
+Caused by executing a specific instruction — the instruction itself triggers the exception.
 
 #### Traps
-- **Nature:** Intentional transfer to OS
-- **Purpose:** Access privileged resources ([[CSE351/System Programming/System Calls|System Calls]])
-- **Examples:** `open()`, `malloc()`, `read()`
-- **Handler:** Returns to **next** instruction
+
+- **Nature:** **Intentional** transfer to the OS kernel.
+- **Purpose:** Access privileged resources or services ([[CSE351/System Programming/System Calls|system calls]]).
+- **Examples:** `open()`, `malloc()` (which calls `sbrk`), `read()`, `fork()`.
+- **Handler:** Returns to the **next** instruction — the program continues normally.
 
 #### Faults
-- **Nature:** Unintentional but possibly recoverable
-- **Examples:** Division by zero, segfault, [[CSE351/Memory Management/Page Faults|page fault]]
-- **Handler:** Returns to **current** instruction (if recoverable) or aborts
+
+- **Nature:** **Unintentional** but **possibly recoverable**.
+- **Examples:** Division by zero, segmentation fault (illegal memory access), [[CSE351/Memory Management/Page Faults|page fault]].
+- **Handler:** Returns to the **current** instruction if the fault is fixed, or aborts the process if not.
+- Page faults are the most common recoverable fault — the OS loads the missing page and restarts the instruction.
 
 #### Aborts
-- **Nature:** Unintentional and unrecoverable
-- **Examples:** Hardware malfunction
-- **Handler:** Always aborts the process
+
+- **Nature:** **Unintentional** and **unrecoverable**.
+- **Examples:** Hardware malfunction (parity error, machine check).
+- **Handler:** Always aborts the process — recovery is impossible.
 
 ---
 
 ## Example: File Operations
 
 ```c
-int fd = open("file.txt", O_RDONLY);  // Trap exception
+int fd = open("file.txt", O_RDONLY);  // Trap exception (system call)
 ```
 
-- **Type:** Trap (intentional system call)
-- **Handler outcome:** Execute next instruction
+- **Type:** Trap — the program intentionally requests OS service.
+- **Handler outcome:** Execute next instruction — `open()` returns the file descriptor.
+
+---
+
+```mermaid
+flowchart TD
+    A["Exception event occurs"] --> B{"Type?"}
+    B -->|"Asynchronous (external)"| C["Interrupt: return to NEXT instruction"]
+    B -->|"Synchronous"| D{"Subtype?"}
+    D -->|"Intentional"| E["Trap (syscall): return to NEXT instruction"]
+    D -->|"Unintentional, recoverable"| F["Fault: fix problem, return to CURRENT instruction; or abort"]
+    D -->|"Unintentional, unrecoverable"| G["Abort: terminate process"]
+```
 
 ---
 
 ## Related
+
 - [[CSE351/System Programming/Processes|Processes]]
 - [[CSE351/System Programming/Context Switching|Context Switching]]
 - [[CSE351/System Programming/System Calls|System Calls]]
@@ -73,3 +90,17 @@ int fd = open("file.txt", O_RDONLY);  // Trap exception
 - [[CSE451/Virtualization/Mechanisms/Exceptions/Exception|Exceptions (CSE451)]]
 - [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts (CSE451)]]
 - [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps (CSE451)]]
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|:---|:---|
+| Exception | Exception; processor exception; hardware exception |
+| Interrupt (asynchronous) | Hardware interrupt; IRQ (Interrupt Request) |
+| Trap (intentional) | Software interrupt; trap; syscall instruction |
+| Fault (recoverable) | Hardware fault; processor fault |
+| Abort (unrecoverable) | Machine check; non-maskable interrupt (NMI) |
+| Exception handler | Interrupt Service Routine (ISR); exception handler; fault handler |
+| Saving context on exception | Context save; exception entry; kernel mode transition |

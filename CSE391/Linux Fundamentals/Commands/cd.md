@@ -1,11 +1,11 @@
-# cd
+# CSE391: cd
 
-**[[cd]]**: Change the shell working directory. It is the primary command used for navigating the Unix directory tree.
-
-## Common Flags
-The `cd` command is a shell builtin and does not have many standard flags, but it has several useful shortcuts.
+**cd**: Change the shell working directory. It is the primary command used for navigating the [[CSE391/Linux Fundamentals/Unix File System|Unix directory tree]].
 
 ## Navigation Shortcuts
+
+The `cd` command is a shell builtin and does not have many standard flags, but it has several useful shortcuts.
+
 | Shortcut | Description |
 | :--- | :--- |
 | `cd ..` | Go up to the parent directory. |
@@ -18,38 +18,48 @@ The `cd` command is a shell builtin and does not have many standard flags, but i
 
 ## Usage Examples
 
-### 1. Move to a subdirectory
+### (1) Move to a subdirectory
 Go into a folder named `Documents`.
 ```bash
 cd Documents
 ```
 
-### 2. Move up one level
+### (2) Move up one level
 Exit the current folder and go to its parent.
 ```bash
 cd ..
 ```
 
-### 3. Move up two levels
+### (3) Move up two levels
 Jump two folders up in the hierarchy.
 ```bash
 cd ../..
 ```
 
-### 4. Jump back to previous folder
+### (4) Jump back to previous folder
 Very useful for quickly toggling between two different directories.
 ```bash
 cd -
 ```
 
-### 5. Return home
+### (5) Return home
 Instantly return to your home directory (`/home/username`).
 ```bash
 cd
 ```
 
-### 6. Use tilde for home paths
+### (6) Use tilde for home paths
 Access folders relative to your home directory.
 ```bash
 cd ~/Desktop/projects
 ```
+
+## Related
+- [[CSE391/Linux Fundamentals/Unix File System|Unix File System]]
+- [[CSE391/Linux Fundamentals/Commands/pwd|pwd]]
+- [[CSE391/Linux Fundamentals/Commands/ls|ls]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| cd | Shell built-in `cd` — change directory |

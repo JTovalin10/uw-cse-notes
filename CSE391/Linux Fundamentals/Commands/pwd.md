@@ -1,8 +1,9 @@
-# pwd
+# CSE391: pwd
 
-**[[pwd]]**: Short for "print working directory." It shows the full absolute path of the directory you are currently in.
+**pwd**: Short for "print working directory." It shows the full absolute path of the directory you are currently in.
 
 ## Common Flags
+
 | Flag | Description |
 | :--- | :--- |
 | `-L`, `--logical` | Use PWD from environment, even if it contains symlinks. |
@@ -10,14 +11,14 @@
 
 ## Usage Examples
 
-### 1. Identify your location
+### (1) Identify your location
 The most common usage of the command.
 ```bash
 pwd
 # Example Output: /home/justin/Desktop/uw-cse-notes/CSE391
 ```
 
-### 2. Physical path vs. Symbolic link
+### (2) Physical path vs. symbolic link
 If you are inside a directory that is a link, use `-P` to see the actual path on disk.
 ```bash
 cd /var/mail
@@ -25,9 +26,19 @@ pwd     # Output: /var/mail
 pwd -P  # Output: /var/spool/mail
 ```
 
-### 3. Store path in a variable
+### (3) Store path in a variable
 In shell scripting, you can store the current path for later use.
 ```bash
 CURRENT_DIR=$(pwd)
 echo "The script is running in $CURRENT_DIR"
 ```
+
+## Related
+- [[CSE391/Linux Fundamentals/Commands/cd|cd]]
+- [[CSE391/Linux Fundamentals/Unix File System|Unix File System]]
+- [[CSE391/Linux Fundamentals/Basic Commands|Command Reference]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| pwd | Shell built-in `pwd` — print name of current/working directory |
