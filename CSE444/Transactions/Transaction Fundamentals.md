@@ -1,68 +1,75 @@
-# Transaction Fundamentals
+# CSE444: Transaction Fundamentals
 
-A **transaction** is a sequence of database operations that executes as a single logical unit with the **all-or-nothing** property: either all operations complete successfully, or none do.
+A **Transaction** is a sequence of database operations that executes as a single logical unit with the **All-or-Nothing** property: either all operations complete successfully, or none do.
 
 ```sql
-START_TXN; -- may be omitted if autocommit is off
+START_TXN; -- Starts the transaction (may be implicit)
 [...]
-COMMIT;    -- make all changes permanent
+COMMIT;    -- Make all changes permanent
 -- or
-ROLLBACK;  -- undo all changes (= ABORT)
+ROLLBACK;  -- Undo all changes (= ABORT)
 ```
 
-- **`COMMIT`**: Makes all changes in the transaction permanent.
-- **`ROLLBACK`** (= **ABORT**): Reverts the database to its state before the transaction began. Used for user-driven cancels, application errors, or system-level recovery.
+- **`COMMIT`**: Finalizes the transaction, making all changes permanent and visible to others.
+- **`ROLLBACK`** (or **ABORT**): Reverts the database to its state before the transaction began. This occurs during user-driven cancels, application errors, or system-level recovery.
 
 ## ACID Properties
 
-To ensure data integrity, a DBMS must provide **ACID** properties:
+To ensure data integrity, a DBMS must provide the **ACID** properties:
 
-- **A**tomicity: Either all changes performed by a transaction occur or none occur (**all-or-nothing**).
-- **C**onsistency: A transaction as a whole does not violate database integrity constraints.
-- **I**solation: Transactions appear to execute one after the other in sequence (as if they were sequential).
-- **D**urability: Once a transaction commits, its changes will survive system failures (written to disk).
+- **Atomicity**: Either all changes performed by a transaction occur, or none occur (**All-or-Nothing**).
+- **Consistency**: A transaction as a whole does not violate database integrity constraints (schema rules, keys, etc.).
+- **Isolation**: Transactions appear to execute as if they were in a serial sequence, even when running concurrently.
+- **Durability**: Once a transaction commits, its changes survive system failures (persisted to stable storage).
 
-### Why ACID is Hard
-- **Concurrent operations**: Lead to isolation problems.
-- **System Failures**: Occur at any time, impacting atomicity and durability.
-- **Aborts**: Transactions may need to be rolled back mid-way.
+### Technical Challenges
+- **Concurrency**: Multiple transactions accessing the same data lead to **Isolation** violations.
+- **Failures**: System crashes can happen at any time, threatening **Atomicity** and **Durability**.
+- **Rollbacks**: The system must be able to undo changes from partially completed transactions.
 
 ## Pessimistic vs. Optimistic Concurrency Control
 
-To guarantee Isolation and handle concurrent operations, databases generally adopt one of two overarching philosophies:
+Databases adopt one of two primary philosophies to manage concurrency:
 
-- **Pessimistic CC (Locking)**:
-	- Prevent unserializable schedules *before* they happen.
-	- Never abort for serializability reasons (but may abort for deadlocks).
-	- Best for workloads with **high levels of contention** (many transactions competing for the same data).
-- **Optimistic CC (Timestamp, Multi-version, Validation)**:
-	- Assume schedules will be serializable.
-	- Abort when conflicts are detected at *commit time*.
-	- Best for workloads with **low levels of contention** (reads are frequent, writes rarely conflict).
+- **Pessimistic Concurrency Control (Locking)**:
+  - Prevents unserializable schedules *before* they occur.
+  - Transactions wait for **[[CSE444/Transactions/Pessimistic Components/Lock Modes|Locks]]** before proceeding.
+  - Best for workloads with **High Contention** (many writers on the same data).
+- **Optimistic Concurrency Control (Timestamp, Validation)**:
+  - Assumes schedules will likely be serializable.
+  - Conflicts are detected at **Commit Time**, resulting in an abort if a violation occurred.
+  - Best for workloads with **Low Contention** (mostly reads or non-overlapping writes).
 
-## Terminology: Buffer Management & Recovery
+## Buffer Management & Recovery Policies
 
-The interaction between the buffer pool and the recovery manager determines how the DBMS ensures **Atomicity** and **Durability**.
+The interaction between the **[[CSE444/DBMS architecture and deployments/Subsystems/Buffer Manager|Buffer Pool]]** and the **Recovery Manager** determines the implementation of Atomicity and Durability.
 
-- **[[CSE444/Transactions/Recovery/RecoveryComponents/Buffer Management Policies#Steal|Steal or No-Steal]]**:
-    - **Steal**: An uncommitted transaction can overwrite the most recent committed value on disk. Requires **Undo** logging.
-    - **No-Steal**: Changes are kept in memory until the transaction commits.
-- **[[CSE444/Transactions/Recovery/RecoveryComponents/Buffer Management Policies#Force|Force or No-Force]]**:
-    - **Force**: All updates must be written to disk *before* the transaction commits.
-    - **No-Force**: A transaction can commit before all its data is on disk. Requires **Redo** logging.
+- **Steal vs. No-Steal**:
+  - **Steal**: An uncommitted transaction can "steal" a slot in the buffer pool and overwrite the most recent committed value on disk. Requires an **Undo Log** to revert the change if the transaction aborts.
+  - **No-Steal**: Changes are kept in memory until the transaction commits, ensuring disk values are always committed.
+- **Force vs. No-Force**:
+  - **Force**: All updates must be flushed to disk *before* the transaction is allowed to commit.
+  - **No-Force**: A transaction can commit before all its modified pages are on disk. Requires a **Redo Log** to re-apply changes after a crash.
 
-| Policy Combination | Required Logging | Performance / Difficulty |
-|--------------------|------------------|--------------------------|
-| **Force / No-Steal** | None | Poor performance (Used in Lab 3). |
-| **Force / Steal** | **Undo Log** | Better memory use, but slow commit. |
-| **No-Force / No-Steal**| **Redo Log** | Fast commit, but limited txn size. |
-| **No-Force / Steal** | **Undo-Redo Log**| **Highest Performance** (ARIES). |
+| Policy Combination      | Required Logging     | Performance / Trade-offs                  |
+|:------------------------|:---------------------|:------------------------------------------|
+| **Force / No-Steal**    | None                 | Poor performance; very simple recovery.   |
+| **Force / Steal**       | **Undo Log**         | Efficient memory use; slow commit phase.  |
+| **No-Force / No-Steal** | **Redo Log**         | Fast commit; limited transaction size.    |
+| **No-Force / Steal**    | **Undo-Redo Log**    | **Highest Performance** (e.g., ARIES).    |
+
+---
+
+## Industry Standard Terms
+- **Steal** $\rightarrow$ Undo-required Buffer Management
+- **Force** $\rightarrow$ Synchronous Commit / Eager Write
+- **Isolation** $\rightarrow$ Concurrency Control
+- **Rollback** $\rightarrow$ Abort / Revert
 
 ## Related
-- [[CSE444/Transactions/Recovery/Recovery|Recovery and Logging]]
-- [[CSE444/Transactions/Concurrency Anomalies|Schedules and Concurrency Problems]]
-- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]]
-- [[CSE444/Transactions/Isolation Levels|Isolation Levels]]
-- [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]]
-- [[CSE444/Transactions/Optimistic Components/Validation|Validation]]
-- [[CSE444/Transactions/Optimistic Components/Snapshot Isolation|Snapshot Isolation]]
+- [[CSE444/Transactions/Recovery/Recovery|Recovery and Logging]] — ARIES and WAL details
+- [[CSE444/Transactions/Concurrency Anomalies|Concurrency Anomalies]] — WR, RW, and WW conflicts
+- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]] — 2PL and lock table
+- [[CSE444/Transactions/Isolation Levels|Isolation Levels]] — SQL Standard levels
+- [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]] — T/O concurrency control
+- [[CSE452/Consistency/Strong Consistency|CSE452 Strong Consistency]]

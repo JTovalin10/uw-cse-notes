@@ -1,67 +1,74 @@
-# CSE444: Query Execution
+# CSE444: Query Execution & Algorithms
 
 ## Query Processor Overview
 
-The **query processor** is responsible for two major phases:
+The **Query Processor** is responsible for two major phases:
 
-- **Query optimization**: find a good execution plan
-- **Query execution**: execute the chosen plan
+- **[[CSE444/Query Optimization/Query Optimization|Query Optimization]]**: finding an efficient execution plan.
+- **Query Execution**: executing the chosen plan via physical operators.
 
-An SQL query is transformed into a physical plan. Each operator in the plan is given a limited amount of memory to work with. The key decisions made during this transformation are:
+An SQL query is transformed into a **Physical Plan**. Each operator in the plan is allocated a limited amount of memory (often called a "buffer quota"). Key decisions in this transformation include:
 
-- **Access path selection** for each relation (e.g., sequential scan vs. index scan)
-- **Implementation choice** for each operator (e.g., hash join vs. nested loop join)
-- **Scheduling decisions** for operators:
-  - Single-threaded or parallel
-  - Pipelined or materialized
+- **Access Path Selection**: Choosing how to retrieve data from each relation (e.g., **File Scan** vs. **Index Scan**).
+- **Implementation Choice**: Selecting the algorithm for each operator (e.g., **[[CSE444/Query Evaluation/Partitioned Hash Algorithms|Hash Join]]** vs. **[[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]]**).
+- **Scheduling Decisions**: Determining execution strategy (Single-threaded vs. Parallel, Pipelined vs. Materialized).
 
 ## Memory Management
 
-Each operator in the plan manages its own memory in two ways:
+Each operator manages its own memory state. There are two primary strategies for representing tuples as they flow through the plan:
 
-1. **Pre-allocating heap space for input/output tuples** — there are two strategies for how tuples are represented:
-   - **BP-tuples**: pointers to data in the buffer pool
-   - **M-tuples**: new tuples allocated on the heap
-2. **Allocating memory for its internal state** — stored on the heap
+1. **BP-Tuples**: Pointers to data in the **[[CSE444/DBMS architecture and deployments/Subsystems/Buffer Manager|Buffer Pool]]**.
+2. **M-Tuples**: New tuples allocated directly on the **Heap**.
 
-The DBMS enforces limits on how much memory each operator or each query can consume. This constraint shapes which tuple representation strategy makes sense.
+The DBMS enforces strict memory limits to prevent a single query from exhausting system resources.
 
 ## BP-Tuples
 
-A **BP-tuple** (buffer pool tuple) is a tuple descriptor that holds a pointer directly into a page in the buffer pool, rather than copying the data.
+A **BP-Tuple** (Buffer Pool Tuple) is a descriptor that holds a pointer directly into a page residing in the buffer pool, avoiding the overhead of copying data.
 
-When an operator constructs a BP-tuple, it references a tuple in the buffer pool and must **increment the pin count** of that page. The pin count is decremented when the descriptor is cleared, ensuring the page is not evicted while it is in use.
+When an operator constructs a BP-tuple, it must **increment the pin count** of the corresponding page. The pin count is decremented when the descriptor is cleared, ensuring the page is not evicted by the **[[CSE444/DBMS architecture and deployments/Subsystems/Buffer Manager|Buffer Manager]]** while in use.
 
-![[BP-Tuples.png]]
+![[Screenshots/BP-Tuples.png]]
 
 **Pros:**
-- No data copying — excellent performance since data is read in-place from the buffer pool
+- **Zero-copy**: Excellent performance by reading data in-place.
 
 **Cons:**
-- Pages must be pinned in the buffer pool, which can exhaust the pool under high operator concurrency
-- Cannot represent computed or derived values (e.g., the result of an arithmetic expression), since the data must exist as-is on a buffer pool page
+- **Pinning Pressure**: Holding pages pinned can exhaust the buffer pool under high concurrency.
+- **Static Content**: Cannot represent computed or derived values (e.g., arithmetic results) because the data must exist physically on a page.
 
 ## M-Tuples
 
-An **M-tuple** (memory tuple) is a tuple that is fully materialized — the actual data is copied out of the buffer pool and stored as a new allocation on the heap.
+An **M-Tuple** (Memory Tuple) is fully materialized; the data is copied out of the buffer pool and stored as a new allocation on the heap.
 
-![[M-Tuples.png]]
+![[Screenshots/M-Tuples.png]]
 
 **Pros:**
-- No need to hold pages pinned in the buffer pool (only briefly pinned during the copy)
-- Can represent new or derived values (e.g., computed columns, aggregation results)
+- **Flexibility**: Can represent new or derived values (computed columns, aggregations).
+- **Reduced Pinning**: Pages are only pinned briefly during the copy operation.
 
 **Cons:**
-- Data copying introduces overhead that can degrade performance, especially for large relations
+- **Copy Overhead**: Data copying introduces CPU and memory bandwidth overhead, which scales with relation size.
 
 ## Iterator Interface
 
-The query execution engine is typically built around an **iterator interface** (also called the Volcano model or pull model). Each operator exposes `open()`, `next()`, and `close()` methods. The root operator drives execution by repeatedly calling `next()`, which propagates down the tree — each operator pulls tuples from its children on demand. This enables pipelined execution where operators run concurrently without fully materializing intermediate results.
+The execution engine typically follows the **Iterator Interface** (also known as the **Volcano Model** or **Pull Model**). Each operator exposes three standard methods:
+- `open()`: Initializes operator state.
+- `next()`: Returns the next tuple in the result stream.
+- `close()`: Cleans up resources.
+
+The root operator drives execution by calling `next()`, which propagates down the tree. This enables **Pipelining**, where operators run concurrently without needing to fully materialize intermediate results on disk.
 
 ---
 
-## Related
+## Industry Standard Terms
+- **BP-Tuples** $\rightarrow$ Zero-copy Tuples / Pinned Tuples
+- **M-Tuples** $\rightarrow$ Materialized Tuples / Heap-allocated Tuples
+- **Iterator Interface** $\rightarrow$ Volcano Model / Pull Model
+- **Access Path Selection** $\rightarrow$ Access Method Selection
 
+## Related
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]]
 - [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture and Query Processing]]
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]]
+- [[CSE332/ADT and Design/Iterators|CSE332 Iterators]]

@@ -17,6 +17,21 @@ Paxos is a voting system. Instead of needing everyone to agree, you only need a 
 To tolerate $f$ failures, a system must have at least $2f + 1$ nodes.
 - **Why?**: A majority of $f+1$ nodes ensures that any two successful quorums share at least one node. This "overlapping node" is the link that prevents the system from making two different decisions (Split-Brain).
 
+```mermaid
+graph TD
+    subgraph Quorum_A [Quorum A (Majoriy)]
+        A1(Node 1)
+        A2(Node 2)
+        Over[Overlapping Node]
+    end
+    subgraph Quorum_B [Quorum B (Majority)]
+        B1(Node 4)
+        B2(Node 5)
+        Over
+    end
+    style Over fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ## Main Components of the Paxos Suite
 - **[[CSE452/Paxos/Single Paxos|Single Decree Paxos]]**: The core mechanism for deciding one single value. It introduces the two-phase protocol (Prepare and Accept).
 - **[[CSE452/Paxos/Multi-Paxos|Multi-Paxos]]**: The production-ready extension that handles an infinite sequence of decisions (a Log). It introduces the "Stable Leader" and "Commit Index" optimizations.

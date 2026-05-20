@@ -1,30 +1,55 @@
 # CSE451: Virtual Memory
 
-## What is it
-The memory allocated for each process is "virtual," where each process thinks it has the entire memory space to itself
+**Virtual Memory** is an architectural abstraction that provides each process with the illusion of a private, contiguous, and large memory space, regardless of the physical memory (RAM) available on the machine.
 
-## What it provides
-- efficient use of hardware (real memory)
-	- VM enables programs to execute without requiring their entire address space to be in physical memory
-	- many programs don't need all their code or data at once
-	- no need to allocate memory for it, OS should adjust amount allocated based on run-time behavior
-- program flexibility
-	- programs can execute on machines with less RAM than they "need"
-		- paging can be slow
-- protection
-	- virtual memory isolates processes from each other
-	- one process cannot name addresses visible to others; each process has its own isolated address space
+## Primary Objectives
 
-## How can we achieve this
-- [[Memory Management Unit]]
-- [[Translation Lookaside Buffer (TLB)]]
-- [[What is a Page]]
-- [[Page Table]]
-	- [[Page Fault]] handling
-- sometimes accompanied by [[swap space]] (swapping) or limited segmentation
+### 1. Resource Efficiency
+- **Demand Paging**: Programs can execute even if only a fraction of their address space is in physical memory.
+- **Lazy Allocation**: The OS only allocates physical frames when the process actually touches a page, reducing wasted RAM.
 
-# Related
-- [[CSE351/Memory Management/Virtual Memory|Virtual Memory (351)]]
-- [[CSE351/Memory Management/Paging|Paging (351)]]
-- [[CSE451/Virtualization/Memory/Memory management|OS Memory Management (451)]]
-- [[CSE451/Virtualization/Memory/Paged Virtual Memory|Paged Virtual Memory (451)]]
+### 2. Isolation and Protection
+- **Address Space Isolation**: One process cannot name or access the memory of another process because they use distinct page tables.
+- **Access Control**: Each page can be marked with permissions (Read, Write, Execute). The hardware prevents unauthorized access (e.g., writing to the **Text** segment).
+
+### 3. Program Flexibility
+- Programs can be larger than the physical RAM.
+- **Relocation**: Code can be loaded anywhere in physical memory without modifying the binary, as the **[[CSE451/Virtualization/Memory/Virtual Memory#Address Translation|Address Translation]]** layer handles the mapping.
+
+---
+
+## Address Translation Mechanism
+
+The transition from a **Virtual Address** to a **Physical Address** involves cooperation between the kernel and hardware.
+
+```mermaid
+graph LR
+    VA[Virtual Address] --> MMU[Memory Management Unit]
+    MMU --> TLB{TLB Hit?}
+    TLB -- Yes --> PA[Physical Address]
+    TLB -- No --> PT[Page Table Walk]
+    PT --> PA
+    PT -- Missing --> PF[Page Fault]
+    PF --> Kernel[Kernel Handles Swap/IO]
+```
+
+### Key Components
+- **Memory Management Unit (MMU)**: The hardware component that performs the translation.
+- **[[CSE351/Memory Management/Virtual Memory#TLB|Translation Lookaside Buffer (TLB)]]**: A high-speed cache of recent virtual-to-physical mappings.
+- **[[CSE451/Virtualization/Memory/Virtual Memory#Page Tables|Page Table]]**: A data structure (usually a multi-level tree) managed by the OS that stores the mappings.
+- **Page Fault**: A hardware exception triggered when a process accesses a page not currently mapped in RAM.
+
+---
+
+## Industry Standard Terms
+- **Virtual Memory** $\rightarrow$ VM
+- **Physical Memory** $\rightarrow$ RAM / Main Memory / Frames
+- **Page Fault** $\rightarrow$ Segment Violation (when invalid) / Swap Event
+- **Swap Space** $\rightarrow$ Pagefile / Backing Store
+
+## Related
+- [[CSE451/Processes/Process and Thread Fundamentals|Process and Thread Fundamentals (PCB/TCB)]]
+- [[CSE451/Virtualization/Memory/Allocation|Memory Allocation (Slab/Buddy)]]
+- [[CSE351/Memory Management/Virtual Memory|CSE351: Virtual Memory Fundamentals]]
+- [[CSE351/Memory Management/Paging|CSE351: Paging and Address Translation]]
+- [[CSE461/Definitions/Direct Memory Access (DMA)|CSE461: Direct Memory Access (DMA)]]

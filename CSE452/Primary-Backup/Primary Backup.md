@@ -25,13 +25,6 @@ Each client still tracks its own seqnum; the primary also maintains a global seq
 
 ### Request Flow
 
-```
-C_1 --req_A--> P_n --req + seqnum--> B_m
-                 <--------ACK---------
-                 (P executes, then responds)
-C_2 --req_B--> P_n
-```
-
 1. Client sends request to P
 2. P forwards the request (with its seqnum) to B
 3. B executes the request, then ACKs P
@@ -39,6 +32,20 @@ C_2 --req_B--> P_n
 5. P sends the response back to the client
 
 Note: B executes *before* P to ensure B is never ahead of P. This ordering guarantees that if P fails after sending to B, B has already applied the operation.
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant P as Primary
+    participant B as Backup
+
+    C->>P: Request
+    P->>B: Request + SeqNum
+    B->>B: Execute
+    B-->>P: ACK
+    P->>P: Execute
+    P-->>C: Response
+```
 
 ---
 

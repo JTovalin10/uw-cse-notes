@@ -11,15 +11,37 @@
 
 RPC hides the network from the programmer through generated code:
 
-- **Stub** (client side): a generated function with the same signature as the real remote function
-  - The caller just calls the stub as if it were a normal local function
-  - The stub marshals the arguments, sends the request message, waits for the response, and returns the result
-- **Skeleton** (server side): generated server-side code that receives an incoming RPC
-  - Unmarshals the arguments from bytes back into typed values
-  - Calls the actual implementation function
-  - Marshals the return value and sends it back
+- **Stub** (client side): a generated function with the same signature as the real remote function.
+  - The caller just calls the stub as if it were a normal local function.
+  - The stub marshals the arguments, sends the request message, waits for the response, and returns the result.
+- **Skeleton** (server side): generated server-side code that receives an incoming RPC.
+  - Unmarshals the arguments from bytes back into typed values.
+  - Calls the actual implementation function.
+  - Marshals the return value and sends it back.
 
 This makes RPC **transparent** to the application code — the caller doesn't know (or care) that the call crosses a machine boundary.
+
+```mermaid
+sequenceDiagram
+    participant C as Client App
+    participant CS as Client Stub
+    participant N as Network
+    participant SS as Server Skeleton
+    participant S as Server App
+
+    C->>CS: Call local procedure
+    Note over CS: Marshalling args
+    CS->>N: Send request message
+    N->>SS: Deliver message
+    Note over SS: Unmarshalling args
+    SS->>S: Call actual function
+    S-->>SS: Return result
+    Note over SS: Marshalling result
+    SS->>N: Send response message
+    N->>CS: Deliver message
+    Note over CS: Unmarshalling result
+    CS-->>C: Return result
+```
 
 ## Protocol
 
