@@ -68,6 +68,8 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[CSE452/Sharding/Definitions/Configuration|Configuration]] — the numbered shard-to-group mapping metadata
 
 ### Case Studies
+- [[CSE452/Case Studies/Big Ideas|Big Ideas in Performance and Durability]] — summary of recurring strategies for building high-performance, durable distributed systems
+- [[CSE452/Case Studies/Google File System (GFS)|Google File System (GFS)]] — a scalable distributed file system for large data-intensive applications
 - [[CSE452/Case Studies/Big Table|Big Table]] — Google's structured-data storage system: the Google stack, the 3D data model, tablets/SSTables/memtable, and the append-only tablet log
 - [[CSE452/Case Studies/Reading Papers|Reading Papers]] — how to approach the research papers studied in this course
 

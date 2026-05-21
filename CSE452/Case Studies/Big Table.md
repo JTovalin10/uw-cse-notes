@@ -21,7 +21,6 @@ graph TD
 	- Web search — crawling the internet, storing, and indexing it.
 	- Google Maps.
 	- Analytics.
-	- etc.
 - **Big Table**: built on top of GFS, Chubby, and MapReduce.
 - **Google File System (GFS)**: the underlying distributed file system (now outdated).
 - **Chubby**: "Paxos in a box" — a coordination service that packages Paxos as a reusable service. Big Table stores data here so it is able to recover.
@@ -33,7 +32,6 @@ Big Table is a storage system for **structured data**. It resembles a database b
 
 - **Control over data layout** — Google wanted direct control over how data is physically laid out.
 - **Control over locality** — control over which data is stored near which other data.
-	- Me: for cache locality?
 - **Non-relational** — it deliberately avoids the relational model.
 - **Performance at scale**.
 
@@ -115,6 +113,8 @@ graph LR
 
 ## Related
 
+- [[CSE452/Case Studies/Google File System (GFS)|Google File System (GFS)]] — the underlying storage layer for Big Table
+- [[CSE452/Case Studies/Big Ideas|Big Ideas in Performance and Durability]] — core principles applied in Big Table
 - [[CSE452/Case Studies/Reading Papers|Reading Papers]] — how to approach research papers like the Big Table paper
 - [[CSE452/Paxos/Paxos|Paxos]] — the consensus protocol that Chubby packages as a service
 - [[CSE452/Sharding/Sharding|Sharding]] — tablets as the unit of sharding
