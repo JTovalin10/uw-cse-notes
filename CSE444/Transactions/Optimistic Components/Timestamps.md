@@ -15,7 +15,41 @@ The system's goal is to force transactions to behave as if they executed seriall
 
 ---
 
-## 2. Conflict Scenarios (The Problems)
+## 2. Timestamp Metadata Fields
+
+Every data element $X$ carries three metadata fields that the scheduler inspects on every read or write request.
+
+**RT(X) — Read Timestamp**
+
+### Formal Definition
+$RT(X) = \max(\{TS(T) \mid T \text{ has successfully read } X\} \cup \{0\})$. The highest timestamp of any transaction that has read $X$.
+
+### Simplified Explanation
+The "last reader" mark. Tracks the most recent (youngest) transaction that looked at this data. Used to prevent an older transaction from writing a value after a younger transaction has already read it — that would retroactively change data the younger transaction already acted on.
+
+---
+
+**WT(X) — Write Timestamp**
+
+### Formal Definition
+$WT(X) = \max(\{TS(T) \mid T \text{ has successfully written } X\} \cup \{0\})$. The highest timestamp of any transaction that has written $X$.
+
+### Simplified Explanation
+The "last writer" mark. Tracks the most recent transaction that changed this data. Used to detect when an older transaction tries to read or write a value that a younger transaction has already overwritten.
+
+---
+
+**C(X) — Commit Bit**
+
+### Formal Definition
+$C(X) \in \{true, false\}$. A status bit representing whether the transaction $T$ such that $TS(T) = WT(X)$ has committed. $C(X) = true$ means the most recent write to $X$ is durable.
+
+### Simplified Explanation
+The "is it safe?" flag. Before reading $X$, a transaction checks $C(X)$. If $false$, the data is dirty (uncommitted) and the transaction must wait rather than risk reading data that may be rolled back.
+
+---
+
+## 3. Conflict Scenarios (The Problems)
 Before looking at the rules, we must understand the "timeline paradoxes" the scheduler is trying to prevent when transactions interleave.
 
 ### Read Too Late
@@ -36,8 +70,8 @@ Before looking at the rules, we must understand the "timeline paradoxes" the sch
 
 ---
 
-## 3. The 4 Rules of Timestamp Scheduling
-To prevent the paradoxes above, the scheduler examines [[CSE444/Definitions/RT(X)|RT(X)]], [[CSE444/Definitions/WT(X)|WT(X)]], and the commit bit [[CSE444/Definitions/C(X)|C(X)]] on every request. 
+## 4. The 4 Rules of Timestamp Scheduling
+To prevent the paradoxes above, the scheduler examines $RT(X)$, $WT(X)$, and the commit bit $C(X)$ on every request.
 
 From Garcia-Molina et al. 18.8.4, the scheduler must handle four types of requests:
 
@@ -54,7 +88,9 @@ From Garcia-Molina et al. 18.8.4, the scheduler must handle four types of reques
 #### Rule 2: Request to Write $X$ ( $w_T(X)$ )
 - **Textbook Definition**:
 	- If $TS(T) < RT(X)$, then **Rollback** $T$.
-	- If $TS(T) < WT(X)$ and $C(X) = false$, then **Delay** $T$ until $C(X) = true$ or the transaction that wrote $X$ aborts.
+	- If $TS(T) < WT(X)$ and $C(X) = false$, then **Delay** $T$ until $C(X) = true$ or the transaction that wrote $X$ aborts. Once the wait ends, **re-evaluate $T$'s request from the top** with the now-updated state of $WT(X)$ and $C(X)$:
+		- *Writer committed* ($C(X)$ became $true$): the condition is now $TS(T) < WT(X)$ and $C(X) = true$ → **Ignore** (Thomas Write Rule — a future transaction already committed its write, so $T$'s write is obsolete).
+		- *Writer aborted*: Rule 4 restored $WT(X)$ to its previous value. Re-evaluating, $T$ now likely satisfies $TS(T) \geq RT(X)$ and $TS(T) \geq WT(X)$ → **Grant**.
 	- If $TS(T) < WT(X)$ and $C(X) = true$, then **Ignore** the write (Thomas Write Rule).
 	- If $TS(T) \geq RT(X)$ and $TS(T) \geq WT(X)$, then **Grant** the write. Set $WT(X) = TS(T)$ and set $C(X) = false$.
 - **Simplified**:
@@ -72,10 +108,10 @@ From Garcia-Molina et al. 18.8.4, the scheduler must handle four types of reques
 
 #### Rule 4: Request to Abort $T$
 - **Textbook Definition**:
-	- For every database element $X$ written by $T$, restore the previous value of $X$, and restore the previous value of $WT(X)$. 
-	- Allow any transactions waiting on $X$ to proceed.
+	- For every database element $X$ written by $T$: restore the previous value of $X$, restore $WT(X)$ to its value before $T$'s write, and set $C(X) = true$.
+	- Allow any transactions delayed on $X$ (waiting for $C(X) = true$ per Rules 1 or 2) to proceed.
 - **Simplified**: 
-	- Undo your changes, erase your "last write" mark, and wake up the people waiting so they can try again with the old data.
+	- Undo your physical write to $X$, roll back $WT(X)$ to its previous value, and flip $C(X) = true$ — this unblocks any transaction that was delayed waiting on your dirty write, so they can re-evaluate with the restored, clean data.
 
 ### Thomas' Write Rule (The Exception)
 If $T$ wants to write $X$ and $WT(X) > TS(T)$, we **don't** necessarily have to rollback (unless $RT(X) > TS(T)$). We can just ignore the write because, in a serial timeline, $T$ would have written its value and then the "future" transaction would have immediately overwritten it. 
@@ -88,39 +124,46 @@ If $T$ wants to write $X$ and $WT(X) > TS(T)$, we **don't** necessarily have to 
 
 ---
 
-## 4. Multiversion Timestamp (MVCC)
-To avoid the high volume of rollbacks caused by the "Read Too Late" problem, the DBMS can keep multiple versions of a data element $X$: $X_t, X_{t-1}, X_{t-2}, \dots$ where $TS(X_t) > TS(X_{t-1}) > TS(X_{t-2})$.
+## 5. Multiversion Timestamp (MVCC)
+To avoid the high volume of rollbacks caused by the "Read Too Late" problem, the DBMS can keep multiple versions of a data element $X$.
 
-- **Recoverability**: MVCC alone does not solve [[CSE444/Definitions/Cascading Abort|cascading aborts]]; it still requires the commit bit $C(X)$ logic to ensure that a transaction only reads committed data.
-- **Improved Concurrency**: It allows transactions to read a value even if a "newer" transaction has already overwritten it, by providing the "older" version that the transaction should logically see.
+### Version Notation & Metadata
+In MVCC, a data element $X$ is stored as a list of versions: $X_{t_1}, X_{t_2}, \dots, X_{t_n}$.
+- **What is $t$?**: The subscript $t$ represents the **Write Timestamp ($WT$)** of that specific version. It is equal to the timestamp of the transaction that created it. Essentially, $t$ is the version's "birthdate."
+- **$WT(X_t)$**: This value is **immutable**. Once version $X_t$ is created, its write timestamp is forever $t$.
+- **$RT(X_t)$**: Each version maintains its own "visitor log." It tracks the timestamp of the youngest (highest TS) transaction that has read **this specific version**.
 
-### How it Changes the Rules
-With multiple versions available, the scheduler must now track $RT(X_t)$ and $WT(X_t)$ for *every single version* of $X$, along with its commit bit $C(X_t)$. 
-
-#### Rule 1: Request to Read $X$ ( $r_T(X)$ )
+### Rule 1: Request to Read $X$ ( $r_T(X)$ )
 - **Textbook Definition**:
-	- Find the version $X_t$ that has the highest write timestamp $t$ such that $t \leq TS(T)$.
-	- If $C(X_t) = false$, then **Delay** $T$ until $C(X_t) = true$ or the creator aborts.
-	- If $C(X_t) = true$, then **Grant** the read. Update $RT(X_t) = \max(TS(T), RT(X_t))$.
-	- *Notice*: There is no "Rollback" condition here!
+	1. Find the version $X_t$ that has the highest write timestamp $t$ such that $t \leq TS(T)$.
+	2. If $C(X_t) = false$, then **Delay** $T$ until $C(X_t) = true$ or the creator aborts.
+	3. If $C(X_t) = true$, then **Grant** the read. Update $RT(X_t) = \max(TS(T), RT(X_t))$.
+- **The "Version Selection" Logic**:
+	- You are looking for the **most recent version of the past**.
+	- If your $TS=10$ and the versions available are $X_5$, $X_{12}$, and $X_{15}$, you read **$X_5$**.
+	- **Why ignore the "future"?**: In a serial schedule, $T$ (at time 10) cannot see changes made by transactions that (logically) haven't happened yet ($12$ and $15$). By reading $X_5$, $T$ gets a **consistent snapshot** of the database as it existed at the moment $T$ was born.
 - **Simplified**:
-	- *Which one do I read?* Look through history and find the newest version that is still "older" than you. **If a newer version exists (written by a "future" transaction), you simply ignore it and keep reading the old version as if the new one never happened.**
-	- *Dirty data?* **Just wait.** (The person who wrote this specific version isn't finished yet. You don't have to rollback and restart, you just pause and wait for them to commit or abort).
-	- *Safe?* Read it and leave your "last read" mark on *that specific version*. You **never die** from reading too late anymore!
+	- *Which one do I read?* Look at the birthdates ($t$) and pick the newest one that isn't younger than you. 
+	- *What about WT and RT?*: You don't change the $WT$ (it's fixed). You only update the $RT$ of the *specific version* you touched. This tells the system: "Someone from time $TS(T)$ has now witnessed the value of $X_t$."
 
-#### Rule 2: Request to Write $X$ ( $w_T(X)$ )
+### Rule 2: Request to Write $X$ ( $w_T(X)$ )
 - **Textbook Definition**:
-	- Find the version $X_t$ that has the highest write timestamp $t$ such that $t \leq TS(T)$.
-	- If $TS(T) < RT(X_t)$, then **Rollback** $T$. 
-	- If $TS(T) = t$, then **Overwrite** the existing version $X_t$ (you already created it).
-	- Else (i.e., $TS(T) \geq RT(X_t)$), **Create** a new version $X_{TS(T)}$. Set its $WT = TS(T)$, $RT = TS(T)$, and $C = false$.
+	1. Find the version $X_t$ that has the highest write timestamp $t$ such that $t \leq TS(T)$. (This is the version $T$ *would* have read).
+	2. If $TS(T) < RT(X_t)$, then **Rollback** $T$. 
+	3. If $TS(T) = t$, then **Overwrite** the existing version $X_t$ (you already created it).
+	4. Else (i.e., $TS(T) > RT(X_t)$), **Create** a new version $X_{TS(T)}$. Set its $WT = TS(T)$, $RT = TS(T)$, and $C = false$.
+- **The "Timeline Paradox" (Why Writes Still Fail)**:
+	- Even though we have multiple versions, $T$ can still die if it tries to write "too late."
+	- **Scenario**: $T$ has $TS=10$. The latest version from its perspective is $X_5$. However, some transaction $U$ with $TS=20$ has already read $X_5$ ($RT(X_5) = 20$).
+	- If $T$ is allowed to write $X_{10}$ now, then $U$ (at time 20) **should have read $X_{10}$** instead of $X_5$.
+	- Because $U$ already "witnessed" the past and saw $X_5$, we cannot go back in time and insert $X_{10}$ into $U$'s history. $T$ has missed its window and must be aborted.
 - **Simplified**:
-	- *Did someone from the future already read the version I'm about to replace?* Die. (Because they read the old version thinking it was the latest, inserting a new version right before their timeline would invalidate what they already saw).
-	- *Safe?* Instead of overwriting the old data, just **create a brand new version** stamped with your time. 
+	- *Did someone from the future already look at the version I'm supposed to follow?* If so, you're too late to change the course of history. Die.
+	- *Safe?* Don't touch the old versions. Just add your new version $X_{TS(T)}$ to the end of the list.
 
 ---
 
-## 5. Walkthrough Examples
+## 6. Walkthrough Examples
 
 ### Basic Timestamp Scheduling (Single Version)
 Suppose we have $X$ with $RT(X)=0, WT(X)=0, C(X)=true$.
