@@ -1,0 +1,100 @@
+
+## Workloads
+- web search
+	- crawls and stores data (expensive)
+		- write once
+	- index
+		- list of every word that mention that word
+		- iterate through the entire web crawl and create an index for every html
+		- giant read and write summary
+	- done periodically
+- storage for big table
+	- SSTable files that are immutable
+		- write once
+	- operation log
+		- on-disk
+		- stores operations we want to do and the order we want to do them
+		- append only
+- GFS must handle 300TB (at the time)
+	- it must handle large files (avg 100MB+)
+	- optimize for this and eat the cost of the smaller pages
+## Design Space
+- large total amount of data
+- Large files
+- reads: large sequential reads
+	- index reads this data
+	- Remember [[CSE451 Index]] sequential reads on HDD is a lot better than Random. However, not true for SSD
+	- small reads supported
+		- allow ir but its slow
+- writes: mostly append only
+	- write in order
+	- small writes supported
+## Consistency Model
+- metadata
+	- description of which filesa re in what folder and who has a copy of these files
+- linearizable for metadata oeprations
+	- for concurrent writes, one person will get an error and the other will succeed
+	- only one person would get the lock
+- data is not linearizable
+	- it makes it the applications problem
+## GFS
+- chunk = 64MB
+	- one file takes 64MB, even if the file is one byte (similar to pages issue)
+	- stores only the prefix instead of the 64MB (if only 1B file it will take 4KB (page))
+- GFS master
+	- names -> chunks
+		- persistent
+	- chunks -> {chunkservers}
+		- voltile as its stored in memory, no point in trying to keep it 100% in sync
+		- ask all chunk servers what chunks they have when rebooting
+	- primary master with shadow masters
+		- shadow is slighly behind but the shadow can be promoted
+		- in 2003 a human would need to promote the shadow to primary
+		- rare failures
+	- 
+- chunk servers
+	- each have local disk(s)
+	- replicates to a factor of 3 (explain this more)
+	- contains which chunks they have
+- client
+	- talks to GFS master and chunk server
+	- read
+		- sends name and byte offset to GFS master
+			- open()
+		- GFS master returns a chunk id and which server has that chunk
+			- chunkid
+		- then talk to that server
+			- read(chunkid)
+		- the chunk server returns tht data to client
+	- writes
+		- figure out who the primary is
+			- chosen by the master
+		- send data we want to write to all the replicas
+		- contact primary to do the write
+			- primary decides where to do this operation and tells the other replicas its choice
+			- opNum
+			- this allows them to seperate larger messages from the logic of the write
+				- do not need to try write if we know the data isnt there yet
+		- order of the operations and tell the other replicas
+			- we can tell the client that its write is complete
+	- append
+		- if two people try to append at the same time then we can have a lost write
+			- compute the same file length and write to the offset
+			- last-writer wins
+	- appendRecord
+		- doesnt fully resolve the conflicts
+			- makes it obvious to the application if it occurs
+		- one master server that decides the order of operations
+			- doesnt need offset as we want to append to the file
+		- primary orders operations
+			- ensures concurrent appends do not interfere with each other
+			- execute the append where it is in the offset (at the moment)
+			- " we want to append wherever the offset is"
+		- what can go wrong with this
+			- old vs new primary, the order can be messed up
+			- data is already on replicas
+			- we rely on the application to catch invalid records
+			- relies on the application to design a format to detect errors
+				- checksum
+				- etc
+			- make it the applciations problem to detect invalid records
