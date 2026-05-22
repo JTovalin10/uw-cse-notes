@@ -50,11 +50,22 @@ Nodes contain tuples based on a hash of chosen attributes.
 
 - **The Justin Bieber Effect**: Named for a period on Twitter when Justin Bieber had significantly more followers than other users. If data (like tweets) is partitioned by user ID, the node responsible for his ID would be overwhelmed by the volume of follower interactions.
 - **Impact**: The speed of the parallel system is limited by its slowest node (the bottleneck).
-
 ### Skew Handling
 
-- **Range Partitioning**: Ensure each range gets roughly the same number of tuples using **equi-depth histograms** rather than equi-width.
+- **Range Partitioning**: Ensure each range gets roughly the same number of tuples using **equi-depth histograms** rather than equi-width. A range is split once the number of tuples it holds exceeds a threshold $n$, so each resulting partition stays balanced regardless of how values cluster.
 - **Histograms**: Use snapshots of data distribution history to determine split points. These must be periodically updated as the data changes.
+
+#### Skew-Join
+A **skew-join** handles a join where one key value dominates (a "Justin Bieber" value).
+
+- **More partitions than nodes**: Create more partitions than there are nodes. This works as long as the skew is confined to at most one node. **MapReduce** uses this approach.
+- **Subset-replicate**: Handle the heavy-hitter values separately from the rest.
+  - For the "Justin Bieber values", separate them out and do a **[[CSE444/Parallel/ParallelExecutionComponents/Partitioned Hash Join#Broadcast Join (Optimizing for Small Relations)|broadcast join]]**.
+  - Split those heavy-hitter values evenly among all nodes so no single node is overwhelmed.
+  - Once they are split up, all nodes can join them.
+  - Do a regular **hash join** for the rest of the tuples that do not have skew. (If $S$ was small enough, even those can use a broadcast join.)
+
+![[CSE444/Screenshots/Skew Join Algorithm.png]]
 
 ---
 

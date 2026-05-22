@@ -42,7 +42,12 @@ Advanced database systems: internals, query processing, storage, and distributed
 ### Parallel Query Processing
 - [[CSE444/Parallel/Intro to Parallel DBMS|Intro to Parallel DBMS]] — OLTP vs. OLAP scaling, shared-memory/disk/nothing architectures
 - [[CSE444/Parallel/Data Partitioning Schemes|Data Partitioning Schemes]] — horizontal partitioning, block/range/hash partitioning, and data skew
-- [[CSE444/Parallel/Parallel Query Execution|Parallel Query Execution]] — parallel selection, partitioned aggregation, combiners, and partitioned hash join
+- [[CSE444/Parallel/Parallel Query Execution|Parallel Query Execution]] — hub for parallel operators, linking the components below
+  - [[CSE444/Parallel/ParallelExecutionComponents/Parallel Selection|Parallel Selection]] — local selection per node plus the implicit union of results
+  - [[CSE444/Parallel/ParallelExecutionComponents/The Shuffle Operator|The Shuffle Operator]] — the producer-consumer redistribution mechanism and evaluation pipeline
+  - [[CSE444/Parallel/ParallelExecutionComponents/Partitioned Aggregation|Partitioned Aggregation]] — partitioning cases, naive reshuffle, and combiners
+  - [[CSE444/Parallel/ParallelExecutionComponents/Partitioned Hash Join|Partitioned Hash Join]] — partitioned hash equijoin and the broadcast-join optimization
+  - [[CSE444/Parallel/ParallelExecutionComponents/Speedup and Scaleup|Speedup and Scaleup]] — strong vs. weak scaling of parallel queries
 
 ### Transactions
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)

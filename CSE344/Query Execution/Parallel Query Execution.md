@@ -1,5 +1,7 @@
 # CSE344: Parallel Query Execution
 
+#CSE344
+
 ## Parallelizing Data Management
 
 ### Sublinear Expected Performance
@@ -94,11 +96,13 @@ Each node computes the selection independently; results are implicitly unioned.
 
 ### Partitioned Aggregation $\gamma$
 
-1. **Shuffle** tuples over the network so that all related ones are on the same machine
+1. Hash **Shuffle** tuples over the network so that all related ones are on the same machine
+	1. on a particular attribute
 2. Aggregate locally
 3. Union results at the end
 
-![[Partitoned Aggregation.png]]
+![[Partitioned Aggregation Example.png]]
+
 
 ### Partitioned Joins $\bowtie$
 
