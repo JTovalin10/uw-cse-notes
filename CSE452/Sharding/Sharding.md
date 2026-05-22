@@ -1,6 +1,17 @@
 # CSE452: Sharding
 
 **Sharding** (or **Partitioning**) is the architectural pattern of horizontally scaling a system by dividing a single logical dataset into multiple smaller, autonomous subsets called **shards**. While [[CSE452/Primary-Backup/Primary Backup|Replication]] solves for **Availability** and **Fault Tolerance** by duplicating data, Partitioning solves for **Throughput** and **Capacity** by distributing the storage and computational burden across a cluster of independent nodes.
+- Divides keyspace (the **K** in K/V) into multiple subsets, called **shards**
+	- Shard keys can be on many things (alphabetically, random/hashes, load-balanced, etc.)
+	- Shards are numbered **1...numShards**. Example: shard 1 covers keys a–d, shard 2 covers e–h, etc.
+	- Each shard is handled by a **group** of servers. Each group:
+		- Runs Paxos (from Lab 3) — so we can assume a group will not fail
+		- Stores all key/value pairs in the database that correspond to its shard
+		- Accepts/responds to client requests that correspond to its shard
+	- Since different sharding groups can run in parallel without communicating, performance is increased proportionally to the number of shards
+	- Shards vs. groups:
+		- A **shard** is a subset of the key-space — the unit of partitioning
+		- A **group** is a cluster of Paxos nodes that serves one or more shards. Each group can hold multiple shards.
 
 ---
 
@@ -65,10 +76,31 @@ graph TD
 
 ## Lab 4: Building a Sharded Service
 
-The implementation of a sharded key-value store is divided into three core phases:
+The goal of Lab 4 is to build a **linearizable, sharded key-value store with multi-key updates and dynamic load balancing**, similar in functionality to Amazon's DynamoDB or Google's Spanner.
+
+A critical design distinction: **the assignment of keys to shards is fixed** (via a deterministic hash). What Lab 4 actually implements is dynamic load balancing by **assigning shards to groups** — the [[CSE452/Sharding/Shard Master|ShardMaster]] manages this shard-to-group mapping. Paxos provides reliability; sharding provides performance and scalability.
+
+The implementation is divided into three core phases:
 
 ### Phase 1: [[CSE452/Sharding/Shard Master|The Shard Master]]
 The **Shard Master** manages a sequence of numbered configurations. It is responsible for re-balancing shards when replica groups join or leave the system. It uses [[CSE452/Paxos/Multi-Paxos|Multi-Paxos]] to ensure the configuration metadata is fault-tolerant and linearizable.
+- keeps track of which groups server which shards
+- required because
+	- clients need to be able to figure out what groups to send requests to
+		- avoid broadcasting
+	- we might want to reconfig the system (including redistribution of shards)
+		- add/remove paxos replica groups
+		- move a shard to another group
+- keeps track of the current config object (ShardConfig)
+```java
+private final int configNum;
+// GroupId -> (Addresses of all members in that group, all shard numbers the group holds)
+private final Map<Integer, Pair<Set<Address>, Set<Integer>>> groupInfo;
+```
+	- also remembers all old configs
+		- does not need to be garbage collected
+		- query can ask for any past configs
+		- for every config number, want to store a config object like above
 
 ### Phase 2: [[CSE452/Sharding/Sharded Key-Value Server|Sharded Key-Value Server]] & [[CSE452/Sharding/Reconfiguration|Reconfiguration]]
 Each replica group serves a subset of the key-space. When the configuration changes, groups must perform a **[[CSE452/Sharding/Reconfiguration|Shard Handoff]]** to transfer data while maintaining [[CSE452/Consistency/Definitions/Linearizability|Linearizability]].

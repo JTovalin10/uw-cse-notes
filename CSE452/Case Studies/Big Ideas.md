@@ -21,14 +21,29 @@ Systems must be designed for their specific expected workload rather than being 
 To keep the core system fast, some consistency guarantees can be offloaded to the application layer.
 - **Selective Linearizability**: Instead of making the entire system **[[CSE452/Consistency/Definitions/Linearizability|linearizable]]**, a system might only guarantee it for metadata, leaving the application to handle potential inconsistencies in the data itself (e.g., via checksums or application-level deduplication).
 - **Bottleneck Management**: Identify the single point of failure or performance bottleneck (like a master node) and minimize the data that must pass through it. If a bottleneck cannot be avoided, it must be prioritized for a fix later in the development lifecycle.
-
+## Latency
+we have to consider latency, most people consider median latency but larger companies consider a 99.9th percentile latency. 
+- called tail latency
+- however, this latency doesnt consider other failure's like network failure
+- this tends to deal with the network, so we must reduce network load
+- median latency is also called 50th percentile latency
+## Security
+- when building the software, we have to consider who is using it?
+	- do we need secruity
+	- do we need to verify?
+	- all of theser will reduce performance
+## Writes
+- sacriface strong consistency to allow for better performance
+- pass inconssitency to clients (if applicable)
 ## Durability and Fault Tolerance
 
 Durability ensures that once data is written, it is not lost even if multiple components fail.
 
 - **Rack-Aware Replication**: In a large datacenter, a single power failure or switch failure can take out an entire rack of servers.
 - **Cross-Rack Spreading**: To ensure durability, replicas of the same data must be spread across different physical **dataracks**. This ensures that the loss of one rack does not result in the loss of all copies of the data.
-
+## Avaliability
+- For databases, relational databases destroies avaliability as they pritoize Consistency
+- strong consistency reduces avaliability
 ## Industry Standard Terms
 
 | CSE452 Term | Industry / Standard Term |
