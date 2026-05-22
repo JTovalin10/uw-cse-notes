@@ -57,11 +57,11 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
-- [[CSE351/x86-64 Assembly/x86-64 Memory Operands|Memory Operands]]
-- [[CSE351/x86-64 Assembly/x86-64 Operand Types|Operand Types]]
-- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
-- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
+- [[x86-64 Registers|x86-64 Registers]]
+- [[x86-64 Memory Operands|Memory Operands]]
+- [[x86-64 Operand Types|Operand Types]]
+- [[Unsigned Integers|Unsigned Integers]]
+- [[Two's Complement|Two's Complement]]
 
 ---
 

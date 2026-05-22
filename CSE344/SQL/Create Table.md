@@ -55,7 +55,7 @@ CREATE TABLE Registry (
 ## Related
 - [[Basics#Keys]] — conceptual overview of keys and foreign keys
 - [[Joins]] — foreign keys are the basis for most joins
-- [[CSE344/Database Design/Integrity Constraints|Integrity Constraints]] — CHECK constraints, assertions, and ON DELETE/UPDATE behavior
-- [[CSE344/Database Design/Entities, Relationships, and ER Diagrams|Entities, Relationships, and ER Diagrams]] — how schemas are designed before creating tables
-- [[CSE344/Database Design/Normalization|Normalization]] — refining a schema into a good CREATE TABLE form
-- [[CSE344/Database Design/Password Handling|Password Handling]] — SQL injection and how to store sensitive columns safely
+- [[Integrity Constraints|Integrity Constraints]] — CHECK constraints, assertions, and ON DELETE/UPDATE behavior
+- [[Entities, Relationships, and ER Diagrams|Entities, Relationships, and ER Diagrams]] — how schemas are designed before creating tables
+- [[Normalization|Normalization]] — refining a schema into a good CREATE TABLE form
+- [[Password Handling|Password Handling]] — SQL injection and how to store sensitive columns safely

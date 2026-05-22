@@ -1,6 +1,6 @@
 # CSE351: Loops
 
-Loops use [[CSE351/x86-64 Assembly/Labels|labels]] and [[CSE351/x86-64 Assembly/Jump Instructions|jump instructions]] with **backward jumps** to repeat a block of code. The key difference from conditionals is that the jump target is earlier in the instruction stream, creating a cycle.
+Loops use [[Labels|labels]] and [[Jump Instructions|jump instructions]] with **backward jumps** to repeat a block of code. The key difference from conditionals is that the jump target is earlier in the instruction stream, creating a cycle.
 
 ---
 
@@ -128,8 +128,8 @@ flowchart TD
 ## Related
 
 - [[CSE351/x86-64 Assembly/Conditionals|Conditionals]]
-- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
-- [[CSE351/x86-64 Assembly/Condition Codes|Condition Codes]]
+- [[Jump Instructions|Jump Instructions]]
+- [[Condition Codes|Condition Codes]]
 - [[CSE351/Data Structures/Arrays|Arrays]]
 - [[CSE351/Memory Fundamentals/Pointers|Pointer Arithmetic]]
 

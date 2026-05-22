@@ -88,9 +88,9 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory (including Endianness)]]
+- [[Words and Memory|Words and Memory (including Endianness)]]
 - [[CSE351/Data Structures/Arrays|Arrays]]
-- [[CSE351/x86-64 Assembly/x86-64 Memory Operands|x86-64 Memory Operands]]
+- [[x86-64 Memory Operands|x86-64 Memory Operands]]
 - [[CSE333/C Fundamentals/Pointers|Pointers (CSE333)]]
 
 ---

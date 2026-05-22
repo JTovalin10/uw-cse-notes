@@ -23,13 +23,13 @@ $$\sum_{i=0}^{n-1} b_i \times 2^i$$
 
 ### Simplified Explanation
 
-Every bit position contributes a non-negative power of 2. The leftmost bit position $n-1$ contributes $2^{n-1}$, not a negative weight (unlike [[CSE351/Number Representation/Two's Complement|Two's Complement]]). All values are therefore zero or positive.
+Every bit position contributes a non-negative power of 2. The leftmost bit position $n-1$ contributes $2^{n-1}$, not a negative weight (unlike [[Two's Complement|Two's Complement]]). All values are therefore zero or positive.
 
 ---
 
 ## Binary Arithmetic
 
-Addition and subtraction work like decimal arithmetic, but **carry** and **borrow** happen at value **2** instead of 10. This is why adding 1 to the binary representation of the maximum value wraps around to 0 — see [[CSE351/Number Representation/Overflow|Overflow]].
+Addition and subtraction work like decimal arithmetic, but **carry** and **borrow** happen at value **2** instead of 10. This is why adding 1 to the binary representation of the maximum value wraps around to 0 — see [[Overflow|Overflow]].
 
 ### Example: Binary Addition (8-bit)
 
@@ -56,10 +56,10 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
-- [[CSE351/Number Representation/Binary and Hexadecimal|Binary and Hexadecimal]]
-- [[CSE351/Number Representation/Overflow|Overflow]]
-- [[CSE351/Number Representation/Bit Shifting|Bit Shifting]]
+- [[Two's Complement|Two's Complement]]
+- [[Binary and Hexadecimal|Binary and Hexadecimal]]
+- [[Overflow|Overflow]]
+- [[Bit Shifting|Bit Shifting]]
 
 ---
 

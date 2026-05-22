@@ -1,6 +1,6 @@
 # CSE344: Disk Storage
 
-Understanding **Disk Storage** is essential for understanding why [[CSE344/Database Design/Database Indices|Indices]] exist and how [[CSE344/Query Execution/External Memory Algorithms|External Memory Algorithms]] are costed.
+Understanding **Disk Storage** is essential for understanding why [[Database Indices|Indices]] exist and how [[External Memory Algorithms|External Memory Algorithms]] are costed.
 
 ## Hard Disk Characteristics
 
@@ -28,7 +28,7 @@ Understanding **Disk Storage** is essential for understanding why [[CSE344/Datab
 
 ## Representing Relations on Disk
 
-[[CSE344/SQL/Physical Data Independence|Physical Data Independence]] means there are many storage options:
+[[Physical Data Independence|Physical Data Independence]] means there are many storage options:
 
 | Format | Description |
 |---|---|
@@ -43,14 +43,14 @@ Understanding **Disk Storage** is essential for understanding why [[CSE344/Datab
 
 ## Querying Without Indices
 
-Without indices, any query requires an $O(n)$ sequential scan over the entire table. This motivates [[CSE344/Database Design/Database Indices|Index Creation]].
+Without indices, any query requires an $O(n)$ sequential scan over the entire table. This motivates [[Database Indices|Index Creation]].
 
 ## Related
-- [[CSE344/Database Design/Database Indices|Database Indices]] — how indices speed up queries beyond a sequential scan
-- [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how the physical ordering of data on disk relates to index type
-- [[CSE344/Query Execution/External Memory Algorithms|External Memory Algorithms]] — algorithms whose cost is measured in block I/Os
-- [[CSE344/Database Design/Physical Design and Indices|Physical Design and Indices]] — the broader physical-design context this fits into
+- [[Database Indices|Database Indices]] — how indices speed up queries beyond a sequential scan
+- [[Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how the physical ordering of data on disk relates to index type
+- [[External Memory Algorithms|External Memory Algorithms]] — algorithms whose cost is measured in block I/Os
+- [[Physical Design and Indices|Physical Design and Indices]] — the broader physical-design context this fits into
 - [[CSE451/Persistence/Storage/Magnetic Disks|CSE451 Magnetic Disks]] — OS-level view of HDD mechanics (seek, rotational latency, tracks, sectors)
 - [[CSE451/Persistence/Storage/Flash Storage|CSE451 Flash Storage]] — SSD characteristics that change the cost model
-- [[CSE351/Cache/Spatial Locality|CSE351 Spatial Locality]] — why loading whole blocks at once pays off
-- [[CSE351/Cache/Temporal Locality|CSE351 Temporal Locality]] — why caching recently-read blocks pays off
+- [[Spatial Locality|CSE351 Spatial Locality]] — why loading whole blocks at once pays off
+- [[Temporal Locality|CSE351 Temporal Locality]] — why caching recently-read blocks pays off

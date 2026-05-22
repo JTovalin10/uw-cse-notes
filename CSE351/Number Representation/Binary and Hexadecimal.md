@@ -79,10 +79,10 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
-- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
-- [[CSE351/Number Representation/Bitwise Operations|Bitwise Operations]]
-- [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory (Endianness)]]
+- [[Unsigned Integers|Unsigned Integers]]
+- [[Two's Complement|Two's Complement]]
+- [[Bitwise Operations|Bitwise Operations]]
+- [[Words and Memory|Words and Memory (Endianness)]]
 
 ---
 

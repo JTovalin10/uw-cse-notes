@@ -88,11 +88,11 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
-- [[CSE351/Number Representation/Binary and Hexadecimal|Binary and Hexadecimal]]
-- [[CSE351/Number Representation/Overflow|Overflow]]
-- [[CSE351/Number Representation/Bitwise Operations|Bitwise Operations]]
-- [[CSE351/x86-64 Assembly/Extension Instructions|Extension Instructions (sign extension)]]
+- [[Unsigned Integers|Unsigned Integers]]
+- [[Binary and Hexadecimal|Binary and Hexadecimal]]
+- [[Overflow|Overflow]]
+- [[Bitwise Operations|Bitwise Operations]]
+- [[Extension Instructions|Extension Instructions (sign extension)]]
 
 ---
 

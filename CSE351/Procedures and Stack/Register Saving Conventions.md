@@ -108,10 +108,10 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
-- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
-- [[CSE351/Procedures and Stack/Recursion|Recursion]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[Calling Conventions|Calling Conventions]]
+- [[Stack Frames|Stack Frames]]
+- [[Recursion|Recursion]]
+- [[x86-64 Registers|x86-64 Registers]]
 
 ---
 

@@ -31,4 +31,4 @@ Modeling conflicts as precedence constraints turns conflict-serializability into
 
 ## Related
 - [[Isolation Transactions in SQL]] — conflict-serializability definition
-- [[Atomic and isolated Transactions in SQL]] — 2PL as a mechanism that generates acyclic precedence graphs
+- [[CSE344/Transactions/Atomic and Isolated Transactions in SQL]] — 2PL as a mechanism that generates acyclic precedence graphs

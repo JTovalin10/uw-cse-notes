@@ -2,7 +2,7 @@
 
 ## Correctness of Loops
 
-- Assignment and [[Conditionals|conditional]] reasoning is **mechanical**.
+- Assignment and [[CSE331/Part II - Software Engineering/Java Programming/Conditionals|conditional]] reasoning is **mechanical**.
 - Loop reasoning **cannot be made mechanical** — there is no way around this (this follows from **Rice's Theorem**).
 - One extra bit of information fixes this:
   - The programmer must provide a **loop invariant**.
@@ -47,6 +47,6 @@ Finding the right invariant is the hard part. A common technique is to **[[Visua
 
 - [[Floyd Logic]]
 - [[Hoare Triples]]
-- [[Conditionals]]
+- [[CSE331/Part II - Software Engineering/Java Programming/Conditionals]]
 - [[Visualizing Array Algorithms]]
 - [[Stronger Assertions]]

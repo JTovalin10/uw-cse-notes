@@ -54,4 +54,4 @@ class Foo<E> {
 - [[Generic Methods]]
 - [[Wildcards]]
 - [[Subtypes]]
-- [[CSE351/System Programming/Exceptions|CSE351: Exceptions]]
+- [[Exceptions|CSE351: Exceptions]]

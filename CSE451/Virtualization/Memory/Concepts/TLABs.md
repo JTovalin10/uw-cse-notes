@@ -22,4 +22,4 @@ Instead of allocating individual objects from the global heap, each thread is pr
 - **Large Objects**: Very large objects that exceed the TLAB size are usually allocated directly from the global heap or a specialized "Large Object Space" to avoid wasting TLAB space.
 
 ---
-**See Also**: [[CSE451/Virtualization/Memory/Concepts/Slab Allocation|Slab Allocation]], [[CSE351/Memory Management/Memory Allocation|Memory Allocation (351)]]
+**See Also**: [[CSE451/Virtualization/Memory/Concepts/Slab Allocation|Slab Allocation]], [[Memory Allocation|Memory Allocation (351)]]

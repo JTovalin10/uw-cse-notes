@@ -39,7 +39,7 @@ ret
 1. Pop the return address from the top of the stack.
 2. Update `%rip` to the popped address.
 
-**Critical:** `%rsp` must point exactly to the return address before `ret` executes. Any mismatch causes execution to jump to the wrong location — a common source of bugs in hand-written assembly and the target of [[CSE351/Security/Buffer Overflow|buffer overflow]] attacks.
+**Critical:** `%rsp` must point exactly to the return address before `ret` executes. Any mismatch causes execution to jump to the wrong location — a common source of bugs in hand-written assembly and the target of [[Buffer Overflow|buffer overflow]] attacks.
 
 ---
 
@@ -107,10 +107,10 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
-- [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
-- [[CSE351/Security/Buffer Overflow|Buffer Overflow]]
+- [[Stack Frames|Stack Frames]]
+- [[Register Saving Conventions|Register Saving Conventions]]
+- [[x86-64 Registers|x86-64 Registers]]
+- [[Buffer Overflow|Buffer Overflow]]
 
 ---
 

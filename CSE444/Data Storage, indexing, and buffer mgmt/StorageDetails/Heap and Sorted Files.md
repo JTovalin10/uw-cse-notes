@@ -40,7 +40,7 @@ CREATE CLUSTERED INDEX s_sid ON Student(sid);
 ```
 
 - Binary search is possible: $O(\log_2 n)$ cost
-- See [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]]
+- See [[Clustered and Unclustered Indices|Clustered and Unclustered Indices]]
 
 ![[Sequential File.png]]
 

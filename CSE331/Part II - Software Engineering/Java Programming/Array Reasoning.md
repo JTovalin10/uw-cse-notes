@@ -24,5 +24,5 @@ When writing loops with `A[i]`, we must check that `0 <= i < len(A)`. The loop i
 
 ## Related
 - [[Loop invariants with pictures]]
-- [[Loops]]
+- [[CSE331/Part II - Software Engineering/Java Programming/Loops]]
 - [[Floyd Logic]]

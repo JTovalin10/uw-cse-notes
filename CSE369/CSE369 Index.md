@@ -30,5 +30,5 @@ Design and implementation of digital systems, from basic combinational logic and
 ---
 
 ## Related Courses
-- [[CSE351/Number Representation/Binary and Hexadecimal]] — binary and hexadecimal encoding that all digital logic operates on
-- [[CSE351/Number Representation/Two's Complement]] — signed integer representation used in ALU arithmetic
+- [[Binary and Hexadecimal]] — binary and hexadecimal encoding that all digital logic operates on
+- [[Two's Complement]] — signed integer representation used in ALU arithmetic

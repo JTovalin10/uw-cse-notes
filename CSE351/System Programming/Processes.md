@@ -9,7 +9,7 @@ A **process** is an instance of a running program — the OS's abstraction of an
 ### 1. Logical Control Flow
 
 - **Illusion:** Each process appears to have exclusive use of the CPU.
-- **Reality:** CPU time is shared among many processes through [[CSE351/System Programming/Context Switching|context switching]].
+- **Reality:** CPU time is shared among many processes through [[Context Switching|context switching]].
 - **Implementation:** The OS scheduler rapidly switches between processes, giving each one a short time slice.
 
 ### 2. Private Address Space
@@ -74,9 +74,9 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/System Programming/Exceptions|Exceptions]]
-- [[CSE351/System Programming/Context Switching|Context Switching]]
-- [[CSE351/System Programming/Fork-Exec Model|Fork-Exec Model]]
+- [[Exceptions|Exceptions]]
+- [[Context Switching|Context Switching]]
+- [[Fork-Exec Model|Fork-Exec Model]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 - [[CSE451/Virtualization/Processes/Process|Process (CSE451)]]
 - [[CSE451/Virtualization/Processes/ProcessComponents/Sequential Process And what is Proc|Process vs Program (CSE451)]]

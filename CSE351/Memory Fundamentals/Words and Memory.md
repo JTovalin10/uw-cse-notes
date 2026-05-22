@@ -10,7 +10,7 @@ In systems programming, **memory** is a hardware component that acts as local da
 
 ## Memory Addresses
 
-Each byte in memory is assigned a unique **memory address**, typically represented in [[CSE351/Number Representation/Binary and Hexadecimal|hexadecimal]].
+Each byte in memory is assigned a unique **memory address**, typically represented in [[Binary and Hexadecimal|hexadecimal]].
 - On 64-bit systems, addresses are 8 bytes wide.
 - The **address space** is the set of all possible addresses the CPU can generate; for a process this is the virtual address space managed by [[CSE351/Memory Management/Virtual Memory|Virtual Memory]].
 
@@ -48,7 +48,7 @@ For multi-byte data, consecutive bytes of the value are stored in consecutive me
 | `0x102` | `C3` | `B2` |
 | `0x103` | `D4` | `A1` |
 
-Little-endian means that when you look at a raw memory dump, the bytes of a multi-byte integer appear reversed relative to how you would write the number in hex. This matters for [[CSE351/Security/Buffer Overflow|Buffer Overflow]] exploits, where the attacker must account for byte ordering when crafting a return address.
+Little-endian means that when you look at a raw memory dump, the bytes of a multi-byte integer appear reversed relative to how you would write the number in hex. This matters for [[Buffer Overflow|Buffer Overflow]] exploits, where the attacker must account for byte ordering when crafting a return address.
 
 ---
 
@@ -67,9 +67,9 @@ flowchart LR
 ## Related
 
 - [[CSE351/Memory Fundamentals/Pointers|Pointers (including Pointer Arithmetic)]]
-- [[CSE351/Number Representation/Binary and Hexadecimal|Binary and Hexadecimal]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
-- [[CSE351/Security/Buffer Overflow|Buffer Overflow]]
+- [[Binary and Hexadecimal|Binary and Hexadecimal]]
+- [[x86-64 Registers|x86-64 Registers]]
+- [[Buffer Overflow|Buffer Overflow]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 
 ---

@@ -1,6 +1,6 @@
 # CSE351: Spatial Locality
 
-**Spatial locality** is the tendency for a program to access memory locations that are near recently accessed locations. It is one of the two primary forms of [[CSE351/Cache/Cache Locality|locality of reference]], alongside [[CSE351/Cache/Temporal Locality|temporal locality]].
+**Spatial locality** is the tendency for a program to access memory locations that are near recently accessed locations. It is one of the two primary forms of [[Cache Locality|locality of reference]], alongside [[Temporal Locality|temporal locality]].
 
 ## Principle
 
@@ -10,7 +10,7 @@ When a program accesses a specific memory address, there is a high probability t
 
 Caches exploit spatial locality by loading an entire **cache block** (also called a cache line) into the cache whenever a single byte is requested. A typical cache line is 64 bytes. This way, subsequent accesses to neighboring data — data already in the loaded block — result in cache hits without any additional memory traffic.
 
-The relationship between cache block size and spatial locality is a design trade-off: larger blocks capture more spatial locality but waste bandwidth if nearby data is never accessed (see **Compulsory miss** in [[CSE351/Cache/Cache Organization|Cache Organization]]).
+The relationship between cache block size and spatial locality is a design trade-off: larger blocks capture more spatial locality but waste bandwidth if nearby data is never accessed (see **Compulsory miss** in [[Cache Organization|Cache Organization]]).
 
 ## Examples
 
@@ -22,7 +22,7 @@ The relationship between cache block size and spatial locality is a design trade
 
 Understanding spatial locality drives several software optimizations:
 
-- **Stride-1 access:** Iterating through a multidimensional array in the order that matches its memory layout (row-major order in C) achieves stride-1 access — every access lands in the same or the next cache line. See [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]].
+- **Stride-1 access:** Iterating through a multidimensional array in the order that matches its memory layout (row-major order in C) achieves stride-1 access — every access lands in the same or the next cache line. See [[Program Optimizations via Cache|Program Optimizations via Cache]].
 - **Cache blocking (tiling):** Restructuring algorithms (e.g., matrix multiplication) to operate on sub-blocks that fit in the cache maximizes both spatial and temporal reuse.
 
 ---
@@ -38,12 +38,12 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Cache/Cache Locality|Cache Locality]]
-- [[CSE351/Cache/Temporal Locality|Temporal Locality]]
-- [[CSE351/Cache/Cache Organization|Cache Organization (block size)]]
-- [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
+- [[Cache Locality|Cache Locality]]
+- [[Temporal Locality|Temporal Locality]]
+- [[Cache Organization|Cache Organization (block size)]]
+- [[Program Optimizations via Cache|Program Optimizations via Cache]]
 - [[CSE351/Data Structures/Arrays|Arrays (stride-1 access)]]
-- [[CSE344/Database Design/Disk Storage|Disk Storage (Database context)]]
+- [[Disk Storage|Disk Storage (Database context)]]
 
 ---
 

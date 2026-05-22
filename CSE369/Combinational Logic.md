@@ -63,7 +63,7 @@ The diagram above shows an SOP expression $F = AB + CD$ realized as a two-level 
 - [[CSE369/Building Blocks]] — standard combinational components (MUX, decoder, adder) built from logic gates
 - [[CSE369/Verilog Fundamentals]] — hardware description language used to implement combinational logic
 - [[CSE369/Timing Constraints]] — propagation delay and how combinational logic interacts with the clock
-- [[CSE351/Number Representation/Binary and Hexadecimal]] — binary encoding that all combinational logic operates on
+- [[Binary and Hexadecimal]] — binary encoding that all combinational logic operates on
 
 ## Industry Standard Terms
 

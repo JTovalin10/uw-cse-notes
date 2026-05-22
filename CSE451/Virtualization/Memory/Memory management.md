@@ -32,5 +32,5 @@
 # Related
 - [[CSE333/Memory Management/Malloc and Free|Malloc and Free (333)]]
 - [[CSE333/Memory Management/Heap Management|Heap Management (333)]]
-- [[CSE351/Memory Management/Memory Allocation|Memory Allocation (351)]]
+- [[Memory Allocation|Memory Allocation (351)]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory (351)]]

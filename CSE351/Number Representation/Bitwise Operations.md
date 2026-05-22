@@ -47,7 +47,7 @@ Sets result bit to `1` if the two input bits are **different**.
 
 ### NOT (`~`) — Complement
 
-Inverts **all** bits. Used in [[CSE351/Number Representation/Two's Complement|Two's Complement]] negation: `-x == ~x + 1`.
+Inverts **all** bits. Used in [[Two's Complement|Two's Complement]] negation: `-x == ~x + 1`.
 
 ```c
 ~ 01010101  (85)
@@ -116,10 +116,10 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Number Representation/Binary and Hexadecimal|Binary and Hexadecimal]]
-- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
-- [[CSE351/Number Representation/Bit Shifting|Bit Shifting]]
-- [[CSE351/x86-64 Assembly/Condition Codes|Condition Codes]]
+- [[Binary and Hexadecimal|Binary and Hexadecimal]]
+- [[Two's Complement|Two's Complement]]
+- [[Bit Shifting|Bit Shifting]]
+- [[Condition Codes|Condition Codes]]
 
 ---
 

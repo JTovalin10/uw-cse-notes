@@ -12,4 +12,4 @@ Unlike [[Joins|inner joins]], **outer joins** preserve rows that have no match i
 - [[Self Joins]] — outer joins can also be applied to self-joins
 - [[NULL]] — how NULLs from outer joins interact with predicates (three-valued logic)
 - [[Sparse Matrix Algebra#Addition]] — outer joins are used to handle sparse matrix addition
-- [[CSE344/Query Execution/Main Memory Join Algorithms|Main Memory Join Algorithms]] — physical implementations also support outer variants
+- [[Main Memory Join Algorithms|Main Memory Join Algorithms]] — physical implementations also support outer variants

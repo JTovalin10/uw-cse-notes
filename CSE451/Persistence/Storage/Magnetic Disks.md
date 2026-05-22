@@ -29,4 +29,4 @@ The OS attempts to minimize seek times by ordering pending requests:
 - [[HDD]] — summary of HDD specifics
 - [[Secondary Storage]] — broader context
 - [[Defragmentation and TRIM operations]] — how to maintain performance
-- [[CSE344/Database Design/Disk Storage|Disk Storage (Database context)]]
+- [[Disk Storage|Disk Storage (Database context)]]

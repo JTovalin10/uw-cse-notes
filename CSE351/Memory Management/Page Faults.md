@@ -51,7 +51,7 @@ Plus the massive disk I/O penalty — see the latency table below.
 | Disk (HDD) | ~10,000,000 cycles |
 
 This 100,000× to 10,000,000× cost is why:
-- The [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]] minimizes the number of page table memory accesses.
+- The [[Translation Lookaside Buffer (TLB 351)|TLB]] minimizes the number of page table memory accesses.
 - Write-back policy limits the number of disk writes on eviction.
 - Page size is large (4 KiB) — amortizing the disk I/O cost over many bytes.
 
@@ -84,11 +84,11 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Memory Management/Page Tables|Page Tables]]
+- [[Page Tables|Page Tables]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
-- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]]
-- [[CSE351/System Programming/Exceptions|Exceptions]]
-- [[CSE351/System Programming/Context Switching|Context Switching]]
+- [[Translation Lookaside Buffer (TLB 351)|TLB]]
+- [[Exceptions|Exceptions]]
+- [[Context Switching|Context Switching]]
 - [[CSE451/Virtualization/Memory/Page Fault|Page Fault (CSE451)]]
 - [[CSE451/Virtualization/Memory/How does the OS handle page faults|How the OS Handles Page Faults (CSE451)]]
 - [[CSE451/Virtualization/Memory/Page Replacement/Page replacement|Page Replacement (CSE451)]]

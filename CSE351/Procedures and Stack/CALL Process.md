@@ -145,8 +145,8 @@ flowchart LR
 ## Related
 
 - [[CSE351/Procedures and Stack/Memory Layout|Memory Layout]]
-- [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
-- [[CSE351/System Programming/Processes|Processes]]
+- [[x86-64 Instruction Format|Instruction Format]]
+- [[Processes|Processes]]
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]
 - [[CSE333/Build Systems/Makefiles|Makefiles (CSE333)]]
 

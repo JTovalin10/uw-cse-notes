@@ -35,7 +35,7 @@ When a function returns, the CPU executes `ret`, which pops the return address f
 
 ## Little-Endian Impact
 
-In little-endian systems (see [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory]]):
+In little-endian systems (see [[Words and Memory|Words and Memory]]):
 - The least significant byte of a multi-byte value is stored at the lowest address.
 - During stack smashing, the buffer fills from lower to higher addresses.
 - Therefore, the **lowest (least significant) byte of the return address is overwritten first**.
@@ -131,11 +131,11 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
-- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
+- [[Stack Frames|Stack Frames]]
+- [[Calling Conventions|Calling Conventions]]
 - [[CSE351/Data Structures/Arrays|Arrays (no bounds checking)]]
-- [[CSE351/Memory Fundamentals/Words and Memory|Words and Memory (Endianness)]]
-- [[CSE351/Memory Management/Page Tables|Page Tables (NX bit / memory protection)]]
+- [[Words and Memory|Words and Memory (Endianness)]]
+- [[Page Tables|Page Tables (NX bit / memory protection)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Stack Pointer (SP)|Stack Pointer (CSE451)]]
 

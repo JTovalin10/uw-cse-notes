@@ -15,13 +15,13 @@
 	- What can go wrong:
 		- The application is buggy
 		- The database system corrupts the update — this will not happen if the operation is atomic and isolated
-	- See [[CSE344/Database Design/Integrity Constraints|Integrity Constraints]] for how the database enforces consistency declaratively
+	- See [[Integrity Constraints|Integrity Constraints]] for how the database enforces consistency declaratively
 	- Analogous to [[CSE331/Part II - Software Engineering/Software Engineering/Representation Invariants|Representation Invariants]] in program design — invariants the data must satisfy before and after each operation
 
 - **I = Isolated**
 	- **Isolation** is how we manage concurrency
 	- An isolated operation behaves as if it were the only one running on the system
-	- Enforced with [[Atomic and Isolated Transactions in SQL|2PL]]
+	- Enforced with [[CSE344/Transactions/Atomic and Isolated Transactions in SQL|2PL]]
 
 - **D = Durable**
 	- **Durability** means the update must persist even after the application terminates
@@ -49,14 +49,14 @@ ROLLBACK; -- undoes everything
 
 A **transaction** is a sequence of database operations executed together as a single unit, isolated from all other operations.
 
-See [[CSE344/SQL/Basics|SQL Basics]] for the underlying SQL statement syntax that goes inside a transaction.
+See [[Basics|SQL Basics]] for the underlying SQL statement syntax that goes inside a transaction.
 
 ## Related
 - [[Interleaving and Concurrency Control]] — concurrency conflicts that motivate ACID
 - [[Schedules and Serial Schedules]] — how serializability relates to isolation
 - [[Atomic Transactions in SQL]] — how atomicity is enforced with locks
-- [[Atomic and Isolated Transactions in SQL]] — how isolation is enforced with 2PL
+- [[CSE344/Transactions/Atomic and Isolated Transactions in SQL]] — how isolation is enforced with 2PL
 - [[Isolation Transactions in SQL]] — conflict-serializability as a way to verify isolation
-- [[Isolation Levels]] — weaker ACID guarantees and their trade-offs
-- [[CSE344/Database Design/Integrity Constraints|Integrity Constraints]] — declarative consistency enforcement
+- [[CSE344/Transactions/Isolation Levels]] — weaker ACID guarantees and their trade-offs
+- [[Integrity Constraints|Integrity Constraints]] — declarative consistency enforcement
 - [[CSE451/Concurrency/Synchronization/Mechanics/Synchronization|Synchronization]] — OS-level concurrency control that underlies DBMS locking

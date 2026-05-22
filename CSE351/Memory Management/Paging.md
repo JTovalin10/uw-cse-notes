@@ -40,7 +40,7 @@ Physical Address: [ PPN (m-p bits) ][ Page Offset (p bits) ]
 
 ### Simplified Explanation
 
-The page offset is the same in both the virtual and physical address — it selects the byte within the page, and the page doesn't move internally. Only the page number changes: the VPN is translated to a PPN via the [[CSE351/Memory Management/Page Tables|page table]].
+The page offset is the same in both the virtual and physical address — it selects the byte within the page, and the page doesn't move internally. Only the page number changes: the VPN is translated to a PPN via the [[Page Tables|page table]].
 
 ---
 
@@ -83,9 +83,9 @@ flowchart LR
 ## Related
 
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
-- [[CSE351/Memory Management/Page Tables|Page Tables]]
-- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]]
-- [[CSE351/Memory Management/Page Faults|Page Faults]]
+- [[Page Tables|Page Tables]]
+- [[Translation Lookaside Buffer (TLB 351)|TLB]]
+- [[Page Faults|Page Faults]]
 - [[CSE451/Virtualization/Memory/Memory Models/Paging|Paging (CSE451)]]
 
 ---

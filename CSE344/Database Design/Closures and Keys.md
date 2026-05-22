@@ -65,4 +65,4 @@ This is exactly the condition checked in [[BCNF Decomposition|BCNF decomposition
 ## Related
 - [[Functional Dependencies (FDs)]] — the FDs that closures are computed over
 - [[BCNF Decomposition]] — uses closures and superkey checks to decompose relations
-- [[CSE344/Database Design/Normalization|Normalization]] — the broader normalization context
+- [[Normalization|Normalization]] — the broader normalization context

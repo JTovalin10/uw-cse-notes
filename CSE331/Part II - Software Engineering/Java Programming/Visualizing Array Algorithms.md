@@ -242,7 +242,7 @@ When working on loop problems:
 
 ## Related
 
-- [[Loops]]
+- [[CSE331/Part II - Software Engineering/Java Programming/Loops]]
 - [[Floyd Logic]]
 - [[Hoare Triples]]
 - [[Stronger Assertions]]

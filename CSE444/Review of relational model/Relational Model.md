@@ -85,5 +85,5 @@ FOREIGN KEY (sno) REFERENCES Supplier(sno)
 - [[CSE444/Review of relational model/Relational Algebra|Relational Algebra]] — RA operators, joins, and SQL-to-RA conversion
 - [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture and Query Processing]] — how the storage manager handles relations
 - [[CSE344/Query Execution/Relational Algebra|CSE344 Relational Algebra]]
-- [[CSE344/Database Design/Integrity Constraints|CSE344 Integrity Constraints]]
-- [[CSE344/Database Design/Functional Dependencies (FDs)|Functional Dependencies]] — the formal basis for key identification
+- [[Integrity Constraints|CSE344 Integrity Constraints]]
+- [[Functional Dependencies (FDs)|Functional Dependencies]] — the formal basis for key identification

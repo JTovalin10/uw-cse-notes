@@ -40,7 +40,7 @@ jmp *%rax           # %rip = value stored in %rax
 jmp *(%rax)         # %rip = value at the memory address stored in %rax
 ```
 
-Used for [[CSE351/x86-64 Assembly/Switch Statements|switch statements]] with jump tables, where the target address is computed at runtime from a table lookup.
+Used for [[Switch Statements|switch statements]] with jump tables, where the target address is computed at runtime from a table lookup.
 
 ---
 
@@ -57,11 +57,11 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
-- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
-- [[CSE351/x86-64 Assembly/Switch Statements|Switch Statements]]
-- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
-- [[CSE351/x86-64 Assembly/Labels|Labels]]
+- [[x86-64 Registers|x86-64 Registers]]
+- [[Jump Instructions|Jump Instructions]]
+- [[Switch Statements|Switch Statements]]
+- [[Calling Conventions|Calling Conventions]]
+- [[Labels|Labels]]
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Program Counter (PC)|Program Counter (CSE451)]]
 
 ---

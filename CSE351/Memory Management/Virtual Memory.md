@@ -39,7 +39,7 @@
 
 Virtual memory maps virtual addresses to physical addresses through **address translation**, performed by the **MMU (Memory Management Unit)** in hardware.
 
-**Key insight:** Every address used in a running program is a virtual address. The hardware transparently converts it to a physical address on every memory access, using data structures maintained by the OS ([[CSE351/Memory Management/Page Tables|Page Tables]]).
+**Key insight:** Every address used in a running program is a virtual address. The hardware transparently converts it to a physical address on every memory access, using data structures maintained by the OS ([[Page Tables|Page Tables]]).
 
 ---
 
@@ -77,10 +77,10 @@ flowchart LR
 ## Related
 
 - [[CSE351/Memory Management/Paging|Paging]]
-- [[CSE351/Memory Management/Page Tables|Page Tables]]
-- [[CSE351/Memory Management/Page Faults|Page Faults]]
-- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]]
-- [[CSE351/System Programming/Processes|Processes]]
+- [[Page Tables|Page Tables]]
+- [[Page Faults|Page Faults]]
+- [[Translation Lookaside Buffer (TLB 351)|TLB]]
+- [[Processes|Processes]]
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]
 - [[CSE451/Virtualization/Memory/Paged Virtual Memory|Paged Virtual Memory (CSE451)]]
 - [[CSE451/Virtualization/Memory/Concepts/Virtual Addresses|Virtual Addresses (CSE451)]]

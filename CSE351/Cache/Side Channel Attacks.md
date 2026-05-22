@@ -76,9 +76,9 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
-- [[CSE351/Cache/Cache Organization|Cache Organization]]
-- [[CSE351/Security/Buffer Overflow|Buffer Overflow]]
+- [[Program Optimizations via Cache|Program Optimizations via Cache]]
+- [[Cache Organization|Cache Organization]]
+- [[Buffer Overflow|Buffer Overflow]]
 
 ---
 

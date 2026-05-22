@@ -63,9 +63,9 @@ flowchart TB
 
 ## Related
 
-- [[CSE351/Procedures and Stack/Stack Pointer|Stack Pointer]]
-- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
-- [[CSE351/Memory Management/Memory Allocation|Memory Allocation]]
+- [[Stack Pointer|Stack Pointer]]
+- [[Stack Frames|Stack Frames]]
+- [[Memory Allocation|Memory Allocation]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]
 - [[CSE333/Memory Management/Stack|Stack (CSE333)]]

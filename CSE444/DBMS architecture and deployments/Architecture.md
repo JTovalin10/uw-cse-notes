@@ -15,7 +15,7 @@ A DBMS has two major subsystems: the **Query Processor** (where queries are exec
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page/record formats, heap files, buffer pool details
 - [[CSE444/Review of relational model/Relational Model|Relational Model]] — relational model theory and relational algebra
 - [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — CSE344 in-depth coverage of RA operators
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — translating SQL into relational algebra trees
-- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — physical operator implementations
-- [[CSE344/Database Design/Database Indices|Database Indices]] — index structures used in access path selection
+- [[SQL to RA Translation|SQL to RA Translation]] — translating SQL into relational algebra trees
+- [[Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — physical operator implementations
+- [[Database Indices|Database Indices]] — index structures used in access path selection
 - [[CSE451/Virtualization/Architecture/OS Structure|CSE451]] (OS Structure and Layers)

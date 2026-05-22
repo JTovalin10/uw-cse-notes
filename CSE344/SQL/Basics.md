@@ -24,7 +24,7 @@ A data model has 3 components:
 	- One of the many languages for querying relational data.
 	- Most widely used language to query relational data.
 - A **Declarative** programming language.
-	- We describe *what* we want, not *how* to get it — see [[CSE344/SQL/Physical Data Independence|Physical Data Independence]]
+	- We describe *what* we want, not *how* to get it — see [[Physical Data Independence|Physical Data Independence]]
 
 ## Query Structure
 
@@ -61,18 +61,18 @@ foreach row in Payroll:
 ## Keys
 
 - A **Key** is one or more attributes that **uniquely** identify a row.
-- See [[CSE344/SQL/Create Table#Keys|Create Table#Keys]] for syntax.
+- See [[Create Table#Keys|Create Table]] for syntax.
 
 ### Foreign Keys
 
 - Databases can hold multiple tables.
 - A **Foreign Key** is one or more attributes that uniquely identify a row in another table.
-- Describes a relationship between tables — used by [[CSE344/SQL/Joins|Joins]] to combine data.
+- Describes a relationship between tables — used by [[Joins|Joins]] to combine data.
 
 ## Related
-- [[CSE344/SQL/Create Table|Create Table]] — DDL syntax for tables and keys
-- [[CSE344/SQL/Joins|Joins]] — combining multiple tables on foreign keys
-- [[CSE344/SQL/ORDER BY and DISTINCT|ORDER BY and DISTINCT]] — set vs. bag semantics in practice
-- [[CSE344/SQL/Physical Data Independence|Physical Data Independence]] — why SQL is declarative
-- [[CSE344/Database Design/Integrity Constraints|Integrity Constraints]] — rules enforced by the DBMS
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — how SQL is compiled to relational algebra
+- [[Create Table|Create Table]] — DDL syntax for tables and keys
+- [[Joins|Joins]] — combining multiple tables on foreign keys
+- [[ORDER BY and DISTINCT|ORDER BY and DISTINCT]] — set vs. bag semantics in practice
+- [[Physical Data Independence|Physical Data Independence]] — why SQL is declarative
+- [[Integrity Constraints|Integrity Constraints]] — rules enforced by the DBMS
+- [[SQL to RA Translation|SQL to RA Translation]] — how SQL is compiled to relational algebra

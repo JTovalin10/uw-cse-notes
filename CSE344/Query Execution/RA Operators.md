@@ -97,12 +97,12 @@ $$R(A, B) \ltimes S(B, C) \rightarrow T(A, B)$$
 
 ## Related
 - [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — overview, query plan trees, and why joins are so common
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — how SQL operators map to these RA operators
-- [[CSE344/Query Execution/RA Tree Transformations|RA Tree Transformations]] — rewriting rules using these operators
-- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — how these logical operators are physically implemented
-- [[CSE344/Query Execution/Main Memory Join Algorithms|Main Memory Join Algorithms]] — specific implementations of the join operators
-- [[CSE344/SQL/Joins|Joins]] — the SQL syntax for join operators
-- [[CSE344/SQL/Outer Joins|Outer Joins]] — SQL-level outer join syntax
-- [[CSE344/SQL/Set Operations|Set Operations]] — SQL counterparts to union/intersection/difference
-- [[CSE344/SQL/Aggregates|Aggregates]] — SQL counterpart to grouping $\gamma$
-- [[CSE344/SQL/ORDER BY and DISTINCT|ORDER BY and DISTINCT]] — SQL counterparts to sorting $\tau$ and deduplication $\delta$
+- [[SQL to RA Translation|SQL to RA Translation]] — how SQL operators map to these RA operators
+- [[RA Tree Transformations|RA Tree Transformations]] — rewriting rules using these operators
+- [[Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — how these logical operators are physically implemented
+- [[Main Memory Join Algorithms|Main Memory Join Algorithms]] — specific implementations of the join operators
+- [[Joins|Joins]] — the SQL syntax for join operators
+- [[Outer Joins|Outer Joins]] — SQL-level outer join syntax
+- [[Set Operations|Set Operations]] — SQL counterparts to union/intersection/difference
+- [[Aggregates|Aggregates]] — SQL counterpart to grouping $\gamma$
+- [[ORDER BY and DISTINCT|ORDER BY and DISTINCT]] — SQL counterparts to sorting $\tau$ and deduplication $\delta$

@@ -17,7 +17,7 @@ A **segregated list allocator** maintains a separate free list for each **size c
 ## Freeing
 
 1. Mark the block as free.
-2. Coalesce with neighboring free blocks if needed (see [[CSE351/Memory Management/Explicit Allocation Implementation|Explicit Allocation Implementation]]).
+2. Coalesce with neighboring free blocks if needed (see [[Explicit Allocation Implementation|Explicit Allocation Implementation]]).
 3. Insert the block into the appropriate size-class free list.
 
 ## Advantages
@@ -47,8 +47,8 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Memory Management/Memory Allocation|Memory Allocation]]
-- [[CSE351/Memory Management/Explicit Allocation Implementation|Explicit Allocation Implementation]]
+- [[Memory Allocation|Memory Allocation]]
+- [[Explicit Allocation Implementation|Explicit Allocation Implementation]]
 
 ---
 

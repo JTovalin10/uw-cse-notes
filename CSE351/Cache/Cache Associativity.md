@@ -16,7 +16,7 @@ In a **fully associative cache**, a memory block can be placed in any cache line
 
 - **Mechanism:** The cache must compare the tag against every line simultaneously using parallel comparators.
 - **Pros:** Eliminates conflict misses entirely; provides maximum placement flexibility.
-- **Cons:** Requires a comparator for every cache line — hardware area and power scale with the number of lines. Practical only for small caches such as [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLBs]].
+- **Cons:** Requires a comparator for every cache line — hardware area and power scale with the number of lines. Practical only for small caches such as [[Translation Lookaside Buffer (TLB 351)|TLBs]].
 
 ## N-Way Set Associative Cache
 
@@ -46,10 +46,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Cache/Cache Organization|Cache Organization]]
-- [[CSE351/Cache/Cache Locality|Locality]]
-- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB (fully associative example)]]
-- [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
+- [[Cache Organization|Cache Organization]]
+- [[Cache Locality|Locality]]
+- [[Translation Lookaside Buffer (TLB 351)|TLB (fully associative example)]]
+- [[Program Optimizations via Cache|Program Optimizations via Cache]]
 
 ---
 

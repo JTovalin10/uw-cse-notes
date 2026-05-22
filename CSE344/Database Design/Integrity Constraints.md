@@ -60,5 +60,5 @@ CREATE TABLE Registry (
 ## Related
 - [[Entities, Relationships, and ER Diagrams]] — where constraints are identified during design
 - [[Functional Dependencies (FDs)]] — FDs are another kind of constraint the schema must satisfy
-- [[CSE344/SQL/Create Table|Create Table]] — full SQL syntax for table creation including constraints
-- [[CSE344/SQL/NULL|NULL]] — how NULL interacts with CHECK constraints
+- [[Create Table|Create Table]] — full SQL syntax for table creation including constraints
+- [[NULL|NULL]] — how NULL interacts with CHECK constraints

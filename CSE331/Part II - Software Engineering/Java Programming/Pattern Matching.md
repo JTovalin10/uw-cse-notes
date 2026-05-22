@@ -81,4 +81,4 @@ As long as the function's overall type signature is declared (e.g., `f : (Dir) -
 
 - [[CSE331/Part I - Software Specifications/Definitions/Exclusive and Exhaustive|Exclusive and Exhaustive]]
 - [[CSE331/Part I - Software Specifications/Definitions/Side Conditions|Side Conditions]]
-- [[Conditionals]]
+- [[CSE331/Part II - Software Engineering/Java Programming/Conditionals]]

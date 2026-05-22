@@ -54,8 +54,8 @@ Cardinality estimates are approximations, but they allow the optimizer to compar
 
 ## Related
 - [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — the query plans whose costs are being estimated
-- [[CSE344/Query Execution/RA Tree Transformations|RA Tree Transformations]] — how the optimizer uses cardinality estimates to pick a plan
-- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — cost estimates factor in the choice of physical operator
-- [[CSE344/Database Design/Physical Design and Indices|Physical Design and Indices]] — index structure affects cardinality and cost estimates
-- [[CSE344/Database Design/Database Indices|Database Indices]] — how clustered/unclustered indices change the cost formulas
-- [[CSE344/Database Design/Disk Storage|Disk Storage]] — block-level statistics that feed these estimates
+- [[RA Tree Transformations|RA Tree Transformations]] — how the optimizer uses cardinality estimates to pick a plan
+- [[Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — cost estimates factor in the choice of physical operator
+- [[Physical Design and Indices|Physical Design and Indices]] — index structure affects cardinality and cost estimates
+- [[Database Indices|Database Indices]] — how clustered/unclustered indices change the cost formulas
+- [[Disk Storage|Disk Storage]] — block-level statistics that feed these estimates

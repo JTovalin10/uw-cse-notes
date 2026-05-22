@@ -6,7 +6,7 @@ A **phantom read** occurs when a tuple is invisible during part of a transaction
 
 Standard conflict-serializability assumes the database is **static** — the set of tuples does not change.
 - If the database is **dynamic** (rows can be inserted or deleted), then conflict-serializability does **not** imply serializability
-- This is the gap between [[Isolation Levels#Repeatable Read|Repeatable Read]] and [[Isolation Levels#Serializable|Serializable]] isolation
+- This is the gap between [[CSE344/Transactions/Isolation Levels#Repeatable Read|Repeatable Read]] and [[CSE344/Transactions/Isolation Levels#Serializable|Serializable]] isolation
 
 ## Dealing with Phantoms
 
@@ -17,6 +17,6 @@ Standard conflict-serializability assumes the database is **static** — the set
 	3. Updates that affect $P$ are blocked until the lock is released
 
 ## Related
-- [[Isolation Levels]] — how different isolation levels handle (or don't handle) phantom reads
+- [[CSE344/Transactions/Isolation Levels]] — how different isolation levels handle (or don't handle) phantom reads
 - [[Other Lock Modes and Lock Granularity]] — predicate locks as a lock granularity strategy
 - [[Interleaving and Concurrency Control#Conflicts]] — phantom reads as a RW conflict

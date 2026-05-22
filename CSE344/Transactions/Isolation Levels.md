@@ -67,6 +67,6 @@ In commercial DBMSes:
 ## Related
 - [[Phantom Reads]] — the concurrency problem that separates Repeatable Read from Serializable
 - [[Other Lock Modes and Lock Granularity]] — predicate locks used at the Serializable level
-- [[Atomic and Isolated Transactions in SQL]] — strict 2PL as the mechanism underlying most isolation levels
+- [[CSE344/Transactions/Atomic and Isolated Transactions in SQL]] — strict 2PL as the mechanism underlying most isolation levels
 - [[Isolation Transactions in SQL]] — conflict-serializability and why it matters
 - [[ACID Properties]] — weakening the I in ACID for performance

@@ -9,7 +9,7 @@ An **index** is a separate file that allows direct access to rows based on attri
 	- **Hash table** — supports equality queries only
 	- **Bit-map**, **R-tree**, etc.
 
-Without an index, any query requires an $O(n)$ sequential scan — see [[CSE344/Database Design/Disk Storage#Querying Without Indices|Disk Storage]].
+Without an index, any query requires an $O(n)$ sequential scan — see [[Disk Storage#Querying Without Indices|Disk Storage]].
 
 ## Creating an Index
 
@@ -71,7 +71,7 @@ Single-attribute indices on `(date)` and `(origin)` are redundant when `(date, o
 - Supports both equality lookups and range scans efficiently
 
 ## Related
-- [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how the on-disk layout relates to index performance
-- [[CSE344/Database Design/Disk Storage|Disk Storage]] — the block structure that indices are built on top of
-- [[CSE344/Query Execution/External Memory Algorithms#Physical Selection Operators|External Memory Algorithms]] — how indices factor into query costs
-- [[CSE344/Database Design/Physical Design and Indices|Physical Design and Indices]] — overview
+- [[Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how the on-disk layout relates to index performance
+- [[Disk Storage|Disk Storage]] — the block structure that indices are built on top of
+- [[External Memory Algorithms#Physical Selection Operators|External Memory Algorithms]] — how indices factor into query costs
+- [[Physical Design and Indices|Physical Design and Indices]] — overview

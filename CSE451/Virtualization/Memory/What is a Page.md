@@ -24,5 +24,5 @@ The **Offset** remains the same during translation because the position *within*
 **See Also**:
 - [[Paged Virtual Memory]]
 - [[Page Table]]
-- [[Virtual Memory]]
+- [[CSE451/Virtualization/Memory/Virtual Memory]]
 - [[CSE451/Virtualization/Memory/Memory management|Memory management]]

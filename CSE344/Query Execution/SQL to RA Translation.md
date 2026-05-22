@@ -41,17 +41,17 @@ Subqueries in `FROM` translate naturally — each subquery becomes a named inter
 
 ![[Subqueries in WHERE, Having.png]]
 
-- RA cannot represent correlated queries — tuples flow up, so correlations must be removed first (see [[CSE344/SQL/Decorrelation and Unnesting]])
+- RA cannot represent correlated queries — tuples flow up, so correlations must be removed first (see [[Decorrelation and Unnesting]])
 - Typically, the outer query compares a scalar subquery result (single tuple, single attribute) against something in the outer query
 - After decorrelating, `=` or `IN` must be converted into a join — RA has no operator that checks set membership
 
 ## Related
 - [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — RA overview and query plan trees
-- [[CSE344/Query Execution/RA Operators|RA Operators]] — the full operator reference
-- [[CSE344/Query Execution/RA Tree Transformations|RA Tree Transformations]] — optimizing the resulting plan
-- [[CSE344/Query Execution/Cardinality Estimation|Cardinality Estimation]] — costing the translated plan
-- [[CSE344/SQL/Basics|SQL Basics]] — the surface syntax being translated
-- [[CSE344/SQL/Sub-Queries|Sub-Queries]] — the SQL subquery mechanics being translated
-- [[CSE344/SQL/Decorrelation and Unnesting|Decorrelation and Unnesting]] — monotonicity and when subqueries can be unnested
-- [[CSE344/SQL/Joins|Joins]] — the SQL joins compiled to $\bowtie$
-- [[CSE344/SQL/Aggregates|Aggregates]] — the SQL aggregates compiled to $\gamma$
+- [[RA Operators|RA Operators]] — the full operator reference
+- [[RA Tree Transformations|RA Tree Transformations]] — optimizing the resulting plan
+- [[Cardinality Estimation|Cardinality Estimation]] — costing the translated plan
+- [[Basics|SQL Basics]] — the surface syntax being translated
+- [[Sub-Queries|Sub-Queries]] — the SQL subquery mechanics being translated
+- [[Decorrelation and Unnesting|Decorrelation and Unnesting]] — monotonicity and when subqueries can be unnested
+- [[Joins|Joins]] — the SQL joins compiled to $\bowtie$
+- [[Aggregates|Aggregates]] — the SQL aggregates compiled to $\gamma$

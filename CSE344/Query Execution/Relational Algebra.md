@@ -20,24 +20,24 @@
 
 ## Key Topics
 
-- [[CSE344/Query Execution/RA Operators|RA Operators]] — full reference for all RA operators (projection, selection, joins, grouping, etc.)
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — how the DBMS translates SQL queries (including subqueries) into RA query plans
-- [[CSE344/Query Execution/RA Tree Transformations|RA Tree Transformations]] — rewriting RA trees into equivalent but cheaper plans; the join ordering problem
+- [[RA Operators|RA Operators]] — full reference for all RA operators (projection, selection, joins, grouping, etc.)
+- [[SQL to RA Translation|SQL to RA Translation]] — how the DBMS translates SQL queries (including subqueries) into RA query plans
+- [[RA Tree Transformations|RA Tree Transformations]] — rewriting RA trees into equivalent but cheaper plans; the join ordering problem
 
 ## Why Are Joins So Common in Relational Databases?
 
-- [[CSE344/Database Design/Normalization|Normalization]] removes anomalies by splitting tables — joins reunite them at query time
+- [[Normalization|Normalization]] removes anomalies by splitting tables — joins reunite them at query time
 - The most common joins are **equijoins** and **natural joins**
 
 ## Related
-- [[CSE344/Query Execution/RA Operators|RA Operators]] — full operator reference
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — how SQL queries compile into RA trees
-- [[CSE344/Query Execution/RA Tree Transformations|RA Tree Transformations]] — rewriting plans into equivalent, cheaper ones
-- [[CSE344/Query Execution/Cardinality Estimation|Cardinality Estimation]] — estimating the cost of RA query plans to choose among candidates
-- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — how RA operators are physically implemented
-- [[CSE344/Query Execution/Pipelined Execution|Pipelined Execution]] — streaming tuples through the tree via the iterator interface
-- [[CSE344/SQL/Basics|SQL Basics]] — the surface syntax translated into RA
-- [[CSE344/SQL/Sub-Queries|Sub-Queries]] — SQL subquery mechanics before RA translation
-- [[CSE344/SQL/Decorrelation and Unnesting|Decorrelation and Unnesting]] — monotonicity and when subqueries can be rewritten
+- [[RA Operators|RA Operators]] — full operator reference
+- [[SQL to RA Translation|SQL to RA Translation]] — how SQL queries compile into RA trees
+- [[RA Tree Transformations|RA Tree Transformations]] — rewriting plans into equivalent, cheaper ones
+- [[Cardinality Estimation|Cardinality Estimation]] — estimating the cost of RA query plans to choose among candidates
+- [[Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — how RA operators are physically implemented
+- [[Pipelined Execution|Pipelined Execution]] — streaming tuples through the tree via the iterator interface
+- [[Basics|SQL Basics]] — the surface syntax translated into RA
+- [[Sub-Queries|Sub-Queries]] — SQL subquery mechanics before RA translation
+- [[Decorrelation and Unnesting|Decorrelation and Unnesting]] — monotonicity and when subqueries can be rewritten
 - [[CSE444/Review of relational model/Relational Algebra|Relational Algebra (444)]] — advanced relational algebra and DBMS implementation
 - Sets and Logic (311) — mathematical foundations of RA

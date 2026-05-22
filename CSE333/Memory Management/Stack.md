@@ -63,8 +63,8 @@ Memory on the stack is allocated and freed automatically via **calling conventio
 - [[CSE333/Memory Management/Heap Management|Heap Management]]
 - [[CSE333/C Fundamentals/Arrays|Arrays]]
 - [[CSE333/C Fundamentals/Introduction to C|Introduction to C]]
-- [[CSE351/Procedures and Stack/Stack Frames|CSE351: Stack Frames]]
-- [[CSE351/Procedures and Stack/Stack Pointer|CSE351: Stack Pointer]]
+- [[Stack Frames|CSE351: Stack Frames]]
+- [[Stack Pointer|CSE351: Stack Pointer]]
 
 ## Industry Standard Terms
 

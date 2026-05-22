@@ -52,9 +52,9 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
-- [[CSE351/Number Representation/Bitwise Operations|Bitwise Operations]]
-- [[CSE351/Number Representation/Overflow|Overflow (CF, OF)]]
+- [[Jump Instructions|Jump Instructions]]
+- [[Bitwise Operations|Bitwise Operations]]
+- [[Overflow|Overflow (CF, OF)]]
 - [[CSE351/x86-64 Assembly/Conditionals|Conditionals]]
 - [[CSE351/x86-64 Assembly/Loops|Loops]]
 

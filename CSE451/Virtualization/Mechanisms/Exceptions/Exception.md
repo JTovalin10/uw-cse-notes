@@ -18,4 +18,4 @@ See [[Dealing with Exceptions]] for the OS's options when an exception occurs.
 - [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps]] — software-triggered; exceptions are hardware-triggered
 - [[General Protection Fault (GPF)]] — a specific CPU exception for privilege violations
 - [[Dealing with Exceptions]] — what the OS can do in response
-- [[CSE351/System Programming/Exceptions]] — exceptions at the systems programming level
+- [[Exceptions]] — exceptions at the systems programming level

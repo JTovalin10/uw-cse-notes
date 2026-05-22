@@ -46,7 +46,7 @@ Caused by executing a specific instruction — the instruction itself triggers t
 #### Faults
 
 - **Nature:** **Unintentional** but **possibly recoverable**.
-- **Examples:** Division by zero, segmentation fault (illegal memory access), [[CSE351/Memory Management/Page Faults|page fault]].
+- **Examples:** Division by zero, segmentation fault (illegal memory access), [[Page Faults|page fault]].
 - **Handler:** Returns to the **current** instruction if the fault is fixed, or aborts the process if not.
 - Page faults are the most common recoverable fault — the OS loads the missing page and restarts the instruction.
 
@@ -83,10 +83,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/System Programming/Processes|Processes]]
-- [[CSE351/System Programming/Context Switching|Context Switching]]
+- [[Processes|Processes]]
+- [[Context Switching|Context Switching]]
 - [[CSE351/System Programming/System Calls|System Calls]]
-- [[CSE351/Memory Management/Page Faults|Page Faults]]
+- [[Page Faults|Page Faults]]
 - [[CSE451/Virtualization/Mechanisms/Exceptions/Exception|Exceptions (CSE451)]]
 - [[CSE451/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts (CSE451)]]
 - [[CSE451/Virtualization/Mechanisms/Traps/Traps|Traps (CSE451)]]

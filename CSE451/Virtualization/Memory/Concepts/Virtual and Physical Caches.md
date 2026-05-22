@@ -11,6 +11,6 @@ Caches can be indexed and tagged using either virtual addresses or physical addr
 | VIPT   | Virtual | Physical | Fast  | Correct if index ⊆ page offset |
 
 # Related
-- [[CSE351/Cache/Cache Organization|Cache Organization (351)]]
+- [[Cache Organization|Cache Organization (351)]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory (351)]]
 - [[CSE451/Virtualization/Memory/Memory management|OS Memory Management (451)]]

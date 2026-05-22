@@ -91,11 +91,11 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/x86-64 Operand Types|Operand Types]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[x86-64 Operand Types|Operand Types]]
+- [[x86-64 Registers|x86-64 Registers]]
 - [[CSE351/Memory Fundamentals/Pointers|Pointer Arithmetic]]
 - [[CSE351/Data Structures/Arrays|Arrays]]
-- [[CSE351/Procedures and Stack/Stack Pointer|Stack Pointer]]
+- [[Stack Pointer|Stack Pointer]]
 
 ---
 

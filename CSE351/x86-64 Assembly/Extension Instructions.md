@@ -16,7 +16,7 @@ Extension instructions handle **size mismatches** where the source is smaller th
 - Fills upper bits with copies of the **sign bit (MSB)** of the source.
 - Used for **signed** (Two's Complement) values — replicating the sign bit preserves the numeric value in the wider representation.
 
-The underlying reason: in [[CSE351/Number Representation/Two's Complement|Two's Complement]], a negative 8-bit value like `0x80` (−128) must be sign-extended to `0xFF80` in 16 bits, not zero-extended to `0x0080` (+128), to preserve its meaning.
+The underlying reason: in [[Two's Complement|Two's Complement]], a negative 8-bit value like `0x80` (−128) must be sign-extended to `0xFF80` in 16 bits, not zero-extended to `0x0080` (+128), to preserve its meaning.
 
 ---
 
@@ -77,10 +77,10 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
-- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
-- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
+- [[x86-64 Instruction Format|Instruction Format]]
+- [[x86-64 Registers|x86-64 Registers]]
+- [[Two's Complement|Two's Complement]]
+- [[Unsigned Integers|Unsigned Integers]]
 
 ---
 

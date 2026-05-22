@@ -158,11 +158,11 @@ Traverse the entire heap using pointer arithmetic to find free blocks. Saves mem
 
 A doubly-linked list threading **only** the free blocks together. Pointers are stored in the payload area (since free blocks are not storing user data). Faster search — only free blocks are visited — but requires more minimum block size to hold the pointers.
 
-For full implementation details — header format, splitting code, coalescing code, insertion policies — see [[CSE351/Memory Management/Explicit Allocation Implementation|Explicit Allocation Implementation]].
+For full implementation details — header format, splitting code, coalescing code, insertion policies — see [[Explicit Allocation Implementation|Explicit Allocation Implementation]].
 
 ### Segregated Free Lists
 
-Multiple free lists, one per size class, for better throughput and utilization. See [[CSE351/Memory Management/Segregated List Allocators|Segregated List Allocators]].
+Multiple free lists, one per size class, for better throughput and utilization. See [[Segregated List Allocators|Segregated List Allocators]].
 
 ---
 
@@ -180,10 +180,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Memory Management/Explicit Allocation Implementation|Explicit Allocation Implementation]]
-- [[CSE351/Memory Management/Segregated List Allocators|Segregated List Allocators]]
+- [[Explicit Allocation Implementation|Explicit Allocation Implementation]]
+- [[Segregated List Allocators|Segregated List Allocators]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory (351)]]
-- [[CSE351/Data Structures/Structs|Structs (including Alignment)]]
+- [[Structs|Structs (including Alignment)]]
 - [[CSE333/Memory Management/Malloc and Free|Malloc and Free (CSE333)]]
 - [[CSE333/Memory Management/Heap Management|Heap Management (CSE333)]]
 - [[CSE451/Virtualization/Memory/Memory management|OS Memory Management (CSE451)]]

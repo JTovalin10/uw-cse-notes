@@ -28,4 +28,4 @@ A predicate can evaluate to:
 - [[Outer Joins]] — outer joins pad unmatched rows with NULLs
 - [[ORDER BY and DISTINCT]] — NULL sort order is implementation-defined
 - [[Sparse Matrix Algebra#Addition]] — sparse matrix addition must handle NULLs from outer joins
-- [[CSE344/Database Design/Integrity Constraints|Integrity Constraints]] — CHECK constraints and NULL interaction
+- [[Integrity Constraints|Integrity Constraints]] — CHECK constraints and NULL interaction

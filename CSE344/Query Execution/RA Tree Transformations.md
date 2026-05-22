@@ -21,12 +21,12 @@ Key principles:
 - An optimal join order is critical to query performance
 - Finding the globally optimal order is **NP-hard**
 
-In practice, the query optimizer uses heuristics and [[CSE344/Query Execution/Cardinality Estimation|cardinality estimates]] to find a good (not necessarily optimal) join order.
+In practice, the query optimizer uses heuristics and [[Cardinality Estimation|cardinality estimates]] to find a good (not necessarily optimal) join order.
 
 ## Related
 - [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — RA overview
-- [[CSE344/Query Execution/RA Operators|RA Operators]] — the operators being rearranged
-- [[CSE344/Query Execution/Cardinality Estimation|Cardinality Estimation]] — how the optimizer estimates the cost of candidate plans
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — where the initial tree comes from
-- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — choosing physical operators for the rewritten tree
-- [[CSE344/SQL/Decorrelation and Unnesting|Decorrelation and Unnesting]] — SQL-level rewrites that expose more transformation opportunities
+- [[RA Operators|RA Operators]] — the operators being rearranged
+- [[Cardinality Estimation|Cardinality Estimation]] — how the optimizer estimates the cost of candidate plans
+- [[SQL to RA Translation|SQL to RA Translation]] — where the initial tree comes from
+- [[Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — choosing physical operators for the rewritten tree
+- [[Decorrelation and Unnesting|Decorrelation and Unnesting]] — SQL-level rewrites that expose more transformation opportunities

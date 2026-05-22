@@ -1,6 +1,6 @@
 # CSE451: Page Fault
 
-A **Page Fault** is a hardware [[CSE351/System Programming/Exceptions|Exception]] that occurs when a running program tries to access a virtual page that is not currently present in physical RAM.
+A **Page Fault** is a hardware [[Exceptions|Exception]] that occurs when a running program tries to access a virtual page that is not currently present in physical RAM.
 
 ## Triggering Mechanism
 - The [[CSE451/Virtualization/Memory/Address Translation/Page Table/Page Table Entry Anatomy|Page Table Entry (PTE)]] has `valid = 1` but `present = 0` (the page exists in the address space but is currently on disk).
@@ -20,11 +20,11 @@ A **Page Fault** is a hardware [[CSE351/System Programming/Exceptions|Exception]
 - **Major (Hard) Page Fault**: The page must be read from disk, which is significantly slower.
 
 ## Related
-- [[CSE351/Memory Management/Page Tables|Page Tables (CSE351)]]
+- [[Page Tables|Page Tables (CSE351)]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory (CSE351)]]
-- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB (351)]]
-- [[CSE351/System Programming/Exceptions|Exceptions (351)]]
-- [[CSE351/System Programming/Context Switching|Context Switching (351)]]
+- [[Translation Lookaside Buffer (TLB 351)|TLB (351)]]
+- [[Exceptions|Exceptions (351)]]
+- [[Context Switching|Context Switching (351)]]
 - [[CSE451/Virtualization/Memory/How does the OS handle page faults|How the OS Handles Page Faults]]
 - [[CSE451/Virtualization/Memory/Page Replacement/Page replacement|Page Replacement]]
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]

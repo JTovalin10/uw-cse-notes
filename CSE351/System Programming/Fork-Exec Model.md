@@ -119,10 +119,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/System Programming/Processes|Processes]]
-- [[CSE351/System Programming/Context Switching|Context Switching]]
+- [[Processes|Processes]]
+- [[Context Switching|Context Switching]]
 - [[CSE351/System Programming/System Calls|System Calls]]
-- [[CSE351/System Programming/Process Termination|Process Termination]]
+- [[Process Termination|Process Termination]]
 - [[CSE451/Virtualization/Processes/Syscalls/Fork|Fork (CSE451)]]
 - [[CSE451/Virtualization/Processes/Syscalls/Exec|Exec (CSE451)]]
 - [[CSE451/Virtualization/Processes/Syscalls/exec vs fork|Fork vs Exec (CSE451)]]

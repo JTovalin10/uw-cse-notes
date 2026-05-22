@@ -1,6 +1,6 @@
 # CSE351: Context Switching
 
-**Context switching** is the mechanism by which the OS saves the state of one [[CSE351/System Programming/Processes|process]] and restores the state of another, allowing multiple processes to share a single CPU. It is the fundamental mechanism behind the illusion of concurrent execution.
+**Context switching** is the mechanism by which the OS saves the state of one [[Processes|process]] and restores the state of another, allowing multiple processes to share a single CPU. It is the fundamental mechanism behind the illusion of concurrent execution.
 
 ---
 
@@ -82,10 +82,10 @@ sequenceDiagram
 
 ## Related
 
-- [[CSE351/System Programming/Processes|Processes]]
-- [[CSE351/System Programming/Exceptions|Exceptions]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
-- [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
+- [[Processes|Processes]]
+- [[Exceptions|Exceptions]]
+- [[x86-64 Registers|x86-64 Registers]]
+- [[Register Saving Conventions|Register Saving Conventions]]
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch (CSE451)]]
 - [[CSE451/Virtualization/Memory/Virtual Memory|Virtual Memory (CSE451)]]
 

@@ -1,6 +1,6 @@
 # CSE351: Translation Lookaside Buffer (TLB)
 
-The **TLB** is a small, fast hardware cache inside the MMU that stores recently used [[CSE351/Memory Management/Page Tables|page table entries (PTEs)]] to accelerate address translation.
+The **TLB** is a small, fast hardware cache inside the MMU that stores recently used [[Page Tables|page table entries (PTEs)]] to accelerate address translation.
 
 ---
 
@@ -82,7 +82,7 @@ VPN: [ TLBT (TLB Tag) ][ TLBI (TLB Index) ]
    - **TLB Hit:** Get PPN directly → proceed to Stage 2.
    - **TLB Miss:** Access the page table in RAM.
      - **Page hit:** Load PTE into TLB; proceed to Stage 2.
-     - **[[CSE351/Memory Management/Page Faults|Page fault]]:** OS loads page from disk, updates page table and TLB; restart.
+     - **[[Page Faults|Page fault]]:** OS loads page from disk, updates page table and TLB; restart.
 
 ### Stage 2: Cache Access
 
@@ -123,10 +123,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Memory Management/Page Tables|Page Tables]]
-- [[CSE351/Memory Management/Page Faults|Page Faults]]
+- [[Page Tables|Page Tables]]
+- [[Page Faults|Page Faults]]
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
-- [[CSE351/Cache/Cache Associativity|Cache Associativity (fully associative TLB)]]
+- [[Cache Associativity|Cache Associativity (fully associative TLB)]]
 - [[CSE451/Virtualization/Memory/Address Translation/Translation Lookaside Buffer (TLB)|TLB (CSE451)]]
 - [[CSE451/Virtualization/Memory/Address Translation/TLB/Translation Lookaside Buffer (TLB) How It Works|How the TLB Works (CSE451)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

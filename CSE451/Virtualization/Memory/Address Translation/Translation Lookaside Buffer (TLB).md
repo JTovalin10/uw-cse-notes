@@ -6,7 +6,7 @@
 - typically holds 32-256 entries
 
 # Related
-- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB (351)]]
+- [[Translation Lookaside Buffer (TLB 351)|TLB (351)]]
 - [[Translation Lookaside Buffer (TLB) In Hardware]]
 - [[Translation Lookaside Buffer (TLB) Exploits Locality]]
 - [[CSE451/Virtualization/Memory/Address Translation/TLB/Translation Lookaside Buffer (TLB) How It Works]]

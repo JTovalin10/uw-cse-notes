@@ -45,7 +45,7 @@ PostgreSQL pages are a fixed 8KB. When a field (like a large text or blob) excee
 **Prepared Statements** allow the database to parse, validate, and optimize a query once and then execute it multiple times with different parameters. This reduces parsing overhead and prevents **SQL Injection**.
 
 ### N+1 Query Problem
-The **N+1 Query Problem** occurs when an application executes one query to fetch a list of IDs and then $N$ subsequent queries to fetch details for each ID. This is extremely inefficient and should be resolved using **[[CSE344/SQL/Joins|Joins]]** or batching.
+The **N+1 Query Problem** occurs when an application executes one query to fetch a list of IDs and then $N$ subsequent queries to fetch details for each ID. This is extremely inefficient and should be resolved using **[[Joins|Joins]]** or batching.
 
 ---
 

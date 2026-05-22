@@ -95,9 +95,9 @@ flowchart LR
 ## Related
 
 - [[CSE351/Procedures and Stack/Memory Layout|Memory Layout]]
-- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
-- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[Stack Frames|Stack Frames]]
+- [[Calling Conventions|Calling Conventions]]
+- [[x86-64 Registers|x86-64 Registers]]
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Stack Pointer (SP)|Stack Pointer (CSE451)]]
 
 ---

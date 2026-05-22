@@ -53,7 +53,7 @@ The attacker iterates through all possible byte values (0-255) and measures the 
 ---
 
 ## Related Concepts
-- [[Virtual Memory]]
+- [[CSE451/Virtualization/Memory/Virtual Memory]]
 - [[Paged Virtual Memory]]
 - [[Page Table Entries]]
 - [[How does the OS handle page faults]]

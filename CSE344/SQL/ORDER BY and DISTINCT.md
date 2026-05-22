@@ -25,4 +25,4 @@ The sort order for [[NULL]] values is implementation-defined.
 - [[Aggregates]] — `AGG(DISTINCT attr)` deduplicates before aggregating
 - [[Set Operations]] — `UNION` vs. `UNION ALL` mirrors DISTINCT vs. bag semantics
 - [[NULL]] — NULL handling in sort order and in DISTINCT
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — ORDER BY maps to $\tau$, DISTINCT maps to $\delta$
+- [[SQL to RA Translation|SQL to RA Translation]] — ORDER BY maps to $\tau$, DISTINCT maps to $\delta$

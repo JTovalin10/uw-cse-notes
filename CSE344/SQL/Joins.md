@@ -47,7 +47,7 @@ void findCars(PayrollTuple[] ps, RegistryTuple[] rs) {
 - We can check the predicate early
 	- Apply filter before looping over table
 - The database might be able to retrieve rows with a condition without iterating over all rows
-	- See [[CSE344/Database Design/Database Indices|Database Indices]]
+	- See [[Database Indices|Database Indices]]
 
 ## Related
 - [[Outer Joins]] — preserving unmatched rows with NULL padding
@@ -55,5 +55,5 @@ void findCars(PayrollTuple[] ps, RegistryTuple[] rs) {
 - [[Set Operations]] — UNION, INTERSECT, EXCEPT
 - [[NULL]] — how NULLs affect join predicates via three-valued logic
 - [[Basics#Foreign Keys]] — the typical basis for a join predicate
-- [[CSE344/Query Execution/Main Memory Join Algorithms|Main Memory Join Algorithms]] — physical implementations (nested loop, hash, merge)
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — how joins map to the $\bowtie$ operator
+- [[Main Memory Join Algorithms|Main Memory Join Algorithms]] — physical implementations (nested loop, hash, merge)
+- [[SQL to RA Translation|SQL to RA Translation]] — how joins map to the $\bowtie$ operator

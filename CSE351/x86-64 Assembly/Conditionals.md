@@ -1,6 +1,6 @@
 # CSE351: Conditionals (If-Else)
 
-Conditionals use [[CSE351/x86-64 Assembly/Labels|labels]] and [[CSE351/x86-64 Assembly/Jump Instructions|jump instructions]] to ensure that only one branch executes. The compiler translates every C `if-else` into a compare-and-jump sequence.
+Conditionals use [[Labels|labels]] and [[Jump Instructions|jump instructions]] to ensure that only one branch executes. The compiler translates every C `if-else` into a compare-and-jump sequence.
 
 ---
 
@@ -84,11 +84,11 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/Condition Codes|Condition Codes]]
-- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
-- [[CSE351/x86-64 Assembly/Labels|Labels]]
+- [[Condition Codes|Condition Codes]]
+- [[Jump Instructions|Jump Instructions]]
+- [[Labels|Labels]]
 - [[CSE351/x86-64 Assembly/Loops|Loops]]
-- [[CSE351/x86-64 Assembly/Switch Statements|Switch Statements]]
+- [[Switch Statements|Switch Statements]]
 
 ---
 

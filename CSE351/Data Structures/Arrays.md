@@ -72,7 +72,7 @@ uw_zip[4];      // Returns 5 (valid)
 ucb_zip[-1];    // UNDEFINED — negative index
 ```
 
-This is the root cause of [[CSE351/Security/Buffer Overflow|buffer overflow]] vulnerabilities.
+This is the root cause of [[Buffer Overflow|buffer overflow]] vulnerabilities.
 
 ---
 
@@ -121,10 +121,10 @@ flowchart LR
 ## Related
 
 - [[CSE351/Memory Fundamentals/Pointers|Pointers and Pointer Arithmetic]]
-- [[CSE351/x86-64 Assembly/x86-64 Memory Operands|Memory Operands]]
-- [[CSE351/Data Structures/Structs|Structs (including Alignment)]]
-- [[CSE351/Security/Buffer Overflow|Buffer Overflow (no bounds checking)]]
-- [[CSE351/Cache/Spatial Locality|Spatial Locality (row-major access)]]
+- [[x86-64 Memory Operands|Memory Operands]]
+- [[Structs|Structs (including Alignment)]]
+- [[Buffer Overflow|Buffer Overflow (no bounds checking)]]
+- [[Spatial Locality|Spatial Locality (row-major access)]]
 - [[CSE333/Data Structures/Vector|Vector (CSE333)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]
 

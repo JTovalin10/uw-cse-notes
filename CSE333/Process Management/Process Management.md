@@ -85,7 +85,7 @@ In high-performance servers, creating a new thread or process for every request 
 - [[CSE333/Concurrency/Threads|Threads]]
 - [[CSE333/Concurrency/Concurrency Intro|Concurrency Intro]]
 - [[CSE333/File IO and POSIX/POSIX perror|POSIX perror]]
-- [[CSE351/System Programming/Exceptions|CSE351: Exceptions]]
+- [[Exceptions|CSE351: Exceptions]]
 
 ## Industry Standard Terms
 

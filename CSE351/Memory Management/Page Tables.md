@@ -47,7 +47,7 @@ Use the VPN as an index into the page table array. Read out the PPN stored there
 
 1. **Extract VPN** from the virtual address (upper $n-p$ bits).
 2. **Index the page table** using the VPN.
-3. **Check the valid bit** — if 0, trigger a [[CSE351/Memory Management/Page Faults|page fault]].
+3. **Check the valid bit** — if 0, trigger a [[Page Faults|page fault]].
 4. **Extract PPN** from the PTE.
 5. **Combine PPN + page offset** → physical address.
 
@@ -103,9 +103,9 @@ flowchart LR
 
 - [[CSE351/Memory Management/Virtual Memory|Virtual Memory]]
 - [[CSE351/Memory Management/Paging|Paging]]
-- [[CSE351/Memory Management/Page Faults|Page Faults]]
-- [[CSE351/Memory Management/Translation Lookaside Buffer (TLB 351)|TLB]]
-- [[CSE351/Security/Buffer Overflow|Buffer Overflow (NX bit protection)]]
+- [[Page Faults|Page Faults]]
+- [[Translation Lookaside Buffer (TLB 351)|TLB]]
+- [[Buffer Overflow|Buffer Overflow (NX bit protection)]]
 - [[CSE451/Virtualization/Memory/Address Translation/Page Table|Page Table (CSE451)]]
 - [[CSE451/Virtualization/Memory/Address Translation/Page Table/Page Table Entry Anatomy|Page Table Entry Anatomy (CSE451)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]

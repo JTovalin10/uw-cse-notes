@@ -24,6 +24,6 @@ Indexes and file organizations are critical for efficient data retrieval.
 ## Related
 - [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree]] — full details on the B+ tree index structure
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats, record formats, heap file structure, and buffer pool management
-- [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — CSE344 coverage of clustered vs. unclustered design
-- [[CSE344/Database Design/Database Indices|Database Indices]] — index structures overview from CSE344
+- [[Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — CSE344 coverage of clustered vs. unclustered design
+- [[Database Indices|Database Indices]] — index structures overview from CSE344
 - [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture]] — how the storage manager and buffer manager fit together

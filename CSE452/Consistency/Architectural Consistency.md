@@ -73,5 +73,5 @@ graph TD
 - [[CSE452/Consistency/Strong Consistency Models|Strong Consistency Models]] — linearizability, which write-through caching preserves
 - [[CSE452/Consistency/Weak Consistency Models|Weak Consistency Models]] — processor consistency, the distributed analogue of TSO
 - [[CSE452/Sharding/Sharding|Sharding]] — partitioning data so each key has a single owner
-- [[CSE351/Cache/Handling Writes|CSE351: Cache Handling]] — hardware cache write policies
+- [[Handling Writes|CSE351: Cache Handling]] — hardware cache write policies
 - [[CSE452/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — the communication layer beneath cache coherence protocols

@@ -14,5 +14,5 @@ A **B+ tree** is a **balanced search tree** optimized for disk-page access. It i
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats and buffer pool management
 - [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture]] — how the storage manager and buffer manager use index structures
 - [[CSE332/README|CSE332]] (Balanced Trees)
-- [[CSE344/Database Design/Database Indices|Database Indices]] — CSE344 overview of index structures
-- [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — clustered vs. unclustered index design
+- [[Database Indices|Database Indices]] — CSE344 overview of index structures
+- [[Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — clustered vs. unclustered index design

@@ -1,6 +1,6 @@
 # CSE351: Jump Instructions
 
-**Jump** (`j*`) and **Set** (`set*`) instructions work in conjunction with [[CSE351/x86-64 Assembly/Condition Codes|condition codes]] to implement control flow in x86-64 assembly. They read the current flag state and either redirect execution or write a 0/1 boolean result.
+**Jump** (`j*`) and **Set** (`set*`) instructions work in conjunction with [[Condition Codes|condition codes]] to implement control flow in x86-64 assembly. They read the current flag state and either redirect execution or write a 0/1 boolean result.
 
 ## Jump Instructions (`j*`)
 
@@ -75,12 +75,12 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/Condition Codes|Condition Codes]]
+- [[Condition Codes|Condition Codes]]
 - [[CSE351/x86-64 Assembly/Conditionals|Conditionals]]
 - [[CSE351/x86-64 Assembly/Loops|Loops]]
-- [[CSE351/x86-64 Assembly/Labels|Labels]]
-- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
-- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
+- [[Labels|Labels]]
+- [[Two's Complement|Two's Complement]]
+- [[Unsigned Integers|Unsigned Integers]]
 
 ---
 

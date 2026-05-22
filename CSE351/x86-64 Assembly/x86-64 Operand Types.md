@@ -20,7 +20,7 @@ addl $10, %ebx        # Add 10 to %ebx
 ## 2. Registers
 
 - **Prefix:** `%`
-- Names of the 16 general-purpose registers. See [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]] for the full table.
+- Names of the 16 general-purpose registers. See [[x86-64 Registers|x86-64 Registers]] for the full table.
 
 ```assembly
 movq %rdi, %rax       # Copy %rdi to %rax
@@ -32,7 +32,7 @@ subq %rcx, %rdx       # Subtract %rcx from %rdx
 ## 3. Memory
 
 - Uses **parentheses** `()`  to indicate that the operand is the value at a memory address.
-- Full addressing mode: `D(Rb, Ri, S)` — see [[CSE351/x86-64 Assembly/x86-64 Memory Operands|Memory Operands]] for details.
+- Full addressing mode: `D(Rb, Ri, S)` — see [[x86-64 Memory Operands|Memory Operands]] for details.
 
 ```assembly
 movq (%rsp), %rax     # Load 8 bytes from address in %rsp
@@ -74,9 +74,9 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
-- [[CSE351/x86-64 Assembly/x86-64 Memory Operands|Memory Operands]]
+- [[x86-64 Instruction Format|Instruction Format]]
+- [[x86-64 Registers|x86-64 Registers]]
+- [[x86-64 Memory Operands|Memory Operands]]
 - [[CSE333/C Fundamentals/Pointers|Pointers (CSE333)]]
 
 ---

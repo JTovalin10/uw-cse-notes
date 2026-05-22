@@ -48,7 +48,7 @@ An unclustered index's ordering differs from the on-disk tuple ordering.
 | Multiple access patterns on same table | One clustered + multiple unclustered indices |
 
 ## Related
-- [[CSE344/Database Design/Database Indices|Database Indices]] — creating indices and multi-attribute indices
-- [[CSE344/Database Design/Disk Storage|Disk Storage]] — why physical ordering on disk matters for performance
-- [[CSE344/Query Execution/External Memory Algorithms#Physical Selection Operators|External Memory Algorithms]] — cost formulas that depend on clustered vs. unclustered
-- [[CSE344/Database Design/Physical Design and Indices|Physical Design and Indices]] — overall physical-design context
+- [[Database Indices|Database Indices]] — creating indices and multi-attribute indices
+- [[Disk Storage|Disk Storage]] — why physical ordering on disk matters for performance
+- [[External Memory Algorithms#Physical Selection Operators|External Memory Algorithms]] — cost formulas that depend on clustered vs. unclustered
+- [[Physical Design and Indices|Physical Design and Indices]] — overall physical-design context

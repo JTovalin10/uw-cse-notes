@@ -31,7 +31,7 @@ Dynamic memory in C is managed using functions from `<stdlib.h>`. These function
 - [[CSE333/Memory Management/Heap Management|Heap Management]]
 - [[CSE333/Memory Management/Memory Bugs and Valgrind|Memory Bugs and Valgrind]]
 - [[CSE333/Memory Management/C Memory Model|C Memory Model]]
-- [[CSE351/Memory Management/Memory Allocation|Memory Allocation (CSE351)]]
+- [[Memory Allocation|Memory Allocation (CSE351)]]
 - [[CSE451/Virtualization/Memory/Memory management|OS Memory Management (CSE451)]]
 
 ## Industry Standard Terms

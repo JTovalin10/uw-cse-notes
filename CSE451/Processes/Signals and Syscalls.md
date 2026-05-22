@@ -1,6 +1,6 @@
 # CSE451: System Calls and Signals
 
-The Operating System provides a protected interface for user programs to interact with hardware through **[[System Calls]]**.
+The Operating System provides a protected interface for user programs to interact with hardware through **[[CSE333/File IO and POSIX/System Calls]]**.
 
 ### System Call Mechanism
 When a program needs a service (e.g., `read()`), it triggers a **[[Trap]]** to switch from **[[Ring 3 (User Mode)]]** to **[[Ring 0 (Kernel Mode)]]**.

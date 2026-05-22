@@ -35,6 +35,6 @@ By splitting cases, we avoid reasoning about disjunctions directly. Each path be
 
 - [[Floyd Logic]]
 - [[Hoare Triples]]
-- [[Loops]]
+- [[CSE331/Part II - Software Engineering/Java Programming/Loops]]
 - [[Pre and Post Conditions]]
 - [[CSE331/Part I - Software Specifications/Definitions/Exclusive and Exhaustive|Exclusive and Exhaustive]]

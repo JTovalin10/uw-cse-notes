@@ -6,11 +6,11 @@
 
 ## Types of Locality
 
-### [[CSE351/Cache/Temporal Locality|Temporal Locality]]
+### [[Temporal Locality|Temporal Locality]]
 
 **Temporal locality** exists when a recently referenced memory location is likely to be referenced again in the near future. This occurs most visibly in loops, where the loop body instructions and loop variables are accessed on every iteration.
 
-### [[CSE351/Cache/Spatial Locality|Spatial Locality]]
+### [[Spatial Locality|Spatial Locality]]
 
 **Spatial locality** exists when locations near a recently referenced location are likely to be referenced soon. This occurs with sequential instruction execution and with data structures like [[CSE351/Data Structures/Arrays|arrays]], where adjacent elements are accessed one after another.
 
@@ -38,12 +38,12 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Cache/Temporal Locality|Temporal Locality]]
-- [[CSE351/Cache/Spatial Locality|Spatial Locality]]
-- [[CSE351/Cache/Cache Organization|Cache Organization]]
-- [[CSE351/Cache/Cache Associativity|Cache Associativity]]
+- [[Temporal Locality|Temporal Locality]]
+- [[Spatial Locality|Spatial Locality]]
+- [[Cache Organization|Cache Organization]]
+- [[Cache Associativity|Cache Associativity]]
 - [[CSE351/Data Structures/Arrays|Arrays (spatial locality example)]]
-- [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
+- [[Program Optimizations via Cache|Program Optimizations via Cache]]
 
 ---
 

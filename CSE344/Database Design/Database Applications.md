@@ -18,4 +18,4 @@ A **database application** is an application written in a general-purpose progra
 ## Related
 - [[Multi-tier Architecture]] — how database applications are deployed across tiers
 - [[Password Handling]] — securely handling user credentials in database applications
-- [[CSE344/SQL/Basics|SQL Basics]] — the SQL language these applications use to talk to the DBMS
+- [[Basics|SQL Basics]] — the SQL language these applications use to talk to the DBMS

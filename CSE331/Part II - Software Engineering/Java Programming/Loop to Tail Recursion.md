@@ -44,5 +44,5 @@ int sum_acc(int[] A, int i, int sum) {
 - **Invariant:** The loop invariant in a while loop is mathematically equivalent to the definition of the tail-recursive helper function.
 
 ## Related
-- [[Loops]]
+- [[CSE331/Part II - Software Engineering/Java Programming/Loops]]
 - [[Floyd Logic]]

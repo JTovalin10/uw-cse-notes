@@ -32,8 +32,8 @@ Modern OSs like Linux randomize the base addresses of the stack, heap, and share
 - [[CSE333/Memory Management/Stack|Stack]]
 - [[CSE333/Memory Management/Heap Management|Heap Management]]
 - [[CSE333/C Fundamentals/Pointers|Pointers]]
-- [[CSE351/Memory Fundamentals/Words and Memory|CSE351: Words and Memory]]
-- [[CSE351/Memory Management/Memory Allocation|CSE351: Memory Allocation]]
+- [[Words and Memory|CSE351: Words and Memory]]
+- [[Memory Allocation|CSE351: Memory Allocation]]
 
 ## Industry Standard Terms
 

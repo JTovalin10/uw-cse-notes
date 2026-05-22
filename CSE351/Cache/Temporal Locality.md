@@ -1,6 +1,6 @@
 # CSE351: Temporal Locality
 
-**Temporal locality** is the tendency for a program to access the same memory location multiple times within a short period of time. It is one of the two primary forms of [[CSE351/Cache/Cache Locality|locality of reference]], alongside [[CSE351/Cache/Spatial Locality|spatial locality]].
+**Temporal locality** is the tendency for a program to access the same memory location multiple times within a short period of time. It is one of the two primary forms of [[Cache Locality|locality of reference]], alongside [[Spatial Locality|spatial locality]].
 
 ## Principle
 
@@ -10,7 +10,7 @@ If a memory location is referenced once, there is a high probability that it wil
 
 Caches exploit temporal locality by **keeping recently accessed data in the cache** after it is first loaded. When the same address is requested again soon after the initial access, it results in a **cache hit** — the data is served directly from the fast cache without going to slower main memory or disk.
 
-The **replacement policy** (e.g., Least Recently Used) is designed to keep temporally local data in the cache. See [[CSE351/Cache/Cache Organization|Cache Organization]] for details on miss types and replacement policies.
+The **replacement policy** (e.g., Least Recently Used) is designed to keep temporally local data in the cache. See [[Cache Organization|Cache Organization]] for details on miss types and replacement policies.
 
 ## Examples
 
@@ -31,11 +31,11 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Cache/Cache Locality|Cache Locality]]
-- [[CSE351/Cache/Spatial Locality|Spatial Locality]]
-- [[CSE351/Cache/Cache Organization|Cache Organization (LRU replacement)]]
-- [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
-- [[CSE344/Database Design/Disk Storage|Disk Storage (Database context)]]
+- [[Cache Locality|Cache Locality]]
+- [[Spatial Locality|Spatial Locality]]
+- [[Cache Organization|Cache Organization (LRU replacement)]]
+- [[Program Optimizations via Cache|Program Optimizations via Cache]]
+- [[Disk Storage|Disk Storage (Database context)]]
 
 ---
 

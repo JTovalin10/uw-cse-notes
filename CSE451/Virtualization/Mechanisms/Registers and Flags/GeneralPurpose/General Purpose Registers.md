@@ -52,4 +52,4 @@ The x86 architecture provides several **general purpose registers** used for ari
 - [[EFLAGS]] — the flags register
 - [[Kernel Stack]] — how registers are saved during a kernel entry
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]] — registers are saved/restored on context switches
-- [[CSE351/System Programming/Exceptions]] — registers saved during exceptions
+- [[Exceptions]] — registers saved during exceptions

@@ -17,7 +17,7 @@ Result: 01100100
 
 ### Logical Right Shift (`>>` on unsigned)
 
-Shifts bits right, filling vacated positions on the left with **zeros**. Used for [[CSE351/Number Representation/Unsigned Integers|unsigned]] values.
+Shifts bits right, filling vacated positions on the left with **zeros**. Used for [[Unsigned Integers|unsigned]] values.
 
 ```
 10010001 >> 2  (unsigned)
@@ -82,11 +82,11 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Number Representation/Bitwise Operations|Bitwise Operations]]
-- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
-- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
-- [[CSE351/Number Representation/Overflow|Overflow]]
-- [[CSE351/x86-64 Assembly/x86-64 Registers|x86-64 Registers]]
+- [[Bitwise Operations|Bitwise Operations]]
+- [[Two's Complement|Two's Complement]]
+- [[Unsigned Integers|Unsigned Integers]]
+- [[Overflow|Overflow]]
+- [[x86-64 Registers|x86-64 Registers]]
 
 ---
 

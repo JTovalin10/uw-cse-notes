@@ -114,9 +114,9 @@ if (child == 0) {
 ---
 
 ## Related
-- [[CSE351/System Programming/Processes|Processes]]
-- [[CSE351/System Programming/Fork-Exec Model|Fork-Exec Model]]
-- [[CSE351/System Programming/Context Switching|Context Switching]]
-- [[CSE351/System Programming/Exceptions|Exceptions]]
+- [[Processes|Processes]]
+- [[Fork-Exec Model|Fork-Exec Model]]
+- [[Context Switching|Context Switching]]
+- [[Exceptions|Exceptions]]
 - [[CSE451/Virtualization/Processes/Process/Process State|Process State (CSE451)]]
 - [[CSE451/Virtualization/Processes/Process/Process State|States of a User Process (CSE451)]]

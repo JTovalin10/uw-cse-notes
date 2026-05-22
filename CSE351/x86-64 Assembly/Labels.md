@@ -55,10 +55,10 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/x86-64 Assembly/Jump Instructions|Jump Instructions]]
+- [[Jump Instructions|Jump Instructions]]
 - [[CSE351/x86-64 Assembly/Conditionals|Conditionals]]
 - [[CSE351/x86-64 Assembly/Loops|Loops]]
-- [[CSE351/Procedures and Stack/Program Counter|Program Counter]]
+- [[Program Counter|Program Counter]]
 
 ---
 

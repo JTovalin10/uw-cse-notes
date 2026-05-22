@@ -36,5 +36,5 @@ This allows concurrent reads while still serializing writes.
 
 ## Related
 - [[Atomic Transactions in SQL]] — basic locking and atomicity
-- [[Atomic and isolated Transactions in SQL]] — 2PL, which uses these lock types
+- [[CSE344/Transactions/Atomic and Isolated Transactions in SQL]] — 2PL, which uses these lock types
 - [[Phantom Reads]] — predicate locks as a form of fine-grained locking

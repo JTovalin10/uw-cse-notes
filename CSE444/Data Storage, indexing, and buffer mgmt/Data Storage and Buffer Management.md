@@ -14,7 +14,7 @@ This section covers how data is physically stored on disk and managed in memory.
 ## Related
 - [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture and Query Processing]] — how the buffer manager and storage manager fit into the full DBMS architecture
 - [[CSE444/Data Storage, indexing, and buffer mgmt/Indexing|Indexes and File Organizations]] — heap file API, sorted files, and index structures built on top of heap files
-- [[CSE344/Database Design/Disk Storage|Disk Storage]] — CSE344 coverage of disk storage fundamentals
-- [[CSE344/Database Design/Database Indices|Database Indices]] — index structures built on top of heap files
-- [[CSE344/Database Design/Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how indices relate to physical data layout
-- [[CSE344/Query Execution/External Memory Algorithms|External Memory Algorithms]] — algorithms designed around disk page access patterns
+- [[Disk Storage|Disk Storage]] — CSE344 coverage of disk storage fundamentals
+- [[Database Indices|Database Indices]] — index structures built on top of heap files
+- [[Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — how indices relate to physical data layout
+- [[External Memory Algorithms|External Memory Algorithms]] — algorithms designed around disk page access patterns

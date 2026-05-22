@@ -3,7 +3,7 @@
 Introductory course to the world of digital logic and hardware design. The course builds the primitives that make up a computer, starting from logic gates and Boolean algebra and moving up to basic CPU components.
 
 ## Prerequisites
-- Knowledge of binary representation from [[CSE351/Number Representation/Binary and Hexadecimal|CSE351: Binary and Hexadecimal]] — all digital logic operates on binary data.
+- Knowledge of binary representation from [[Binary and Hexadecimal|CSE351: Binary and Hexadecimal]] — all digital logic operates on binary data.
 - Ability to reason about machines that manipulate binary data.
 
 ## Hardware and Tools

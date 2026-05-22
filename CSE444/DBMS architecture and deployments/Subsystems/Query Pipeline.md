@@ -79,4 +79,4 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
 ## Related
 - [[CSE444/Query Optimization/Query Optimization|Query Optimization]] — deep dive into the optimizer's search space and cost estimation
 - [[CSE444/DBMS architecture and deployments/Subsystems/Query Executor|Query Executor]] — iterator interface and execution details
-- [[CSE344/Query Execution/SQL to RA Translation|CSE344 SQL to RA Translation]]
+- [[SQL to RA Translation|CSE344 SQL to RA Translation]]

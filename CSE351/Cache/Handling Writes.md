@@ -19,7 +19,7 @@ A **write-hit** occurs when the address being written is already present in the 
 A **write-miss** occurs when the block being written is not currently in the cache.
 
 - **No-write-allocate** (write-around): Write directly to the next memory level without loading the block into the cache. Used when future accesses to the same block are unlikely.
-- **Write-allocate** (fetch-on-write): Load the block into the cache first, then apply the write. Used when the same block is likely to be written or read again soon — exploits [[CSE351/Cache/Temporal Locality|temporal locality]].
+- **Write-allocate** (fetch-on-write): Load the block into the cache first, then apply the write. Used when the same block is likely to be written or read again soon — exploits [[Temporal Locality|temporal locality]].
 
 ## Common Policy Combinations
 
@@ -46,10 +46,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Cache/Cache Organization|Cache Organization]]
-- [[CSE351/Cache/Cache Associativity|Cache Associativity]]
-- [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
-- [[CSE351/Cache/Temporal Locality|Temporal Locality]]
+- [[Cache Organization|Cache Organization]]
+- [[Cache Associativity|Cache Associativity]]
+- [[Program Optimizations via Cache|Program Optimizations via Cache]]
+- [[Temporal Locality|Temporal Locality]]
 
 ---
 

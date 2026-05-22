@@ -13,7 +13,7 @@ The reasoning we need here is ordinary **[[Floyd Logic]]** — we track how asse
 - **Forward reasoning** — how the facts change as we move **down** through the code (given `{{P}} S`, compute the strongest postcondition).
 - **Backward reasoning** — how the facts change as we move **up** through the code (given `S {{Q}}`, compute the weakest precondition).
 
-Both are mechanical rules for assignment: the only subtlety comes from [[Loops|loops]], which require an invariant.
+Both are mechanical rules for assignment: the only subtlety comes from [[CSE351/x86-64 Assembly/Loops|loops]], which require an invariant.
 
 ## Related
 

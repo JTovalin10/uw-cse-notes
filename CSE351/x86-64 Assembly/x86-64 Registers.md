@@ -45,7 +45,7 @@ movl $100, %eax       # Sets %rax = 0x0000000000000064
 
 ## Special Registers
 
-These registers have dedicated hardware roles and are governed by [[CSE351/Procedures and Stack/Calling Conventions|calling conventions]]:
+These registers have dedicated hardware roles and are governed by [[Calling Conventions|calling conventions]]:
 
 | Register | Purpose |
 |:---|:---|
@@ -77,10 +77,10 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
-- [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
-- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
-- [[CSE351/x86-64 Assembly/x86-64 Instruction Format|Instruction Format]]
+- [[Calling Conventions|Calling Conventions]]
+- [[Register Saving Conventions|Register Saving Conventions]]
+- [[Stack Frames|Stack Frames]]
+- [[x86-64 Instruction Format|Instruction Format]]
 - [[CSE451/Virtualization/Processes/CPUState/CPU State#Registers|Registers (CSE451)]]
 
 ---

@@ -99,10 +99,10 @@ flowchart TB
 
 ## Related
 
-- [[CSE351/Procedures and Stack/Stack Pointer|Stack Pointer]]
-- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
-- [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
-- [[CSE351/Procedures and Stack/Recursion|Recursion]]
+- [[Stack Pointer|Stack Pointer]]
+- [[Calling Conventions|Calling Conventions]]
+- [[Register Saving Conventions|Register Saving Conventions]]
+- [[Recursion|Recursion]]
 - [[CSE351/Procedures and Stack/Memory Layout|Memory Layout]]
 
 ---

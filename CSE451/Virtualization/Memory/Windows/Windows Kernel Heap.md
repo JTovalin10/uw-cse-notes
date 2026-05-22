@@ -10,5 +10,5 @@ The **Windows Kernel Heap** uses several different heap managers for dynamic mem
 
 ## Related
 - [[CSE451/Virtualization/Memory/Windows/Windows Paging|Windows Paging]]
-- [[CSE351/Memory Management/Memory Allocation|Memory Allocation (351)]]
+- [[Memory Allocation|Memory Allocation (351)]]
 - [[CSE451/Virtualization/Memory/Memory management|Memory Management (451)]]

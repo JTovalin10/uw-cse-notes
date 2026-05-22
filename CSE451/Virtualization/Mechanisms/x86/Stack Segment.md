@@ -7,4 +7,4 @@ Note: modern x86-64 segments are mostly ignored but kept for backwards compatibi
 ## Related
 - [[ESP]] — the stack pointer register that tracks the current top of the stack
 - [[Kernel Stack]] — the per-process kernel-mode stack
-- [[CSE351/System Programming/Exceptions]] — how the stack is used during exception handling
+- [[Exceptions]] — how the stack is used during exception handling

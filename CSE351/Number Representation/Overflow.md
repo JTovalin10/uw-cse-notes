@@ -2,7 +2,7 @@
 
 Arithmetic on fixed-width binary numbers uses **modular arithmetic**. When a result exceeds the representable range, the extra bits are dropped and values "wrap around."
 
-Subtraction is performed by adding the negative. For signed integers, the negative is computed using [[CSE351/Number Representation/Two's Complement|Two's Complement]]: `-x == ~x + 1`.
+Subtraction is performed by adding the negative. For signed integers, the negative is computed using [[Two's Complement|Two's Complement]]: `-x == ~x + 1`.
 
 ---
 
@@ -39,7 +39,7 @@ Think of a 4-bit counter that rolls over from 15 back to 0 — just like a car o
 
 **Example:** `4 + 13 = 17`, but 17 > 15 (max for 4-bit unsigned). Result wraps to `17 mod 16 = 1`.
 
-The [[CSE351/x86-64 Assembly/Condition Codes|Carry Flag (CF)]] is set when unsigned overflow occurs.
+The [[Condition Codes|Carry Flag (CF)]] is set when unsigned overflow occurs.
 
 ---
 
@@ -49,7 +49,7 @@ Occurs when the true result falls outside $[-2^{n-1}, 2^{n-1} - 1]$.
 
 ### Formal Definition
 
-Signed overflow occurs if and only if the carry into the MSB differs from the carry out of the MSB. Equivalently, the [[CSE351/x86-64 Assembly/Condition Codes|Overflow Flag (OF)]] is set.
+Signed overflow occurs if and only if the carry into the MSB differs from the carry out of the MSB. Equivalently, the [[Condition Codes|Overflow Flag (OF)]] is set.
 
 ### Simplified Explanation
 
@@ -83,10 +83,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Number Representation/Two's Complement|Two's Complement]]
-- [[CSE351/Number Representation/Unsigned Integers|Unsigned Integers]]
-- [[CSE351/Number Representation/Bit Shifting|Bit Shifting]]
-- [[CSE351/x86-64 Assembly/Condition Codes|Condition Codes (CF, OF)]]
+- [[Two's Complement|Two's Complement]]
+- [[Unsigned Integers|Unsigned Integers]]
+- [[Bit Shifting|Bit Shifting]]
+- [[Condition Codes|Condition Codes (CF, OF)]]
 
 ---
 

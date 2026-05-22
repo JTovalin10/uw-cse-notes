@@ -9,7 +9,7 @@ Same basic idea as [[CSE344/Query Execution/Parallel Query Execution#Partitioned
 2. Local join on each node
 3. Collect and union results
 
-Not to be confused with [[CSE344/Query Execution/External Memory Algorithms#GRACE Join (Partitioned Hash Join)|GRACE Join]], which is a single-node external memory algorithm.
+Not to be confused with [[External Memory Algorithms#GRACE Join (Partitioned Hash Join)|GRACE Join]], which is a single-node external memory algorithm.
 
 ![[Partitoned Hash Join.png]]
 
@@ -57,8 +57,8 @@ A clever combination of partitioned hash join and broadcast join:
 
 ## Related
 - [[CSE344/Query Execution/Parallel Query Execution|Parallel Query Execution]] — architecture, partitioning strategies, and partitioned selection/aggregation
-- [[CSE344/Query Execution/Main Memory Join Algorithms|Main Memory Join Algorithms]] — the local join algorithms that run within each node
-- [[CSE344/Query Execution/External Memory Algorithms#GRACE Join (Partitioned Hash Join)]] — the single-node partitioned hash join
-- [[CSE344/Query Execution/Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — overview of physical operator classification
-- [[CSE344/Query Execution/Cardinality Estimation|Cardinality Estimation]] — skew directly affects cardinality estimates
-- [[CSE344/SQL/Joins|Joins]] — the SQL surface syntax compiled into these joins
+- [[Main Memory Join Algorithms|Main Memory Join Algorithms]] — the local join algorithms that run within each node
+- [[External Memory Algorithms#GRACE Join (Partitioned Hash Join)]] — the single-node partitioned hash join
+- [[Physical Algorithms and Pipelining|Physical Algorithms and Pipelining]] — overview of physical operator classification
+- [[Cardinality Estimation|Cardinality Estimation]] — skew directly affects cardinality estimates
+- [[Joins|Joins]] — the SQL surface syntax compiled into these joins

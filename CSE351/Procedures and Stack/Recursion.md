@@ -1,6 +1,6 @@
 # CSE351: Recursion
 
-Recursion works seamlessly with [[CSE351/Procedures and Stack/Stack Frames|stack frames]] and [[CSE351/Procedures and Stack/Calling Conventions|calling conventions]] — no special hardware support is needed. The same mechanism that handles ordinary function calls handles recursive calls, because each invocation gets its own private stack frame.
+Recursion works seamlessly with [[Stack Frames|stack frames]] and [[Calling Conventions|calling conventions]] — no special hardware support is needed. The same mechanism that handles ordinary function calls handles recursive calls, because each invocation gets its own private stack frame.
 
 ---
 
@@ -8,7 +8,7 @@ Recursion works seamlessly with [[CSE351/Procedures and Stack/Stack Frames|stack
 
 - Each recursive call creates a **new stack frame** on top of the existing ones.
 - Each frame has its **own local variables** (including the parameter `n`), so there is no interference between invocations.
-- [[CSE351/Procedures and Stack/Register Saving Conventions|Callee-saved registers]] ensure that values computed at one level are not destroyed when a deeper level runs.
+- [[Register Saving Conventions|Callee-saved registers]] ensure that values computed at one level are not destroyed when a deeper level runs.
 
 ---
 
@@ -106,10 +106,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Procedures and Stack/Stack Frames|Stack Frames]]
-- [[CSE351/Procedures and Stack/Stack Pointer|Stack Pointer]]
-- [[CSE351/Procedures and Stack/Register Saving Conventions|Register Saving Conventions]]
-- [[CSE351/Procedures and Stack/Calling Conventions|Calling Conventions]]
+- [[Stack Frames|Stack Frames]]
+- [[Stack Pointer|Stack Pointer]]
+- [[Register Saving Conventions|Register Saving Conventions]]
+- [[Calling Conventions|Calling Conventions]]
 
 ---
 

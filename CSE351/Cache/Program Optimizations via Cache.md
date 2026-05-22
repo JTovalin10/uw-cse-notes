@@ -55,10 +55,10 @@ flowchart TD
 
 ## Related
 
-- [[CSE351/Cache/Cache Locality|Locality]]
-- [[CSE351/Cache/Cache Organization|Cache Organization]]
-- [[CSE351/Cache/Temporal Locality|Temporal Locality]]
-- [[CSE351/Cache/Spatial Locality|Spatial Locality]]
+- [[Cache Locality|Locality]]
+- [[Cache Organization|Cache Organization]]
+- [[Temporal Locality|Temporal Locality]]
+- [[Spatial Locality|Spatial Locality]]
 - [[CSE351/Data Structures/Arrays|Arrays]]
 
 ---

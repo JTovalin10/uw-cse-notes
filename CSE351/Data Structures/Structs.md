@@ -108,7 +108,7 @@ flowchart LR
 
 - [[CSE351/Data Structures/Arrays|Arrays]]
 - [[CSE351/Memory Fundamentals/Pointers|Pointers]]
-- [[CSE351/Memory Management/Memory Allocation|Memory Allocation (alignment requirements)]]
+- [[Memory Allocation|Memory Allocation (alignment requirements)]]
 - [[CSE333/Data Structures/Struct|Struct (CSE333)]]
 - [[CSE484/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]
 

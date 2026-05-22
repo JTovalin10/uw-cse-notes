@@ -87,12 +87,12 @@ flowchart LR
 
 ## Related
 
-- [[CSE351/Cache/Cache Associativity|Cache Associativity]]
-- [[CSE351/Cache/Cache Locality|Locality]]
-- [[CSE351/Cache/Handling Writes|Handling Writes]]
-- [[CSE351/Cache/Program Optimizations via Cache|Program Optimizations via Cache]]
-- [[CSE351/Cache/Temporal Locality|Temporal Locality]]
-- [[CSE351/Cache/Spatial Locality|Spatial Locality]]
+- [[Cache Associativity|Cache Associativity]]
+- [[Cache Locality|Locality]]
+- [[Handling Writes|Handling Writes]]
+- [[Program Optimizations via Cache|Program Optimizations via Cache]]
+- [[Temporal Locality|Temporal Locality]]
+- [[Spatial Locality|Spatial Locality]]
 - [[CSE451/Virtualization/Memory/Concepts/Virtual and Physical Caches|Virtual and Physical Caches (CSE451)]]
 
 ---

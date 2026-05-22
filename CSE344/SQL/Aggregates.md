@@ -70,4 +70,4 @@ GROUP BY Job;
 - [[Set Operations]] — bag-semantic operations related to DISTINCT
 - [[Sub-Queries]] — using aggregates inside subqueries (see [[Witnessing Problem]])
 - [[Sparse Matrix Algebra#Multiplication]] — matrix multiplication is GROUP BY on a join
-- [[CSE344/Query Execution/SQL to RA Translation|SQL to RA Translation]] — GROUP BY maps to the $\gamma$ operator
+- [[SQL to RA Translation|SQL to RA Translation]] — GROUP BY maps to the $\gamma$ operator

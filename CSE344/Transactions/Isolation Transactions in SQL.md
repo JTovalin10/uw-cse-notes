@@ -47,5 +47,5 @@ A schedule is conflict-serializable if and only if its [[Precedence Graphs|prece
 ## Related
 - [[Schedules and Serial Schedules]] — definitions of schedules and serializability
 - [[Precedence Graphs]] — cycle detection algorithm for verifying conflict-serializability
-- [[Atomic and isolated Transactions in SQL]] — 2PL as a practical mechanism for generating conflict-serializable schedules
-- [[Isolation Levels]] — weaker notions of isolation and the trade-offs
+- [[CSE344/Transactions/Atomic and Isolated Transactions in SQL]] — 2PL as a practical mechanism for generating conflict-serializable schedules
+- [[CSE344/Transactions/Isolation Levels]] — weaker notions of isolation and the trade-offs
