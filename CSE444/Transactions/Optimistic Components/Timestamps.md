@@ -124,42 +124,61 @@ If $T$ wants to write $X$ and $WT(X) > TS(T)$, we **don't** necessarily have to 
 
 ---
 
-## 5. Multiversion Timestamp (MVCC)
+## Multiversion Timestamp (MVCC)
+
 To avoid the high volume of rollbacks caused by the "Read Too Late" problem, the DBMS can keep multiple versions of a data element $X$.
-
 ### Version Notation & Metadata
+
 In MVCC, a data element $X$ is stored as a list of versions: $X_{t_1}, X_{t_2}, \dots, X_{t_n}$.
-- **What is $t$?**: The subscript $t$ represents the **Write Timestamp ($WT$)** of that specific version. It is equal to the timestamp of the transaction that created it. Essentially, $t$ is the version's "birthdate."
-- **$WT(X_t)$**: This value is **immutable**. Once version $X_t$ is created, its write timestamp is forever $t$.
-- **$RT(X_t)$**: Each version maintains its own "visitor log." It tracks the timestamp of the youngest (highest TS) transaction that has read **this specific version**.
 
-### Rule 1: Request to Read $X$ ( $r_T(X)$ )
-- **Textbook Definition**:
-	1. Find the version $X_t$ that has the highest write timestamp $t$ such that $t \leq TS(T)$.
-	2. If $C(X_t) = false$, then **Delay** $T$ until $C(X_t) = true$ or the creator aborts.
-	3. If $C(X_t) = true$, then **Grant** the read. Update $RT(X_t) = \max(TS(T), RT(X_t))$.
-- **The "Version Selection" Logic**:
-	- You are looking for the **most recent version of the past**.
-	- If your $TS=10$ and the versions available are $X_5$, $X_{12}$, and $X_{15}$, you read **$X_5$**.
-	- **Why ignore the "future"?**: In a serial schedule, $T$ (at time 10) cannot see changes made by transactions that (logically) haven't happened yet ($12$ and $15$). By reading $X_5$, $T$ gets a **consistent snapshot** of the database as it existed at the moment $T$ was born.
-- **Simplified**:
-	- *Which one do I read?* Look at the birthdates ($t$) and pick the newest one that isn't younger than you. 
-	- *What about WT and RT?*: You don't change the $WT$ (it's fixed). You only update the $RT$ of the *specific version* you touched. This tells the system: "Someone from time $TS(T)$ has now witnessed the value of $X_t$."
+- **What is $t$?**: The subscript $t$ represents the Write Timestamp (WT) of that specific version — it equals the timestamp of the transaction that created it. In our schedule where $ST_1 \rightarrow ST_2 \rightarrow ST_3 \rightarrow ST_4$, if $T_3$ writes $X$, it creates version $X_3$. The "3" is literally $T_3$'s start order.
+- **$WT(X_t)$**: Immutable. Once $T_3$ creates $X_3$, $WT(X_3) = 3$ forever. No one can change this.
+- **$RT(X_t)$**: Each version tracks the highest-timestamp transaction that has read it. If $T_1$ then $T_4$ both read $X_3$, then $RT(X_3) = 4$.
+- $C(X_t)$ means the commit bit for that specific version
+### Rule 1: Request to Read $X$
 
-### Rule 2: Request to Write $X$ ( $w_T(X)$ )
-- **Textbook Definition**:
-	1. Find the version $X_t$ that has the highest write timestamp $t$ such that $t \leq TS(T)$. (This is the version $T$ *would* have read).
-	2. If $TS(T) < RT(X_t)$, then **Rollback** $T$. 
-	3. If $TS(T) = t$, then **Overwrite** the existing version $X_t$ (you already created it).
-	4. Else (i.e., $TS(T) > RT(X_t)$), **Create** a new version $X_{TS(T)}$. Set its $WT = TS(T)$, $RT = TS(T)$, and $C = false$.
-- **The "Timeline Paradox" (Why Writes Still Fail)**:
-	- Even though we have multiple versions, $T$ can still die if it tries to write "too late."
-	- **Scenario**: $T$ has $TS=10$. The latest version from its perspective is $X_5$. However, some transaction $U$ with $TS=20$ has already read $X_5$ ($RT(X_5) = 20$).
-	- If $T$ is allowed to write $X_{10}$ now, then $U$ (at time 20) **should have read $X_{10}$** instead of $X_5$.
-	- Because $U$ already "witnessed" the past and saw $X_5$, we cannot go back in time and insert $X_{10}$ into $U$'s history. $T$ has missed its window and must be aborted.
-- **Simplified**:
-	- *Did someone from the future already look at the version I'm supposed to follow?* If so, you're too late to change the course of history. Die.
-	- *Safe?* Don't touch the old versions. Just add your new version $X_{TS(T)}$ to the end of the list.
+**Textbook Definition:**
+
+1. Find the version $X_t$ with the highest $t$ such that $t \leq TS(T)$.
+	1. TS(T) is our version
+2. If $C(X_t) = \text{false}$, **Delay** $T$ until $C(X_t) = \text{true}$ or the creator aborts.
+3. If $C(X_t) = \text{true}$, **Grant** the read. Update $RT(X_t) = \max(TS(T), RT(X_t))$.
+
+**Version Selection Logic:**
+
+Suppose versions $X_0, X_3$ exist and $T_2$ wants to read $X$:
+
+- $TS(T_2) = 2$
+- $X_0$ has $WT=0 \leq 2$, continue
+- $X_3$ has $WT=3 > 2$  (ignore — $T_3$ started _after_ $T_2$, so $T_2$ cannot see $T_3$'s changes)
+- $T_2$ reads $X_0$ — the most recent version from $T_2$'s past.
+
+**Simplified:**
+
+- _Which version do I read?_ Find the newest version whose birthdate is still older than yours.
+- _Update rule:_ Only update $RT$ of the specific version you read. $WT$ is never touched.
+### Rule 2: Request to Write $X$
+
+**Textbook Definition:**
+
+1. Find the version $X_t$ with the highest $t$ such that $t \leq TS(T)$.
+2. If $TS(T) < RT(X_t)$, **Rollback** $T$.
+3. If $TS(T) = t$, **Overwrite** $X_t$ (you already own this version).
+4. Else ($TS(T) > RT(X_t)$), **Create** new version $X_{TS(T)}$ with $WT=TS(T)$, $RT=TS(T)$, $C=\text{false}$.
+
+**The Timeline Paradox (Why Writes Still Fail):**
+
+Suppose $T_2$ wants to write $X$ and the only version is $X_0$:
+
+- $TS(T_2) = 2$, highest $t \leq 2$ is $X_0$ with $WT=0$
+- But $RT(X_0) = 3$ because $T_3$ already read $X_0$
+- Is $TS(T_2) < RT(X_0)$? Is $2 < 3$?, good → **Abort $T_2$**
+- Why? If we let $T_2$ create $X_2$, then $T_3$ (which started after $T_2$) should have read $X_2$ instead of $X_0$. But $T_3$ already read $X_0$ and we can't go back in time.
+
+**Simplified:**
+
+- _Did someone with a higher timestamp already read the version I'm about to follow?_ If yes, you're too late — abort.
+- _Safe?_ Don't touch old versions. Just create a new version $X_{TS(T)}$ and append it to the list.
 
 ---
 
