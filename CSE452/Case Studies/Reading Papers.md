@@ -13,5 +13,5 @@ Guidance for approaching the research papers studied in this course (such as the
 
 - [[CSE452/Case Studies/Big Table|Big Table]] — a worked example of a paper read in this course
 - [[CSE452/Case Studies/Google File System (GFS)|Google File System (GFS)]] — another foundational paper covered in the case studies
-- [[CSE452/Case Studies/Big Ideas|Big Ideas in Performance and Durability]] — summary of the core concepts often found in these papers
+- [[CSE452/Case Studies/Key Takeaways|Key Takeaways in Performance and Durability]] — summary of the core concepts often found in these papers
 

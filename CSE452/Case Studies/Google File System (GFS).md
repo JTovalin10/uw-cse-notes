@@ -95,7 +95,7 @@ GFS provides a relaxed consistency model to maintain high performance.
 ## Related
 
 - [[CSE452/Case Studies/Big Table|Big Table]] — uses GFS as its underlying storage layer
-- [[CSE452/Case Studies/Big Ideas|Big Ideas in Performance and Durability]] — summary of the principles GFS uses
+- [[CSE452/Case Studies/Key Takeaways|Key Takeaways in Performance and Durability]] — summary of the principles GFS uses
 - [[CSE452/Consistency/Definitions/Linearizability|Linearizability]] — why GFS only provides this for metadata
 - [[CSE451/Persistence/File Systems|File Systems (CSE451)]] — traditional file system concepts contrasted with GFS
 - [[CSE351/Number Representation/Number Representation|Number Representation (CSE351)]] — underlying data storage concepts
