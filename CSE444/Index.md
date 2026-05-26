@@ -52,6 +52,11 @@ Advanced database systems: internals, query processing, storage, and distributed
 ### Transactions
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)
 - [[CSE444/Transactions/Recovery/Recovery and Logging|Recovery and Logging]] — WAL, buffer management policies, logging types, and ARIES
+  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo Logging|Undo Logging]] — steal policy; records "before images" to revert uncommitted changes
+  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Redo Logging|Redo Logging]] — no-force policy; records "after images" to replay lost committed changes
+  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]] — steal/no-force policy; industry standard combining both
+  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Checkpointing|Checkpointing]] — bounding recovery time; quiescent vs non-quiescent
+  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Log Abstraction Levels|Log Abstraction Levels]] — physical, logical, and physiological logging trade-offs
 - [[CSE444/Transactions/Serializability/Schedules|Schedules]] — definition of serial, serializable, and recoverable schedules
 - [[CSE444/Transactions/Concurrency Anomalies|Concurrency Anomalies]] — WR (Dirty Read), RW (Unrepeatable Read), WW (Lost Update) conflicts
 - [[CSE444/Transactions/Serializability/Serializability|Serializability]] — correctness criteria and types of equivalence (Conflict vs. View)

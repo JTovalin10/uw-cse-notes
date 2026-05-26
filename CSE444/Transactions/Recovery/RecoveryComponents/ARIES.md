@@ -133,8 +133,9 @@ While ToUndo is not empty:
 An operation is **Idempotent** if $f(f(x)) = f(x)$. In the context of recovery, this means that if you run the recovery process once, twice, or ten times (due to repeated crashes), the final state of the database is the same. This is achieved through physical/physiological logging and CLRs.
 
 ## UNDO/REDO Logging
+ARIES is built on **[[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]**, which allows it to support Steal/No-Force policies.
 
 ## Related
-- [[CSE444/Transactions/Recovery/Recovery|Recovery and Logging (Fundamentals)]]
+- [[CSE444/Transactions/Recovery/Recovery and Logging|Recovery and Logging (Fundamentals)]]
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]]
-- [[CSE444/Transactions/Recovery/Recovery#The Write-Ahead Logging (WAL) Rule|WAL Rules]]
+- [[CSE444/Transactions/Recovery/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]

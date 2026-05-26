@@ -1,6 +1,6 @@
 # CSE444: Write-Ahead Logging (WAL)
 
-The **Write-Ahead Logging (WAL)** rule is the foundational protocol for database durability and atomicity. It ensures that the log remains the authoritative source of truth by always preceding the actual data changes on disk: the log entry must be written before any `OUTPUT`, and the `<COMMIT>` record must be written before the transaction is considered complete.
+It ensures that the log remains the authoritative source of truth by always preceding the actual data changes on disk: the log entry must be written before any `OUTPUT`, and the `<COMMIT>` record must be written before the transaction is considered complete.
 
 ## The WAL Rule
 
