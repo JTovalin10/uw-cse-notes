@@ -57,7 +57,7 @@ $$2d \times 4 + (2d + 1) \times 8 \leq 4096 \implies d = 170$$
 - **Capacities**:
   - **Height 3**: $133^3 \approx 2{,}352{,}637$ records.
   - **Height 4**: $133^4 \approx 312{,}900{,}700$ records.
-- **Caching**: Upper levels are frequently cached in the **[[CSE444/DBMS architecture and deployments/Subsystems/Buffer Manager|Buffer Pool]]**:
+- **Caching**: Upper levels are frequently cached in the **[[CSE444/DBMS Architecture and Deployments/Subsystems/Buffer Manager|Buffer Pool]]**:
   - Level 1 (Root): 1 page $\approx$ 1 KB
   - Level 2: 133 pages $\approx$ 1 MB
   - Level 3: 17,689 pages $\approx$ 133 MB (often fits entirely in memory)
@@ -70,7 +70,7 @@ $$2d \times 4 + (2d + 1) \times 8 \leq 4096 \implies d = 170$$
 - **Leaf Pointers** $\rightarrow$ Sequence Set (in older literature)
 
 ## Related
-- [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree Hub]] — operations and optimizations
-- [[CSE444/Data Storage, indexing, and buffer mgmt/Indexing|Indexes and File Organizations]] — clustered vs. unclustered indexes
-- [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats
+- [[CSE444/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree Hub]] — operations and optimizations
+- [[CSE444/Data Storage, Indexing, and Buffer Management/Indexing|Indexes and File Organizations]] — clustered vs. unclustered indexes
+- [[CSE444/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats
 - [[CSE332/Sorting/B-Trees|CSE332 Balanced Trees]]

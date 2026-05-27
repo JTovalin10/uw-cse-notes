@@ -4,10 +4,10 @@
 
 ## Table of Contents
 
-1. [[CSE444/Query Evaluation/PartitionedHash/Overview|Overview & Key Idea]]
-2. [[CSE444/Query Evaluation/PartitionedHash/Algorithm|The Detailed 3-Step Algorithm]]
-3. [[CSE444/Query Evaluation/PartitionedHash/Feasibility|Feasibility & Recursive Partitioning]]
-4. [[CSE444/Query Evaluation/PartitionedHash/Worked Example|Worked Example ($B(R)=1000, B(S)=800, M=11$)]]
+1. [[CSE444/Query Evaluation/PartitionedHashComponents/Overview|Overview & Key Idea]]
+2. [[CSE444/Query Evaluation/PartitionedHashComponents/Algorithm|The Detailed 3-Step Algorithm]]
+3. [[CSE444/Query Evaluation/PartitionedHashComponents/Feasibility|Feasibility & Recursive Partitioning]]
+4. [[CSE444/Query Evaluation/PartitionedHashComponents/Worked Example|Worked Example ($B(R)=1000, B(S)=800, M=11$)]]
 
 ---
 

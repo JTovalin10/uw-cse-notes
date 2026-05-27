@@ -39,4 +39,4 @@ Standard LRU suffers from **Sequential Flooding** (a single large scan evicts th
 - **Index Bloat**: Disproportionate growth of index files due to fragmented splits or unreclaimed space from deleted MVCC tuples.
 
 ## Related
-- [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree Details]]
+- [[CSE444/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree Details]]

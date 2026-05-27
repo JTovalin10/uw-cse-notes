@@ -226,4 +226,4 @@ You can express relational queries on top of MapReduce:
 - [[CSE444/Parallel/Intro to Parallel DBMS|Intro to Parallel DBMS]] — the parallel DBMS approach MapReduce is repeatedly contrasted against
 - [[CSE444/Parallel/ParallelExecutionComponents/The Shuffle Operator|The Shuffle Operator]] — the same producer-consumer redistribution used between Map and Reduce
 - [[CSE444/Parallel/Data Partitioning Schemes|Data Partitioning Schemes]] — partitioning and data skew in parallel systems
-- [[CSE444/Replication and distribution/Distributed Databases|Distributed Databases]] — shared-nothing distribution that MapReduce relies on
+- [[CSE444/Replication and Distribution/Distributed Databases|Distributed Databases]] — shared-nothing distribution that MapReduce relies on

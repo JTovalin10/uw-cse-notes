@@ -39,5 +39,5 @@
 - [[Basics|SQL Basics]] — the surface syntax translated into RA
 - [[Sub-Queries|Sub-Queries]] — SQL subquery mechanics before RA translation
 - [[Decorrelation and Unnesting|Decorrelation and Unnesting]] — monotonicity and when subqueries can be rewritten
-- [[CSE444/Review of relational model/Relational Algebra|Relational Algebra (444)]] — advanced relational algebra and DBMS implementation
+- [[CSE444/Review of Relational Model/Relational Algebra|Relational Algebra (444)]] — advanced relational algebra and DBMS implementation
 - Sets and Logic (311) — mathematical foundations of RA

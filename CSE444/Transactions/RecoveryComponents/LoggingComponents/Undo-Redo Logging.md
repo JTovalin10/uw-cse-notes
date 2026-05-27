@@ -1,4 +1,4 @@
-# CSE444: Undo-Redo Logging
+ # CSE444: Undo-Redo Logging
 
 **Undo-Redo Logging** is the industry-standard logging strategy and the basis for modern recovery algorithms like [[CSE444/Transactions/Recovery/RecoveryComponents/ARIES|ARIES]]. It combines both strategies to support a **Steal / No-Force** buffer management policy, providing maximum flexibility and performance.
 
@@ -27,16 +27,52 @@ Unlike Undo or Redo logging, there are no additional constraints on *when* dirty
 
 ## Recovery Process
 
-The recovery manager typically follows a three-step process (Analysis, Redo, Undo) to restore the database to a consistent state.
+The recovery manager follows a three-phase process (**Analysis**, **Redo**, and **Undo**) to restore the database to a consistent state. This implementation typically utilizes a **Write-Ahead Log (WAL)** with a master pointer at the beginning of the file.
 
-### 1. Analysis Phase
-Scan the log to identify **Winners** (transactions that have a `<COMMIT>` record) and **Losers** (transactions that have a `<START>` but no `<COMMIT>` or `<ABORT>` record).
+### Phase 1: Analysis (Finding the Starting Point)
+Before redoing or undoing, the system must determine the crash state and the starting point for recovery.
 
-### 2. Redo Phase (Repeating History)
-Scan the log **forward** from the last checkpoint. For every update record `<T, X, old_v, new_v>`, set `X = new_v`. This restores the database to the exact state it was in at the moment of the crash.
+1.  **Read Master Pointer**: Read the initial bytes of the log (e.g., Offset 0–8) to retrieve the `checkpointOffset`.
+2.  **Initialize Loser Set**: Create a tracking set (e.g., `Set<Long> losers`) to identify transactions that were active at the time of the crash.
+3.  **Process Checkpoint**:
+    - If a checkpoint exists (`checkpointOffset != -1`), jump to that offset.
+    - Read the list of active transactions stored in the checkpoint and add them to the `losers` set.
+    - *Note*: Redo begins at the checkpoint because the checkpointing process ensures all prior dirty pages were already flushed to disk.
+4.  **No Checkpoint**: If no checkpoint exists, start from the beginning of the log (skipping the master pointer).
 
-### 3. Undo Phase
-Scan the log **backward** from the end. For every update record belonging to a **Loser** transaction, set `X = old_v`.
+### Phase 2: Redo Phase (Forward Pass)
+The system scans the log forward from the starting point (Checkpoint or log start) to the end, "repeating history" to restore the disk to the exact state it was in at the moment of the crash.
+
+1.  **Read Record Header**: For every record, read the transaction ID (TID) and record type.
+2.  **Track Transaction Status**:
+    - **BEGIN**: Add the TID to the `losers` set.
+    - **COMMIT**: Remove the TID from the `losers` set (it is now a "Winner").
+    - **ABORT**: Do nothing (it remains in the `losers` set).
+3.  **Perform Redo**:
+    - If the record is an **UPDATE**: Read the before and after images.
+    - **Always Redo**: Write the `afterImage` (new value) to the corresponding disk page.
+    - *Logic*: We redo *everything* (even for losers) because it is simpler to restore the entire crash state and then selectively "fix" the losers in the next phase.
+4.  **Alignment**: Read the record footer (e.g., a trailing length or LSN) to ensure the file cursor remains aligned for the next record.
+
+### Phase 3: Undo Phase (The Losers)
+Once the crash state is restored, the system must revert the changes made by "Loser" transactions (those that started but never committed).
+
+1.  **Reset Cursor**: Jump back to the beginning of the log (after the master pointer).
+2.  **Scan Forward**: (Note: While backward scanning is technically faster, forward scanning is often implemented for simplicity with existing read tools).
+3.  **Perform Undo**:
+    - If an **UPDATE** record belongs to a TID in the `losers` set:
+        - Read the before and after images.
+        - **Undo**: Write the `beforeImage` (old value) to the disk. This replaces uncommitted data with the original "good" data.
+        - **Buffer Sync**: Discard the page from the Buffer Pool cache to ensure subsequent reads pull the restored version from disk.
+4.  **Alignment**: Continue reading payloads and footers to keep the cursor moving correctly through the log.
+
+### Formal Definition
+1. **Analysis**: $S_{loser} = \{ T \mid \langle \text{START } T \rangle \in \text{Log} \land \langle \text{COMMIT } T \rangle \notin \text{Log} \}$
+2. **Redo**: For each $\langle T, X, \text{old\_v}, \text{new\_v} \rangle$ in Log (forward): $\text{WRITE}(X, \text{new\_v})$.
+3. **Undo**: For each $\langle T, X, \text{old\_v}, \text{new\_v} \rangle$ in Log (backward): If $T \in S_{loser}$, then $\text{WRITE}(X, \text{old\_v})$.
+
+### Simplified Explanation
+First, find out who was still working when the power went out. Second, replay the entire log forward to get the disk back to the exact (messy) state it was in at the crash. Third, go back and undo the changes for anyone who never finished.
 
 ![[Screenshots/Undo, Redo crash.png]]
 
@@ -137,6 +173,11 @@ However, this is a favorable trade-off for most workloads because:
 
 ## Industry Standard Mapping
 - **Undo-Redo Logging** $\rightarrow$ Standard WAL with Undo Segments / CLRs (e.g., IBM DB2, SQL Server, MySQL InnoDB, PostgreSQL).
+
+### Rollback vs. Recovery
+It is important to distinguish between these two operations in a live system:
+- **Restart Recovery**: The system-wide process triggered after a crash. It follows the three-phase process (Analysis, Redo, Undo) to restore the entire database to a consistent state.
+- **Rollback (Abort)**: The process of undoing a single transaction's changes while the system is running (e.g., due to a user command or deadlock). The system uses the Undo portion of the log to revert only that specific transaction's updates.
 
 ## Related
 - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo Logging|Undo Logging]]

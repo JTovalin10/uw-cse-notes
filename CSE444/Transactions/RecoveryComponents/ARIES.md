@@ -57,67 +57,68 @@ A background process periodically flushes dirty pages to disk. Recovery always s
 
 ## The Three Phases of ARIES Recovery
 
-When the database restarts after a crash, it performs recovery in three distinct steps.
+When the database restarts after a crash, ARIES performs recovery in three distinct phases: **Analysis**, **Redo**, and **Undo**.
+
+### Phase 1: Analysis
+The goal of the Analysis phase is to reconstruct the state of the system at the time of the crash and identify the starting points for the subsequent phases.
+
+1.  **Start Point**: Begin scanning forward from the most recent **Checkpoint** entry.
+2.  **Reconstruct Tables**: Rebuild the **Active Transaction Table (ATT)** and **Dirty Page Table (DPT)** by replaying log records:
+    - If `<START T>`: Add $T$ to ATT.
+    - If `<COMMIT T>` or `<ABORT T>`: Change $T$'s status in ATT.
+    - If `<UPDATE P>`: If page $P$ is not in DPT, add it with `recLSN = LSN`.
+    - If `<END T>`: Remove $T$ from ATT.
+3.  **Identify Winners and Losers**: At the end of the scan, any transaction in the ATT that hasn't reached an `END` state is a **Loser**.
+4.  **Compute Redo Start**: The Redo Phase will start at the `min(recLSN)` in the reconstructed DPT.
+
+### Phase 2: Redo Phase (Repeating History)
+ARIES follows the "Repeating History" principle, restoring the database to the exact state it was in at the crash, including updates from transactions that will eventually be undone.
+
+1.  **Direction**: Forward scan from `min(recLSN)`.
+2.  **Logic**: For every update record `<T, P, u, v>` at `LSN`:
+    - **Should we redo?**: Redo the action *unless* any of the following are true:
+        - Page $P$ is not in the DPT.
+        - `recLSN` for $P$ in DPT is greater than `LSN`.
+        - The `pageLSN` on the physical disk page is $\ge$ `LSN` (requires reading the page from disk).
+3.  **Action**: If none of the above are true, re-apply the update and set `pageLSN(P) = LSN`.
+4.  **Idempotency**: Redo is **idempotent**. If the system crashes during this phase, restarting recovery will result in the same state.
+
+### Phase 3: Undo Phase
+The system reverts the changes made by transactions that were active (Losers) at the time of the crash.
+
+1.  **Direction**: Backward scan from the end of the log.
+2.  **ToUndo Set**: Initialize a set of LSNs to undo, containing the `lastLSN` for every transaction in the Loser set.
+3.  **Process Log**: Repeatedly pick the largest LSN from the `ToUndo` set:
+    - If it is a regular update record:
+        - Perform the undo action (write `old_v` to disk).
+        - Write a **Compensating Log Record (CLR)** to the log.
+        - The CLR's `undoNextLSN` is set to the `prevLSN` of the record just undone.
+        - Add `undoNextLSN` to the `ToUndo` set.
+    - If it is a CLR:
+        - Do not undo the CLR itself.
+        - Add the CLR's `undoNextLSN` to the `ToUndo` set.
+    - If the LSN is null (reached the start of a transaction):
+        - Write an `<END T>` record.
+
+### Formal Definition
+1. **Analysis**: $S_{loser} = \text{ATT}$ after forward scan from checkpoint.
+2. **Redo**: $\forall \langle T, P, u, v \rangle \text{ at } L$: If $P \in \text{DPT} \land L \ge \text{recLSN}(P) \land \text{pageLSN}(P) < L$, then $\text{WRITE}(P, v)$.
+3. **Undo**: $\forall \text{ Loser } T$: Scan $T$'s log chain backward; $\forall \text{ update } u$: $\text{UNDO}(u)$ and $\text{WRITE\_CLR}(\text{undoNextLSN} = u.\text{prevLSN})$.
+
+### Simplified Explanation
+First, read the log from the last checkpoint to see who was doing what when we crashed. Second, start from the oldest "dirty" page and redo *everything* in the log to get the disk back to the exact state it was in at the crash. Third, walk backwards through the losers' changes and undo them, writing "Undo-of-Undo" notes (CLRs) so we never have to undo the same thing twice if we crash again.
 
 ![[ARIES Method Illustration.png]]
 
-### 1. Analysis Phase
-**Goal**:
-- Determine the point in the log where the Redo Phase should begin.
-- Reconstruct a conservative estimate of which pages were dirty at the time of the crash.
-- Identify all active (uncommitted) transactions at the time of the crash.
+## Compensating Log Records (CLR)
+CLRs are the secret to ARIES's robust recovery. A CLR is a special log record written *during* the Undo phase to record the fact that an undo was performed.
 
-**Approach**:
-1. Start from the most recent **Checkpoint** entry in the log.
-2. Scan forward through all subsequent log records, rebuilding the Transaction Table and Dirty Page Table by replaying every `START`, `UPDATE`, `COMMIT`, `ABORT`, and `END` entry.
-3. After scanning, compute `firstLSN = min(recLSN)` across all entries in the Dirty Page Table. This is the starting point for the Redo Phase.
+- **Non-Undone**: CLRs are never themselves undone (they have no "before image").
+- **Redo-Only**: If the system crashes during recovery, the Redo phase will replay the CLRs just like regular updates, ensuring the undo work is preserved.
+- **LSN Chaining**: By using the `undoNextLSN` pointer, CLRs allow the system to "jump over" updates that have already been undone, preventing infinite undo loops.
 
-![[ARIES Analysis Phase.png]]
-
-### 2. Redo Phase (Repeating History)
-**Main Principle**: Replay history — restore the database to the exact state it was in at the moment of the crash, including the in-progress work of transactions that will ultimately be rolled back.
-- Process the log **forward**, starting from `firstLSN`.
-- Read every update record sequentially. Redo actions are **not** themselves recorded in the log.
-- NEEDS Dirty Page Table: skip redo for a page if its on-disk `pageLSN` is already greater than or equal to the log record's LSN (the change already made it to disk before the crash).
-- if we crash here just try again, REDO is idempotent
-### Redo Phase: Details
-For each log entry record LSN: `<T, P, u, v>`
-- redo the action P = v and WRITE(P)
-- Only redo actions that need to be redone
-- If P is not in the Dirty Page Table, then no update
-- if recLSN > LSN, no update
-- Read page from disk: if pageLSN >= LSN then no update
-- Otherwise perform update
-
-
-### 3. Undo Phase
-Main principle: logical undo
-- Start from end of log and move backwards
-- Read only affected log entries
-- UNDO is not idempotent
-- Solution: log the UNDO's as special log entries: **Compensating Log Records (CLR)**
-	- Records changes done during UNDO
-	- Only written during this phase
-- CLRs are redone but never undone
-- Selectively undo the correct transaction
-- Jump from physical redo to a logical undo, where we identify which specific changes (pages and tuples) need to be undone and only undo those
-The goal is to roll back the changes of all "loser" transactions identified in the Analysis phase.
-- **Action**: Scans the log backward from the end.
-- **Compensation Log Records (CLR)**: For every undo action, ARIES writes a CLR to the log.
-- **Why CLRs?**: They ensure **Idempotence**. If the system crashes *during* recovery, the CLRs tell the next recovery attempt that these undos have already been performed, preventing the system from re-undoing an undo.
-## CLR
-
-While ToUndo is not empty:
-- Choose the most recent LSN in ToUndo
-- If LSN = regular record `<T, P, u, v>`
-	- Write a CLR where `CLR.undoNextLSN = LSN.prevLSN`
-	- Undo v
-- If LSN = CLR record
-	- Don't undo
-- If `CLR.undoNextLSN` is not null, insert it in ToUndo; otherwise, write `<END>` to the log
-
-![[CSE444/Screenshots/CLR Part 1.png]]
-![[CSE444/Screenshots/CLR Part 2.png]]
+![[Screenshots/CLR Part 1.png]]
+![[Screenshots/CLR Part 2.png]]
 
 ### Issues
 - We could unplay history the same way we replay history. However, we cannot do this selectively for one transaction that wants to roll back.

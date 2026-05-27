@@ -42,7 +42,7 @@ Databases adopt one of two primary philosophies to manage concurrency:
 
 ## Buffer Management & Recovery Policies
 
-The interaction between the **[[CSE444/DBMS architecture and deployments/Subsystems/Buffer Manager|Buffer Pool]]** and the **Recovery Manager** determines the implementation of Atomicity and Durability.
+The interaction between the **[[CSE444/DBMS Architecture and Deployments/Subsystems/Buffer Manager|Buffer Pool]]** and the **Recovery Manager** determines the implementation of Atomicity and Durability.
 
 - **Steal vs. No-Steal**:
   - **Steal**: An uncommitted transaction can "steal" a slot in the buffer pool and overwrite the most recent committed value on disk. Requires an **Undo Log** to revert the change if the transaction aborts.

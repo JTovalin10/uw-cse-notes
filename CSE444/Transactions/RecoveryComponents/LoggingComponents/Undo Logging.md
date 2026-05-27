@@ -27,14 +27,26 @@ These rules are strictly required because Undo Logging lacks "after images" (red
 
 ## Recovery Process
 
-After a system crash, the Recovery Manager determines the status of each transaction:
+The recovery manager performs a backward scan of the log to revert changes from incomplete transactions. This process is typically divided into two logical phases.
 
-- **Complete**: The log contains `<START T>` followed by either `<COMMIT T>` or `<ABORT T>`.
-- **Incomplete**: The log contains `<START T>` with no subsequent completion record.
+### Phase 1: Analysis (Classification)
+The system identifies which transactions completed successfully and which must be undone.
 
-### Undo Algorithm
+1.  **Initialize Sets**: Create a set for **Committed** transactions and a set for **Losers** (incomplete).
+2.  **Scan Log**: The system scans the log to categorize transactions:
+    - If `<COMMIT T>` or `<ABORT T>` is found, $T$ is considered **Complete**.
+    - If only `<START T>` is found without a corresponding completion record, $T$ is a **Loser**.
 
-The recovery manager scans the log **backwards** (from the end to the most recent checkpoint).
+### Phase 2: Undo Phase (Backward Scan)
+The system restores the "before images" for all loser transactions to ensure Atomicity.
+
+1.  **Start Point**: Begin at the end of the log and scan backward toward the oldest relevant record (often the start of the log or the most recent checkpoint).
+2.  **Perform Undo**:
+    - For every record $\langle T, X, v \rangle$:
+    - Check if $T$ is a **Loser** (i.e., it has no `<COMMIT>` or `<ABORT>` record in the log).
+    - If $T$ is a loser, write the **old value** $v$ to element $X$ on disk.
+3.  **Idempotency**: Because we apply the old values in reverse order, the process is idempotent. If a crash occurs during recovery, re-running the undo scan will result in the same consistent state.
+4.  **Finalization**: Once all losers are undone, the system may write `<ABORT T>` records for the losers to signify they have been handled.
 
 ### Formal Definition
 $S_{loser} = \{ T \mid \langle \text{START } T \rangle \in \text{Log} \land \langle \text{COMMIT } T \rangle \notin \text{Log} \land \langle \text{ABORT } T \rangle \notin \text{Log} \}$
@@ -137,6 +149,10 @@ public class UndoRecoveryManager {
 
 ## Industry Standard Mapping
 - **Undo Logging** $\rightarrow$ Transaction Rollback / Undo Segments (e.g., Oracle Undo tablespace, InnoDB Undo Logs).
+
+### Rollback vs. Recovery
+- **Restart Recovery**: Triggered after a crash to restore consistency. Requires scanning the log backwards and undoing all incomplete transactions.
+- **Rollback (Abort)**: Triggered for a specific transaction (e.g., on user error). Only the updates for that specific transaction are undone using the log.
 
 ## Related
 - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Redo Logging|Redo Logging]]

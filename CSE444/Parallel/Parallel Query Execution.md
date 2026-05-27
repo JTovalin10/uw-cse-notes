@@ -16,7 +16,7 @@ This topic is split into focused components, ordered from the simplest operator 
 
 - [[CSE444/Parallel/Data Partitioning Schemes|Data Partitioning Schemes]] — how the initial distribution of data affects operator performance
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — the single-node versions of these join and aggregate algorithms
-- [[CSE444/Replication and distribution/Distributed Databases|Distributed Databases]] — concepts of MPP and sharding
+- [[CSE444/Replication and Distribution/Distributed Databases|Distributed Databases]] — concepts of MPP and sharding
 
 ---
 

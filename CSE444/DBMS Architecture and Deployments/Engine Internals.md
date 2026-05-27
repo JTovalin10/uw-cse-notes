@@ -58,6 +58,6 @@ The **N+1 Query Problem** occurs when an application executes one query to fetch
 
 ## Related
 - [[CSE444/Transactions/Isolation Levels|Isolation Levels]]
-- [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage]]
+- [[CSE444/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage]]
 - [[CSE351/Memory Fundamentals/Cache|CSE351 Cache Fundamentals]]
 - [[CSE451/Processes/Architecture|CSE451 Process vs Thread Architectures]]

@@ -28,26 +28,34 @@ The **R2** rule effectively enforces a **No-Steal** policy. In a No-Steal system
 
 ## Recovery Process
 
-After a system crash, the Recovery Manager performs two passes over the log to restore the database to the most recent consistent state.
+The recovery manager performs two forward passes over the log to restore committed data that may have been lost from the buffer pool.
 
-### Pass 1: Classification
-Scan the log to determine the outcome of each transaction:
-- `<START T>` ... `<COMMIT T>` $\rightarrow$ **Committed**
-- `<START T>` ... `<ABORT T>` $\rightarrow$ **Not Committed**
-- `<START T>` with no completion $\rightarrow$ **Not Committed** (Assume Abort)
+### Phase 1: Analysis (Classification)
+The goal of this phase is to identify the outcome of every transaction in the log.
 
-### Pass 2: Redo
-Scan the log **forwards** (from the beginning or the last checkpoint) and re-apply the new value `v` for every update belonging to a **committed** transaction.
+1.  **Scan Log Forward**: Start from the beginning of the log (or the last checkpoint).
+2.  **Identify Winners**:
+    - If a `<COMMIT T>` record is found, add $T$ to the **Winners** set.
+    - If an `<ABORT T>` or no completion record is found, $T$ is **Not Committed**.
+3.  **Result**: A complete set of transactions that reached a committed state before the crash.
 
-## Redo Algorithm Implementation
+### Phase 2: Redo Phase (Forward Pass)
+The system replays the "after images" of all committed transactions to ensure Durability.
+
+1.  **Start Point**: Restart the scan from the beginning of the log.
+2.  **Perform Redo**:
+    - For every update record $\langle T, X, v \rangle$:
+    - Check if $T$ is in the **Winners** set.
+    - If $T$ is a winner, write the **new value** $v$ (after-image) to element $X$ on disk.
+3.  **Ignore Losers**: If $T$ is not in the winners set, its updates are ignored. Because of the **No-Steal** rule, these uncommitted changes are guaranteed to have never reached the disk, so no undo is required.
 
 ### Formal Definition
 1. Let $L$ be the set of all log records.
 2. Initialize $S = \emptyset$ (Set of committed transactions).
-3. **Pass 1 (Analysis)**: For each record $r \in L$ from start to end:
+3. **Phase 1 (Analysis)**: For each record $r \in L$ from start to end:
    - If $r = \langle \text{COMMIT } T \rangle$, then $S = S \cup \{T\}$.
    - If $r = \langle \text{ABORT } T \rangle$, then $S = S \setminus \{T\}$.
-4. **Pass 2 (Redo)**: For each record $r \in L$ from start to end:
+4. **Phase 2 (Redo)**: For each record $r \in L$ from start to end:
    - If $r = \langle T, X, v \rangle$ and $T \in S$, then $\text{WRITE}(X, v)$.
 
 ### Simplified Explanation
@@ -130,6 +138,10 @@ The Recovery Manager scans forward again and applies changes for committed trans
 
 ## Industry Standard Mapping
 - **Redo Logging** $\rightarrow$ Transaction Logs / Write-Ahead Logs (e.g., SQL Server Transaction Log, Postgres WAL).
+
+### Rollback vs. Recovery
+- **Restart Recovery**: Triggered after a crash. Requires two forward passes (Analysis to find winners, then Redo to apply their changes).
+- **Rollback (Abort)**: Redo logging alone cannot perform a standard rollback of a running transaction because it lacks "before images" (old values). In a Redo-only system, "rolling back" effectively means ignoring the transaction's changes in the buffer pool and letting them be wiped on crash, or maintaining a separate undo mechanism.
 
 ## Related
 - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo Logging|Undo Logging]]

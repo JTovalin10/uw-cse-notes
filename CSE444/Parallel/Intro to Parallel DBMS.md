@@ -118,7 +118,7 @@ The central design question is: **where does each row of data live?** The answer
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — background on concurrency and consistency
 - [[CSE444/Parallel/Data Partitioning Schemes|Data Partitioning Schemes]] — how data is distributed in shared-nothing clusters
 - [[CSE444/Parallel/Parallel Query Execution|Parallel Query Execution]] — how operators are executed in parallel
-- [[CSE444/Replication and distribution/Distributed Databases|Distributed Databases]] — deeper treatment of distributed architectures
+- [[CSE444/Replication and Distribution/Distributed Databases|Distributed Databases]] — deeper treatment of distributed architectures
 
 ---
 

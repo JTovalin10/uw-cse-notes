@@ -52,5 +52,5 @@ The **RUM Conjecture** (Read, Update, Memory) states that storage engines can on
 | LSM Tree  | Update      | Read, Memory|
 
 ## Related
-- [[CSE444/Data Storage, indexing, and buffer mgmt/Indexing|Indexing]]
+- [[CSE444/Data Storage, Indexing, and Buffer Management/Indexing|Indexing]]
 - [[CSE444/Transactions/Recovery/Recovery and Logging|Recovery and Logging]]

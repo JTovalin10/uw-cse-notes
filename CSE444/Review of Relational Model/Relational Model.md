@@ -82,8 +82,8 @@ FOREIGN KEY (sno) REFERENCES Supplier(sno)
 - **Cardinality** $\rightarrow$ Row Count
 
 ## Related
-- [[CSE444/Review of relational model/Relational Algebra|Relational Algebra]] — RA operators, joins, and SQL-to-RA conversion
-- [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture and Query Processing]] — how the storage manager handles relations
+- [[CSE444/Review of Relational Model/Relational Algebra|Relational Algebra]] — RA operators, joins, and SQL-to-RA conversion
+- [[CSE444/DBMS Architecture and Deployments/Architecture|DBMS Architecture and Query Processing]] — how the storage manager handles relations
 - [[CSE344/Query Execution/Relational Algebra|CSE344 Relational Algebra]]
 - [[Integrity Constraints|CSE344 Integrity Constraints]]
 - [[Functional Dependencies (FDs)|Functional Dependencies]] — the formal basis for key identification

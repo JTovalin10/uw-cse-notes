@@ -166,4 +166,4 @@ The sharded architecture is built from four fundamental entities. Each has its o
 - [[CSE452/RPC/Remote Procedure Call (RPC)|RPC At-Most-Once Semantics]] — Crucial for safe state transfer.
 - [[CSE444/Index|CSE444: Database Systems]] — For more on 2PC and distributed joins.
 - [[CSE344/Query Execution/Parallel Query Execution|CSE344: Horizontal vs. Vertical Partitioning]]
-- [[CSE444/Replication and distribution/Distributed Databases|CSE444: Hash vs. Range Sharding Strategies]]
+- [[CSE444/Replication and Distribution/Distributed Databases|CSE444: Hash vs. Range Sharding Strategies]]

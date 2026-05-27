@@ -18,13 +18,13 @@ A **page** holds records and is the unit of I/O between disk and memory.
 
 ![[Page Format Approach 1.png]]
 
-### Approach 2: Slot Directory
-- Sacrifice a small amount of space for a **slot directory** in the page header
-- The slot directory stores `(offset, length)` pairs — fixed-size entries pointing into the page body
-- **Deleting a slot**: remove the entry from the slot directory; the slot body space can be reclaimed and compacted
-- Supports variable-length records cleanly
-- slot directory grows left
-- slots grow right
+### Approach 2: Slot Directory (Slotted Pages)
+A **Slotted Page** is the standard way to organize records within a page.
+- Sacrifice a small amount of space for a **slot directory** in the page header.
+- The slot directory stores `(offset, length)` pairs — fixed-size entries pointing into the page body.
+- **Decoupling**: The record's physical position can change (e.g., during compaction to reclaim space) while its **Record ID (RID)**—which points to the slot index—stays constant. This prevents index pointers from breaking when data moves within a page.
+- Supports variable-length records cleanly.
+- The slot directory grows right-to-left, while records grow left-to-right.
 
 ![[Page Format Approach 2.png]]
 

@@ -80,8 +80,8 @@ SQL maps to relational algebra in the following operator order (FROM and WHERE a
 
 ## Related
 
-- [[CSE444/Review of relational model/Relational Model|Relational Model]] — database/relation/tuple definitions, schema, integrity constraints
-- [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture]] — how the optimizer turns RA expressions into physical query plans
+- [[CSE444/Review of Relational Model/Relational Model|Relational Model]] — database/relation/tuple definitions, schema, integrity constraints
+- [[CSE444/DBMS Architecture and Deployments/Architecture|DBMS Architecture]] — how the optimizer turns RA expressions into physical query plans
 - [[CSE344/Query Execution/Relational Algebra|Relational Algebra]] — CSE344 in-depth RA operator coverage
 - [[SQL to RA Translation|SQL to RA Translation]] — detailed SQL-to-RA translation rules
 - [[Joins|Joins]] — SQL join syntax and semantics

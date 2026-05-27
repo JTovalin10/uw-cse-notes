@@ -1,6 +1,6 @@
 # CSE444: Query Processing Pipeline
 
-A DBMS has two major subsystems: the **Query Processor** (where queries are executed) and the **[[CSE444/DBMS architecture and deployments/Subsystems/Storage Manager|Storage Manager]]** (where data is stored).
+A DBMS has two major subsystems: the **Query Processor** (where queries are executed) and the **[[CSE444/DBMS Architecture and Deployments/Subsystems/Storage Manager|Storage Manager]]** (where data is stored).
 
 ![[Screenshots/DBMS Architecture.png]]
 
@@ -48,7 +48,7 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
 ### 3. Optimizer
 - Finds an efficient **Query Plan** for executing the rewritten query
 - A query plan exists in two distinct forms:
-  - **Logical Plan**: An extended **[[CSE444/Review of relational model/Relational Algebra|Relational Algebra]]** tree representing the semantic operations.
+  - **Logical Plan**: An extended **[[CSE444/Review of Relational Model/Relational Algebra|Relational Algebra]]** tree representing the semantic operations.
   - **Physical Plan**: The logical plan annotated with implementation decisions.
     - Access method to use for each relation (file scan vs. index)
     - Operator implementation to use at each node (e.g., **[[CSE444/Query Evaluation/Sort-Merge Join|Sort-Merge Join]]** vs. **[[CSE444/Query Evaluation/Partitioned Hash Algorithms|Hash Join]]**)
@@ -67,7 +67,7 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
 
 ### 4. Executor
 - Actually executes the physical plan and returns results to the user.
-- Typically utilizes the **[[CSE444/DBMS architecture and deployments/Subsystems/Query Executor|Iterator Interface]]** for execution.
+- Typically utilizes the **[[CSE444/DBMS Architecture and Deployments/Subsystems/Query Executor|Iterator Interface]]** for execution.
 
 ---
 
@@ -78,5 +78,5 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
 
 ## Related
 - [[CSE444/Query Optimization/Query Optimization|Query Optimization]] — deep dive into the optimizer's search space and cost estimation
-- [[CSE444/DBMS architecture and deployments/Subsystems/Query Executor|Query Executor]] — iterator interface and execution details
+- [[CSE444/DBMS Architecture and Deployments/Subsystems/Query Executor|Query Executor]] — iterator interface and execution details
 - [[SQL to RA Translation|CSE344 SQL to RA Translation]]

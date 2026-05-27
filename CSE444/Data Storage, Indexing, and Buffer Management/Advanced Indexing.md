@@ -36,11 +36,18 @@ The **R-Tree** is a tree data structure used for indexing spatial data (rectangl
 An **Online Index Build** creates an index without taking an exclusive lock on the table, allowing concurrent write operations.
 - **Mechanism**: A background process scans the table while a side-log captures concurrent changes. Once the scan is complete, the log is 'drained' into the new index before it is made live.
 
+### Index Bloat
+**Index Bloat** refers to the disproportionate growth of index files compared to the actual amount of data they represent.
+- **Causes**:
+  - **Fragmented Splits**: Frequent page splits in a B+ Tree can leave many nodes only half-full.
+  - **MVCC Garbage**: In systems using Multi-Version Concurrency Control (MVCC), space from deleted tuples may not be immediately reclaimed, leading to "bloated" index pages that contain many pointers to dead versions.
+- **Impact**: Increased disk space usage, more I/O required for scans, and reduced CPU cache efficiency.
+
 ### VACUUM and ANALYZE
 - **VACUUM**: In MVCC systems like PostgreSQL, updates and deletes leave 'dead' tuples. VACUUM reclaims this space for reuse.
 - **ANALYZE**: Collects statistics (histograms, most common values) about the data distribution to inform the query optimizer's cost estimations.
 
 ## Related
-- [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree]]
-- [[CSE444/Data Storage, indexing, and buffer mgmt/LSM Trees|LSM Trees]]
+- [[CSE444/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree]]
+- [[CSE444/Data Storage, Indexing, and Buffer Management/LSM Trees|LSM Trees]]
 - [[CSE444/Query Optimization/Query Optimization|Query Optimization]]

@@ -28,5 +28,5 @@ $$ \lambda = \frac{n}{\text{length}} $$
 * [[Separate Chaining]]
 * [[Open Addressing]]
 * [[CSE484/Cryptography/Hashing + Ciphertext Integrity|Security: Cryptographic Hashing]]
-* [[CSE444/Data Storage, indexing, and buffer mgmt/Indexing|Databases: Indexing]]
-* [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|Databases: B+ Trees]]
+* [[CSE444/Data Storage, Indexing, and Buffer Management/Indexing|Databases: Indexing]]
+* [[CSE444/Data Storage, Indexing, and Buffer Management/B+ Tree|Databases: B+ Trees]]
