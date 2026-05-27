@@ -17,7 +17,12 @@ The recovery system rests on three foundational pillars:
 | No-Steal / No-Force | Redo logging only |
 | **Steal / No-Force** | **Undo-Redo logging** (industry standard) |
 
-3. **[[CSE444/Transactions/Recovery/RecoveryComponents/Logging Types|Logging Types]]** — The specific log record format (Undo, Redo, or Undo-Redo) and the abstraction level (Physical, Logical, or Physiological) of each record.
+3. **[[CSE444/Transactions/Recovery/RecoveryComponents/Logging Types|Logging Types]]** — The specific log record format and abstraction level:
+   - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo Logging|Undo Logging]]
+   - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Redo Logging|Redo Logging]]
+   - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]
+   - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Checkpointing|Checkpointing]]
+   - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Log Abstraction Levels|Log Abstraction Levels]]
 
 ## Recovery Algorithm
 
