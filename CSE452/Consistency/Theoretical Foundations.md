@@ -31,6 +31,8 @@ In any distributed system, you cannot simultaneously provide more than two of th
 - **Availability (A)**: Every request receives a (non-error) response.
 - **Partition Tolerance (P)**: The system continues to operate despite an arbitrary number of messages being dropped or delayed by the network between nodes.
 
+James prefers to frame this as the **CAP Tension** rather than a strict theorem: **C** and **A** are in tension with each other, and exactly where that tension lands depends on how you define **C** and **A** in the first place. A stricter definition of Consistency forces you to give up more Availability, and vice versa, so the "pick two" framing is really a spectrum governed by those definitions.
+
 #### Formal Definition
 A distributed data store can provide at most two out of three guarantees: Consistency (all nodes see the same data), Availability (every request gets a response), and Partition Tolerance (the system continues to operate despite network failures).
 

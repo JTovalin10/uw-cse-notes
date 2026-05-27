@@ -73,6 +73,9 @@ Advanced database systems: internals, query processing, storage, and distributed
 ### NoSQL and NewSQL
 *(notes in progress)*
 
+### Case Studies
+- [[CSE444/Case Studies/MapReduce|MapReduce]] — programming model for large-scale parallel processing, GFS/HDFS storage, map/reduce phases, jobs vs. tasks, stragglers and backup tasks
+
 ---
 
 ## Related Courses
