@@ -35,6 +35,9 @@ The distributed file system shapes how MapReduce reads data:
 - A file is split into **blocks** (or **chunks**) of roughly 64 MB.
 - Blocks are **replicated** and stored on random machines (this replication is what survives the constant machine failures above).
 - Files are **append-only**.
+- pre-emptive task execution
+	- if a task takes too long to execute, then we can go ahead with the next step
+		- assumes the node is still working on the task so if the computer is already hardware-slow then we can suffer from performance degregation
 
 ## MapReduce Data Model
 
