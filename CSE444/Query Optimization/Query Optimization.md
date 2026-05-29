@@ -17,5 +17,5 @@ The **query optimizer** is the "brain" of a DBMS. Its goal is to transform a **l
 ---
 ## Related
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — Specific costs for join and sort implementations.
-- [[CSE444/Review of relational model/Relational Algebra|Relational Algebra]] — The basis for plan transformations.
+- [[CSE444/Review of Relational Model/Relational Algebra|Relational Algebra]] — The basis for plan transformations.
 - [[CSE444/Query Evaluation/Query Execution & Algorithms|Query Execution]] — How the final plan is carried out.

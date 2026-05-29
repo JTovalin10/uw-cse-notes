@@ -91,4 +91,4 @@ In a physical query plan, we assume an **Iterator Interface** (pull-based model)
 
 - [[CSE444/Query Evaluation/Operator Algorithms|Operator Algorithms]] — overview of all algorithm families
 - [[CSE444/Query Evaluation/Nested Loop Join|Nested Loop Join]] — the non-index variant
-- [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — index types (clustered vs. unclustered, B+ trees, hash indexes)
+- [[CSE444/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — index types (clustered vs. unclustered, B+ trees, hash indexes)

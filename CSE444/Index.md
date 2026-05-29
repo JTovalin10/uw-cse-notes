@@ -7,19 +7,19 @@ Advanced database systems: internals, query processing, storage, and distributed
 ## Topics
 
 ### Relational Model
-- [[CSE444/Review of relational model/Relational Model|Relational Model]] — database/relation/tuple, schema, integrity constraints, key and foreign key constraints
-- [[CSE444/Review of relational model/Relational Algebra|Relational Algebra]] — set vs. bag semantics, five basic operators, joins, SQL-to-RA conversion
+- [[CSE444/Review of Relational Model/Relational Model|Relational Model]] — database/relation/tuple, schema, integrity constraints, key and foreign key constraints
+- [[CSE444/Review of Relational Model/Relational Algebra|Relational Algebra]] — set vs. bag semantics, five basic operators, joins, SQL-to-RA conversion
 
 ### DBMS Architecture
-- [[CSE444/DBMS architecture and deployments/Architecture|DBMS Architecture and Query Processing]] — query pipeline (parse → rewrite → optimize → execute), iterator interface, storage manager, buffer manager
-- [[CSE444/DBMS architecture and deployments/Engine Internals|Engine Internals]] — PostgreSQL vs InnoDB architectures, MVCC implementations, and memory management
+- [[CSE444/DBMS Architecture and Deployments/Architecture|DBMS Architecture and Query Processing]] — query pipeline (parse → rewrite → optimize → execute), iterator interface, storage manager, [[CSE444/Data Storage, Indexing, and Buffer Management/StorageComponents/Buffer Manager|buffer manager]]
+- [[CSE444/DBMS Architecture and Deployments/Engine Internals|Engine Internals]] — PostgreSQL vs InnoDB architectures, MVCC implementations, and memory management
 
 ### Data Storage
-- [[CSE444/Data Storage, indexing, and buffer mgmt/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats, record formats, LOB, heap file implementations, buffer pool eviction
-- [[CSE444/Data Storage, indexing, and buffer mgmt/Indexing|Indexes and File Organizations]] — heap file API, sorted files, clustered/unclustered indexes, dense/sparse indexes, overflow pages
-- [[CSE444/Data Storage, indexing, and buffer mgmt/Advanced Indexing|Advanced Indexing]] — Bitmap, GIN, GiST, R-Tree, and index maintenance (VACUUM/ANALYZE)
-- [[CSE444/Data Storage, indexing, and buffer mgmt/B+ Tree|B+ Tree]] — balanced tree structure, degree/occupancy, insertion/deletion, practical performance, optimizations
-- [[CSE444/Data Storage, indexing, and buffer mgmt/LSM Trees|LSM Trees]] — log-structured merge trees, memtables, SSTables, Bloom filters, and compaction strategies
+- [[CSE444/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats, record formats, LOB, heap file implementations, [[CSE444/Data Storage, Indexing, and Buffer Management/StorageComponents/Buffer Manager|buffer pool eviction]]
+- [[CSE444/Data Storage, Indexing, and Buffer Management/Indexing|Indexes and File Organizations]] — heap file API, sorted files, clustered/unclustered indexes, dense/sparse indexes, overflow pages
+- [[CSE444/Data Storage, Indexing, and Buffer Management/Advanced Indexing|Advanced Indexing]] — Bitmap, GIN, GiST, R-Tree, and index maintenance (VACUUM/ANALYZE)
+- [[CSE444/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree]] — balanced tree structure, degree/occupancy, insertion/deletion, practical performance, optimizations
+- [[CSE444/Data Storage, Indexing, and Buffer Management/LSM Trees|LSM Trees]] — log-structured merge trees, memtables, SSTables, Bloom filters, and compaction strategies
 
 ### Query Evaluation
 - [[CSE444/Query Evaluation/Query Execution & Algorithms|Query Execution]] — query processor pipeline, memory management, BP-tuples vs M-tuples
@@ -51,35 +51,35 @@ Advanced database systems: internals, query processing, storage, and distributed
 
 ### Transactions
 - [[CSE444/Transactions/Transaction Fundamentals|Transaction Fundamentals]] — ACID properties, rollback, and buffer management (steal/force)
-- [[CSE444/Transactions/Recovery/Recovery and Logging|Recovery and Logging]] — WAL, buffer management policies, logging types, and ARIES
-  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo Logging|Undo Logging]] — steal policy; records "before images" to revert uncommitted changes
-  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Redo Logging|Redo Logging]] — no-force policy; records "after images" to replay lost committed changes
-  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]] — steal/no-force policy; industry standard combining both
-  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Checkpointing|Checkpointing]] — bounding recovery time; quiescent vs non-quiescent
-  - [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Log Abstraction Levels|Log Abstraction Levels]] — physical, logical, and physiological logging trade-offs
-- [[CSE444/Transactions/Serializability/Schedules|Schedules]] — definition of serial, serializable, and recoverable schedules
+- [[CSE444/Transactions/Recovery|Recovery]] — ensure database consistency via recovery protocols; covers WAL, buffer management policies, logging types, and ARIES
+  - [[CSE444/Transactions/RecoveryComponents/LoggingComponents/Undo Logging|Undo Logging]] — steal policy; records "before images" to revert uncommitted changes
+  - [[CSE444/Transactions/RecoveryComponents/LoggingComponents/Redo Logging|Redo Logging]] — no-force policy; records "after images" to replay lost committed changes
+  - [[CSE444/Transactions/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]] — steal/no-force policy; industry standard combining both
+  - [[CSE444/Transactions/RecoveryComponents/LoggingComponents/Checkpointing|Checkpointing]] — bounding recovery time; quiescent vs non-quiescent
+  - [[CSE444/Transactions/RecoveryComponents/LoggingComponents/Log Abstraction Levels|Log Abstraction Levels]] — physical, logical, and physiological logging trade-offs
+- [[CSE444/Transactions/Serializability/SerializabilityComponents/Schedules|Schedules]] — definition of serial, serializable, and recoverable schedules
 - [[CSE444/Transactions/Concurrency Anomalies|Concurrency Anomalies]] — WR (Dirty Read), RW (Unrepeatable Read), WW (Lost Update) conflicts
 - [[CSE444/Transactions/Serializability/Serializability|Serializability]] — correctness criteria and types of equivalence (Conflict vs. View)
-- [[CSE444/Transactions/Serializability/Conflict Serializability|Conflict Serializability]] — precedence graphs and conflict serializability
-- [[CSE444/Transactions/Serializability/View Serializability|View Serializability]] — view equivalence and the limits of conflict serializability
-- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Pessimistic Scheduler]] — transaction agent vs. system agent roles and the lock table
-- [[CSE444/Transactions/Pessimistic Components/Two-Phase Locking (2PL)|Two-Phase Locking (2PL)]] — 2PL, Strict 2PL, and ensuring conflict serializability
-- [[CSE444/Transactions/Pessimistic Components/Lock Modes|Lock Modes and Granularity]] — shared (S) and exclusive (X) locks, fine vs. coarse granularity
-- [[CSE444/Transactions/Pessimistic Components/Deadlocks|Deadlocks]] — detection via wait-for graphs, timeouts, and avoidance strategies
+- [[CSE444/Transactions/Serializability/SerializabilityComponents/Conflict Serializability|Conflict Serializability]] — precedence graphs and conflict serializability
+- [[CSE444/Transactions/Serializability/SerializabilityComponents/View Serializability|View Serializability]] — view equivalence and the limits of conflict serializability
+- [[CSE444/Transactions/PessimisticComponents/Pessimistic Scheduler|Pessimistic Scheduler]] — transaction agent vs. system agent roles and the lock table
+- [[CSE444/Transactions/PessimisticComponents/Two-Phase Locking (2PL)|Two-Phase Locking (2PL)]] — 2PL, Strict 2PL, and ensuring conflict serializability
+- [[CSE444/Transactions/PessimisticComponents/Lock Modes|Lock Modes and Granularity]] — shared (S) and exclusive (X) locks, fine vs. coarse granularity
+- [[CSE444/Transactions/PessimisticComponents/Deadlocks|Deadlocks]] — detection via wait-for graphs, timeouts, and avoidance strategies
 - [[CSE444/Transactions/Isolation Levels|Isolation Levels]] — SQL standard levels (Read Uncommitted to Serializable) and their trade-offs
 - [[CSE444/Transactions/Phantom Problem|The Phantom Problem]] — inconsistencies due to insertions/deletions and predicate locking
-- [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]] — timestamp-based concurrency control and MVCC
-- [[CSE444/Transactions/Optimistic Components/Validation|Validation]] — optimistic validation phases (Read, Validate, Write)
-- [[CSE444/Transactions/Optimistic Components/Snapshot Isolation|Snapshot Isolation]] — multiversion concurrency control and first-committer-wins rule
+- [[CSE444/Transactions/OptimisticComponents/Timestamps|Timestamps]] — timestamp-based concurrency control and MVCC
+- [[CSE444/Transactions/OptimisticComponents/Validation|Validation]] — optimistic validation phases (Read, Validate, Write)
+- [[CSE444/Transactions/OptimisticComponents/Snapshot Isolation|Snapshot Isolation]] — multiversion concurrency control and first-committer-wins rule
 
 ### Replication and Distribution
-- [[CSE444/Replication and distribution/Distributed Databases|Distributed Databases]] — shared-nothing vs shared-disk, MPP, sharding, and distributed joins
+- [[CSE444/Replication and Distribution/Distributed Databases|Distributed Databases]] — shared-nothing vs shared-disk, MPP, sharding, and distributed joins
 
 ### NoSQL and NewSQL
 *(notes in progress)*
 
 ### Case Studies
-- [[CSE444/Case Studies/MapReduce|MapReduce]] — programming model for large-scale parallel processing, GFS/HDFS storage, map/reduce phases, jobs vs. tasks, stragglers and backup tasks
+- [[MapReduce|MapReduce]] — programming model for large-scale parallel processing, GFS/HDFS storage, map/reduce phases, jobs vs. tasks, stragglers and backup tasks
 
 ---
 

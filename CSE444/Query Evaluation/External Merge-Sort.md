@@ -4,11 +4,11 @@
 
 ## Table of Contents
 
-1. [[CSE444/Query Evaluation/ExternalMergeSort/Overview|Overview & Terminology]]
-2. [[CSE444/Query Evaluation/ExternalMergeSort/Phase 1 - Run Generation|Phase 1: Run Generation]]
-3. [[CSE444/Query Evaluation/ExternalMergeSort/Phase 2 - Merging Runs|Phase 2: Merging Runs]]
-4. [[CSE444/Query Evaluation/ExternalMergeSort/Sort-Merge Join Integration|Sort-Merge Join Integration]]
-5. [[CSE444/Query Evaluation/ExternalMergeSort/Worked Example|Worked Example ($B(R)=1000, B(S)=800, M=11$)]]
+1. [[CSE444/Query Evaluation/ExternalMergeSortComponents/Overview|Overview & Terminology]]
+2. [[CSE444/Query Evaluation/ExternalMergeSortComponents/Phase 1 - Run Generation|Phase 1: Run Generation]]
+3. [[CSE444/Query Evaluation/ExternalMergeSortComponents/Phase 2 - Merging Runs|Phase 2: Merging Runs]]
+4. [[CSE444/Query Evaluation/ExternalMergeSortComponents/Sort-Merge Join Integration|Sort-Merge Join Integration]]
+5. [[CSE444/Query Evaluation/ExternalMergeSortComponents/Worked Example|Worked Example ($B(R)=1000, B(S)=800, M=11$)]]
 
 ---
 
