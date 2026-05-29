@@ -79,7 +79,8 @@ Advanced database systems: internals, query processing, storage, and distributed
 *(notes in progress)*
 
 ### Case Studies
-- [[MapReduce|MapReduce]] — programming model for large-scale parallel processing, GFS/HDFS storage, map/reduce phases, jobs vs. tasks, stragglers and backup tasks
+- [[CSE444/Replication and Distribution/MapReduce|MapReduce]] — programming model for large-scale parallel processing, GFS/HDFS storage, map/reduce phases, jobs vs. tasks, stragglers and backup tasks
+- [[CSE444/Replication and Distribution/Spark|Spark]] — RDD abstraction, in-memory iterative processing, lazy evaluation, lineage-based fault tolerance, narrow vs. wide dependencies
 
 ---
 
