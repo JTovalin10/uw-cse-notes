@@ -1,0 +1,56 @@
+# CSE452: The Paxos Protocol
+
+The Paxos protocol consists of two main phases to ensure that a single value is chosen safely.
+
+## Message Names
+Paxos is often described using a compact message notation:
+
+| Message      | Name           | Direction | Content                                                                   |
+| :----------- | :------------- | :-------- | :------------------------------------------------------------------------ |
+| **1a(r)**    | Prepare        | P $\to$ A | "I am beginning round $r$."                                               |
+| **1b(r, s)** | Promise        | A $\to$ P | "I promise not to participate in rounds < $r$. Here is my history ($s$)." |
+| **2a(r, v)** | Accept Request | P $\to$ A | "Please vote for value $v$ in round $r$."                                 |
+| **2b(r, v)** | Accept Reply   | A $\to$ L | "I voted for $v$ in round $r$."                                           |
+
+## The Algorithm: Step-by-Step
+
+### Phase 1: Prepare (1a/1b)
+1.  **Proposer**: Selects a unique, monotonically increasing **Ballot Number** $r$. 
+    - **See also**: [[Ballot IDs|How to generate unique Ballot IDs]].
+2.  **Acceptor**: 
+    - If $r > max\_ballot$, updates $max\_ballot = r$ and responds with **1b**.
+	    - This means that the acceptor promises to never accept anything with a ballot lower than $r$.
+    - **The Summary ($s$)**: If the acceptor previously voted (sent a 2b) in an earlier round, it includes the **highest-numbered round** $r'$ and value $v'$ it voted for. It is strictly the maximum $r' < r$, not a full history. Otherwise, $s = null$.
+
+### Phase 2: Accept (2a/2b)
+1.  **Proposer**: Waits for a majority of **1b** responses.
+    - If all summaries are $null$, the proposer can propose its own value.
+    - If any summary is non-null, the proposer **must** propose the value $v'$ from the **highest-numbered round** $r'$ reported.
+    - **Crucial Rule**: The proposer's original intended value is **not** part of this comparison. If it sees a previous value, it **discards** its own and "adopts" the old one. "You vote for the one you have to."
+    - **Note**: No two summaries can report the same round with different values because round numbers are unique to proposers.
+2.  **Acceptor**: Receives **2a(r, v)**. If it hasn't promised a higher round since Phase 1 ($r \ge max\_ballot$), it sends **2b(r, v)** to the learners.
+    - **Note on Determinism**: Acceptance is **mandatory**. If the ballot is valid (not superseded by a higher promise), the acceptor *must* vote for the value. It doesn't accept "blindly" from any proposer; it only accepts if the proposer has the "authority" of the current highest ballot.
+
+## Liveness: Dueling Proposers
+Paxos guarantees **Safety** (no two different values are chosen), but it does not guarantee **Liveness**. 
+- **The Loop**: Proposer A sends $1a(1)$. Before it can finish, Proposer B sends $1a(2)$, preempting A. Then A sends $1a(3)$, preempting B. 
+- **The Fix**: Use **Randomized Backoff** or a **Distinguished Proposer (Leader)** to ensure only one node drives proposals at a time.
+
+---
+
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Prepare (1a) / Promise (1b)** | Phase 1 / read phase |
+| **Accept Request (2a) / Accept Reply (2b)** | Phase 2 / write phase |
+| **Summary** | Highest accepted value / prior vote |
+| **Randomized Backoff** | Exponential backoff |
+
+---
+
+## Related
+- [[Single Paxos|Single Decree Paxos]] — the overview this protocol implements
+- [[Majority Overlap|Majority Overlap]] — why Phase 1 needs a majority
+- [[Roles|Paxos Roles]] — Proposer, Acceptor, and Learner
+- [[Ballot IDs|Ballot IDs]] — generating the unique ballot number $r$

@@ -1,0 +1,10 @@
+## Virtual Private Network (VPN)
+A method of creating secure, private network connections over a shared (public) network. Replaces dedicated leased lines with [[Virtual Circuit (VC)|virtual circuits]] or IP tunnels to provide logical point-to-point connections between sites.
+
+See also: [[Virtual Private Networks (VPN)]]
+
+
+![[A tunnel through an internetwork.png]]
+
+
+![[an example of virtual private networks.png]]

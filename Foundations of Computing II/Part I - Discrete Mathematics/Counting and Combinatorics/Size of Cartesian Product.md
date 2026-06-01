@@ -1,0 +1,17 @@
+# CSE 312: Size of Cartesian Product
+
+To find the size of the Cartesian product $S \times T$, use the product rule:
+
+$$|S \times T| = |S| \cdot |T|$$
+
+So if $S$ has 2 items and $T$ has 3 items, then the size is 6.
+
+## Related
+
+- [[Product Rule]]
+- [[Size of Power Set]]
+- [[What is a Set|What is a Set]]
+
+## Industry Standard Terms
+
+- **Cartesian Product** → standard set-theory term (also "cross product" of sets, or "product set"). Its cardinality rule is the set-theoretic form of the multiplication principle.

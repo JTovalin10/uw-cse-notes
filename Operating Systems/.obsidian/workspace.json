@@ -1,0 +1,232 @@
+{
+  "main": {
+    "id": "f97f609518836f33",
+    "type": "split",
+    "children": [
+      {
+        "id": "4dc657022b43fe5d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8750eaa8202fe712",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Virtual Memory/How do we load a program.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "How do we load a program"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8fdcfc6436fb3a8e",
+    "type": "split",
+    "children": [
+      {
+        "id": "42411fd1898c58a4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ab07eb33c40b335d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "c02a8228318ef413",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "page replacement",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "4dbc3463d581f833",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "868df9d5ef57709b",
+    "type": "split",
+    "children": [
+      {
+        "id": "2f3741d900c294fe",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75baad5fc95cda9a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "74685285567e4740",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "4d93815a3788c3e0",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a8548b354b99c60d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "891630301842da1f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "ab07eb33c40b335d",
+  "lastOpenFiles": [
+    "spatial locality.md",
+    "Virtual Memory/How do we load a program.md",
+    "Virtual Memory/Page Replacement/LRU Clock.md",
+    "Virtual Memory/Page Replacement/LRU.md",
+    "Other/P2.md",
+    "Other",
+    "Virtual Memory/Page Replacement/Belady's Anomaly.md",
+    "Virtual Memory/Page Replacement/Page FIFO.md",
+    "Virtual Memory/Page Replacement/Page replacement.md",
+    "Virtual Memory/Working set of program behavior.md",
+    "Virtual Memory/Page Replacement/Page Replace.md",
+    "Virtual Memory/Virtual Memory.md",
+    "Virtual Memory/Thrashing.md",
+    "Virtual Memory/Paged Virtual Memory.md",
+    "Virtual Memory/Page Fault.md",
+    "Virtual Memory/Loading a program.md",
+    "Virtual Memory/Demanding Page.md",
+    "Other/Screenshots/Screenshot 2026-02-18 at 11.37.48 AM.png",
+    "Kernel Abstraction/Memory/Virtual AddressesComponents/Demand Paging.md",
+    "Memory Management/Address Translation/Page Table/Demand Paging.md",
+    "Other/Screenshots/Screenshot 2026-02-18 at 11.37.30 AM.png",
+    "Threads/What is a Process.md",
+    "Memory Management/Address Translation/Page Table/Page Fault.md",
+    "Screenshot 2026-02-11 at 12.15.47 PM.png",
+    "Virtual Memory/Page Replacement/Evicting the best page.md",
+    "Virtual Memory/Page Replacement/Belady's Algorithm.md",
+    "Virtual Memory/Page Replacement",
+    "Virtual Memory",
+    "Threads/Starvation.md",
+    "Other/Screenshots/Screenshot 2026-02-11 at 12.15.47 PM.png",
+    "Other/Screenshots/Screenshot 2026-02-11 at 12.07.29 PM.png",
+    "Other/Screenshots/Screenshot 2026-02-11 at 12.01.30 PM.png",
+    "Other/Screenshots/Screenshot 2026-02-11 at 12.00.29 PM.png",
+    "Other/Screenshots/Screenshot 2026-02-11 at 11.57.51 AM.png",
+    "Other/Screenshots/Pasted image 20260213202029.png",
+    "Other/Screenshots/Pasted image 20260213200417.png",
+    "Memory Management/Address Translation/TLB/TLB Structure.md",
+    "Memory Management/Address Translation/TLB/TLB Miss Management.md",
+    "Memory Management/Address Translation/TLB/TLB Lookup Process.md",
+    "Memory Management/Address Translation/TLB",
+    "Memory Management/Address Translation/Page Table",
+    "Memory Management/Address Translation/MMU",
+    "Memory Management/Memory Models",
+    "Memory Management/Concepts",
+    "Memory Management/Address Translation",
+    "Memory Management"
+  ]
+}

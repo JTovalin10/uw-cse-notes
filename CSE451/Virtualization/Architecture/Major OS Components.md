@@ -1,9 +1,0 @@
-- [[CSE451/Virtualization/Processes/Process|Process]](es)/[[CSE451/Concurrency/Threads/Thread|Thread]](s)
-- [[Memory]]
-- [[IO]]
-- [[Secondary Storage]]
-- [[File Systems]]
-- [[Protection]]
-- [[Command Interpreter (shell)]]
-- GUI
-- networking
