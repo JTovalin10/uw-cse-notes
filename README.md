@@ -17,7 +17,7 @@ This Obsidian vault contains my personal notes for various Computer Science and 
 | Winter 2024     | CSE 122 (Computer Programming II) - *notes to be added later*                                                            |
 | Fall 2023       | CSE 121 (Computer Programming I)                                                             |
 
-I will go back to add my CSE 122-123 and CSE 391 notes. I will not be adding my CSE 154 notes.
+I will not be adding my CSE 154 and CSE 122-123 notes.
 
 ## Current Courses (Spring 2026)
 
@@ -39,4 +39,4 @@ This vault does not include all courses I have taken, but rather contains the cl
 
 ---
 
-*Last updated: March 2026*
+*Last updated: June 2026*
