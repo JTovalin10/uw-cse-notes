@@ -1,4 +1,4 @@
-# Course: ARIES Recovery Algorithm
+# CSE444: ARIES Recovery Algorithm
 
 **Algorithms for Recovery and Isolation Exploiting Semantics (ARIES)** is the industry-standard recovery algorithm. It is a **Steal / No-Force** algorithm that uses an **Undo-Redo Log** to provide high performance and robust crash recovery.
 
@@ -42,10 +42,15 @@ When the buffer manager reads page `P` from disk into the buffer pool:
 1. Write `<START T>` to the log.
 2. Create a new entry for `T` in the Transaction Table with `lastLSN = null`.
 
-### T Commits or Aborts
-1. Write `<COMMIT T>` or `<ABORT T>` to the log.
-2. Flush the log up to this record (force the commit or abort record to stable storage).
+### T Commits
+1. Write `<COMMIT T>` to the log.
+2. Flush the log up to this record — forcing the commit record to stable storage is the actual **commit point** (durability is guaranteed once this returns).
 3. Write `<END T>` and remove `T` from the Transaction Table.
+
+### T Aborts
+1. Write `<ABORT T>` to the log.
+2. **Roll back** `T`: scan `T`'s log chain backward (via `prevLSN`) and undo each update, writing a **Compensating Log Record (CLR)** for every undone action — the same Undo machinery used during crash recovery (see the [[#Phase 3: Undo Phase|Undo Phase]] and [[#Compensating Log Records (CLR)|CLR]] sections below).
+3. Once all of `T`'s updates are undone, write `<END T>` and remove `T` from the Transaction Table.
 
 ## Checkpoints
 
@@ -68,7 +73,7 @@ The goal of the Analysis phase is to reconstruct the state of the system at the 
     - If `<COMMIT T>` or `<ABORT T>`: Change $T$'s status in ATT.
     - If `<UPDATE P>`: If page $P$ is not in DPT, add it with `recLSN = LSN`.
     - If `<END T>`: Remove $T$ from ATT.
-3.  **Identify Winners and Losers**: At the end of the scan, any transaction in the ATT that hasn't reached an `END` state is a **Loser**.
+3.  **Identify Winners and Losers**: At the end of the scan, any transaction still in the ATT whose status is **not Committed** (i.e., it was still Running and never wrote a `<COMMIT T>` record) is a **Loser**. A transaction that wrote `<COMMIT T>` but crashed before its `<END T>` record will also still be in the ATT — but it is a **Winner**; it only needs its `<END T>` written, not an undo. Losers are defined by commit status, not by the absence of an `END` record.
 4.  **Compute Redo Start**: The Redo Phase will start at the `min(recLSN)` in the reconstructed DPT.
 
 ### Phase 2: Redo Phase (Repeating History)

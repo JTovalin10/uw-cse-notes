@@ -28,34 +28,49 @@ The **R2** rule effectively enforces a **No-Steal** policy. In a No-Steal system
 
 ## Recovery Process
 
-The recovery manager performs two forward passes over the log to restore committed data that may have been lost from the buffer pool.
+The recovery manager performs **two forward passes** over the log to restore committed data that may have been lost from the buffer pool. Unlike the three-phase [[CSE444/Transactions/Recovery/RecoveryComponents/ARIES|ARIES]] algorithm, simple Redo logging has **no Analysis phase** that reconstructs in-memory tables (ATT/DPT) and **no Undo phase** — the No-Steal policy makes undo unnecessary.
 
-### Phase 1: Analysis (Classification)
-The goal of this phase is to identify the outcome of every transaction in the log.
+### Pass 1: Identify Committed Transactions (Winners)
+The first pass exists only to determine *which* transactions committed, because a `<COMMIT T>` record may appear in the log after `T`'s update records. We cannot redo an update on the spot without first knowing its transaction's final outcome.
 
 1.  **Scan Log Forward**: Start from the beginning of the log (or the last checkpoint).
-2.  **Identify Winners**:
+2.  **Collect Committed Transactions**:
     - If a `<COMMIT T>` record is found, add $T$ to the **Winners** set.
-    - If an `<ABORT T>` or no completion record is found, $T$ is **Not Committed**.
-3.  **Result**: A complete set of transactions that reached a committed state before the crash.
+    - If only `<START T>` (or an `<ABORT T>`) is present with no commit, $T$ is **not** a winner and will be ignored.
+3.  **Result**: The complete set of transactions that reached a committed state before the crash.
 
-### Phase 2: Redo Phase (Forward Pass)
-The system replays the "after images" of all committed transactions to ensure Durability.
+Note that this is *not* the ARIES Analysis phase: we do not rebuild the Active Transaction Table or Dirty Page Table, and we do not track losers — incomplete transactions simply do not appear in the Winners set.
+
+### Pass 2: Redo Committed Transactions (Forward)
+The second pass replays the "after images" of committed transactions only, in **forward (earliest-to-latest) order**, to ensure Durability.
 
 1.  **Start Point**: Restart the scan from the beginning of the log.
 2.  **Perform Redo**:
     - For every update record $\langle T, X, v \rangle$:
     - Check if $T$ is in the **Winners** set.
     - If $T$ is a winner, write the **new value** $v$ (after-image) to element $X$ on disk.
-3.  **Ignore Losers**: If $T$ is not in the winners set, its updates are ignored. Because of the **No-Steal** rule, these uncommitted changes are guaranteed to have never reached the disk, so no undo is required.
+3.  **Why Forward Order**: Redo must proceed oldest-first so that when several committed updates touch the same element $X$, the **latest** value is the one that ends up on disk. (This is the mirror image of Undo logging, which must scan backward to apply the *oldest* before-image last.)
+4.  **Ignore Losers**: If $T$ is not in the Winners set, its updates are skipped entirely. Crucially, simple Redo logging does **not** "repeat history" by redoing losers the way ARIES does — because the **No-Steal** rule guarantees uncommitted changes never reached disk, there is nothing to redo and nothing to undo for them.
+
+### Finalization
+After the redo pass, the recovery manager writes an `<ABORT T>` record for each incomplete transaction. This marks them as resolved so a subsequent crash during recovery will not reconsider them.
+
+### How Redo Logging Differs From ARIES
+| Aspect | Simple Redo Logging | ARIES |
+|--------|--------------------|-------|
+| Buffer policy | No-Steal / No-Force | Steal / No-Force |
+| First pass | Identify committed transactions (Winners) | Analysis: rebuild ATT + DPT, find Losers |
+| Redo scope | Winners only | "Repeating History" — redo **all** updates (winners and losers) |
+| Undo phase | None (No-Steal means losers never hit disk) | Required — roll back Losers using CLRs |
+| Passes | Two (both forward) | Three (Analysis, Redo, Undo) |
 
 ### Formal Definition
 1. Let $L$ be the set of all log records.
 2. Initialize $S = \emptyset$ (Set of committed transactions).
-3. **Phase 1 (Analysis)**: For each record $r \in L$ from start to end:
+3. **Pass 1 (Identify Winners)**: For each record $r \in L$ from start to end:
    - If $r = \langle \text{COMMIT } T \rangle$, then $S = S \cup \{T\}$.
    - If $r = \langle \text{ABORT } T \rangle$, then $S = S \setminus \{T\}$.
-4. **Phase 2 (Redo)**: For each record $r \in L$ from start to end:
+4. **Pass 2 (Redo, forward)**: For each record $r \in L$ from start to end:
    - If $r = \langle T, X, v \rangle$ and $T \in S$, then $\text{WRITE}(X, v)$.
 
 ### Simplified Explanation
@@ -72,7 +87,7 @@ public class RedoRecoveryManager {
     public void performRedoRecovery(List<LogRecord> logRecords) {
         Set<Integer> winners = new HashSet<>();
 
-        // Pass 1: Analysis (Forward Scan) - Find all committed transactions
+        // Pass 1: Identify committed transactions (winners) - Forward Scan
         for (LogRecord record : logRecords) {
             if (record.getType() == LogType.COMMIT) {
                 winners.add(record.getTransactionId());
@@ -113,7 +128,7 @@ Consider the following log state at the time of a crash. Assume elements $A, B, 
 
 ### Step-by-Step Recovery
 
-**Step 1: Classification (Pass 1)**
+**Step 1: Identify Winners (Pass 1)**
 The Recovery Manager scans the log forward:
 - **T1**: Has both `<START T1>` and `<COMMIT T1>`. Status: **Committed**.
 - **T2**: Has `<START T2>` but no completion record. Status: **Not Committed**.
