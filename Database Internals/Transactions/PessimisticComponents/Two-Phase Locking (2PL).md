@@ -95,6 +95,7 @@ Because transactions hold locks while waiting for others to release theirs, 2PL 
 ---
 
 ## Related
+- [[Database Internals/Distributed Systems/Two-Phase Commit|Two-Phase Commit (2PC)]] — used to coordinate 2PL across distributed nodes
 - [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Pessimistic Scheduler]]
 - [[CSE444/Transactions/Pessimistic Components/Lock Modes|Lock Modes]]
 - [[CSE444/Transactions/Pessimistic Components/Deadlocks|Deadlocks]]

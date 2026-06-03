@@ -1,0 +1,165 @@
+# CSE444: Two-Phase Commit
+
+Scaling a Database Management System (DBMS) involves balancing the need for higher throughput and availability against the complexity of maintaining **ACID** properties across multiple nodes.
+
+## Scaling Strategies
+
+### Replication
+**Replication** increases read throughput and provides high availability by creating multiple copies of each database partition.
+- **Mechanism**: Queries are spread across replicas.
+- **Trade-off**: While reads are easily scaled, writes become expensive as they must be propagated to all replicas to maintain consistency.
+
+### Partitioning (Sharding)
+To scale write throughput, the database must be **partitioned** across multiple servers.
+- **Mechanism**: The dataset is split into shards. If a transaction touches only one machine, performance is high.
+- **Challenge**: If a transaction involves multiple machines, coordination becomes significantly more expensive, requiring protocols like **Two-Phase Commit (2PC)**.
+
+![[Screenshots/2PC how to scale.png]]
+
+## Distributed Transactions
+
+### Concurrency Control
+In distributed systems, **[[Database Internals/Transactions/PessimisticComponents/Two-Phase Locking (2PL)|Two-Phase Locking (2PL)]]** is the standard approach in practice.
+- **Mechanism**: Locks are held simultaneously at all involved sites.
+- **Deadlock Detection**: 
+	- **Global Wait-For Graphs**: Theoretically possible but practically difficult due to communication overhead.
+	- **Timeouts**: The practical standard; abort the least costly transaction if a timeout occurs.
+
+### Failure Control (Atomicity)
+Transactions must be atomic across all sites: either all sites commit or none do, regardless of failures. **Two-Phase Commit (2PC)** is the standard protocol to guarantee this property.
+
+---
+
+## Two-Phase Commit (2PC)
+
+**Two-Phase Commit (2PC)** is a consensus protocol used to ensure that all participants in a distributed transaction agree on whether to **Commit** or **Abort**.
+
+### Roles
+- **Coordinator**: The node managing the transaction. It communicates with the user and orchestrates the decision.
+- **Subordinates** (or Participants): The nodes where the actual data resides and the transaction operations are performed.
+
+![[Screenshots/2PC motivation.png]]
+
+### Phase 1: Prepare
+The **Coordinator** polls all **Subordinates** to determine if they are ready and willing to commit the transaction.
+
+#### Formal Definition
+1. Coordinator sends `PREPARE` message to all subordinates.
+2. Subordinate receives `PREPARE`, ensures it can commit (e.g., locks are held, no disk errors).
+3. Subordinate **force-writes** a `PREPARE` record to its log.
+4. Subordinate responds with `YES` or `NO` (Abort).
+
+#### Simplified Explanation
+The leader asks, "Can everyone commit this?" Everyone checks their local state, writes down "I'm ready" in a permanent log, and says "Yes" or "No."
+
+### Phase 2: Commit / Abort
+Based on the votes in Phase 1, the **Coordinator** decides the final outcome.
+
+#### Formal Definition
+1. If **all** subordinates voted `YES`, the Coordinator **force-writes** a `COMMIT` record.
+2. If **any** subordinate voted `NO` or timed out, the Coordinator **force-writes** an `ABORT` record.
+3. Coordinator sends the decision (`COMMIT` or `ABORT`) to all subordinates.
+4. Subordinates **force-write** the decision to their log and send an **Acknowledgment (ACK)**.
+5. Once the Coordinator receives all **ACKs**, it writes an `END` record and can "forget" the transaction.
+
+#### Simplified Explanation
+If everyone said "Yes," the leader says "Go!" and everyone makes it permanent. If even one person said "No" (or didn't answer), the leader says "Abort!" and everyone throws away the changes.
+
+### Protocol Flow
+```mermaid
+sequenceDiagram
+    participant C as Coordinator
+    participant S as Subordinate
+    
+    Note over C, S: Phase 1: Prepare
+    C->>S: PREPARE
+    S-->>S: Force-write PREPARE record
+    S->>C: YES (Vote)
+    
+    Note over C, S: Phase 2: Commit
+    Note over C: Wait for all votes
+    C-->>C: Force-write COMMIT record
+    C->>S: COMMIT
+    S-->>S: Force-write COMMIT record
+    S->>C: ACK
+    Note over C: Receive all ACKs
+    C-->>C: Write END record (Forget)
+```
+
+---
+
+## Handling Failures
+
+### Site Failures & Timeouts
+It is often impossible to distinguish between a failed node and a slow network.
+- **Subordinate Timeout**: If a subordinate times out waiting for a `PREPARE` message, it can unilaterally **Abort**. However, if it has already voted `YES` and is waiting for the decision, it is **blocked**.
+- **Coordinator Timeout**: If the coordinator times out while collecting votes, it must **Abort** the transaction (to be safe).
+
+### The Blocking Problem
+2PC is a **Blocking Protocol**. If the coordinator fails after a subordinate has voted `YES` but before the decision is delivered, the subordinate cannot proceed. It must hold all locks and wait for the coordinator to recover, which can cripple system throughput.
+
+### Recovery Logic
+During recovery, a node scans its log to determine the state of active transactions:
+- **Last Record is `<COMMIT T>`**: The transaction is committed. Perform **REDO**.
+- **Last Record is `<ABORT T>`**: The transaction is aborted. Perform **UNDO**.
+- **No `<PREPARE, COMMIT, ABORT>`**: Presume **ABORT**. If no prepare was seen, the node couldn't have voted yes.
+- **Last Record is `<PREPARE T>`**: The node is in a "doubt" state. It must re-contact the coordinator (or other subordinates) to determine the final outcome.
+
+---
+
+## State Machines
+
+### Coordinator State Machine
+![[Screenshots/Coordinator State Machine.png]]
+
+```mermaid
+stateDiagram-v2
+    [*] --> PREPARING: User sends Commit
+    PREPARING --> COMMITTING: All votes YES
+    PREPARING --> ABORTING: Any vote NO / Timeout
+    COMMITTING --> [*]: Received all ACKs
+    ABORTING --> [*]: Received all ACKs
+```
+
+### Subordinate State Machine
+![[Screenshots/Subordinate State Machine.png]]
+
+```mermaid
+stateDiagram-v2
+    [*] --> INITIAL
+    INITIAL --> PREPARED: Received PREPARE (Vote YES)
+    INITIAL --> ABORTED: Received PREPARE (Vote NO)
+    PREPARED --> COMMITTED: Received COMMIT
+    PREPARED --> ABORTED: Received ABORT
+    COMMITTED --> [*]
+    ABORTED --> [*]
+```
+
+---
+
+## Optimizations
+
+### Presumed Abort Protocol
+To reduce message overhead and disk I/O:
+- **Principle**: If no information is found in the log about a transaction, assume it was **Aborted**.
+- **Outcome**: Aborting transactions do not require force-writing log records or receiving ACKs. This significantly improves performance for failed transactions.
+
+### Read-Only Transactions
+- **Mechanism**: If a subordinate only performed reads, it responds to the `PREPARE` message with a `READ` vote instead of `YES`.
+- **Optimization**: The subordinate can immediately release locks and forget the transaction. It does not need to participate in Phase 2.
+
+---
+
+## Industry Standard Terms
+- **Coordinator** → Transaction Manager / Control Plane
+- **Subordinate** → Participant / Resource Manager / Data Plane
+- **Force-write** → Fsync / Flush to stable storage
+- **Presumed Abort** → Default-to-rollback behavior
+
+## Related
+- [[Distributed Systems/Sharding/Transactions|CSE452: Transactions (2PC)]] — Detailed 2PC components in Distributed Systems course
+- [[Database Internals/Transactions/PessimisticComponents/Two-Phase Locking (2PL)|Two-Phase Locking (2PL)]]
+- [[Database Internals/Transactions/Transaction Fundamentals|Transaction Fundamentals]]
+- [[Distributed Systems/Paxos/Paxos|Paxos]] — A non-blocking alternative for consensus
+
+**Source**: CSE 444 Lecture Notes / OSTEP Chapter 48: Distributed Systems

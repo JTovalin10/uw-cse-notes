@@ -74,6 +74,7 @@ Advanced database systems: internals, query processing, storage, and distributed
 
 ### Replication and Distribution
 - [[Distributed Databases|Distributed Databases]] — shared-nothing vs shared-disk, MPP, sharding, and distributed joins
+- [[Database Internals/Distributed Systems/Two-Phase Commit|Two-Phase Commit (2PC)]] — consensus protocol for distributed transaction atomicity (Prepare/Commit phases)
 
 ### NoSQL and NewSQL
 *(notes in progress)*

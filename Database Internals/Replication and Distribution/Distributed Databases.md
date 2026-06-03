@@ -38,8 +38,8 @@ In a **Massively Parallel Processing (MPP)** system, a query is coordinated by a
 Ensuring ACID across multiple nodes requires specialized protocols.
 
 ### Two-Phase Commit (2PC)
-1. **Prepare Phase**: The coordinator asks all participating nodes if they can commit. Nodes log a 'prepare' record and respond.
-2. **Commit Phase**: If everyone says 'Yes', the coordinator tells everyone to commit. Otherwise, it tells everyone to abort.
+**Two-Phase Commit (2PC)** is the standard protocol for ensuring atomicity in distributed transactions. It consists of a **Prepare Phase** and a **Commit Phase**.
+- See detailed notes: [[Database Internals/Distributed Systems/Two-Phase Commit|Two-Phase Commit (2PC)]]
 
 ### Distributed Deadlock
 A deadlock can occur across multiple nodes (e.g., Node A waits for Node B, Node B waits for Node A). Detecting this requires a **Global Wait-For Graph** or a timeout mechanism.
