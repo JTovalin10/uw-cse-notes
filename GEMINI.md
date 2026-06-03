@@ -31,8 +31,8 @@
 - **Progressive Narrative Flow**: Sections within a detailed file MUST build on each other logically — like a math textbook where you cannot show calculus before addition. Apply whichever stages the content supports, in this order: core concept → mechanism/timeline → concrete walkthrough/example → physical implementation details → outcomes/trade-offs. This is a guiding principle, not a rigid template — skip stages the content doesn't warrant, but never backtrack or scatter related points.
 - **Deep Technical Detail ("Not Sparknotes")**: Explanations must be thorough. Always explain the "how" and the "why" (e.g., the underlying physical storage mechanics or the algorithmic logic). **Never sacrifice technical depth for brevity. The goal is to expand and add information to the notes, never to reduce or summarize them into a shorter form.**
 - **Strictly Class Notes — No New Content**: These notes reflect only what was taught in class. Do not add new topics, sub-concepts, or technical content that was not present in the source material. You may expand the "how" and "why" of existing content (e.g., explain the mechanism behind a stated fact), but do not introduce new concepts the user did not bring up. When content is terse, elaborate on what is already there — do not branch into related topics.
-- **Strict Course Terminology**: Strictly adhere to the terminology used in the specific course lectures and labs (e.g., in CSE452, use **ShardMaster** and **ShardKV Group**, NOT generic industry terms like "Control Plane" or "Data Plane"). When uncertain, read existing files in that course's directory to check established terminology. If still unclear, ask the user before writing.
-- **Dual-Layer Explanations**: Apply whenever there is a formal mathematical or algorithmic definition — anything involving notation, inequalities, pseudocode, or formal protocol step sequences. Skip for plain-English concepts that have no formal counterpart. Provide both a formal definition (textbook/mathematical rigor) and a simplified explanation (plain-English intuition). Do NOT use emojis for these headers; maintain professional text-only formatting.
+- **Strict Course Terminology**: Strictly adhere to the terminology used in the specific course lectures and labs (e.g., in CSE452, use **ShardMaster** and **ShardKV Group**, NOT generic industry terms like "Control Plane" or "Data Plane"). When uncertain, read existing files in that course's directory to check established terminology. If still unclear, ask the user before writing. **Always preserve the original terminology used for protocol steps and log records** (e.g., `<COMMIT T>` instead of "Commit log entry").
+- **Dual-Layer Explanations**: Apply whenever there is a formal mathematical or algorithmic definition — anything involving notation, inequalities, pseudocode, or formal protocol step sequences. Skip for plain-English concepts that have no formal counterpart. Provide both a formal definition (textbook/mathematical rigor) and a simplified explanation (plain-English intuition). **These dual-layer sections MUST be placed at the bottom of the file** in a dedicated section (e.g., "Protocol Specification" or "Formal Analysis") to avoid interrupting the narrative flow. Do NOT use emojis for these headers; maintain professional text-only formatting.
   - *Example Format:*
     `### Formal Definition`
     `$TS(T) < WT(X)$`
@@ -68,6 +68,12 @@
 *Example Card:*
 - **Front**: Why does TCP use a three-way handshake instead of two steps?
 - **Back**: Two steps only confirms one direction. The client sends SYN (proposes its ISN), server replies SYN-ACK (confirms client's ISN and proposes its own), client sends final ACK (confirms server's ISN). Both sides must confirm the other's ISN was received — a two-way exchange leaves the server never knowing if its ISN was acknowledged.
+
+## Version Control (Git)
+
+- **Explicit Directives Only**: NEVER stage (`git add`), commit (`git commit`), or perform any other git operations unless the user has given an explicit, unambiguous directive (e.g., "Commit the changes now", "Stage the files").
+- **Ask-First Basis**: Even when a directive is given, all git commands must be executed on an **ask-first basis**. You must wait for user confirmation before the command is actually run.
+- **No Autonomous Commits**: Do not autonomously "finish" a task by committing it. Implementation is complete when the files are updated and verified; the user retains sole control over the repository state.
 
 ## When Creating or Organizing Notes
 
