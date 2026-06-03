@@ -42,28 +42,18 @@ Transactions must be atomic across all sites: either all sites commit or none do
 
 ### Phase 1: Prepare
 The **Coordinator** polls all **Subordinates** to determine if they are ready and willing to commit the transaction.
-
-#### Formal Definition
 1. Coordinator sends `PREPARE` message to all subordinates.
 2. Subordinate receives `PREPARE`, ensures it can commit (e.g., locks are held, no disk errors).
-3. Subordinate **force-writes** a `PREPARE` record to its log.
+3. Subordinate **force-writes** a `<PREPARE T>` record to its log.
 4. Subordinate responds with `YES` or `NO` (Abort).
-
-#### Simplified Explanation
-The leader asks, "Can everyone commit this?" Everyone checks their local state, writes down "I'm ready" in a permanent log, and says "Yes" or "No."
 
 ### Phase 2: Commit / Abort
 Based on the votes in Phase 1, the **Coordinator** decides the final outcome.
-
-#### Formal Definition
-1. If **all** subordinates voted `YES`, the Coordinator **force-writes** a `COMMIT` record.
-2. If **any** subordinate voted `NO` or timed out, the Coordinator **force-writes** an `ABORT` record.
+1. If **all** subordinates voted `YES`, the Coordinator **force-writes** a `<COMMIT T>` record.
+2. If **any** subordinate voted `NO` or timed out, the Coordinator **force-writes** an `<ABORT T>` record.
 3. Coordinator sends the decision (`COMMIT` or `ABORT`) to all subordinates.
-4. Subordinates **force-write** the decision to their log and send an **Acknowledgment (ACK)**.
-5. Once the Coordinator receives all **ACKs**, it writes an `END` record and can "forget" the transaction.
-
-#### Simplified Explanation
-If everyone said "Yes," the leader says "Go!" and everyone makes it permanent. If even one person said "No" (or didn't answer), the leader says "Abort!" and everyone throws away the changes.
+4. Subordinates **force-write** the decision (`<COMMIT T>` or `<ABORT T>`) to their log and send an **Acknowledgment (ACK)**.
+5. Once the Coordinator receives all **ACKs**, it writes an `<END T>` record and can "forget" the transaction.
 
 ### Protocol Flow
 ```mermaid
@@ -73,17 +63,17 @@ sequenceDiagram
     
     Note over C, S: Phase 1: Prepare
     C->>S: PREPARE
-    S-->>S: Force-write PREPARE record
+    S-->>S: Force-write <PREPARE T> record
     S->>C: YES (Vote)
     
     Note over C, S: Phase 2: Commit
     Note over C: Wait for all votes
-    C-->>C: Force-write COMMIT record
+    C-->>C: Force-write <COMMIT T> record
     C->>S: COMMIT
-    S-->>S: Force-write COMMIT record
+    S-->>S: Force-write <COMMIT T> record
     S->>C: ACK
     Note over C: Receive all ACKs
-    C-->>C: Write END record (Forget)
+    C-->>C: Write <END T> record (Forget)
 ```
 
 ---
@@ -147,6 +137,26 @@ To reduce message overhead and disk I/O:
 ### Read-Only Transactions
 - **Mechanism**: If a subordinate only performed reads, it responds to the `PREPARE` message with a `READ` vote instead of `YES`.
 - **Optimization**: The subordinate can immediately release locks and forget the transaction. It does not need to participate in Phase 2.
+
+---
+
+## Protocol Specification
+
+### Formal Definition
+
+**Phase 1 (Prepare Phase):**
+1. **Coordinator** $\to$ **Subordinates**: `PREPARE`
+2. **Subordinate** responds with $V_i \in \{\text{YES}, \text{NO}\}$. If $V_i = \text{YES}$, it must force-write `<PREPARE T>`.
+
+**Phase 2 (Commit Phase):**
+1. **Coordinator** decides $D = \text{COMMIT}$ iff $\forall i, V_i = \text{YES}$; else $D = \text{ABORT}$.
+2. **Coordinator** force-writes $\langle D, T \rangle$ and sends $D$ to all subordinates.
+3. **Subordinate** force-writes $\langle D, T \rangle$ and responds with `ACK`.
+4. **Coordinator** writes `<END T>` after receiving all `ACK`s.
+
+### Simplified Explanation
+
+The **Coordinator** acts as a central leader. In Phase 1, it asks everyone for a vote. If everyone says "Yes," the leader records the decision and tells everyone to commit in Phase 2. If anyone says "No" or fails to respond, the leader tells everyone to abort. The use of persistent logs ensures that even if nodes crash, they can recover and fulfill their commitment to the final decision.
 
 ---
 
