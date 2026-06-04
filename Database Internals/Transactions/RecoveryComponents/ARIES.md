@@ -13,7 +13,7 @@ Every log record is assigned a unique, monotonically increasing **LSN**.
 - **WAL Requirement**: To flush a page to disk, the DBMS must ensure `pageLSN <= FlushedLSN`.
 
 ### System Tables (In-Memory)
-- **Transaction Table (ATT)**: Tracks all active transactions. Stores `transID`, `status` (Running/Committed/Aborted), and `lastLSN` (the LSN of the most recent log record for that transaction).
+- **Active Transaction Table (ATT)**: Tracks all active transactions. Stores `transID` and `lastLSN` (the LSN of the most recent log record for that transaction).
 - **Dirty Page Table (DPT)**: Tracks all pages in the buffer pool that have been modified but not yet flushed to disk. Stores `pageID` and `recLSN` (the LSN of the *first* log record that made the page dirty).
 
 ![[ARIES Data Structures.png]]
