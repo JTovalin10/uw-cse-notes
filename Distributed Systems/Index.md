@@ -76,6 +76,7 @@ Principles of building correct and fault-tolerant distributed systems.
 ### Case Studies
 - [[Key Takeaways|Key Takeaways in Performance and Durability]] — summary of recurring strategies for building high-performance, durable distributed systems
 - [[Google File System (GFS)|Google File System (GFS)]] — a scalable distributed file system for large data-intensive applications
+- [[MapReduce|MapReduce]] — a data-parallel programming model (map + reduce) for large datasets: the mapping, shuffle, and reduce/output phases, with the GFS locality optimization
 - [[Big Table|Big Table]] — Google's structured-data storage system: the Google stack, the 3D data model, tablets/SSTables/memtable, and the append-only tablet log
 - [[Dynamo|Dynamo]] — Amazon's highly available, eventually consistent key-value store
 - [[Bitcoin|Bitcoin]] — a peer-to-peer electronic cash system that solves double-spending with proof-of-work and a decentralized timestamp server

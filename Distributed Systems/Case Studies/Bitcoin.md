@@ -1,9 +1,59 @@
-n# CSE452: Bitcoin
+# CSE452: Bitcoin
 
 **[[Bitcoin|Bitcoin]]** is a peer-to-peer electronic cash system that lets parties transact directly without a trusted financial institution. Its central contribution is solving the **double-spend** problem in a decentralized setting.
 
 > Me: A **double-spend (DS)** means the same currency is spent more than once (unauthorized / fraudulent).
 
+## In-Class
+- double spend
+	- key issue we want to prevent
+		- traditional banking just has trust, however middle man checks
+	- key idea:
+		- prevent it by knowing all previous transactions and rejecting a new txn that double spends
+			- global ordering
+- consensus would solve this problem
+	- linearizability -> global order of operations
+		- accept the first spend, reject second
+	- is multipaxo's a bitcoin alternative
+		- bitcoin allows variable number of nodes
+			- peer-to-peer system and decentralized
+		- paxos cant do this
+		- need to consider adversarial nodes
+			- byzantine failures (do not trust all nodes)
+- bitcoin: byzantine P2P consensus
+	- similar:
+		- Byzantine Fault Tolerance (BFT)
+			- version of paxos
+				- is someone lies to us then it breaks the protocol
+			- if all nodes are dishonest, no protocol works
+			- super majority (>2n/3)
+				- if assume 1/3 of nodes are dishonest
+- digital signatures
+	- signature
+		- guarantees of authentically
+		- data that has signature appended
+	- public/private key cryptography
+		- key pair: (public key, private key)
+		- we use private key to sign, public key to check signature
+- transfers of ownership
+	- public/private solves transfer problem
+- proof of work
+	- puzzle that is only solvable with brute force
+	- each block requires a new solution
+	- voting power is proportional to computational power
+	- hash of block, SHA-256, resulting hash has N leading zeros
+		- N is adjustable
+			- finding N is exponential
+			- more computational power means increasing leading zeros
+			- normalized to one block every 10 minutes
+		- increment noonce + rehash until you find a nonce that gives a hash with N leading zeros
+- conseus
+	- chain of blocks
+		- can be more than 1 (fork)
+			- longest chain wins
+			- if a tie occurs then however gets the next one win
+			- 
+## Reading
 ---
 
 ## Motivation: Why Decentralize?
@@ -143,6 +193,39 @@ Rather than making an individual block (or hash) per coin, transactions contain 
 - The public can see that *someone* sent an amount to *someone else*, but without linking the keys to real identities, transactions cannot be tied to a person.
 - **Extra protection**: use a **new key pair for each transaction** so they cannot be linked to a common owner.
 - **Limits**: some linking is unavoidable with **multi-input transactions**, which necessarily reveal that their inputs were owned by the same owner. If the owner of one key is ever revealed, that linking can expose other transactions belonging to the same owner.
+
+---
+
+## Deep Dive
+
+> [!info] Beyond lecture
+> Everything above is from the CSE452 lecture and the Bitcoin paper. This section places Nakamoto consensus next to the classical BFT the lecture mentioned and notes where the design went afterward — context that was *not* part of the class.
+
+### Probabilistic vs. Deterministic Finality
+
+The lecture contrasts Bitcoin with classical **Byzantine Fault Tolerance** (the **>2n/3 supermajority**, e.g. PBFT). The key difference is *finality*:
+
+- **Classical BFT** gives **deterministic finality** — once a supermajority votes, the decision is final and cannot revert. The trade-off is that the node set must be **known and fixed** to count the votes.
+- **Nakamoto consensus** gives **probabilistic finality** — a block is never strictly final, but the probability of it ever being reversed shrinks **exponentially** with each block mined on top of it. The trade-off it buys is an **open, variable membership** set (anyone can join), which is exactly why Paxos/BFT could not be used (the body's point about "variable number of nodes").
+
+This is why merchants and exchanges wait for **~6 confirmations**: enough depth that reversal is astronomically unlikely. Connects to the agreement-under-failure limits in [[Knowledge|Knowledge in Distributed Systems]].
+
+### Naming the Attacks
+
+- The body's "an attacker must out-mine the entire honest network" is the **51% attack** — control a majority of CPU power and you can rewrite recent history.
+- **Selfish mining** is a subtler attack: a miner with *less* than 50% withholds freshly found blocks and releases them strategically to waste honest miners' work, earning more than its fair share of rewards.
+
+### Longest Chain = An Eventually-Consistent Ledger
+
+Forks are temporary divergence that resolve when one branch outgrows the other and the shorter side switches over. In consistency terms ([[Weak Consistency Models|Weak Consistency Models]]) the ledger is **eventually consistent**, *not* linearizable — there is no instant at which a transaction is globally, irreversibly committed; there is only ever-increasing confidence with depth.
+
+### Proof-of-Work → Proof-of-Stake
+
+Proof-of-Work ties voting power to **CPU/energy** (one-CPU-one-vote), which is what makes the SHA-256 mining in the lecture so energy-hungry. **Proof-of-Stake** (the model Ethereum migrated to) instead ties voting power to **staked capital**: validators put up coins as collateral and lose them for misbehaving, achieving Sybil resistance without burning energy on hash puzzles.
+
+### Merkle Trees Show Up Everywhere
+
+The Merkle tree Bitcoin uses for block compaction is the *same* structure [[Dynamo|Dynamo]] uses for anti-entropy replica comparison (and that Git uses for commits) — a general tool for committing to a large set with one root hash and proving membership with a short branch.
 
 ---
 

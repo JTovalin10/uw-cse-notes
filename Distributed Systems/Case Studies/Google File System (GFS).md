@@ -79,6 +79,25 @@ GFS provides a relaxed consistency model to maintain high performance.
     - **Consistent**: All clients see the same data, regardless of which replica they read from.
     - **Defined**: The data is consistent, and clients see the results of a write in its entirety (no interleaved fragments).
 
+## Deep Dive
+
+> [!info] Beyond lecture
+> Everything above is from the CSE452 lecture and the GFS paper. This section adds cross-course connections and the real-world evolution of GFS that were *not* part of the class. Future me: this is "where this idea went next," not exam material.
+
+### The Open-Source Twin: HDFS
+
+The **Hadoop Distributed File System (HDFS)** is a near-direct reimplementation of GFS, and it is the file system the open-source [[MapReduce|MapReduce]]/Hadoop stack actually runs on (the CSE444 notes refer to it as HDFS). The pieces map one-to-one: GFS **Master** → HDFS **NameNode**, GFS **Chunkserver** → HDFS **DataNode**, GFS **chunk** → HDFS **block**. So when [[MapReduce|MapReduce]]'s locality optimization schedules a map task next to its data, it is exploiting exactly this GFS/HDFS chunk-placement design.
+
+### Why the Single Master Eventually Lost: Colossus
+
+The single master is GFS's defining simplification *and* its scaling ceiling: because the master holds **all metadata in RAM**, the amount of file system it can manage is bounded by one machine's memory. The 64 MB chunk size is partly a consequence of this — large chunks mean fewer chunks, which means less metadata per byte stored. Google eventually replaced GFS with **Colossus**, which **shards the metadata layer itself** across many servers, removing the single-master bottleneck. The lesson generalizes: a single coordinator is the easiest thing to reason about and the first thing to become a bottleneck.
+
+### Cross-Course Connections
+
+- **Chunk = shard + replica.** A chunk replicated across chunkservers is [[Sharding|sharding]] plus replication — the same partition-then-replicate pattern used by [[Big Table|Big Table]] tablets and [[Dynamo|Dynamo]]'s preference list.
+- **Volatile chunk locations = soft state.** The master rebuilds its chunk-location table by **polling chunkservers on reboot** rather than reading it from disk. The chunkservers — not the master's disk — are the authoritative source of "who has what," so the master can lose that table and reconstruct it. This is the classic *soft-state* pattern.
+- **Relaxed consistency is pushed up into the application.** Because Record Append is only *at-least-once*, every consumer — [[MapReduce|MapReduce]], [[Big Table|Big Table]] — must carry its own checksums and deduplication to tolerate the duplicate/padded records GFS may leave. That is a concrete instance of the [[Key Takeaways#Pushing Complexity to the Application|push-complexity-to-the-application]] strategy: the storage layer stays fast and simple, and correctness is finished off above it.
+
 ## Industry Standard Terms
 
 | CSE452 / GFS Term | Industry / Standard Term |

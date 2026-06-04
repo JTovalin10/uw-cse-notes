@@ -28,7 +28,7 @@ The **R2** rule effectively enforces a **No-Steal** policy. In a No-Steal system
 
 ## Recovery Process
 
-The recovery manager performs **two forward passes** over the log to restore committed data that may have been lost from the buffer pool. Unlike the three-phase [[CSE444/Transactions/Recovery/ARIES|ARIES]] algorithm, simple Redo logging has **no Analysis phase** that reconstructs in-memory tables (ATT/DPT) and **no Undo phase** — the No-Steal policy makes undo unnecessary.
+The recovery manager performs **two forward passes** over the log to restore committed data that may have been lost from the buffer pool. Unlike the three-phase [[Database Internals/CSE444/Transactions/Recovery/ARIES|ARIES]] algorithm, simple Redo logging has **no Analysis phase** that reconstructs in-memory tables (ATT/DPT) and **no Undo phase** — the No-Steal policy makes undo unnecessary.
 
 ### Pass 1: Identify Committed Transactions (Winners)
 The first pass exists only to determine *which* transactions committed, because a `<COMMIT T>` record may appear in the log after `T`'s update records. We cannot redo an update on the spot without first knowing its transaction's final outcome.

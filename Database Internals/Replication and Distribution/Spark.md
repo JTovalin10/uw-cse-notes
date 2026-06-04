@@ -1,6 +1,6 @@
 # CSE444: Spark
 
-**Spark** is a shared-nothing, open-source big data processing system from UC Berkeley. Its central contribution is the **Resilient Distributed Dataset (RDD)** — a fault-tolerant in-memory abstraction that directly addresses the iterative-workload weakness of [[MapReduce|MapReduce]].
+**Spark** is a shared-nothing, open-source big data processing system from UC Berkeley. Its central contribution is the **Resilient Distributed Dataset (RDD)** — a fault-tolerant in-memory abstraction that directly addresses the iterative-workload weakness of [[Database Internals/Replication and Distribution/MapReduce|MapReduce]].
 
 The academic reference is the paper: *Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing*.
 
@@ -11,14 +11,14 @@ The observation that drove Spark's design is that **modern data analytics is ite
 - Machine learning algorithms (gradient descent, K-means) repeatedly scan the same dataset.
 - Interactive data mining requires querying the same dataset many times.
 
-In both cases, the programmer wants to **keep intermediate data in memory and reuse it across iterations**. [[MapReduce|MapReduce]] handles this poorly: between every pair of jobs it **requires writing intermediate data to disk**, even when the next job will immediately read that same data back. Spark is designed to eliminate this disk round-trip.
+In both cases, the programmer wants to **keep intermediate data in memory and reuse it across iterations**. [[Database Internals/Replication and Distribution/MapReduce|MapReduce]] handles this poorly: between every pair of jobs it **requires writing intermediate data to disk**, even when the next job will immediately read that same data back. Spark is designed to eliminate this disk round-trip.
 
 ## Resilient Distributed Datasets (RDDs)
 
 A **Resilient Distributed Dataset (RDD)** is the fundamental abstraction in Spark. An RDD is:
 
 - A **parallel data structure** — partitioned across nodes in the cluster.
-- **Persistable in memory** — avoiding the disk writes that bottleneck [[MapReduce|MapReduce]].
+- **Persistable in memory** — avoiding the disk writes that bottleneck [[Database Internals/Replication and Distribution/MapReduce|MapReduce]].
 - **Fault-tolerant** — through *lineage* tracking rather than physical replication alone (see [[#Fault Tolerance Through Lineage]]).
 - **Read-only** — no in-place updates to individual records, which distinguishes RDDs from in-memory key-value stores.
 
@@ -53,7 +53,7 @@ This gives the compact identity: **RDD = distributed relation + lineage**.
 
 ## Spark Programming Interface
 
-Spark exposes RDDs through a language-integrated API in **Scala** (similar in design to DryadLINQ). Spark was later extended with a native SQL interface. Spark can also degrade to [[MapReduce|MapReduce]]-style execution when necessary.
+Spark exposes RDDs through a language-integrated API in **Scala** (similar in design to DryadLINQ). Spark was later extended with a native SQL interface. Spark can also degrade to [[Database Internals/Replication and Distribution/MapReduce|MapReduce]]-style execution when necessary.
 
 The programming model separates operations into two categories:
 
@@ -172,7 +172,7 @@ graph TD
 
 ## Related
 
-- [[MapReduce|MapReduce]] — the system Spark directly improves upon; contrasted throughout this file
+- [[Database Internals/Replication and Distribution/MapReduce|MapReduce]] — the system Spark directly improves upon; contrasted throughout this file
 - [[Intro to Parallel DBMS|Intro to Parallel DBMS]] — the shared-nothing architecture both MapReduce and Spark are built on
 - [[The Shuffle Operator|The Shuffle Operator]] — the redistribution operation underlying Spark's wide dependencies
 - [[Data Partitioning Schemes|Data Partitioning Schemes]] — how RDD partitions are distributed across workers

@@ -71,6 +71,30 @@ Dynamo provides a simple interface:
 
 ---
 
+## Deep Dive
+
+> [!info] Beyond lecture
+> Everything above is from the CSE452 lecture and the Dynamo paper. This section adds cross-course connections and the lineage of systems Dynamo spawned — context that was *not* part of the class.
+
+### Virtual Nodes: Consistent Hashing's Answer to Skew
+
+The lecture's ring places one point per physical node, but real Dynamo gives each physical node **many** points on the ring — **virtual nodes (vnodes)**. This matters for two reasons: load spreads more evenly (a powerful machine can simply own more vnodes), and when a node joins or leaves, its share of data is redistributed across *many* neighbors instead of dumping onto one. It is the consistent-hashing counterpart to the [[Data Partitioning Schemes#Skew: The Justin Bieber Effect|data-skew]] problem from CSE444: more partitions than nodes so no single node becomes a hot spot.
+
+### N, R, W Is the Same Quorum Argument as Paxos
+
+The rule **$R + W > N$** is the *same* quorum-intersection idea that makes [[Paxos|Paxos]] safe (see [[Majority Overlap|Majority Overlap]]): if every read contacts $R$ replicas and every write reaches $W$, and $R + W > N$, then any read set and any write set must **share at least one replica** — so a read is guaranteed to see at least one copy of the most recent acknowledged write. Dynamo just exposes $R$ and $W$ as tunable knobs instead of hard-coding a majority.
+
+### Anti-Entropy via Merkle Trees
+
+To keep replicas in sync in the background, Dynamo compares them with **Merkle trees**: each replica hashes its key-range into a tree, and two replicas exchange only the tree nodes that differ, syncing just the divergent ranges instead of scanning everything. This is the **same Merkle-tree structure Bitcoin uses** to compact blocks ([[Bitcoin#Reclaiming Disk Space|Reclaiming Disk Space]]) — a recurring tool for cheaply detecting "what's different between two big things."
+
+### The Lineage: Cassandra and CRDTs
+
+- **Cassandra** is Dynamo's most direct descendant — it inherited consistent hashing and tunable $N, R, W$ outright. It originally used [[Vector Clock Algorithm|vector clocks]] but later dropped them for simpler **last-write-wins timestamps**, trading conflict-detection fidelity for operational simplicity.
+- Dynamo's **application-level semantic reconciliation** (merge two shopping carts by union) is the *manual* version of a **CRDT** (Conflict-free Replicated Data Type), covered under [[Weak Consistency Models|Weak Consistency Models]]. A CRDT makes that merge automatic and guaranteed-convergent, so the application no longer has to write the merge logic by hand.
+
+---
+
 ## Industry Standard Terms
 
 | CSE452 Term | Industry / Standard Term |

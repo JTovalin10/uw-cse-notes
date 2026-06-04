@@ -40,7 +40,7 @@ Log records can be represented at different levels of abstraction:
 
 ## The ARIES Algorithm
 
-Modern recovery is typically implemented using the **[[ARIES|ARIES]]** (Algorithms for Recovery and Isolation Exploiting Semantics) algorithm. It is a **Steal/No-Force** protocol that operates in three phases:
+Modern recovery is typically implemented using the **[[Database Internals/Transactions/RecoveryComponents/ARIES|ARIES]]** (Algorithms for Recovery and Isolation Exploiting Semantics) algorithm. It is a **Steal/No-Force** protocol that operates in three phases:
 
 1. **Analysis**: Scan the log forward from the last checkpoint to identify "dirty" pages and active transactions at the time of the crash.
 2. **Redo**: Replay all logged operations (including those from uncommitted transactions) to restore the database to its exact state at the moment of failure.
@@ -56,7 +56,7 @@ Modern recovery is typically implemented using the **[[ARIES|ARIES]]** (Algorith
 - **Force** $\rightarrow$ Immediate write-on-commit
 
 ## Related
-- [[ARIES|ARIES Detail]]
+- [[Database Internals/Transactions/RecoveryComponents/ARIES|ARIES Detail]]
 - [[Write-Ahead Logging (WAL)|WAL Details]]
 - [[Transaction Fundamentals|Transaction Fundamentals]]
 - [[Concurrency Anomalies|Concurrency Anomalies]]
