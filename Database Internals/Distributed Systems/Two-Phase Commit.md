@@ -93,7 +93,13 @@ During recovery, a node scans its log to determine the state of active transacti
 - **Last Record is `<COMMIT T>`**: The transaction is committed. Perform **REDO**.
 - **Last Record is `<ABORT T>`**: The transaction is aborted. Perform **UNDO**.
 - **No `<PREPARE, COMMIT, ABORT>`**: Presume **ABORT**. If no prepare was seen, the node couldn't have voted yes.
-- **Last Record is `<PREPARE T>`**: The node is in a "doubt" state. It must re-contact the coordinator (or other subordinates) to determine the final outcome.
+- **Last Record is `<PREPARE T>`**: The node is in a **"doubt" state** — it voted `YES` but never received the coordinator's decision before crashing. It made a durable promise to commit (by force-writing `<PREPARE T>` before sending the vote), so it **cannot unilaterally abort**. It must:
+  1. Continue holding all locks while blocked.
+  2. Re-contact the **Coordinator** and ask for the outcome of T.
+  3. Act on whatever the coordinator responds:
+     - **Coordinator says `COMMIT`**: force-write `<COMMIT T>`, perform REDO, release locks, send ACK.
+     - **Coordinator says `ABORT`**: force-write `<ABORT T>`, perform UNDO, release locks, send ACK.
+     - **Coordinator is also down**: remain blocked — this is the [[Database Internals/Distributed Systems/Two-Phase Commit#The Blocking Problem|Blocking Problem]].
 
 ---
 
