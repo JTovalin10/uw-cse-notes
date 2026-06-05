@@ -1,0 +1,19 @@
+## TensorFlow vs 452
+- required machine learning background
+- compute bound vs IO bound
+	- compute bound
+		- if it has more compute, it can run faster
+		- different programs maximize different resources
+		- for ML is CPU
+	- IO bound:
+		- disk or network
+			- more of this means faster
+	- training and inference is compute bound
+		- more machines means faster training
+- dataflow graph
+	- gives a global view of computation
+- fault-tolerace
+	- checkpointing
+		- take current weights and write to disk
+		- restart from this checkpoint
+		- part of dataflow graph (user can define when they want to write to disk)

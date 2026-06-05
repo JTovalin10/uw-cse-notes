@@ -76,7 +76,10 @@ Advanced database systems: internals, query processing, storage, and distributed
 ### Replication and Distribution
 - [[Distributed Databases|Distributed Databases]] — shared-nothing vs shared-disk, MPP, sharding, and distributed joins
 - [[Database Internals/Distributed Systems/Two-Phase Commit|Two-Phase Commit (2PC)]] — consensus protocol for distributed transaction atomicity (Prepare/Commit phases)
-- [[Database Internals/Distributed Systems/Replication|Replication]] — synchronous vs asynchronous, master vs group, quorums, and conflict reconciliation
+- [[Database Internals/Distributed Systems/Replication|Replication]] — hub: taxonomy of the four schemes (two timing × two topology axes)
+- [[Database Internals/Distributed Systems/Master and Group Replication|Master and Group Replication]] — replication topology: single leader vs leaderless architecture, scaling vs bottlenecks
+- [[Database Internals/Distributed Systems/Synchronous Replication|Synchronous Replication]] — eager timing mechanics, 2PC, master locks, and group quorum locking
+- [[Database Internals/Distributed Systems/Asynchronous Replication|Asynchronous Replication]] — lazy timing mechanics, log shipping, stale reads, and group conflict reconciliation
 
 ### NoSQL and NewSQL
 *(notes in progress)*
