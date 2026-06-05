@@ -20,6 +20,7 @@ Advanced database systems: internals, query processing, storage, and distributed
 - [[Advanced Indexing|Advanced Indexing]] — Bitmap, GIN, GiST, R-Tree, and index maintenance (VACUUM/ANALYZE)
 - [[B+ Tree|B+ Tree]] — balanced tree structure, degree/occupancy, insertion/deletion, practical performance, optimizations
 - [[LSM Trees|LSM Trees]] — log-structured merge trees, memtables, SSTables, Bloom filters, and compaction strategies
+- [[Column-Store DBMSs|Column-Store DBMSs]] — vertical partitioning, row vs. column trade-offs, slotted pages, and PAX hybrid layout
 
 ### Query Evaluation
 - [[Query Execution & Algorithms|Query Execution]] — query processor pipeline, memory management, BP-tuples vs M-tuples
