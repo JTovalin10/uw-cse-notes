@@ -139,6 +139,8 @@ In short: **GFS provides durability and locality at the edges (input/output); lo
 
 The reduce phase is what **makes or breaks performance**, because the same intermediate key can be spread across **multiple nodes** — every map worker may have emitted that key. Before reducing, the framework must gather all values for each key onto the one worker responsible for it. That gathering step is the **shuffle**.
 
+- shuffle is the bottleneck as we must wait for all nodes to finish to proceed
+
 #### Shuffle Phase
 
 The shuffle is a **distributed group-by**:

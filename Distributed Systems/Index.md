@@ -80,6 +80,7 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[Big Table|Big Table]] — Google's structured-data storage system: the Google stack, the 3D data model, tablets/SSTables/memtable, and the append-only tablet log
 - [[Dynamo|Dynamo]] — Amazon's highly available, eventually consistent key-value store
 - [[Bitcoin|Bitcoin]] — a peer-to-peer electronic cash system that solves double-spending with proof-of-work and a decentralized timestamp server
+- [[Case Studies/TensorFlow|TensorFlow]] — Google's distributed ML framework: dataflow graphs, compute-bound training, GPU data parallelism, and weak-consistency fault tolerance
 - [[Reading Papers|Reading Papers]] — how to approach the research papers studied in this course
 
 ---
