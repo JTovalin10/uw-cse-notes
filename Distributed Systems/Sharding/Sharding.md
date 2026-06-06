@@ -135,6 +135,36 @@ The **ShardMaster** in Lab 4 is essentially a **fault-tolerant, multi-group View
 
 ---
 
+## The Heavy Hitter Problem and Skew
+
+**Skew** is the condition where load is distributed unevenly across shards — some shards receive far more requests than others. A **heavy hitter** is the extreme case: a single key (or small set of keys) that accounts for a disproportionately large fraction of total traffic. A viral social media post, a trending product page, or a globally shared configuration key are all real-world examples.
+
+### Why Skew Is Destructive
+
+The core issue is that **your system's throughput is bounded by its slowest node, not its average node**. If one shard handles 10× the traffic of the others, that one node is your bottleneck — the remaining nodes sit mostly idle while requests queue at the hot shard. This means:
+
+- **Latency degrades at the hot shard**: Requests pile up waiting for the single overloaded node, blowing up p99 latency for a large fraction of users.
+- **Wasted capacity**: The remaining nodes in your cluster are underutilized. You are paying for horizontal scale that you cannot actually exploit.
+- **Scalability ceiling**: Simply adding more shards or nodes does not fix the problem if the hot key still maps to one of them. The heavy hitter follows the key, not the cluster size. You've added hardware but not capacity where it matters.
+- **Increased failure risk**: The hot node operates at or near its resource ceiling. It is the most likely node in the cluster to exhaust memory, hit connection limits, or experience GC pressure and crash — making the busiest node simultaneously the most fragile.
+
+### Why Static Partitioning Makes This Worse
+
+Under **static partitioning** (e.g., $GID = hash(key) \mod N$), there is no escape valve. A heavy hitter key is deterministically pinned to one shard forever, with no operator recourse short of changing the hash function and resharding the entire dataset — an expensive, disruptive operation.
+
+**Dynamic partitioning** via the [[Shard Master|ShardMaster]] is the architectural response: because shards are a logical layer above groups, the ShardMaster can move a hot shard to a less loaded group to rebalance load. However, this only helps when the shard itself is hot. If a single *key within a shard* is the heavy hitter, the entire shard must still be served by one group — shard migration cannot split a shard's keyspace.
+
+### Mitigation Strategies
+
+| Strategy | Mechanism | Trade-off |
+| :--- | :--- | :--- |
+| **Key salting** | Split one hot key into $k$ virtual keys (`key_0`, `key_1`, ..., `key_k`) distributed across $k$ shards | Reads must fan out and merge results across $k$ shards |
+| **Caching** | Absorb hot reads at a cache layer before they reach the shard | Cache invalidation complexity; writes still hit the shard |
+| **Shard splitting** | Subdivide the hot shard into smaller shards, each served by a different group | Requires ShardMaster reconfiguration; adds coordination overhead |
+| **Application-level routing** | Detect heavy hitters and route them to a dedicated replica set | Requires monitoring infrastructure and custom client logic |
+
+---
+
 ## Core Concepts
 
 The sharded architecture is built from four fundamental entities. Each has its own glossary entry with a full formal definition:
