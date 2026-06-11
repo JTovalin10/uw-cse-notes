@@ -1,4 +1,4 @@
-# CSE452: Primary-Backup Replication
+# Distributed Systems: Primary-Backup Replication
 
 ## Handling Node Failure
 

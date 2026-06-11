@@ -1,4 +1,4 @@
-# CSE452: Paxos Majority Overlap
+# Distributed Systems: Paxos Majority Overlap
 
 While it is intuitive why Phase 2 needs a majority (to "choose" the value), Phase 1 needs a majority to ensure the Proposer doesn't accidentally "overwrite" a value that was already chosen in an earlier round.
 

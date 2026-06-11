@@ -1,6 +1,6 @@
-# CSE444: Engine Internals
+# Database Internals: Engine Internals
 
-Different database engines implement storage and concurrency using distinct architectures. Understanding the internals of **PostgreSQL** and **InnoDB** (MySQL) is critical for performance tuning.
+Different database engines implement storage and concurrency using distinct architectures. Understanding the internals of **PostgreSQL** and **InnoDB** (MySQL) is critical for performance tuning. Both engines sit on top of the same conceptual [[Database Internals/DBMS Architecture and Deployments/Subsystems/Storage Manager|Storage Manager]] model but diverge significantly in their MVCC implementations and memory management strategies.
 
 ## PostgreSQL Internals
 
@@ -57,7 +57,7 @@ The **N+1 Query Problem** occurs when an application executes one query to fetch
 - **Change Buffer** $\rightarrow$ Deferred Write Buffer / Insert Buffer
 
 ## Related
-- [[Database Internals/Transactions/Isolation Levels|Isolation Levels]]
-- [[Data Storage and Buffer Management|Data Storage]]
-- [[CSE351/Memory Fundamentals/Cache|CSE351 Cache Fundamentals]]
-- [[CSE451/Processes/Architecture|CSE451 Process vs Thread Architectures]]
+
+- [[Database Internals/Transactions/Isolation Levels|Isolation Levels]] — SQL isolation levels and how MVCC enables them
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats, buffer pool, and heap files
+- [[Database Internals/DBMS Architecture and Deployments/Architecture|DBMS Architecture]] — the high-level two-subsystem architecture that PostgreSQL and InnoDB both implement

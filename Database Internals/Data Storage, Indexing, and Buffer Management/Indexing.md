@@ -1,12 +1,12 @@
-# CSE444: Indexes and File Organizations
+# Database Internals: Indexes and File Organizations
 
-Indexes and file organizations are critical for efficient data retrieval.
+Indexes and file organizations are critical for efficient data retrieval. This file serves as the navigation hub for the index-related StorageComponents subtopics.
 
 ## Table of Contents
 
-1. [[Heap and Sorted Files|Heap and Sorted Files]] (Heap API, Searching, Sorted files)
-2. [[Index Types|Index Types: Clustered vs Secondary]] (Dense vs Sparse, Primary vs Secondary)
-3. [[B+ Tree|B+ Trees]] (The most common index structure)
+1. [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Heap and Sorted Files|Heap and Sorted Files]] — heap file API, attribute-based searching, sorted files
+2. [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Index Types|Index Types: Clustered vs. Secondary]] — dense vs. sparse, primary vs. secondary
+3. [[Database Internals/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Trees]] — the most common index structure
 
 ---
 
@@ -22,8 +22,8 @@ Indexes and file organizations are critical for efficient data retrieval.
 ---
 
 ## Related
-- [[B+ Tree|B+ Tree]] — full details on the B+ tree index structure
-- [[Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats, record formats, heap file structure, and buffer pool management
-- [[Clustered and Unclustered Indices|Clustered and Unclustered Indices]] — CSE344 coverage of clustered vs. unclustered design
-- [[Database Indices|Database Indices]] — index structures overview from CSE344
-- [[Architecture|DBMS Architecture]] — how the storage manager and buffer manager fit together
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree]] — full details on the B+ tree index structure
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Advanced Indexing|Advanced Indexing]] — specialized index types: Bitmap, GIN, GiST, R-Tree, and maintenance
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats, record formats, heap file structure, and buffer pool management
+- [[Database Internals/DBMS Architecture and Deployments/Architecture|DBMS Architecture]] — how the storage manager and buffer manager fit together

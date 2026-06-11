@@ -1,4 +1,4 @@
-# CSE452: Key Takeaways in Performance and Durability
+# Distributed Systems: Key Takeaways in Performance and Durability
 
 Case studies like **[[Google File System (GFS)|Google File System (GFS)]]**, **[[Big Table|Big Table]]**, and **[[Dynamo|Dynamo]]** highlight several recurring strategies for building high-performance, durable, and available distributed systems at scale.
 
@@ -36,7 +36,7 @@ In large-scale systems, performance is often measured not by the average case, b
 ### Availability vs. Consistency (CAP Tension)
 There is a fundamental tension between **[[Consistency|Consistency]]** and **[[Dynamo#Core Philosophy: Availability > Consistency|Availability]]**.
 - **Strong Consistency (CP)**: Prioritizes data correctness. If the network is partitioned, writes are blocked to prevent divergence (e.g., Paxos-based systems).
-- **High Availability (AP)**: Prioritizes service uptime. Writes are always accepted, even if it means data becomes temporarily inconsistent or "stale" (e.g., Dynamo).
+- **High Availability (AP)**: Prioritizes service uptime. Writes are always accepted, even if it means data becomes temporarily inconsistent or "stale" (e.g., [[Distributed Systems/Case Studies/Dynamo|Dynamo]]).
 - **Business Impact**: For companies like Amazon, availability directly impacts revenue. A customer cannot buy items if the shopping cart is unavailable due to a network partition.
 
 ## Durability and Fault Tolerance

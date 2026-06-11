@@ -1,6 +1,6 @@
-# CSE444: Relational Model
+# Database Internals: Relational Model
 
-The **Relational Model** is the mathematical foundation for modern database systems, where data is organized into sets of records called relations.
+The **Relational Model** is the mathematical foundation for modern database systems, where data is organized into sets of records called **relations**. All relational databases — from PostgreSQL to Oracle — are built on this formal model.
 
 ---
 
@@ -82,8 +82,8 @@ FOREIGN KEY (sno) REFERENCES Supplier(sno)
 - **Cardinality** $\rightarrow$ Row Count
 
 ## Related
+
 - [[Database Internals/Review of Relational Model/Relational Algebra|Relational Algebra]] — RA operators, joins, and SQL-to-RA conversion
-- [[Architecture|DBMS Architecture and Query Processing]] — how the storage manager handles relations
-- [[Introduction to Data Management/Query Execution/Relational Algebra|CSE344 Relational Algebra]]
-- [[Integrity Constraints|CSE344 Integrity Constraints]]
-- [[Functional Dependencies (FDs)|Functional Dependencies]] — the formal basis for key identification
+- [[Database Internals/DBMS Architecture and Deployments/Architecture|DBMS Architecture and Query Processing]] — how the storage manager handles relations
+- [[Introduction to Data Management/Query Execution/Relational Algebra|CSE344 Relational Algebra]] — prerequisite course coverage
+- [[Functional Dependencies (FDs)|Functional Dependencies]] — the formal basis for key identification and normalization

@@ -1,4 +1,4 @@
-# CSE452: Remote Procedure Call (RPC)
+# Distributed Systems: Remote Procedure Call (RPC)
 
 ## Background
 

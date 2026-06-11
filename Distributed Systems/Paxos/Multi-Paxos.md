@@ -1,4 +1,4 @@
-# CSE452: Multi-Paxos
+# Distributed Systems: Multi-Paxos
 
 **Multi-Paxos** builds on [[Single Paxos|Single Decree Paxos]] to reach consensus on an entire **sequence of log slots**, rather than just a single value. The key optimization is the **Distinguished Proposer**: a stable elected leader that amortizes the Phase 1 cost across many proposals, reducing the common-case cost from 2 round trips to 1.
 

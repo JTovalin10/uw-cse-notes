@@ -1,4 +1,4 @@
-# CSE444: Transaction Fundamentals
+# Database Internals: Transaction Fundamentals
 
 A **Transaction** is a sequence of database operations that executes as a single logical unit with the **All-or-Nothing** property: either all operations complete successfully, or none do.
 
@@ -33,7 +33,7 @@ Databases adopt one of two primary philosophies to manage concurrency:
 
 - **Pessimistic Concurrency Control (Locking)**:
   - Prevents unserializable schedules *before* they occur.
-  - Transactions wait for **[[CSE444/Transactions/Pessimistic Components/Lock Modes|Locks]]** before proceeding.
+  - Transactions wait for **[[Database Internals/Transactions/PessimisticComponents/Lock Modes|Locks]]** before proceeding.
   - Best for workloads with **High Contention** (many writers on the same data).
 - **Optimistic Concurrency Control (Timestamp, Validation)**:
   - Assumes schedules will likely be serializable.
@@ -42,7 +42,7 @@ Databases adopt one of two primary philosophies to manage concurrency:
 
 ## Buffer Management & Recovery Policies
 
-The interaction between the **[[CSE444/DBMS Architecture and Deployments/Subsystems/Buffer Manager|Buffer Pool]]** and the **Recovery Manager** determines the implementation of Atomicity and Durability.
+The interaction between the **[[Database Internals/Transactions/RecoveryComponents/Buffer Management Policies|Buffer Pool]]** and the **Recovery Manager** determines the implementation of Atomicity and Durability.
 
 - **Steal vs. No-Steal**:
   - **Steal**: An uncommitted transaction can "steal" a slot in the buffer pool and overwrite the most recent committed value on disk. Requires an **Undo Log** to revert the change if the transaction aborts.
@@ -65,11 +65,13 @@ The interaction between the **[[CSE444/DBMS Architecture and Deployments/Subsyst
 - **Force** $\rightarrow$ Synchronous Commit / Eager Write
 - **Isolation** $\rightarrow$ Concurrency Control
 - **Rollback** $\rightarrow$ Abort / Revert
+- **Transaction** $\rightarrow$ Logical Unit of Work (LUW)
+- **ACID** $\rightarrow$ Universal standard across all relational DBMS literature
 
 ## Related
-- [[CSE444/Transactions/Recovery/Recovery|Recovery and Logging]] — ARIES and WAL details
-- [[Concurrency Anomalies|Concurrency Anomalies]] — WR, RW, and WW conflicts
-- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]] — 2PL and lock table
+- [[Database Internals/Transactions/Recovery|Recovery and Logging]] — ARIES and WAL details
+- [[Database Internals/Transactions/Concurrency Anomalies|Concurrency Anomalies]] — WR, RW, and WW conflicts
+- [[Database Internals/Transactions/PessimisticComponents/Pessimistic Scheduler|Locking]] — 2PL and lock table
 - [[Database Internals/Transactions/Isolation Levels|Isolation Levels]] — SQL Standard levels
-- [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]] — T/O concurrency control
-- [[CSE452/Consistency/Strong Consistency|CSE452 Strong Consistency]]
+- [[Database Internals/Transactions/OptimisticComponents/Timestamps|Timestamps]] — T/O concurrency control
+- [[Distributed Systems/Consistency/Strong Consistency|CSE452 Strong Consistency]]

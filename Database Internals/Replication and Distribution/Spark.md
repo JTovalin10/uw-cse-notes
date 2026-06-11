@@ -1,4 +1,4 @@
-# CSE444: Spark
+# Database Internals: Spark
 
 **Spark** is a shared-nothing, open-source big data processing system from UC Berkeley. Its central contribution is the **Resilient Distributed Dataset (RDD)** — a fault-tolerant in-memory abstraction that directly addresses the iterative-workload weakness of [[Database Internals/Replication and Distribution/MapReduce|MapReduce]].
 

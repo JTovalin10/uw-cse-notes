@@ -1,4 +1,4 @@
-# CSE452: Multi-Paxos Leader Election
+# Distributed Systems: Multi-Paxos Leader Election
 
 In optimized Multi-Paxos, the **Leader** (or Distinguished Proposer) handles all proposals to minimize network latency. This file details the steady-state mechanics, lease management, and the logic for handling concurrent elections.
 

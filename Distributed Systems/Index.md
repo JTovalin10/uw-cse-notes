@@ -1,6 +1,8 @@
-# CSE452 — Distributed Systems
+# Distributed Systems: Index
 
 Principles of building correct and fault-tolerant distributed systems.
+
+- [[Fin|Course Summary]] — why build a DS, and the three core challenges: correctness, partial failure, and concurrency
 
 ---
 
@@ -59,12 +61,12 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[Sharded Key-Value Server|Sharded Key-Value Server]] — ShardStoreServer internals, the inside-out Paxos sub-node pattern, and client routing
 - [[Reconfiguration|Reconfiguration]] — the shard handoff protocol, AMO state transfer, and in-order processing
 - [[Transactions|Transactions (2PC)]] — hub linking all Two-Phase Commit components
-- [[Two-Phase Commit|Two-Phase Commit: Motivation]] — the naive swap protocol, its five failure modes, and why 2PC is the fix
-- [[Phases and Roles|2PC Phases and Roles]] — coordinator/participant roles, Phase 1/2 mechanics, reconfiguration interactions
+- [[Two-Phase Commit|Two-Phase Commit: Motivation]] — multi-key transaction motivation, single-shard walkthrough, naive swap protocol and five failure modes
+- [[Phases and Roles|2PC Phases and Roles]] — coordinator/participant roles, Phase 1/2 mechanics, Paxos replication of locks (2PL), reconfiguration interactions
 - [[Locking and Deadlock|2PC Locking and Deadlock]] — read/write locks, abort-on-conflict, retry differentiation
 - [[Vanilla 2PC vs Paxos Commit|Vanilla 2PC vs Paxos Commit]] — the blocking problem and how Paxos Commit solves it
-- [[Log Operations|2PC Log Operations]] — the six log entry types (BEGIN, LOCK, PREPARE-COMMIT, COMMIT, ABORT) with semantics
-- [[MultiPut Walkthrough|2PC MultiPut Walkthrough]] — step-by-step trace of a successful cross-group MultiPut
+- [[Log Operations|2PC Log Operations]] — the six log entry types (BEGIN, LOCK, PREPARE-COMMIT, COMMIT, ABORT) with semantics; Write and Unlock entries; lecture vs. lab naming
+- [[MultiPut Walkthrough|2PC MultiPut Walkthrough]] — step-by-step trace of a cross-group MultiPut (lab notation and lecture notation with Coordinator prepared / Prepared / Committed / Unlock)
 - [[Failure Scenarios|2PC Failure Scenarios]] — lock contention (PrepareNotOK) and coordinator timeout with log traces
 
 ### Sharding Definitions
@@ -80,7 +82,7 @@ Principles of building correct and fault-tolerant distributed systems.
 - [[Big Table|Big Table]] — Google's structured-data storage system: the Google stack, the 3D data model, tablets/SSTables/memtable, and the append-only tablet log
 - [[Dynamo|Dynamo]] — Amazon's highly available, eventually consistent key-value store
 - [[Bitcoin|Bitcoin]] — a peer-to-peer electronic cash system that solves double-spending with proof-of-work and a decentralized timestamp server
-- [[Case Studies/TensorFlow|TensorFlow]] — Google's distributed ML framework: dataflow graphs, compute-bound training, GPU data parallelism, and weak-consistency fault tolerance
+- [[Distributed Systems/Case Studies/TensorFlow|TensorFlow]] — Google's distributed ML framework: dataflow graphs, compute-bound training, GPU data parallelism, and weak-consistency fault tolerance
 - [[Reading Papers|Reading Papers]] — how to approach the research papers studied in this course
 
 ---

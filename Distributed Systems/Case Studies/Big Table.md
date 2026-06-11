@@ -1,10 +1,8 @@
-# CSE452: Big Table
+# Distributed Systems: Big Table
 
 **Big Table** is Google's storage system for structured data, and it is the closest real-world system to what we will have built once we finish the distributed systems lab. The paper assumes you already work with Google's services or have read their previous work, because Big Table is layered on top of several of them.
 
-A key takeaway: **not every system needs to implement [[Paxos|Paxos]] itself** — a system can instead rely on a separate service that already implements it (in Big Table's case, **Chubby**).
-
-Wide-Table database (cassandra is more updated version of this)
+A key takeaway: **not every system needs to implement [[Distributed Systems/Paxos/Paxos|Paxos]] itself** — a system can instead rely on a separate service that already implements it (in Big Table's case, **Chubby**). Big Table is a **wide-column store** — Cassandra is a more modern system that took Big Table's storage model and combined it with Dynamo's distribution layer.
 
 ## Google Stack
 

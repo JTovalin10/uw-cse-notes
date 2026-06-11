@@ -1,4 +1,4 @@
-# CSE452: View Server
+# Distributed Systems: View Server
 
 ## What is a View?
 

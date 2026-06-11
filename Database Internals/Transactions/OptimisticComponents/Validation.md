@@ -1,10 +1,10 @@
-# CSE444: Validation
+# Database Internals: Validation (Optimistic Concurrency Control)
 
 Concurrency Control by Validation (also known as **Optimistic Concurrency Control** or **OCC**) assumes that conflicts are rare and validates transactions only at commit time.
 
 ## Workflow in Depth
 
-Unlike [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Pessimistic Locking]] (where you wait for locks *before* doing work), Validation-based CC assumes you will succeed. 
+Unlike [[Database Internals/Transactions/PessimisticComponents/Pessimistic Scheduler|Pessimistic Locking]] (where you wait for locks *before* doing work), Validation-based CC assumes you will succeed.
 
 ### Timestamps in Validation
 Every transaction $T$ is tracked using three critical timestamps:
@@ -13,7 +13,7 @@ Every transaction $T$ is tracked using three critical timestamps:
 3. **$FIN(T)$**: When $T$ finishes its Write Phase.
 
 > **Me**: Does a read-only transaction need a validation timestamp?
-> **Answer**: Yes. Even if a transaction doesn't write anything ($WS(T) = \emptyset$), it must be validated against the Write Sets of transactions that committed *after* $T$ started. This ensures $T$ saw a consistent, serializable snapshot of the data.
+> **Answer**: Yes. Even if a transaction does not write anything ($WS(T) = \emptyset$), it must be validated against the Write Sets of transactions that committed *after* $T$ started. This ensures $T$ saw a consistent, serializable snapshot of the data.
 
 ### The Three Phases
 
@@ -35,7 +35,7 @@ Every transaction $T$ is tracked using three critical timestamps:
 ---
 
 ## Formal Validation Rules
-To ensure [[Serializability|serializability]], for any two transactions $T_i$ and $T_j$ where $VAL(T_i) < VAL(T_j)$ ($T_i$ is logically older), **one** of the following must hold:
+To ensure [[Database Internals/Transactions/Serializability/Serializability|serializability]], for any two transactions $T_i$ and $T_j$ where $VAL(T_i) < VAL(T_j)$ ($T_i$ is logically older), **one** of the following must hold:
 
 ### Rule 1: No Overlap
 $$FIN(T_i) < START(T_j)$$
@@ -43,7 +43,7 @@ $T_i$ finished everything before $T_j$ even started. No conflict possible.
 
 ### Rule 2: No Read Conflict
 $$FIN(T_i) < VAL(T_j) \quad \text{and} \quad WS(T_i) \cap RS(T_j) = \emptyset$$
-$T_i$ finished writing before $T_j$ started checking. Safe as long as $T_i$ didn't change anything $T_j$ read.
+$T_i$ finished writing before $T_j$ started checking. Safe as long as $T_i$ did not change anything $T_j$ read.
 
 ### Rule 3: No Read or Write Conflict
 $$VAL(T_i) < VAL(T_j) \quad \text{and} \quad WS(T_i) \cap (RS(T_j) \cup WS(T_j)) = \emptyset$$
@@ -81,3 +81,15 @@ OCC avoids conflicts by detecting them *before* they are written to the database
 - **Cons**: High overhead of rollbacks if conflicts are frequent; "starvation" of long transactions.
 
 ![[Avoid $r_t(X) - w_U(X)$ conflicts.png]]
+
+## Industry Standard Terms
+- **Optimistic Concurrency Control (OCC)** $\rightarrow$ Universal term; used in distributed systems, databases, and version control
+- **Read Set / Write Set** $\rightarrow$ RS/WS (standard OCC notation)
+- **Validation Phase** $\rightarrow$ Commit validation / Conflict check
+- **$VAL(T)$** $\rightarrow$ Serialization timestamp / Commit timestamp
+
+## Related
+- [[Database Internals/Transactions/OptimisticComponents/Timestamps|Timestamps]]
+- [[Database Internals/Transactions/OptimisticComponents/Snapshot Isolation|Snapshot Isolation]]
+- [[Database Internals/Transactions/Serializability/Serializability|Serializability]]
+- [[Database Internals/Transactions/PessimisticComponents/Pessimistic Scheduler|Pessimistic Scheduler]]

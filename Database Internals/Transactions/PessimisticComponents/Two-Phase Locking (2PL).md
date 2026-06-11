@@ -1,27 +1,14 @@
-# CSE444: Two-Phase Locking (2PL)
+# Database Internals: Two-Phase Locking (2PL)
 
 Simply using locks is not enough to guarantee that a schedule is serializable. A transaction could lock $A$, update it, unlock $A$, and then later decide to lock $B$ based on what it saw in $A$, allowing another transaction to slip in and corrupt the logic.
 
-To guarantee **[[CSE444/Transactions/Serializability/Conflict Serializability|Conflict Serializability]]**, the [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|scheduler]] enforces a rule called **Two-Phase Locking (2PL)**.
+To guarantee **[[Database Internals/Transactions/Serializability/SerializabilityComponents/Conflict Serializability|Conflict Serializability]]**, the [[Database Internals/Transactions/PessimisticComponents/Pessimistic Scheduler|scheduler]] enforces a rule called **Two-Phase Locking (2PL)**.
 
 ---
 
 ## The Basic 2PL Rule
 
 In every transaction, **all lock requests must precede all unlock requests.** This partitions every transaction's lifetime into exactly two non-overlapping phases.
-
-### Formal Definition
-
-For every transaction $T_i$ in schedule $S$, there must be no sequence of actions $L_i(X),\ U_i(Y),\ L_i(Z)$ in that order — once $T_i$ releases any lock, it may never acquire another.
-
-The **lock point** of $T_i$ is the moment in the schedule at which $T_i$ acquires its *last* lock. The central theorem of 2PL is:
-
-$$\text{If all transactions obey 2PL, then } S \text{ is conflict-serializable,}$$
-$$\text{and the equivalent serial order corresponds to the order of the transactions' lock points.}$$
-
-### Simplified Explanation
-
-Think of the lock point as the peak of a mountain. On the way up (growing phase) a transaction collects every lock it needs. At the peak it holds the maximum set. On the way down (shrinking phase) it releases them — but it can never start climbing again. Because every transaction has exactly one peak, and peaks have a strict order, no two transactions can interleave in a way that violates serializability.
 
 ### Growing and Shrinking Phases
 
@@ -50,9 +37,9 @@ flowchart LR
 
 ## The Problem: Cascading Aborts
 
-Basic 2PL guarantees serializability, but it does not guarantee that the schedule is **[[Recoverable Schedule|Recoverable]]**.
+Basic 2PL guarantees serializability, but it does not guarantee that the schedule is **[[Database Internals/Definitions/Recoverable Schedule|Recoverable]]**.
 
-**The Danger**: During the shrinking phase, a transaction might release a lock on $X$ *before* it has actually committed. If another transaction swoops in, acquires the lock on $X$, reads the uncommitted value, and commits, we have a problem. If the first transaction then aborts, the second transaction has committed based on "dirty data" that logically never existed. This requires a **[[Cascading Abort|cascading abort]]** to fix, which is terrible for performance — and impossible to undo if the second transaction has already committed to disk.
+**The Danger**: During the shrinking phase, a transaction might release a lock on $X$ *before* it has actually committed. If another transaction swoops in, acquires the lock on $X$, reads the uncommitted value, and commits, we have a problem. If the first transaction then aborts, the second transaction has committed based on "dirty data" that logically never existed. This requires a **[[Database Internals/Definitions/Cascading Abort|cascading abort]]** to fix, which is terrible for performance — and impossible to undo if the second transaction has already committed to disk.
 
 ![[Non-recoverable schedule.png]]
 ![[Non-recoverable schedule 2.png]]
@@ -63,15 +50,7 @@ Basic 2PL guarantees serializability, but it does not guarantee that the schedul
 
 To eliminate cascading aborts, almost all modern databases use a stricter variant.
 
-### Formal Definition
-
-For every transaction $T_i$ and every data element $X$: the unlock action $U_i(X)$ may only occur at or after the $\text{COMMIT}(T_i)$ or $\text{ABORT}(T_i)$ action. Formally, there is no distinct shrinking phase during normal execution — the growing phase lasts until the transaction ends.
-
-### Simplified Explanation
-
-A transaction following Strict 2PL never lets go of any lock until it terminates — meaning either it **COMMITs** (all writes are durable and visible) or it **ABORTs** (all writes are rolled back). Both outcomes fully resolve the transaction's effect on the data before releasing any lock. Since no lock is released early, no other transaction can ever read dirty (uncommitted) data written by a still-running transaction. The "shrinking phase" is collapsed to a single instant at commit or abort.
-
-**The Strict Rule**: All locks (or at least all Exclusive/Write locks) held by a transaction are released **only at the very end**, during **COMMIT** or **ROLLBACK**.
+**The Strict Rule**: All locks (or at least all Exclusive/Write locks) held by a transaction are released **only at the very end**, during **COMMIT** or **ROLLBACK**. A transaction following Strict 2PL never lets go of any lock until it terminates. Because no lock is released early, no other transaction can ever read dirty (uncommitted) data written by a still-running transaction. The "shrinking phase" is collapsed to a single instant at commit or abort.
 
 ![[Strict 2PL example.png]]
 ![[Strict 2PL example 2.png]]
@@ -83,23 +62,44 @@ By holding all locks until the transaction completes, Strict 2PL provides three 
 | Guarantee | Reason |
 | :--- | :--- |
 | **Serializability** | S2PL is a special case of basic 2PL, so the lock-point theorem still holds. |
-| **Recoverability** | No transaction can read your uncommitted data because you don't release the lock until you commit. |
+| **Recoverability** | No transaction can read your uncommitted data because you do not release the lock until you commit. |
 | **No Cascading Aborts** | Because every read targets already-committed data, an abort by one transaction cannot invalidate work done by another. |
 
 ---
 
 ## 2PL and Deadlocks
 
-Because transactions hold locks while waiting for others to release theirs, 2PL is inherently susceptible to **[[CSE444/Transactions/Pessimistic Components/Deadlocks|deadlocks]]** — circular waiting chains where no transaction in the cycle can ever proceed. The DBMS detects these using a **Wait-For Graph** and resolves them by aborting a victim transaction.
+Because transactions hold locks while waiting for others to release theirs, 2PL is inherently susceptible to **[[Database Internals/Transactions/PessimisticComponents/Deadlocks|deadlocks]]** — circular waiting chains where no transaction in the cycle can ever proceed. The DBMS detects these using a **Wait-For Graph** and resolves them by aborting a victim transaction.
+
+---
+
+## Formal Analysis
+
+### Formal Definition
+
+For every transaction $T_i$ in schedule $S$, there must be no sequence of actions $L_i(X),\ U_i(Y),\ L_i(Z)$ in that order — once $T_i$ releases any lock, it may never acquire another.
+
+The **lock point** of $T_i$ is the moment in the schedule at which $T_i$ acquires its *last* lock. The central theorem of 2PL is:
+
+$$\text{If all transactions obey 2PL, then } S \text{ is conflict-serializable,}$$
+$$\text{and the equivalent serial order corresponds to the order of the transactions' lock points.}$$
+
+For **Strict 2PL**: for every transaction $T_i$ and every data element $X$, the unlock action $U_i(X)$ may only occur at or after the $\text{COMMIT}(T_i)$ or $\text{ABORT}(T_i)$ action. The growing phase lasts until the transaction ends.
+
+### Simplified Explanation
+
+Think of the lock point as the peak of a mountain. On the way up (growing phase) a transaction collects every lock it needs. At the peak it holds the maximum set. On the way down (shrinking phase) it releases them — but it can never start climbing again. Because every transaction has exactly one peak, and peaks have a strict order, no two transactions can interleave in a way that violates serializability.
+
+Strict 2PL eliminates even the shrinking phase during execution — the "mountain" descent happens all at once only when the transaction fully commits or aborts.
 
 ---
 
 ## Related
-- [[Database Internals/Distributed Systems/Two-Phase Commit|Two-Phase Commit (2PC)]] — used to coordinate 2PL across distributed nodes
-- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Pessimistic Scheduler]]
-- [[CSE444/Transactions/Pessimistic Components/Lock Modes|Lock Modes]]
-- [[CSE444/Transactions/Pessimistic Components/Deadlocks|Deadlocks]]
-- [[Concurrency Anomalies|Schedules and Concurrency Problems]]
+- [[Distributed Systems/Sharding/Two-Phase Commit|Two-Phase Commit (2PC)]] — used to coordinate 2PL across distributed nodes
+- [[Database Internals/Transactions/PessimisticComponents/Pessimistic Scheduler|Pessimistic Scheduler]]
+- [[Database Internals/Transactions/PessimisticComponents/Lock Modes|Lock Modes]]
+- [[Database Internals/Transactions/PessimisticComponents/Deadlocks|Deadlocks]]
+- [[Database Internals/Transactions/Concurrency Anomalies|Schedules and Concurrency Problems]]
 
 ---
 

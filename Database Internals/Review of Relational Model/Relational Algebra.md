@@ -1,4 +1,4 @@
-# CSE444: Relational Algebra
+# Database Internals: Relational Algebra
 
 ---
 
@@ -78,11 +78,24 @@ SQL maps to relational algebra in the following operator order (FROM and WHERE a
 
 ---
 
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| Relational algebra (RA) | Query language / logical query language |
+| Selection $\sigma$ | `WHERE` clause / filter |
+| Projection $\pi$ | `SELECT` clause |
+| Cross product $\times$ | `CROSS JOIN` / Cartesian product |
+| Natural join $\bowtie$ | `NATURAL JOIN` |
+| Theta join $\bowtie_\Theta$ | `JOIN ... ON` |
+| Set difference $-$ | `EXCEPT` / `MINUS` |
+| Bag semantics | Multiset semantics |
+| Duplicate elimination $\delta$ | `DISTINCT` |
+
 ## Related
 
-- [[Relational Model|Relational Model]] — database/relation/tuple definitions, schema, integrity constraints
-- [[Architecture|DBMS Architecture]] — how the optimizer turns RA expressions into physical query plans
-- [[Introduction to Data Management/Query Execution/Relational Algebra|Relational Algebra]] — CSE344 in-depth RA operator coverage
+- [[Database Internals/Review of Relational Model/Relational Model|Relational Model]] — database/relation/tuple definitions, schema, integrity constraints
+- [[Database Internals/DBMS Architecture and Deployments/Architecture|DBMS Architecture]] — how the optimizer turns RA expressions into physical query plans
+- [[Database Internals/DBMS Architecture and Deployments/Subsystems/Query Pipeline|Query Processing Pipeline]] — the optimizer stage where RA logical plans are generated
+- [[Introduction to Data Management/Query Execution/Relational Algebra|CSE344 Relational Algebra]] — in-depth RA operator coverage from the prerequisite course
 - [[SQL to RA Translation|SQL to RA Translation]] — detailed SQL-to-RA translation rules
-- [[Joins|Joins]] — SQL join syntax and semantics
-- [[What is a Set|CSE311]] (Set Theory and Logic)

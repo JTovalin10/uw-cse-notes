@@ -1,4 +1,70 @@
-# CSE452: Two-Phase Commit
+# Distributed Systems: Two-Phase Commit
+
+## Multi-Key Transaction Motivation
+
+The problem 2PC solves begins with the structure of a **sharded key-value store**: the store is partitioned across many **[[Sharding|shards]]**, each managed by its own [[Multi-Paxos|Paxos group]]. This design scales writes horizontally — each group handles its shard independently. However, a transaction that touches keys on multiple different shards cannot be handled by any single group acting alone.
+
+Consider a meeting scheduler: three schedules — Tom's, Mike's, and Zack's — may live on different shards. The client must atomically book all three at 11am or book none. If only two succeed, the data is inconsistent.
+
+```
+x = get(tom's schedule)
+y = get(mike's schedule)
+z = get(zack's schedule)
+if (x.freeAt(11) && y.freeAt(11) && z.freeAt(11)) {
+    put(tom's schedule, x.busy(11))
+    put(mike's schedule, y.busy(11))
+    put(zack's schedule, z.busy(11))
+}
+```
+
+The application logic runs on the **client**. The client issues RPCs to the storage layer to start/end the transaction and perform read/write (put/get) operations. The KV store acquires and releases locks and executes the put/get operations — the store stays simple and application logic can change without modifying the storage layer.
+
+Two cases arise:
+- **Simple case**: all keys on the same shard (same Paxos group) — the group handles the transaction entirely by itself.
+- **More complicated case**: keys on different shards (different Paxos groups) — this is where Two-Phase Commit is necessary.
+
+---
+
+## Single-Shard Transaction Walkthrough
+
+Before the cross-group case, consider the single-shard case where all keys belong to one Paxos group. The Leader handles the entire transaction; the Acceptors Paxos-replicate each log entry so the transaction is durable across failures.
+
+**Example**: A bank transfer — move $100 from checking to savings (both on the same shard).
+
+```
+x = read(checking_bal)
+if (x > 100) {
+    y = read(savings_bal)
+    write(checking_bal, x - 100)
+    write(savings_bal, y + 100)
+}
+```
+
+As the client issues RPCs, the Leader appends entries to the Paxos log and replicates them to the Acceptors before acting:
+
+```
+LOG:
+  1. A: Transaction start
+  2. A: Lock(R, checking_bal)        ← read lock acquired on first read
+  3. A: Lock(R, savings_bal)         ← read lock acquired on second read
+  4. A: Lock(W, checking_bal)        ← upgrade to write lock
+  5. A: Write(checking_bal, 100)     ← stage tentative value
+  6. A: Lock(W, savings_bal)         ← write lock on second key
+  7. A: Write(savings_bal, 100)      ← stage tentative value
+  8. A: Commit                       ← make all writes durable
+  9. A: Unlock(checking_bal)
+ 10. A: Unlock(savings_bal)
+```
+
+Each entry is Paxos-replicated to the Acceptors before execution. This means that even if the Leader fails mid-transaction, a new Leader can reconstruct the exact transaction state from the log and either complete or abort it correctly.
+
+Three complications arise even within a single shard:
+
+- **Leader failure**: A new leader must be elected. The Acceptors have a prefix of the log but may be behind — the new leader must drive in-flight entries to chosen before resuming.
+- **Concurrent transactions**: Other transactions may be running simultaneously. Every lock acquisition must check compatibility against all currently held locks.
+- **Partial replication at Acceptors**: Some log entries may be known to the leader but not yet replicated to a majority. A recovering leader must catch these up before making new progress.
+
+---
 
 ## ShardStore and Paxos Architecture
 

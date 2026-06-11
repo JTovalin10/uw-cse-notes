@@ -1,4 +1,4 @@
-# CSE452: Knowledge in Distributed Systems
+# Distributed Systems: Knowledge in Distributed Systems
 
 How much can a node in a distributed system *know*, and what kinds of knowledge can be gained through communication? This question, developed formally by Halpern and Moses (1990), underlies the most fundamental impossibility results in distributed systems. The answer is surprising: in an asynchronous network where messages can be lost, achieving the strongest form of knowledge — **common knowledge** — is provably impossible. This single fact explains why consensus, coordinated failover, and atomic commitment are so hard.
 
@@ -162,7 +162,7 @@ You cannot ever be sure the other side got your message. So you cannot be sure t
 
 The proof directly mirrors the impossibility of creating $C_G \phi$ over an unreliable channel. At the moment of attack, both generals must have common knowledge that both are attacking. But as the proof shows, no finite sequence of messages over an unreliable channel can ever establish that infinite chain of mutual knowledge. The last message is always unacknowledged; the penultimate message cannot confirm the last one was received; and so on.
 
-This is why the [[Primary Backup|Primary-Backup]] protocol does not try to achieve perfect coordination — it tolerates the impossibility by using the [[View Server|View Server]] as an approximate arbiter, accepting the possibility of brief unavailability rather than attempting to achieve common knowledge among replicas.
+This is why the [[Distributed Systems/Primary-Backup/Primary Backup|Primary-Backup]] protocol does not try to achieve perfect coordination — it tolerates the impossibility by using the [[Distributed Systems/Primary-Backup/View Server|View Server]] as an approximate arbiter, accepting the possibility of brief unavailability rather than attempting to achieve common knowledge among replicas.
 
 ---
 

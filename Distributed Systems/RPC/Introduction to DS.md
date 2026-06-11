@@ -1,4 +1,4 @@
-# CSE452: Introduction to Distributed Systems
+# Distributed Systems: Introduction to Distributed Systems
 
 ## What is a Distributed System?
 

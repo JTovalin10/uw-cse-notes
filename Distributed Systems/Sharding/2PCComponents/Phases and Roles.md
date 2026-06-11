@@ -1,4 +1,4 @@
-# CSE452: 2PC Phases and Roles
+# Distributed Systems: 2PC Phases and Roles
 
 This file covers the two protocol phases and the roles each group plays in a [[Transactions|Two-Phase Commit (2PC)]] transaction. For locking mechanics and deadlock avoidance, see [[Locking and Deadlock|Locking and Deadlock]]. For why vanilla 2PC is blocking and how Paxos fixes it, see [[Vanilla 2PC vs Paxos Commit|Vanilla 2PC vs Paxos Commit]].
 
@@ -27,16 +27,38 @@ The coordinator sends a `Prepare` request to all participants (including itself)
 
 The core purpose of the Prepare phase is to make the system state **temporarily stable** before any values are exchanged. By locking the relevant keys before executing, the protocol prevents other transactions from inserting themselves between the read and write steps — directly addressing the non-linearizable interleaving problem described in [[Two-Phase Commit|Two-Phase Commit: Motivation]].
 
+### Paxos Replication of Lock Acquisition
+
+A critical detail: **each shard Paxos-replicates its lock acquisitions** before acting on them. This means every `Lock(R, key)`, `Lock(W, key)`, and `Write(key, value)` entry is driven to chosen in the local Paxos log before the shard executes the operation. This is **phase 1 of Two-Phase Locking (2PL)** — the growing phase where all locks are acquired.
+
+This Paxos replication of locks enables fault tolerance within each shard. If the Leader fails after acquiring some locks but before the Prepare phase completes, a new Leader can reconstruct the transaction state from the log and either resume or abort correctly. Without this, a leader crash during transaction execution would leave the shard in an ambiguous partial-lock state with no recovery path.
+
+### Lecture vs. Lab Log Terminology
+
+The lecture uses slightly different names for the same log entries used in the lab:
+
+| Lecture Term | Lab Term (`Log Operations`) | Meaning |
+| :--- | :--- | :--- |
+| `Transaction start(coord)` | `BEGIN` (at coordinator) | Coordinator starts tracking the transaction |
+| `Transaction start(part)` | `BEGIN` (at participant) | Participant logs receipt of Prepare |
+| `Lock(R, key)` | `LOCK(READ, key)` | Read lock acquired |
+| `Lock(W, key)` | part of `LOCK(WRITE, key, value)` | Write lock acquired (lecture separates lock and write) |
+| `Write(key, value)` | part of `LOCK(WRITE, key, value)` | Tentative value staged (lecture separates lock and write) |
+| `Coordinator prepared` | `PREPARE-COMMIT` (at coordinator) | Coordinator ready; can commit if all respond OK |
+| `Prepared` | `PREPARE-COMMIT` (at participant) | Participant ready; binding promise to commit |
+
 ---
 
 ## Phase 2: Commit or Abort
 
 The coordinator collects responses from all participants:
 
-- If **all** replied `PrepareOK`: The coordinator logs `COMMIT`, sends `Commit` to all other participants, and each participant logs `COMMIT`, writes tentative values to persistent memory, and releases locks.
+- If **all** replied `PrepareOK`: The coordinator logs `COMMIT`, sends `Commit` to all other participants, and each participant logs `COMMIT` (the lecture calls this `Committed` at the participant), writes tentative values to persistent memory, and releases locks.
 - If **any** replied `PrepareNotOK` or **timed out**: The coordinator logs `ABORT`, sends `Abort` to all participants that sent `PrepareOK`, and each participant logs `ABORT` and releases its locks without modifying state.
 
 This guarantees atomicity: a transaction either commits at every participating group or at none.
+
+Each shard Paxos-replicates the commit entry before applying it — this is **phase 2 of Two-Phase Locking (2PL)**, the shrinking phase where all locks are released. After `COMMIT` is logged and applied, the shard releases all locks for the transaction.
 
 ```mermaid
 sequenceDiagram

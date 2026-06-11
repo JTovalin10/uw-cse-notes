@@ -1,4 +1,4 @@
-# CSE452: Logical Clocks
+# Distributed Systems: Logical Clocks
 
 **Logical clocks** (also called **virtual clocks** or **Lamport clocks** in their original formulation) are a mechanism for reasoning about the ordering of events in a distributed system without relying on physical wall-clock time. In a distributed system, physical clocks on separate machines run independently and drift at different rates. Even with NTP synchronization, drift can be on the order of milliseconds or more, which is unacceptable when determining the precise ordering of events that may be microseconds apart. Logical clocks sidestep this problem entirely: instead of measuring real elapsed time, they measure **causal precedence** — whether one event could have influenced another.
 
@@ -51,7 +51,7 @@ Two events $e_1$ and $e_2$ are **concurrent**, written $e_1 \parallel e_2$, if n
 
 $$e_1 \parallel e_2 \iff \neg(e_1 \rightarrow e_2) \land \neg(e_2 \rightarrow e_1)$$
 
-Concurrent events are not just events that happen "at the same time" — they are events that have no causal relationship whatsoever. Because no information flowed between them, their relative order has no meaning for system correctness. This is important: a distributed system need not assign a consistent global order to concurrent events, and requiring one would be an over-constraint that limits performance (this tension is at the heart of the [[CSE452/Consistency/CAP Theorem and Partitions|CAP Theorem]]).
+Concurrent events are not just events that happen "at the same time" — they are events that have no causal relationship whatsoever. Because no information flowed between them, their relative order has no meaning for system correctness. This is important: a distributed system need not assign a consistent global order to concurrent events, and requiring one would be an over-constraint that limits performance (this tension is at the heart of the [[Distributed Systems/Consistency/Theoretical Foundations|CAP Theorem]]).
 
 ---
 
@@ -98,7 +98,7 @@ Two main algorithms implement logical clocks, each with different expressive pow
 - [[Vector Clock Algorithm|Vector Clock Algorithm]] — bidirectional causality and concurrency detection
 - [[Vector Clock Pruning|Vector Clock Pruning]] — scalability trade-offs when managing large vector clock state
 - [[System State|System State]] — stable and unstable properties; invariants used in correctness proofs
-- [[CSE452/Consistency/CAP Theorem and Partitions|CAP Theorem]] — why total ordering of all events is incompatible with availability under partitions
+- [[Distributed Systems/Consistency/Theoretical Foundations|CAP Theorem]] — why total ordering of all events is incompatible with availability under partitions
 - [[Fault Model|Fault Model]] — how message drops and delays impact the happens-before relation
 - [[Knowledge|Knowledge in Distributed Systems]] — epistemic foundations of what nodes can know about each other's state
 - [[Threads Overview|Threads Overview (CSE451)]] — OS-level concurrency; compare with distributed event ordering

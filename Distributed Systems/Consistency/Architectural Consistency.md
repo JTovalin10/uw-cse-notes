@@ -1,4 +1,4 @@
-# CSE452: Architectural Consistency
+# Distributed Systems: Architectural Consistency
 
 Architectural consistency covers how consistency guarantees are implemented in physical hardware (CPUs) and through distributed caching layers.
 

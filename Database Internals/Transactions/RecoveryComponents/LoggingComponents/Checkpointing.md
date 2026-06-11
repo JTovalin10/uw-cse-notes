@@ -1,4 +1,4 @@
-# CSE444: Checkpointing
+# Database Internals: Checkpointing
 
 **Checkpointing** is a technique used to bound the recovery time after a system crash. Without checkpointing, the Recovery Manager would have to scan the entire log from the beginning of time to restore consistency.
 
@@ -57,7 +57,7 @@ The database must be **frozen** during the checkpoint. For high-throughput syste
 
 ### Procedure
 1. **START CKPT**: Write `<START CKPT(T1, ..., Tk)>` to the log, where $T_1, \dots, T_k$ are all currently active transactions. Flush the log.
-2. **Flush Dirty Pages**: Begin flushing dirty pages to disk. This includes pages from already-committed transactions that haven't been written yet. **Transactions continue to run during this phase.**
+2. **Flush Dirty Pages**: Begin flushing dirty pages to disk. This includes pages from already-committed transactions that have not been written yet. **Transactions continue to run during this phase.**
 3. **END CKPT**: Once all dirty pages that existed at the time of `<START CKPT>` are flushed, write `<END CKPT>` and flush the log.
 
 ### Concrete Example: Interleaved Log Sequence
@@ -79,14 +79,14 @@ If a crash occurs after `<START CKPT>` but before `<END CKPT>`, the checkpoint i
 
 - **Detection**: During the Analysis Phase, the Recovery Manager finds a `<START CKPT>` without a matching `<END CKPT>`.
 - **Action**: The system must ignore the incomplete checkpoint and search backward for the **previous** successful `<END CKPT>`.
-- **Why?**: The `<END CKPT>` is the only guarantee that the pages dirty at the time of `<START CKPT>` actually reached stable storage. Without it, we don't know which updates made it to disk, so we must assume none did and re-process from an older, known-good state.
+- **Why?**: The `<END CKPT>` is the only guarantee that the pages dirty at the time of `<START CKPT>` actually reached stable storage. Without it, we do not know which updates made it to disk, so we must assume none did and re-process from an older, known-good state.
 
 ![[Undo with Nonquiescent Checkpointing.png]]
 ![[Nonquiescent Checkpointing 2.png]]
 
 ## Fuzzy Checkpointing (ARIES)
 
-Fuzzy checkpointing (used in [[CSE444/Transactions/Recovery/RecoveryComponents/ARIES|ARIES]]) is the most advanced optimization. It avoids the heavy cost of flushing all dirty pages at checkpoint time.
+Fuzzy checkpointing (used in [[Database Internals/Transactions/RecoveryComponents/ARIES|ARIES]]) is the most advanced optimization. It avoids the heavy cost of flushing all dirty pages at checkpoint time.
 
 ### Mechanism
 Instead of flushing data, ARIES simply records the **state** of the system:
@@ -99,7 +99,7 @@ Instead of flushing data, ARIES simply records the **state** of the system:
 3. Update the **Master Record** (a fixed location on disk) to point to this new `<START CKPT>`.
 
 ### The "Fuzzy" Aspect
-Because ARIES uses **Redo-Logging** with the `recLSN`, it doesn't need to force pages to disk during the checkpoint. The Redo Phase will simply start from `min(recLSN)` found in the DPT. This allows checkpoints to be extremely fast (near-instantaneous) as they only involve writing a small amount of metadata to the log.
+Because ARIES uses **Redo-Logging** with the `recLSN`, it does not need to force pages to disk during the checkpoint. The Redo Phase will simply start from `min(recLSN)` found in the DPT. This allows checkpoints to be extremely fast (near-instantaneous) as they only involve writing a small amount of metadata to the log.
 
 ## Industry Standard Terms
 - **Quiescent Checkpoint** $\rightarrow$ Stop-the-world Checkpoint / Consistent Checkpoint
@@ -108,6 +108,6 @@ Because ARIES uses **Redo-Logging** with the `recLSN`, it doesn't need to force 
 - **Master Record** $\rightarrow$ Control File / Checkpoint LSN Pointer
 
 ## Related
-- [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/ARIES|ARIES Recovery Algorithm]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]
+- [[Database Internals/Transactions/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]
+- [[Database Internals/Transactions/RecoveryComponents/ARIES|ARIES Recovery Algorithm]]
+- [[Database Internals/Transactions/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]

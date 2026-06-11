@@ -1,4 +1,4 @@
-# CSE452: Idempotence
+# Distributed Systems: Idempotence
 
 ## What is Idempotence?
 

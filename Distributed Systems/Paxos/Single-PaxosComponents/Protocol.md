@@ -1,4 +1,4 @@
-# CSE452: The Paxos Protocol
+# Distributed Systems: The Paxos Protocol
 
 The Paxos protocol consists of two main phases to ensure that a single value is chosen safely.
 

@@ -1,4 +1,4 @@
-# CSE444: Deadlocks
+# Database Internals: Deadlocks
 
 A **deadlock** occurs in a database when two or more transactions are stuck in a circular dependency, each waiting for a lock held by another in the group. Because none can proceed, they would wait forever unless the DBMS intervenes.
 
@@ -41,10 +41,10 @@ A simpler, "lazy" approach:
 ## 3. Deadlock Recovery
 Once a deadlock is detected, the DBMS must break the cycle.
 
-1.  **Select a Victim**: Choose one transaction in the cycle to abort.
+1. **Select a Victim**: Choose one transaction in the cycle to abort.
     - **Criteria**: Usually the transaction with the least amount of work done, the fewest locks held, or the one that started most recently.
-2.  **Rollback**: Abort the victim and release all its locks.
-3.  **Notify and Retry**: The other transactions in the cycle can now proceed. The victim is notified and typically retries after a short delay.
+2. **Rollback**: Abort the victim and release all its locks.
+3. **Notify and Retry**: The other transactions in the cycle can now proceed. The victim is notified and typically retries after a short delay.
 
 ---
 
@@ -63,7 +63,12 @@ Instead of detecting deadlocks after they happen, some systems try to prevent th
 
 ---
 
+## Industry Standard Terms
+- **Wait-For Graph** $\rightarrow$ Lock dependency graph / Waits-for graph (universal term)
+- **Deadlock Detection** $\rightarrow$ Cycle detection in lock manager
+- **Victim Selection** $\rightarrow$ Deadlock victim / Transaction rollback selection
+- **Pre-defined Lock Ordering** $\rightarrow$ Lock hierarchy / Resource ordering
+
 ## Related
-- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Locking]]
-- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|The Locking Scheduler]]
-- [[Operating Systems/Concurrency/Problems/Deadlocks|Deadlocks (CSE451)]]
+- [[Database Internals/Transactions/PessimisticComponents/Pessimistic Scheduler|Locking]]
+- [[Database Internals/Transactions/PessimisticComponents/Two-Phase Locking (2PL)|Two-Phase Locking (2PL)]]

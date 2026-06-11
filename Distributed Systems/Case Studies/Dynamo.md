@@ -1,12 +1,12 @@
-# CSE452: Dynamo
+# Distributed Systems: Dynamo
 
-**[[Dynamo|Dynamo]]** is Amazon's highly available, eventually consistent key-value store. It was designed to provide "always-on" write availability for services like the shopping cart, prioritizing availability over strong consistency.
+**Dynamo** is Amazon's highly available, eventually consistent key-value store. It was designed to provide "always-on" write availability for services like the shopping cart, prioritizing availability over strong consistency.
 
 ---
 
 ## Core Philosophy: Availability > Consistency
 
-In the context of the **[[Theoretical Foundations#CAP Theorem|CAP Theorem]]**, Dynamo chooses **Availability** and **Partition Tolerance** (AP) over **Consistency** (CP). 
+In the context of the **[[Distributed Systems/Consistency/Theoretical Foundations|CAP Theorem]]**, Dynamo chooses **Availability** and **Partition Tolerance** (AP) over **Consistency** (CP). 
 
 ### Business Motivation
 - **Revenue and Latency**: Amazon's research showed that even small increases in latency (the **tail latency**, specifically the 99.9th percentile) directly correlate to a drop in revenue. 
@@ -86,7 +86,7 @@ The rule **$R + W > N$** is the *same* quorum-intersection idea that makes [[Pax
 
 ### Anti-Entropy via Merkle Trees
 
-To keep replicas in sync in the background, Dynamo compares them with **Merkle trees**: each replica hashes its key-range into a tree, and two replicas exchange only the tree nodes that differ, syncing just the divergent ranges instead of scanning everything. This is the **same Merkle-tree structure Bitcoin uses** to compact blocks ([[Bitcoin#Reclaiming Disk Space|Reclaiming Disk Space]]) — a recurring tool for cheaply detecting "what's different between two big things."
+To keep replicas in sync in the background, Dynamo compares them with **Merkle trees**: each replica hashes its key-range into a tree, and two replicas exchange only the tree nodes that differ, syncing just the divergent ranges instead of scanning everything. This is the **same Merkle-tree structure Bitcoin uses** to compact blocks ([[Distributed Systems/Case Studies/Bitcoin#Reclaiming Disk Space|Reclaiming Disk Space]]) — a recurring tool for cheaply detecting "what's different between two big things."
 
 ### The Lineage: Cassandra and CRDTs
 
@@ -107,7 +107,7 @@ To keep replicas in sync in the background, Dynamo compares them with **Merkle t
 ---
 
 ## Related
-- [[Theoretical Foundations#CAP Theorem|CAP Theorem]] — the theoretical basis for Dynamo's design
-- [[Vector Clock Algorithm|Vector Clock Algorithm]] — the formal mechanism for tracking causality
-- [[Sharding|Sharding]] — the general concept of partitioning data across nodes
-- [[Key Takeaways|Key Takeaways in Performance and Durability]] — broader context on why Dynamo's trade-offs matter
+- [[Distributed Systems/Consistency/Theoretical Foundations|CAP Theorem]] — the theoretical basis for Dynamo's design
+- [[Distributed Systems/Clocks/Vector Clock Algorithm|Vector Clock Algorithm]] — the formal mechanism for tracking causality
+- [[Distributed Systems/Sharding/Sharding|Sharding]] — the general concept of partitioning data across nodes
+- [[Distributed Systems/Case Studies/Key Takeaways|Key Takeaways in Performance and Durability]] — broader context on why Dynamo's trade-offs matter

@@ -1,4 +1,4 @@
-# CSE452: ShardMaster
+# Distributed Systems: ShardMaster
 
 The **ShardMaster** is the fault-tolerant metadata service that manages [[Configuration|configurations]] and shard assignments.
 

@@ -1,4 +1,4 @@
-# CSE452: Consistency
+# Distributed Systems: Consistency
 
 A **consistency model** is a contract between a distributed system and the programmer. It answers the question: *What executions of a replicated state machine are correct?* This file is the navigation hub for all consistency topics — each subtopic is covered in depth in its own file.
 

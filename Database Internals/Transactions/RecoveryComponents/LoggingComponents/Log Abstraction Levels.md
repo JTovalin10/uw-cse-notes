@@ -1,4 +1,4 @@
-# CSE444: Log Abstraction Levels
+# Database Internals: Log Abstraction Levels
 
 The **abstraction level** of a log record determines what information is stored and how it is replayed during recovery. Choosing the right level is a trade-off between log size (storage/IO) and recovery speed (CPU/complexity).
 
@@ -6,7 +6,7 @@ The **abstraction level** of a log record determines what information is stored 
 
 | Type | Description | Pros | Cons |
 |------|-------------|------|------|
-| **Physical Logging** | Records exact byte-level changes (e.g., "In page 50, change bytes 10–20 to `'ABC'`). | Fast to replay; idempotent by nature. | Produces massive log files; sensitive to physical layout changes. |
+| **Physical Logging** | Records exact byte-level changes (e.g., "In page 50, change bytes 10–20 to `'ABC'`"). | Fast to replay; idempotent by nature. | Produces massive log files; sensitive to physical layout changes. |
 | **Logical Logging** | Records high-level SQL-like operations (e.g., "Insert tuple `'John'` into Users"). | Very compact log records. | Hard to make idempotent (e.g., `x = x + 1`); extremely complex to replay correctly during recovery. |
 | **Physiological Logging** | Records logical changes *within* a specific physical page (e.g., "In page 50, insert record `X`"). | Compact and efficient to replay; industry standard. | Requires more CPU than physical logging to interpret the intra-page logic. |
 
@@ -45,31 +45,31 @@ Logical logging often records transitions, which are dangerous to replay.
 
 ## Physiological Logging and PageLSN
 
-Modern DBMSs like [[CSE444/Transactions/Recovery/RecoveryComponents/ARIES|ARIES]] use **Physiological Logging** combined with a **PageLSN** to achieve idempotency for non-idempotent logical operations.
+Modern DBMSs like [[Database Internals/Transactions/RecoveryComponents/ARIES|ARIES]] use **Physiological Logging** combined with a **PageLSN** to achieve idempotency for non-idempotent logical operations.
 
 ### Mechanism Walkthrough: Ensuring Idempotency
 Every data page on disk contains a **PageLSN** header, which stores the **Log Sequence Number (LSN)** of the latest update applied to that page.
 
-1.  **Analyze Log Record**: The recovery manager reads a log record: `[LSN: 500, Page: 10, Op: Add 10 to Balance]`.
-2.  **Fetch Page**: Page 10 is fetched from disk into the buffer pool.
-3.  **Compare LSNs**:
+1. **Analyze Log Record**: The recovery manager reads a log record: `[LSN: 500, Page: 10, Op: Add 10 to Balance]`.
+2. **Fetch Page**: Page 10 is fetched from disk into the buffer pool.
+3. **Compare LSNs**:
     - **Case A (`PageLSN < 500`)**: The change in the log record (LSN 500) has **not** been applied to this physical page yet (or was lost in a crash). The system applies the "Add 10" operation and updates the header to `PageLSN = 500`.
     - **Case B (`PageLSN >= 500`)**: The change was already written to disk before the crash. The system **skips** the operation.
-4.  **Result**: Even if the "Add 10" operation is replayed multiple times, the `PageLSN` check ensures it is only executed once against the actual data.
+4. **Result**: Even if the "Add 10" operation is replayed multiple times, the `PageLSN` check ensures it is only executed once against the actual data.
 
 ## Why Physiological?
 1. **Concurrency**: It allows for page-level physical consistency while supporting high-level database operations.
 2. **Idempotency**: It solves the transition problem via the `PageLSN` check.
-3. **Efficiency**: It is much smaller than physical logging (doesn't log every byte) but much easier to implement than pure logical logging.
+3. **Efficiency**: It is much smaller than physical logging (does not log every byte) but much easier to implement than pure logical logging.
 4. **Structural Flexibility**: Unlike pure physical logging, it can handle intra-page re-organizations (e.g., vacuuming or slot compaction) as long as the logical record insertion remains consistent within the page.
 
 ## Industry Standard Terms
-- **Physical Logging**: Value Logging / State Logging
-- **Logical Logging**: Operation Logging / Command Logging
-- **Physiological Logging**: Page-Oriented Logical Logging
-- **PageLSN**: Page Version / Timestamp
+- **Physical Logging** $\rightarrow$ Value Logging / State Logging
+- **Logical Logging** $\rightarrow$ Operation Logging / Command Logging
+- **Physiological Logging** $\rightarrow$ Page-Oriented Logical Logging
+- **PageLSN** $\rightarrow$ Page Version / Timestamp
 
 ## Related
-- [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/ARIES|ARIES Recovery Algorithm]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]
+- [[Database Internals/Transactions/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]
+- [[Database Internals/Transactions/RecoveryComponents/ARIES|ARIES Recovery Algorithm]]
+- [[Database Internals/Transactions/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]

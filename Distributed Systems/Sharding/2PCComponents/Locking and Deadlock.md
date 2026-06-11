@@ -1,4 +1,4 @@
-# CSE452: 2PC Locking and Deadlock
+# Distributed Systems: 2PC Locking and Deadlock
 
 Locking is how [[Phases and Roles|2PC]] enforces serializability across groups. Every lock acquired during the Prepare phase is held until `COMMIT` or `ABORT` — preventing any other transaction from reading or writing those keys while this one is in flight.
 

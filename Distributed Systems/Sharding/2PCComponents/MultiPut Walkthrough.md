@@ -1,4 +1,4 @@
-# CSE452: 2PC MultiPut Walkthrough
+# Distributed Systems: 2PC MultiPut Walkthrough
 
 This is a concrete step-by-step trace of [[Transactions|Two-Phase Commit (2PC)]] applied to a `MultiPut({k1: v1}, {k2: v2})` operation across two [[Replica Group|replica groups]]. Each step shows the messages exchanged and the state of each group's [[Log Operations|log]].
 
@@ -126,6 +126,56 @@ sequenceDiagram
     G2-->>G1: CommitOK
     G1-->>C: Success
 ```
+
+---
+
+## Cross-Shard Walkthrough: Lecture Log Notation
+
+The following is the same bank-transfer scenario from the lecture — `checking_bal` on Group 1 (coordinator), `savings_bal` on Group 2 (participant) — shown using the lecture's log naming (see [[Phases and Roles|Phases and Roles: Lecture vs. Lab Terminology]] for the mapping).
+
+The client sends RPCs sequentially. Each shard **Paxos-replicates** every lock acquisition before the lock takes effect.
+
+**Transaction execution (before any prepare):**
+
+```
+Coordinator (Leader 1) Log:           Participant (Leader 2) Log:
+  1. A: Transaction start(coord)         1. A: Transaction start(part)
+  2. A: Lock(R, checking_bal)            2. A: Lock(R, savings_bal)
+  3. A: Lock(W, checking_bal)
+  4. A: Write(checking_bal, 100)
+```
+
+The client decides it wants to commit and sends `commit(A)` to the coordinator.
+
+**Phase 1 — Prepare:**
+
+The coordinator logs `Coordinator prepared` and sends `prepare(A)` to all shards. Each participant logs `Prepared` and responds `ready(A)`.
+
+```
+Coordinator (Leader 1) Log:           Participant (Leader 2) Log:
+  1. A: Transaction start(coord)         1. A: Transaction start(part)
+  2. A: Lock(R, checking_bal)            2. A: Lock(R, savings_bal)
+  3. A: Lock(W, checking_bal)            3. A: Lock(W, savings_bal)
+  4. A: Write(checking_bal, 100)         4. A: Write(savings_bal, 100)
+  5. A: Coordinator prepared             5. A: Prepared
+```
+
+**Phase 2 — Commit:**
+
+All shards voted ready. The coordinator logs `Commit` and broadcasts `commit(A)` to all participants. Each participant logs `Committed`, writes its tentative values to durable storage, then logs `Unlock`.
+
+```
+Coordinator (Leader 1) Log:           Participant (Leader 2) Log:
+  1. A: Transaction start(coord)         1. A: Transaction start(part)
+  2. A: Lock(R, checking_bal)            2. A: Lock(R, savings_bal)
+  3. A: Lock(W, checking_bal)            3. A: Lock(W, savings_bal)
+  4. A: Write(checking_bal, 100)         4. A: Write(savings_bal, 100)
+  5. A: Coordinator prepared             5. A: Prepared
+  6. A: Commit                           6. A: Committed
+  7. A: Unlock(checking_bal)             7. A: Unlock(savings_bal)
+```
+
+The coordinator sends the final `commit(A)` acknowledgment to the client. Both KV stores are updated atomically.
 
 ---
 

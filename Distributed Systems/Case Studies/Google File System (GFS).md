@@ -1,4 +1,4 @@
-# CSE452: Google File System (GFS)
+# Distributed Systems: Google File System (GFS)
 
 **Google File System (GFS)** is a scalable distributed file system for large distributed data-intensive applications. It provides fault tolerance while running on inexpensive commodity hardware, and it delivers high aggregate performance to a large number of clients.
 
@@ -73,7 +73,7 @@ Standard appends can suffer from "lost writes" if multiple clients write to the 
 
 GFS provides a relaxed consistency model to maintain high performance.
 
-- **Metadata**: Operations (like file creation) are **[[Linearizability|linearizable]]** because they are handled by a single master.
+- **Metadata**: Operations (like file creation) are **[[Distributed Systems/Consistency/Definitions/Linearizability|linearizable]]** because they are handled by a single master.
 - **Data**: Data is **not linearizable**. Different replicas may be slightly out of sync or contain duplicates due to failed appends.
 - **Defined vs. Consistent**:
     - **Consistent**: All clients see the same data, regardless of which replica they read from.
@@ -94,9 +94,9 @@ The single master is GFS's defining simplification *and* its scaling ceiling: be
 
 ### Cross-Course Connections
 
-- **Chunk = shard + replica.** A chunk replicated across chunkservers is [[Sharding|sharding]] plus replication — the same partition-then-replicate pattern used by [[Big Table|Big Table]] tablets and [[Dynamo|Dynamo]]'s preference list.
+- **Chunk = shard + replica.** A chunk replicated across chunkservers is [[Distributed Systems/Sharding/Sharding|sharding]] plus replication — the same partition-then-replicate pattern used by [[Distributed Systems/Case Studies/Big Table|Big Table]] tablets and [[Distributed Systems/Case Studies/Dynamo|Dynamo]]'s preference list.
 - **Volatile chunk locations = soft state.** The master rebuilds its chunk-location table by **polling chunkservers on reboot** rather than reading it from disk. The chunkservers — not the master's disk — are the authoritative source of "who has what," so the master can lose that table and reconstruct it. This is the classic *soft-state* pattern.
-- **Relaxed consistency is pushed up into the application.** Because Record Append is only *at-least-once*, every consumer — [[MapReduce|MapReduce]], [[Big Table|Big Table]] — must carry its own checksums and deduplication to tolerate the duplicate/padded records GFS may leave. That is a concrete instance of the [[Key Takeaways#Pushing Complexity to the Application|push-complexity-to-the-application]] strategy: the storage layer stays fast and simple, and correctness is finished off above it.
+- **Relaxed consistency is pushed up into the application.** Because Record Append is only *at-least-once*, every consumer — [[Distributed Systems/Case Studies/MapReduce|MapReduce]], [[Distributed Systems/Case Studies/Big Table|Big Table]] — must carry its own checksums and deduplication to tolerate the duplicate/padded records GFS may leave. That is a concrete instance of the [[Distributed Systems/Case Studies/Key Takeaways|push-complexity-to-the-application]] strategy: the storage layer stays fast and simple, and correctness is finished off above it.
 
 ## Industry Standard Terms
 
@@ -113,8 +113,8 @@ The single master is GFS's defining simplification *and* its scaling ceiling: be
 
 ## Related
 
-- [[Big Table|Big Table]] — uses GFS as its underlying storage layer
-- [[Key Takeaways|Key Takeaways in Performance and Durability]] — summary of the principles GFS uses
-- [[Linearizability|Linearizability]] — why GFS only provides this for metadata
+- [[Distributed Systems/Case Studies/Big Table|Big Table]] — uses GFS as its underlying storage layer
+- [[Distributed Systems/Case Studies/Key Takeaways|Key Takeaways in Performance and Durability]] — summary of the principles GFS uses
+- [[Distributed Systems/Consistency/Definitions/Linearizability|Linearizability]] — why GFS only provides this for metadata
 - [[CSE451/Persistence/File Systems|File Systems (CSE451)]] — traditional file system concepts contrasted with GFS
 - [[CSE351/Number Representation/Number Representation|Number Representation (CSE351)]] — underlying data storage concepts

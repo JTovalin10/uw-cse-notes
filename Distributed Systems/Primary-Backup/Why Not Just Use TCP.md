@@ -1,4 +1,4 @@
-# CSE452: Why Not Just Use TCP?
+# Distributed Systems: Why Not Just Use TCP?
 
 ## What TCP Promises
 

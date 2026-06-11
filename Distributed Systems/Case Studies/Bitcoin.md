@@ -1,60 +1,6 @@
-# CSE452: Bitcoin
+# Distributed Systems: Bitcoin
 
-**[[Bitcoin|Bitcoin]]** is a peer-to-peer electronic cash system that lets parties transact directly without a trusted financial institution. Its central contribution is solving the **double-spend** problem in a decentralized setting.
-
-> Me: A **double-spend (DS)** means the same currency is spent more than once (unauthorized / fraudulent).
-
-## In-Class
-- double spend
-	- key issue we want to prevent
-		- traditional banking just has trust, however middle man checks
-	- key idea:
-		- prevent it by knowing all previous transactions and rejecting a new txn that double spends
-			- global ordering
-- consensus would solve this problem
-	- linearizability -> global order of operations
-		- accept the first spend, reject second
-	- is multipaxo's a bitcoin alternative
-		- bitcoin allows variable number of nodes
-			- peer-to-peer system and decentralized
-		- paxos cant do this
-		- need to consider adversarial nodes
-			- byzantine failures (do not trust all nodes)
-- bitcoin: byzantine P2P consensus
-	- similar:
-		- Byzantine Fault Tolerance (BFT)
-			- version of paxos
-				- is someone lies to us then it breaks the protocol
-			- if all nodes are dishonest, no protocol works
-			- super majority (>2n/3)
-				- if assume 1/3 of nodes are dishonest
-- digital signatures
-	- signature
-		- guarantees of authentically
-		- data that has signature appended
-	- public/private key cryptography
-		- key pair: (public key, private key)
-		- we use private key to sign, public key to check signature
-- transfers of ownership
-	- public/private solves transfer problem
-- proof of work
-	- puzzle that is only solvable with brute force
-	- each block requires a new solution
-	- voting power is proportional to computational power
-	- hash of block, SHA-256, resulting hash has N leading zeros
-		- N is adjustable
-			- finding N is exponential
-			- more computational power means increasing leading zeros
-			- normalized to one block every 10 minutes
-		- increment noonce + rehash until you find a nonce that gives a hash with N leading zeros
-- conseus
-	- chain of blocks
-		- can be more than 1 (fork)
-			- longest chain wins
-			- if a tie occurs then however gets the next one win
-			- 
-## Reading
----
+**Bitcoin** is a peer-to-peer electronic cash system that lets parties transact directly without a trusted financial institution. Its central contribution is solving the **double-spend** problem in a decentralized setting. A **double-spend** means the same currency is spent more than once — in traditional banking this is prevented by a trusted central authority (a mint or bank) that verifies each transaction, but Bitcoin removes that central authority entirely.
 
 ## Motivation: Why Decentralize?
 
@@ -72,6 +18,42 @@
 - Use a **peer-to-peer distributed timestamp server** to generate computational proof of the **chronological order** of transactions (who owns which coin at what time).
 - The system is secure as long as **more than 50% of the CPU power** is collectively controlled by honest nodes.
 
+## Why Not Classical Consensus?
+
+The intuitive fix for double-spending is [[Distributed Systems/Paxos/Paxos|consensus]] with [[Distributed Systems/Consistency/Definitions/Linearizability|linearizability]] — establish a global order of operations, accept the first spend, and reject the second. [[Distributed Systems/Paxos/Multi-Paxos|Multi-Paxos]] could technically solve this, but it is unsuitable for Bitcoin for two reasons:
+
+1. **Variable, open membership**: Bitcoin is a peer-to-peer system where any node can join or leave at any time. Paxos requires a fixed, known set of nodes to count votes.
+2. **Adversarial nodes**: In a public network, nodes cannot be trusted — any node might lie or behave maliciously (**Byzantine failures**). Standard Paxos breaks entirely if any node lies.
+
+Bitcoin's solution is a form of **Byzantine P2P consensus** that resembles **Byzantine Fault Tolerance (BFT)**, but with an important twist. Classical BFT requires a **supermajority (>2n/3)** of honest nodes among a known, fixed participant set — if 1/3 or more of nodes are dishonest, no BFT protocol can work. Bitcoin replaces vote counting with **proof-of-work**, tying voting power to computational resources rather than node identity, so membership can be open and anonymous.
+
+### Digital Signatures and Ownership
+
+A **digital signature** is data appended to a message that guarantees authenticity. Bitcoin uses **public/private key cryptography**:
+
+- **Key pair**: each participant holds a `(public key, private key)` pair.
+- **Signing**: the owner uses their **private key** to sign a transaction.
+- **Verification**: anyone can use the **public key** to verify the signature is genuine.
+
+This solves the transfer-of-ownership problem: to pay someone, you sign a hash of the previous transaction together with the recipient's public key, creating a cryptographic link that anyone can verify.
+
+### Proof-of-Work
+
+**Proof-of-work** is a puzzle that is computationally expensive to solve but cheap to verify — it can only be solved by brute force. The mechanics:
+
+- Each block includes a **nonce** (a number the miner chooses).
+- The miner repeatedly increments the nonce and rehashes the block using **SHA-256** until the resulting hash has $N$ leading zero bits.
+- Finding a valid nonce is exponential in $N$; verifying it is a single hash computation.
+- $N$ is **adjustable** — the network targets one block every 10 minutes, increasing $N$ as total CPU power grows.
+- **Voting power** is proportional to computational power. This is effectively one-CPU-one-vote, making it expensive to acquire a dishonest majority.
+
+### Chain of Blocks and Forks
+
+Accepted transactions are organized into a **chain of blocks**. A chain can fork when two nodes find valid proof-of-work for the same block height simultaneously:
+
+- The **longest chain wins** — nodes always extend the longest valid chain they know about.
+- If a tie occurs, nodes work on the first branch they received and save the other; when the next proof-of-work is found, one branch becomes longer and the shorter one is abandoned.
+
 ## Transactions
 
 A coin is defined as a **chain of digital signatures**. An owner transfers the coin to the next owner by **signing a hash of the previous transaction together with the public key of the next owner**, and appending this to the end of the coin's chain.
@@ -84,8 +66,6 @@ A coin is defined as a **chain of digital signatures**. An owner transfers the c
   - We need proof that, at the time of each transaction, the **majority of nodes agreed** it was the first one received.
 
 ### What Gets Signed and Hashed
-
-> Me: This is the part that wasn't obvious to me — what actually goes *into* the hash.
 
 Each transaction commits to its predecessor by hashing two things together:
 
@@ -147,7 +127,7 @@ Every honest node doing this in parallel is what makes the chain grow, and it is
 
 The **longest chain** is considered correct, and nodes keep extending it.
 
-> Me: Wouldn't storing every block forever cause unbounded memory growth? → see [Reclaiming Disk Space](#reclaiming-disk-space) (compaction).
+Storing every block forever would cause unbounded memory growth — see [Reclaiming Disk Space](#reclaiming-disk-space) below for how Bitcoin addresses this via compaction.
 
 ### Ties (Forks)
 
@@ -155,7 +135,7 @@ The **longest chain** is considered correct, and nodes keep extending it.
 - Nodes **work on the first version they received** but **save the other branch** in case it becomes longer.
 - The tie breaks when the **next proof-of-work is found**: one branch becomes longer, and nodes on the shorter branch **switch** to the longer one.
 
-> Me: Does switching require full state transfer, or just sending the missing blocks?
+Switching to a longer branch does not require full state transfer — nodes only need to receive the missing blocks from the winning branch, which they request once they notice a gap.
 
 ### Dropped Messages
 
@@ -242,6 +222,7 @@ The Merkle tree Bitcoin uses for block compaction is the *same* structure [[Dyna
 ---
 
 ## Related
-- [[Key Takeaways|Key Takeaways]] — recurring strategies across distributed systems case studies
-- [[Theoretical Foundations#CAP Theorem|CAP Theorem]] — Bitcoin favors availability and partition tolerance, accepting eventual agreement on the longest chain
-- [[Dynamo|Dynamo]] — another system that resolves conflicting histories without a central authority
+- [[Distributed Systems/Case Studies/Key Takeaways|Key Takeaways in Performance and Durability]] — recurring strategies across distributed systems case studies
+- [[Distributed Systems/Consistency/Theoretical Foundations|CAP Theorem]] — Bitcoin favors availability and partition tolerance, accepting eventual agreement on the longest chain
+- [[Distributed Systems/Case Studies/Dynamo|Dynamo]] — another system that resolves conflicting histories without a central authority
+- [[Distributed Systems/Consistency/Weak Consistency Models|Weak Consistency Models]] — eventually consistent ledger and conflict resolution

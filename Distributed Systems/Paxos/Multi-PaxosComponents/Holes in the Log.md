@@ -1,4 +1,4 @@
-# CSE452: Holes in the Log
+# Distributed Systems: Holes in the Log
 
 A **hole** is an empty slot in the log. Because Multi-Paxos execution is sequential, a hole at slot $n$ blocks the [[Deterministic State Machine|state machine]] from executing any commands in slots $n+1, n+2, \dots$, even if those later slots have already been decided.
 

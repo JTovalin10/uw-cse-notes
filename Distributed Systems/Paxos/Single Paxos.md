@@ -1,4 +1,4 @@
-# CSE452: Single Decree Paxos
+# Distributed Systems: Single Decree Paxos
 
 **Single Decree Paxos** is the core algorithm used to reach consensus on a **single value** in a distributed system. It serves as the atomic building block for more complex systems like [[Multi-Paxos|Multi-Paxos]].
 

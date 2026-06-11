@@ -1,4 +1,4 @@
-# CSE452: Sharding
+# Distributed Systems: Sharding
 
 **Sharding** (or **Partitioning**) is the architectural pattern of horizontally scaling a system by dividing a single logical dataset into multiple smaller, autonomous subsets called **shards**. While [[Primary Backup|Replication]] solves for **Availability** and **Fault Tolerance** by duplicating data, Partitioning solves for **Throughput** and **Capacity** by distributing the storage and computational burden across a cluster of independent nodes.
 - Divides keyspace (the **K** in K/V) into multiple subsets, called **shards**
@@ -114,10 +114,10 @@ To support operations that span multiple shards (and thus multiple groups), the 
 
 The **ShardMaster** in Lab 4 is essentially a **fault-tolerant, multi-group View Server**.
 
-| Feature | [[CSE452/Primary-Backup/View Server|View Server]] (Lab 2) | ShardMaster (Lab 4) |
+| Feature | [[Distributed Systems/Primary-Backup/View Server|View Server]] (Lab 2) | ShardMaster (Lab 4) |
 | :--- | :--- | :--- |
-| **Control Unit** | A single **View** (Primary/Backup pair). | A sequence of **Configurations** (Multi-Group mapping). |
-| **Consensus Engine** | Single node (SPOF) or hardcoded logic. | **[[CSE452/Paxos/Multi-Paxos|Multi-Paxos]]** (Fully fault-tolerant consensus). |
+| **Control Unit** | A single **[[Distributed Systems/Primary-Backup/View Server|View]]** (Primary/Backup pair). | A sequence of **[[Distributed Systems/Sharding/Definitions/Configuration|Configurations]]** (Multi-Group mapping). |
+| **Consensus Engine** | Single node (SPOF) or hardcoded logic. | **[[Distributed Systems/Paxos/Multi-Paxos|Multi-Paxos]]** (Fully fault-tolerant consensus). |
 | **Responsibility** | Manages 1 partition (the whole DB). | Manages $N$ partitions (shards) across $M$ groups. |
 | **State Transfer** | Primary $\to$ Backup on view change. | Group A $\to$ Group B on config change (shard migration). |
 

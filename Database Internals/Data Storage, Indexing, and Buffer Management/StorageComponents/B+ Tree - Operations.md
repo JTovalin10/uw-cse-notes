@@ -1,4 +1,6 @@
-# B+ Tree: Operations
+# Database Internals: B+ Tree - Operations
+
+The operations below work on a [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/B+ Tree - Properties and Structure|B+ Tree]] with degree $d$ — meaning every non-root node holds between $d$ and $2d$ keys. Each node corresponds to one disk page, so all costs below are in page reads/writes.
 
 ## API
 
@@ -48,4 +50,21 @@ Cost: $O(\log_{2d} n)$ page reads.
   - **Relaxed minimum fill**: allow fill to drop slightly below 50% to reduce cascading splits and merges on frequent updates
   - **Bulk loading**: sort data first, then build the B+ tree bottom-up — far faster than repeated single inserts
   - **Transaction-safe locking**: tree-specific locking protocols (e.g., crabbing/coupling) instead of locking the whole tree with Strict 2PL
-- For **multi-dimensional queries** (e.g., range on latitude AND longitude), B+ trees are inadequate — use **R-trees** or other spatial indexes instead
+- For **multi-dimensional queries** (e.g., range on latitude AND longitude), B+ trees are inadequate — use **R-trees** or other spatial indexes (see [[Database Internals/Data Storage, Indexing, and Buffer Management/Advanced Indexing|Advanced Indexing]]) instead
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| Split | Page split / node split |
+| Bulk Loading | Bottom-up build; sorted bulk insert |
+| Prefix Compression | Key compression; prefix truncation |
+| Crabbing / Lock Coupling | B-tree latch coupling (implementation-specific) |
+
+## Related
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/B+ Tree - Properties and Structure|B+ Tree - Properties and Structure]] — degree, fan-out, height, and occupancy constraints
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree]] — hub file
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Indexing|Indexing]] — clustered and unclustered indexes that use B+ trees

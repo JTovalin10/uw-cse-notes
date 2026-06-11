@@ -1,4 +1,4 @@
-# CSE452: Paxos Overview
+# Distributed Systems: Paxos Overview
 
 **Paxos** is the foundational algorithm for reaching consensus in a distributed system. It allows a cluster of nodes to agree on a single value (or a sequence of values) even when the network is unreliable and nodes may fail.
 

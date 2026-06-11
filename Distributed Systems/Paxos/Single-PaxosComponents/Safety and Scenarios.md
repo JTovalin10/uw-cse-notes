@@ -1,4 +1,4 @@
-# CSE452: Paxos Safety and Scenarios
+# Distributed Systems: Paxos Safety and Scenarios
 
 ## What "Chosen" Actually Means
 In Paxos, "chosen" is a property of the **system state**, not an action.

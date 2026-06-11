@@ -1,4 +1,4 @@
-# CSE452: State Transfer
+# Distributed Systems: State Transfer
 
 **State transfer** is the process of copying the full application state from the current primary to a newly promoted backup so it can participate in replication.
 

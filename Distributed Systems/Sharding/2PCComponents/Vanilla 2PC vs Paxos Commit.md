@@ -1,4 +1,4 @@
-# CSE452: Vanilla 2PC vs Paxos Commit
+# Distributed Systems: Vanilla 2PC vs Paxos Commit
 
 Classic 2PC with a single coordinator has a fundamental blocking problem. This file explains what that problem is, how Gray & Lamport's **Paxos Commit** solves it, and how this course's implementation already embodies the solution.
 

@@ -1,4 +1,4 @@
-# CSE452: Reconfiguration
+# Distributed Systems: Reconfiguration
 
 **Reconfiguration** is the process of updating the system state when the **[[ShardMaster|ShardMaster]]** issues a new **[[Configuration|Configuration]]**. This requires **[[Replica Group|Replica Groups]]** to hand off responsibility for specific **[[Shard|Shards]]** while maintaining **[[Linearizability|Linearizability]]**.
 

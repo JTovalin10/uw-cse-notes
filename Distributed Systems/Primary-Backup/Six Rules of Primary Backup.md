@@ -1,4 +1,4 @@
-# CSE452: Six Rules of Primary-Backup
+# Distributed Systems: Six Rules of Primary-Backup
 
 ---
 

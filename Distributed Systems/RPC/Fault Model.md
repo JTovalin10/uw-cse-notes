@@ -1,4 +1,4 @@
-# CSE452: Fault Model
+# Distributed Systems: Fault Model
 
 ## What is a Fault Model?
 

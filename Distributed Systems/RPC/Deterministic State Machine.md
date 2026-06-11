@@ -1,4 +1,4 @@
-# CSE452: Deterministic State Machine
+# Distributed Systems: Deterministic State Machine
 
 In the labs, this is called **Application**.
 

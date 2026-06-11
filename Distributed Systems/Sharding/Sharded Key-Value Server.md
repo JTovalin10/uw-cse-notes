@@ -1,4 +1,4 @@
-# CSE452: Sharded Key-Value Server
+# Distributed Systems: Sharded Key-Value Server
 
 Each **ShardStoreServer** operates as part of a **[[Replica Group|Replica Group]]**, serving client requests for the **[[Shard|Shards]]** assigned to it by the **[[ShardMaster|Shard Master]]**.
 
@@ -122,7 +122,7 @@ A `ShardStoreServer` receives four categories of incoming messages:
 | :--- | :--- | :--- |
 | `PaxosReply` | ShardMaster | Reply to a periodic `Query` poll; contains new `ShardConfig` if the configuration has changed. |
 | `ShardStoreRequest` | Clients | A KV operation (`SingleKeyCommand`) or a cross-group `Transaction` (Part 3). |
-| `ShardMove` / `ShardMoveAck` | Other ShardStoreServers | Shard data transfer during [[CSE452/Sharding/Reconfiguration|Reconfiguration]]. |
+| `ShardMove` / `ShardMoveAck` | Other ShardStoreServers | Shard data transfer during [[Distributed Systems/Sharding/Reconfiguration|Reconfiguration]]. |
 | `PaxosDecision` | Local Paxos Subnode | A command chosen by the Paxos group and ready to execute. |
 
 **Critical invariant**: A `ShardStoreServer` **cannot act on any message until it has been replicated** through Paxos. The only exception is an AMO cache hit — if the result for a given `(clientId, seqNum)` is already cached, the server can reply immediately without re-proposing. All `ShardMove`s and `SingleKeyCommand`s must be serialized on each shard via Paxos, even in the face of failures.

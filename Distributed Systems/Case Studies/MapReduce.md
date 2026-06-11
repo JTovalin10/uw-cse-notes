@@ -1,9 +1,8 @@
-# CSE452: MapReduce
+# Distributed Systems: MapReduce
 
 **MapReduce** is a programming model and runtime for building distributed programs that achieve good performance on very large datasets. The programmer writes two simple functions — a **map** and a **reduce** — and the framework handles distribution, scheduling, and fault tolerance across the cluster.
 
-> [!note] Companion note
-> This file covers MapReduce from the **distributed-systems** angle (the OSDI paper, the GFS substrate, the phase mechanics). For the **database** angle — jobs vs. tasks and slots, straggler/backup-task scheduling, the map→reduce skew barrier, and running relational query plans over MapReduce (with no transactions) — see [[Database Internals/Replication and Distribution/MapReduce|MapReduce (CSE444)]].
+This file covers MapReduce from the **distributed-systems** angle (the OSDI paper, the GFS substrate, the phase mechanics). For the **database** angle — jobs vs. tasks and slots, straggler/backup-task scheduling, the map→reduce skew barrier, and running relational query plans over MapReduce (with no transactions) — see the companion note in CSE444.
 
 ## History
 

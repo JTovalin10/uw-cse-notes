@@ -1,12 +1,6 @@
-# CSE444: Conflict Serializability
+# Database Internals: Conflict Serializability
 
 **Conflict Serializability** is a correctness criterion for concurrent schedules. It defines a schedule as "correct" if it is **conflict-equivalent** to some serial execution of the same transactions.
-
-### Formal Definition
-A schedule $S$ is **conflict serializable** if there exists some serial schedule $S'$ such that $S$ and $S'$ consist of the same set of actions and all pairs of **conflicting actions** are ordered the same way in both $S$ and $S'$.
-
-### Simplified Explanation
-If you can take a concurrent schedule and turn it into a serial one (one transaction at a time) just by swapping the order of actions that don't interfere with each other, then the schedule is conflict serializable.
 
 ## The Three Rules of Conflict
 Two actions in a schedule are said to **conflict** if they meet **all** of the following three criteria:
@@ -56,18 +50,30 @@ graph LR
 
 ## Relationship to Other Models
 
-| Property | Conflict Serializability | [[CSE444/Transactions/Serializability/View Serializability|View Serializability]] |
+| Property | Conflict Serializability | [[Database Internals/Transactions/Serializability/SerializabilityComponents/View Serializability|View Serializability]] |
 | :--- | :--- | :--- |
 | **Strictness** | Stricter (Fewer schedules allowed) | Weaker (More schedules allowed) |
 | **Computation** | Fast ($O(n^2)$ via graph) | Hard (NP-Complete) |
-| **Implementation** | Used by [[CSE444/Transactions/Pessimistic Components/Two-Phase Locking (2PL)|2PL]] | Mostly theoretical |
+| **Implementation** | Used by [[Database Internals/Transactions/PessimisticComponents/Two-Phase Locking (2PL)|2PL]] | Mostly theoretical |
 | **Handles Blind Writes?** | No | Yes |
+
+---
+
+## Formal Analysis
+
+### Formal Definition
+A schedule $S$ is **conflict serializable** if there exists some serial schedule $S'$ such that $S$ and $S'$ consist of the same set of actions and all pairs of **conflicting actions** are ordered the same way in both $S$ and $S'$.
+
+### Simplified Explanation
+If you can take a concurrent schedule and turn it into a serial one (one transaction at a time) just by swapping the order of actions that don't interfere with each other, then the schedule is conflict serializable.
+
+---
 
 ## Industry Standard Terms
 
-| CSE444 Term | Industry / Standard Term |
+| Course Term | Industry / Standard Term |
 | :--- | :--- |
-| **Conflict Serializability** | Serializability (Standard SQL 'SERIALIZABLE' often implies this) |
+| **Conflict Serializability** | Serializability (Standard SQL `SERIALIZABLE` often implies this) |
 | **Precedence Graph** | Serialization Graph |
 | **Conflict Equivalent** | Equivalent Schedule |
 | **Blind Write** | Overwrite without prior read |
@@ -75,8 +81,7 @@ graph LR
 ---
 
 ## Related
-- [[Serializability|Serializability Overview]]
-- [[CSE444/Transactions/Serializability/View Serializability|View Serializability]]
-- [[CSE444/Transactions/Pessimistic Components/Two-Phase Locking (2PL)|Two-Phase Locking (2PL)]] — the protocol that ensures conflict serializability
-- [[CSE444/Transactions/Pessimistic Components/Pessimistic Scheduler|Pessimistic Schedulers]]
-- [[CSE344/Transactions/Transactions|Transactions (CSE344)]] — introductory transaction concepts
+- [[Database Internals/Transactions/Serializability/Serializability|Serializability Overview]]
+- [[Database Internals/Transactions/Serializability/SerializabilityComponents/View Serializability|View Serializability]]
+- [[Database Internals/Transactions/PessimisticComponents/Two-Phase Locking (2PL)|Two-Phase Locking (2PL)]] — the protocol that ensures conflict serializability
+- [[Database Internals/Transactions/PessimisticComponents/Pessimistic Scheduler|Pessimistic Schedulers]]

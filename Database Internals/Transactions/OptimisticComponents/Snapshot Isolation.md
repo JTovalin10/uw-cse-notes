@@ -1,11 +1,11 @@
-# CSE444: Snapshot Isolation
+# Database Internals: Snapshot Isolation
 
-Snapshot Isolation (SI) is a multiversion concurrency control (MVCC) algorithm that provides each transaction with a consistent "frozen" view of the database. It is the industry standard for high-concurrency systems because it allows readers to execute without ever being blocked by writers.
+**Snapshot Isolation (SI)** is a multiversion concurrency control (MVCC) algorithm that provides each transaction with a consistent "frozen" view of the database. It is the industry standard for high-concurrency systems because it allows readers to execute without ever being blocked by writers.
 
 ---
 
 ## 1. The Core Concept: A Frozen View of the Past
-The fundamental rule of SI is that a transaction $T$ always sees the database exactly as it looked at the moment $T$ began. 
+The fundamental rule of SI is that a transaction $T$ always sees the database exactly as it looked at the moment $T$ began.
 - **Isolation**: $T$ is isolated from any changes committed by other transactions after its start time.
 - **No Blocking**: Because $T$ reads a "snapshot" of the past, it never has to wait for locks. If someone is currently writing to a record, $T$ simply reads the old version.
 - **First-Committer-Wins**: While reads are free, writes are restricted. If two transactions try to update the same record, the first one to commit succeeds, and the other is forced to abort.
@@ -28,15 +28,15 @@ During its execution, $T$ interleaves reading data and preparing changes:
 
 ### Phase 3: The Commit (The Final Gate)
 The actual **First-Committer-Wins** check happens only when $T$ attempts to finish:
-- **The Conflict Check**: The DBMS looks at the history of the database from $TS_{start}(T)$ to "Now." 
-- **Validation**: If any other transaction $U$ committed a change to $X$ during this window, $T$ is **aborted**. 
+- **The Conflict Check**: The DBMS looks at the history of the database from $TS_{start}(T)$ to "Now."
+- **Validation**: If any other transaction $U$ committed a change to $X$ during this window, $T$ is **aborted**.
 - **Finality**: If no conflicts are found, $T$ is assigned a finish timestamp and its buffered changes are made permanent.
 
 ### Summary of Sequence
 | Phase | Action | Purpose |
 | :--- | :--- | :--- |
 | **Start** | Set $TS_{start}$ | Define the "past" we are looking at. |
-| **Execution** | Apply Read Rule | Get a consistent view of data (Never blocks). |
+| **Execution** | Apply Read Rule | Get a consistent view of data (never blocks). |
 | **Execution** | Buffer Writes | Prepare changes in a private "draft." |
 | **Commit** | **Conflict Check** | **The Final Gate**: Prevent lost updates. |
 
@@ -99,14 +99,14 @@ Because old versions are never overwritten, the database accumulates "dead tuple
 
 | Property | Description |
 | :--- | :--- |
-| **No [[Dirty Read\|Dirty Reads]]** | Transactions only read committed data from their snapshot. |
+| **No [[Database Internals/Definitions/Dirty Read\|Dirty Reads]]** | Transactions only read committed data from their snapshot. |
 | **No Inconsistent Reads** | Multiple reads of the same element within $T$ always return the same value. |
-| **No [[Lost Update\|Lost Updates]]** | The First-Committer-Wins rule prevents one transaction from overwriting another's update. |
+| **No [[Database Internals/Definitions/Lost Update\|Lost Updates]]** | The First-Committer-Wins rule prevents one transaction from overwriting another's update. |
 | **No Delayed Reads** | Reads never wait for locks. |
-| **Write Skew** | SI is **not serializable** because it allows [[Write Skew\|Write Skew]]. |
+| **Write Skew** | SI is **not serializable** because it allows [[Database Internals/Definitions/Write Skew\|Write Skew]]. |
 
 ### The "Write Skew" Anomaly
-Write Skew occurs when two transactions read overlapping data sets but update disjoint sets, violating a cross-record constraint.
+**[[Database Internals/Definitions/Write Skew|Write Skew]]** occurs when two transactions read overlapping data sets but update disjoint sets, violating a cross-record constraint.
 - *Example*: Two doctors on call both try to resign at the same time. Both see that the *other* is still on call (in their snapshot) and commit. Result: Zero doctors on call.
 
 ---
@@ -118,11 +118,19 @@ Write Skew occurs when two transactions read overlapping data sets but update di
 | **PostgreSQL** | MVCC (SI/SSI) | In-table (Heap) | General purpose concurrency. |
 | **Oracle** | MVCC (SI) | Undo Segments | Consistent reads for long reports. |
 | **Git** | Snapshots | Content-Addressing | Branching and merging code. |
-| **Google Docs** | OT + MVCC | Timestamped Logs | Real-time collaboration + History. |
+| **Google Docs** | OT + MVCC | Timestamped Logs | Real-time collaboration and history. |
 
 ---
 
+## Industry Standard Terms
+- **Snapshot Isolation** $\rightarrow$ MVCC Snapshot Isolation (universal term); used in PostgreSQL, Oracle, SQL Server
+- **First-Committer-Wins** $\rightarrow$ Optimistic write conflict detection
+- **Version Chain** $\rightarrow$ Tuple version chain / Row version chain
+- **Vacuum** $\rightarrow$ Garbage collection / Dead tuple reclamation (PostgreSQL-specific term)
+- **SSI** $\rightarrow$ Serializable Snapshot Isolation — an extension of SI that prevents Write Skew
+
 ## Related
-- [[CSE444/Transactions/Optimistic Components/Timestamps|Timestamps]]
-- [[CSE444/Transactions/Optimistic Components/Validation|Validation]]
+- [[Database Internals/Transactions/OptimisticComponents/Timestamps|Timestamps]]
+- [[Database Internals/Transactions/OptimisticComponents/Validation|Validation]]
 - [[Database Internals/Transactions/Isolation Levels|Isolation Levels]]
+- [[Database Internals/Definitions/Write Skew|Write Skew]]

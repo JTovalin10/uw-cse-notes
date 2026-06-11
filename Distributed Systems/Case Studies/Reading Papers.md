@@ -1,6 +1,6 @@
-# CSE452: Reading Papers
+# Distributed Systems: Reading Papers
 
-Guidance for approaching the research papers studied in this course (such as the [[Big Table|Big Table]] and [[Google File System (GFS)|GFS]] papers).
+Guidance for approaching the research papers studied in this course (such as the [[Distributed Systems/Case Studies/Big Table|Big Table]] and [[Distributed Systems/Case Studies/Google File System (GFS)|GFS]] papers).
 
 - **Old papers solve foundational problems**: They are worth reading because the problems they address (e.g., fault tolerance, consistency, scalability) still underpin modern systems.
 - **Establish a goal**: Go into a paper asking yourself **"why am I reading this paper?"** and what specific mechanism you want to understand.
@@ -9,9 +9,18 @@ Guidance for approaching the research papers studied in this course (such as the
 
 ---
 
+## Industry Standard Terms
+
+| CSE452 Term | Industry / Standard Term |
+| :--- | :--- |
+| **Systems conference paper** | SOSP / OSDI / USENIX ATC / EuroSys |
+| **Selective reading** | Skimming for contributions; then deep-reading mechanisms |
+
+---
+
 ## Related
 
-- [[Big Table|Big Table]] — a worked example of a paper read in this course
-- [[Google File System (GFS)|Google File System (GFS)]] — another foundational paper covered in the case studies
-- [[Key Takeaways|Key Takeaways in Performance and Durability]] — summary of the core concepts often found in these papers
+- [[Distributed Systems/Case Studies/Big Table|Big Table]] — a worked example of a paper read in this course
+- [[Distributed Systems/Case Studies/Google File System (GFS)|Google File System (GFS)]] — another foundational paper covered in the case studies
+- [[Distributed Systems/Case Studies/Key Takeaways|Key Takeaways in Performance and Durability]] — summary of the core concepts often found in these papers
 

@@ -1,4 +1,4 @@
-# CSE452: 2PC Failure Scenarios
+# Distributed Systems: 2PC Failure Scenarios
 
 [[Transactions|Two-Phase Commit (2PC)]] must handle failures at any point in the protocol. Two fundamental failure modes arise during the Prepare phase: a participant cannot acquire a lock, and the coordinator stops hearing from a participant. In both cases, the [[Log Operations|log]] is the record of what happened and drives the recovery path.
 

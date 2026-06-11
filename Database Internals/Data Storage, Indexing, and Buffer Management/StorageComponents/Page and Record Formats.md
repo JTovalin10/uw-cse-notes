@@ -1,4 +1,4 @@
-# Data Storage: Page and Record Formats
+# Database Internals: Page and Record Formats
 
 ## Page Format
 
@@ -44,3 +44,22 @@ A **Slotted Page** is the standard way to organize records within a page.
 - Requires storing offsets or delimiters to locate each field within a record
 
 ![[Variable length records.png]]
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| RID (Record ID) | Row ID / tuple identifier / physical address |
+| Slotted page | Heap page / NSM page |
+| Slot directory | Page header / page directory |
+| Fixed-length record | Fixed-width record |
+| Variable-length record | Variable-width record / dynamic row |
+
+## Related
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Disk and Layout|Disk and Layout]] — the disk I/O model that motivates the page-based storage design
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Heap File and LOBs|Heap File and LOBs]] — how pages are organized into heap files
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Column-Store DBMSs|Column-Store DBMSs]] — alternative page layout (PAX and column files) that changes how records are stored
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — hub file for storage components

@@ -1,4 +1,4 @@
-# CSE452: Linearizability
+# Distributed Systems: Linearizability
 
 **Linearizability** is the strongest consistency model for single-object operations. It requires that operations appear to take effect atomically at some point between their invocation and response, respecting a single global total order that matches real-time (wall-clock) precedence.
 

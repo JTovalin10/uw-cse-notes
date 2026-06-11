@@ -1,4 +1,4 @@
-# CSE452: Weak Consistency Models
+# Distributed Systems: Weak Consistency Models
 
 Weak consistency models (including [[#Eventual Consistency|Eventual Consistency]]) are designed for high availability and performance in distributed systems where strong coordination is too expensive or impossible due to network partitions. These models are the foundation of AP (Available and Partition-tolerant) systems.
 

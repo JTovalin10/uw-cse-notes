@@ -1,4 +1,4 @@
-# CSE452: Strong Consistency Models
+# Distributed Systems: Strong Consistency Models
 
 Strong consistency models guarantee that all clients observe operations in some consistent total order. These models make a distributed system behave like a single sequential machine, providing the easiest programming model at the cost of high coordination and potential unavailability.
 

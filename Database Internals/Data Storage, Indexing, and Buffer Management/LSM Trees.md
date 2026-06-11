@@ -1,6 +1,6 @@
-# Course: LSM Trees
+# Database Internals: LSM Trees
 
-Log-Structured Merge (LSM) Trees are data structures designed to provide high write throughput by transforming random writes into sequential I/O operations. They are the foundational storage architecture for many NoSQL databases and modern analytical engines.
+**Log-Structured Merge (LSM) Trees** are data structures designed to provide high write throughput by transforming random writes into sequential I/O operations. They are the foundational storage architecture for many NoSQL databases and modern analytical engines. LSM trees make the opposite trade-off from [[Database Internals/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Trees]]: they prioritize write throughput at the cost of read performance and storage space overhead.
 
 ## Core Architecture
 
@@ -51,6 +51,21 @@ The **RUM Conjecture** (Read, Update, Memory) states that storage engines can on
 | B+ Tree   | Read, Memory| Update     |
 | LSM Tree  | Update      | Read, Memory|
 
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| Memtable | In-memory write buffer / MemStore (HBase) |
+| SSTable (Sorted String Table) | SST file; used verbatim in LevelDB, RocksDB, Cassandra |
+| Write-Ahead Log (WAL) | Commit log / journal |
+| Tombstone | Delete marker / expiry marker |
+| Compaction | Merge compaction; used verbatim in RocksDB, Cassandra |
+| Leveled Compaction | Level-tiered compaction (LevelDB) |
+| Tiered Compaction | Size-tiered compaction (Cassandra STCS) |
+| Bloom Filter | Probabilistic membership filter |
+
 ## Related
-- [[Indexing|Indexing]]
-- [[CSE444/Transactions/Recovery/Recovery and Logging|Recovery and Logging]]
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Indexing|Indexing]] — B+ tree-based index structures that LSM trees are contrasted against
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Advanced Indexing|Advanced Indexing]] — other specialized index types
+- [[Recovery and Logging|Recovery and Logging]] — the Write-Ahead Log mechanism LSM trees rely on for durability

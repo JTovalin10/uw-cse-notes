@@ -1,4 +1,4 @@
-# CSE444: Buffer Manager
+# Database Internals: Buffer Manager
 
 The **Buffer Manager** sits between the storage layer and the rest of the DBMS. It is responsible for bringing pages from disk into memory and caching them in the **buffer pool** to minimize expensive disk I/O.
 
@@ -44,6 +44,8 @@ The buffer manager decides when to flush pages to disk based on its eviction pol
 - **Dirty Bit** $\rightarrow$ Modified bit
 
 ## Related
-- [[Data Storage and Buffer Management|Data Storage and Buffer Management]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/Buffer Management Policies|Buffer Management Policies (Steal/Force)]]
-- [[Architecture|DBMS Architecture]]
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — hub file for storage components
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Storage Engine Fundamentals|Storage Engine Fundamentals]] — overview of buffer management in context
+- [[Database Internals/DBMS Architecture and Deployments/Architecture|DBMS Architecture]] — how the buffer manager fits into the full DBMS stack
+- [[Buffer Management Policies|Buffer Management Policies (Steal/Force)]] — steal/force decisions and their impact on recovery

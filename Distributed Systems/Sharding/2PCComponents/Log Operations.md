@@ -1,8 +1,10 @@
-# CSE452: 2PC Log Operations
+# Distributed Systems: 2PC Log Operations
 
 Every participant and coordinator in a [[Transactions|Two-Phase Commit (2PC)]] transaction maintains a **persistent log** of every operation it takes. This log is the durability guarantee: if a node crashes and restarts, it can replay the log to determine what state it was in and whether to commit or abort. The log is written via the local [[Multi-Paxos|Paxos]] consensus layer before any action is taken, ensuring that the entry is durable across the replica group before execution.
 
-There are six possible log entries:
+There are six lab-defined log entry types, plus two additional entries used in the lecture's presentation (`Write` and `Unlock`). The lecture also separates the write lock and tentative-write into two distinct log entries, where the lab combines them into `LOCK(WRITE, var, value)`. Both represent the same protocol; the lecture notation makes the distinction between locking and staging a value more explicit.
+
+There are six possible log entries (lab terminology):
 
 ---
 
@@ -98,13 +100,50 @@ In both cases, `ABORT` guarantees that **no data is modified**. Temporary writes
 
 ---
 
+## Write(key, value)
+
+```
+Write(key, value)
+```
+
+In the lecture's presentation, `Lock(W, key)` and the tentative write are two **separate** log entries. The `Write(key, value)` entry records the staged value after the write lock has been acquired. It serves the same purpose as the `value` field inside the lab's `LOCK(WRITE, var, value)` entry: the value is held tentatively and not committed to persistent memory until `COMMIT` is logged.
+
+This separation makes the distinction between the locking step and the value-staging step explicit.
+
+---
+
+## Unlock(key)
+
+```
+Unlock(key)
+```
+
+Logged after `COMMIT` or `ABORT`, when a participant releases its lock on `key`. This entry is the explicit log record of the lock being surrendered. In the lab implementation, lock release happens as part of processing the `COMMIT` or `ABORT` entry; the lecture shows it as its own entry to make the Two-Phase Locking (2PL) structure explicit — all locks are held through the end of Phase 2, then released together.
+
+---
+
 ## Log Sequence Summary
+
+**Lab terminology** (complete commit path):
+
+| Role | Log Sequence |
+| :--- | :--- |
+| Coordinator | `BEGIN → LOCK(R,...) → LOCK(W,...) → PREPARE-COMMIT → COMMIT` |
+| Participant | `BEGIN → LOCK(R,...) → LOCK(W,...) → PREPARE-COMMIT → COMMIT` |
+
+**Lecture terminology** (complete commit path, separating lock and write, with unlock):
+
+| Role | Log Sequence |
+| :--- | :--- |
+| Coordinator | `Transaction start(coord) → Lock(R,key) → Lock(W,key) → Write(key,val) → Coordinator prepared → Commit → Unlock(key)` |
+| Participant | `Transaction start(part) → Lock(R,key) → Lock(W,key) → Write(key,val) → Prepared → Committed → Unlock(key)` |
+
+**Abort paths** (lab terminology):
 
 | Scenario | Participant Log | Coordinator Log |
 | :--- | :--- | :--- |
-| Successful commit | `BEGIN → LOCK(...) → PREPARE-COMMIT → COMMIT` | `BEGIN → LOCK(...) → PREPARE-COMMIT → COMMIT` |
-| Lock unavailable (abort) | `BEGIN → ABORT` | `BEGIN → LOCK(...) → PREPARE-COMMIT → ABORT` |
-| Coordinator timeout (abort) | `BEGIN` (stuck) | `BEGIN → LOCK(...) → PREPARE-COMMIT → ABORT` |
+| Lock unavailable | `BEGIN → ABORT` | `BEGIN → LOCK(...) → PREPARE-COMMIT → ABORT` |
+| Coordinator timeout | `BEGIN` (stuck) | `BEGIN → LOCK(...) → PREPARE-COMMIT → ABORT` |
 
 ---
 

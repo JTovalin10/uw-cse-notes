@@ -1,4 +1,4 @@
-# Data Storage: Disk and Layout
+# Database Internals: Disk and Layout
 
 ## Working with Disk
 
@@ -25,3 +25,20 @@ Most traditional DBMSs (PostgreSQL, MySQL, Oracle) are row-stores. Analytical sy
 **Additional layout options:**
 - **Heap file**: unordered pages — no sorting guarantee
 - **Sequential file**: pages ordered by an attribute (usually the primary key)
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| Page | Disk block / database page |
+| Row-store | NSM (N-ary Storage Model) / heap file layout |
+| Column-store | DSM (Decomposition Storage Model) / columnar layout |
+| Seek time | Disk latency / access time |
+
+## Related
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — hub file for storage components
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Page and Record Formats|Page and Record Formats]] — how data is organized within a page
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Column-Store DBMSs|Column-Store DBMSs]] — in-depth coverage of the column-store layout and its trade-offs

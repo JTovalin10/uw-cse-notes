@@ -1,4 +1,4 @@
-# CSE452: Paxos Invariants and Design
+# Distributed Systems: Paxos Invariants and Design
 
 This note explains the technical "why" behind Paxos, focusing on the Ballot ID structure and the invariants that keep the system safe.
 

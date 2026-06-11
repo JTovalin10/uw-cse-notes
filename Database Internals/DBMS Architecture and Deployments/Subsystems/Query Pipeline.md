@@ -1,6 +1,6 @@
-# CSE444: Query Processing Pipeline
+# Database Internals: Query Processing Pipeline
 
-A DBMS has two major subsystems: the **Query Processor** (where queries are executed) and the **[[Storage Manager|Storage Manager]]** (where data is stored).
+A DBMS has two major subsystems: the **Query Processor** (where queries are executed) and the **[[Database Internals/DBMS Architecture and Deployments/Subsystems/Storage Manager|Storage Manager]]** (where data is stored). This file covers the four stages of the query processing pipeline that transform a raw SQL string into an executable physical plan.
 
 ![[DBMS Architecture.png]]
 
@@ -77,6 +77,9 @@ WHERE S.scity = 'Seattle' AND S.sstate = 'WA'
 - **Physical Plan** $\rightarrow$ Execution Plan
 
 ## Related
+
 - [[Query Optimization|Query Optimization]] — deep dive into the optimizer's search space and cost estimation
-- [[Query Executor|Query Executor]] — iterator interface and execution details
-- [[SQL to RA Translation|CSE344 SQL to RA Translation]]
+- [[Database Internals/DBMS Architecture and Deployments/Subsystems/Query Executor|Query Executor]] — iterator interface and push vs. pull execution details
+- [[Database Internals/DBMS Architecture and Deployments/Subsystems/Storage Manager|Storage Manager]] — how access path selection works at the bottom of the physical plan
+- [[Database Internals/Review of Relational Model/Relational Algebra|Relational Algebra]] — the logical plan language the optimizer operates on
+- [[SQL to RA Translation|SQL to RA Translation]] — detailed SQL-to-RA translation rules

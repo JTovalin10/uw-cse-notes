@@ -1,4 +1,4 @@
-# CSE452: Multi-Paxos Failure Detection
+# Distributed Systems: Multi-Paxos Failure Detection
 
 Failure detection in Multi-Paxos covers two related problems: detecting that the **leader has failed** (via heartbeats) and handling the **holes** a failed leader may leave behind in the log.
 

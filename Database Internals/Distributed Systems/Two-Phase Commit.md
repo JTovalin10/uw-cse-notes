@@ -1,6 +1,6 @@
-# CSE444: Two-Phase Commit
+# Database Internals: Two-Phase Commit
 
-Scaling a Database Management System (DBMS) involves balancing the need for higher throughput and availability against the complexity of maintaining **ACID** properties across multiple nodes.
+Scaling a Database Management System (DBMS) involves balancing the need for higher throughput and availability against the complexity of maintaining **ACID** properties across multiple nodes. The key challenge is that distributing data across machines means a single transaction may touch multiple nodes, requiring a coordination protocol to ensure atomicity.
 
 ## Scaling Strategies
 

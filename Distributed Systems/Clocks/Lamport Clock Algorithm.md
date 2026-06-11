@@ -1,4 +1,4 @@
-# CSE452: Lamport Clock Algorithm
+# Distributed Systems: Lamport Clock Algorithm
 
 The **Lamport Clock Algorithm** is the standard implementation of [[Logical Clocks|logical clocks]]:
 

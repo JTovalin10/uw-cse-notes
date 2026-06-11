@@ -1,6 +1,6 @@
-# Indexing: Clustered and Secondary Indexes
+# Database Internals: Index Types
 
-An **index** is a separate file that enables fast access by a **search key** value.
+An **index** is a separate data structure that enables fast access by a **search key** value, avoiding a full sequential scan of the heap file. Indexes are access methods — they expose the same API as heap files (insert, delete, scan, get by key) but internally organize entries in a way that supports efficient key-based lookup.
 
 - Contains pairs of the form `(key, RID)`
 - Indexes are access methods — same API as heap files
@@ -40,3 +40,22 @@ An **index** is a separate file that enables fast access by a **search key** val
 | Co-located with data file | Yes (common) | Always a separate file |
 | Number allowed per table | Only one | Unlimited |
 | Also called | Primary index | Secondary index |
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| Clustered index | Primary index / IOT (Index-Organized Table) |
+| Secondary index | Unclustered index / non-clustered index |
+| Dense index | Full index / row-level index |
+| Sparse index | Page-level index / block-level index |
+| Search key | Index key |
+| RID (Record ID) | Row ID / physical row pointer |
+
+## Related
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree]] — the most common data structure used to implement both clustered and unclustered indexes
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Heap and Sorted Files|Heap and Sorted Files]] — the underlying file organizations on top of which indexes are built
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Indexing|Indexing]] — hub file for indexes and file organizations

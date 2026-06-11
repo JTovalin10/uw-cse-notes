@@ -1,4 +1,4 @@
-# CSE444: MapReduce
+# Database Internals: MapReduce
 
 **MapReduce** is largely obsolete today, but it has enormous historical impact: both **Spark** and **Snowflake** take direct inspiration from its programming model.
 
@@ -35,9 +35,7 @@ The distributed file system shapes how MapReduce reads data:
 - A file is split into **blocks** (or **chunks**) of roughly 64 MB.
 - Blocks are **replicated** and stored on random machines (this replication is what survives the constant machine failures above).
 - Files are **append-only**.
-- pre-emptive task execution
-	- if a task takes too long to execute, then we can go ahead with the next step
-		- assumes the node is still working on the task so if the computer is already hardware-slow then we can suffer from performance degregation
+- **Pre-emptive task execution**: if a task takes too long to execute, the system can launch a duplicate of that task on another worker and proceed with whichever copy finishes first. This assumes the slow node is still working on the task; if the hardware itself is degraded (e.g., a failing disk), the duplicate may still be slower than expected. See [[#Backup Tasks]] for the full treatment.
 
 ## MapReduce Data Model
 

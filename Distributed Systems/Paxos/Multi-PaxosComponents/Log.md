@@ -1,4 +1,4 @@
-# CSE452: Multi-Paxos Log Management
+# Distributed Systems: Multi-Paxos Log Management
 
 The **Log** is the central data structure of a Multi-Paxos node. While the core protocol (see [[Multi-Paxos|Multi-Paxos Hub]]) defines how entries are decided, this file covers the mechanics of managing those entries locally.
 

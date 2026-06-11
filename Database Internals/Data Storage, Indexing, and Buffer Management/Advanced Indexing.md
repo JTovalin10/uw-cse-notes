@@ -1,6 +1,6 @@
-# Course: Advanced Indexing
+# Database Internals: Advanced Indexing
 
-Beyond standard B+ Trees, specialized index types are used to handle specific data distributions, query patterns, and complex data types.
+Beyond standard [[Database Internals/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Trees]], specialized index types are used to handle specific data distributions, query patterns, and complex data types.
 
 ## Index Types
 
@@ -47,7 +47,21 @@ An **Online Index Build** creates an index without taking an exclusive lock on t
 - **VACUUM**: In MVCC systems like PostgreSQL, updates and deletes leave 'dead' tuples. VACUUM reclaims this space for reuse.
 - **ANALYZE**: Collects statistics (histograms, most common values) about the data distribution to inform the query optimizer's cost estimations.
 
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| Bitmap Index | Bit-vector index |
+| GIN (Generalized Inverted Index) | Inverted index; Full-text search index |
+| GiST (Generalized Search Tree) | Extensible index framework |
+| R-Tree | Spatial index; Bounding-box tree |
+| Index Bloat | Index fragmentation |
+| VACUUM | Garbage collection / dead tuple reclamation |
+| ANALYZE | Statistics collection / cardinality estimation refresh |
+| Online Index Build | Concurrent index creation |
+
 ## Related
-- [[B+ Tree|B+ Tree]]
-- [[LSM Trees|LSM Trees]]
-- [[Query Optimization|Query Optimization]]
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree]] — the standard index structure these specialized types extend or replace
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/LSM Trees|LSM Trees]] — write-optimized alternative structure
+- [[Query Optimization|Query Optimization]] — how the optimizer uses selectivity and cardinality to choose index access paths

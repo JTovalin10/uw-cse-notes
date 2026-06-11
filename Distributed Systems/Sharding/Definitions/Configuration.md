@@ -1,4 +1,4 @@
-# CSE452: Configuration
+# Distributed Systems: Configuration
 
 A **Configuration** is the authoritative metadata describing the layout and membership of the distributed system at a specific point in time.
 

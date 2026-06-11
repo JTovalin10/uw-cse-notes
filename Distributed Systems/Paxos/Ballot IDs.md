@@ -1,4 +1,4 @@
-# CSE452: Ballot IDs and Proposal Numbers
+# Distributed Systems: Ballot IDs and Proposal Numbers
 
 In Paxos, every proposal must be identified by a unique, monotonically increasing number. This identifier, known as a **Ballot ID**, **Proposal Number**, or **Round Number**, establishes the "authority" of a proposer.
 

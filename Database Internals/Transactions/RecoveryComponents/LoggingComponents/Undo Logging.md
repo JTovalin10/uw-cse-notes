@@ -1,4 +1,4 @@
-# CSE444: Undo Logging
+# Database Internals: Undo Logging
 
 **Undo Logging** is a recovery strategy used when a system follows a **Steal** policy. It allows the DBMS to revert changes made by transactions that did not successfully commit, as those uncommitted changes may have already been written to disk.
 
@@ -32,31 +32,21 @@ The recovery manager performs a backward scan of the log to revert changes from 
 ### Phase 1: Analysis (Classification)
 The system identifies which transactions completed successfully and which must be undone.
 
-1.  **Initialize Sets**: Create a set for **Committed** transactions and a set for **Losers** (incomplete).
-2.  **Scan Log**: The system scans the log to categorize transactions:
+1. **Initialize Sets**: Create a set for **Committed** transactions and a set for **Losers** (incomplete).
+2. **Scan Log**: The system scans the log to categorize transactions:
     - If `<COMMIT T>` or `<ABORT T>` is found, $T$ is considered **Complete**.
     - If only `<START T>` is found without a corresponding completion record, $T$ is a **Loser**.
 
 ### Phase 2: Undo Phase (Backward Scan)
 The system restores the "before images" for all loser transactions to ensure Atomicity.
 
-1.  **Start Point**: Begin at the end of the log and scan backward toward the oldest relevant record (often the start of the log or the most recent checkpoint).
-2.  **Perform Undo**:
+1. **Start Point**: Begin at the end of the log and scan backward toward the oldest relevant record (often the start of the log or the most recent checkpoint).
+2. **Perform Undo**:
     - For every record $\langle T, X, v \rangle$:
     - Check if $T$ is a **Loser** (i.e., it has no `<COMMIT>` or `<ABORT>` record in the log).
     - If $T$ is a loser, write the **old value** $v$ to element $X$ on disk.
-3.  **Idempotency**: Because we apply the old values in reverse order, the process is idempotent. If a crash occurs during recovery, re-running the undo scan will result in the same consistent state.
-4.  **Finalization**: Once all losers are undone, the system may write `<ABORT T>` records for the losers to signify they have been handled.
-
-### Formal Definition
-$S_{loser} = \{ T \mid \langle \text{START } T \rangle \in \text{Log} \land \langle \text{COMMIT } T \rangle \notin \text{Log} \land \langle \text{ABORT } T \rangle \notin \text{Log} \}$
-For each record $\langle T, X, v \rangle$ in Log (scanned backwards):
-If $T \in S_{loser}$, then $\text{OUTPUT}(X, v)$.
-
-### Simplified Explanation
-Find everyone who didn't finish. Walk backwards through the log and put the old values back for those "losers" so it's like their changes never happened.
-
-![[Recovery With Undo Log.png]]
+3. **Idempotency**: Because we apply the old values in reverse order, the process is idempotent. If a crash occurs during recovery, re-running the undo scan will result in the same consistent state.
+4. **Finalization**: Once all losers are undone, the system may write `<ABORT T>` records for the losers to signify they have been handled.
 
 ## Recovery Walkthrough
 
@@ -68,27 +58,49 @@ Consider the following log sequence and disk state at the time of a crash. Assum
 3. `<START T2>`
 4. `<T2, B, 20>`
 5. `<T1, C, 30>`
-6. `<COMMIT T1>`  *(Note: By U2, A and C are guaranteed to be 11 and 31 on disk now)*
+6. `<COMMIT T1>` *(Note: By U2, A and C are guaranteed to be 11 and 31 on disk now)*
 7. `<T2, D, 40>`
 8. `--- CRASH ---`
 
 ### Step-by-Step Recovery
 
-1.  **Identify Losers**: Scanning the log, we see `<COMMIT T1>`, so $T1$ is committed. We see `<START T2>` but no `<COMMIT T2>`, so $T2$ is a **loser**.
-2.  **Backward Scan**:
-    -   **Record 7**: `<T2, D, 40>`. $T2$ is a loser. **Action**: Write $D = 40$ to disk.
-    -   **Record 6**: `<COMMIT T1>`. $T1$ is committed. **Action**: None (Mark $T1$ as "done" for this scan).
-    -   **Record 5**: `<T1, C, 30>`. $T1$ is committed. **Action**: Skip.
-    -   **Record 4**: `<T2, B, 20>`. $T2$ is a loser. **Action**: Write $B = 20$ to disk.
-    -   **Record 3**: `<START T2>`. **Action**: None.
-    -   **Record 2**: `<T1, A, 10>`. $T1$ is committed. **Action**: Skip.
-    -   **Record 1**: `<START T1>`. **Action**: None.
+1. **Identify Losers**: Scanning the log, we see `<COMMIT T1>`, so $T1$ is committed. We see `<START T2>` but no `<COMMIT T2>`, so $T2$ is a **loser**.
+2. **Backward Scan**:
+    - **Record 7**: `<T2, D, 40>`. $T2$ is a loser. **Action**: Write $D = 40$ to disk.
+    - **Record 6**: `<COMMIT T1>`. $T1$ is committed. **Action**: None (Mark $T1$ as "done" for this scan).
+    - **Record 5**: `<T1, C, 30>`. $T1$ is committed. **Action**: Skip.
+    - **Record 4**: `<T2, B, 20>`. $T2$ is a loser. **Action**: Write $B = 20$ to disk.
+    - **Record 3**: `<START T2>`. **Action**: None.
+    - **Record 2**: `<T1, A, 10>`. $T1$ is committed. **Action**: Skip.
+    - **Record 1**: `<START T1>`. **Action**: None.
 
 **Final Disk State**: $A=11, B=20, C=31, D=40$. Note that $T1$'s changes persisted while $T2$'s uncommitted changes to $B$ and $D$ were reverted.
 
-## Undo Algorithm Implementation (Java)
+## Trade-offs
 
-Below is a Java implementation of the Undo recovery logic, typically found in a Buffer Manager or Recovery Manager.
+| Pros | Cons |
+|------|------|
+| Simple recovery logic. | **High Commit Latency**: Forces all data to disk at commit time (Rule U2). |
+| Supports Steal policy (memory efficiency). | **I/O Bottleneck**: Can result in many small, random disk writes during commit. |
+
+---
+
+## Formal Analysis
+
+### Formal Definition
+$S_{loser} = \{ T \mid \langle \text{START } T \rangle \in \text{Log} \land \langle \text{COMMIT } T \rangle \notin \text{Log} \land \langle \text{ABORT } T \rangle \notin \text{Log} \}$
+
+For each record $\langle T, X, v \rangle$ in Log (scanned backwards):
+If $T \in S_{loser}$, then $\text{OUTPUT}(X, v)$.
+
+### Simplified Explanation
+Find everyone who did not finish. Walk backwards through the log and put the old values back for those "losers" so it is as if their changes never happened.
+
+![[Recovery With Undo Log.png]]
+
+---
+
+## Java Implementation
 
 ```java
 public class UndoRecoveryManager {
@@ -114,7 +126,7 @@ public class UndoRecoveryManager {
                 case UPDATE:
                     if (!committedTransactions.contains(record.getTransactionId())) {
                         // Transaction is a loser; restore the "before image" (old value)
-                        active_losers.add(record.getTransactionId());
+                        activeLosers.add(record.getTransactionId());
                         diskManager.write(record.getElementId(), record.getOldValue());
                     }
                     break;
@@ -127,7 +139,7 @@ public class UndoRecoveryManager {
                     break;
             }
         }
-        
+
         // Finalize by flushing disk and persisting state
         diskManager.flush();
     }
@@ -137,24 +149,19 @@ public class UndoRecoveryManager {
 ### Key Properties
 
 - **Scope**: Only updates from incomplete (uncommitted) transactions are undone.
-- **Traveral**: Requires scanning backwards to ensure the most recent "old value" is applied first if multiple transactions touched the same element.
+- **Traversal**: Requires scanning backwards to ensure the most recent "old value" is applied first if multiple transactions touched the same element.
 - **Idempotency**: Log records are idempotent; if the system crashes during recovery, re-running the algorithm from the same point results in the same correct state.
-
-## Trade-offs
-
-| Pros | Cons |
-|------|------|
-| Simple recovery logic. | **High Commit Latency**: Forces all data to disk at commit time (Rule U2). |
-| Supports Steal policy (memory efficiency). | **I/O Bottleneck**: Can result in many small, random disk writes during commit. |
-
-## Industry Standard Mapping
-- **Undo Logging** $\rightarrow$ Transaction Rollback / Undo Segments (e.g., Oracle Undo tablespace, InnoDB Undo Logs).
 
 ### Rollback vs. Recovery
 - **Restart Recovery**: Triggered after a crash to restore consistency. Requires scanning the log backwards and undoing all incomplete transactions.
 - **Rollback (Abort)**: Triggered for a specific transaction (e.g., on user error). Only the updates for that specific transaction are undone using the log.
 
+## Industry Standard Terms
+- **Undo Logging** $\rightarrow$ Transaction Rollback / Undo Segments (e.g., Oracle Undo tablespace, InnoDB Undo Logs)
+- **Before Image** $\rightarrow$ Old value / Pre-update image
+- **Losers** $\rightarrow$ Incomplete transactions / Active transactions at crash time
+
 ## Related
-- [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Redo Logging|Redo Logging]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/Buffer Management Policies|Buffer Management Policies]]
+- [[Database Internals/Transactions/RecoveryComponents/LoggingComponents/Redo Logging|Redo Logging]]
+- [[Database Internals/Transactions/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]
+- [[Database Internals/Transactions/RecoveryComponents/Buffer Management Policies|Buffer Management Policies]]

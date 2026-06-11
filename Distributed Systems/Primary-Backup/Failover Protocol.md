@@ -1,4 +1,4 @@
-# CSE452: Failover Protocol
+# Distributed Systems: Failover Protocol
 
 ## What is Failover?
 

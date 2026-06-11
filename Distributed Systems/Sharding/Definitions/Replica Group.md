@@ -1,4 +1,4 @@
-# CSE452: Replica Group
+# Distributed Systems: Replica Group
 
 A **Replica Group** is a fault-tolerant cluster of servers responsible for serving a specific set of [[Shard|shards]].
 

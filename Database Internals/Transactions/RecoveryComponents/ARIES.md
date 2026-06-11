@@ -1,4 +1,4 @@
-# CSE444: ARIES Recovery Algorithm
+# Database Internals: ARIES Recovery Algorithm
 
 **Algorithms for Recovery and Isolation Exploiting Semantics (ARIES)** is the industry-standard recovery algorithm. It is a **Steal / No-Force** algorithm that uses an **Undo-Redo Log** to provide high performance and robust crash recovery.
 
@@ -64,36 +64,64 @@ A background process periodically flushes dirty pages to disk. Recovery always s
 
 When the database restarts after a crash, ARIES performs recovery in three distinct phases: **Analysis**, **Redo**, and **Undo**.
 
+```mermaid
+graph LR
+    subgraph CK ["Start: Last Checkpoint"]
+        direction TB
+        ATT["Reconstruct ATT"]
+        DPT["Reconstruct DPT"]
+    end
+    subgraph A ["(1) Analysis (Forward)"]
+        direction TB
+        A1["Scan from checkpoint to end of log"]
+        A2["Identify Winners and Losers"]
+        A3["Compute min(recLSN) for Redo start"]
+    end
+    subgraph R ["(2) Redo (Forward)"]
+        direction TB
+        R1["Scan from min(recLSN)"]
+        R2["Re-apply ALL updates (Repeating History)"]
+        R3["Skip if pageLSN >= LSN"]
+    end
+    subgraph U ["(3) Undo (Backward)"]
+        direction TB
+        U1["Process ToUndo set (Losers)"]
+        U2["Write CLR for each undone update"]
+        U3["Write END T for fully undone transactions"]
+    end
+    CK --> A --> R --> U
+```
+
 ### Phase 1: Analysis
 The goal of the Analysis phase is to reconstruct the state of the system at the time of the crash and identify the starting points for the subsequent phases.
 
-1.  **Start Point**: Begin scanning forward from the most recent **Checkpoint** entry.
-2.  **Reconstruct Tables**: Rebuild the **Active Transaction Table (ATT)** and **Dirty Page Table (DPT)** by replaying log records:
+1. **Start Point**: Begin scanning forward from the most recent **Checkpoint** entry.
+2. **Reconstruct Tables**: Rebuild the **Active Transaction Table (ATT)** and **Dirty Page Table (DPT)** by replaying log records:
     - If `<START T>`: Add $T$ to ATT.
     - If `<COMMIT T>` or `<ABORT T>`: Change $T$'s status in ATT.
     - If `<UPDATE P>`: If page $P$ is not in DPT, add it with `recLSN = LSN`.
     - If `<END T>`: Remove $T$ from ATT.
-3.  **Identify Winners and Losers**: At the end of the scan, any transaction still in the ATT whose status is **not Committed** (i.e., it was still Running and never wrote a `<COMMIT T>` record) is a **Loser**. A transaction that wrote `<COMMIT T>` but crashed before its `<END T>` record will also still be in the ATT — but it is a **Winner**; it only needs its `<END T>` written, not an undo. Losers are defined by commit status, not by the absence of an `END` record.
-4.  **Compute Redo Start**: The Redo Phase will start at the `min(recLSN)` in the reconstructed DPT.
+3. **Identify Winners and Losers**: At the end of the scan, any transaction still in the ATT whose status is **not Committed** (i.e., it was still Running and never wrote a `<COMMIT T>` record) is a **Loser**. A transaction that wrote `<COMMIT T>` but crashed before its `<END T>` record will also still be in the ATT — but it is a **Winner**; it only needs its `<END T>` written, not an undo. Losers are defined by commit status, not by the absence of an `END` record.
+4. **Compute Redo Start**: The Redo Phase will start at the `min(recLSN)` in the reconstructed DPT.
 
 ### Phase 2: Redo Phase (Repeating History)
 ARIES follows the "Repeating History" principle, restoring the database to the exact state it was in at the crash, including updates from transactions that will eventually be undone.
 
-1.  **Direction**: Forward scan from `min(recLSN)`.
-2.  **Logic**: For every update record `<T, P, u, v>` at `LSN`:
+1. **Direction**: Forward scan from `min(recLSN)`.
+2. **Logic**: For every update record `<T, P, u, v>` at `LSN`:
     - **Should we redo?**: Redo the action *unless* any of the following are true:
         - Page $P$ is not in the DPT.
         - `recLSN` for $P$ in DPT is greater than `LSN`.
         - The `pageLSN` on the physical disk page is $\ge$ `LSN` (requires reading the page from disk).
-3.  **Action**: If none of the above are true, re-apply the update and set `pageLSN(P) = LSN`.
-4.  **Idempotency**: Redo is **idempotent**. If the system crashes during this phase, restarting recovery will result in the same state.
+3. **Action**: If none of the above are true, re-apply the update and set `pageLSN(P) = LSN`.
+4. **Idempotency**: Redo is **idempotent**. If the system crashes during this phase, restarting recovery will result in the same state.
 
 ### Phase 3: Undo Phase
 The system reverts the changes made by transactions that were active (Losers) at the time of the crash.
 
-1.  **Direction**: Backward scan from the end of the log.
-2.  **ToUndo Set**: Initialize a set of LSNs to undo, containing the `lastLSN` for every transaction in the Loser set.
-3.  **Process Log**: Repeatedly pick the largest LSN from the `ToUndo` set:
+1. **Direction**: Backward scan from the end of the log.
+2. **ToUndo Set**: Initialize a set of LSNs to undo, containing the `lastLSN` for every transaction in the Loser set.
+3. **Process Log**: Repeatedly pick the largest LSN from the `ToUndo` set:
     - If it is a regular update record:
         - Perform the undo action (write `old_v` to disk).
         - Write a **Compensating Log Record (CLR)** to the log.
@@ -104,14 +132,6 @@ The system reverts the changes made by transactions that were active (Losers) at
         - Add the CLR's `undoNextLSN` to the `ToUndo` set.
     - If the LSN is null (reached the start of a transaction):
         - Write an `<END T>` record.
-
-### Formal Definition
-1. **Analysis**: $S_{loser} = \text{ATT}$ after forward scan from checkpoint.
-2. **Redo**: $\forall \langle T, P, u, v \rangle \text{ at } L$: If $P \in \text{DPT} \land L \ge \text{recLSN}(P) \land \text{pageLSN}(P) < L$, then $\text{WRITE}(P, v)$.
-3. **Undo**: $\forall \text{ Loser } T$: Scan $T$'s log chain backward; $\forall \text{ update } u$: $\text{UNDO}(u)$ and $\text{WRITE\_CLR}(\text{undoNextLSN} = u.\text{prevLSN})$.
-
-### Simplified Explanation
-First, read the log from the last checkpoint to see who was doing what when we crashed. Second, start from the oldest "dirty" page and redo *everything* in the log to get the disk back to the exact state it was in at the crash. Third, walk backwards through the losers' changes and undo them, writing "Undo-of-Undo" notes (CLRs) so we never have to undo the same thing twice if we crash again.
 
 ![[ARIES Method Illustration.png]]
 
@@ -132,16 +152,40 @@ CLRs are the secret to ARIES's robust recovery. A CLR is a special log record wr
 	- TXN T2 updates another record on the same page X
 	- TXN T2 commits
 	- TXN T1 wants to ROLLBACK, but we cannot isolate only T1's changes on page X
-- Reason 2: indexes — for similar reasons, undoing a single transaction's index changes in isolation is not straightforward
-- Explanation: these constraints limit our abstract model and require the CLR mechanism described above
+- Reason 2: Indexes — for similar reasons, undoing a single transaction's index changes in isolation is not straightforward.
+- Explanation: These constraints limit our abstract model and require the CLR mechanism described above.
 
 ## Idempotence
 An operation is **Idempotent** if $f(f(x)) = f(x)$. In the context of recovery, this means that if you run the recovery process once, twice, or ten times (due to repeated crashes), the final state of the database is the same. This is achieved through physical/physiological logging and CLRs.
 
 ## UNDO/REDO Logging
-ARIES is built on **[[CSE444/Transactions/Recovery/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]**, which allows it to support Steal/No-Force policies.
+ARIES is built on **[[Database Internals/Transactions/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]**, which allows it to support Steal/No-Force policies.
+
+---
+
+## Formal Analysis
+
+### Formal Definition
+1. **Analysis**: $S_{loser} = \text{ATT}$ after forward scan from checkpoint.
+2. **Redo**: $\forall \langle T, P, u, v \rangle \text{ at } L$: If $P \in \text{DPT} \land L \ge \text{recLSN}(P) \land \text{pageLSN}(P) < L$, then $\text{WRITE}(P, v)$.
+3. **Undo**: $\forall \text{ Loser } T$: Scan $T$'s log chain backward; $\forall \text{ update } u$: $\text{UNDO}(u)$ and $\text{WRITE\_CLR}(\text{undoNextLSN} = u.\text{prevLSN})$.
+
+### Simplified Explanation
+First, read the log from the last checkpoint to see who was doing what when we crashed. Second, start from the oldest "dirty" page and redo *everything* in the log to get the disk back to the exact state it was in at the crash. Third, walk backwards through the losers' changes and undo them, writing "Undo-of-Undo" notes (CLRs) so we never have to undo the same thing twice if we crash again.
+
+---
+
+## Industry Standard Terms
+- **ARIES** $\rightarrow$ The industry-standard crash recovery algorithm; used in IBM DB2, SQL Server, and many other systems
+- **LSN** $\rightarrow$ Log Sequence Number (universal term)
+- **ATT** $\rightarrow$ Active Transaction Table / Transaction log state
+- **DPT** $\rightarrow$ Dirty Page Table / Modified page list
+- **CLR** $\rightarrow$ Compensating Log Record (universal ARIES term)
+- **Fuzzy Checkpoint** $\rightarrow$ Metadata-only checkpoint; avoids stop-the-world flush
 
 ## Related
-- [[CSE444/Transactions/Recovery/Recovery and Logging|Recovery and Logging (Fundamentals)]]
-- [[Transaction Fundamentals|Transaction Fundamentals]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]
+- [[Database Internals/Transactions/Recovery|Recovery Overview]]
+- [[Database Internals/Transactions/Transaction Fundamentals|Transaction Fundamentals]]
+- [[Database Internals/Transactions/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]
+- [[Database Internals/Transactions/RecoveryComponents/LoggingComponents/Undo-Redo Logging|Undo-Redo Logging]]
+- [[Database Internals/Transactions/RecoveryComponents/LoggingComponents/Checkpointing|Checkpointing]]

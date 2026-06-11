@@ -1,4 +1,4 @@
-# CSE452: The Shard Master
+# Distributed Systems: The Shard Master
 
 The **[[ShardMaster|ShardMaster]]** manages a sequence of numbered **[[Configuration|Configurations]]** (starting with `INITIAL_CONFIG_NUM`). It acts as the "source of truth" for the distributed system, deciding which **[[Replica Group|Replica Group]]** should serve each **[[Shard|Shard]]**.
 

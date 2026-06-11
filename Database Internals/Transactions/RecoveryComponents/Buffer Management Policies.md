@@ -1,6 +1,6 @@
-# CSE444: Buffer Management Policies
+# Database Internals: Buffer Management Policies
 
-The interaction between the volatile buffer pool (RAM) and the non-volatile disk is defined by two policy dimensions: **Steal** and **Force**. These choices determine what the [[CSE444/Transactions/Recovery/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]] protocol must guarantee and what [[CSE444/Transactions/Recovery/RecoveryComponents/Logging Types|log type]] the recovery manager is required to maintain.
+The interaction between the volatile buffer pool (RAM) and the non-volatile disk is defined by two policy dimensions: **Steal** and **Force**. These choices determine what the [[Database Internals/Transactions/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]] protocol must guarantee and what [[Database Internals/Transactions/RecoveryComponents/Logging Types|log type]] the recovery manager is required to maintain.
 
 ## Policy Dimensions
 
@@ -22,8 +22,13 @@ Which log type is needed depends entirely on the buffer management strategy chos
 | **No-Force / No-Steal** | **Redo Log**      | Needed because committed changes may not have been forced to disk before a crash.                                                     |
 | **No-Force / Steal**    | **Undo-Redo Log** | The industry standard. Handles both uncommitted disk writes and lost committed updates after a crash.                                 |
 
+## Industry Standard Terms
+- **Steal / No-Steal** $\rightarrow$ Page stealing policy / Dirty page eviction policy
+- **Force / No-Force** $\rightarrow$ Synchronous commit / Asynchronous commit
+- **No-Force / Steal** $\rightarrow$ The policy used by ARIES and virtually all production RDBMS systems
+
 ## Related
-- [[CSE444/Transactions/Recovery/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/Logging Types|Logging Types]]
-- [[CSE444/Transactions/Recovery/RecoveryComponents/ARIES|ARIES Recovery Algorithm]]
-- [[CSE444/Transactions/Recovery/Recovery|Recovery Overview]]
+- [[Database Internals/Transactions/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]
+- [[Database Internals/Transactions/RecoveryComponents/Logging Types|Logging Types]]
+- [[Database Internals/Transactions/RecoveryComponents/ARIES|ARIES Recovery Algorithm]]
+- [[Database Internals/Transactions/Recovery|Recovery Overview]]

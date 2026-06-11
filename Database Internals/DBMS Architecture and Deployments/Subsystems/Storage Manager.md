@@ -1,6 +1,6 @@
-# DBMS Architecture: Storage Manager
+# Database Internals: Storage Manager
 
-The storage manager sits below the query processor and is composed of three layers:
+The **storage manager** sits below the query processor in the [[Database Internals/DBMS Architecture and Deployments/Architecture|DBMS architecture]] and is composed of three layers:
 
 | Layer | Role |
 |-------|------|
@@ -30,4 +30,24 @@ Access methods organize data into files and provide an API operators use to retr
 | **B+ tree index** | Balanced tree; supports point lookups and range scans efficiently |
 | **Hash index** | Hash table; fast point lookups, but cannot do range scans |
 
-The optimizer chooses among these during **access path selection** when building a physical plan.
+The optimizer chooses among these during **access path selection** when building a physical plan. The choice depends on the query predicate, available indexes, and cardinality estimates stored in the catalog.
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| Catalog | System catalog / Information Schema / Data Dictionary |
+| Access methods | Storage engines (MySQL); access paths |
+| Heap file | Heap table / sequential scan target |
+| Page | Database page / disk block |
+| $T(R)$ (number of tuples) | Cardinality / row count |
+| $V(R, \text{attr})$ (distinct values) | NDV (Number of Distinct Values) |
+
+## Related
+
+- [[Database Internals/DBMS Architecture and Deployments/Architecture|DBMS Architecture]] — the two-subsystem model the storage manager belongs to
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — detailed coverage of pages, record formats, heap files, and buffer pool
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Buffer Manager|Buffer Manager]] — the buffer pool layer the storage manager depends on
+- [[Database Internals/DBMS Architecture and Deployments/Subsystems/Query Pipeline|Query Processing Pipeline]] — how the optimizer uses the catalog and access methods to build a physical plan

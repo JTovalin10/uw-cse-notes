@@ -1,4 +1,4 @@
-# CSE452: Shard
+# Distributed Systems: Shard
 
 A **Shard** is a discrete subset of the total key-space used as the unit of partitioning in [[Sharding|sharding]].
 

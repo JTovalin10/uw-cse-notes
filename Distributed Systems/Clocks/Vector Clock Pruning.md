@@ -1,4 +1,4 @@
-# CSE452: Vector Clock Pruning
+# Distributed Systems: Vector Clock Pruning
 
 **Vector Clock Pruning** is a technique used in distributed systems to manage the scalability of [[Vector Clock Algorithm|Vector Clocks]] by limiting their size.
 

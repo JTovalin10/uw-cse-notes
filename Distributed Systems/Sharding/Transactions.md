@@ -1,4 +1,4 @@
-# CSE452: Transactions (2PC)
+# Distributed Systems: Transactions (2PC)
 
 To support operations that span multiple keys across different [[Shard|shards]] and [[Replica Group|replica groups]], the system implements **Two-Phase Commit (2PC)** with distributed locking. For the motivation — the failure modes of the naive cross-group protocol that make 2PC necessary — see [[Two-Phase Commit|Two-Phase Commit: Motivation]].
 

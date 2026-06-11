@@ -1,4 +1,4 @@
-# Indexing: Heap and Sorted Files
+# Database Internals: Heap and Sorted Files
 
 ## Heap File Access Methods
 
@@ -47,3 +47,20 @@ CREATE CLUSTERED INDEX s_sid ON Student(sid);
 **Limitations of Sorted Files:**
 - The $\log_2 n$ binary search only applies to the indexed attribute
 - Queries on other attributes still require a full sequential scan — solved by adding a **secondary index**
+
+---
+
+## Industry Standard Terms
+
+| Course Term | Industry / Standard Term |
+|---|---|
+| Heap file | Heap table / unordered table |
+| Sequential file | Sorted table / clustered table |
+| RID (Record ID) | Row ID / tuple ID / physical address |
+| Clustered index | Primary index / index-organized table |
+
+## Related
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Index Types|Index Types]] — clustered vs. secondary indexes built on sorted files
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/Heap File and LOBs|Heap File and LOBs]] — heap file implementations and large object storage
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Indexing|Indexes and File Organizations]] — hub file for file organizations and index structures

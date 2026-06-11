@@ -1,4 +1,4 @@
-# CSE452: Fast Reads in Multi-Paxos
+# Distributed Systems: Fast Reads in Multi-Paxos
 
 In standard [[Multi-Paxos|Multi-Paxos]], every read must go through the **leader** and be appended to the log to guarantee [[Linearizability|Linearizability]]. This ensures reads reflect the most up-to-date committed state, but it is expensive — every read consumes log slots and requires at least a round-trip to the leader. **Fast reads** are optimizations that allow reads to be served directly from **any replica** without full consensus, at the cost of relaxed consistency guarantees.
 

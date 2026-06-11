@@ -1,4 +1,4 @@
-# CSE452: Vector Clock Algorithm
+# Distributed Systems: Vector Clock Algorithm
 
 **Vector clocks** extend [[Logical Clocks|logical clocks]] to capture causality in both directions. Unlike [[Lamport Clock Algorithm|Lamport clocks]], vector clocks allow you to definitively determine whether two events are causally related or concurrent.
 

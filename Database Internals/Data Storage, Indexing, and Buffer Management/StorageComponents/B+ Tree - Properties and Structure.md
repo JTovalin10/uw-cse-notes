@@ -1,6 +1,6 @@
-# CSE444: B+ Tree - Properties and Structure
+# Database Internals: B+ Tree - Properties and Structure
 
-A **B+ Tree** is a **balanced search tree** optimized for disk-page access. It is the default index structure in most relational DBMSs.
+A **B+ Tree** is a **balanced search tree** optimized for disk-page access. It is the default index structure in most relational DBMSs. See [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/B+ Tree - Operations|B+ Tree - Operations]] for lookup, insertion, deletion, and optimization algorithms.
 
 ### B-tree Core Concepts
 - **One node = one page**: Each node occupies exactly one disk block (e.g., 4KB or 8KB).
@@ -70,7 +70,8 @@ $$2d \times 4 + (2d + 1) \times 8 \leq 4096 \implies d = 170$$
 - **Leaf Pointers** $\rightarrow$ Sequence Set (in older literature)
 
 ## Related
-- [[B+ Tree|B+ Tree Hub]] — operations and optimizations
-- [[Indexing|Indexes and File Organizations]] — clustered vs. unclustered indexes
-- [[Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats
-- [[CSE332/Sorting/B-Trees|CSE332 Balanced Trees]]
+
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/B+ Tree|B+ Tree Hub]] — hub linking properties and operations
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/StorageComponents/B+ Tree - Operations|B+ Tree - Operations]] — lookup, insertion, deletion, bulk loading
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Indexing|Indexes and File Organizations]] — clustered vs. unclustered indexes
+- [[Database Internals/Data Storage, Indexing, and Buffer Management/Data Storage and Buffer Management|Data Storage and Buffer Management]] — page formats and buffer pool management

@@ -1,6 +1,6 @@
-# CSE444: Recovery
+# Database Internals: Recovery
 
-**[[Database Recovery]]** is the process of ensuring that a database remains in a consistent state despite system crashes, power failures, or transaction aborts. It is the primary mechanism for enforcing **Atomicity** and **Durability** from the [[Transaction Fundamentals|ACID properties]].
+**Recovery** is the process of ensuring that a database remains in a consistent state despite system crashes, power failures, or transaction aborts. It is the primary mechanism for enforcing **Atomicity** and **Durability** from the [[Database Internals/Transactions/Transaction Fundamentals|ACID properties]].
 
 When a system crash occurs, the volatile state in RAM is lost. The DBMS must use the log on stable storage to reconstruct the state. The recovery process must be **idempotent** — if the system crashes again during recovery, re-starting the process must lead to the same consistent state.
 
@@ -9,21 +9,21 @@ When a system crash occurs, the volatile state in RAM is lost. The DBMS must use
 The recovery system rests on three foundational pillars:
 
 ### 1. Write-Ahead Logging (WAL)
-The **[[Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]** protocol ensures that the log always precedes the data page on stable storage. 
+The **[[Database Internals/Transactions/RecoveryComponents/Write-Ahead Logging (WAL)|Write-Ahead Logging (WAL)]]** protocol ensures that the log always precedes the data page on stable storage.
 - **Rule 1**: All log records for a page must be flushed to disk before the page itself is written.
 - **Rule 2**: The `COMMIT` record must be flushed to disk before the transaction is declared committed.
 
 This allows the DBMS to use the log to reconstruct the state of the data if it was lost during a crash.
 
 ### 2. Buffer Management Policies
-The interaction between the **[[Buffer Manager|Buffer Manager]]** and the recovery system is defined by two dimensions:
+The interaction between the **[[Database Internals/Transactions/RecoveryComponents/Buffer Management Policies|Buffer Manager]]** and the recovery system is defined by two dimensions:
 
 - **Steal vs. No-Steal**:
-  - **Steal**: Allows the buffer manager to flush a dirty page to disk even if the transaction that modified it hasn't committed. (Requires **Undo** logging to roll back those changes if the transaction aborts).
+  - **Steal**: Allows the buffer manager to flush a dirty page to disk even if the transaction that modified it hasn't committed. (Requires **Undo** logging to roll back those changes if the transaction aborts.)
   - **No-Steal**: Pages cannot be flushed until the transaction commits.
 - **Force vs. No-Force**:
   - **Force**: Requires all pages modified by a transaction to be flushed to disk at commit time.
-  - **No-Force**: Allows a transaction to commit even if its modified pages are still only in RAM. (Requires **Redo** logging to re-apply changes if the system crashes before the page hits disk).
+  - **No-Force**: Allows a transaction to commit even if its modified pages are still only in RAM. (Requires **Redo** logging to re-apply changes if the system crashes before the page hits disk.)
 
 | Policy Combination | Logging Required |
 |-------------------|-----------------|
@@ -57,7 +57,7 @@ Modern recovery is typically implemented using the **[[Database Internals/Transa
 
 ## Related
 - [[Database Internals/Transactions/RecoveryComponents/ARIES|ARIES Detail]]
-- [[Write-Ahead Logging (WAL)|WAL Details]]
-- [[Transaction Fundamentals|Transaction Fundamentals]]
-- [[Concurrency Anomalies|Concurrency Anomalies]]
-- [[Buffer Manager|Buffer Manager]]
+- [[Database Internals/Transactions/RecoveryComponents/Write-Ahead Logging (WAL)|WAL Details]]
+- [[Database Internals/Transactions/Transaction Fundamentals|Transaction Fundamentals]]
+- [[Database Internals/Transactions/Concurrency Anomalies|Concurrency Anomalies]]
+- [[Database Internals/Transactions/RecoveryComponents/Buffer Management Policies|Buffer Management Policies]]

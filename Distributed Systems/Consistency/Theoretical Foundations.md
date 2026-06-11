@@ -1,4 +1,4 @@
-# CSE452: Consistency Theoretical Foundations
+# Distributed Systems: Consistency Theoretical Foundations
 
 Consistency in distributed systems is defined by the mathematical trade-offs between data integrity, availability, and performance.
 

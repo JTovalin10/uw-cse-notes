@@ -1,4 +1,4 @@
-# CSE452: Paxos Roles
+# Distributed Systems: Paxos Roles
 
 In **Single Decree Paxos**, nodes take on specific roles to reach consensus on a single value.
 

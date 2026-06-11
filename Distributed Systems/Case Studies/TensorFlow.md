@@ -1,10 +1,10 @@
-# CSE452: TensorFlow
+# Distributed Systems: TensorFlow
 
 **TensorFlow** is Google's second-generation distributed machine learning framework, succeeding **DistFlow**. It is now largely superseded by **JAX**, but it set the stage for how modern ML systems think about distributed computation. The key insight TensorFlow introduced was representing an entire ML training job as a **dataflow graph** — a global, inspectable description of the computation that the runtime can schedule and optimize across a cluster.
 
 ## Context: Compute-Bound vs. IO-Bound
 
-Most distributed systems studied in [[CSE452]] (e.g., [[Case Studies/MapReduce|MapReduce]], [[Google File System (GFS)|GFS]]) are **IO-bound**: their bottleneck is disk throughput or network bandwidth, so adding more machines with more storage or faster interconnects directly accelerates them.
+Most distributed systems studied in this course (e.g., [[Distributed Systems/Case Studies/MapReduce|MapReduce]], [[Distributed Systems/Case Studies/Google File System (GFS)|GFS]]) are **IO-bound**: their bottleneck is disk throughput or network bandwidth, so adding more machines with more storage or faster interconnects directly accelerates them.
 
 ML training is fundamentally different — it is **compute-bound**:
 
@@ -62,7 +62,7 @@ GPUs are **data parallelism hardware** — they apply the same operation to many
 
 ## Fault Tolerance
 
-TensorFlow's fault-tolerance strategy is deliberately weaker than systems like [[Raft]] or [[2PC|two-phase commit]] because ML training can tolerate (and even benefit from) imprecision.
+TensorFlow's fault-tolerance strategy is deliberately weaker than systems like [[Distributed Systems/Sharding/Two-Phase Commit|Two-Phase Commit]] because ML training can tolerate (and even benefit from) imprecision.
 
 ### Checkpointing
 
@@ -80,10 +80,10 @@ The key difference is **weights**: after each step every worker has computed its
 
 ## Related
 
-- [[Case Studies/MapReduce|MapReduce]] — compare IO-bound vs. compute-bound design
-- [[Google File System (GFS)|GFS]] — storage substrate underlying the Google systems stack
-- [[Raft]] — contrast strong-consistency replication with TensorFlow's weak-consistency approach
-- [[2PC|Two-Phase Commit]] — contrast atomic commit with TensorFlow's ignore-and-checkpoint fault model
+- [[Distributed Systems/Case Studies/MapReduce|MapReduce]] — compare IO-bound vs. compute-bound design
+- [[Distributed Systems/Case Studies/Google File System (GFS)|Google File System (GFS)]] — storage substrate underlying the Google systems stack
+- [[Distributed Systems/Sharding/Two-Phase Commit|Two-Phase Commit]] — contrast atomic commit with TensorFlow's ignore-and-checkpoint fault model
+- [[Distributed Systems/Consistency/Weak Consistency Models|Weak Consistency Models]] — the weak-consistency trade-offs TensorFlow makes
 
 ## Deep Dive
 

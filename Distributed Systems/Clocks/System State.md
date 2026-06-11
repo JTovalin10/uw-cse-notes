@@ -1,4 +1,4 @@
-# CSE452: System State
+# Distributed Systems: System State
 
 When writing correctness proofs for a distributed protocol, it is essential to classify each property of the system's state by how it behaves over time. A property may be permanent once established, or it may come and go. This classification determines what a proof is allowed to assume.
 
