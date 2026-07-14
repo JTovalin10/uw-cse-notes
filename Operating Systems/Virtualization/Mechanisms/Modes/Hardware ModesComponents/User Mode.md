@@ -15,3 +15,8 @@ Contrast with [[Kernel Mode]], which has no such restrictions.
 - [[Ring 3]] — the x86 privilege ring corresponding to user mode
 - [[System Call]] — how user-mode code requests privileged operations
 - [[General Protection Fault (GPF)]] — raised when user mode violates restrictions
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| User Mode | Unprivileged mode / Ring 3 |

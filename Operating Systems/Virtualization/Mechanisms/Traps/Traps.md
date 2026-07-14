@@ -19,3 +19,8 @@ The trap is a **doorway into kernel mode**, through which a process running in u
 - [[Trap Table]] — the dispatch table for trap handlers
 - [[Atomic Transfer of Control]] — the hardware mechanism used during trap entry
 - [[Transparent Restartable Execution]] — the illusion maintained after a trap
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Trap | Software interrupt / trap (standard OS terminology) |

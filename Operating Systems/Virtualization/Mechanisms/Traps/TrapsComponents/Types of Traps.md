@@ -23,3 +23,9 @@ The process did something illegal or nonsensical.
 - [[Operating Systems/Virtualization/Mechanisms/Exceptions/Exception]] — unintentional traps caused by hardware errors
 - [[Dealing with Exceptions]] — OS responses to unintentional traps
 - [[How Traps Work]] — the mechanism behind both types
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Unintentional Trap | Fault / exception |
+| SIGSEGV | Segmentation fault signal |

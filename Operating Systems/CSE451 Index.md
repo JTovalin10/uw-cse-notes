@@ -128,11 +128,11 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Critical Sections|Critical Sections]] — mutual exclusion of critical code regions
 - [[Critical Section Patterns|Critical Section Patterns]] — common critical section patterns
 - [[Critical Section Requirements|Critical Section Requirements]] — atomicity, progress, bounded waiting
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Disabling Interrupts|Disabling Interrupts]] — interrupt disable for mutual exclusion
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Messages|Messages]] — message passing for synchronization
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Monitors|Monitors]] — monitor synchronization construct
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Semaphores|Semaphores]] — semaphore synchronization primitive
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Spinlock|Spinlock]] — spin-based locking mechanism
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Disabling Interrupts|Disabling Interrupts]] — interrupt disable for mutual exclusion
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Messages|Messages]] — message passing for synchronization
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Monitors|Monitors]] — monitor synchronization construct
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Semaphores|Semaphores]] — semaphore synchronization primitive
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Spinlock|Spinlock]] — spin-based locking mechanism
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks|Locks]] — lock synchronization overview
 - [[Atomic|Atomic]] — atomic operations
 - [[compare_and_swap|compare_and_swap]] — CAS atomic instruction
@@ -218,9 +218,8 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Paged Virtual Memory|Paged Virtual Memory]] — virtual memory via paging
 - [[Page Fault|Page Fault]] — page fault event
 - [[Page replacement|Page replacement]] — page replacement overview
-- [[Demanding Page|Demanding Page]] — demand paging mechanism
 - [[How do we load a program|How do we load a program]] — program loading into virtual memory
-- [[How does the OS handle page faults|How does the OS handle page faults]] — OS page fault handler
+- [[How does the OS handle page faults|How does the OS handle page faults]] — OS page fault handler, including locating pages on disk via multi-level, hashed, and inverted page tables
 - [[Belady's Algorithm|Belady's Algorithm]] — optimal page replacement algorithm
 - [[Belady's Anomaly|Belady's Anomaly]] — more frames → more faults with FIFO
 - [[Evicting the best page|Evicting the best page]] — choosing which page to evict

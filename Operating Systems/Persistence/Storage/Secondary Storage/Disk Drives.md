@@ -1,6 +1,6 @@
-# Disk Drives
+# CSE451: Disk Drives
 
-Disk drives are the primary devices used for [[Secondary Storage]]. They provide non-volatile storage for large amounts of data.
+**Disk drives** are the primary devices used for [[Secondary Storage]]. They provide non-volatile storage for large amounts of data.
 
 ## Main Types
 
@@ -24,8 +24,17 @@ Electronic devices that store data in semiconductor flash memory.
 | **Life Span** | Decades (if idle) | Limited by write cycles |
 
 ## Related
-- [[Magnetic Disks]]
-- [[Flash Storage]]
-- [[HDD]]
-- [[SSD]]
-- [[Secondary Storage]]
+- [[Magnetic Disks]] — full HDD mechanics and performance characteristics
+- [[Flash Storage]] — full SSD mechanics and performance characteristics
+- [[HDD]] — brief HDD summary
+- [[SSD]] — brief SSD summary
+- [[Secondary Storage]] — broader storage device context
+- [[RAID]] — combining multiple disk drives for redundancy and performance
+
+## Industry Standard Terms
+
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| Hard Disk Drive (HDD) | Spinning disk / mechanical drive |
+| Solid State Drive (SSD) | Flash storage / NAND storage |
+

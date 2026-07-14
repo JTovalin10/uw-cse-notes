@@ -15,8 +15,8 @@ The **Referee** role is focused on managing contention between multiple, potenti
 
 ### Mechanics of Protection
 The Referee relies on hardware-assisted mechanisms to enforce its rules:
-*   **Dual-Mode Operation**: Distinguishing between **[[User Mode|User Mode]]** (restricted) and **[[Kernel Mode|Kernel Mode]]** (privileged).
-*   **Memory Protection**: Using **[[Base and Bounds|Base and Bounds]]** registers or **[[Page Table|Page Tables]]** to prevent a process from accessing memory outside its allocated range.
+*   **Dual-Mode Operation**: Distinguishing between **[[User Mode|User Mode]]** (restricted) and **[[Kernel Mode|Kernel Mode]]** (privileged). This dual-mode split is the hardware foundation that makes the Referee role enforceable — without it, any process could execute any instruction.
+*   **Memory Protection**: Using **[[Base and Bounds|Base and Bounds]]** registers or **[[Page Table|Page Tables]]** to prevent a process from accessing memory outside its allocated range. See [[Operating Systems/Virtualization/Architecture/Protection|Protection]] for the general mechanism this exemplifies.
 *   **Timer Interrupts**: Preventing CPU "hogging" by forcibly returning control to the kernel after a fixed **Quantum**.
 
 ---
@@ -27,10 +27,35 @@ The **Illusionist** role provides each application with the abstraction of a "pr
 ### Provided Abstractions
 *   **Virtual CPU**: Through **[[CPU State#Context Switch|Context Switching]]**, each process believes it has a dedicated processor, even if thousands of processes are sharing a single core.
 *   **[[Operating Systems/Virtualization/Memory/Concepts/Virtual Addresses|Virtual Memory]]**: Each process sees a contiguous, private address space (starting at `0x00000000`), regardless of where its data is physically stored in **RAM** or on disk.
-*   **Near-Infinite Resources**: The OS uses **[[Swapping|Swapping]]** and **[[Demanding Page|Demand Paging]]** to make physical memory appear much larger than its actual capacity.
+*   **Near-Infinite Resources**: The OS uses **[[Swapping|Swapping]]** and **[[Demanding Page|Demand Paging]]** to make physical memory appear much larger than its actual capacity. See [[Operating Systems/Virtualization/Memory/Virtual Memory|Virtual Memory]] for the full mechanism.
 *   **Reliable Storage/Networking**: The Illusionist masks hardware failures (e.g., disk bad sectors or packet loss) by providing high-level abstractions like **Files** and **TCP** streams.
 
-[Image: Diagram showing multiple virtual machines/processes mapped onto a single set of physical hardware resources.]
+The following diagram illustrates the Illusionist concept: many processes, each believing it owns the entire machine, are actually multiplexed onto one shared set of physical hardware resources by the OS.
+
+```mermaid
+flowchart TB
+    subgraph VIRT [Illusion Seen By Each Process]
+        P1[Process A: private CPU + full address space]
+        P2[Process B: private CPU + full address space]
+        P3[Process C: private CPU + full address space]
+    end
+    subgraph OS [Operating System - The Illusionist]
+        CS[Context Switching]
+        VM[Virtual Memory Mapping]
+    end
+    subgraph HW [Physical Hardware]
+        CPU[Single Physical CPU]
+        RAM[Physical RAM]
+    end
+    P1 -->|scheduled onto| CS
+    P2 -->|scheduled onto| CS
+    P3 -->|scheduled onto| CS
+    CS -->|(1) Time-slices| CPU
+    P1 -->|maps virtual addresses via| VM
+    P2 -->|maps virtual addresses via| VM
+    P3 -->|maps virtual addresses via| VM
+    VM -->|(2) Translates to| RAM
+```
 
 ---
 
@@ -53,6 +78,16 @@ The **Glue** role provides a set of common, high-level abstractions and librarie
 | **Illusionist** | **Simplicity & Scale** | Context Switching, VM | Complexity, Memory Limits |
 | **Glue** | **Interoperability** | Standard API (POSIX) | Fragmented, Incompatible Apps |
 
+## Industry Standard Terms
+
+| Course Term | Industry-Standard Equivalent |
+| :--- | :--- |
+| Referee | Resource manager / scheduler + access control enforcement |
+| Illusionist | Virtualization layer / hypervisor-like abstraction |
+| Glue | Standard library / platform SDK / runtime services |
+| Dual-Mode Operation | Privilege rings (Ring 0 / Ring 3 on x86) |
+| System Calls (Syscalls) | Syscall ABI (e.g., POSIX, Win32 API) |
+
 ## Related
 - [[Operating Systems/Virtualization/Architecture/Operating System|Operating System]] — definition and design challenges
 - [[Hardware Modes|Hardware Modes]] — the dual-mode mechanism underlying the Referee role
@@ -60,3 +95,5 @@ The **Glue** role provides a set of common, high-level abstractions and librarie
 - [[CPU State#Context Switch|Context Switch]] — mechanism behind the virtual CPU illusion
 - [[System Call|System Call]] — standardized API that is the kernel's "glue"
 - [[Hardware Abstraction Layer|Hardware Abstraction Layer]] — HAL as part of the Glue role
+- [[Operating Systems/Virtualization/Architecture/Protection|Protection]] — general mechanism underlying the Referee role
+- [[Operating Systems/Virtualization/Virtual Machine/Virtual Machine|Virtual Machine]] — a stronger form of the Illusionist role at the whole-machine level

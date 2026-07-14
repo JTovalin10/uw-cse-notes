@@ -29,6 +29,19 @@ monitor MonitorName {
 	- synchronization is implicitly associated with the monitor — it comes for free
 	- if a second thread tries to execute a monitor procedure, it blocks until the first has left
 	- more restrictive than semaphores, but easier to use
+- **[[Operating Systems/Concurrency/Synchronization/Mechanics/Condition Variables|Condition Variables]]** — used for threads to wait for specific conditions within the monitor, coordinating between threads once inside the automatic mutual-exclusion boundary
+
+### Key Properties
+- only one thread can be active inside the monitor at a time
+- mutual exclusion is automatic (implicit lock on entry)
+- condition variables for coordination between threads
+
+### Condition Variable Operations
+```c
+wait(condition)   // release lock and sleep until signaled
+signal(condition) // wake up one waiting thread
+broadcast(condition) // wake up all waiting threads
+```
 
 ## Advantages
 - easier to program correctly than semaphores
@@ -52,6 +65,6 @@ monitor MonitorName {
 - Mesa (original implementation)
 
 ## Related
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Semaphores]]
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Semaphores]]
 - [[Critical Sections]]
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]

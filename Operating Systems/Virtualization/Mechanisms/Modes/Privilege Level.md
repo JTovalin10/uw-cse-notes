@@ -12,3 +12,8 @@ x86 hardware implements **privilege levels** as concentric rings, where Ring 0 h
 - [[Privileged Instructions]] — instructions only available at Ring 0
 - [[General Protection Fault (GPF)]] — exception raised when Ring 3 violates restrictions
 - [[Code Segment]] — the CS register encodes the current privilege level
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Privilege Level | Protection ring / CPL (Current Privilege Level) |

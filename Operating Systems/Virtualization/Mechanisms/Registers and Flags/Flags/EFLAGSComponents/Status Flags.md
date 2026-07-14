@@ -11,3 +11,8 @@
 ## Related
 - [[Control Flags]] — the other half of EFLAGS
 - [[EFLAGS]] — the parent register
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Status Flags | Arithmetic/status flags (x86 architecture manual terminology) |

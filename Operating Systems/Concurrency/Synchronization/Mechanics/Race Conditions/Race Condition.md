@@ -11,7 +11,7 @@ a program has a race condition or data race if the result of an execution depend
 # How to prevent
 - [[Critical Sections]] - identify and protect shared data access
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Mutual Exclusion]] - ensure operations are not simultaneous
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks]] - enforce ordering with acquire/release
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks]] - enforce ordering with acquire/release
 
 # Related
 - [[Critical Section Patterns]]

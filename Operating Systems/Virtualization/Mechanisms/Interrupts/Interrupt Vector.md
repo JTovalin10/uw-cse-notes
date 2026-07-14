@@ -14,3 +14,8 @@ The interrupt vector contains a checksum so that a malicious actor cannot redire
 - [[Trap Table]] — similar concept for traps/syscalls
 - [[Interrupts#Safe Interrupts|Safe Interrupts]] — the interrupt vector is one of the three elements of safe interrupt handling
 - [[Interrupt Handler]] — the functions the vector points to
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Interrupt Vector | Interrupt Descriptor Table (IDT) on x86 |

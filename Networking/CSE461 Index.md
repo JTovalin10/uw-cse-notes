@@ -146,5 +146,5 @@ Overview and index for all CSE461 notes. Data transmission from physical layer u
 - [[Definitions Overview|Definitions Overview]] — index of CSE461 definitions
 
 ## Cross-Course Concepts
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks|Locks]] — synchronization mechanics
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks|Locks]] — synchronization mechanics
 - [[Race Condition|Race Condition]] — concurrency hazards

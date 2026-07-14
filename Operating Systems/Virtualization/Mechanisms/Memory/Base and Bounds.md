@@ -25,3 +25,9 @@ These problems are solved by [[Operating Systems/Virtualization/Memory/Concepts/
 - [[Fixed Partitions]] — uses base and bounds registers per partition
 - [[Variable Partitions]] — also uses base and bounds
 - [[Segmentation]] — extends base and bounds with multiple segments per process
+- [[Virtual Addresses]] — the local Mechanisms note contrasting with base and bounds
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Base and Bounds | Base and limit registers |

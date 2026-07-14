@@ -15,3 +15,8 @@
 - [[CLI]] / [[STI]] — instructions that modify the interrupt flag
 - [[Mode Storage]] — details on where mode information is stored
 - [[General Purpose Registers]] — other x86 registers
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| EFLAGS | Processor status register / flags register |

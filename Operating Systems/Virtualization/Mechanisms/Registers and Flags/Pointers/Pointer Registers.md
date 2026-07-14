@@ -60,3 +60,8 @@ mov rax, [rip + offset]  ; load from address relative to current instruction
 - [[CPU State#Stack Pointer (SP)|Stack Pointer]] — generic term for stack pointer
 - [[Kernel Stack]] — how pointer registers are saved during kernel entry
 - [[Exceptions]] — pointer registers saved during exceptions
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Pointer Registers | Special-purpose registers (instruction pointer, stack pointer, frame pointer) |

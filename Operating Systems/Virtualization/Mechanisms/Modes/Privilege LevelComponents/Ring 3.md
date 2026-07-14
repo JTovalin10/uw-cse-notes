@@ -13,3 +13,8 @@
 - [[Privilege Level]] — the parent concept
 - [[User Mode]] — the OS-level concept corresponding to Ring 3
 - [[General Protection Fault (GPF)]] — raised when Ring 3 attempts something restricted
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Ring 3 | User mode / unprivileged mode |

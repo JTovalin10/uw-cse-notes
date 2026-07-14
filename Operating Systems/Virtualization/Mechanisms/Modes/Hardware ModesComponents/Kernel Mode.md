@@ -15,3 +15,8 @@ Contrast with [[User Mode]], which restricts all of these capabilities.
 - [[Hardware Modes]] — the parent concept
 - [[Ring 0]] — the x86 privilege ring corresponding to kernel mode
 - [[Mode Switch]] — how the CPU transitions into kernel mode
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Kernel Mode | Supervisor mode / Ring 0 |

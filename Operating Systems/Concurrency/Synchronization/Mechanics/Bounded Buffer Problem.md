@@ -7,7 +7,7 @@ Also known as *producer/consumer problem*
 - so, we must use synchronization constructs to control access to shared variables describing buffer state![[Screenshot 2026-01-20 at 3.43.23 PM.png]]
 # Solution(s)
 ## Semaphores
-using [[Operating Systems/Concurrency/Synchronization/Mechanics/Semaphores]] (both binary and counting) fixes this
+using [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Semaphores]] (both binary and counting) fixes this
 ![[Screenshot 2026-01-20 at 3.45.27 PM.png]]
 ## Conditional Variables
 ![[Screenshot 2026-01-20 at 3.53.03 PM.png]]

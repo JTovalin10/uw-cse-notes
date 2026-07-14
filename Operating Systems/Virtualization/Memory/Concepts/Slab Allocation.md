@@ -3,7 +3,7 @@
 **Slab Allocation** is a kernel-level memory management mechanism designed to eliminate internal fragmentation and reduce the overhead of allocating/deallocating small, frequently used kernel objects (e.g., `struct task_struct`, `struct file`, `struct inode`).
 
 ## The Core Problem
-1. **Internal Fragmentation**: Standard page-level allocators (like the [[Buddy Allocator|Buddy Allocator]]) allocate memory in large chunks (usually 4KB). If a kernel structure is only 256 bytes, using a full page is extremely wasteful.
+1. **Internal Fragmentation**: Standard page-level allocators (like the [[Operating Systems/Virtualization/Memory/Concepts/Buddy Allocator|Buddy Allocator]]) allocate memory in large chunks (usually 4KB). If a kernel structure is only 256 bytes, using a full page is extremely wasteful.
 2. **Allocation Overhead**: Frequent allocation and deallocation of specific structures require complex bookkeeping and lock acquisition on the global memory pool.
 
 ## The Slab Solution
@@ -19,7 +19,7 @@ Instead of allocating from a general pool, the kernel maintains **caches** for s
 ### Allocation Logic
 1. When a kernel component requests an object (e.g., `kmem_cache_alloc`), the allocator first checks the **Partial** slabs for that object type.
 2. If no partial slabs exist, it takes a slot from an **Empty** slab.
-3. If no empty slabs exist, it allocates a new page from the [[Buddy Allocator|Buddy Allocator]] and creates a new slab.
+3. If no empty slabs exist, it allocates a new page from the [[Operating Systems/Virtualization/Memory/Concepts/Buddy Allocator|Buddy Allocator]] and creates a new slab.
 
 ## Key Benefits
 - **Zero Internal Fragmentation**: Slots are sized exactly to the object's requirements.
@@ -30,5 +30,14 @@ Instead of allocating from a general pool, the kernel maintains **caches** for s
 - **Linux Kernel**: Heavily uses the slab allocator (and its variants like SLOB and SLUB).
 - **Solaris**: The original implementation by Jeff Bonwick.
 
----
-**See Also**: [[TLABs|TLABs]], [[Buddy Allocator|Buddy Allocator]]
+## Industry Standard Terms
+| Course Term | Industry / General Term |
+|---|---|
+| Slab Allocation | Object-caching allocator / SLUB (Linux implementation) |
+| Slab | Object pool page group |
+| Cache (kernel) | Object pool |
+
+## Related
+- [[Operating Systems/Virtualization/Memory/Concepts/TLABs|Thread-Local Allocation Buffers (TLABs)]]
+- [[Operating Systems/Virtualization/Memory/Concepts/Buddy Allocator|Buddy Allocator]]
+- [[Operating Systems/Memory/Allocation|Memory Allocation]]

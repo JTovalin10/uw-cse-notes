@@ -1,5 +1,6 @@
-# Process vs Thread
-OSTEP: *"Each thread is very much like a separate process, except for one difference: they share the same address space and thus can access the same data."*
+# CSE451: Process vs Thread
+
+A **[[Process|Process]]** is an independent program in execution with its own private address space, while a **Thread** is a unit of execution *within* a process that shares that address space with its sibling threads. OSTEP: *"Each thread is very much like a separate process, except for one difference: they share the same address space and thus can access the same data."*
 
 | Aspect             | Process                                   | Thread                                  |
 | ------------------ | ----------------------------------------- | --------------------------------------- |
@@ -7,12 +8,12 @@ OSTEP: *"Each thread is very much like a separate process, except for one differ
 | Address Space      | Own separate address space                | Shares address space with other threads |
 | Memory             | Does not share memory (needs IPC)         | Shares heap, data, code with siblings   |
 | Creation Cost      | Expensive (copy address space)            | Cheap (just new stack + registers)      |
-| [[CSE451/Virtualization/Processes/CPUState/CPU State#Context Switch|Context Switch]] | Slow (switch page tables, flush TLB)      | Fast (same address space)               |
+| [[CPU State#Context Switch|Context Switch]] | Slow (switch page tables, flush TLB)      | Fast (same address space)               |
 | Communication      | IPC required (pipes, sockets, shared mem) | Direct memory access                    |
 | Isolation          | Strong - crash doesn't affect others      | Weak - one thread crash can kill all    |
 | Resources          | Own file descriptors, sockets             | Shares file descriptors, sockets        |
 
-# What they share vs don't share
+# What They Share vs Don't Share
 
 ## Process has its own:
 - Address space
@@ -35,23 +36,24 @@ OSTEP: *"Different threads differentiate with each other mainly in: Different PC
 - Open files and sockets
 - Signal handlers
 
-## What processes CAN share
-Even though processes have separate address spaces, they can share memory in specific ways:
+## What Processes CAN Share
 
-- **Code/text segment** - if two processes run the same program (e.g., two terminals running bash), the instruction pages are mapped read-only and shared (same physical frames)
-- **Read-only static data** - constants and string literals can be shared since they never change
-- **Shared libraries** - code pages for libc, etc. are mapped read-only into multiple processes (same physical frames, different virtual addresses)
--  ** [[Copy-on-Write]] after [[Fork]]** - parent and child initially share all pages, only copied when one writes
+Even though processes have separate address spaces, they can still share memory in specific, controlled ways:
+
+- **Code/text segment**: if two processes run the same program (e.g., two terminals running bash), the instruction pages are mapped read-only and shared, meaning both processes' page tables point at the same physical frames.
+- **Read-only static data**: constants and string literals can be shared since they never change, so there is no risk of one process's writes corrupting another's view of the data.
+- **Shared libraries**: code pages for libc, etc. are mapped read-only into multiple processes — same physical frames, but potentially different virtual addresses in each process.
+- **[[Operating Systems/Virtualization/Memory/Concepts/Copy-on-Write|Copy-on-Write]] after [[Fork|Fork]]**: parent and child initially share all pages read-only, and a page is only copied privately for whichever process first tries to write to it. See [[Optimizing Fork#COW|Optimizing Fork]] for the mechanism (shared mapping, read-only protection, write-triggered fault, and copy).
 - **Explicit shared memory**:
-	- `mmap()` with `MAP_SHARED` - memory-mapped files or anonymous shared regions
-	- `shmget()`/`shmat()` - System V shared memory segments
-- **Memory-mapped files** - multiple processes can map the same file into their address space
+	- `mmap()` with `MAP_SHARED` - memory-mapped files or anonymous shared regions.
+	- `shmget()`/`shmat()` - System V shared memory segments.
+- **Memory-mapped files**: multiple processes can map the same file into their address space.
 
-**Key insight**: anything read-only can be safely shared between processes since no one can modify it.
+**Key insight**: anything read-only can be safely shared between processes since no one can modify it, so there's no correctness risk in mapping the same physical frame into multiple address spaces.
 
-This is how [[Easy Sharing]] works with [[Operating Systems/Virtualization/Memory/Concepts/Virtual Addresses]] - multiple virtual pages can point to the same physical frame.
+This sharing is possible because of how the **[[Operating Systems/Virtualization/Mechanisms/Memory/Virtual Addresses|Virtual Addresses]]** system works — multiple virtual pages (potentially in different processes, at different virtual addresses) can point to the same underlying physical frame.
 
-# When to use which
+# When to Use Which
 - **Use processes when:**
 	- Need strong isolation (security)
 	- Tasks are independent
@@ -61,6 +63,20 @@ This is how [[Easy Sharing]] works with [[Operating Systems/Virtualization/Memor
 	- Tasks need to share data frequently
 	- Low overhead switching is important
 	- Tasks are tightly coupled
+
+## Related
+- [[Process|Process]]
+- [[CPU State|CPU State]]
+- [[Optimizing Fork|Optimizing Fork]]
+- [[Fork|Fork]]
+- [[Operating Systems/Virtualization/Memory/Concepts/Copy-on-Write|Copy-on-Write]]
+- [[Operating Systems/Virtualization/Mechanisms/Memory/Virtual Addresses|Virtual Addresses]]
+
+## Industry Standard Terms
+| Course Term | Industry-Standard Equivalent |
+|---|---|
+| Thread | Lightweight process / kernel thread |
+| IPC | Inter-Process Communication |
 
 # Source
 - OSTEP Chapter 26: Concurrency - An Introduction

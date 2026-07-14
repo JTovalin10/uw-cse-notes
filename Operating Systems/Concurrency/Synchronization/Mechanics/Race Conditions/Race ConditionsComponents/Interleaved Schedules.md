@@ -9,7 +9,7 @@
 - makes bugs non-deterministic ([[Heisenbug]])
 
 # Solution
-- protect [[Critical Sections]] with [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks]] or other synchronization mechanisms
+- protect [[Critical Sections]] with [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks]] or other synchronization mechanisms
 - enforce [[Operating Systems/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]
 
 # Related

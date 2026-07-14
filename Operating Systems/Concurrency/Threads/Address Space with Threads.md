@@ -1,20 +1,21 @@
-# Address space with threads
-each thread has its own stack within the process's address space. the limitation of this is that we don't allow each stack to grow too large as it may conflict with other threads' stacks.
+# CSE451: Address Space with Threads
+
+Each **[[Thread]]** has its own stack within the process's address space. The limitation of this is that we don't allow each stack to grow too large as it may conflict with other threads' stacks.
 
 ![[address space with threads.png]]
 
-in a single-threaded process, the layout is straightforward:
-- code (text) at the bottom
-- data/heap growing upward
-- stack growing downward from the top
+In a single-threaded process, the layout is straightforward:
+- Code (text) at the bottom
+- Data/heap growing upward
+- Stack growing downward from the top
 
-with multiple threads, the address space must accommodate multiple stacks:
-- each thread gets a fixed-size region for its stack
-- these stacks are placed at different locations in the address space
-- if a thread's stack overflows its allocated region, it can corrupt another thread's stack (stack overflow)
-- the heap remains shared - any thread can allocate and free heap memory
+With multiple threads, the address space must accommodate multiple stacks:
+- Each thread gets a fixed-size region for its stack
+- These stacks are placed at different locations in the address space
+- If a thread's stack overflows its allocated region, it can corrupt another thread's stack (stack overflow)
+- The heap remains shared — any thread can allocate and free heap memory
 
-typical layout with threads:
+Typical layout with threads:
 ```
 +------------------+ high address
 |  thread 1 stack  |  (main thread, grows downward)
@@ -41,10 +42,20 @@ typical layout with threads:
 +------------------+ low address
 ```
 
-guard pages are unmapped memory regions placed between thread stacks. if a thread's stack grows into a guard page, the hardware triggers a page fault (segfault), catching the overflow before it silently corrupts another thread's stack.
+**Guard pages** are unmapped memory regions placed between thread stacks. If a thread's stack grows into a guard page, the hardware triggers a page fault (segfault), catching the overflow before it silently corrupts another thread's stack.
 
-the default stack size varies by OS (commonly 1-8 MB per thread), which limits how many threads a process can practically create. for example, with a 2 GB user address space and 8 MB stacks, you could fit roughly 250 threads before running out of address space for stacks alone.
+The default stack size varies by OS (commonly 1-8 MB per thread), which limits how many threads a process can practically create. For example, with a 2 GB user address space and 8 MB stacks, you could fit roughly 250 threads before running out of address space for stacks alone. This fixed-size-region constraint is the practical consequence of the "cheap thread creation" claim made in **[[Achieving Multithreading]]** — creation is cheap in CPU time, but the address space itself is a finite resource that bounds the number of threads.
 
-# Related
+## Deep Dive
+
+The choice of stack size is a tradeoff: a larger per-thread stack allows deeper recursion or larger local buffers before overflow, but wastes address space (and, if the page is actually touched, physical memory) per thread — directly limiting the maximum number of concurrent threads a single process can host. Some threading libraries let a programmer set a custom stack size at thread-creation time (e.g., `pthread_attr_setstacksize`) specifically to trade off this limit against per-thread memory needs. On 64-bit systems, the much larger virtual address space (as opposed to the 2 GB example in a 32-bit address space) makes this stack-count ceiling far less of a practical concern, since the constraint shifts from "address space exhaustion" to "physical memory exhaustion" if stacks are actually touched.
+
+## Industry Standard Terms
+- **Guard page** -> Stack guard page / redzone
+- **Thread stack region** -> Thread stack (pthreads: configurable via `pthread_attr_setstacksize`)
+
+## Related
 - [[Systems Programming/Concurrency/Threads|CSE333: Threads]]
-- [[Thread|Thread]]
+- [[Thread]]
+- [[Achieving Multithreading]]
+- [[Operating Systems/Virtualization/Memory/Concepts/Address Space Contents|Address Space Contents]]

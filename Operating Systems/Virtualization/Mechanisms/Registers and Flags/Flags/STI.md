@@ -11,3 +11,8 @@
 - [[IF]] — the flag bit that STI sets
 - [[EFLAGS]] — the register containing the interrupt flag
 - [[Interrupt Masking]] — OS use of STI/CLI for critical sections
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| STI | `sti` instruction (x86 architecture manual terminology) |

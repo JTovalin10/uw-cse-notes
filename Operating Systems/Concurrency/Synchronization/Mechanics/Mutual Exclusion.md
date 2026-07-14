@@ -12,11 +12,11 @@
 one way to guarantee mutually exclusive execution is using **locks**
 
 ## Mechanisms
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks]] - acquire/release semantics
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Spinlock]] - busy-waiting primitive
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Semaphores]] - counter-based
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Monitors]] - language-level support
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Disabling Interrupts]] - kernel only
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks]] - acquire/release semantics
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Spinlock]] - busy-waiting primitive
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Semaphores]] - counter-based
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Monitors]] - language-level support
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Disabling Interrupts]] - kernel only
 
 # Related
 - [[Critical Section Requirements]]

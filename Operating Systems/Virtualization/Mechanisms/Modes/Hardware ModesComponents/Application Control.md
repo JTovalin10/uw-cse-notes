@@ -14,3 +14,8 @@
 - [[OS Control]] — the alternative: OS mediates all hardware access
 - [[Hardware Modes]] — the parent concept comparing these two approaches
 - [[User Mode]] — the modern compromise: applications run in user mode with OS mediation
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Application Control | Direct hardware access / unmediated I/O |

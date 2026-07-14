@@ -16,3 +16,8 @@ In the kernel, a **handle table** maps each handle to its corresponding kernel d
 - [[Process#Process Identification (PID)|Process ID]] — the PID is the most common example of a handle
 - [[Kernel Mode]] — kernel internals are protected from user access
 - [[System Call]] — syscalls take handles as arguments to identify kernel objects
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Handle | Opaque handle / file descriptor (Unix) / HANDLE (Windows) |

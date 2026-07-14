@@ -21,5 +21,18 @@ Instead of allocating individual objects from the global heap, each thread is pr
 - **Fragmentation**: If a thread dies or stops allocating, the remaining space in its current TLAB may be wasted unless the allocator has a mechanism to reclaim it.
 - **Large Objects**: Very large objects that exceed the TLAB size are usually allocated directly from the global heap or a specialized "Large Object Space" to avoid wasting TLAB space.
 
----
-**See Also**: [[Slab Allocation|Slab Allocation]], [[Memory Allocation|Memory Allocation (351)]]
+## Deep Dive
+TLABs are conceptually the userspace/runtime analog of the kernel's per-CPU partial-slab lists in the SLUB variant of [[Operating Systems/Virtualization/Memory/Concepts/Slab Allocation|Slab Allocation]] — both techniques exist to avoid contending on a single global lock by giving each execution context (thread vs. CPU) a private pool to draw from first.
+
+## Industry Standard Terms
+| Course Term | Industry / General Term |
+|---|---|
+| Thread-Local Allocation Buffer (TLAB) | Thread-local arena / thread-local heap |
+| Pointer Bumping | Bump allocation |
+| Refill | Arena replenishment |
+
+## Related
+- [[Operating Systems/Virtualization/Memory/Concepts/Slab Allocation|Slab Allocation]]
+- [[Operating Systems/Virtualization/Memory/Concepts/Buddy Allocator|Buddy Allocator]]
+- [[Operating Systems/Memory/Allocation|Memory Allocation]]
+- [[Hardware & Software Interface/Memory Management/Memory Allocation|CSE351: Memory Allocation]]

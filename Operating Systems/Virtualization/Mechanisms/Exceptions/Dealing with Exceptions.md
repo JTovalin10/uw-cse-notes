@@ -11,3 +11,9 @@ When an [[Operating Systems/Virtualization/Mechanisms/Exceptions/Exception]] occ
 - [[Operating Systems/Virtualization/Mechanisms/Exceptions/Exception]] — what triggers this response
 - [[Traps|Traps]] — related class of kernel-entry events
 - [[Page Fault]] — a common exception the OS can fix by bringing in a page
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Alert the Program | Signal delivery (e.g., POSIX signals like SIGFPE, SIGSEGV) |
+| Fix the Exception | Fault handling / page-in on demand |

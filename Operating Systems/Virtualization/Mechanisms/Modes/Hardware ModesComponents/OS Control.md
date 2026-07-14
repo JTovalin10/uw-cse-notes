@@ -13,3 +13,8 @@
 - [[Application Control]] — the alternative: direct hardware access
 - [[Hardware Modes]] — the parent concept comparing these two approaches
 - [[System Call]] — the mechanism user code uses to request OS-mediated hardware access
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| OS Control | Kernel-mediated I/O / OS abstraction layer |

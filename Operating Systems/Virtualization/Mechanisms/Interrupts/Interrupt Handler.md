@@ -22,3 +22,8 @@ An **interrupt handler** (also called an **Interrupt Service Routine, ISR**) is 
 - [[Interrupt Vector]] — the dispatch table that maps interrupts to handlers
 - [[Interrupt Masking]] — interrupts are disabled while the handler runs
 - [[Interrupt Stack]] — the stack the handler runs on
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Interrupt Handler | Interrupt Service Routine (ISR) |

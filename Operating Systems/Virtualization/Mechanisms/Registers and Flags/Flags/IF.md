@@ -15,3 +15,8 @@ The **Interrupt Flag (IF)** is a single bit in the x86 processor's [[EFLAGS]] re
 - [[EFLAGS]] — the register that contains the IF bit
 - [[CLI]] / [[STI]] — x86 instructions to modify IF
 - [[Interrupt Masking]] — OS-level use of IF for synchronization
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| IF (Interrupt Flag) | Interrupt enable flag |

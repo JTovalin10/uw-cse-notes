@@ -14,7 +14,7 @@ while (condition == false)
 - useful for very short waits
 
 ## Used by
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Spinlock]]
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Spinlock]]
 
 ## Alternative
-- blocking/sleeping (used by [[Operating Systems/Concurrency/Synchronization/Mechanics/Semaphores|Semaphores]], [[Operating Systems/Concurrency/Synchronization/Mechanics/Monitors|Monitors]])
+- blocking/sleeping (used by [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Semaphores|Semaphores]], [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Monitors|Monitors]])

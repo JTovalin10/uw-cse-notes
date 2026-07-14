@@ -19,3 +19,9 @@ See [[Dealing with Exceptions]] for the OS's options when an exception occurs.
 - [[General Protection Fault (GPF)]] — a specific CPU exception for privilege violations
 - [[Dealing with Exceptions]] — what the OS can do in response
 - [[Exceptions]] — exceptions at the systems programming level
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Exception | CPU exception / fault (hardware architecture terminology) |
+| Segmentation Fault | Segmentation fault (SIGSEGV) |

@@ -12,3 +12,8 @@
 - [[Ring 3]] — the least privileged ring (user mode)
 - [[Privilege Level]] — the parent concept
 - [[Kernel Mode]] — the OS-level concept corresponding to Ring 0
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Ring 0 | Supervisor mode / kernel mode |

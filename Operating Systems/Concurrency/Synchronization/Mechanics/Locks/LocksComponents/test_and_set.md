@@ -70,5 +70,5 @@ release:
 
 ## Related
 - [[Atomic]]
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Spinlock]]
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Spinlock]]
 - [[compare_and_swap]]

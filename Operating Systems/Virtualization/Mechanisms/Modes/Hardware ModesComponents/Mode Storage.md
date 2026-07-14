@@ -15,3 +15,8 @@ The [[Process Control Block]] (PCB) stores this when the process is context-swit
 - [[EFLAGS]] — the x86 register that holds mode
 - [[Kernel Stack]] — where mode is saved on context switch
 - [[Process Control Block]] — the OS data structure that persists mode information
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Mode Storage | Processor status word / status register |

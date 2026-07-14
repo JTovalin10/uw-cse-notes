@@ -1,6 +1,6 @@
-# Persistent Storage
+# CSE451: Persistent Storage
 
-Storage that survives power loss. Includes secondary storage devices and the I/O system that manages them.
+**Persistent storage** is storage that survives power loss. It includes secondary storage devices and the I/O system that manages them, up through the file system abstraction built on top.
 
 ## Topics
 
@@ -10,3 +10,6 @@ Storage that survives power loss. Includes secondary storage devices and the I/O
 - [[Organization of the IO Function]] — programmed I/O, interrupt-driven I/O, DMA
 - [[IO System Hardware Environment]] — devices, controllers, buses
 - [[File Systems]] — abstraction built on top of storage
+- [[Storage and FS]] — Inodes, Superblock, journaling, and VFS
+- [[RAID]] — combining disks for redundancy and performance
+

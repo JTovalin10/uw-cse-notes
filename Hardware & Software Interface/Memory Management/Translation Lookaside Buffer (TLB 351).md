@@ -128,7 +128,7 @@ flowchart TD
 - [[Hardware & Software Interface/Memory Management/Virtual Memory|Virtual Memory]]
 - [[Cache Associativity|Cache Associativity (fully associative TLB)]]
 - [[Translation Lookaside Buffer (TLB)|TLB (CSE451)]]
-- [[Translation Lookaside Buffer (TLB) How It Works|How the TLB Works (CSE451)]]
+- [[Operating Systems/Virtualization/Memory/Address Translation/Translation Lookaside Buffer (TLB)#Lookup Process: Hit and Miss|How the TLB Works (CSE451)]]
 - [[Computer Security/Memory Exploits/Memory Layout|Memory Layout (CSE484)]]
 
 ---

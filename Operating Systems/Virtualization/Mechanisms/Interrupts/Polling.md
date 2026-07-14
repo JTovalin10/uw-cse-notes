@@ -13,3 +13,8 @@ This is inefficient because the CPU burns cycles repeatedly checking a status re
 - [[Interrupts|Interrupts]] — the alternative to polling
 - [[Interrupt Handler]] — the code that runs when the device signals completion
 - [[Blocking IO Problem]] — related issue with user threads and blocking I/O
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Polling | Busy-waiting / spin-polling |

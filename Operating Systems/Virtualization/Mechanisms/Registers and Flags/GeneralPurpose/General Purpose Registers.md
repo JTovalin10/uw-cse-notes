@@ -53,3 +53,8 @@ The x86 architecture provides several **general purpose registers** used for ari
 - [[Kernel Stack]] — how registers are saved during a kernel entry
 - [[CPU State#Context Switch|Context Switch]] — registers are saved/restored on context switches
 - [[Exceptions]] — registers saved during exceptions
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| General Purpose Registers | General-purpose registers (GPRs) |

@@ -13,6 +13,15 @@ A **system call (syscall)** is a request by a program for the kernel to perform 
 5. **Copy results** back into user memory — translate kernel addresses into user addresses
 6. The kernel **double-checks** the user request in case another thread changed the data after the initial check
 
+```mermaid
+flowchart TD
+    A["(1) Locate arguments - registers or user stack"] --> B["(2) Copy arguments into kernel memory"]
+    B --> C["(3) Validate arguments"]
+    C --> D["(4) Execute the requested operation"]
+    D --> E["(5) Copy results back into user memory"]
+    E --> F["(6) Double-check for concurrent modification"]
+```
+
 ## Examples
 - `open()` / `create()` — open or create a file
 - `read()` / `write()` — read/write from a file or device
@@ -26,3 +35,8 @@ A **system call (syscall)** is a request by a program for the kernel to perform 
 - [[Mode Switch]] — the user-to-kernel transition triggered by a syscall
 - [[Fork]] — a key syscall for process creation
 - [[Exec]] — a key syscall for process replacement
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| System Call (Syscall) | System call / syscall (standard OS terminology) |

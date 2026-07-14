@@ -19,4 +19,4 @@ locks require hardware support for atomic operations:
 # Related
 - [[Critical Sections]]
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Mutual Exclusion]]
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Spinlock]]
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Spinlock]]

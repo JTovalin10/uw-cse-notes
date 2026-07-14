@@ -8,3 +8,8 @@ Simple memory protection is the earliest form of process isolation, using hardwa
 - [[Base and Bounds]] — the primary mechanism for simple memory protection
 - [[Operating Systems/Virtualization/Memory/Concepts/Virtual Addresses]] — virtual addressing supersedes simple protection
 - [[Kernel Mode]] — full memory access is restricted to kernel mode
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Simple Memory Protection | Hardware-based memory protection |

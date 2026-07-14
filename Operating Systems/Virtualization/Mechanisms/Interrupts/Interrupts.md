@@ -1,4 +1,4 @@
-# Course: Interrupts
+# CSE451: Interrupts
 
 **Interrupts** are signals that pause the CPU to handle urgent events, which are ideally hidden from the user. They fix the problem of **Polling** by letting devices notify the CPU rather than having the CPU constantly check device status.
 
@@ -36,3 +36,9 @@ What happens if an interrupt handler runs too long?
 - [[Traps|Traps]] — software-initiated counterpart to hardware interrupts
 - [[CLI]] / [[STI]] — x86 instructions to disable/enable interrupts
 - [[Exceptions]] — exceptions at the systems programming level
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Interrupt | Hardware interrupt / IRQ |
+| Interrupt Timeout | Interrupt latency / handler deadline |

@@ -21,3 +21,8 @@ Note: **load and store** instructions are not privileged by themselves, but can 
 - [[Dual-Mode Restrictions]] — privileged instructions are one of three restrictions
 - [[General Protection Fault (GPF)]] — the exception raised for privilege violations
 - [[Kernel Mode]] — the mode required to execute privileged instructions
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Privileged Instructions | Kernel-mode-only / ring-0 instructions |

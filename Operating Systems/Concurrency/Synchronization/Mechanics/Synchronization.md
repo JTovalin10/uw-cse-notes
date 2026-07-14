@@ -20,14 +20,14 @@ coordinating the execution of multiple threads to ensure correctness when access
 
 ## Mechanisms
 solving critical section problems requires mechanisms that enforce mutual exclusion:
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks]] - memory objects with acquire/release operations
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks]] - memory objects with acquire/release operations
 	- [[test_and_set]] - atomic read-and-set instruction
 	- [[compare_and_swap]] - atomic compare-and-exchange instruction
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Spinlock]] - primitive lock using busy-waiting
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Semaphores]] - basic synchronization primitive with counter
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Monitors]] - higher-level construct requiring language support
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Messages]] - synchronization based on atomic data transfer across channels
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Disabling Interrupts]] - kernel-only mechanism
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Spinlock]] - primitive lock using busy-waiting
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Semaphores]] - basic synchronization primitive with counter
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Monitors]] - higher-level construct requiring language support
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Messages]] - synchronization based on atomic data transfer across channels
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Disabling Interrupts]] - kernel-only mechanism
 
 # Related
 - [[Concurrency And Locks|CSE332: Concurrency and Locks]]

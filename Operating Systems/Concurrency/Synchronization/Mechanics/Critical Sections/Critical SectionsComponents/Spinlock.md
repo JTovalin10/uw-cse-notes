@@ -19,7 +19,7 @@ a lock that uses [[Busy-Waiting]] (spinning) to wait for the lock to become avai
 [[Spinlock Use Cases]]
 
 ## Related
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks]]
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks]]
 - [[Atomic]]
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Semaphores]]
 - [[Critical Sections]]

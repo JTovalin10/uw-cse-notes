@@ -12,3 +12,8 @@
 - [[IF]] — the flag bit that CLI clears
 - [[EFLAGS]] — the register containing the interrupt flag
 - [[Interrupt Masking]] — OS use of CLI/STI for critical sections
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| CLI | `cli` instruction (x86 architecture manual terminology) |

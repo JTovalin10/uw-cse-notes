@@ -19,6 +19,6 @@ hardware provides atomic instructions for synchronization:
 - memory bus locking or cache coherence protocols
 
 # Related
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks]]
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Spinlock]]
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks]]
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Spinlock]]
 - [[Critical Sections]]

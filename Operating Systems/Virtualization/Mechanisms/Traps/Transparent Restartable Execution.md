@@ -12,3 +12,8 @@ The kernel saves the complete execution state of the user program (registers, pr
 - [[Atomic Transfer of Control]] — the complementary mechanism for entering the kernel
 - [[Interrupt Handler]] — the end of the handler atomically restores state and returns
 - [[CPU State#Context Switch|Context Switch]] — related concept for process switching
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Transparent Restartable Execution | Precise interrupt semantics / restartable instructions |

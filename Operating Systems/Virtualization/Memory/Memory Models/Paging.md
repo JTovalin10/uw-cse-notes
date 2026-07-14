@@ -1,6 +1,6 @@
-# Paging
+# CSE451: Paging
 
-Paging is a memory management scheme that eliminates the need for contiguous allocation of physical memory. It works by dividing virtual memory into **[[What is a Page|Pages]]** and physical memory into **Frames**.
+**Paging** is a memory management scheme that eliminates the need for contiguous allocation of physical memory. It works by dividing virtual memory into **[[Operating Systems/Virtualization/Memory/What is a Page|Pages]]** and physical memory into **Frames**.
 
 ## Advantages
 Easy to allocate physical memory
@@ -17,12 +17,12 @@ Easy to allocate physical memory
 	- 2 references per address lookup (page table, then memory)
 	- use TLB as a hardware cache
 - memory required to hold page tables can be large
-	- need one PTE per page in virtual address space
-	- page the page tables
+	- need one **[[Operating Systems/Virtualization/Memory/Memory Models/Page Table Entries|Page Table Entry (PTE)]]** per page in the virtual address space
+	- solution: page the page tables themselves
 
-- solves external fragmentation problem by using fixed sized units in both physical and virtual memory
-- mitigates the internal fragmentation problem by making the units small
-- ![[Screenshot 2026-02-11 at 12.07.29 PM.png]]
+Overall, paging solves the external fragmentation problem by using fixed-sized units in both physical and virtual memory, and mitigates the internal fragmentation problem by making those units small.
+
+![[Screenshot 2026-02-11 at 12.07.29 PM.png]]
 
 ## How do we use this
 #### Programmer
@@ -38,3 +38,17 @@ No external fragmentation at all
 
 #### For the protection system
 One process cannot "name" another process's memory - there is complete isolation
+
+## Industry Standard Terms
+| Course Term | Industry / General Term |
+|---|---|
+| Paging | Paging / paged virtual memory |
+| Frame | Physical page frame |
+
+## Related
+- [[Operating Systems/Virtualization/Memory/What is a Page|What is a Page]] — defines pages, frames, VPN/PFN
+- [[Operating Systems/Virtualization/Memory/Memory Models/Page Table Entries|Page Table Entries]] — the per-page metadata paging relies on
+- [[Operating Systems/Virtualization/Memory/Memory Models/Segmentation|Segmentation]] — the logical-unit scheme paging is often combined with
+- [[Operating Systems/Virtualization/Memory/Memory Models/Segment and Paging|Segment and Paging]] — the combined scheme
+- [[Operating Systems/Virtualization/Memory/Page Replacement/Page replacement|Page Replacement]] — how the OS chooses which frame to reclaim when physical memory is full
+- [[Operating Systems/Virtualization/Memory/Page Fault|Page Fault]] — the trap raised when a referenced page is not currently mapped to a frame

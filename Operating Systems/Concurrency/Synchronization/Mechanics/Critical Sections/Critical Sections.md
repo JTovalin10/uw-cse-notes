@@ -7,7 +7,7 @@ Forcing [[Operating Systems/Concurrency/Synchronization/Mechanics/Mutual Exclusi
 ## Mechanisms
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Spinlock]]
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Semaphores]]
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Monitors]]
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Monitors]]
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Messages]]
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Disabling Interrupts]]
 

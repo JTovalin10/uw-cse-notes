@@ -16,3 +16,8 @@
 - [[Dual-Mode Restrictions]] — what user mode cannot do
 - [[Mode Switch]] — how the CPU transitions between modes
 - [[Privileged Instructions]] — the instructions only available in kernel mode
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Hardware Modes | CPU privilege levels / protection rings |

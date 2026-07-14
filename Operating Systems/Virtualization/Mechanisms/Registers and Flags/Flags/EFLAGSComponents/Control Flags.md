@@ -10,3 +10,8 @@
 - [[Status Flags]] — the other half of EFLAGS
 - [[EFLAGS]] — the parent register
 - [[IF]] — detailed note on the Interrupt Flag
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Control Flags | System/control flags (x86 architecture manual terminology) |

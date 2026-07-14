@@ -10,3 +10,9 @@
 - [[Traps|Traps]] — the full trap concept
 - [[Interrupts|Interrupts]] — the full interrupt concept
 - [[Interrupt Types Summary]] — a broader summary including exceptions
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Trap | Software interrupt |
+| Interrupt | Hardware interrupt |

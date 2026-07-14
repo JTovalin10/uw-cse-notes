@@ -1,6 +1,6 @@
-# Page Table Structure Diagram
+# CSE451: Page Table Structure Diagram
 
-A page table is an **array** indexed by virtual page number (VPN). Each row is a **Page Table Entry (PTE)**.
+A **[[Operating Systems/Virtualization/Memory/Address Translation/Page Table|Page Table]]** is an **array** indexed by virtual page number (VPN). Each row is a **[[Operating Systems/Virtualization/Memory/Address Translation/Page Table/Page Table Entry Anatomy|Page Table Entry (PTE)]]**.
 
 ## Layout
 
@@ -62,7 +62,15 @@ Virtual Address
          Physical Address
 ```
 
-## See also
-- [[Page Table Entry Anatomy]]
-- [[Page Table Translation Steps]]
-- [[Virtual Address Parts]]
+## Industry Standard Terms
+| Course Term | Industry / General Term |
+|---|---|
+| Page Table Entry (PTE) | Page table entry (standard term) |
+| VPN | Virtual page number |
+| PFN | Physical frame number |
+
+## Related
+- [[Operating Systems/Virtualization/Memory/Address Translation/Page Table/Page Table Entry Anatomy|Page Table Entry Anatomy]]
+- [[Operating Systems/Virtualization/Memory/Address Translation/Page Table/Page Table Translation Steps|Page Table Translation Steps]]
+- [[Operating Systems/Virtualization/Memory/Address Translation/Page Table/Virtual Address Parts|Virtual Address Parts]]
+- [[Operating Systems/Virtualization/Memory/Address Translation/Memory Management Unit|Memory Management Unit]]

@@ -16,3 +16,8 @@ All four transitions happen together, ensuring no partial state exists where the
 - [[Interrupts#Safe Interrupts|Safe Interrupts]] — atomic transfer is one of three safety requirements
 - [[Transparent Restartable Execution]] — the complementary mechanism for returning to user mode
 - [[Mode Switch]] — the general concept of switching between user and kernel mode
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Atomic Transfer of Control | Atomic privilege/context transition |

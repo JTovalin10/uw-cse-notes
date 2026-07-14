@@ -1,8 +1,10 @@
-Page coloring is an OS-level technique for controlling which physical page frames are allocated to a process in order to avoid cache thrashing.
+# CSE451: Page Coloring
+
+**Page Coloring** is an OS-level technique for controlling which physical page frames are allocated to a process in order to avoid cache thrashing.
 
 ## The Problem
 
-[[Virtual and Physical Caches|Physical caches]] ([[Virtual and Physical Caches|PIPT]] or [[Virtual and Physical Caches|VIPT]]) use some bits of the physical address as the cache index. Two physical addresses that share the same index bits will map to the same cache set and evict each other — even if the cache has plenty of free space in other sets.
+**[[Operating Systems/Virtualization/Memory/Concepts/Virtual and Physical Caches|Physical caches]]** ([[Operating Systems/Virtualization/Memory/Concepts/Virtual and Physical Caches|PIPT]] or [[Operating Systems/Virtualization/Memory/Concepts/Virtual and Physical Caches|VIPT]]) use some bits of the physical address as the cache index. Two physical addresses that share the same index bits will map to the same cache set and evict each other — even if the cache has plenty of free space in other sets.
 
 This is a **conflict miss** caused by the OS's choice of physical frame, not by program behavior.
 
@@ -40,6 +42,35 @@ The OS controls which physical frame backs a virtual page. By being aware of pag
 
 Most general-purpose OSes (Linux, Windows) do not implement page coloring by default — it adds complexity to the page allocator and the benefit diminishes with higher associativity. However, real-time and high-performance OSes sometimes use it, and it's relevant for understanding cache-aware memory allocation and side-channel vulnerabilities.
 
-## Relationship to [[Virtual and Physical Caches|VIPT]] Caches
+## Relationship to [[Operating Systems/Virtualization/Memory/Concepts/Virtual and Physical Caches|VIPT]] Caches
 
-In a [[Virtual and Physical Caches|VIPT]] cache where the index bits extend beyond the page offset (i.e., `cache_size / associativity > page_size`), the OS *must* be color-aware to avoid synonyms — two virtual addresses mapping to the same physical frame but landing in different cache sets. Page coloring (ensuring synonyms get the same color) is one way to handle this.
+In a [[Operating Systems/Virtualization/Memory/Concepts/Virtual and Physical Caches|VIPT]] cache where the index bits extend beyond the page offset (i.e., `cache_size / associativity > page_size`), the OS *must* be color-aware to avoid synonyms — two virtual addresses mapping to the same physical frame but landing in different cache sets. Page coloring (ensuring synonyms get the same color) is one way to handle this.
+
+## Formal Definition
+
+For a cache with total capacity $C$, associativity $A$, and page size $P$, the number of distinct page colors is:
+
+$$\text{num\_colors} = \frac{C / A}{P}$$
+
+Two physical frames $f_1$ and $f_2$ have the same color if and only if:
+
+$$\left\lfloor \frac{f_1 \times P}{P} \right\rfloor \bmod \text{num\_colors} = \left\lfloor \frac{f_2 \times P}{P} \right\rfloor \bmod \text{num\_colors}$$
+
+which reduces to comparing the bits of the frame number that overlap with the cache's set-index field.
+
+## Simplified Explanation
+
+Imagine the cache as a parking garage with a fixed number of numbered spots per floor, and each floor only has room for so many cars before new arrivals kick out old ones. A page's "color" is just which floor it's assigned to. If the OS carelessly assigns two frequently-used pages to the same floor, they'll keep kicking each other out of the same parking spots even though other floors sit empty. Page coloring is the OS being deliberate about which floor (color) each page goes to, so heavily-used pages spread across floors instead of colliding.
+
+## Industry Standard Terms
+| Course Term | Industry / General Term |
+|---|---|
+| Page Coloring | Cache coloring / cache-aware page allocation |
+| Page Color | Cache color / bin index |
+| Conflict Miss | Cache conflict miss (standard cache terminology) |
+
+## Related
+- [[Operating Systems/Virtualization/Memory/Concepts/Virtual and Physical Caches|Virtual and Physical Caches]]
+- [[Operating Systems/Virtualization/Memory/Address Translation/Page Table|Page Table]]
+- [[Hardware & Software Interface/Cache/Cache Organization|CSE351: Cache Organization]]
+- [[Hardware & Software Interface/Cache/Side Channel Attacks|CSE351: Side Channel Attacks]]

@@ -22,3 +22,8 @@ Available only to kernel mode (Ring 0), not to user code. See [[Privileged Instr
 - [[Base and Bounds]] — one mechanism for memory access limits
 - [[Operating Systems/Virtualization/Memory/Concepts/Virtual Addresses]] — paging-based memory protection
 - [[Interrupts|Interrupts]] — how the timer interrupt reclaims control
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Dual-Mode Restrictions | Dual-mode operation / hardware protection mechanisms |

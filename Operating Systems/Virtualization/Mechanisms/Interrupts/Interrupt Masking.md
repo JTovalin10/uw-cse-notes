@@ -18,4 +18,10 @@ If another device raises an interrupt while interrupts are masked, the interrupt
 - [[CLI]] — x86 instruction to disable interrupts
 - [[STI]] — x86 instruction to enable interrupts
 - [[IF]] — the interrupt flag bit in EFLAGS
-- [[Operating Systems/Concurrency/Synchronization/Mechanics/Disabling Interrupts]] — using this as a synchronization mechanism
+- [[Operating Systems/Concurrency/Synchronization/Mechanics/Critical Sections/Critical SectionsComponents/Disabling Interrupts]] — using this as a synchronization mechanism
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Interrupt Masking | Interrupt disabling / IRQ masking |
+| Latched Interrupt | Pending interrupt |

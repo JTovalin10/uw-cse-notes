@@ -12,3 +12,8 @@ The interrupt handler cannot run on the interrupted user process's stack because
 - [[Interrupts|Interrupts]] — what causes the switch to the interrupt stack
 - [[Interrupt Handler]] — the code that runs on this stack
 - [[Kernel Stack]] — the related per-process kernel stack
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| Interrupt Stack | Interrupt stack / per-CPU exception stack (e.g., IST in x86-64) |

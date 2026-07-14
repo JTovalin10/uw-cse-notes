@@ -13,3 +13,8 @@ A **General Protection Fault (GPF)** is a CPU exception that occurs when code vi
 - [[Privilege Level]] — the Ring 0/3 privilege system enforced by the GPF
 - [[Dual-Mode Restrictions]] — what restricted operations trigger a GPF
 - [[Source of Interrupts]] — GPF listed as an exception source
+
+## Industry Standard Terms
+| Course Term | Industry Standard Equivalent |
+|---|---|
+| General Protection Fault (GPF) | General Protection Fault / Interrupt 13 (x86 exception vector) |
