@@ -101,8 +101,8 @@ sequenceDiagram
     C->>S: routine_switch(R2)
     Note over S: Push callee-saved registers to R1 stack
     Note over S: Save %rsp into R1->saved_stack_pointer
-    Note over S: Update current_routine = R2
     Note over S: Load %rsp from R2->saved_stack_pointer
+    Note over S: Update current_routine = R2
     Note over S: Pop callee-saved registers from R2 stack
     S-->>N: ret (Pops R2 return address into %rip)
     Note over N: R2 resumes execution
@@ -122,42 +122,43 @@ void routine_switch(Routine* next);
 Under the x86-64 System V AMD64 ABI:
 - The argument `next` is passed in register `%rdi`.
 - The `call routine_switch` instruction pushes the 8-byte return address (the next instruction in the caller) onto the active stack and decrements `%rsp` by 8.
-- **Callee-Saved Registers**: The ABI mandates that the values of `%rbx`, `%rbp`, `%r12`, `%r13`, `%r14`, and `%r15` must be preserved across function calls. Any function that alters them must restore their original values before returning. All caller-saved registers (`%rax`, `%rcx`, `%rdx`, `%rsi`, `%r8`–`%r11`) were already saved by the compiler before issuing `call routine_switch` if their values were needed across the call.
+- **Callee-Saved Registers**: The ABI mandates that `%rbx`, `%rbp`, `%r12`, `%r13`, `%r14`, and `%r15` must be preserved across function calls. All caller-saved registers (`%rax`, `%rcx`, `%rdx`, `%rsi`, `%r8`–`%r11`) were already saved by the caller if their values were needed.
 
 ### Assembly Implementation (`routine_switch.S`)
 ```assembly
 .global routine_switch
 .text
 
+// void routine_switch(Routine* next);
 routine_switch:
-    # 1. Save callee-saved registers onto the current routine's private stack
-    pushq   %rbx
-    pushq   %rbp
-    pushq   %r12
-    pushq   %r13
-    pushq   %r14
-    pushq   %r15
+    // Save callee-saved registers on the stack.
+    // Whoever called routine_switch was responsible for saving the caller-saved registers.
+    push %r12
+    push %r13
+    push %r14
+    push %r15
+    push %rbx   // Callee-saved: holds caller's local variables that must survive across the switch.
+    push %rbp   // Callee-saved: frame pointer that anchors the caller's stack frame.
 
-    # 2. Save current stack pointer into current_routine->saved_stack_pointer (offset 0)
-    movq    current_routine(%rip), %rax   # %rax = current_routine
-    movq    %rsp, 0(%rax)                 # current_routine->saved_stack_pointer = %rsp
+    // Save our stack pointer to the first field of the global current_routine defined in coroutine.c.
+    mov current_routine(%rip), %rsi // Caller-saved scratch: safe to use because routine_switch only takes 1 argument.
+    mov %rsp, (%rsi)
 
-    # 3. Switch current_routine pointer to next
-    movq    %rdi, current_routine(%rip)   # current_routine = next
+    // Set our stack pointer to the saved stack pointer in `next`.
+    mov (%rdi), %rsp
 
-    # 4. Switch stack pointer to next->saved_stack_pointer (offset 0)
-    movq    0(%rdi), %rsp                 # %rsp = next->saved_stack_pointer
+    // Set `current_routine` to `next`.
+    mov %rdi, current_routine(%rip)
 
-    # 5. Restore callee-saved registers from the next routine's private stack
-    popq    %r15
-    popq    %r14
-    popq    %r13
-    popq    %r12
-    popq    %rbp
-    popq    %rbx
+    // Restore callee-saved registers from the stack.
+    pop %rbp    // Restores next routine's frame pointer.
+    pop %rbx    // Restores next routine's local variables.
+    pop %r15
+    pop %r14
+    pop %r13
+    pop %r12
 
-    # 6. Jump into the next routine
-    ret                                   # Pops return address from new stack into %rip
+    ret
 ```
 
 ### Equivalent C Mental Model
@@ -165,19 +166,19 @@ routine_switch:
 // Conceptual C equivalent of routine_switch.S
 void routine_switch(Routine* next) {
     // 1. Push callee-saved registers to current routine's stack
-    // (Pushed implicitly by assembly: %rbx, %rbp, %r12, %r13, %r14, %r15)
+    // (Pushed in assembly: %r12, %r13, %r14, %r15, %rbx, %rbp)
 
-    // 2. Save stack pointer into current routine's header
+    // 2. Save stack pointer into current routine's header (offset 0)
     current_routine->saved_stack_pointer = rsp;
 
-    // 3. Update global current_routine reference
-    current_routine = next;
-
-    // 4. Pivot execution to next routine's stack
+    // 3. Pivot execution to next routine's stack
     rsp = next->saved_stack_pointer;
 
+    // 4. Update global current_routine reference
+    current_routine = next;
+
     // 5. Pop callee-saved registers from the new stack
-    // (Restores next routine's preserved register state)
+    // (Restored in LIFO order: %rbp, %rbx, %r15, %r14, %r13, %r12)
 
     // 6. Return into next routine's execution context
     // ret pops the return address off the newly activated stack
@@ -375,26 +376,27 @@ The following sequence details how the CPU switches execution from `Routine 1` (
 ![[routine switch 2.png]]
 
 #### Step 3: Saving `%rsp` to `current_routine->saved_stack_pointer`
-Inside `routine_switch.S`, the callee-saved registers are pushed, and the assembly executes:
+Inside `routine_switch.S`, the callee-saved registers are pushed (`%r12`, `%r13`, `%r14`, `%r15`, `%rbx`, `%rbp`), and the assembly executes:
 ```assembly
-movq %rsp, 0(%rax) # Saves updated stack pointer (0xB0) into Routine 1's struct
+mov current_routine(%rip), %rsi # Loads current_routine pointer into scratch register %rsi
+mov %rsp, (%rsi)                # Saves updated stack pointer (0xB0) into Routine 1's struct (offset 0)
 ```
 Now `Routine 1`'s context is completely frozen in its heap control block.
 
 ![[routine_switch 3.png]]
 
 #### Step 4: Pivoting to `next` and Loading its Saved `%rsp`
-The assembly updates `current_routine = next` and loads `%rsp` from `Routine 2->saved_stack_pointer` (`0xC0`):
+The assembly first pivots `%rsp` to `Routine 2`'s saved stack pointer (`0xC0`), then updates `current_routine = next`:
 ```assembly
-movq %rdi, current_routine(%rip)
-movq 0(%rdi), %rsp
+mov (%rdi), %rsp                # Sets %rsp to Routine 2's saved stack pointer (0xC0)
+mov %rdi, current_routine(%rip) # Updates current_routine global pointer to Routine 2
 ```
 The CPU's stack pointer `%rsp` has now transitioned entirely to `Routine 2`'s private stack (`0xC0`)!
 
 ![[routine switch 4.png]]
 
 #### Step 5: The `ret` Instruction Resumes `Routine 2`
-After popping `Routine 2`'s callee-saved registers, the assembly executes `ret`:
+After popping `Routine 2`'s callee-saved registers in reverse LIFO order (`%rbp`, `%rbx`, `%r15`, `%r14`, `%r13`, `%r12`) to restore its frame pointer (`%rbp`) and preserved variables (`%rbx`), the assembly executes `ret`:
 ```assembly
 ret
 ```
