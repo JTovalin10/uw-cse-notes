@@ -17,6 +17,7 @@ High-level navigation hub for the UW CSE notes vault. Each course maintains its 
 - [[Database Internals/Index|CSE444 — Database Internals]]
 - [[CSE451 Index|CSE451 — Operating Systems]]
 - [[Distributed Systems/Index|CSE452 — Distributed Systems]]
+- [[Datacenter Systems/Index|CSE453 — Datacenter Systems]]
 - [[CSE461 Index|CSE461 — Computer Networks]]
 - [[CSE484 Index|CSE484 — Computer Security]]
 - [[Concurrency, Parallelism, and Rust/Index|Concurrency, Parallelism, and Rust]]
