@@ -142,8 +142,8 @@ Datacenters multiplex multiple competing tenants on the same physical hardware:
 
 ### Class Topics Roadmap
 
-- [ ] **Virtualization & Software-Defined Networking (SDN)**:
-  - Providing cloud customers with the abstraction of having their own small-scale dedicated datacenter that can scale elastically as needed.
+- [x] **Virtualization & Software-Defined Networking (SDN)**:
+  - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Providing cloud customers with the abstraction of having their own dedicated virtual datacenter that can scale elastically as needed.
 - [ ] **Server, Storage, and Networking Hardware Technologies**:
   - Analyzing fundamental trade-offs between hardware cost, energy efficiencies, and low-latency performance.
 - [ ] **Disaggregation**:
@@ -311,6 +311,7 @@ PUE measures how much extra power the datacenter burns on non-computing overhead
 
 ## Related
 
+- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant workload isolation, hypervisor abstractions, and live migration
 - [[Datacenter Systems/Quiz Section 1|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Concrete lab tools, containerization, Go concurrency, and gRPC
 - [[Distributed Systems/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — Underlying network semantics, sequence IDs, and failure models
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Hypervisor virtualization vs. OS-level namespaces and cgroups
