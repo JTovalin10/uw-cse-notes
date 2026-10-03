@@ -263,5 +263,8 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Virtual Machine|Virtual Machine]] — virtual machine abstraction
 - [[Containers and Virt|Containers and Virtualization]] — VT-x, KVM, Namespaces, and cgroups
 
+### Networking
+- [[Operating Systems/Networking/Routing Tables|Routing Tables]] — In-kernel packet forwarding, Forwarding Information Base (FIB), Longest Prefix Match (LPM), and ARP resolution
+
 ### Security
 - [[Meltdown|Meltdown]] — Meltdown speculative execution vulnerability
