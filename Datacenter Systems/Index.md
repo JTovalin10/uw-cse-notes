@@ -16,6 +16,7 @@ Engineering principles, architectures, and performance optimizations for warehou
 
 ### Virtualization & Execution Environments
 - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Datacenter workload taxonomy, limits of OS process isolation, Popek-Goldberg virtualization criteria, hypervisor architecture, three-tier memory hierarchies, and live VM migration.
+- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Formal ISA requirements for direct execution virtualization, trap-and-emulate mechanics, x86/MIPS/ARM architectural violations, hardware-assisted VT-x/AMD-V extensions, and virtual I/O emulation/virtio architecture.
 
 ---
 
