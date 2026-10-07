@@ -11,3 +11,4 @@ Course notes covering concurrency primitives, parallel decomposition, memory saf
 
 ### Concurrency Primitives & Control Flow
 - [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Cooperative multitasking, user-space execution contexts, assembly stack switching (`routine_switch.S`), and CSP rendezvous channels
+- [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Stack Management and Channels]] — x86-64 stack frame layout, stack overflow protection, assembly context switching, and CSP channel mechanics
