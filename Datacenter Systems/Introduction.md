@@ -65,7 +65,7 @@ Cloud providers structure compute and storage into layered abstractions:
 
 Operational priorities in hyperscale cloud environments follow a strict hierarchical dependency model:
 
-![[Cloud Operator Pryamid of Google.png]]
+![[Screenshots/Cloud Operator Pyramid of Google.png]]
 
 The fundamental architectural principle governing this pyramid is **structural precedence**:
 > **Precedence Invariant**: Lower tiers carry strictly higher operational weight than higher tiers. If an architectural change improves performance or feature velocity but compromises availability or operational manageability, it is rejected.

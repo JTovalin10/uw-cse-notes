@@ -8,6 +8,8 @@ Engineering principles, architectures, and performance optimizations for warehou
 
 ### Foundations & Course Overview
 - [[Datacenter Systems/Introduction|Course Introduction and Overview]] — Warehouse-scale computing fundamentals, evolution of software delivery, the Cloud Operator Pyramid of Concerns, and datacenter hardware trade-offs.
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hardware building blocks (1U/blade servers, DAS/NAS storage, networking fabric), bisection bandwidth trade-offs, power/cooling infrastructure, and PUE formal analysis.
+- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Cluster operating systems, resource schedulers (Borg/Kubernetes), application frameworks, web search & video serving pipelines, tail-latency mitigation, and cloud security.
 
 ### Lab Foundations & Infrastructure
 - [[Datacenter Systems/Quiz Section 1|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
