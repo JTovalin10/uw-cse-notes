@@ -65,7 +65,7 @@ The Hypervisor maintains a **Shadow Page Table** that maps Guest virtual address
     *   Requires managing multiple sets of page tables (the Guest's own tables plus the Hypervisor's shadow table).
     *   Frequent TLB flushes, since the shadow table changes on every Guest page table modification and the [[Translation Lookaside Buffer (TLB)|TLB]] must be invalidated to avoid using stale translations.
 
-![[Shadow Page Table.png]]
+![[Operating Systems/Virtualization/Virtual Machine/Images/Shadow Page Table.png]]
 
 ### Paravirtualization
 The Guest OS manages its own page tables but communicates changes to the hypervisor via hypercalls to maintain mapping consistency, avoiding the need for the Hypervisor to intercept every single page-table write the way Shadow Page Tables do.

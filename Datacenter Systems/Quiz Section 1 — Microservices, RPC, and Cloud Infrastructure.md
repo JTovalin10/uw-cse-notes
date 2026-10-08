@@ -292,7 +292,7 @@ Protobuf saves network space by avoiding sending field names like `"username"`. 
 
 ## Related
 
-- [[Datacenter Systems/Introduction|Course Introduction and Overview]] — Warehouse-scale computing fundamentals and the Cloud Operator Pyramid
+- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Warehouse-scale computing fundamentals and the Cloud Operator Pyramid
 - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant workload isolation, hypervisor abstractions, and live migration
 - [[Distributed Systems/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — Deep dive into RPC fault models, at-most-once semantics, and deduplication
 - [[Networking/Definitions/gRPC|gRPC]] — Protocol framing, HTTP/2 transport streams, and service interfaces

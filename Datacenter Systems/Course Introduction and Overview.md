@@ -1,4 +1,4 @@
-# Datacenter Systems: Introduction
+# Datacenter Systems: Course Introduction and Overview
 
 Modern datacenter systems treat warehouse-scale clusters as single massive computing engines, abstracting heterogeneous compute, memory, storage, and networking hardware to deliver resilient, multi-tenant cloud services.
 
@@ -312,7 +312,7 @@ PUE measures how much extra power the datacenter burns on non-computing overhead
 ## Related
 
 - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant workload isolation, hypervisor abstractions, and live migration
-- [[Datacenter Systems/Quiz Section 1|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Concrete lab tools, containerization, Go concurrency, and gRPC
+- [[Datacenter Systems/Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Concrete lab tools, containerization, Go concurrency, and gRPC
 - [[Distributed Systems/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — Underlying network semantics, sequence IDs, and failure models
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Hypervisor virtualization vs. OS-level namespaces and cgroups
 - [[Networking/Transport/Transport Layer - Transmission Control Protocol (TCP)|Transmission Control Protocol (TCP)]] — Transport protocol mechanics, socket buffers, and congestion control

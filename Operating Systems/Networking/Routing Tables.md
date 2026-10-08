@@ -241,4 +241,4 @@ The kernel converts the target IP into binary and compares it against all rules.
 - [[Networking/Routing Layer/Routing Layer - Border Gateway Protocol (BGP)|Border Gateway Protocol (BGP)]] — Control plane protocol computing global routing tables across autonomous systems
 - [[Operating Systems/Kernel/Kernel Internals|Kernel Internals and Performance]] — Monolithic kernel execution, interrupts, top/bottom halves, and network softirqs
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Linux namespaces (`netns`), cgroups, and container network isolation
-- [[Datacenter Systems/Introduction|Datacenter Systems: Introduction]] — Software-defined networking and datacenter network traffic routing
+- [[Datacenter Systems/Course Introduction and Overview|Datacenter Systems: Course Introduction and Overview]] — Software-defined networking and datacenter network traffic routing

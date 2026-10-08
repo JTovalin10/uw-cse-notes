@@ -7,17 +7,17 @@ Engineering principles, architectures, and performance optimizations for warehou
 ## Topics
 
 ### Foundations & Course Overview
-- [[Datacenter Systems/Introduction|Course Introduction and Overview]] — Warehouse-scale computing fundamentals, evolution of software delivery, the Cloud Operator Pyramid of Concerns, and datacenter hardware trade-offs.
+- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Warehouse-scale computing fundamentals, evolution of software delivery, the Cloud Operator Pyramid of Concerns, and datacenter hardware trade-offs.
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hardware building blocks (1U/blade servers, DAS/NAS storage, networking fabric), bisection bandwidth trade-offs, power/cooling infrastructure, and PUE formal analysis.
 - [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Cluster operating systems, resource schedulers (Borg/Kubernetes), application frameworks, web search & video serving pipelines, tail-latency mitigation, and cloud security.
 
 ### Lab Foundations & Infrastructure
-- [[Datacenter Systems/Quiz Section 1|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
+- [[Datacenter Systems/Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
 
 ### Virtualization & Execution Environments
 - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Datacenter workload taxonomy, limits of OS process isolation, Popek-Goldberg virtualization criteria, hypervisor architecture, three-tier memory hierarchies, and live VM migration.
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Formal ISA requirements for direct execution virtualization, trap-and-emulate mechanics, x86/MIPS/ARM architectural violations, hardware-assisted VT-x/AMD-V extensions, and virtual I/O emulation/virtio architecture.
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — CPU virtualization mechanisms, guest kernel mode deprivileging, trap-and-emulate mechanics, dynamic binary translation JIT compilation, paravirtualization hypercalls, and hardware-assisted root/non-root execution.
+- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — CPU virtualization, three-tier memory virtualization (Shadow Page Tables vs. Intel EPT nested paging), 2MB superpage optimizations, paravirtualized virtio I/O, and dynamic memory ballooning.
 
 ---
 

@@ -219,7 +219,7 @@ $$\mathbb{E}[\text{Failures per day}] = \frac{100,000 \times 0.05}{365} \approx 
 ## Related
 
 - [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Cluster operating systems, resource allocation, MapReduce, and cloud software stacks
-- [[Datacenter Systems/Introduction|Datacenter Systems Overview]] — Cloud operator priorities, availability SLAs, and service abstraction models
+- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Cloud operator priorities, availability SLAs, and service abstraction models
 - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant virtualization, hypervisor overheads, and container runtimes
 - [[Operating Systems/Memory/Virtual Memory|Virtual Memory]] — Hardware virtual memory, page tables, and memory hierarchy
 - [[Vault Index|Vault Index]] — Master repository navigation index

@@ -423,8 +423,8 @@ Modern datacenter virtualization relies on the **Virtual Machine Control Structu
 
 ## Related
 
-- [[Datacenter Systems/Introduction|Course Introduction and Overview]] — Warehouse-scale computing foundations and the Cloud Operator Pyramid of Concerns
-- [[Datacenter Systems/Quiz Section 1|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Microservice architectures, Docker containerization, and gRPC
+- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Warehouse-scale computing foundations and the Cloud Operator Pyramid of Concerns
+- [[Datacenter Systems/Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Microservice architectures, Docker containerization, and gRPC
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Operating system namespaces and cgroups vs. hypervisor hardware virtualization
 - [[Operating Systems/Virtualization/Virtual Machine/Virtual Machine|Virtual Machines]] — In-depth operating system virtualization mechanisms and shadow page tables
 - [[Operating Systems/Memory/Virtual Memory|Virtual Memory]] — Paging, Translation Lookaside Buffers (TLBs), and address translation
