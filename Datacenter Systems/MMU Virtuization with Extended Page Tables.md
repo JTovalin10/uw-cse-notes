@@ -1,0 +1,11 @@
+- hypervisors must virutalizae phuscal memoryu for the illsuioin of contigous memroy
+- each virtual machine is provid3d the bastraciton of guest-physcial memory, while the hypervisor manages host-physcail memory,
+	- the guest OS defines mapping between virtual memoryu and guest-physical memory
+	- the hypervisor then independlt ydefine mapping beteweem giest phuysical memoryh and host phyusical mmeory
+- without hardware support in the MMU, hypervisors rely on shadow paging ot virtulize memoryu
+	- with shadow paging, the hypervisor managaes a composite set of psga tbales thas tmap VM to HPM
+	- relies on memory trac ing to keep track of the changes to page table streucture in memory
+	- shadow pagin galso relies heavily on eurtisitcs to determine which apges should be traced, as page table structure in memor
+	- shadow paging relies on herutucs to determine which pages should be traced as page tables can be anywhere in physical memoryu and can be allcoated and reallcoated at thje discretion of the GOS
+- extended page tabels procide hardware suipport for MMU virutlization
+## Extended Paging
