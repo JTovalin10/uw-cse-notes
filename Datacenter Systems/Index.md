@@ -12,12 +12,13 @@ Engineering principles, architectures, and performance optimizations for warehou
 - [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Cluster operating systems, resource schedulers (Borg/Kubernetes), application frameworks, web search & video serving pipelines, tail-latency mitigation, and cloud security.
 
 ### Lab Foundations & Infrastructure
-- [[Datacenter Systems/Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
+- [[Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
 
 ### Virtualization & Execution Environments
 - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Datacenter workload taxonomy, limits of OS process isolation, Popek-Goldberg virtualization criteria, hypervisor architecture, three-tier memory hierarchies, and live VM migration.
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Formal ISA requirements for direct execution virtualization, trap-and-emulate mechanics, x86/MIPS/ARM architectural violations, hardware-assisted VT-x/AMD-V extensions, and virtual I/O emulation/virtio architecture.
 - [[Datacenter Systems/Virtual Machines|Virtual Machines]] — CPU virtualization, three-tier memory virtualization (Shadow Page Tables vs. Intel EPT nested paging), 2MB superpage optimizations, paravirtualized virtio I/O, and dynamic memory ballooning.
+- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Server hardware interconnects (PCIe, QPI, CXL), DMA ring buffers, interrupt coalescing & MSI, paravirtualized VirtIO, SR-IOV hardware slicing, and IOMMU address translation.
 
 ---
 
