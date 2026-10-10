@@ -12,13 +12,13 @@ Engineering principles, architectures, and performance optimizations for warehou
 - [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Cluster operating systems, resource schedulers (Borg/Kubernetes), application frameworks, web search & video serving pipelines, tail-latency mitigation, and cloud security.
 
 ### Lab Foundations & Infrastructure
-- [[Datacenter Systems/Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure|Quiz Section 1 — Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
+- [[Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
 
 ### Virtualization & Execution Environments
 - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Datacenter workload taxonomy, limits of OS process isolation, Popek-Goldberg virtualization criteria, hypervisor architecture, three-tier memory hierarchies, and live VM migration.
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Formal ISA requirements for direct execution virtualization, trap-and-emulate mechanics, x86/MIPS/ARM architectural violations, hardware-assisted VT-x/AMD-V extensions, and virtual I/O emulation/virtio architecture.
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — CPU virtualization, hypervisor nested memory paging (Shadow PTs vs Intel EPT/NPT), KVM instruction emulation, 1GB/2MB superpage optimizations, and dynamic memory ballooning.
-- [[Datacenter Systems/IO Virtualization|I/O Virtualization]] — Virtual-to-physical I/O interposition, VM encapsulation and live migration, physical I/O interfaces (PIO, MMIO, DMA, LAPIC interrupts), and high-throughput virtio DMA ring buffers.
+- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — CPU virtualization, hypervisor nested memory paging (Shadow PTs vs Intel EPT/NPT), KVM instruction emulation, 1GB/2MB superpage optimizations, paravirtualized virtio I/O, and dynamic memory ballooning.
+- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Server hardware interconnects (PCIe, QPI, CXL), virtual-to-physical I/O interposition, VM encapsulation and live migration, PIO/MMIO/DMA, LAPIC interrupts, high-throughput virtio DMA ring buffers, SR-IOV hardware slicing, and IOMMU address translation.
 
 ---
 
