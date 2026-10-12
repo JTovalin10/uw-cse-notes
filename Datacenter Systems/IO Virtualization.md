@@ -162,6 +162,7 @@ Directly granting Guest VMs raw PCIe DMA access introduces a critical security h
 
 - **Address Translation Hierarchy**: The IOMMU translates Device Virtual Addresses or Guest Physical Addresses directly to **Host Physical Addresses (HPA)** using I/O page tables managed by the hypervisor.
 - **Isolation & Fault Protection**: If a Guest VM attempts a DMA transfer outside its granted physical memory pages, the IOMMU blocks the transaction, raises a hardware fault interrupt, and isolates the guest.
+- **Posted Interrupts (Exitless Interrupt Delivery)**: Advanced virtualization hardware (such as Intel APIC-v and posted-interrupt processing) routes physical PCIe device interrupts directly into Guest vCPUs without triggering VM-Exits to the hypervisor, removing hardware trap latency and drastically increasing I/O throughput.
 
 ---
 
@@ -175,6 +176,7 @@ Directly granting Guest VMs raw PCIe DMA access introduces a critical security h
 | **DMA Ring Buffer** | Circular DMA Queue / Virtqueues | Linux `io_uring`, DPDK, KVM `virtio-net` |
 | **Hardware Interrupt Controller** | LAPIC / IOAPIC | CPU APIC cores |
 | **Message Signaled Interrupts** | MSI / MSI-X | PCIe MSI-X vectors |
+| **Exitless Interrupts** | Posted Interrupts / APIC-v | Intel VT-d Posted Interrupts, AMD AVIC |
 | **Direct Hardware Assignment** | SR-IOV / PCIe Passthrough | Mellanox ConnectX SR-IOV VFs |
 | **Device IOMMU** | I/O Memory Management Unit | Intel VT-d, AMD-Vi, ARM SMMU |
 
