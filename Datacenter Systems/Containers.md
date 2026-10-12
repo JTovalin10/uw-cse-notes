@@ -1,100 +1,21 @@
-- solves a lot of issues for virtualization
-	- cloud uses native (type-1) VM
-	- running a VM inside your computer is a type-2 VM
-- virtualizes syscall interface
-	- group of processes that appear to have an entire machine to themselves
-	- One OS kernel, many isolated applications
-	- each VM just has a process--no OS
-	- no hypervisor but has a virtualization layer which virtulizes the syscall layer
-	- you can only see your resoruces
-- programming language virtualization
-	- process that has language program and VM, abstract hardware that compuler compiles for
-	- better portability and pushes job of rading code from compiler to runtime job
-- hypervisors optimize for distrusting processes as a desktop you can generally trust them as the person is running them
-- containers were created to isolate applications for security
-	- came from web browser to handle complex document by starting roccess in case document has a virtus to isolate the file from the file system
-- name space isolation:
-	-  file systems
-		- application is given its own virtual file system so it thinks its in root but hte kernel maintains physical file system as a set of virtual rotos
-	- syscall
-		- syscalls to modify processes
-			- only apply to processes within container
-			- per container process numbering starts from 1 (virtual pid)
-			- mapped to real kernel process IDs inside linux
-		- network syscalls
-			- each container has its own IP and MAC which is muliplexed by kernel
-		- sys resources
-			- list all porcesses only within the container and same with memory usage
-- Cgroups
-	- container isolation
-		- resource weights or limits that apply to groups of processes
-			- mem usgae, CPU scheduler, I/O state
-	- reource limits on use of (some) internal data structures
-		- max num of open fd by cgroup
-		- max num of active processes by cgroup
-	- most kernel data structures are shared
-		- buffer, inode, negative file loopup cache
-		- performance effects
-		- negative file cache tells us if the file is reachable
-		- a malicious process can flush this which can slow down the performance
-## Containers vs Virtual Machines
-- performance
-	- containers allow faseter creations/teardown
-		- container start: proocess creation (provded file ssytem in loaded)
-		- VM start: load OS and file system image
-	- fiiner grained resource sharing
-		- container is lighterweight due to CPU virtualization (context switch)
-		- Switch CPU between containers: process context xwitch
-		- switch CPu between VM: virtual machien switch (a lot more state)
-			- TLB load, registers, and more
-	- lightweight = better for SWE
-- security
-	- hardware/software itnerface is a lot more diffuclt to attack over syscall
-		- attack surface
-		- syscall interface is complex and kernel-mode
-		- instruction level is simplier and effects are smaller
-		- with paravirtualization, attacks are large
-	- linux APi more vlnerable to attack than virtual machine API
-	- with container,s the OS can keep up to date
-		- you share the OS and the admin decides the OS
-		- can be a good or bad thing (security but may have compatability issues)
-	- with VMs, (maybe) not needdf to keep OS up to date
-	- most security vulnerabilitys come from isndier attacks or phusing
-- cost
-	- VM
-		- memory footprint: copy of linux per app
-		- startup/resource sharing more expense
-		- harware support to reduce overhead
-	- costs of containers
-		- substantial linux kernel changes
-		- kernel vulnerabilities allow apps to steal data from each other
-			- sharing kernel resoruces
-		- performance usilations is more difficult
-		- all porcesses must run on some type of kernel
-		- process migration, checkpoint/resotre is difficult
-			- trivial on VM
-## Moving target
-- idsutry wants to add support for both
-- third model
-	- serverl functions
-		- funcitonal programming, limted API, invoke on demand
-- fourth: enclaves
-	- apps dont trust cloud operator
-	- proteced from the OS kernel and sys admin
-		- the current model trusts both
-		- sys admin can be malicious
-	- apps exec within a hardware-enforced protection domain
-## Network
-- we need to know where to send packets
-- we need to have unique MAC, IP, and such for each process
-### Virtualization
-- physical IP addresses wont allow us to work, we need a virtual IP address to tell hypervisor where each packet will go to (also MAC)
-- we need to map physical machiens to virtual machines
-	- host OS must wrap each packet with extra hedear on send
-	- To: physical machine Ip of dest VMl from physical machine IP of source VM
-	- On recieve, host OS de-encapsulates, forward packet to VM
-- each physical machine has a unqiue IP address, MAC address
-	- each virtual machien has its own unqiue UP address, MAC address
-	- virtual amchines on the same physical machine can both listen on port 80
-- piece of software that grabs physical machine and wraps with headers to allow us to reeahc the destination machine
-- same issue for containers
+# Datacenter Systems: Containers
+
+**Containers** virtualize the operating system's system call interface instead of the hardware: a group of processes runs on one shared OS kernel but each group sees an isolated machine of its own. This hub links to the focused notes on how that isolation is built and how it compares with [[Datacenter Systems/Virtual Machines|Virtual Machines]].
+
+## Topics
+
+- [[Datacenter Systems/Containers/OS-Level Virtualization|OS-Level Virtualization]] — Why containers exist, virtualizing the syscall interface, and language-level virtualization
+- [[Datacenter Systems/Containers/Namespace Isolation|Namespace Isolation]] — Per-container file systems, process IDs, network identity, and resource views
+- [[Datacenter Systems/Containers/Cgroups|Cgroups]] — Resource weights and limits, and why shared kernel data structures remain a weakness
+- [[Datacenter Systems/Containers/Containers vs Virtual Machines|Containers vs Virtual Machines]] — Performance, security, and cost trade-offs
+- [[Datacenter Systems/Containers/Serverless Functions and Enclaves|Serverless Functions and Enclaves]] — The third and fourth execution models
+- [[Datacenter Systems/Containers/Network Virtualization|Network Virtualization]] — Virtual IP and MAC addresses and packet encapsulation
+
+## Related
+
+- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — The hardware-level alternative to containers
+- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Virtual devices and interposition
+- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Broad taxonomy of execution environments
+- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Docker and Kubernetes in the labs
+- [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — CSE451 treatment of containers vs hypervisors
+- [[Datacenter Systems/Index|Datacenter Systems Index]]
