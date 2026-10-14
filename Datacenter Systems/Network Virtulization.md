@@ -1,0 +1,37 @@
+- each physical machine has a unique IP and MAC
+- we need a way to multiplex this and make each VM think it has its own
+- OpenVSwitch
+	- programmable layer in HOS for transforming virtual-to-physical packets and back
+		- costly
+	- on first packet of connection, logic to decide whether to allow
+	- subsequent packets exact match cache: if connection header natchdes, do x
+		- cache has a bitmask to check the header for a fast lookup. assumes that shape of pacjet will continue to be the same. You cannot change the header as the cache will miss
+	- what happens if the IO is ahrdware virtualized
+		- varies by cloud vendor
+			- each vendor has their own hardware to solve this problem of if the device I/O is hardware virtulized
+				- amazon Nitro has NIC ASIC
+				- Azure Catapult has NIC FPGA  
+				- Google Snap has Host OS server which runs on dedicated cores (software route)
+					- runs snap of network stack on each core which is similar to running on dedicated hardware
+	- VM Migration
+		- to move the VM to a new machine 
+			- modify OpenVSSwitch on old host to forward packets to new host
+				- requires a forwarding rule and informs original sender to send to the new location
+				- once all sedners learn this we can do whatever to the original machine
+			- reply to sender to use new host IP address
+			- background: notify all nodes to use new host
+			- when done, remove forwarding rule from old host
+	- reuirements
+		- want to be able to mvoe distribtud appliaction from on-premise settig into clooud
+		- on premise used physical network
+			- DHCP or hardwaried IP adddress
+			- ACLs to limit which machines can talk to which other machines
+			- network resource limit for QoS
+			- Connectivity to the outside world
+	- porting from on-perm
+		- OpenVSwitch match  +action
+			- programmable transformation, multiplexing and demultiplexing of packets
+			- to manage complexity, NVP preprograms table lookups for all possible connections, rather than on connecitons tart
+		- VM (or containers) running distributed applications can use the same addresses as before
+			- same ACLs, resource limits, and applied by OpenVSwitch transmoations running in source host OS
+		- connectivity to on-premise and outside world via gateway

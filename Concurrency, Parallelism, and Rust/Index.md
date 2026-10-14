@@ -51,12 +51,16 @@ Course notes covering concurrency primitives, parallel decomposition, memory saf
   - [[Concurrency, Parallelism, and Rust/Coroutines/Edge Cases and Failure Modes|Edge Cases and Failure Modes]] — Starvation, stack overflow, deadlocks, and lifetime hazards (beyond lecture)
   - [[Concurrency, Parallelism, and Rust/Coroutines/Deep Dive|Deep Dive]] — Stackful vs stackless, symmetric vs asymmetric, and switch latency (beyond lecture)
 - [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Stack Management and Channels]] — x86-64 stack frame layout, stack overflow protection, assembly context switching, and CSP channel mechanics
+<<<<<<< Updated upstream
   - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Naive Approaches and Motivation|Naive Approaches and Motivation]] — Why coroutines need managed stacks
   - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Coroutine Stack Frames and Memory Layout|Coroutine Stack Frames and Memory Layout]] — x86-64 layout and control block
   - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Context Switching and Assembly Trampoline|Context Switching and Assembly Trampoline]] — Scheduler interface, register saving, and the switch
   - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Unbuffered Channel Rendezvous Trace|Unbuffered Channel Rendezvous Trace]] — Trace of a rendezvous
   - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Channel Formal Specification|Channel Formal Specification]] — Formal definition and intuition
   - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Edge Cases and Failure Modes|Edge Cases and Failure Modes]] — Stack overflow and deadlock detection (beyond lecture)
+=======
+- [[Concurrency, Parallelism, and Rust/Implementing Threads|Implementing Threads]] — Timer-driven preemption with the LAPIC, interrupt handling on x86, critical sections, spinlocks, interrupt-safe spinlocks, and atomic read-modify-write instructions
+>>>>>>> Stashed changes
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]] — Barriers, data races, combinatorial interleavings, mutual exclusion locks, and compiler/hardware memory reordering
   - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Nondeterminism and Synchronization Paradigms|Nondeterminism and Synchronization Paradigms]] — Preemptive scheduling and coarse vs fine granularity
   - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Data Races and Interleavings|Data Races and Interleavings]] — Race conditions, combinatorial explosion, and formal conditions
