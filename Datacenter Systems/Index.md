@@ -32,6 +32,8 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/Workloads and Software Infrastructure/Failure Modes|Failure Modes]] — Tail latency, noisy neighbors, and alert fatigue
   - [[Datacenter Systems/Workloads and Software Infrastructure/Scatter-Gather Latency and Hedged Requests|Scatter-Gather Latency and Hedged Requests]] — Fan-out latency formulation and hedging
 
+- [[Datacenter Systems/Computing Building Blocks|Computing Building Blocks]] — Scale-up vs scale-out cost and communication model, brawny vs wimpy cores, and accelerator scaling (TPU vs video coding).
+
 ### Lab Foundations & Infrastructure
 - [[Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
   - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Monolith vs Microservices|Monolith vs Microservices]] — Architectural comparison
