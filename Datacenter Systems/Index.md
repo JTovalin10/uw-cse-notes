@@ -85,6 +85,10 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/IO Virtualization/IO Interposition and VirtIO|IO Interposition and VirtIO]] — Trap-and-emulate I/O, VirtIO, a PIO trace, and failure modes
   - [[Datacenter Systems/IO Virtualization/SR-IOV and IOMMU|SR-IOV and IOMMU]] — Hypervisor I/O bypass, hardware slicing, and DMA address translation
 
+### Networking & Performance Modeling
+- [[Datacenter Systems/Open vSwitch Network Virtualization|Open vSwitch Network Virtualization]] — Open vSwitch exact match cache, on-premise porting requirements, hardware-virtualized NICs (Nitro, Catapult, Snap), and VM migration forwarding.
+- [[Datacenter Systems/Queuing Theory|Queuing Theory]] — Stable queuing model, response time and utilization, Little's Law, and best/worst/average arrival patterns.
+
 ---
 
 ## Related Courses
