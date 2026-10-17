@@ -33,6 +33,7 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/Workloads and Software Infrastructure/Scatter-Gather Latency and Hedged Requests|Scatter-Gather Latency and Hedged Requests]] — Fan-out latency formulation and hedging
 
 - [[Datacenter Systems/Computing Building Blocks|Computing Building Blocks]] — Scale-up vs scale-out cost and communication model, brawny vs wimpy cores, and accelerator scaling (TPU vs video coding).
+- [[Datacenter Systems/Right-Sizing Datacenters|Right-Sizing Datacenters]] — Workload and node characteristics, and why cheaper, less powerful nodes can win for I/O and network bound tasks.
 
 ### Lab Foundations & Infrastructure
 - [[Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.

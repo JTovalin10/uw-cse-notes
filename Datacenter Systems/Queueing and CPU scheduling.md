@@ -1,0 +1,115 @@
+## Queueing: load balancing
+- the most common distributon is the poision/exp distribution![[Poision distribution, Response time vs Utilization.png]]
+- Response time = Service time / (1 - Utilization)
+	- low utilization means response time = service time (R = S)
+	- Utilization approaches 0, so Response time goes to infinity
+- what is there are multiple sources that are sequentially accessed
+	- Response time = $\sum_i \frac{S_i}{1-U_i}$
+	- implication
+		- if you fix one bottleneck, the next highest utilization resource will limit performance
+	- the CPU doesnt just ahve one queue so it can be modeled as a service (Queue Theory)![[CPU and IO Response Tim applicatin.png]]
+	- $S_i$ = Service time of object and $U_i$ is utilization of object
+	- system performance analyist look at this to see where the bottleneck is across all devices and services that a specific set of requests go through. We can do this as deep as we want ad fix the item
+		- there will always be one bottleneck for requests
+- what about multiprocessors
+	- with multiple servers we can send requests to different queues to reduce teh response time
+		- super-market checkout counters
+		- should requests line up at front and as service becomes ready, they grab them?
+		- should requests go to a queue for each service point and wait until its reayd
+		- in the graph, you have to make an early decision where to place the requst, but this req. smart scheduling as a task can be heavy
+		- on the left side, we just get processed as the thread is ready which means a job doesnt get blocked if one thread is busy. But all servers have to pull requests from queue so synchronization
+			- same issue with CPU's when it becomes idle as teh scheduler needs to pick up next job from queue (locks)
+		- ![[multiprocessor queues.png]]
+- load balancer
+	- big problem in practice in servers (OS or RPC scheduler)
+	- single queue in theory gives better servuce due to distrbution problem as the single queue can just give request ot idle queue
+		- more pronounced in network scenario
+			- load balancer can be itnegrated in network switch or server
+				- network I/O which is slow as the network would need to queue
+				- not implemented in this way espeically in network world
+	- balance load using periodic query to get sevrer load
+		- robust to different capacity server
+		- what if problem is lossy network link and not server CPU load
+	- better
+		- measure response time at load balance (reply time - request time)
+		- only send more work to servers meeting their SLA
+	- measures handing off task, enters queue, and returns response
+	- ![[alright load balance.png]]
+		- goes into LB and immediately into queues
+	- load balance improed
+		- maintain request queue at the load balancer
+			- overhead in pulling work when puling wokr from singluar queue
+		- dole out new quest as needed to server busy, but no more
+			- allow us to send work ahead of time to keep the work queue full and to avoid the long queue problem
+		- acts like a central work queue
+		- question becomes
+			- how long to make quewues
+			- when one task finishes send another
+			- how many tasks to keep CPU busy
+			- this is control theory
+		- to mask failure, we need have copies of requests at client due to lossy network. Load balancer replication is done for performance and less fault tolerance as it doesnt contain critical state
+		- load balancer are stateless
+		- ![[improved load balancer.png]]
+## CPU Scheduling: Work Stealing
+
+- on multicore chips, threads can run on any core
+	- assume cache coherence
+- threads run faster if data is already cached on core
+	- however, if we onyl route work to that core, a core can idle which is worse
+	- we want to balance moving work and not idling
+- shenango: cores steal work from other queues if emtpy
+- linux: periodically move work to rebalance load 
+	- order of seconds due to cache miss and contetion on queues
+	- want to view the queue for potential strealing infrequentuly
+- more aggresive work strealing -> higher CPU but worse cache behavior
+- freuentily moving thread across cores may provide slowdown due to cache misses
+	- it may be faster to keep the thread waiting as the data is loaded in the cache instead of creating this contention
+- scratchpad: memory that is managed by software and no cpu logic. Equvalent to cache but no cache policy
+	- not allowed in cloud due to other programs
+	- we can easily move the thread with the scratchpad so it is low cost to move
+	- requires co-design with software,  hardware, and other applications
+	- unfair to other users
+- distributed memory banks
+	- disaggregated memory
+	- always at a distance from CPU so higher latency
+	- no expected speedup
+- the OS has in its bes tintertest to keep the thread local to the core it has been on before and only rebalance occassionaly (in the seconds)
+### Effects of scheduling policy
+- FIFO vs Round robin/processor sharing
+	- FIFO; if the task length vary, it creates delays. But things get processed in the way it was orderd (important for network which is why network switches use FIFO to avoid reordering)
+	- round-robin: preemtpy requests that are beign processed
+	- processor sharing--makes progress at all queues tasks -> short tasks get lower latency
+		- processed in time-chunks but requires preemption
+### Effects of Priorities
+- priority tasks get good response time
+- everyone else can see long delays
+- varation: weights
+	- strict weights cause starvation
+	- give each queue $1-n$ weight where you look at that given queue $1-n$ times. it should be split so there is only $n$ weight total. you look at the queue and grab up to $n$ (or whatever weight you gave it) then process it. then you make your way down
+- assign each class a shrea of CPU, to keep SLAs meet -> no starvation
+- grab from high first and make way down when the higher level queues are empty. (starvation of medium-low requests)
+- ![[effect of priorities.png]]
+- weighted fair queueing gives the best choice compared ot no priortiy or strict priorities
+### Schedluing in practice
+ - Linux CPU scheduling
+	 - prirotiy queues
+	 - round robin/processor sharing
+	 - ensure low priority taks make some progress (priority aging)
+		 - reduce nice values back to nominal values (short-term boost)
+ - datacetner network switches/SSDs
+	 - prirotiy or round robin amoing queues
+		 - traffic classes with weights to them
+	 - FOFO within each queue (to avoid reordering)
+	 - limit rate of high priroity traffic to avoid starvation
+## Scheduling happens at multiple levels
+- as queueing systems become more complex (devices and serverice) with queues comes scheduling
+	- scheduling happens everywhere in system
+- user-level CPU scheduling
+	- schedulers use local decisions without knowing what hte next scheduler wants to do (can impact performance)
+	- we can queue up more work for thread when the thread can be busy
+	- kernel may not know of user-level shceduler and cannot tell the user-level scheduler to give another thread to do more work
+		- kernel and user level schedulers do not communicate withe ach other as they deal with different objects (threads vs RPC)
+		- one thing we can do is not block via I/O async
+		- more work on user to program
+	- scheduler activation: mtell app so it can addapt on start/stop I/O. Kernel tells user it is blocked and user spawns another thread
+	- 
