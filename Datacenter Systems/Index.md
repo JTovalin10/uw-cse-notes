@@ -91,6 +91,8 @@ Engineering principles, architectures, and performance optimizations for warehou
 ### Networking & Performance Modeling
 - [[Datacenter Systems/Open vSwitch Network Virtualization|Open vSwitch Network Virtualization]] — Open vSwitch exact match cache, on-premise porting requirements, hardware-virtualized NICs (Nitro, Catapult, Snap), and VM migration forwarding.
 - [[Datacenter Systems/Queuing Theory|Queuing Theory]] — Stable queuing model, response time and utilization, Little's Law, and best/worst/average arrival patterns.
+- [[Datacenter Systems/Queueing and CPU Scheduling|Queueing and CPU Scheduling]] — Response time across multiple resources, shared vs per-server queues, load balancers, work stealing, scheduling policies and priorities, and multi-level scheduling.
+- [[Datacenter Systems/Shenango|Shenango]] — Microsecond-granularity core reallocation for CPU efficiency with latency-sensitive workloads, and compute congestion detection.
 
 ---
 
