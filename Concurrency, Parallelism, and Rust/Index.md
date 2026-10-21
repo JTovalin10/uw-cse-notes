@@ -14,6 +14,7 @@ Course notes covering concurrency primitives, parallel decomposition, memory saf
   - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Pit Stop and Scheduling Traces|Pit Stop and Scheduling Traces]] — Concrete execution traces
   - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Edge Cases and Hazards|Edge Cases and Hazards]] — Scheduling complexity and concurrency hazards (beyond lecture)
   - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Deep Dive|Deep Dive]] — Dennard scaling, Amdahl, and Rust Send/Sync (beyond lecture)
+- [[Concurrency, Parallelism, and Rust/Introduction to Rust|Introduction to Rust]] — Why Rust over C, categories of code, data races, mutable vs immutable references, ownership, and the stronger type system
 - [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Domain decomposition, functional pipelining, dynamic load balancing, task granularity, and Amdahl's/Gustafson's scaling laws
   - [[Concurrency, Parallelism, and Rust/Decomposition/Concurrency vs Parallelism and the Decomposition Mandate|Concurrency vs Parallelism and the Decomposition Mandate]] — Core distinction and why work must be decomposed
   - [[Concurrency, Parallelism, and Rust/Decomposition/Domain Decomposition|Domain Decomposition]] — Data partitioning with block and cyclic strategies
