@@ -173,6 +173,12 @@ where $\prec$ is the happens-before order established by synchronization.
 
 Two threads touch the same spot, at least one changes it, and nothing makes one wait for the other. Rust's rule (many readers or exactly one writer) makes this combination impossible to write in safe code.
 
+## What Rust aims for
+- efficient, fearless, concurrent systems programming
+- memory safety, with a rich type system
+- an ergonomic dev experience
+- interoperability with C/C++
+
 ---
 
 ## Related
