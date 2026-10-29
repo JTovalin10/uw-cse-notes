@@ -63,6 +63,6 @@ fn thread_exit();
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Threads and Cores|Threads and Cores]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Threads and Cores/Threads and Cores|Threads and Cores]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/Cores vs Threads|Cores vs Threads]] — Abstraction need, nondeterministic speed, and threads vs coroutines
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/Preemption and Time Quanta|Preemption and Time Quanta]] — Hardware timers and frequency trade-offs

@@ -27,6 +27,6 @@ Modern CPU cores and optimizing compilers dynamically reorder instructions to ma
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Threads and Cores|Threads and Cores]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Threads and Cores/Threads and Cores|Threads and Cores]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/False Sharing|False Sharing]] — Invalidation mechanics and cache line padding
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/Non-Deterministic Interleaving Invariant|Non-Deterministic Interleaving Invariant]] — Formal definition and intuition

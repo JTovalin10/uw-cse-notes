@@ -1,6 +1,6 @@
 # Containers: Network Virtualization
 
-For packets to reach the right [[Datacenter Systems/Virtual Machines|Virtual Machine]] or [[Datacenter Systems/Containers|container]], the network must know where to send them, so every virtual endpoint needs a unique identity.
+For packets to reach the right [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machine]] or [[Datacenter Systems/Containers/Containers|container]], the network must know where to send them, so every virtual endpoint needs a unique identity.
 
 ## The Problem
 
@@ -49,6 +49,6 @@ A piece of software grabs the packet and wraps it with headers so it can reach t
 
 ## Related
 
-- [[Datacenter Systems/Containers|Containers]] — Hub
-- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Virtual network devices
+- [[Datacenter Systems/Containers/Containers|Containers]] — Hub
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|IO Virtualization]] — Virtual network devices
 - [[CSE461 Index|CSE461 — Computer Networks]] — IP, MAC addressing, and encapsulation

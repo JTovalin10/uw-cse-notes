@@ -58,6 +58,6 @@ sequenceDiagram
 
 ## Related
 
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — Hub for this topic
+- [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] — Hub for this topic
 - [[Datacenter Systems/Virtual Machines/KVM Memory Virtualization|KVM Memory Virtualization]] — GPA to HVA mapping and software instruction emulation in KVM
 - [[Datacenter Systems/Virtual Machines/Edge Cases and Failure Modes|Edge Cases and Failure Modes]] — Failure modes across CPU, memory, and consolidation mechanisms

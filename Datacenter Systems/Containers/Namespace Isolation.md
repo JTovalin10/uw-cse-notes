@@ -54,7 +54,7 @@ Namespaces only control what a container can *see*. What it can *consume* is con
 
 ## Related
 
-- [[Datacenter Systems/Containers|Containers]] — Hub
+- [[Datacenter Systems/Containers/Containers|Containers]] — Hub
 - [[Datacenter Systems/Containers/OS-Level Virtualization|OS-Level Virtualization]]
 - [[Datacenter Systems/Containers/Cgroups|Cgroups]]
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]]

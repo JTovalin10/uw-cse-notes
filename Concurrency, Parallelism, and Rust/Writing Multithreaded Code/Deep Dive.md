@@ -15,5 +15,5 @@ Hardware platforms implement different memory consistency guarantees at the sili
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Edge Cases and Failure Modes|Edge Cases and Failure Modes]] — Deadlock, double-locking, stragglers, and flag signaling (beyond lecture)

@@ -41,6 +41,6 @@ The guest (producer) and hypervisor (consumer) chase each other continuously aro
 
 ## Related
 
-- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Hub for this topic
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|IO Virtualization]] — Hub for this topic
 - [[Datacenter Systems/IO Virtualization/Physical IO Foundations|Physical IO Foundations]] — Interconnects, PIO/MMIO/DMA, and interrupts
 - [[Datacenter Systems/IO Virtualization/IO Interposition and VirtIO|IO Interposition and VirtIO]] — Trap-and-emulate I/O, VirtIO, a PIO trace, and failure modes

@@ -14,5 +14,5 @@ Cooperative concurrency models rely on two foundational abstractions to execute 
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Stack Management and Channels]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Stack Management and Channels|Stack Management and Channels]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Coroutine Stack Frames and Memory Layout|Coroutine Stack Frames and Memory Layout]] — x86-64 layout and control block

@@ -42,6 +42,6 @@ To bypass Popek-Goldberg violations on unvirtualizable hardware, systems archite
 
 ## Related
 
-- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
+- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/Trap-and-Emulate Mechanism and Traces|Trap-and-Emulate Mechanism and Traces]] — How traps are emulated, with an interrupt trace
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/Virtual IO Emulation and Virtio|Virtual IO Emulation and Virtio]] — Full I/O emulation versus paravirtualized virtio

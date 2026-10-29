@@ -39,5 +39,5 @@ $$\text{Overhead Invariant}: \quad \text{Additional Load} \le 5\%, \quad \text{T
 
 ## Related
 
-- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
+- [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
 - [[Datacenter Systems/Workloads and Software Infrastructure/Failure Modes|Failure Modes]] — Tail latency, noisy neighbors, and alert fatigue

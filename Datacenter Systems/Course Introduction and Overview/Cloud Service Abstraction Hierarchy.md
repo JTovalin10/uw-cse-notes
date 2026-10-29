@@ -13,6 +13,6 @@ Cloud providers structure compute and storage into layered abstractions:
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
 - [[Datacenter Systems/Course Introduction and Overview/Datacenter Challenges and Software Delivery|Datacenter Challenges and Software Delivery]] — Motivation, engineering challenges, and the evolution of software delivery
 - [[Datacenter Systems/Course Introduction and Overview/Cloud Operator Pyramid of Concerns|Cloud Operator Pyramid of Concerns]] — Google's pyramid of operator concerns

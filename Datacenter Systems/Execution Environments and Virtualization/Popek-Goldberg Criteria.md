@@ -43,6 +43,6 @@ For virtualization to work efficiently, whenever a guest operating system tries 
 
 ## Related
 
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
 - [[Datacenter Systems/Execution Environments and Virtualization/Failure Modes|Failure Modes]] — Noisy neighbors, dirty-rate divergence, table exhaustion, and the virtualization tax
 - [[Datacenter Systems/Execution Environments and Virtualization/Diurnal Workload Co-Location|Diurnal Workload Co-Location]] — Utilization formulation for co-located workloads

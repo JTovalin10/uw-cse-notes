@@ -51,5 +51,5 @@ flowchart LR
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
 - [[Datacenter Systems/Course Introduction and Overview/Cloud Service Abstraction Hierarchy|Cloud Service Abstraction Hierarchy]] — IaaS, PaaS, and SaaS layering

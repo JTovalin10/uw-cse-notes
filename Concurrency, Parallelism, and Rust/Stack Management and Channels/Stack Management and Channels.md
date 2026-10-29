@@ -13,7 +13,7 @@ User-space coroutines require dedicated execution stacks, low-level CPU context 
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Primary navigation hub covering user-space coroutines, state machines, and assembly switching
-- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset|The Concurrent Mindset]] — Foundations of task vs data parallelism, hardware microarchitecture, and dataflow DAGs
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Primary navigation hub covering user-space coroutines, state machines, and assembly switching
+- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/The Concurrent Mindset|The Concurrent Mindset]] — Foundations of task vs data parallelism, hardware microarchitecture, and dataflow DAGs
 - [[Operating Systems/Concurrency/Threads/Thread Levels/User vs Kernel Threads|User vs Kernel Threads]] — Comparison between 1:1 OS kernel thread scheduling and M:N / 1:N user-space coroutines
 - [[Systems Programming/Memory Management/Stack|Stack Memory Management]] — Deep dive into virtual address space, x86-64 stack alignment, and calling conventions

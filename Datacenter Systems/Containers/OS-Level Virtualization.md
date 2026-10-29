@@ -4,7 +4,7 @@ Containers solve many of the problems that full hardware virtualization leaves o
 
 ## Two Kinds of Virtual Machine Hypervisors
 
-Before contrasting containers with [[Datacenter Systems/Virtual Machines|Virtual Machines]], recall where the hypervisor runs:
+Before contrasting containers with [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]], recall where the hypervisor runs:
 
 - **Native (Type-1) VM**: The hypervisor runs directly on the hardware. This is what the cloud uses.
 - **Type-2 VM**: The hypervisor runs as an application on top of a host OS. Running a VM inside your own computer is a Type-2 VM.
@@ -59,7 +59,7 @@ A third place to put the virtualization boundary is the programming language run
 
 ## Related
 
-- [[Datacenter Systems/Containers|Containers]] — Hub
+- [[Datacenter Systems/Containers/Containers|Containers]] — Hub
 - [[Datacenter Systems/Containers/Namespace Isolation|Namespace Isolation]] — How the syscall layer is virtualized
 - [[Datacenter Systems/Containers/Containers vs Virtual Machines|Containers vs Virtual Machines]]
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]]
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]]

@@ -1,6 +1,6 @@
 # Network Virtualization: Open vSwitch
 
-Each physical machine has a single unique IP address and MAC address, but every [[Datacenter Systems/Virtual Machines|Virtual Machine]] must believe it has its own network identity. We need a way to **multiplex** the physical network interface so that each VM (or [[Datacenter Systems/Containers|container]]) gets its own addresses. The basic idea of virtual addresses and encapsulation is covered in [[Datacenter Systems/Containers/Network Virtualization|Containers: Network Virtualization]]; this note covers how a cloud provider actually implements it.
+Each physical machine has a single unique IP address and MAC address, but every [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machine]] must believe it has its own network identity. We need a way to **multiplex** the physical network interface so that each VM (or [[Datacenter Systems/Containers/Containers|container]]) gets its own addresses. The basic idea of virtual addresses and encapsulation is covered in [[Datacenter Systems/Containers/Network Virtualization|Containers: Network Virtualization]]; this note covers how a cloud provider actually implements it.
 
 ## Open vSwitch (OVS)
 
@@ -93,6 +93,6 @@ sequenceDiagram
 ## Related
 
 - [[Datacenter Systems/Containers/Network Virtualization|Containers: Network Virtualization]] — Virtual IP/MAC addresses and encapsulation
-- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Virtual and hardware-virtualized devices
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|IO Virtualization]] — Virtual and hardware-virtualized devices
 - [[Datacenter Systems/Workloads and Software Infrastructure/Live VM Migration Trace|Live VM Migration Trace]] — Migration of VM state
 - [[CSE461 Index|CSE461 — Computer Networks]] — IP, MAC addressing, and encapsulation

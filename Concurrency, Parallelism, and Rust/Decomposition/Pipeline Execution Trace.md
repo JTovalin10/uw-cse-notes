@@ -77,6 +77,6 @@ Final State (t = 9):
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Decomposition/Functional and Hybrid Decomposition|Functional and Hybrid Decomposition]] — Pipelines, bubbling, and hybrids
 - [[Concurrency, Parallelism, and Rust/Decomposition/Domain Partitioning Trace|Domain Partitioning Trace]] — Comparing partitioning schemes

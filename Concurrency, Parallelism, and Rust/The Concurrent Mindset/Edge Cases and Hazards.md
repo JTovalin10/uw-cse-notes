@@ -27,6 +27,6 @@ When concurrent tasks access shared state or execution resources, severe bugs ca
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset|The Concurrent Mindset]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/The Concurrent Mindset|The Concurrent Mindset]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Pit Stop and Scheduling Traces|Pit Stop and Scheduling Traces]] — Concrete execution traces
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Deep Dive|Deep Dive]] — Dennard scaling, Amdahl, and Rust Send/Sync (beyond lecture)

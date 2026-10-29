@@ -1,6 +1,6 @@
 # Datacenter Systems: Containers
 
-**Containers** virtualize the operating system's system call interface instead of the hardware: a group of processes runs on one shared OS kernel but each group sees an isolated machine of its own. This hub links to the focused notes on how that isolation is built and how it compares with [[Datacenter Systems/Virtual Machines|Virtual Machines]].
+**Containers** virtualize the operating system's system call interface instead of the hardware: a group of processes runs on one shared OS kernel but each group sees an isolated machine of its own. This hub links to the focused notes on how that isolation is built and how it compares with [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]].
 
 ## Topics
 
@@ -13,9 +13,9 @@
 
 ## Related
 
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — The hardware-level alternative to containers
-- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Virtual devices and interposition
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Broad taxonomy of execution environments
-- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Docker and Kubernetes in the labs
+- [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] — The hardware-level alternative to containers
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|IO Virtualization]] — Virtual devices and interposition
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Broad taxonomy of execution environments
+- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Docker and Kubernetes in the labs
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — CSE451 treatment of containers vs hypervisors
 - [[Datacenter Systems/Index|Datacenter Systems Index]]

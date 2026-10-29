@@ -58,6 +58,6 @@ To avoid lock contention and deadlocks, modern systems employ alternative concur
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Barriers|Barriers]] — Coarse-grained synchronization
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Memory Reordering and Fences|Memory Reordering and Fences]] — Compiler and hardware reordering

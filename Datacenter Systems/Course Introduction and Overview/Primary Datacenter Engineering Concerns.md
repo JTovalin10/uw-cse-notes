@@ -46,6 +46,6 @@ Datacenters multiplex multiple competing tenants on the same physical hardware:
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
 - [[Datacenter Systems/Course Introduction and Overview/Cloud Operator Pyramid of Concerns|Cloud Operator Pyramid of Concerns]] — Google's pyramid of operator concerns
 - [[Datacenter Systems/Course Introduction and Overview/Class Roadmap and Prerequisites|Class Roadmap and Prerequisites]] — Class topics and expected background

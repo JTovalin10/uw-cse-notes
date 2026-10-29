@@ -16,6 +16,6 @@
 
 ## Related
 
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Scatter-Gather Query Trace|Scatter-Gather Query Trace]] — Processing a query across a WSC
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Power, PUE, and AFR Formulas|Power, PUE, and AFR Formulas]] — Power dynamics, PUE, and failure rates

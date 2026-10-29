@@ -21,5 +21,5 @@
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Stack Management and Channels]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Stack Management and Channels|Stack Management and Channels]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Channel Formal Specification|Channel Formal Specification]] — Formal definition and intuition

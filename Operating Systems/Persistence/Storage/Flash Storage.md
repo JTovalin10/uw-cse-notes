@@ -28,7 +28,7 @@ Because of the erase-before-write constraint above, SSDs rely on several optimiz
 **Never defragment an SSD.** It does not improve performance (since there is no seek time to eliminate) and only wears out the flash cells by performing unnecessary writes, consuming program/erase cycles for no performance benefit. See [[Defragmentation and TRIM operations]] for the full contrast with HDD defragmentation.
 
 ## Related
-- [[SSD]] — brief SSD summary
+- [[Operating Systems/Persistence/Storage/Secondary Storage/SSD]] — brief SSD summary
 - [[Secondary Storage]] — broader storage device context
 - [[Defragmentation and TRIM operations]] — full details on the TRIM command and why it replaces defragmentation for SSDs
 - [[Magnetic Disks]] — the mechanical HDD counterpart, useful for contrast

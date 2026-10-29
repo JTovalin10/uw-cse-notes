@@ -1,6 +1,6 @@
 # Containers: Serverless Functions and Enclaves
 
-The execution model is a **moving target**. Industry wants to add support for both [[Datacenter Systems/Virtual Machines|Virtual Machines]] and [[Datacenter Systems/Containers|Containers]], and two further models are emerging.
+The execution model is a **moving target**. Industry wants to add support for both [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] and [[Datacenter Systems/Containers/Containers|Containers]], and two further models are emerging.
 
 ## Third Model: Serverless Functions
 
@@ -31,6 +31,6 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/Containers|Containers]] — Hub
+- [[Datacenter Systems/Containers/Containers|Containers]] — Hub
 - [[Datacenter Systems/Containers/Containers vs Virtual Machines|Containers vs Virtual Machines]]
-- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Cloud security
+- [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Cloud security

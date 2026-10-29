@@ -66,6 +66,6 @@ Because execution order depends on hardware timing, physical core count, and com
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Threads and Cores|Threads and Cores]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Threads and Cores/Threads and Cores|Threads and Cores]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/Preemption and Time Quanta|Preemption and Time Quanta]] — Hardware timers and frequency trade-offs
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/Cache Topology and Scheduler Queues|Cache Topology and Scheduler Queues]] — Thread migration, core-local queues, and work stealing

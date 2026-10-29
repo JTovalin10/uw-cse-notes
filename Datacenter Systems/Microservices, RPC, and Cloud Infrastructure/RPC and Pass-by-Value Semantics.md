@@ -33,6 +33,6 @@ In local procedural languages (like C or Go), functions can pass arguments eithe
 
 ## Related
 
-- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
+- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Monolith vs Microservices|Monolith vs Microservices]] — Architectural comparison
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/gRPC and Protocol Buffers|gRPC and Protocol Buffers]] — gRPC, protobuf, and wire encoding

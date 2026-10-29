@@ -16,9 +16,9 @@ Decomposition is the foundational architectural process of breaking a computatio
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset|The Concurrent Mindset]] — Foundational dependency graphs, DAG dataflow models, and multicore hardware trends
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Cooperative user-space multitasking, stack management, and single-threaded concurrency
-- [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Stack Management and Channels]] — Channel communication primitives, bounded message passing, and context switching
+- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/The Concurrent Mindset|The Concurrent Mindset]] — Foundational dependency graphs, DAG dataflow models, and multicore hardware trends
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Cooperative user-space multitasking, stack management, and single-threaded concurrency
+- [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Stack Management and Channels|Stack Management and Channels]] — Channel communication primitives, bounded message passing, and context switching
 - [[Data Structures and Parallelism/Parallelism/Amdahl's Law|Amdahl's Law]] — Theoretical speedup bounds and mathematical derivations for parallel algorithms
 - [[Data Structures and Parallelism/Parallelism/Work And Span|Work and Span]] — Formal asymptotic analysis of parallel execution DAGs and critical path length
 - [[Data Structures and Parallelism/Parallelism/Fork-Join|Fork-Join Parallelism]] — Divide-and-conquer domain decomposition and parallel prefix computation

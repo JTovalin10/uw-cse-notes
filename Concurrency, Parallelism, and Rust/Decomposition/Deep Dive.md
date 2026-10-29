@@ -17,5 +17,5 @@ The decomposition granularity $G = \frac{T_{\text{computation}}}{T_{\text{commun
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Decomposition/Edge Cases and Performance Hazards|Edge Cases and Performance Hazards]] — Performance pitfalls (beyond lecture)

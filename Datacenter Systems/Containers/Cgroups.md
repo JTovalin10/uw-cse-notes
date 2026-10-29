@@ -46,7 +46,7 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/Containers|Containers]] — Hub
+- [[Datacenter Systems/Containers/Containers|Containers]] — Hub
 - [[Datacenter Systems/Containers/Namespace Isolation|Namespace Isolation]]
 - [[Datacenter Systems/Containers/Containers vs Virtual Machines|Containers vs Virtual Machines]] — Security implications of the shared kernel
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]]

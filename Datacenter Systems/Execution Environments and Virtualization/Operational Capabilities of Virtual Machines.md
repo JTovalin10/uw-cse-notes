@@ -30,6 +30,6 @@ Virtualization introduces architectural overhead (the "virtualization tax"):
 
 ## Related
 
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
 - [[Datacenter Systems/Execution Environments and Virtualization/Multi-Tier Virtual Memory Hierarchy|Multi-Tier Virtual Memory Hierarchy]] — GVA, GPA, and HPA tiers
 - [[Datacenter Systems/Execution Environments and Virtualization/Live VM Migration Walkthrough|Live VM Migration Walkthrough]] — Migration during a host kernel upgrade

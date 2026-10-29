@@ -42,5 +42,5 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
+- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/RPC and Pass-by-Value Semantics|RPC and Pass-by-Value Semantics]] — Remote procedure call semantics

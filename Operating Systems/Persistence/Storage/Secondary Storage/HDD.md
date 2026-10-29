@@ -13,7 +13,7 @@ Performance suffers because an HDD has mechanically moving parts: the arm must p
 - [[Magnetic Disks]] — full mechanics and disk scheduling detail
 - [[Disk Drives]] — HDD vs SSD comparison
 - [[Secondary Storage]] — broader storage device context
-- [[SSD]] — the electronic counterpart, useful for contrast
+- [[Operating Systems/Persistence/Storage/Secondary Storage/SSD]] — the electronic counterpart, useful for contrast
 
 ## Industry Standard Terms
 

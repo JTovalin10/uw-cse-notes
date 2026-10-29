@@ -34,6 +34,6 @@ Cooperative user-space runtimes introduce unique failure modes that differ funda
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Coroutines/Formal State Model|Formal State Model]] — State transition function and invariants
 - [[Concurrency, Parallelism, and Rust/Coroutines/Deep Dive|Deep Dive]] — Stackful vs stackless, symmetric vs asymmetric, and switch latency (beyond lecture)

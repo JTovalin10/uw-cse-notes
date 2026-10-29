@@ -22,7 +22,7 @@
 - [[Magnetic Disks]] — full HDD mechanics and why fragmentation hurts performance there
 - [[Flash Storage]] — full SSD mechanics and why erase-before-write makes TRIM necessary
 - [[HDD]] — brief HDD summary
-- [[SSD]] — brief SSD summary
+- [[Operating Systems/Persistence/Storage/Secondary Storage/SSD]] — brief SSD summary
 - [[Secondary Storage]] — broader storage device context
 
 ## Industry Standard Terms

@@ -34,6 +34,6 @@ Trace Steps:
 
 ## Related
 
-- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
+- [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
 - [[Datacenter Systems/Workloads and Software Infrastructure/Cloud Stack and Performance Toolbox|Cloud Stack and Performance Toolbox]] — Multi-tenancy and the performance and availability toolbox
 - [[Datacenter Systems/Workloads and Software Infrastructure/Failure Modes|Failure Modes]] — Tail latency, noisy neighbors, and alert fatigue

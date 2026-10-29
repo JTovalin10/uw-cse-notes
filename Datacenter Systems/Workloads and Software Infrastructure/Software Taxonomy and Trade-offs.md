@@ -49,5 +49,5 @@ Developing software for warehouse-scale environments introduces operational char
 
 ## Related
 
-- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
+- [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
 - [[Datacenter Systems/Workloads and Software Infrastructure/Platform and Cluster Infrastructure|Platform and Cluster Infrastructure]] — Platform-level and cluster-level software

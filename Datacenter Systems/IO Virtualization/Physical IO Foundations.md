@@ -26,6 +26,6 @@ When asynchronous operations finish, the device triggers a **hardware interrupt*
 
 ## Related
 
-- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Hub for this topic
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|IO Virtualization]] — Hub for this topic
 - [[Datacenter Systems/IO Virtualization/Motivation and Overview|Motivation and Overview]] — Why device state must be decoupled from physical hardware
 - [[Datacenter Systems/IO Virtualization/DMA Ring Buffers|DMA Ring Buffers]] — Driver and device coordination through circular descriptor queues

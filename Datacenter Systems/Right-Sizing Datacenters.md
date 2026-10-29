@@ -107,5 +107,5 @@ flowchart TD
 ## Related
 
 - [[Datacenter Systems/Computing Building Blocks|Computing Building Blocks]] — Scale-up vs scale-out cost model, brawny vs wimpy cores, and accelerators
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Servers, networking fabric, and power and cooling
-- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Workload diversity and tail latency
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Servers, networking fabric, and power and cooling
+- [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Workload diversity and tail latency

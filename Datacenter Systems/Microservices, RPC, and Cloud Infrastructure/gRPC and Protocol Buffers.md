@@ -58,6 +58,6 @@ Protobuf saves network space by avoiding sending field names like `"username"`. 
 
 ## Related
 
-- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
+- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/RPC and Pass-by-Value Semantics|RPC and Pass-by-Value Semantics]] — Remote procedure call semantics
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Docker and Kubernetes|Docker and Kubernetes]] — Containers and orchestration

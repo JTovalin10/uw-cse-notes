@@ -22,6 +22,6 @@ In C runtimes, `SendableData` is defined as `void*`. While this allows arbitrary
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Coroutines/Latching Return Values and Generators|Latching Return Values and Generators]] — Endless return streams
 - [[Concurrency, Parallelism, and Rust/Coroutines/Interleaving and Yield Traces|Interleaving and Yield Traces]] — Output permutations and lazy vs eager spawn

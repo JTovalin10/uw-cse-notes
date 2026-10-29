@@ -31,6 +31,6 @@ WSC engineering employs a standardized set of operational patterns to guarantee 
 
 ## Related
 
-- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
+- [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
 - [[Datacenter Systems/Workloads and Software Infrastructure/Workload Diversity|Workload Diversity]] — Production application mechanics
 - [[Datacenter Systems/Workloads and Software Infrastructure/Live VM Migration Trace|Live VM Migration Trace]] — Migration during host maintenance

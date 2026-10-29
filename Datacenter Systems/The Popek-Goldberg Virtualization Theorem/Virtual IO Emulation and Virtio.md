@@ -32,6 +32,6 @@ Because trapping every MMIO/PIO operation causes severe context-switching overhe
 
 ## Related
 
-- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
+- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/Architectural Violations and Mitigations|Architectural Violations and Mitigations]] — Classic ISAs that break the theorem and their fixes
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/Formal Definition|Formal Definition]] — Formal statement of the theorem

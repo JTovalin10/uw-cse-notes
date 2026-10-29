@@ -57,6 +57,6 @@ $$\tau_{\text{composite}} = \tau_{\text{host}} \circ \tau_{\text{guest}}: \text{
 
 ## Related
 
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — Hub for this topic
+- [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] — Hub for this topic
 - [[Datacenter Systems/Virtual Machines/CPU Virtualization Mechanisms|CPU Virtualization Mechanisms]] — Trap-and-emulate, binary translation, paravirtualization, VT-x/AMD-V, and the Popek-Goldberg condition
 - [[Datacenter Systems/Virtual Machines/Software Memory Virtualization|Software Memory Virtualization]] — Real guest page tables, shadow page tables, and paravirtualized memory management

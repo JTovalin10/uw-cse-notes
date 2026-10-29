@@ -13,6 +13,6 @@ The Popek-Goldberg Virtualization Theorem defines the precise mathematical and a
 
 ## Related
 
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Master course document detailing datacenter virtualization, workload taxonomy, hypervisor memory management, and live migration.
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Master course document detailing datacenter virtualization, workload taxonomy, hypervisor memory management, and live migration.
 - [[Operating Systems/CSE451 Index|CSE451 — Operating Systems]] — Kernel dual-mode privilege boundaries, hardware exception traps, interrupt vectors, and virtual memory paging.
 - [[Hardware & Software Interface/CSE351 Index|CSE351 — Hardware & Software Interface]] — Machine-level ISA specification, register files, processor control flags, and address translation hardware.

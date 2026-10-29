@@ -20,6 +20,6 @@ A buffered channel acts as a safe pipe with $k$ storage slots. If full, senders 
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Stack Management and Channels]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Stack Management and Channels|Stack Management and Channels]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Unbuffered Channel Rendezvous Trace|Unbuffered Channel Rendezvous Trace]] — Trace of a rendezvous
 - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Edge Cases and Failure Modes|Edge Cases and Failure Modes]] — Stack overflow and deadlock detection (beyond lecture)

@@ -85,7 +85,7 @@ Scale-up offers significant performance and performance-per-cost advantages for 
 
 ## Related
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Hardware Building Blocks|Hardware Building Blocks]]
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]]
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]]
 - [[Datacenter Systems/Queuing Theory|Queuing Theory]]
 - [[Data Structures and Parallelism/Parallelism/Amdahl's Law|Amdahl's Law]]
 

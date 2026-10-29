@@ -94,6 +94,6 @@ Final State:
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Memory Reordering and Fences|Memory Reordering and Fences]] — Compiler and hardware reordering
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Edge Cases and Failure Modes|Edge Cases and Failure Modes]] — Deadlock, double-locking, stragglers, and flag signaling (beyond lecture)

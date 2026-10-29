@@ -44,6 +44,6 @@ Execution Trace:
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Coroutines/Assembly Context Switch Trace|Assembly Context Switch Trace]] — Step-by-step stack pivot
 - [[Concurrency, Parallelism, and Rust/Coroutines/Formal State Model|Formal State Model]] — State transition function and invariants

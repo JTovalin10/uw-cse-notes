@@ -12,6 +12,6 @@ The Kernel-based Virtual Machine (KVM) operates as a Type-2 hypervisor where the
 
 ## Related
 
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — Hub for this topic
+- [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] — Hub for this topic
 - [[Datacenter Systems/Virtual Machines/Nested Paging with EPT and NPT|Nested Paging with EPT and NPT]] — Hardware two-dimensional page walks, superpages, VPID, and page modification logging
 - [[Datacenter Systems/Virtual Machines/Memory Ballooning|Memory Ballooning]] — Overcommitment, double paging, and the balloon driver

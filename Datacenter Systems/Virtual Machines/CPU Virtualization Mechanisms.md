@@ -16,7 +16,7 @@ flowchart LR
 - **Direct Execution**: Unprivileged, non-sensitive instructions issued by the Guest OS or guest applications run directly on physical CPU cores at native bare-metal speed.
 - **Hardware Trapping**: When the Guest OS attempts to execute a privileged or sensitive instruction (such as altering processor status registers or updating page table bases), the underlying CPU hardware raises a hardware trap to the host hypervisor.
 - **Hypervisor Emulation**: The hypervisor intercepts the trap, saves guest register state, emulates the intended side-effect of the instruction on virtual hardware state, advances the virtual program counter ($PC$), and resumes guest execution.
-- **Fundamental Limitation**: Trap-and-emulate relies strictly on hardware trapping *every* sensitive instruction. If an instruction is sensitive but fails to trap in user mode (e.g., silently returning incorrect status without trapping, as in early x86 architectures), pure trap-and-emulate fails (as formalized in [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]]).
+- **Fundamental Limitation**: Trap-and-emulate relies strictly on hardware trapping *every* sensitive instruction. If an instruction is sensitive but fails to trap in user mode (e.g., silently returning incorrect status without trapping, as in early x86 architectures), pure trap-and-emulate fails (as formalized in [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]]).
 
 ### 2. Dynamic Binary Translation (DBT)
 When hardware ISAs contain non-virtualizable instructions and lack hardware extensions, hypervisors employ **Dynamic Binary Translation**:
@@ -49,7 +49,7 @@ Modern production datacenters rely primarily on hardware virtualization extensio
 Virtualizing I/O devices via software interposition allows hypervisors to encapsulate VM state, migrate VMs across heterogeneous hardware, and aggregate physical devices.
 - Pure hardware device emulation requires hundreds of VM-Exits per I/O request due to PIO/MMIO accesses.
 - To avoid this, modern hypervisors utilize **paravirtualized I/O** (e.g., virtio), where guests place requests directly into shared-memory ring buffers and signal the host via a single hypercall/doorbell.
-- *See the dedicated topic note:* [[Datacenter Systems/IO Virtualization|I/O Virtualization]]
+- *See the dedicated topic note:* [[Datacenter Systems/IO Virtualization/IO Virtualization|I/O Virtualization]]
 
 ## 3. Dual-Layer Explanation: The Popek-Goldberg Virtualization Theorem
 
@@ -75,6 +75,6 @@ If an operating system instruction does something important—like checking the 
 
 ## Related
 
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — Hub for this topic
+- [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] — Hub for this topic
 - [[Datacenter Systems/Virtual Machines/Motivation and Trade-offs|Motivation and Trade-offs]] — The three virtues, core challenges, and benefits/costs of VMs
 - [[Datacenter Systems/Virtual Machines/Memory Virtualization Foundations|Memory Virtualization Foundations]] — Paging recap, the GVA/GPA/HPA hierarchy, and the composite translation

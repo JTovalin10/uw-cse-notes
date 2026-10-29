@@ -41,7 +41,7 @@ flowchart TD
 
 ### Threads vs. Coroutines
 The fundamental distinction between threads and coroutines lies in **how** execution control is transferred:
-- **[[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]]**: Cooperative user-space execution contexts. A coroutine switches execution **only** when explicitly requested via a yield point (`yield()`, `await`). Control flow is deterministic and predictable.
+- **[[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]]**: Cooperative user-space execution contexts. A coroutine switches execution **only** when explicitly requested via a yield point (`yield()`, `await`). Control flow is deterministic and predictable.
 - **Threads**: Preemptive execution contexts. A thread behaves like a coroutine that is forcibly interrupted by the OS kernel timer after arbitrary instructions without developer consent. This implicit preemption enables multiplexing over physical cores but introduces non-deterministic schedule interleavings that make concurrent reasoning challenging.
 
 ## Industry Standard Terms
@@ -53,5 +53,5 @@ The fundamental distinction between threads and coroutines lies in **how** execu
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Threads and Cores|Threads and Cores]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Threads and Cores/Threads and Cores|Threads and Cores]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/Thread Memory Layout and Abstraction|Thread Memory Layout and Abstraction]] — Shared vs private state and the thread lifecycle

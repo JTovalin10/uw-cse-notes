@@ -92,6 +92,6 @@ Two different threads touch the exact same memory location at the same time, at 
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Nondeterminism and Synchronization Paradigms|Nondeterminism and Synchronization Paradigms]] — Preemptive scheduling and coarse vs fine granularity
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Barriers|Barriers]] — Coarse-grained synchronization

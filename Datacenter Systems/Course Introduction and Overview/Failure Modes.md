@@ -22,6 +22,6 @@
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
 - [[Datacenter Systems/Course Introduction and Overview/Monolithic Appliance vs Cloud SaaS Trace|Monolithic Appliance vs Cloud SaaS Trace]] — End-to-end comparison trace
 - [[Datacenter Systems/Course Introduction and Overview/Availability, Tail Latency, and PUE Formulas|Availability, Tail Latency, and PUE Formulas]] — Formal availability, fan-out tail latency, and PUE

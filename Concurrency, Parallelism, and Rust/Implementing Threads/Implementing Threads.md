@@ -1,6 +1,6 @@
 # Concurrency, Parallelism, and Rust: Implementing Threads
 
-A **thread** is built from a [[Concurrency, Parallelism, and Rust/Coroutines|coroutine]] by making `yield()` happen automatically: a timer interrupt forces the running thread to yield after some time quantum, and another thread gets scheduled. This turns cooperative multitasking into preemptive multitasking, but it also exposes the scheduler's shared data (the ready queue) to being interrupted mid-update, which is the central problem of this file.
+A **thread** is built from a [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|coroutine]] by making `yield()` happen automatically: a timer interrupt forces the running thread to yield after some time quantum, and another thread gets scheduled. This turns cooperative multitasking into preemptive multitasking, but it also exposes the scheduler's shared data (the ready queue) to being interrupted mid-update, which is the central problem of this file.
 
 ---
 
@@ -87,7 +87,7 @@ Spinning needs hardware-supported operations that read and modify memory in a si
 
 Limitations:
 - This requires hardware support for atomic operations.
-- The compiler can rewrite code to be more efficient in ways we did not intend. `volatile` on a value tells the compiler not to optimize and to keep reading it from memory since there are side effects. Me: this only fixes the compiler/caching problem, not ordering between cores (see [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]]).
+- The compiler can rewrite code to be more efficient in ways we did not intend. `volatile` on a value tells the compiler not to optimize and to keep reading it from memory since there are side effects. Me: this only fixes the compiler/caching problem, not ordering between cores (see [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Writing Multithreaded Code|Writing Multithreaded Code]]).
 
 ### Spinlock
 
@@ -205,7 +205,7 @@ void yield() {
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]]
-- [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Stack Management and Channels]]
-- [[Concurrency, Parallelism, and Rust/Threads and Cores|Threads and Cores]]
-- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]]
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]]
+- [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Stack Management and Channels|Stack Management and Channels]]
+- [[Concurrency, Parallelism, and Rust/Threads and Cores/Threads and Cores|Threads and Cores]]
+- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Writing Multithreaded Code|Writing Multithreaded Code]]

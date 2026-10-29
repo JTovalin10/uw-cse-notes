@@ -118,6 +118,6 @@ Execution Trace:
 
 ## Related
 
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — Hub for this topic
+- [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] — Hub for this topic
 - [[Datacenter Systems/Virtual Machines/Memory Virtualization Foundations|Memory Virtualization Foundations]] — Paging recap, the GVA/GPA/HPA hierarchy, and the composite translation
 - [[Datacenter Systems/Virtual Machines/Nested Paging with EPT and NPT|Nested Paging with EPT and NPT]] — Hardware two-dimensional page walks, superpages, VPID, and page modification logging

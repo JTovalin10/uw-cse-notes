@@ -34,6 +34,6 @@ struct Coroutine {
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Stack Management and Channels]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Stack Management and Channels|Stack Management and Channels]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Naive Approaches and Motivation|Naive Approaches and Motivation]] — Why coroutines need managed stacks
 - [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Context Switching and Assembly Trampoline|Context Switching and Assembly Trampoline]] — Scheduler interface, register saving, and the switch

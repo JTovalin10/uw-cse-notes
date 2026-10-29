@@ -14,9 +14,9 @@ Quiz Section 1 establishes the operational and engineering foundations for datac
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Warehouse-scale computing fundamentals and the Cloud Operator Pyramid
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant workload isolation, hypervisor abstractions, and live migration
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Warehouse-scale computing fundamentals and the Cloud Operator Pyramid
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant workload isolation, hypervisor abstractions, and live migration
 - [[Distributed Systems/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — Deep dive into RPC fault models, at-most-once semantics, and deduplication
 - [[Networking/Definitions/gRPC|gRPC]] — Protocol framing, HTTP/2 transport streams, and service interfaces
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Linux namespaces, control groups, and container runtimes
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Cooperative user-space multitasking, stack allocation, and M:N runtimes
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Cooperative user-space multitasking, stack allocation, and M:N runtimes

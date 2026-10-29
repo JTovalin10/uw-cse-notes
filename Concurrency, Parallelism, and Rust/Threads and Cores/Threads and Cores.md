@@ -16,8 +16,8 @@ Hardware execution cores represent physical processing units capable of executin
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Contrast preemptive OS threads with cooperative user-space coroutines and execution stack switching
-- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset|The Concurrent Mindset]] — Foundational hardware drivers, multicore architectures, and dataflow execution DAGs
-- [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Functional pipelining and domain decomposition strategies for balancing workload across cores
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Contrast preemptive OS threads with cooperative user-space coroutines and execution stack switching
+- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/The Concurrent Mindset|The Concurrent Mindset]] — Foundational hardware drivers, multicore architectures, and dataflow execution DAGs
+- [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Functional pipelining and domain decomposition strategies for balancing workload across cores
 - [[Operating Systems/Concurrency/Threads/User vs Kernel Threads|User vs Kernel Threads]] — OS-level architectural details of thread management and kernel privilege boundary transitions
 - [[Operating Systems/Processes/Process and Thread Fundamentals|Process and Thread Fundamentals]] — Process address space structure and thread context execution invariants

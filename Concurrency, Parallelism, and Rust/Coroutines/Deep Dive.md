@@ -33,5 +33,5 @@ Coroutines are approximately two orders of magnitude faster to switch than OS th
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Coroutines/Edge Cases and Failure Modes|Edge Cases and Failure Modes]] — Starvation, stack overflow, deadlocks, and lifetime hazards (beyond lecture)

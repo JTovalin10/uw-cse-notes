@@ -49,5 +49,5 @@ Directly granting Guest VMs raw PCIe DMA access introduces a critical security h
 
 ## Related
 
-- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Hub for this topic
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|IO Virtualization]] — Hub for this topic
 - [[Datacenter Systems/IO Virtualization/IO Interposition and VirtIO|IO Interposition and VirtIO]] — Trap-and-emulate I/O, VirtIO, a PIO trace, and failure modes

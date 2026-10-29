@@ -31,5 +31,5 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
+- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/Formal Definition|Formal Definition]] — Formal statement of the theorem

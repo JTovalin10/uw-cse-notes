@@ -18,5 +18,5 @@ Rust codifies thread-safe concurrency directly into its type system via two core
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset|The Concurrent Mindset]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/The Concurrent Mindset|The Concurrent Mindset]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Edge Cases and Hazards|Edge Cases and Hazards]] — Scheduling complexity and concurrency hazards (beyond lecture)

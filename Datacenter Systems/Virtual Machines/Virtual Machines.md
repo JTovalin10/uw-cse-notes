@@ -32,10 +32,10 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/IO Virtualization|I/O Virtualization]] — Virtual-to-physical I/O interposition, VM encapsulation, live migration, and paravirtualized Virtio queues
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Foundations of warehouse-scale computing, the Cloud Operator Pyramid of Concerns, and infrastructure trade-offs
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Broad datacenter workload taxonomy, limits of process isolation, three-tier memory hierarchies, and live VM migration
-- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Formal ISA conditions for direct execution virtualization, x86/ARM hardware violations, and Popek-Goldberg proofs
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|I/O Virtualization]] — Virtual-to-physical I/O interposition, VM encapsulation, live migration, and paravirtualized Virtio queues
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Foundations of warehouse-scale computing, the Cloud Operator Pyramid of Concerns, and infrastructure trade-offs
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Broad datacenter workload taxonomy, limits of process isolation, three-tier memory hierarchies, and live VM migration
+- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Formal ISA conditions for direct execution virtualization, x86/ARM hardware violations, and Popek-Goldberg proofs
 - [[Operating Systems/Memory/Virtual Memory|Virtual Memory]] — Paging, Translation Lookaside Buffers (TLBs), multi-level page tables, and address translation
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Hypervisor hardware isolation vs. operating system kernel namespaces and cgroups
 - [[Operating Systems/Virtualization/Virtual Machine/Virtual Machine|Virtual Machines]] — Kernel-level virtualization abstractions and classic shadow paging implementations

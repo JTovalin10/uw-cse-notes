@@ -40,6 +40,6 @@ Video processing balances compute, storage, and networking costs based on conten
 
 ## Related
 
-- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
+- [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
 - [[Datacenter Systems/Workloads and Software Infrastructure/Platform and Cluster Infrastructure|Platform and Cluster Infrastructure]] — Platform-level and cluster-level software
 - [[Datacenter Systems/Workloads and Software Infrastructure/Cloud Stack and Performance Toolbox|Cloud Stack and Performance Toolbox]] — Multi-tenancy and the performance and availability toolbox

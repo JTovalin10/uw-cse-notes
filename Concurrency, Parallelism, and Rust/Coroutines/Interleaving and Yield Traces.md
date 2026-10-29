@@ -144,6 +144,6 @@ Coroutines are strictly **non-preemptable**. Once `main()` begins executing afte
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Coroutines/Channel Flavors and Synchronization Patterns|Channel Flavors and Synchronization Patterns]] — Buffering, pointer ownership, and barriers
 - [[Concurrency, Parallelism, and Rust/Coroutines/Assembly Context Switch Trace|Assembly Context Switch Trace]] — Step-by-step stack pivot

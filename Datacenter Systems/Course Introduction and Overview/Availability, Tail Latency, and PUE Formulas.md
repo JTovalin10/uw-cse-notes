@@ -62,5 +62,5 @@ PUE measures how much extra power the datacenter burns on non-computing overhead
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
 - [[Datacenter Systems/Course Introduction and Overview/Failure Modes|Failure Modes]] — Stragglers, resource stranding, and incast

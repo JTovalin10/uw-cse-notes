@@ -69,6 +69,6 @@ sequenceDiagram
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Coroutines/Limits of OS Threads and the Coroutine Abstraction|Limits of OS Threads and the Coroutine Abstraction]] — Why coroutines, the book-reading analogy, and the design space
 - [[Concurrency, Parallelism, and Rust/Coroutines/Assembly Context Switch|Assembly Context Switch]] — routine_switch.S and the x86-64 ABI

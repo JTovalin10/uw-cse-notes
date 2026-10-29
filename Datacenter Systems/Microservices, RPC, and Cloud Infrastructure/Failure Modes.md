@@ -37,5 +37,5 @@
 
 ## Related
 
-- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
+- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/gRPC Call Trace|gRPC Call Trace]] — A full gRPC call from client to server

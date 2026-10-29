@@ -13,8 +13,8 @@ This note introduces the foundational principles of concurrent and parallel exec
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Domain and functional decomposition strategies, dynamic load balancing, task granularity, and scaling laws
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Cooperative user-space multitasking, stack management, and assembly context switching
+- [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Domain and functional decomposition strategies, dynamic load balancing, task granularity, and scaling laws
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Cooperative user-space multitasking, stack management, and assembly context switching
 - [[CSE351 Index|CSE351: The Hardware/Software Interface]] — Physical memory hierarchies, caches, and multi-core processor architectures
 - [[CSE333 Index|CSE333: Systems Programming]] — POSIX threads (`pthreads`), mutexes, and lower-level synchronization in C
 - [[Concurrency Intro|CSE333: Concurrency Intro]] — Foundational POSIX threads and race conditions in C

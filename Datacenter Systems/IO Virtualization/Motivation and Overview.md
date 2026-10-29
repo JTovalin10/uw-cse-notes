@@ -19,5 +19,5 @@ To solve this, hypervisors implement **I/O Interposition**, systematically inter
 
 ## Related
 
-- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Hub for this topic
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|IO Virtualization]] — Hub for this topic
 - [[Datacenter Systems/IO Virtualization/Physical IO Foundations|Physical IO Foundations]] — Interconnects, PIO/MMIO/DMA, and interrupts

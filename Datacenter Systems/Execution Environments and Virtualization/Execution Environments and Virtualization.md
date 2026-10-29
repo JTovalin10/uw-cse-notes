@@ -18,7 +18,7 @@ Virtualization provides isolated, efficient software duplicates of physical comp
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Warehouse-scale computing foundations and the Cloud Operator Pyramid of Concerns
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Warehouse-scale computing foundations and the Cloud Operator Pyramid of Concerns
 - [[Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Microservice architectures, Docker containerization, and gRPC
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Operating system namespaces and cgroups vs. hypervisor hardware virtualization
 - [[Operating Systems/Virtualization/Virtual Machine/Virtual Machine|Virtual Machines]] — In-depth operating system virtualization mechanisms and shadow page tables

@@ -34,6 +34,6 @@ Modern CPUs provide hardware-assisted paging (Intel **Extended Page Tables - EPT
 
 ## Related
 
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
 - [[Datacenter Systems/Execution Environments and Virtualization/Virtualization Abstraction and Hypervisor|Virtualization Abstraction and Hypervisor]] — The virtualization abstraction and VM architecture
 - [[Datacenter Systems/Execution Environments and Virtualization/Operational Capabilities of Virtual Machines|Operational Capabilities of Virtual Machines]] — Snapshots, migration, and management advantages

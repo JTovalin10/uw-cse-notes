@@ -1,6 +1,6 @@
 # Concurrency, Parallelism, and Rust: Synchronization Primitives
 
-Threads that share mutable state need a way to coordinate. The primitives below (semaphore, mutex, barrier, condition variable) are the standard coordination tools, and all of them are ultimately built on the kernel's ability to briefly disable interrupts and on [[Concurrency, Parallelism, and Rust/Implementing Threads|spinlocks and interrupt-safe spinlocks]]. This file lists the primitives, explains how they relate to each other, and then walks through the interrupt-safe lock that Homework 3 uses to protect the scheduler.
+Threads that share mutable state need a way to coordinate. The primitives below (semaphore, mutex, barrier, condition variable) are the standard coordination tools, and all of them are ultimately built on the kernel's ability to briefly disable interrupts and on [[Concurrency, Parallelism, and Rust/Implementing Threads/Implementing Threads|spinlocks and interrupt-safe spinlocks]]. This file lists the primitives, explains how they relate to each other, and then walks through the interrupt-safe lock that Homework 3 uses to protect the scheduler.
 
 ---
 
@@ -72,7 +72,7 @@ Be aware of `schedule()` and `yield_to()` in `threads.cpp`:
 
 ## InterruptSafeLock (ISL)
 
-The **InterruptSafeLock (ISL)** is the lock Homework 3 uses to protect scheduler data. It is the same idea as the [[Concurrency, Parallelism, and Rust/Implementing Threads#Interrupt-Safe Spinlocks (ISL)|Interrupt-Safe Spinlock]], implemented with an atomic `exchange` and by remembering whether interrupts were enabled before the lock was taken.
+The **InterruptSafeLock (ISL)** is the lock Homework 3 uses to protect scheduler data. It is the same idea as the [[Concurrency, Parallelism, and Rust/Implementing Threads/Implementing Threads#Interrupt-Safe Spinlocks (ISL)|Interrupt-Safe Spinlock]], implemented with an atomic `exchange` and by remembering whether interrupts were enabled before the lock was taken.
 
 ```cpp
 void InterruptSafeLock::Lock() {
@@ -126,8 +126,8 @@ void InterruptSafeLock::Unlock() {
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Implementing Threads|Implementing Threads]] — Preemption, critical sections, spinlocks, and interrupt-safe spinlocks
-- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]] — Barriers, data races, and mutual exclusion locks
+- [[Concurrency, Parallelism, and Rust/Implementing Threads/Implementing Threads|Implementing Threads]] — Preemption, critical sections, spinlocks, and interrupt-safe spinlocks
+- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Writing Multithreaded Code|Writing Multithreaded Code]] — Barriers, data races, and mutual exclusion locks
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Locks/Locks|Operating Systems: Locks]] — Hardware atomic instructions and OS sleep locks
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Counting Semaphore|Operating Systems: Counting Semaphore]] — Semaphore semantics in the OS course
 - [[Operating Systems/Concurrency/Synchronization/Mechanics/Binary Semaphore|Operating Systems: Binary Semaphore]] — Mutex as a binary semaphore

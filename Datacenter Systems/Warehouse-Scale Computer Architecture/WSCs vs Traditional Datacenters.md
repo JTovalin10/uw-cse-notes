@@ -37,5 +37,5 @@ The continuous growth in WSC computing demand stems from two main drivers:
 
 ## Related
 
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/The Datacenter as a Computer|The Datacenter as a Computer]] — The WSC abstraction and topology

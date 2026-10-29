@@ -48,6 +48,6 @@ Execution Trace:
 
 ## Related
 
-- [[Datacenter Systems/IO Virtualization|IO Virtualization]] — Hub for this topic
+- [[Datacenter Systems/IO Virtualization/IO Virtualization|IO Virtualization]] — Hub for this topic
 - [[Datacenter Systems/IO Virtualization/DMA Ring Buffers|DMA Ring Buffers]] — Driver and device coordination through circular descriptor queues
 - [[Datacenter Systems/IO Virtualization/SR-IOV and IOMMU|SR-IOV and IOMMU]] — Hypervisor I/O bypass, hardware slicing, and DMA address translation

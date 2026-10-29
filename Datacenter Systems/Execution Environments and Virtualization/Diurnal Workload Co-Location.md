@@ -28,6 +28,6 @@ Interactive web apps only use a lot of compute during daytime hours, leaving phy
 
 ## Related
 
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
 - [[Datacenter Systems/Execution Environments and Virtualization/Popek-Goldberg Criteria|Popek-Goldberg Criteria]] — Formal virtualization criteria
 - [[Datacenter Systems/Execution Environments and Virtualization/Hypervisor Types and VT-x|Hypervisor Types and VT-x]] — Type 1 vs Type 2 hypervisors and hardware assistance

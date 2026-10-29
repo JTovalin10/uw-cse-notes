@@ -9,7 +9,7 @@
 - **Persistent**: Data survives power loss, unlike RAM's volatile contents.
 - **Slow**: Access times are on the order of milliseconds (vs. nanoseconds for RAM) — a difference of roughly six orders of magnitude, which is why the OS goes to great lengths (caching, buffering, scheduling) to minimize the number of secondary storage accesses on the critical path.
 - **Occasionally fails**: Requires error handling, since secondary storage devices are mechanical or have limited write endurance and cannot be assumed to always succeed.
-- Device types: [[HDD]], [[SSD]] (see [[Magnetic Disks]] and [[Flash Storage]] for full mechanics).
+- Device types: [[HDD]], [[Operating Systems/Persistence/Storage/Secondary Storage/SSD]] (see [[Magnetic Disks]] and [[Flash Storage]] for full mechanics).
 
 ## Disk Routines (Storage Layer)
 
@@ -21,7 +21,7 @@ Routines that interact with disks are typically implemented at a very low level 
 ## Related
 
 - [[HDD]] — hard disk drives
-- [[SSD]] — solid-state drives
+- [[Operating Systems/Persistence/Storage/Secondary Storage/SSD]] — solid-state drives
 - [[Magnetic Disks]] — full HDD mechanics
 - [[Flash Storage]] — full SSD mechanics
 - [[Disk Drives]] — HDD vs SSD comparison

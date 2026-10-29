@@ -43,6 +43,6 @@ Trace Steps:
 
 ## Related
 
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Hardware Building Blocks|Hardware Building Blocks]] — Servers, storage, and networking fabric
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Failure Modes|Failure Modes]] — Faults, bisection bandwidth, and thermal limits

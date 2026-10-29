@@ -46,6 +46,6 @@ sequenceDiagram
 
 ## Related
 
-- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
+- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/Requirements and System Model|Requirements and System Model]] — Core requirements, assumptions, and instruction classification
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/Architectural Violations and Mitigations|Architectural Violations and Mitigations]] — Classic ISAs that break the theorem and their fixes

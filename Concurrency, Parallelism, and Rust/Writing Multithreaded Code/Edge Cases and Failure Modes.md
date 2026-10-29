@@ -20,6 +20,6 @@
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Writing Multithreaded Code|Writing Multithreaded Code]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Bank Account Traces|Bank Account Traces]] — Unsynchronized, mutex, and barrier executions
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Deep Dive|Deep Dive]] — x86-64 TSO vs ARM memory models (beyond lecture)

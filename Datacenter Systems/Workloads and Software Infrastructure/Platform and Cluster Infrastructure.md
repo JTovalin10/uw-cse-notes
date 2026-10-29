@@ -29,6 +29,6 @@ Core building blocks deployed across the cluster:
 
 ## Related
 
-- [[Datacenter Systems/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
+- [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Hub for this topic
 - [[Datacenter Systems/Workloads and Software Infrastructure/Software Taxonomy and Trade-offs|Software Taxonomy and Trade-offs]] — WSC software taxonomy and datacenter vs desktop software
 - [[Datacenter Systems/Workloads and Software Infrastructure/Workload Diversity|Workload Diversity]] — Production application mechanics

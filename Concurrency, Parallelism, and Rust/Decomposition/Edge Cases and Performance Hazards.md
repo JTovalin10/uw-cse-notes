@@ -19,6 +19,6 @@
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Decomposition/Scaling Laws|Scaling Laws]] — Amdahl, Gustafson, granularity metric, and baseline invariant
 - [[Concurrency, Parallelism, and Rust/Decomposition/Deep Dive|Deep Dive]] — Work stealing and the roofline model (beyond lecture)

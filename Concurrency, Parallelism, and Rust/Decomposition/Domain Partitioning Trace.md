@@ -51,6 +51,6 @@ Strategy C: Dynamic Allocation (Shared Queue of 1-Row Strips)
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Decomposition/Pipeline Execution Trace|Pipeline Execution Trace]] — Functional decomposition with bubbling
 - [[Concurrency, Parallelism, and Rust/Decomposition/Scaling Laws|Scaling Laws]] — Amdahl, Gustafson, granularity metric, and baseline invariant

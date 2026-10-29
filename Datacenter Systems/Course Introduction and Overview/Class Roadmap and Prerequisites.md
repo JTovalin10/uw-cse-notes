@@ -3,7 +3,7 @@
 ## Class Topics Roadmap
 
 - [x] **Virtualization & Software-Defined Networking (SDN)**:
-  - [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Providing cloud customers with the abstraction of having their own dedicated virtual datacenter that can scale elastically as needed.
+  - [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Providing cloud customers with the abstraction of having their own dedicated virtual datacenter that can scale elastically as needed.
 - [ ] **Server, Storage, and Networking Hardware Technologies**:
   - Analyzing fundamental trade-offs between hardware cost, energy efficiencies, and low-latency performance.
 - [ ] **Disaggregation**:
@@ -40,6 +40,6 @@
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
 - [[Datacenter Systems/Course Introduction and Overview/Primary Datacenter Engineering Concerns|Primary Datacenter Engineering Concerns]] — Core engineering concerns of datacenter design
 - [[Datacenter Systems/Course Introduction and Overview/Monolithic Appliance vs Cloud SaaS Trace|Monolithic Appliance vs Cloud SaaS Trace]] — End-to-end comparison trace

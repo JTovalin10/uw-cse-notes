@@ -49,6 +49,6 @@ Although global services deploy across multiple geographical regions, the fundam
 
 ## Related
 
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/WSCs vs Traditional Datacenters|WSCs vs Traditional Datacenters]] — Differences and cost efficiency at scale
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Hardware Building Blocks|Hardware Building Blocks]] — Servers, storage, and networking fabric

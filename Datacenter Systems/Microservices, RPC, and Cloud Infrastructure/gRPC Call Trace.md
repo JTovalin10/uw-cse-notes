@@ -51,6 +51,6 @@ Scenario: Client invokes Greeter.SayHello(name="Alice")
 
 ## Related
 
-- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
+- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Microservices, RPC, and Cloud Infrastructure|Microservices]] — Hub for this topic
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Go and GCP Lab Infrastructure|Go and GCP Lab Infrastructure]] — Go systems programming and GCP lab setup
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Failure Modes|Failure Modes]] — Schema drift, cascading timeouts, OOMKilled, and credit exhaustion

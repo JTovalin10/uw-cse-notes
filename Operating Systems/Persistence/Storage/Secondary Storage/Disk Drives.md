@@ -27,7 +27,7 @@ Electronic devices that store data in semiconductor flash memory.
 - [[Magnetic Disks]] — full HDD mechanics and performance characteristics
 - [[Flash Storage]] — full SSD mechanics and performance characteristics
 - [[HDD]] — brief HDD summary
-- [[SSD]] — brief SSD summary
+- [[Operating Systems/Persistence/Storage/Secondary Storage/SSD]] — brief SSD summary
 - [[Secondary Storage]] — broader storage device context
 - [[RAID]] — combining multiple disk drives for redundancy and performance
 

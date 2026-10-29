@@ -44,6 +44,6 @@ Pit stops illustrate the direct relationship between worker count, specializatio
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset|The Concurrent Mindset]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/The Concurrent Mindset|The Concurrent Mindset]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Course Overview and Hardware Drivers|Course Overview and Hardware Drivers]] — Rust, roadmap, and why concurrency and parallelism
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Dependency Chains and Dataflow Graphs|Dependency Chains and Dataflow Graphs]] — Dependency graphs and their formalization

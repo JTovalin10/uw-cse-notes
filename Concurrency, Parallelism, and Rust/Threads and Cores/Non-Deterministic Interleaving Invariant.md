@@ -22,6 +22,6 @@ A program is only correct if it yields valid results regardless of the order in 
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Threads and Cores|Threads and Cores]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Threads and Cores/Threads and Cores|Threads and Cores]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/SMT and Out-of-Order Execution|SMT and Out-of-Order Execution]] — Hyperthreading and memory barriers
 - [[Concurrency, Parallelism, and Rust/Threads and Cores/Edge Cases and Failure Modes|Edge Cases and Failure Modes]] — Data races, line bouncing, SMT contention, reordering (beyond lecture)

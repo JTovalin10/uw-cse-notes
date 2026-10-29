@@ -43,5 +43,5 @@ $$\mathbb{E}[\text{Failures per day}] = \frac{100,000 \times 0.05}{365} \approx 
 
 ## Related
 
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Failure Modes|Failure Modes]] — Faults, bisection bandwidth, and thermal limits

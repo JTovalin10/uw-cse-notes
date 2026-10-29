@@ -48,6 +48,6 @@ If task $X$ doesn't need to wait for task $Y$, and task $Y$ doesn't need to wait
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset|The Concurrent Mindset]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/The Concurrent Mindset|The Concurrent Mindset]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Assembly Line and Scaling Strategies|Assembly Line and Scaling Strategies]] — Task specialization, scale-up, and the pit stop case studies
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Pit Stop and Scheduling Traces|Pit Stop and Scheduling Traces]] — Concrete execution traces

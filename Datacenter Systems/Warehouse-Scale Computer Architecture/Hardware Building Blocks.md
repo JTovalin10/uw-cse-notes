@@ -42,6 +42,6 @@ Physical facilities supply electrical power and thermal dissipation required to 
 
 ## Related
 
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hub for this topic
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/The Datacenter as a Computer|The Datacenter as a Computer]] — The WSC abstraction and topology
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Scatter-Gather Query Trace|Scatter-Gather Query Trace]] — Processing a query across a WSC

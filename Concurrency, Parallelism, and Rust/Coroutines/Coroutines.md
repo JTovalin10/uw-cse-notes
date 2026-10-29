@@ -20,7 +20,7 @@ A coroutine is a cooperative, user-space execution context that can pause and re
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset|The Concurrent Mindset]] — Concurrency drivers, task parallelism, and dataflow dependency graphs
+- [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/The Concurrent Mindset|The Concurrent Mindset]] — Concurrency drivers, task parallelism, and dataflow dependency graphs
 - [[Hardware & Software Interface/CSE351 Index|CSE351: The Hardware/Software Interface]] — x86-64 stack frame layout, `%rsp` and `%rip` register manipulation, and calling conventions
 - [[Systems Programming/CSE333 Index|CSE333: Systems Programming]] — POSIX threads (`pthreads`), mutexes, C memory management, and function pointers
 - [[Operating Systems/CSE451 Index|CSE451: Operating Systems]] — Kernel thread schedulers, preemptive multitasking, and OS context switching vs user fibers

@@ -47,6 +47,6 @@ Total Application Downtime: 22 milliseconds (completely transparent to end users
 
 ## Related
 
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Hub for this topic
 - [[Datacenter Systems/Execution Environments and Virtualization/Operational Capabilities of Virtual Machines|Operational Capabilities of Virtual Machines]] — Snapshots, migration, and management advantages
 - [[Datacenter Systems/Execution Environments and Virtualization/Process Sharing vs VM Sandboxing Walkthrough|Process Sharing vs VM Sandboxing Walkthrough]] — Multi-tenant failure scenario comparison

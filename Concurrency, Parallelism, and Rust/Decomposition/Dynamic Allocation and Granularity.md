@@ -47,6 +47,6 @@ $$G = \frac{T_{\text{computation}}}{T_{\text{communication}}}$$
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Decomposition/Domain Decomposition|Domain Decomposition]] — Data partitioning with block and cyclic strategies
 - [[Concurrency, Parallelism, and Rust/Decomposition/Functional and Hybrid Decomposition|Functional and Hybrid Decomposition]] — Pipelines, bubbling, and hybrids

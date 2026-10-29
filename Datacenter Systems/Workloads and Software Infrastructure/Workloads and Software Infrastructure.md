@@ -14,9 +14,9 @@ Software infrastructure in warehouse-scale computers abstracts raw hardware clus
 
 ## Related
 
-- [[Datacenter Systems/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hardware building blocks, rack topologies, power delivery, and bisection bandwidth
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Cloud operator pyramid, availability SLAs, and IaaS/PaaS models
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant virtualization, hypervisor overheads, and container runtimes
+- [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Hardware building blocks, rack topologies, power delivery, and bisection bandwidth
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Cloud operator pyramid, availability SLAs, and IaaS/PaaS models
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant virtualization, hypervisor overheads, and container runtimes
 - [[Database Internals/Replication and Distribution/MapReduce|MapReduce]] — Distributed batch execution model and map/reduce phases
 - [[Distributed Systems/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — Underlying network RPC protocols and serialization mechanics
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Kernel cgroups, namespaces, and hypervisor architecture

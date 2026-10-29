@@ -12,8 +12,8 @@ I/O Virtualization decouples virtual machine input/output operations from underl
 
 ## Related
 
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]] — CPU virtualization and hypervisor architectural models
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Broad virtualization taxonomy and constraints
-- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Formal CPU hardware trap-and-emulate requirements and virtual I/O emulation mechanics
+- [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] — CPU virtualization and hypervisor architectural models
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Broad virtualization taxonomy and constraints
+- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Formal CPU hardware trap-and-emulate requirements and virtual I/O emulation mechanics
 - [[Operating Systems/Persistence/Storage/IO System Hardware Environment|I/O System Hardware Environment]] — Fundamentals of hardware storage buses and disk controllers
 - [[Operating Systems/Virtualization/Mechanisms/Interrupts/Interrupts|Interrupts]] — Operating system mechanisms for hardware asynchronous event handling

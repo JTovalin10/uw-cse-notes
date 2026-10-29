@@ -7,7 +7,7 @@ Rather than dividing the data, **Functional Decomposition** divides the algorith
 ![[Functional Decomposition.png]]
 
 - **Division of Labor**: Each worker specializes in one dedicated algorithmic stage (e.g., Worker 0 performs `read`, Worker 1 performs `sum`, Worker 2 performs `divide`, Worker 3 performs `write`).
-- **Dataflow Architecture**: Intermediate results flow sequentially between adjacent workers through communication queues or channels (as explored in [[Concurrency, Parallelism, and Rust/Stack Management and Channels|Channels]]).
+- **Dataflow Architecture**: Intermediate results flow sequentially between adjacent workers through communication queues or channels (as explored in [[Concurrency, Parallelism, and Rust/Stack Management and Channels/Stack Management and Channels|Channels]]).
 - **Latency vs. Throughput**:
   - Functional pipelining **does not reduce the latency** of an individual data element (in fact, inter-thread synchronization slightly increases individual latency).
   - Pipelining **maximizes system throughput**: once the pipeline fills, an output is produced at every clock cycle corresponding to the execution time of one stage.
@@ -36,6 +36,6 @@ Real-world high-performance systems frequently combine domain and functional dec
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Decomposition|Decomposition]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Decomposition/Dynamic Allocation and Granularity|Dynamic Allocation and Granularity]] — Pull model, overhead, and task granularity
 - [[Concurrency, Parallelism, and Rust/Decomposition/Pipeline Execution Trace|Pipeline Execution Trace]] — Functional decomposition with bubbling

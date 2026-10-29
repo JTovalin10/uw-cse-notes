@@ -33,6 +33,15 @@ These are the same features seen from the other side:
 
 ---
 
+## What Rust Aims For
+
+- Efficient, fearless, concurrent systems programming.
+- Memory safety, with a rich type system.
+- An ergonomic developer experience.
+- Interoperability with C/C++.
+
+---
+
 ## Categories of Code
 
 Every program falls into one of three categories:
@@ -149,6 +158,132 @@ fn main() {
 
 ---
 
+## Types
+
+- Variables are **immutable by default**, which forces you to reason about mutability: a variable is only mutable if declared with `mut`.
+- Reassigning to a different type is not allowed, even when the variable is mutable.
+- Types can be written explicitly or **inferred** from context by the Rust compiler.
+
+### Scalar
+
+- Same as the integral types in C++:
+  - Signed integers: `i8` up to `i128`, plus `isize` (pointer size).
+  - Unsigned integers: `u8` up to `u128`, plus `usize`.
+  - Floating point: `f32` and `f64`.
+  - `char`: a Unicode scalar value, 4 bytes.
+  - `bool`.
+
+### Compound
+
+- **Array**: a fixed length and a single element type.
+  - `[1, 2, 3]`, or `[0; 3]` for three 0's.
+- **Tuple**: a fixed length with mixed types.
+  - `(1, true, 2, false)` has type `(i32, bool, i32, bool)`.
+
+### User-Defined Types: Structs
+
+- **Struct**: named fields, like a C-style struct.
+- **Tuple struct**: a named tuple.
+- **Unit struct**: no fields.
+
+```rust
+struct Unit; // unit struct, no fields
+struct Pair(i32, f32); // tuple struct
+struct Point { // a struct with named fields
+    x: f32,
+    y: f32,
+}
+
+fn main() {
+    let _unit = Unit;
+    let pair = Pair(1, 0.1);
+    let point = Point { x: 493.0, y: 2026.0 };
+    println!("{} {}", pair.0, pair.1);   // by position
+    println!("{} {}", point.x, point.y); // by name
+}
+```
+
+### User-Defined Types: Enums
+
+- **Enum**: a value is exactly one of several **variants**.
+  - A variant can carry data, in any of the struct flavors above.
+  - It is a C `enum` and a C `union` in one (a **tagged union**): the tag records which variant the value holds, and the data is only valid for that variant.
+- `match` runs the arm for the variant the value holds.
+  - It must cover every variant, so adding a variant later turns every incomplete `match` into a compile error.
+
+```rust
+enum Shape {
+    Dot,                  // no data
+    Circle(f32),          // tuple-like
+    Rect { w: f32, h: f32 }, // named fields
+}
+
+fn area(s: Shape) -> f32 {
+    match s {
+        Shape::Dot => 0.0,
+        Shape::Circle(r) => 3.14 * r * r,
+        Shape::Rect { w, h } => w * h,
+    }
+}
+```
+
+---
+
+## Dropping
+
+- Every value is **dropped** when its variable goes out of scope, even a scalar like `x`. Dropping an `i32` has nothing to free.
+- If the value holds memory on the heap, that memory is freed immediately at the drop (**RAII**).
+
+### Vec and the vec! Macro
+
+A `Vec<T>` is a growable array whose elements live on the heap. It can be built by hand or with the `vec!` macro:
+
+```rust
+fn main() {
+    let mut v: Vec<i32> = Vec::with_capacity(3);
+    v.push(1);
+    v.push(2);
+    v.push(3);
+    let w: Vec<i32> = vec![1, 2, 3]; // the same vector, written with a macro
+    println!("{v:?} {w:?}");         // :? is the debug format, so it prints the whole Vec
+}
+```
+
+### Returning Heap Pointers
+
+- Can we return heap pointers? Yes. In Rust, owning heap memory is part of a value's type, so the owner is responsible for the memory.
+- References can point to either stack or heap data.
+- `Box` stores a value on the **heap** instead of the stack: `Box::new(493)`.
+
+---
+
+## Ownership Rules
+
+- Every value in Rust has an **owner**, there is only **one owner at a time**, and once the owner goes out of scope the value is dropped.
+- We can have many shared references, but only one owner.
+
+### Moves
+
+- A **move** transfers ownership from `a` to `b`. It happens when assigning `b = a` or calling `f(a)` where the function does not borrow.
+- After a move, `a` can no longer be used.
+- If the type is **Copy**, the value is copied instead and `a` can still be used.
+  - Scalar types implement the `Copy` trait (a plain `memcpy`).
+  - Other types can be duplicated explicitly with `clone`.
+
+---
+
+## Borrowing
+
+- **References borrow** a value but never take ownership.
+- There are two kinds: shared references `&T` and mutable references `&mut T`.
+  - To the same data, you may have one mutable reference **or** any number of shared ones, never both at once.
+- Conceptually a reference sits somewhere between a C pointer and a C++ reference.
+- Use `*` to **dereference**: `*r`.
+  - `let x = *r;` copies the value out, so it only works if the type is `Copy`.
+- A borrow ends at its **last use**, and the compiler reasons about this for us.
+
+---
+
 ## A Stronger Type System
 
 - Types are how programmers communicate with the compiler.
@@ -173,19 +308,14 @@ where $\prec$ is the happens-before order established by synchronization.
 
 Two threads touch the same spot, at least one changes it, and nothing makes one wait for the other. Rust's rule (many readers or exactly one writer) makes this combination impossible to write in safe code.
 
-## What Rust aims for
-- efficient, fearless, concurrent systems programming
-- memory safety, with a rich type system
-- an ergonomic dev experience
-- interoperability with C/C++
-
 ---
 
 ## Related
 
+- [[Concurrency, Parallelism, and Rust/Introduction to Rust/String, Slices, and Borrowing|String, Slices, and Borrowing]]: `Result`, `Option`, slices, and strings
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Deep Dive|The Concurrent Mindset: Deep Dive]]: Rust `Send` and `Sync`
-- [[Concurrency, Parallelism, and Rust/Synchronization Primitives|Synchronization Primitives]]
-- [[Concurrency, Parallelism, and Rust/Threads and Cores|Threads and Cores]]
+- [[Concurrency, Parallelism, and Rust/Implementing Threads/Synchronization Primitives|Synchronization Primitives]]
+- [[Concurrency, Parallelism, and Rust/Threads and Cores/Threads and Cores|Threads and Cores]]
 - [[Systems Programming/Smart Pointers/Shared Pointer|Shared Pointer]]: ownership in C++
 
 ## Industry Standard Terms
@@ -193,4 +323,6 @@ Two threads touch the same spot, at least one changes it, and nothing makes one 
 - **Mutable / immutable reference** → exclusive (`&mut`) / shared (`&`) borrow
 - **Single owner variable** → ownership (RAII-style deterministic destruction)
 - **Valid, unsafe** → memory-unsafe or undefined behavior
+- **Enum (tagged union)** → sum type / algebraic data type
+- **Drop** → destructor (RAII)
 - **Data race** → data race (as defined by the C11 / C++11 memory models)

@@ -15,7 +15,7 @@ Modern datacenter systems treat warehouse-scale clusters as single massive compu
 
 ## Related
 
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant workload isolation, hypervisor abstractions, and live migration
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Multi-tenant workload isolation, hypervisor abstractions, and live migration
 - [[Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Concrete lab tools, containerization, Go concurrency, and gRPC
 - [[Distributed Systems/RPC/Remote Procedure Call (RPC)|Remote Procedure Call (RPC)]] — Underlying network semantics, sequence IDs, and failure models
 - [[Operating Systems/Virtualization/Containers and Virt|Containers and Virtualization]] — Hypervisor virtualization vs. OS-level namespaces and cgroups

@@ -237,7 +237,7 @@ Overview and index for all CSE451 notes. Design and implementation of operating 
 - [[Storage and FS|Storage and File Systems]] — SSD/HDD mechanics, Inodes, VFS, and Journaling
 - [[Secondary Storage|Secondary Storage]] — secondary storage overview
 - [[HDD|HDD]] — hard disk drive specifics
-- [[SSD|SSD]] — solid-state drive specifics
+- [[Operating Systems/Persistence/Storage/Secondary Storage/SSD|SSD]] — solid-state drive specifics
 - [[Organization of the IO Function|Organization of the IO Function]] — how IO is organized in OS
 - [[IO System Hardware Environment|IO System Hardware Environment]] — hardware environment for IO
 - [[File Systems|File Systems]] — file system overview

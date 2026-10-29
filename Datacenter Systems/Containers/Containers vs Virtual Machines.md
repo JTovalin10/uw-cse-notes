@@ -1,6 +1,6 @@
 # Containers: Containers vs Virtual Machines
 
-Containers and [[Datacenter Systems/Virtual Machines|Virtual Machines]] draw the isolation boundary at different layers, so they trade off performance, security, and cost differently.
+Containers and [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]] draw the isolation boundary at different layers, so they trade off performance, security, and cost differently.
 
 ## Performance
 
@@ -54,8 +54,8 @@ Notes on the container costs:
 
 ## Related
 
-- [[Datacenter Systems/Containers|Containers]] — Hub
+- [[Datacenter Systems/Containers/Containers|Containers]] — Hub
 - [[Datacenter Systems/Containers/OS-Level Virtualization|OS-Level Virtualization]]
 - [[Datacenter Systems/Containers/Serverless Functions and Enclaves|Serverless Functions and Enclaves]] — Where industry is heading
-- [[Datacenter Systems/Virtual Machines|Virtual Machines]]
-- [[Datacenter Systems/Execution Environments and Virtualization|Execution Environments and Virtualization]]
+- [[Datacenter Systems/Virtual Machines/Virtual Machines|Virtual Machines]]
+- [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]]

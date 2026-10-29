@@ -9,7 +9,7 @@ The performance characteristics of the underlying physical device shape almost e
 - **[[HDD|Hard Disk Drive (HDD)]]**: Performance is limited by mechanical movement. See [[Magnetic Disks]] for full mechanics.
     - **Seek Latency**: Time for the head to move to the correct track.
     - **Rotational Latency**: Time for the platter to rotate the desired sector under the head.
-- **[[SSD|Solid State Drive (SSD)]]**: Uses flash memory with no moving parts. See [[Flash Storage]] for full mechanics.
+- **[[Operating Systems/Persistence/Storage/Secondary Storage/SSD|Solid State Drive (SSD)]]**: Uses flash memory with no moving parts. See [[Flash Storage]] for full mechanics.
     - **Write Amplification**: Occurs because data cannot be overwritten directly — a block must be erased before a page within it can be written again, so a single logical write can trigger the SSD's controller to erase and rewrite far more physical data than the logical write itself contained.
     - **Wear Leveling**: An internal controller algorithm that ensures write cycles are distributed evenly across the drive, since flash cells wear out after a limited number of program/erase cycles; without wear leveling, frequently-rewritten regions would fail long before the rest of the drive.
 

@@ -107,6 +107,6 @@ Standard `yield()` enqueues `current_routine` back onto the global `ready_q`. In
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Coroutines|Coroutines]] — Hub for this topic
+- [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|Coroutines]] — Hub for this topic
 - [[Concurrency, Parallelism, and Rust/Coroutines/Channels and Rendezvous Semantics|Channels and Rendezvous Semantics]] — CSP channels, causal consistency, and unbuffered rendezvous
 - [[Concurrency, Parallelism, and Rust/Coroutines/Latching Return Values and Generators|Latching Return Values and Generators]] — Endless return streams

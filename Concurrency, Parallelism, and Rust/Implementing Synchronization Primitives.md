@@ -1,6 +1,6 @@
 # Concurrency, Parallelism, and Rust: Implementing Synchronization Primitives
 
-This file builds blocking [[Concurrency, Parallelism, and Rust/Synchronization Primitives|synchronization primitives]] out of the pieces from [[Concurrency, Parallelism, and Rust/Implementing Threads|Implementing Threads]]. The path so far: [[Concurrency, Parallelism, and Rust/Coroutines|coroutines]] became threads by adding timer interrupts, and a single core became multiple cores by adding atomics and spinlocks. Combining the two gives the **interrupt-safe spinlock (ISL)**, which protects the scheduler's `yield` on any number of cores. The ISL is then the foundation for a thread-safe channel, a mutex, and every other primitive in this file.
+This file builds blocking [[Concurrency, Parallelism, and Rust/Implementing Threads/Synchronization Primitives|synchronization primitives]] out of the pieces from [[Concurrency, Parallelism, and Rust/Implementing Threads/Implementing Threads|Implementing Threads]]. The path so far: [[Concurrency, Parallelism, and Rust/Coroutines/Coroutines|coroutines]] became threads by adding timer interrupts, and a single core became multiple cores by adding atomics and spinlocks. Combining the two gives the **interrupt-safe spinlock (ISL)**, which protects the scheduler's `yield` on any number of cores. The ISL is then the foundation for a thread-safe channel, a mutex, and every other primitive in this file.
 
 ---
 
@@ -385,8 +385,8 @@ flowchart LR
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Implementing Threads|Implementing Threads]]: spinlocks, ISLs, and atomic read-modify-write instructions
-- [[Concurrency, Parallelism, and Rust/Synchronization Primitives|Synchronization Primitives]]: the primitives from the user's view
+- [[Concurrency, Parallelism, and Rust/Implementing Threads/Implementing Threads|Implementing Threads]]: spinlocks, ISLs, and atomic read-modify-write instructions
+- [[Concurrency, Parallelism, and Rust/Implementing Threads/Synchronization Primitives|Synchronization Primitives]]: the primitives from the user's view
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Mutual Exclusion Locks|Mutual Exclusion Locks]]
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Barriers|Barriers]]
 - [[Concurrency, Parallelism, and Rust/Coroutines/Channel Queue Mechanics|Channel Queue Mechanics]]: the single-threaded channel this file makes thread-safe

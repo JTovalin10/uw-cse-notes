@@ -32,6 +32,6 @@ Approach B: Cloud SaaS (Hyperscale Datacenter)
 
 ## Related
 
-- [[Datacenter Systems/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
+- [[Datacenter Systems/Course Introduction and Overview/Course Introduction and Overview|Course Introduction and Overview]] — Hub for this topic
 - [[Datacenter Systems/Course Introduction and Overview/Class Roadmap and Prerequisites|Class Roadmap and Prerequisites]] — Class topics and expected background
 - [[Datacenter Systems/Course Introduction and Overview/Failure Modes|Failure Modes]] — Stragglers, resource stranding, and incast

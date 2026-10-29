@@ -32,6 +32,6 @@ For a computer processor to support pure, high-performance virtualization, **eve
 
 ## Related
 
-- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
+- [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/The Popek-Goldberg Virtualization Theorem|The Popek-Goldberg Virtualization Theorem]] — Hub for this topic
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/Virtual IO Emulation and Virtio|Virtual IO Emulation and Virtio]] — Full I/O emulation versus paravirtualized virtio
 - [[Datacenter Systems/The Popek-Goldberg Virtualization Theorem/VT-x and EPT Extensions|VT-x and EPT Extensions]] — Hardware-assisted extensions
