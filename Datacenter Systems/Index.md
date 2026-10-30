@@ -32,12 +32,13 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/Workloads and Software Infrastructure/Failure Modes|Failure Modes]] — Tail latency, noisy neighbors, and alert fatigue
   - [[Datacenter Systems/Workloads and Software Infrastructure/Scatter-Gather Latency and Hedged Requests|Scatter-Gather Latency and Hedged Requests]] — Fan-out latency formulation and hedging
 
-- [[Datacenter Systems/Computing Building Blocks|Computing Building Blocks]] — Scale-up vs scale-out cost and communication model, brawny vs wimpy cores, and accelerator scaling (TPU vs video coding).
-- [[Datacenter Systems/Server Memory Systems|Server Memory Systems]] — Multisocket NUMA servers, QPI and CXL, the cache and DRAM latency hierarchy from registers to cross-rack memory, application memory behavior, and the limits of wimpy servers.
-  - [[Datacenter Systems/Server Memory Technologies|Server Memory Technologies]] — PROM/EPROM/EEPROM, SRAM vs DRAM and rowhammer, phase-change memory, tiered and hybrid memory, rack-level CXL NVM, and persistent write buffers.
-    - [[Datacenter Systems/SSD|SSD]] — Read-erase-write flash, cell encodings, the Flash Translation Layer and compaction overhead, striping across lanes, and zoned namespaces.
-- [[Datacenter Systems/Memory Consistency and Cache Coherence|Memory Consistency and Cache Coherence]] — Consistency as specification vs coherence as implementation, sequential consistency, write buffers, total store order, FENCEs and atomics, and single-writer/multiple-reader coherence.
-- [[Datacenter Systems/Right-Sizing Datacenters|Right-Sizing Datacenters]] — Workload and node characteristics, and why cheaper, less powerful nodes can win for I/O and network bound tasks.
+- [[Datacenter Systems/Computing Building Blocks/Computing Building Blocks|Computing Building Blocks]] — Scale-up vs scale-out cost and communication model, brawny vs wimpy cores, and accelerator scaling (TPU vs video coding).
+- [[Datacenter Systems/Server Memory Systems/Server Memory Systems|Server Memory Systems]] — Multisocket NUMA servers, QPI and CXL, the cache and DRAM latency hierarchy from registers to cross-rack memory, application memory behavior, and the limits of wimpy servers.
+  - [[Datacenter Systems/Server Memory Systems/Server Memory Technologies|Server Memory Technologies]] — PROM/EPROM/EEPROM, SRAM vs DRAM and rowhammer, phase-change memory, tiered and hybrid memory, rack-level CXL NVM, and persistent write buffers.
+    - [[Datacenter Systems/Server Memory Systems/Tiered Memory Management|Tiered Memory Management]] — Why big data needs cheaper memory, DRAM plus NVM/CXL tiers, the performance/scale/utilization challenges, and HeMem (PEBS sampling, async DMA migration, userfaultfd).
+    - [[Datacenter Systems/Server Memory Systems/SSD|SSD]] — Read-erase-write flash, cell encodings, the Flash Translation Layer and compaction overhead, striping across lanes, and zoned namespaces.
+- [[Datacenter Systems/Server Memory Systems/Memory Consistency and Cache Coherence|Memory Consistency and Cache Coherence]] — Consistency as specification vs coherence as implementation, sequential consistency, write buffers, total store order, FENCEs and atomics, and single-writer/multiple-reader coherence.
+- [[Datacenter Systems/Computing Building Blocks/Right-Sizing Datacenters|Right-Sizing Datacenters]] — Workload and node characteristics, and why cheaper, less powerful nodes can win for I/O and network bound tasks.
 
 ### Lab Foundations & Infrastructure
 - [[Microservices, RPC, and Cloud Infrastructure|Microservices, RPC, and Cloud Infrastructure]] — Microservice vs. monolith trade-offs, gRPC and Protocol Buffer serialization, Docker and Kubernetes container orchestration, Go concurrency, and Google Cloud Platform (GCP) lab workflows.
@@ -49,7 +50,7 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/gRPC Call Trace|gRPC Call Trace]] — A full gRPC call from client to server
   - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Failure Modes|Failure Modes]] — Schema drift, cascading timeouts, OOMKilled, and credit exhaustion
 
-- [[Datacenter Systems/Quiz 4|Quiz 4]] — Open-loop vs closed-loop load generation, finding the overload point and bottleneck service, and diminishing returns from scaling.
+- [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Quiz 4|Quiz 4]] — Open-loop vs closed-loop load generation, finding the overload point and bottleneck service, and diminishing returns from scaling.
 
 ### Virtualization & Execution Environments
 - [[Datacenter Systems/Execution Environments and Virtualization/Execution Environments and Virtualization|Execution Environments and Virtualization]] — Datacenter workload taxonomy, limits of OS process isolation, Popek-Goldberg virtualization criteria, hypervisor architecture, three-tier memory hierarchies, and live VM migration.
@@ -95,10 +96,10 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/IO Virtualization/SR-IOV and IOMMU|SR-IOV and IOMMU]] — Hypervisor I/O bypass, hardware slicing, and DMA address translation
 
 ### Networking & Performance Modeling
-- [[Datacenter Systems/Open vSwitch Network Virtualization|Open vSwitch Network Virtualization]] — Open vSwitch exact match cache, on-premise porting requirements, hardware-virtualized NICs (Nitro, Catapult, Snap), and VM migration forwarding.
-- [[Datacenter Systems/Queuing Theory|Queuing Theory]] — Stable queuing model, response time and utilization, Little's Law, and best/worst/average arrival patterns.
-- [[Datacenter Systems/Queueing and CPU Scheduling|Queueing and CPU Scheduling]] — Response time across multiple resources, shared vs per-server queues, load balancers, work stealing, scheduling policies and priorities, and multi-level scheduling.
-- [[Datacenter Systems/Shenango|Shenango]] — Microsecond-granularity core reallocation for CPU efficiency with latency-sensitive workloads, and compute congestion detection.
+- [[Datacenter Systems/Containers/Open vSwitch Network Virtualization|Open vSwitch Network Virtualization]] — Open vSwitch exact match cache, on-premise porting requirements, hardware-virtualized NICs (Nitro, Catapult, Snap), and VM migration forwarding.
+- [[Datacenter Systems/Queuing Theory/Queuing Theory|Queuing Theory]] — Stable queuing model, response time and utilization, Little's Law, and best/worst/average arrival patterns.
+- [[Datacenter Systems/Queuing Theory/Queueing and CPU Scheduling|Queueing and CPU Scheduling]] — Response time across multiple resources, shared vs per-server queues, load balancers, work stealing, scheduling policies and priorities, and multi-level scheduling.
+- [[Datacenter Systems/Queuing Theory/Shenango|Shenango]] — Microsecond-granularity core reallocation for CPU efficiency with latency-sensitive workloads, and compute congestion detection.
 
 ---
 

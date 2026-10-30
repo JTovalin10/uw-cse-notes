@@ -81,7 +81,7 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/Queueing and CPU Scheduling|Queueing and CPU Scheduling]] — Work stealing and multi-level scheduling
-- [[Datacenter Systems/Queuing Theory|Queuing Theory]] — Why queueing delay signals congestion
-- [[Datacenter Systems/Right-Sizing Datacenters|Right-Sizing Datacenters]] — Utilization and the cost of idle capacity
-- [[Datacenter Systems/DMA Ring Buffers|DMA Ring Buffers]]
+- [[Datacenter Systems/Queuing Theory/Queueing and CPU Scheduling|Queueing and CPU Scheduling]] — Work stealing and multi-level scheduling
+- [[Datacenter Systems/Queuing Theory/Queuing Theory|Queuing Theory]] — Why queueing delay signals congestion
+- [[Datacenter Systems/Computing Building Blocks/Right-Sizing Datacenters|Right-Sizing Datacenters]] — Utilization and the cost of idle capacity
+- [[Datacenter Systems/IO Virtualization/DMA Ring Buffers|DMA Ring Buffers]]

@@ -32,7 +32,7 @@ Notes on load testing and finding bottlenecks in the microservices lab (see [[Da
 
 ## Related
 
-- [[Datacenter Systems/Queuing Theory|Queuing Theory]]: response time versus utilization
+- [[Datacenter Systems/Queuing Theory/Queuing Theory|Queuing Theory]]: response time versus utilization
 - [[Datacenter Systems/Microservices, RPC, and Cloud Infrastructure/Docker and Kubernetes|Docker and Kubernetes]]
 
 ## Industry Standard Terms

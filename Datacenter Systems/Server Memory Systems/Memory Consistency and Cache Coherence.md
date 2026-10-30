@@ -195,6 +195,6 @@ stateDiagram-v2
 ---
 
 ## Related
-- [[Datacenter Systems/Server Memory Systems|Server Memory Systems]] — Cache hierarchy and QPI cache coherence across sockets
+- [[Datacenter Systems/Server Memory Systems/Server Memory Systems|Server Memory Systems]] — Cache hierarchy and QPI cache coherence across sockets
 - [[Concurrency, Parallelism, and Rust/Introduction to Rust/Introduction to Rust|Introduction to Rust]] — Data races and happens-before ordering
 - [[CSE451 Index|CSE451 — Operating Systems]] — Locks and synchronization primitives

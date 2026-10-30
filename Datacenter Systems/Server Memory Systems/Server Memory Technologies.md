@@ -1,6 +1,6 @@
 # Datacenter Systems: Server Memory Technologies
 
-This note continues [[Datacenter Systems/Server Memory Systems|Server Memory Systems]]. It starts from how a server boots (non-volatile memory), then covers the two volatile technologies used for working memory (SRAM and DRAM), and then asks what to do for memory-intensive applications when SRAM is too small, DRAM is too power-hungry, and SSDs are too slow. The answer is **phase-change memory (PCM)**, which can be deployed as tiered memory, hybrid memory, rack-level disaggregated memory, a low-latency SSD replacement, or a persistent write buffer.
+This note continues [[Datacenter Systems/Server Memory Systems/Server Memory Systems|Server Memory Systems]]. It starts from how a server boots (non-volatile memory), then covers the two volatile technologies used for working memory (SRAM and DRAM), and then asks what to do for memory-intensive applications when SRAM is too small, DRAM is too power-hungry, and SSDs are too slow. The answer is **phase-change memory (PCM)**, which can be deployed as tiered memory, hybrid memory, rack-level disaggregated memory, a low-latency SSD replacement, or a persistent write buffer.
 
 ---
 
@@ -197,7 +197,7 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/Server Memory Systems|Server Memory Systems]]: NUMA, the latency hierarchy, and CXL
+- [[Datacenter Systems/Server Memory Systems/Server Memory Systems|Server Memory Systems]]: NUMA, the latency hierarchy, and CXL
 - [[Datacenter Systems/IO Virtualization/Physical IO Foundations|Physical IO Foundations]]: PCIe, QPI, and CXL
 - [[Datacenter Systems/Course Introduction and Overview/Failure Modes|Failure Modes]]: resource stranding
 

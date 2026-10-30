@@ -1,6 +1,6 @@
 # Datacenter Systems: Queueing and CPU Scheduling
 
-This note extends [[Datacenter Systems/Queuing Theory|Queuing Theory]] from a single queue to realistic systems: several resources in sequence, several servers behind a load balancer, several cores pulling threads, and several layers of schedulers stacked on top of each other. It first derives where the bottleneck is, then asks how requests should be distributed to multiple servers, then how cores should balance threads, then how queue-service policy shapes latency, and finally how scheduling at different levels interacts.
+This note extends [[Datacenter Systems/Queuing Theory/Queuing Theory|Queuing Theory]] from a single queue to realistic systems: several resources in sequence, several servers behind a load balancer, several cores pulling threads, and several layers of schedulers stacked on top of each other. It first derives where the bottleneck is, then asks how requests should be distributed to multiple servers, then how cores should balance threads, then how queue-service policy shapes latency, and finally how scheduling at different levels interacts.
 
 ---
 
@@ -99,7 +99,7 @@ On multicore chips, threads can run on any core (assuming cache coherence). The 
 
 **Work stealing** resolves this: cores steal work from other queues only when their own is empty.
 
-- **Shenango** ([[Datacenter Systems/Shenango|Shenango]]): cores steal work from other queues when empty.
+- **Shenango** ([[Datacenter Systems/Queuing Theory/Shenango|Shenango]]): cores steal work from other queues when empty.
 - **Linux**: periodically moves work to rebalance load, on the order of seconds. This is slow because moving a thread causes cache misses and contention on the queues, so queues should be inspected for potential stealing infrequently.
 - More aggressive work stealing gives higher CPU utilization but worse cache behavior.
 - Frequently moving a thread across cores can slow it down through cache misses. It may be faster to keep the thread waiting while its data sits in the cache than to create this contention.
@@ -189,7 +189,7 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/Queuing Theory|Queuing Theory]] — The single-queue model, Little's Law, and utilization
-- [[Datacenter Systems/Shenango|Shenango]] — Core reallocation at microsecond granularity
+- [[Datacenter Systems/Queuing Theory/Queuing Theory|Queuing Theory]] — The single-queue model, Little's Law, and utilization
+- [[Datacenter Systems/Queuing Theory/Shenango|Shenango]] — Core reallocation at microsecond granularity
 - [[Concurrency, Parallelism, and Rust/Index|Concurrency, Parallelism, and Rust]] — Synchronization costs on shared queues
-- [[Datacenter Systems/Right-Sizing Datacenters|Right-Sizing Datacenters]] — Provisioning for utilization and bursts
+- [[Datacenter Systems/Computing Building Blocks/Right-Sizing Datacenters|Right-Sizing Datacenters]] — Provisioning for utilization and bursts

@@ -1,6 +1,6 @@
 # Concurrency, Parallelism, and Rust: Smart Pointers
 
-This note covers the pointer types Rust uses to own heap data: `Box<T>` for a single owner, `Rc<T>` and `Arc<T>` for shared ownership, and `Mutex<T>` for sharing mutable data across threads. It builds on [[Concurrency, Parallelism, and Rust/Introduction to Rust/Introduction to Rust#Ownership|ownership]] and the [[Concurrency, Parallelism, and Rust/Introduction to Rust/Borrow Checker|Borrow Checker]], and the closures it passes between threads are covered in [[Concurrency, Parallelism, and Rust/Closures and Trait Objects|Closures and Trait Objects]].
+This note covers the pointer types Rust uses to own heap data: `Box<T>` for a single owner, `Rc<T>` and `Arc<T>` for shared ownership, and `Mutex<T>` for sharing mutable data across threads. It builds on [[Concurrency, Parallelism, and Rust/Introduction to Rust/Introduction to Rust#Ownership|ownership]] and the [[Concurrency, Parallelism, and Rust/Introduction to Rust/Borrow Checker|Borrow Checker]], and the closures it passes between threads are covered in [[Concurrency, Parallelism, and Rust/Introduction to Rust/Closures and Trait Objects|Closures and Trait Objects]].
 
 ---
 
@@ -105,7 +105,7 @@ where
 { ... }
 ```
 
-- `FnOnce`: the closure runs once (see [[Concurrency, Parallelism, and Rust/Closures and Trait Objects#Fn, FnMut, FnOnce|Fn, FnMut, FnOnce]]).
+- `FnOnce`: the closure runs once (see [[Concurrency, Parallelism, and Rust/Introduction to Rust/Closures and Trait Objects#Fn, FnMut, FnOnce|Fn, FnMut, FnOnce]]).
 - `Send`: the value can safely be transferred between threads.
 - `'static`: the closure cannot contain references with a lifetime shorter than `'static`, so the spawned thread cannot outlive borrowed data it uses (see [[Concurrency, Parallelism, and Rust/Introduction to Rust/Borrow Checker|Borrow Checker]]).
 
@@ -157,7 +157,7 @@ flowchart LR
 
 ## Related
 
-- [[Concurrency, Parallelism, and Rust/Closures and Trait Objects|Closures and Trait Objects]]: `move` closures, `Box<dyn Trait>`
+- [[Concurrency, Parallelism, and Rust/Introduction to Rust/Closures and Trait Objects|Closures and Trait Objects]]: `move` closures, `Box<dyn Trait>`
 - [[Concurrency, Parallelism, and Rust/Introduction to Rust/Introduction to Rust|Introduction to Rust]]: ownership, moves, and dropping
 - [[Concurrency, Parallelism, and Rust/The Concurrent Mindset/Deep Dive|Deep Dive: Send and Sync]]
 - [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Mutual Exclusion Locks|Mutual Exclusion Locks]]

@@ -137,8 +137,8 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/Computing Building Blocks|Computing Building Blocks]]: scale-up vs scale-out and brawny vs wimpy cores
-- [[Datacenter Systems/Right-Sizing Datacenters|Right-Sizing Datacenters]]
+- [[Datacenter Systems/Computing Building Blocks/Computing Building Blocks|Computing Building Blocks]]: scale-up vs scale-out and brawny vs wimpy cores
+- [[Datacenter Systems/Computing Building Blocks/Right-Sizing Datacenters|Right-Sizing Datacenters]]
 - [[Datacenter Systems/IO Virtualization/Physical IO Foundations|Physical IO Foundations]]: PCIe, QPI, and CXL interconnects
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Hardware Building Blocks|Hardware Building Blocks]]
 - [[Data Structures and Parallelism/Parallelism/Amdahl's Law|Amdahl's Law]]

@@ -1,6 +1,6 @@
 # Concurrency, Parallelism, and Rust: Closures and Trait Objects
 
-This note continues [[Concurrency, Parallelism, and Rust/Introduction to Rust/Traits|Traits]]. It first covers **closures**, which let us pass behavior around as a value, and the `Fn` traits that describe how a closure uses what it captures. It then covers how Rust chooses which method to run for a trait: **static dispatch** with generics, and **dynamic dispatch** with `dyn Trait` trait objects. The pointer types used along the way (`Box`, `Rc`) are in [[Concurrency, Parallelism, and Rust/Smart Pointers|Smart Pointers]].
+This note continues [[Concurrency, Parallelism, and Rust/Introduction to Rust/Traits|Traits]]. It first covers **closures**, which let us pass behavior around as a value, and the `Fn` traits that describe how a closure uses what it captures. It then covers how Rust chooses which method to run for a trait: **static dispatch** with generics, and **dynamic dispatch** with `dyn Trait` trait objects. The pointer types used along the way (`Box`, `Rc`) are in [[Concurrency, Parallelism, and Rust/Introduction to Rust/Smart Pointers|Smart Pointers]].
 
 ---
 
@@ -78,7 +78,7 @@ fn main() {
 - `move` gives a closure **ownership** of the variables it uses.
 - Like a C++ move, the closure takes ownership of the data.
 - After the move, we can no longer use the data outside the closure, since we gave up ownership.
-- This is how a closure is handed to another thread: see `thread::spawn` in [[Concurrency, Parallelism, and Rust/Smart Pointers#Thread-Safe Shared Ownership: Arc|Smart Pointers]].
+- This is how a closure is handed to another thread: see `thread::spawn` in [[Concurrency, Parallelism, and Rust/Introduction to Rust/Smart Pointers#Thread-Safe Shared Ownership: Arc|Smart Pointers]].
 
 ---
 
@@ -247,7 +247,7 @@ flowchart LR
 ## Related
 
 - [[Concurrency, Parallelism, and Rust/Introduction to Rust/Traits|Traits]]: trait bounds, `Sized`, and the `Animal` example
-- [[Concurrency, Parallelism, and Rust/Smart Pointers|Smart Pointers]]: `Box`, `Rc`, `Arc`, and `Send`/`Sync`
+- [[Concurrency, Parallelism, and Rust/Introduction to Rust/Smart Pointers|Smart Pointers]]: `Box`, `Rc`, `Arc`, and `Send`/`Sync`
 - [[Concurrency, Parallelism, and Rust/Introduction to Rust/Borrow Checker|Borrow Checker]]: borrows and lifetimes
 - [[Systems Programming/C++ OOP/Inheritance|C++ Inheritance]]: C++ vtables and virtual dispatch
 

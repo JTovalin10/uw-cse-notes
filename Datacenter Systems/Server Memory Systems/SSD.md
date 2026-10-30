@@ -1,6 +1,6 @@
 # Datacenter Systems: SSD
 
-This note continues [[Datacenter Systems/Server Memory Technologies|Server Memory Technologies]], where SSDs appeared as miniaturized EEPROMs that are too slow to be main memory. It explains how the read-erase-write nature of flash forces a **Flash Translation Layer (FTL)**, why that layer causes compaction overhead and tail latency, and how **zoned namespaces** move the problem to the OS. For the device-level view, see [[Operating Systems/Persistence/Storage/Flash Storage|Flash Storage]].
+This note continues [[Datacenter Systems/Server Memory Systems/Server Memory Technologies|Server Memory Technologies]], where SSDs appeared as miniaturized EEPROMs that are too slow to be main memory. It explains how the read-erase-write nature of flash forces a **Flash Translation Layer (FTL)**, why that layer causes compaction overhead and tail latency, and how **zoned namespaces** move the problem to the OS. For the device-level view, see [[Operating Systems/Persistence/Storage/Flash Storage|Flash Storage]].
 
 ---
 
@@ -186,7 +186,7 @@ With zones, do we need all three translations?
 
 ## Related
 
-- [[Datacenter Systems/Server Memory Technologies|Server Memory Technologies]]: where SSDs sit between DRAM and disk
+- [[Datacenter Systems/Server Memory Systems/Server Memory Technologies|Server Memory Technologies]]: where SSDs sit between DRAM and disk
 - [[Operating Systems/Persistence/Storage/Flash Storage|Flash Storage]]: flash internals
 - [[Operating Systems/Persistence/Storage/Defragmentation and TRIM operations|Defragmentation and TRIM operations]]: trim and background cleanup
 - [[Operating Systems/Persistence/Storage/Secondary Storage/HDD|HDD]]: the disk baseline

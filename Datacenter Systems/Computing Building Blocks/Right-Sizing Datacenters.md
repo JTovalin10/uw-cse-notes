@@ -1,6 +1,6 @@
 # Datacenter Systems: Right-Sizing Datacenters
 
-**Right-sizing** is choosing the node (machine) size and application architecture that best fit a workload. The answer depends on what the workload demands, what each candidate node offers, and what each option costs. This note first lists the workload characteristics, then the node characteristics, then explains the cost reasoning that often favors many cheap nodes over fewer powerful ones. It builds on the scale-up vs scale-out model in [[Datacenter Systems/Computing Building Blocks|Computing Building Blocks]].
+**Right-sizing** is choosing the node (machine) size and application architecture that best fit a workload. The answer depends on what the workload demands, what each candidate node offers, and what each option costs. This note first lists the workload characteristics, then the node characteristics, then explains the cost reasoning that often favors many cheap nodes over fewer powerful ones. It builds on the scale-up vs scale-out model in [[Datacenter Systems/Computing Building Blocks/Computing Building Blocks|Computing Building Blocks]].
 
 ---
 
@@ -106,6 +106,6 @@ flowchart TD
 
 ## Related
 
-- [[Datacenter Systems/Computing Building Blocks|Computing Building Blocks]] — Scale-up vs scale-out cost model, brawny vs wimpy cores, and accelerators
+- [[Datacenter Systems/Computing Building Blocks/Computing Building Blocks|Computing Building Blocks]] — Scale-up vs scale-out cost model, brawny vs wimpy cores, and accelerators
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Warehouse-Scale Computer Architecture|Warehouse-Scale Computer Architecture]] — Servers, networking fabric, and power and cooling
 - [[Datacenter Systems/Workloads and Software Infrastructure/Workloads and Software Infrastructure|Workloads and Software Infrastructure]] — Workload diversity and tail latency
