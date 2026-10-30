@@ -137,7 +137,7 @@ if (d) {
 - [[C++ Casting|C++ Casting]]
 - [[Static Dispatch|Static Dispatch]]
 - [[Virtual Table|Virtual Table]]
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 
 ## Industry Standard Terms
 

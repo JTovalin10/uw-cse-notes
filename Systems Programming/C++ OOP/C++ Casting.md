@@ -73,7 +73,7 @@ Downcasting is often considered a **code smell** because it suggests that the ba
 - [[Inheritance|Inheritance]]
 - [[C++ Classes|C++ Classes]]
 - [[Object Lifecycle|Object Lifecycle]]
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 
 ## Industry Standard Terms
 

@@ -68,7 +68,7 @@ C++'s constructors and destructors enable the **RAII** pattern, which ensures re
 ## Related
 
 - [[C++ Introduction|C++ Introduction]]
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 - [[Object Lifecycle|Object Lifecycle]]
 - [[RAII|RAII]]
 

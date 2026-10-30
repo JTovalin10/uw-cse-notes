@@ -92,7 +92,7 @@ A common point of confusion is what happens when `std::move()` is used on an obj
 
 - [[C++ Classes|C++ Classes]]
 - [[Systems Programming/C++ Fundamentals/Heap Management|C++ Heap Management]]
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 - [[Inheritance|Inheritance]]
 - [[RAII|RAII]]
 

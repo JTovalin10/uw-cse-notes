@@ -76,7 +76,7 @@ ptr.reset();
 
 ## Related
 
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 - [[Shared Pointer|Shared Pointer]]
 - [[Weak Pointer|Weak Pointer]]
 - [[Object Lifecycle|Object Lifecycle — Move Semantics]]

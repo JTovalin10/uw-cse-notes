@@ -186,7 +186,7 @@ Trace: the loop calls `next` until `None`, printing 4, 3, 2, 1.
 ## Closures
 
 - `|r| r.width == 3` is a **closure**: an unnamed function.
-- Me: like a lambda? (The original notes stop here.)
+- Me: like a lambda? Yes: see [[Concurrency, Parallelism, and Rust/Closures and Trait Objects|Closures and Trait Objects]] for capture rules and the `Fn` traits.
 
 ---
 

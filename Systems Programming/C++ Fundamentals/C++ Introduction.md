@@ -67,7 +67,7 @@ The `<iomanip>` header defines stream manipulator functions to affect output for
 - [[C++ Classes|C++ Classes]]
 - [[Systems Programming/C++ Fundamentals/Heap Management|Heap Management]]
 - [[Templates|Templates]]
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 
 ## Industry Standard Terms
 

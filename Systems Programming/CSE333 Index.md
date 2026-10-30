@@ -50,10 +50,10 @@
 - [[Virtual Table|Virtual Table]] — vtable mechanism for dynamic dispatch
 - [[C++ Casting|C++ Casting]] — type casting in C++
 
-## [[Smart Pointers|Smart Pointers & Move Semantics]]
+## [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers & Move Semantics]]
 
-- [[Smart Pointers|Smart Pointers Overview]] — automatic memory management pointers
-- [[Smart Pointers#Move Semantics|Move Semantics]] — move semantics and rvalue references
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers Overview]] — automatic memory management pointers
+- [[Systems Programming/Smart Pointers/Smart Pointers#Move Semantics|Move Semantics]] — move semantics and rvalue references
 - [[Unique Pointer|Unique Pointer]] — exclusive ownership smart pointer
 - [[Shared Pointer|Shared Pointer]] — reference-counted shared ownership pointer
 - [[Weak Pointer|Weak Pointer]] — non-owning smart pointer reference

@@ -57,7 +57,7 @@ Without `weak_ptr`, `head` and `tail` would each hold a `shared_ptr` to the othe
 
 ## Related
 
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 - [[Shared Pointer|Shared Pointer]]
 - [[Unique Pointer|Unique Pointer]]
 

@@ -18,6 +18,8 @@ Course notes covering concurrency primitives, parallel decomposition, memory saf
   - [[Concurrency, Parallelism, and Rust/Introduction to Rust/String, Slices, and Borrowing|String, Slices, and Borrowing]] — `Result` and `?` error handling, `Option`, slices, and `String` vs `&str`
   - [[Concurrency, Parallelism, and Rust/Introduction to Rust/Borrow Checker|Borrow Checker]] — Lifetimes, `'a` and `'static`, and lifetimes across function calls
   - [[Concurrency, Parallelism, and Rust/Introduction to Rust/Traits|Traits]] — Trait bounds, `Drop`, marker traits, `derive`, associated types, `Iterator`, and closures
+  - [[Concurrency, Parallelism, and Rust/Closures and Trait Objects|Closures and Trait Objects]] — Closure capture and `move`, `Fn`/`FnMut`/`FnOnce`, static vs dynamic dispatch, `dyn Trait`, fat pointers, and vtables
+  - [[Concurrency, Parallelism, and Rust/Smart Pointers|Smart Pointers]] — `Box`, `Rc`, `Arc`, `Send` and `Sync`, and `Arc<Mutex<T>>`
 - [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Domain decomposition, functional pipelining, dynamic load balancing, task granularity, and Amdahl's/Gustafson's scaling laws
   - [[Concurrency, Parallelism, and Rust/Decomposition/Concurrency vs Parallelism and the Decomposition Mandate|Concurrency vs Parallelism and the Decomposition Mandate]] — Core distinction and why work must be decomposed
   - [[Concurrency, Parallelism, and Rust/Decomposition/Domain Decomposition|Domain Decomposition]] — Data partitioning with block and cyclic strategies

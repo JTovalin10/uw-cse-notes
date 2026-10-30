@@ -60,7 +60,7 @@ ptr1.reset(new int(100)); // ref count for new object = 1
 
 ## Related
 
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 - [[Unique Pointer|Unique Pointer]]
 - [[Weak Pointer|Weak Pointer]]
 - [[Object Lifecycle|Object Lifecycle]]

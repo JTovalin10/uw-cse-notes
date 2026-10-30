@@ -57,7 +57,7 @@ class Pair {
 
 - [[C++ Introduction|C++ Introduction]]
 - [[C++ Classes|C++ Classes]]
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 
 ## Industry Standard Terms
 

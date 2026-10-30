@@ -36,7 +36,7 @@ In languages without RAII (like C), an exception or early `return` can bypass a 
 
 ## Common RAII Examples in C++
 
-- **Smart Pointers**: `std::unique_ptr` and `std::shared_ptr` manage heap memory. See [[Smart Pointers|Smart Pointers]].
+- **Smart Pointers**: `std::unique_ptr` and `std::shared_ptr` manage heap memory. See [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]].
 - **Locks**: `std::lock_guard` and `std::unique_lock` manage mutexes. See [[C++ Concurrency|C++ Concurrency]].
 - **Containers**: `std::vector` and `std::string` manage their own internal dynamic arrays.
 - **File Streams**: `std::fstream` automatically closes files when it goes out of scope.
@@ -50,7 +50,7 @@ If you are writing an RAII class to manage a raw resource, you must follow the *
 - [[C++ Classes|C++ Classes]]
 - [[Object Lifecycle|Object Lifecycle]]
 - [[Systems Programming/C++ Fundamentals/Heap Management|C++ Heap Management]]
-- [[Smart Pointers|Smart Pointers]]
+- [[Systems Programming/Smart Pointers/Smart Pointers|Smart Pointers]]
 - [[C++ Concurrency|C++ Concurrency (Locks)]]
 
 ## Industry Standard Terms
