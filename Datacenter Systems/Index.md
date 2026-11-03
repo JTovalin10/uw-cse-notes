@@ -37,6 +37,8 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/Server Memory Systems/Server Memory Technologies|Server Memory Technologies]] — PROM/EPROM/EEPROM, SRAM vs DRAM and rowhammer, phase-change memory, tiered and hybrid memory, rack-level CXL NVM, and persistent write buffers.
     - [[Datacenter Systems/Server Memory Systems/Tiered Memory Management|Tiered Memory Management]] — Why big data needs cheaper memory, DRAM plus NVM/CXL tiers, the performance/scale/utilization challenges, and HeMem (PEBS sampling, async DMA migration, userfaultfd).
     - [[Datacenter Systems/Server Memory Systems/SSD|SSD]] — Read-erase-write flash, cell encodings, the Flash Translation Layer and compaction overhead, striping across lanes, and zoned namespaces.
+    - [[Datacenter Systems/Server Memory Systems/HDDs|HDDs]] — Toshiba MAMR density, seek/rotation/transfer latency, the Zipf distribution and caching tiers, shingle disks, and HAMR/MAMR.
+- [[Datacenter Systems/Quantitative Availability|Quantitative Availability]] — SLI/SLO/SLA, Tandem and Google experience, error budgets, MTTSF over a fleet, failure domains, and replication vs Reed-Solomon coding.
 - [[Datacenter Systems/Server Memory Systems/Memory Consistency and Cache Coherence|Memory Consistency and Cache Coherence]] — Consistency as specification vs coherence as implementation, sequential consistency, write buffers, total store order, FENCEs and atomics, and single-writer/multiple-reader coherence.
 - [[Datacenter Systems/Computing Building Blocks/Right-Sizing Datacenters|Right-Sizing Datacenters]] — Workload and node characteristics, and why cheaper, less powerful nodes can win for I/O and network bound tasks.
 
