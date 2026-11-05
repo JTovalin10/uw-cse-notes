@@ -31,6 +31,7 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/Workloads and Software Infrastructure/Live VM Migration Trace|Live VM Migration Trace]] — Migration during host maintenance
   - [[Datacenter Systems/Workloads and Software Infrastructure/Failure Modes|Failure Modes]] — Tail latency, noisy neighbors, and alert fatigue
   - [[Datacenter Systems/Workloads and Software Infrastructure/Scatter-Gather Latency and Hedged Requests|Scatter-Gather Latency and Hedged Requests]] — Fan-out latency formulation and hedging
+  - [[Datacenter Systems/Workloads and Software Infrastructure/Orchestration|Orchestration]] — Cluster operating system, Borg workload tiers, goal/status update loops, orchestrator services, pods, and over-allocation
 
 - [[Datacenter Systems/Computing Building Blocks/Computing Building Blocks|Computing Building Blocks]] — Scale-up vs scale-out cost and communication model, brawny vs wimpy cores, and accelerator scaling (TPU vs video coding).
 - [[Datacenter Systems/Server Memory Systems/Server Memory Systems|Server Memory Systems]] — Multisocket NUMA servers, QPI and CXL, the cache and DRAM latency hierarchy from registers to cross-rack memory, application memory behavior, and the limits of wimpy servers.
@@ -100,6 +101,7 @@ Engineering principles, architectures, and performance optimizations for warehou
 - [[Datacenter Systems/Queuing Theory/Queuing Theory|Queuing Theory]] — Stable queuing model, response time and utilization, Little's Law, and best/worst/average arrival patterns.
 - [[Datacenter Systems/Queuing Theory/Queueing and CPU Scheduling|Queueing and CPU Scheduling]] — Response time across multiple resources, shared vs per-server queues, load balancers, work stealing, scheduling policies and priorities, and multi-level scheduling.
 - [[Datacenter Systems/Queuing Theory/Shenango|Shenango]] — Microsecond-granularity core reallocation for CPU efficiency with latency-sensitive workloads, and compute congestion detection.
+- [[Datacenter Systems/Queuing Theory/Quiz 6|Quiz 6]] — CDFs for latency analysis, Zipfian object popularity, and cache eviction policies (LRU, LFU, MRU, hyperbolic, FIFO, random).
 
 ---
 
