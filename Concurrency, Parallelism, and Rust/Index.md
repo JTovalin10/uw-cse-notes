@@ -21,6 +21,8 @@ Course notes covering concurrency primitives, parallel decomposition, memory saf
   - [[Concurrency, Parallelism, and Rust/Introduction to Rust/Closures and Trait Objects|Closures and Trait Objects]] — Closure capture and `move`, `Fn`/`FnMut`/`FnOnce`, static vs dynamic dispatch, `dyn Trait`, fat pointers, and vtables
   - [[Concurrency, Parallelism, and Rust/Introduction to Rust/Smart Pointers|Smart Pointers]] — `Box`, `Rc`, `Arc`, `Send` and `Sync`, and `Arc<Mutex<T>>`
 - [[Concurrency, Parallelism, and Rust/Threads and Shared State in Rust|Threads and Shared State in Rust]] — Safe vs unsafe Rust, `Rc` and `RefCell` interior mutability, `thread::spawn` and `thread::scope`, `Arc`, `Send` and `Sync`, `Mutex` poisoning, atomics, and `Condvar`
+- [[Concurrency, Parallelism, and Rust/Deadlocks|Deadlocks]] — Wait-for graphs, dining philosophers, the four deadlock conditions, lock ordering, `try_lock` and livelock, and the Banker's Algorithm
+- [[Concurrency, Parallelism, and Rust/Model Checking|Model Checking]] — Safety vs liveness, state-space explosion and reductions, Loom and Shuttle, and temporal logic
 - [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Domain decomposition, functional pipelining, dynamic load balancing, task granularity, and Amdahl's/Gustafson's scaling laws
   - [[Concurrency, Parallelism, and Rust/Decomposition/Concurrency vs Parallelism and the Decomposition Mandate|Concurrency vs Parallelism and the Decomposition Mandate]] — Core distinction and why work must be decomposed
   - [[Concurrency, Parallelism, and Rust/Decomposition/Domain Decomposition|Domain Decomposition]] — Data partitioning with block and cyclic strategies
