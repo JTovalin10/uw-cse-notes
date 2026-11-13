@@ -23,6 +23,8 @@ Course notes covering concurrency primitives, parallel decomposition, memory saf
 - [[Concurrency, Parallelism, and Rust/Threads and Shared State in Rust|Threads and Shared State in Rust]] — Safe vs unsafe Rust, `Rc` and `RefCell` interior mutability, `thread::spawn` and `thread::scope`, `Arc`, `Send` and `Sync`, `Mutex` poisoning, atomics, and `Condvar`
 - [[Concurrency, Parallelism, and Rust/Deadlocks|Deadlocks]] — Wait-for graphs, dining philosophers, the four deadlock conditions, lock ordering, `try_lock` and livelock, and the Banker's Algorithm
 - [[Concurrency, Parallelism, and Rust/Model Checking|Model Checking]] — Safety vs liveness, state-space explosion and reductions, Loom and Shuttle, and temporal logic
+- [[Concurrency, Parallelism, and Rust/Cache Coherence|Cache Coherence]] — Write-back and write-allocate caches, coherence guarantees, MSI/MESI/MOESI/MESIF states, snooping vs directories, false sharing, and why coherence is not atomicity
+- [[Concurrency, Parallelism, and Rust/Cuckoo Hashmap|Cuckoo Hashmap]] — Two-bucket hashing, kick-out insertion, insertion paths and loops, concurrent inserts with lock ordering, Loom testing, and enum vs trait object dispatch
 - [[Concurrency, Parallelism, and Rust/Decomposition/Decomposition|Decomposition]] — Domain decomposition, functional pipelining, dynamic load balancing, task granularity, and Amdahl's/Gustafson's scaling laws
   - [[Concurrency, Parallelism, and Rust/Decomposition/Concurrency vs Parallelism and the Decomposition Mandate|Concurrency vs Parallelism and the Decomposition Mandate]] — Core distinction and why work must be decomposed
   - [[Concurrency, Parallelism, and Rust/Decomposition/Domain Decomposition|Domain Decomposition]] — Data partitioning with block and cyclic strategies
