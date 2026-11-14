@@ -99,6 +99,14 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/IO Virtualization/SR-IOV and IOMMU|SR-IOV and IOMMU]] — Hypervisor I/O bypass, hardware slicing, and DMA address translation
 
 ### Networking & Performance Modeling
+- [[Datacenter Systems/Datacenter Networking/Datacenter Networking|Datacenter Networking]] — Network layers and the hop-by-hop packet path, socket and RDMA APIs, NIC/RNIC/Smart NIC offloads, ToR and Clos/fat-tree topologies with oversubscription, ECMP, and congestion control (incast, ECN, DCTCP).
+  - [[Datacenter Systems/Datacenter Networking/Network Layers and Packet Path|Network Layers and Packet Path]] — Layers 1 to 7, the packet header stack, and the sender-to-receiver path
+  - [[Datacenter Systems/Datacenter Networking/Network APIs|Network APIs]] — Stream sockets, datagram sockets, and one-sided RDMA
+  - [[Datacenter Systems/Datacenter Networking/Network Interface Cards|Network Interface Cards]] — Offloads, pinned-memory RNICs, and programmable Smart NICs
+  - [[Datacenter Systems/Datacenter Networking/Network Topology|Network Topology]] — ToR switches, connected racks, Clos networks, and oversubscription
+  - [[Datacenter Systems/Datacenter Networking/Store-and-Forward Switch Internals|Store-and-Forward Switch Internals]] — Output queues, shared packet buffers, and the crossbar
+  - [[Datacenter Systems/Datacenter Networking/ECMP Routing|ECMP Routing]] — Hash-based multipath routing and failure handling
+  - [[Datacenter Systems/Datacenter Networking/Data Center Congestion Control|Data Center Congestion Control]] — Goals, incast/outcast, TCP congestion control, ECN, and DCTCP
 - [[Datacenter Systems/Containers/Open vSwitch Network Virtualization|Open vSwitch Network Virtualization]] — Open vSwitch exact match cache, on-premise porting requirements, hardware-virtualized NICs (Nitro, Catapult, Snap), and VM migration forwarding.
 - [[Datacenter Systems/Queuing Theory/Queuing Theory|Queuing Theory]] — Stable queuing model, response time and utilization, Little's Law, and best/worst/average arrival patterns.
 - [[Datacenter Systems/Queuing Theory/Queueing and CPU Scheduling|Queueing and CPU Scheduling]] — Response time across multiple resources, shared vs per-server queues, load balancers, work stealing, scheduling policies and priorities, and multi-level scheduling.
