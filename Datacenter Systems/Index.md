@@ -107,6 +107,7 @@ Engineering principles, architectures, and performance optimizations for warehou
   - [[Datacenter Systems/Datacenter Networking/Store-and-Forward Switch Internals|Store-and-Forward Switch Internals]] — Output queues, shared packet buffers, and the crossbar
   - [[Datacenter Systems/Datacenter Networking/ECMP Routing|ECMP Routing]] — Hash-based multipath routing and failure handling
   - [[Datacenter Systems/Datacenter Networking/Data Center Congestion Control|Data Center Congestion Control]] — Goals, incast/outcast, TCP congestion control, ECN, and DCTCP
+  - [[Datacenter Systems/Datacenter Networking/Snap, Swift, and Advanced Congestion Control|Snap, Swift, and Advanced Congestion Control]] — Snap kernel bypass, Swift delay-based control and rate pacing, receiver-driven incast control, HPCC, and BFC
 - [[Datacenter Systems/Containers/Open vSwitch Network Virtualization|Open vSwitch Network Virtualization]] — Open vSwitch exact match cache, on-premise porting requirements, hardware-virtualized NICs (Nitro, Catapult, Snap), and VM migration forwarding.
 - [[Datacenter Systems/Queuing Theory/Queuing Theory|Queuing Theory]] — Stable queuing model, response time and utilization, Little's Law, and best/worst/average arrival patterns.
 - [[Datacenter Systems/Queuing Theory/Queueing and CPU Scheduling|Queueing and CPU Scheduling]] — Response time across multiple resources, shared vs per-server queues, load balancers, work stealing, scheduling policies and priorities, and multi-level scheduling.
