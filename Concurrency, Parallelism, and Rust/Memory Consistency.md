@@ -66,6 +66,7 @@ For `0 0`, thread 0's load must precede thread 1's store, and thread 1's load mu
   - each thread's accesses appear in **its program order**.
 - So two cores give the results of **one core taking turns**.
 - Because caches are coherent, we can ignore them and watch memory: memory serves one access at a time.
+- this is our mental model
 - This is the model we have used since lecture 06: a schedule is an interleaving (see [[Concurrency, Parallelism, and Rust/Threads and Cores/Programmer View vs Processor View|Programmer View vs Processor View]]).
 
 ```mermaid
@@ -100,6 +101,7 @@ flowchart TD
 
 - **Store buffer**, a performance optimization: a queue where the store waits while later loads go ahead.
 - A load checks its **own core's** store buffer first, so a thread sees its own writes. Other cores cannot see what is still sitting in the buffer.
+- brings some differences than mental model of sequential consistency
 
 > **x86-TSO (total store order):** all cores agree on one order of stores, each core's in program order; a load can pass its own core's earlier stores.
 
@@ -222,7 +224,8 @@ flag = 1       r1 = data
 
 - Final result `r0 = 1, r1 = 0`. Sequential consistency never gives this, and neither does x86-TSO.
 - **PSO allows it**: stores to different locations can reach memory in a different order than the thread made them. `flag = 1` becomes visible before `data = 1`.
-- PSO can give: `0 0`, `0 1`, `1 0`, `1 1`.
+- PSO can give: `0 0`, `0 1`, `1 0`, `1 1`
+- using a memory fence ensyres that flushing happens
 
 ### PSO with a Fence
 
@@ -262,14 +265,27 @@ flowchart LR
 - A **data race** is undefined behavior. It means: two threads access one location, at least one writes, at least one access isn't atomic, and nothing orders them. Safe Rust doesn't compile a data race (see [[Concurrency, Parallelism, and Rust/Writing Multithreaded Code/Data Races and Interleavings|Data Races and Interleavings]]).
 - A program with **no data races** whose atomics all use `SeqCst` behaves as if **sequentially consistent**.
 - Weaker orderings (`Relaxed`, `Release`, `Acquire`) allow more results, so each use needs its own argument for program correctness.
+	- we can allow load and stores to be reordered for performance
 
 > Locks, channels and `OnceLock` already order accesses: a lock's `unlock` **releases** and its `lock` **acquires**.
 
-| Ordering | Guarantee |
-|---|---|
-| `SeqCst` | all atomics behave as one sequentially consistent order |
-| `Release` / `Acquire` | the pairing used by `unlock` / `lock` |
-| `Relaxed` | no cross-location ordering |
+| Ordering              | Guarantee                                                                                                                                                                                                    |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `SeqCst`              | all atomics behave as one sequentially consistent order. no reordering but allows interleaving of threads                                                                                                    |
+| `Release` / `Acquire` | the pairing used by `unlock` / `lock`. Release enforces earlier accesses stay before it and used for stores, reads or writes will not jump past it. Acquire, meant for loads and later acesses stay after it |
+| `Relaxed`             | no cross-location ordering, atomic and no orderw ith other locations                                                                                                                                         |
+| AcqRel                | RMWs, release and acquire togetehr--how does it differ from seqcst                                                                                                                                           |
+|                       |                                                                                                                                                                                                              |
+release and acquire only work when the acquire reads the released value.
+
+These ordering dont fix the store buffering as not using SeqCst can allow us to get 0 0. Release only tells us what cant move reorder that is above it. but it doesnt tell anythign below it what cannot be reordered
+
+### What ordering dshould i use
+- a lock, channel, or oncelock, when one fits
+- seqcst: when the threads need oen order of all their atomicaccesses (store buffering); start here, and weaken only with a reason
+- release/acquire: to hand data from one thread to another: a flag, a pointer, a lock you write yourself
+- releaxed: when no other data depends on the value: a counter reads after every worker has joined
+	- cache coherency helps when we are trying to read one location
 
 See [[Concurrency, Parallelism, and Rust/Threads and Shared State in Rust|Threads and Shared State in Rust]] for atomics in Rust.
 
