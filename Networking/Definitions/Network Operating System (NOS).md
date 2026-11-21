@@ -1,5 +1,5 @@
 ## Network Operating System (NOS)
-Software that provides a **Network Map** abstraction for [[Software Defined Networks|SDN]] control applications, similar to how a server OS provides file/process abstractions.
+Software that provides a **Network Map** abstraction for [[Networking/Definitions/Software Defined Networks|SDN]] control applications, similar to how a server OS provides file/process abstractions.
 
 - Detects changes in the underlying network (switches, ports, links going up/down)
 - Lets control apps implement routing logic on an abstract graph rather than dealing with distributed state collection directly

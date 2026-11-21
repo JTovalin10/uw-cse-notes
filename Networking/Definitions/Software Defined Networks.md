@@ -1,3 +1,3 @@
 # Software Defined Networks
 
-**[[Software Defined Networks|Software Defined Networks]]**: Definition needed.
+**[[Networking/Definitions/Software Defined Networks|Software Defined Networks]]**: Definition needed.

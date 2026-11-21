@@ -3,7 +3,7 @@ An architecture that decouples the **control plane** (routing decisions) from th
 
 A standard interface between the two planes allows any control plane implementation to work with any data plane implementation.
 
-See also: [[Software Defined Networks]], [[Network Operating System (NOS)]]
+See also: [[Networking/Definitions/Software Defined Networks]], [[Network Operating System (NOS)]]
 
 
 ![[General purpose processor used as a software switch.png]]

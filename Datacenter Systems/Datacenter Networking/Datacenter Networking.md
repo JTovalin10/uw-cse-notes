@@ -18,6 +18,7 @@ How data moves between servers inside a warehouse-scale datacenter: the protocol
 ---
 
 ## Related
+- [[Datacenter Systems/Software Defined Networks|Software Defined Networks]] — Central control of switches, OpenFlow, and B4 traffic engineering
 - [[Datacenter Systems/Containers/Network Virtualization|Network Virtualization]] — Virtual vs physical addresses and packet encapsulation
 - [[Datacenter Systems/Containers/Open vSwitch Network Virtualization|Open vSwitch Network Virtualization]] — Software switching and hardware-virtualized NICs
 - [[Datacenter Systems/Warehouse-Scale Computer Architecture/Hardware Building Blocks|Hardware Building Blocks]] — Racks, servers, and the networking fabric
